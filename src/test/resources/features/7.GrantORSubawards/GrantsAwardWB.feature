@@ -34,6 +34,19 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Attachments" sub tab
     Then I can see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
 
+    @71423 @71439 @71438 @jitendra @statusOfAllAndDraft
+      Scenario:  Verify that all and draft records are getting displayed proper post apply a filter "All and Drafts" on grants by SPI/SPA users.
+      Given I am on "SUBPORTAL" portal
+      And I login to "Grants Portal" app as "SPI" user
+      And I navigate to "Grants" tab
+      When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+      And I click toggle button to select "Grants - All"
+      Then I softly see value "Draft" for title "Status" inside table "flexGridRecipientActiveGrants"
+      And I click toggle button to select "Grants - Draft"
+      Then I softly see value "Draft" for title "Status" inside table "flexGridRecipientActiveGrants"
+      And I click toggle button to select "Grants - Rejected"
+      Then I softly do not see value "Active" for title "Status" inside table "flexGridRecipientActiveGrants"
+
   @66740 @documentattacmentatgrant @jitendra
   Scenario: To verify that the document can be added in the Supporting Document checklist table in the Grant Attachment tab in the Draft state
     Given I delete the record "Automation Direct Award" from the object "Award"
