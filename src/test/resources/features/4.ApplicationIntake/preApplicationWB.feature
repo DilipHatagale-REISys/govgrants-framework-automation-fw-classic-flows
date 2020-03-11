@@ -486,7 +486,9 @@ Feature: Pre-Application scenarios without background
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Automation Announcement for Pre-Application" in "---preApplication:-:notYetQualifiedTable---" panel
-    When I click on "View" icon for "Autom    Then I softly see field "Pre-Application Due Date" is not editable
+    When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
+    When I click on "Qualify" in the page details
+    Then I softly see field "Pre-Application Due Date" is not editable
     And I click on "Create Pre-Application" in the page details
     When I enter value "Automation Announcement for Application" into field "Title__c"
     When I click modal button "Save and Continue"
