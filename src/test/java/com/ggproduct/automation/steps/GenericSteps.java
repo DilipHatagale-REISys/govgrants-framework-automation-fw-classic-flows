@@ -2,6 +2,7 @@ package com.ggproduct.automation.steps;
 
 import com.ggproduct.automation.projectmanager.ProjectManager;
 import eyethink.automation.bots.Register.EyeThink;
+import eyethink.automation.bots.objects.Elements;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -403,5 +404,20 @@ public class GenericSteps {
         EyeThink.core().enterText().clear(notesTitle);
         EyeThink.core().enterText().in(notesTitle, "Updated Notes Record");
         EyeThink.core().enterText().in(notesDescriptionPath, "Updated Automation Notes");
+    }
+
+    @Description("Check the users status against value in Approval History table inside Hsitory Tab")
+    @Then("I see {string} against {string} in approval history")
+    public void seeStatusOfRecordInApprovalHistory(String seeThisString, String againstThisString) {
+        By listOfsUsers = By.xpath("//div[@id='chevronBarId']//ul[1]//li//a");
+        List<Elements> listOfLoc = EyeThink.core().elementReference().listOfElements().of(listOfsUsers);
+        int expectedIndex = 0;
+        for (int i=0; i<listOfLoc.size(); i++){
+            if (listOfLoc.get(i).getText().trim().equalsIgnoreCase(againstThisString)){
+                expectedIndex = expectedIndex + 1;
+            }
+        }
+
+        EyeThink.core().assertion().assertThat(EyeThink.core().get().text("//div[@id='chevronBarId']//ul[2]//li["+expectedIndex+"]//a").trim()).isEqualToIgnoringCase(seeThisString);
     }
 }
