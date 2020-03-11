@@ -206,8 +206,9 @@ Feature: Validate all scenarios in the Pre-Application
     When I download the file
     Then I see "Submitted to Grantor" on page "1" of "govgrants" pdf file
 
-  @34025 @preApplicationRejectionByGrantor @deepika
+  @34155 @34025 @preApplicationRejectionByGrantor @deepika
   Scenario Outline: Validate when Grantor Rejects the submitted pre-application then the status of Pre-Application status will be in rejected status
+    Validate other than Record Owner PM, FO user will not able to Reject submitted Pre-Application
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -218,6 +219,12 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    When I perform quick search for "Record Id" in "---preApplication:-:preApplicationsGrantorTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---preApplication:-:preApplicationsGrantorTableId---"
+    Then I softly cannot see top right button "Reject" in page detail
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
