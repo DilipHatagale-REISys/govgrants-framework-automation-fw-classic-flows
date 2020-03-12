@@ -210,7 +210,7 @@ Feature: Validate all scenarios in the Application Intake
       | Project Director/Manager |
       | Authorized Signatory     |
 
-  @70527 @applicationAttachmentAndNotes @wip @deepika
+  @70527 @applicationAttachmentAndNotes @deepika
   Scenario: Validate whether user can add attachment checklist and Notes on the Application
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "General Assurances"
@@ -313,4 +313,4 @@ Feature: Validate all scenarios in the Application Intake
     And I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "cae"
     When I click on "Create Application" in the page details
     Then I see the following messages in the page details :
-      | Application is already created for this Announcement |
+      | Application cannot be created as you have reached the maximum limit for allowed applications for {SavedValue:APPId} |
