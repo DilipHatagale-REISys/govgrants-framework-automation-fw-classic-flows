@@ -362,6 +362,12 @@ public class GenericSteps {
         projectManager.validateModalEnlargeAndGrantDetails(usage);
     }
 
+    @Description("select the option from dropdown of History table")
+    @When("^I select \"([^\"]*)\" from dropdown at History Table$")
+    public void selectValueFromDropdownInHistory(String option) {
+        projectManager.selectValueFromDropdownInHistory(option);
+    }
+
     @And("^I (softly see|see) all the fields are present for site visit while initializing it$")
     public void iSeeAllTheFieldsArePresentForSiteVisit(String usage) {
         projectManager.allFieldsCheckSiteVisit(usage);
