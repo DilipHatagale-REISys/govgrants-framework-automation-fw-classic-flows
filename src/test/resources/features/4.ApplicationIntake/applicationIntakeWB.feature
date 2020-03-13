@@ -572,17 +572,19 @@ Feature: Application Intake scenarios without background
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
 
-  @72307 @newApplicationOncetheOppurtunitySubmittedToGrantor @deepika
-  Scenario: Validate whether user is able to create a new/multiple applications from same Oppurtunity once it is Converted to an Application
+  @72307 @34330 @newApplicationOncetheOppurtunitySubmittedToGrantor @deepika @bugged-73281
+  Scenario: Validate whether user is able to create a new/multiple applications from same Oppurtunity once it is Converted to an Application | Verify snapshot is not added to the Snapshot History after Application is submitted to Grantor
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:convertedToApplicationTableID---" panel
-    When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:convertedToApplicationTableID---"
+    And I perform quick search for "Automation Application" in "---applicationIntake:-:convertedToApplicationTableID---" panel
+    When I click on "View" icon for "Automation Application" inside flex table with id "---applicationIntake:-:convertedToApplicationTableID---"
     Then I softly can see top right button "Create Application" in page detail
     When I navigate to "Performance" sub tab
     Then I softly verify that field "Automation Permanent Objective" is not editable by entering "Select" value
+    When I navigate to "History" sub tab
+    Then I softly cannot see field "Snapshot" inside page block
 
   @72308 @72309 @userCanEditApplicationInCreatedStatusAndCannotInSubmitTedStatus @deepika
   Scenario: Validate whether the User can view the edit icon for the application that is in Created Status and Submiited to Grantor Status
@@ -632,7 +634,7 @@ Feature: Application Intake scenarios without background
     Then I softly cannot see row level action button "Edit" against "Automation Announcement for Application Review" in flex table with id "---applicationIntake:-:recipientApplications---"
 
   @72511 @SPIUserCannotdeleteTheCreatedApplication
-  Scenario: Validate whether SPIuser has the ability to delete the created Application
+  Scenario: Validate whether SPI user has the ability to delete the created Application
     Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
     And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
@@ -771,3 +773,26 @@ Feature: Application Intake scenarios without background
     When I click on "View" icon for "Automation Announcement for Application Review" inside table
     Then I softly see that "Automation Announcement for Application Review" is in "Created" status
 
+  @73283 @otherOrganizationUserCannotViewApplication
+  Scenario: Validate the Aplications are not visible for other organizations Users
+    When I am on "SUBPORTAL" portal
+    And I login as "SA" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+
+  @73284 @applicationVisibity
+  Scenario Outline: Validate the Applications are visible for their own organization and for child organizations.
+    Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
+    And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
+    When I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "<User>" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
+    Then I softly see that "Automation Announcement for Application Review" has been added in flextable with Id "---applicationReview:-:reviewsTableId---"
+    Examples:
+      | User |
+      | SPI  |
+      | SPA  |
