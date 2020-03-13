@@ -100,10 +100,11 @@ Feature: Validate all scenarios in the Pre-Application
     Then I softly see status in Progress-bar is "Submitted" and is "green"
     Then I softly cannot see top right button "Edit" in page detail
 
-  @34023 @53162 @70247 @70248 @70249 @70250 @70251 @70524 @preApplicationToApplication @deepika
+  @34150 @34023 @53162 @70247 @70248 @70249 @70250 @70251 @70524 @preApplicationToApplication @deepika
   Scenario Outline: Validate Grantor accept the submitted pre-application and converted it to application | Validate the subrecipient users able to create application from the approved Pre Application
   Validate Announcement owner will be able to view the Accept and Reject button |Validate the subrecipient users able to create application from the approved Pre Application
   Validate Announcement Owner will be able to view the pending task under announcement tab after every pre application submission happens. |Validate pre-application is converted to Application |Verify whether PM, FO,EXE internal user is able to view Accepted Pre Application
+  Validate SPI user will not able to create application before Pre-Application is Accepted by Grantor
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -114,6 +115,14 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
+    Given I am on "SUBPORTAL" portal
+    And I login as "SPI" user
+    When I navigate to "Applications" tab
+    And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Pre-Applications - All"
+    And I perform quick search for "<Announcement Name>" in "RecipientPreApplications" panel
+    When I click on "View" icon for "<Announcement Name>" inside table
+    Then I softly cannot see top right button "Create Application" in page detail
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -208,7 +217,7 @@ Feature: Validate all scenarios in the Pre-Application
 
   @34155 @34025 @preApplicationRejectionByGrantor @deepika
   Scenario Outline: Validate when Grantor Rejects the submitted pre-application then the status of Pre-Application status will be in rejected status
-    Validate other than Record Owner PM, FO user will not able to Reject submitted Pre-Application
+  Validate other than Record Owner PM, FO user will not able to Reject submitted Pre-Application
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details

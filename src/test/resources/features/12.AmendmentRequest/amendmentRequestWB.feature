@@ -191,7 +191,7 @@ Feature: Amendment Request scenarios without background
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I click on top right button "New" in flex table with id "---subAw9doardStandAlone:-:activeGrantsTableId---"
     And I enter "GrantCreation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Continue"
     And I enter "GrantEdition" values from "AmendmentRequest_Field_Values.xlsx"
