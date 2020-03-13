@@ -564,11 +564,6 @@ public class ProjectManager extends ProjectWebServices {
         }
     }
 
-    public void selectValueFromDropdownInHistory(String objectName) {
-        By selectValueFromDropdown = By.xpath("//div[@id='History']//div[@class='panel-heading']//span//select");
-        EyeThink.core().select().from(selectValueFromDropdown).selectByValue(objectName);
-    }
-
     public void allFieldsCheckSiteVisit(String usage) {
         List<String> ids = List.of("Title__c",
                 "GranteePOCContact__c",
