@@ -1,7 +1,7 @@
 @preAplicationWB @regression @app
 Feature: Pre-Application scenarios without background
 
-  @70252 @70254 @71410 @71411 @71412 @verifyCreateApplicationandQualifyButtons
+  @70252 @70254 @71410 @71411 @71412 @71921 @71925 @verifyCreateApplicationandQualifyButtons
   Scenario: Verify whether SPI user is able to qualify opportunity a Pre-Application| Verify Create Pre- Application button is displayed to SR User when User click on Qualify Button.
   Validate whether user is able to view the qualify button and qualify the opportunity before creating the pre-application
   Validate the user is able to create Pre Application only when the Opportunity setting for Pre Applciation Required (Yes)
@@ -11,7 +11,11 @@ Feature: Pre-Application scenarios without background
     And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
     And I delete the record "Automation Announcement for Application" from the object "Qualified Announcement"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPA" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    Then I softly do not see value "Automation Announcement for Pre-Application" for title "Title" inside table "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
@@ -22,6 +26,8 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Announcement for Pre-Application" is in "Qualified" status
     Then I softly can see top right button "Create Pre-Application" in page detail
+    And I navigate to "Qualified" content inside "Opportunities" subheader on left panel
+    Then I softly see value "Automation Announcement for Pre-Application" for title "Title" inside table "---applicationIntake:-:qualifiedTableId---"
 
   @70253 @72575 @spaUserCannotSubmitanPre-application
   Scenario: Validate the SPA users should not be able to Submit the Pre Application | Validate whether SPI user can continue to proceed without providing application title while creating a pre-application
@@ -597,5 +603,4 @@ Feature: Pre-Application scenarios without background
     And I click on "Save" in the page details
     Then I softly see the following messages in the page details :
       | Pre-Application Due Date cannot be after Application Due Date |
-
 
