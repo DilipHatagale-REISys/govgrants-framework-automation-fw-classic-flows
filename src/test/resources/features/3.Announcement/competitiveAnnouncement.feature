@@ -15,8 +15,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @70551 @70552 @70800 @70885 @userCanViewAddAndDeleteFocusArea @aashish
-  Scenario: To Verify that user is able to remove associated focus areas While creating the Announcement
+  @70551 @70552 @70800 @70885 @72646 @userCanViewAddAndDeleteFocusArea @aashish
+  Scenario: To Verify that user is able to remove associated focus areas While creating the Announcement | To verify PM can remove non relevant Budget categories from specific Budget Type in Announcement based on the need.
     When I navigate to "Announcements" tab
     And I click toggle button to select "Announcements - Published"
     Then I softly see value "Published" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
@@ -35,6 +35,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Financials" sub tab
     And I click on "Remove" icon for "BP01" inside flex table with id "---announcement:-:budgetPeriodTableId---"
     Then I softly do not see value "BP01" for title "Budget Period Name" inside table "---announcement:-:budgetPeriodTableId---"
+    And I click on "Remove" icon for "Administrative and legal expenses" inside flex table with id "---announcement:-:announcementBudgetCategory---"
+    Then I softly see the following messages in the page details :
+      | Record deleted successfully. |
+    Then I softly do not see value "Administrative and legal expenses" for title "Name" inside table "---announcement:-:announcementBudgetCategory---"
 
   @70290 @70298 @70302 @70799 @userAllowToEnterDataInQualityAndAvailibility @aashish @smoke
   Scenario: To Verify that user able to see Text fields after select Q&A Availability  as "Yes"  And  user can enter and save all required fields while creating Announcement
@@ -83,9 +87,11 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see the following messages in the page details :
       | Overview Tab: The Answer submission deadline cannot be earlier than Question submission deadline. |
 
-  @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @userDeleteSupportingDocument @aashish
+  @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @70506 @userDeleteSupportingDocument @aashish
   Scenario: To Verify that user can delete supporting document checklist While creating the Announcement |
-  To Verify that user can Edit fields in supporting document checklist While creating the Announcement | To Verify that user can preview business forms while creating Announcement
+  To Verify that user can Edit fields in supporting document checklist While creating the Announcement |
+  To Verify that user can preview business forms while creating Announcement|
+  To Verify that user can Edit buisness forms while ctreating Announcement
     When I navigate to "Announcements" tab
     And I click toggle button to select "Announcements - Closed and Archived"
     Then I softly see value "Closed" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
@@ -98,6 +104,11 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "Grantor Application Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     Then I softly see value "Organization Desk Review" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     Then I softly see value "Grantor Progress Report Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
+    And I click on "Edit" icon for "Grantor Application Forms" inside flex table with id "---announcement:-:businessFormlistTableId---"
+    And I enter value "Grantor Application Forms" into field "fieldPackageConfig__c"
+    And I click modal button "Save"
+    And I close "Edit Package" modal by clicking the top right x button
+    Then I softly see value "Grantor Application Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     When I enter the following values into flex table with id "---announcement:-:annChecklist---" by clicking "Add" :
       | Description                 | Required  | Applies To | Status |
       | Automation test description | Mandatory | Award      | Active |
@@ -156,6 +167,27 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I refresh the page
     And I click on hyperlink containing value "View"
     Then I see "A Simple PDF File" on page "1" of "govgrants" pdf file
+
+  @72323 @71972 @jitendra @applicationDueDataOfAnnInHistory
+  Scenario: To verify field history update with respect to modification in Application Due Dates of Announcement|
+  To verify that estimated period start date & end date is displayed according to the entered budget period dates in announcemnt
+    And I click on "Edit" in the page details
+    And I enter value "1/25/2030" into field "fieldApplicationDueDate__c"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    And I enter value "1/26/2030" into field "fieldApplicationDueDate__c"
+    And I click on "Save" in the page details
+    And I navigate to "History" sub tab
+    Then I softly see value "2030-01-25" for title "Old Value" inside table "History"
+    Then I softly see value "2030-01-26" for title "New Value" inside table "History"
+    And I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date   |
+      | BP01               | 03/13/2030 | 04/13/2030 |
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    Then I softly see value "4/14/2030" for title "Start Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
+    Then I softly see value "4/13/2031" for title "End Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
 
   @70563 @70556 @70554 @70606 @70718 @userCanViewAndDeleteKPI @aashish
   Scenario: To  Verify that after associating objectives, related KPIs should be automatically populate while  creating the Announcement
@@ -229,7 +261,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Remove" icon for "Cal Fires" inside flex table with id "---announcement:-:relatedAnnouncementTableId---"
     Then I softly do not see value "Cal Fires" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId---"
 
-  @70727 @70723 @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
+  @70727 @70723 @72482 @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
   Scenario Outline: Validate that user can not enter application due date as past date | Validate that user should not submit announcement with blank budget period dates|To Verify that user can view contact while creating Announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -240,8 +272,21 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I close "Associate" modal by clicking the top right x button
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
-      | {SavedValue:fundingAccount} | 100             |
+      | {SavedValue:fundingAccount} | 1000            |
+    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Pre-Encumbrance |
+      | {SavedValue:fundingAccount} | 2000            |
+    And I click on "Save" in the page details
+    When I navigate to "History" sub tab
+    And I select "Related Funding Account" from dropdown at History Table
+    Then I softly see value "Pre-Encumbrance" for title "Changed Field" inside table "History"
+    Then I softly see value "$2,000.00" for title "New Value" inside table "History"
+    Then I softly see value "$1,000.00" for title "Old Value" inside table "History"
+    And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
+    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Pre-Encumbrance |
+      | {SavedValue:fundingAccount} | 100             |
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     When I refresh the page
     When I navigate to "Overview" sub tab
@@ -437,7 +482,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type |
       | Competitive       |
 
-  @70894 @71722 @72471 @72324 @verifyReviseUnderRevision @aashish @smoke
+  @70894 @71722 @72471 @72324 @72548  @verifyReviseUnderRevision @aashish @smoke
   Scenario Outline: To Verify that after clicking on revise button, status changes to created.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -610,6 +655,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I navigate to "History" sub tab
+    Then I softly see snapshot with name containing "Snapshot_Announcement_Submission" as name
+    And I click on hyperlink containing value "Snapshot_Announcement_Submission"
+    When I download the file
+    Then I softly see "Announcement information" on page "1" of "govgrants" pdf file
     And I see "Automation PM" against "Initial Submitter" in approval history
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -646,9 +695,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type |
       | Competitive       |
 
-  @70803 @70817 @70893 @34768 @70898 @announcementApprovalCA @verifyApproverCanNotEdit @aashish
+  @70803 @70817 @70893 @34768 @70898 @72490 @announcementApprovalCA @verifyApproverCanNotEdit @aashish
   Scenario Outline: Validate the approval of an Announcement | To verify that after unpublished announcement , user can not create application from that announcement
   | To Verify that after submitting for approval, approver can not edit anything on announcement
+  |To verify field history update with respect to modification in Pre-Encumbrance field of Announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -660,6 +710,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
+    And I navigate to "History" sub tab
+    And I select "Related Funding Account" from dropdown present on top right of flex table id "History"
+    Then I softly see value "$100.00" for title "New Value" against the value "Pre-Encumbrance" inside table "History"
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     When I refresh the page
