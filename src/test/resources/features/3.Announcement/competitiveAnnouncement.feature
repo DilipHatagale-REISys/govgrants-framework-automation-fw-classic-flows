@@ -83,9 +83,11 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see the following messages in the page details :
       | Overview Tab: The Answer submission deadline cannot be earlier than Question submission deadline. |
 
-  @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @userDeleteSupportingDocument @aashish
+  @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @70506 @userDeleteSupportingDocument @aashish
   Scenario: To Verify that user can delete supporting document checklist While creating the Announcement |
-  To Verify that user can Edit fields in supporting document checklist While creating the Announcement | To Verify that user can preview business forms while creating Announcement
+  To Verify that user can Edit fields in supporting document checklist While creating the Announcement |
+  To Verify that user can preview business forms while creating Announcement|
+  To Verify that user can Edit buisness forms while ctreating Announcement
     When I navigate to "Announcements" tab
     And I click toggle button to select "Announcements - Closed and Archived"
     Then I softly see value "Closed" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
@@ -98,6 +100,11 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "Grantor Application Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     Then I softly see value "Organization Desk Review" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     Then I softly see value "Grantor Progress Report Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
+    And I click on "Edit" icon for "Grantor Application Forms" inside flex table with id "---announcement:-:businessFormlistTableId---"
+    And I enter value "Grantor Application Forms" into field "fieldPackageConfig__c"
+    And I click modal button "Save"
+    And I close "Edit Package" modal by clicking the top right x button
+    Then I softly see value "Grantor Application Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     When I enter the following values into flex table with id "---announcement:-:annChecklist---" by clicking "Add" :
       | Description                 | Required  | Applies To | Status |
       | Automation test description | Mandatory | Award      | Active |
@@ -156,6 +163,27 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I refresh the page
     And I click on hyperlink containing value "View"
     Then I see "A Simple PDF File" on page "1" of "govgrants" pdf file
+
+  @72323 @71972 @jitendra @applicationDueDataOfAnnInHistory
+  Scenario: To verify field history update with respect to modification in Application Due Dates of Announcement|
+  To verify that estimated period start date & end date is displayed according to the entered budget period dates in announcemnt
+    And I click on "Edit" in the page details
+    And I enter value "1/25/2030" into field "fieldApplicationDueDate__c"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    And I enter value "1/26/2030" into field "fieldApplicationDueDate__c"
+    And I click on "Save" in the page details
+    And I navigate to "History" sub tab
+    Then I softly see value "2030-01-25" for title "Old Value" inside table "History"
+    Then I softly see value "2030-01-26" for title "New Value" inside table "History"
+    And I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date   |
+      | BP01               | 03/13/2030 | 04/13/2030 |
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    Then I softly see value "4/14/2030" for title "Start Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
+    Then I softly see value "4/13/2031" for title "End Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
 
   @70563 @70556 @70554 @70606 @70718 @userCanViewAndDeleteKPI @aashish
   Scenario: To  Verify that after associating objectives, related KPIs should be automatically populate while  creating the Announcement
