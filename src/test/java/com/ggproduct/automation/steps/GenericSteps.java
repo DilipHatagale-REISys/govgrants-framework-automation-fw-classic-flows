@@ -420,4 +420,10 @@ public class GenericSteps {
 
         EyeThink.core().assertion().assertThat(EyeThink.core().get().text("//div[@id='chevronBarId']//ul[2]//li["+expectedIndex+"]//a").trim()).isEqualToIgnoringCase(seeThisString);
     }
+
+    @And("I select {string} from dropdown present on top right of flex table id {string}")
+    public void iSelectFromDropdownPresentOnTopRightOfFlexTableId(String selectOption, String tableId) {
+        By selectOptionLocator = By.xpath("//div[@id='"+tableId+"']//div[@class='panel-heading']//select");
+        EyeThink.core().select().from(selectOptionLocator).selectByVisibleText(selectOption);
+    }
 }
