@@ -231,7 +231,7 @@ Feature: Application Intake scenarios without background
   Scenario: Validate once the Announcement is published and Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit Application
   Validate whether the Applicant will be able to view qualify button on the same funding opportunity after republish
   Validate whether the Applicant will be able to create a New Application from the republish announcement and oppurtunity |Validate whether the Applicant will be able to Submit the New Application from the republish announcement and oppurtunity
-    Validate whether User will be able to see the Unpublished status on the Application | Validate whether when the user click on unpublish button of announcement status of announcement changes to created and SPI user cannot see announcement at external side
+  Validate whether User will be able to see the Unpublished status on the Application | Validate whether when the user click on unpublish button of announcement status of announcement changes to created and SPI user cannot see announcement at external side
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -747,20 +747,27 @@ Feature: Application Intake scenarios without background
     When I click on "Submit Application" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
 
- @72625 @errorMessageOfPreApplicationDueDate @deepika
-  Scenario: Validate whether system generates an error message when Pre Application Due Date is greater than Application Due Date while submitting information
-    Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
-    When I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Announcements" tab
-    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
-    And I click modal button "Continue"
-    When I enter "Pre-Application Modal" values from "Announcement_Field_Values.xlsx"
+  @33799 @createdANDQualifiedApplication @deepika
+  Scenario: Validate whether SPI & SPA users are able to view the qualified and created Statuses
+    Given I delete the record "Automation Announcement for Application Review" from the object "Application"
+    And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
-    And I navigate to "Overview" sub tab
-    And I enter value "30" into field "fieldApplicationDueDate__c"
-    And I enter value "40" into field "fieldPreApplicationDueDate__c"
-    And I click on "Save" in the page details
-    Then I softly see the following messages in the page details :
-      | Pre-Application Due Date cannot be after Application Due Date |
+    When I click on "Save" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:recipientApplications---" panel
+    When I click on "View" icon for "Automation Announcement for Application Review" inside table
+    Then I softly see that "Automation Announcement for Application Review" is in "Created" status
+

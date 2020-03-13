@@ -370,10 +370,11 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly cannot see top right button "Create Pre-Application" in page detail
 
-  @72515 @72516 @72518 @72519 @72520 @preapplicationInformationCopiedToApplication @deepika
+  @34154 @72515 @72516 @72518 @72519 @72520 @preapplicationInformationCopiedToApplication @deepika
   Scenario: Validate the Pre Application information is copied to Application | Validate whether user is able toa cknowledge the application submission by entering the mandatory details.
   Validate the Match Percentage validation during submit for approval when the Match required setting as Yes | Validate when the pre-application is submitted to grantor then the pending task is created for PM user
   Validate the once the PM user accepts the pre-application when is submitted to grantor using the pending task, then the task moved from pending to Completed task table
+  Validate other than record Owner Pm , other users will not be to Accept submitted Pre-Application
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"
     And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
@@ -416,6 +417,16 @@ Feature: Pre-Application scenarios without background
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---preApplication:-:pendingTaskTableId---" panel
+    Then I softly see "No Records Found" inside flex table with id "---preApplication:-:pendingTaskTableId---"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---preApplication:-:pendingTaskTableId---" panel
+    Then I softly see "No Records Found" inside flex table with id "---preApplication:-:pendingTaskTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -470,7 +481,8 @@ Feature: Pre-Application scenarios without background
     And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
     And I delete the record "Automation Announcement for Application" from the object "Qualified Announcement"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI" useration Announcement for Pre-Application" inside table
+    When I click on "Qualify" in the page details
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Automation Announcement for Pre-Application" in "---preApplication:-:notYetQualifiedTable---" panel
@@ -497,8 +509,8 @@ Feature: Pre-Application scenarios without background
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record id" in "---preApplication:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record id" inside table
+    When I perform quick search for "Record Id" in "---preApplication:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside table
     When I click on "Accept" in the page details
     Then I see status in Progress-bar is "Accepted" and is "Green"
 
@@ -533,8 +545,8 @@ Feature: Pre-Application scenarios without background
       | SPI  |
       | SPA  |
 
-  @72524 @OppurtunityFieldsARENOtEditableInDraftStatus
-  Scenario: Validate whether user can edit the Opportunity Overview page block fields when the pre-application is in draft status
+  @72524 @34048 @OppurtunityFieldsARENOtEditableInDraftStatus
+  Scenario: Validate whether user can edit the Opportunity Overview page block fields when the pre-application is in draft status |Validate whether SPI & SPA users are able to view the qualified and created Status of Qualified Pre-Application
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"
     And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
@@ -557,5 +569,33 @@ Feature: Pre-Application scenarios without background
     Then I softly see field "Opportunity Title" is not editable
     Then I softly see field "Opportunity Type" is not editable
     Then I softly see field "Pre-Application Due Date" is not editable
+    When I navigate to "Opportunities" tab
+    And I navigate to "Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:qualifiedTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Pre-Application" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
+    Then I softly see that "Automation Announcement for Pre-Application" is in "Qualified" status
+    When I navigate to "Applications" tab
+    And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Pre-Applications - All"
+    And I perform quick search for "Automation Announcement for Pre-Application" in "RecipientPreApplications" panel
+    Then I softly see that "Automation Announcement for Pre-Application" is in "Created" status
+
+  @72625 @errorMessageOfPreApplicationDueDate @deepika
+  Scenario: Validate whether system generates an error message when Pre Application Due Date is greater than Application Due Date while submitting information
+    Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Pre-Application Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I navigate to "Overview" sub tab
+    And I enter value "30" into field "fieldApplicationDueDate__c"
+    And I enter value "40" into field "fieldPreApplicationDueDate__c"
+    And I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | Pre-Application Due Date cannot be after Application Due Date |
 
 

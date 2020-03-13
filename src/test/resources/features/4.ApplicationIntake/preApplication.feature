@@ -85,7 +85,7 @@ Feature: Validate all scenarios in the Pre-Application
 
   @53160 @70466 @70467 @71116 @submitPreApplication @smoke @deepika
   Scenario: Submitting an pre application to Grantor |To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on pre-application
-  Validate whether user can view the edit button once pre - application has been submitted to Grantor |  Validate whether the user can submit the Pre Application Submission before the due date
+  Validate whether SPI user can view the edit button once pre - application has been submitted to Grantor |  Validate whether the user can submit the Pre Application Submission before the due date
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -100,10 +100,10 @@ Feature: Validate all scenarios in the Pre-Application
     Then I softly see status in Progress-bar is "Submitted" and is "green"
     Then I softly cannot see top right button "Edit" in page detail
 
-  @53162 @70247 @70248 @70249 @70250 @70251 @70524 @preApplicationToApplication @deepika
+  @34023 @53162 @70247 @70248 @70249 @70250 @70251 @70524 @preApplicationToApplication @deepika
   Scenario Outline: Validate Grantor accept the submitted pre-application and converted it to application | Validate the subrecipient users able to create application from the approved Pre Application
   Validate Announcement owner will be able to view the Accept and Reject button |Validate the subrecipient users able to create application from the approved Pre Application
-  Validate Announcement Owner will be able to view the pending task under announcement tab after every pre application submission happens. |Validate pre-application is converted to Application
+  Validate Announcement Owner will be able to view the pending task under announcement tab after every pre application submission happens. |Validate pre-application is converted to Application |Verify whether PM, FO,EXE internal user is able to view Accepted Pre Application
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -160,7 +160,7 @@ Feature: Validate all scenarios in the Pre-Application
       | Automation SPI | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Then I softly see that "Record Id" is in "Converted to Application" status
-    Given I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    Given I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
@@ -168,8 +168,10 @@ Feature: Validate all scenarios in the Pre-Application
     And I click on "View" icon for "Record Id" inside flex table with id "---applicationIntake:-:applicantGrantorApplicationsTableId---"
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
     Examples:
-      | Announcement Name                       |
-      | Automation Announcement for Application |
+      | Announcement Name                       | User |
+      | Automation Announcement for Application | PM   |
+      |                                         | FO   |
+      |                                         | EXE  |
 
   @70468 @acknowledgeRequiredForPre-App @deepika
   Scenario: Validate the system should throw an validation message if the pre-application is submitted with Acknowledging it
@@ -203,3 +205,41 @@ Feature: Validate all scenarios in the Pre-Application
     And I click on hyperlink containing value "Snapshot_Pre-Application_Submission.pdf"
     When I download the file
     Then I see "Submitted to Grantor" on page "1" of "govgrants" pdf file
+
+  @34155 @34025 @preApplicationRejectionByGrantor @deepika
+  Scenario Outline: Validate when Grantor Rejects the submitted pre-application then the status of Pre-Application status will be in rejected status
+    Validate other than Record Owner PM, FO user will not able to Reject submitted Pre-Application
+    Given I click on "Edit" in the page details
+    And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 5000   | 5000       | 50             | 100            |
+    When I navigate to "Attachments" sub tab
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    When I perform quick search for "Record Id" in "---preApplication:-:preApplicationsGrantorTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---preApplication:-:preApplicationsGrantorTableId---"
+    Then I softly cannot see top right button "Reject" in page detail
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---preApplication:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---preApplication:-:pendingTaskTableId---"
+    When I click on "Reject" in the page details
+    Then I softly see status in Progress-bar is "Rejected" and is "Red"
+    Given I am on "SUBPORTAL" portal
+    And I login as "SPI" user
+    When I navigate to "Applications" tab
+    And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Pre-Applications - Submitted"
+    And I perform quick search for "<Announcement Name>" in "RecipientPreApplications" panel
+    When I click on "View" icon for "<Announcement Name>" inside table
+    Then I softly cannot see top right button "Create Application" in page detail
+    Examples:
+      | Announcement Name                       |
+      | Automation Announcement for Application |
