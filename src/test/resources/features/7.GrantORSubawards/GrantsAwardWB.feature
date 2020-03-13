@@ -119,7 +119,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
 
 
-  @68460 @adminUserRowLevelButton @jitendra
+  @68460 @71420 @adminUserRowLevelButton @jitendra
   Scenario: Validate that Edit and View and Delete button appear for Admin in Grant Draft table after the Grant is Created and on clicking the respective icon it works.
     Given I delete the record "Automation Direct Award" from the object "Award"
     And I delete the record "Automation Direct Award" from the object "Grant"
@@ -138,6 +138,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly can see row level action button "Delete" against "Automation Direct Award" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     Then I softly can see row level action button "View" against "Automation Direct Award" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     Then I softly can see row level action button "Edit" against "Automation Direct Award" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    Then I softly see value "Automation Direct Award" for title "Grant Title" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
 
   @68138 @takeSnapShotHistory @jitendra @skipOnJenkins
   Scenario: Validate that Snapshot of Grant page taken is saved in the History tab of the same
@@ -688,12 +689,13 @@ Feature: Validate all scenarios of grants and award without background
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     Then I softly see value "{SavedValue:fundingAccount}" for title "Funding Account" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
 
-  @38215 @68038 @67913 @VerifyActiveGrantsAccessToAllUsers @mahadev @skipOnJenkins
+  @38215 @68038 @67913 @71429 @VerifyActiveGrantsAccessToAllUsers @mahadev @skipOnJenkins
   Scenario Outline: Verify all internal users can view active grants
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     When I click toggle button to select "Grants - Active"
+    Then I softly see value "Automation Permanent Award" for title "Grant Title" inside table "---progressReport:-:activeGrantsTableId---"
     When I perform quick search for "<Grant Name>" in "---progressReport:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     Then I softly see field "Status" as "Active"
@@ -2747,8 +2749,9 @@ Feature: Validate all scenarios of grants and award without background
     And I perform quick search for "Automation Permanent Award"
     Then I softly see value "Automation Permanent Award" for title "Grant Title" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
 
-  @70806 @jitendra @SetRedirectionThresholdtO15
+  @70806 @71417 @jitendra @SetRedirectionThresholdtO15
   Scenario Outline: Validate that Budget Redirection threshold setting made on Grant is carried forward to  Budget Redirection Amendment
+    | Verify that user is able to see approved tasks in Completed tasks listing of the grants post subaward approved by Fiscal Officer
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Execution Award" from the object "subaward"
@@ -2894,6 +2897,12 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    Then I softly do not see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:completedTaskTableId---" panel
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:completedTaskTableId---"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
