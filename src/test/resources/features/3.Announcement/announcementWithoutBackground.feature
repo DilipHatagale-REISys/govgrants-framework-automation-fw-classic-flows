@@ -49,7 +49,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly do not see "Related Focus Areas" page block displayed
     Then I softly do not see "Objectives" page block displayed
 
-  @70999 @70997 @70980 @71010 @71011 @71012 @71022 @71023 @71037 @71027 @validationForErrorMessageOfPreApplication @aashish
+  @70999 @70997 @70980 @71010 @71011 @71012 @70998 @71022 @71023 @71037 @71027 @validationForErrorMessageOfPreApplication @aashish
   Scenario: To validate system generated error message when Pre Application Due Date is greater than Application Due Date while submitting information
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -115,8 +115,10 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Pre-Application Due Date cannot be after Application Due Date |
     And I enter value "20" into field "fieldPreApplicationDueDate__c"
     And I click on "Save" in the page details
+    And I save the field labeled "Application Due Date" as "ADD"
     And I save the field labeled "PreApplication Due Date" as "PDD"
     Then I softly see field "PreApplication Due Date" as "{SavedValue:PDD}"
+    Then I softly see field "Application Due Date" as "{SavedValue:ADD}"
     And I click on "Edit" in the page details
     And I enter value "-5" into field "fieldPreApplicationDueDate__c"
     And I enter value "-5" into field "fieldApplicationDueDate__c"
