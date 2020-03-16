@@ -15,7 +15,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @70551 @70552 @70800 @70885 @72646 @userCanViewAddAndDeleteFocusArea @aashish
+  @70551 @70552 @70800 @70885 @71595 @72646 @72641 @userCanViewAddAndDeleteFocusArea @aashish
   Scenario: To Verify that user is able to remove associated focus areas While creating the Announcement | To verify PM can remove non relevant Budget categories from specific Budget Type in Announcement based on the need.
     When I navigate to "Announcements" tab
     And I click toggle button to select "Announcements - Published"
@@ -33,14 +33,35 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Delete" icon for "Automation Permanent Focus Area2" inside flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
     Then I softly see confirmation box with body "Record deleted successfully." is displayed
     When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    Then I softly see the following messages in the page details :
+      | Budget period added successfully.|
+    And I save the value from row "2" for column name "Start Date" as "startDate" from flex table "---announcement:-:budgetPeriodTableId---"
+    And I save the value from row "2" for column name "End Date" as "endDate" from flex table "---announcement:-:budgetPeriodTableId---"
+    Then I softly do not see value "{SavedValue:startDate}" for title "Start Date" inside table "---announcement:-:budgetPeriodTableId---"
+    Then I softly do not see value "{SavedValue:endDate}" for title "End Date" inside table "---announcement:-:budgetPeriodTableId---"
+    And I click on "Remove" icon for "BP02" inside flex table with id "---announcement:-:budgetPeriodTableId---"
     And I click on "Remove" icon for "BP01" inside flex table with id "---announcement:-:budgetPeriodTableId---"
     Then I softly do not see value "BP01" for title "Budget Period Name" inside table "---announcement:-:budgetPeriodTableId---"
     And I click on "Remove" icon for "Administrative and legal expenses" inside flex table with id "---announcement:-:announcementBudgetCategory---"
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
     Then I softly do not see value "Administrative and legal expenses" for title "Name" inside table "---announcement:-:announcementBudgetCategory---"
+    And I enter value "2000" into field "---announcement:-:subawardfloor---"
+    And I enter value "3000" into field "---announcement:-:subawardceiling---"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    And I enter value "4000" into field "---announcement:-:subawardfloor---"
+    And I enter value "6000" into field "---announcement:-:subawardceiling---"
+    And I click on "Save" in the page details
+    And I navigate to "History" sub tab
+    Then I softly see value "$4,000.00" for title "New Value" inside table "History"
+    Then I softly see value "$2,000.00" for title "Old Value" inside table "History"
+    Then I softly see value "$6,000.00" for title "New Value" inside table "History"
+    Then I softly see value "$3,000.00" for title "Old Value" inside table "History"
 
-  @70290 @70298 @70302 @70799 @userAllowToEnterDataInQualityAndAvailibility @aashish @smoke
+
+  @70290 @70298 @70302 @70799 @73227 @userAllowToEnterDataInQualityAndAvailibility @aashish @smoke
   Scenario: To Verify that user able to see Text fields after select Q&A Availability  as "Yes"  And  user can enter and save all required fields while creating Announcement
   | To Validate system generated validation message for  Q&A Availability section when "Question Deadline Date",and "Response Deadline date" is greater then Application Due Date.
     When I navigate to "Announcements" tab
@@ -61,6 +82,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I enter value "3" into field "QSubmissionDeadline__c"
     And I enter value "3" into field "AResponseDeadline__c"
     And I enter value "reisystemsqa@yopmail.com" into field "fieldQAContactEmailAddress__c"
+    And I enter value "Test Eligibility Information" into field "---announcement:-:eligibilityInformation---"
     And I click on "Save" in the page details
     And I save the field labeled "Application Due Date" as "ADD"
     And I save the field labeled "Question Deadline" as "QDD"
@@ -69,6 +91,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see field "Question Deadline" as "{SavedValue:QDD}"
     Then I softly see field "Response Deadline" as "{SavedValue:RDD}"
     Then I softly see field "Submit questions to:" as "reisystemsqa@yopmail.com"
+    Then I softly see field "Eligibility Information" as "Test Eligibility Information"
     And I click on "Edit" in the page details
     And I enter value "2" into field "fieldApplicationDueDate__c"
     And I enter value "5" into field "QSubmissionDeadline__c"
@@ -278,7 +301,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | {SavedValue:fundingAccount} | 2000            |
     And I click on "Save" in the page details
     When I navigate to "History" sub tab
-    And I select "Related Funding Account" from dropdown at History Table
+    And I select "Related Funding Account" from dropdown present on top right of flex table id "History"
     Then I softly see value "Pre-Encumbrance" for title "Changed Field" inside table "History"
     Then I softly see value "$2,000.00" for title "New Value" inside table "History"
     Then I softly see value "$1,000.00" for title "Old Value" inside table "History"
