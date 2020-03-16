@@ -196,7 +196,7 @@ Feature: Validate all scenarios in the Pre-Application
       | Overview Tab - Enter an Acknowledgement before submitting this Pre-Application. |
 
   @70523 @snapshotAfterPreApplicationIsSubmitted @deepika
-  Scenario:  Validate SR user is able to view the Snapshot after Pre- Application is Submitted to Grantor status |Validate user cannot view the edit button once the Pre-Application once it is submitted to Grantor
+  Scenario:  Validate SR user is able to view the Snapshot after Pre- Application is Submitted to Grantor status
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -208,7 +208,6 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
-    Then I softly cannot see top right button "Edit" in page detail
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab

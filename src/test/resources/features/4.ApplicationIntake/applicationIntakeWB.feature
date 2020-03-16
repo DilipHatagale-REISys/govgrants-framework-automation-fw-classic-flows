@@ -32,7 +32,7 @@ Feature: Application Intake scenarios without background
     Then I softly cannot see top right button "Qualify" in page detail
     Then I softly can see top right button "Create Application" in page detail
 
-  @72579 @70258 @spaUsersCannotSubmitAnApplication @deepika
+  @72579 @70258 @73366 @spaUsersCannotSubmitAnApplication @deepika
   Scenario: Validate the SPA users should not be able to Submit the Application | Validate whether SPI user can continue to proceed without providing application title while creating a pre-application
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
@@ -54,8 +54,6 @@ Feature: Application Intake scenarios without background
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I navigate to "Overview" sub tab
-    Then I softly see field "Created Date" is getting updated with todays date
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -93,8 +91,8 @@ Feature: Application Intake scenarios without background
     Then I see the following messages in the page details :
       | This Opportunity has already been qualified for your Organization. |
 
-  @70462 @70463 @userCanEnterBudgetDetailsApplTitleasOppurtunityTitleField @deepika
-  Scenario: To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on Application |
+  @73366 @70462 @70463 @userCanEnterBudgetDetailsApplTitleasOppurtunityTitleField @deepika
+  Scenario: To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on Application | Validate the pre-Application created date is updated with Today's date
   To verify that the Application title is enforced on the created application on overview tab
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
@@ -113,6 +111,8 @@ Feature: Application Intake scenarios without background
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I navigate to "Overview" sub tab
+    Then I softly see field "Created Date" is getting updated with todays date
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -814,6 +814,7 @@ Feature: Application Intake scenarios without background
       | SPI  |
       | SPA  |
 
+  @73367 @spiUserCanViewAllocatedAmountOnceSubmittedToGrantor
   Scenario Outline: Validate whether SPI & SPA user were able to view the allocated amount once the Oppurtunity is Converted to Application when Announcement is of type - Formula
     When I am on "SUBPORTAL" portal
     And I login as "<User>" user
