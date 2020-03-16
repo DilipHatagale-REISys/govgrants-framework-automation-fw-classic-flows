@@ -1,7 +1,7 @@
 @announcement @commonAnnouncements @regression
 Feature: Validate all common scenarios in the  Announcement tab (Announcement without background)
 
-  @70878 @70373 @70821 @validationOverrideProgramSetting @aashish
+  @70878 @70373 @70821 @70978 @validationOverrideProgramSetting @aashish
   Scenario: To Verify that user can override program settings at Announcement level
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "EXE" user
@@ -17,6 +17,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I enter value "No" into field "fieldFocusAreaRequired__c"
     And I click modal button "Save and Continue"
     Then I softly see field "Focus Area Required?" as "No"
+    Then I softly cannot see field "Pre-Application Due Date" inside page block
 
   @70369 @validationForSubrecipientMatch @smoke @aashish
   Scenario: To Validate system generates validation message for  by keeping the "Subrecipient Match(%)" field as blank while creating Announcement

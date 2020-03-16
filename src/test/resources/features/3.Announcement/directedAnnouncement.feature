@@ -19,7 +19,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @70616 @70617 @submittingAnnouncementForApprovalDR @submittedAnnouncementDeletion @announcementForPastApplicationDueDate
+  @70616 @70617 @34232 @73303 @73304 @73305 @73306 @submittingAnnouncementForApprovalDR @submittedAnnouncementDeletion @announcementForPastApplicationDueDate
   Scenario Outline: Validate the submission of Announcement for Approval || Validate that only record owner cannot delete Submitted for Approval status announcements || Validate that user can not enter application due date as past date
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -68,7 +68,29 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
-    And I click on "Send for Review" icon for "Automation FO" inside table
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    Then I softly see value "Automation FO" for title "Name" inside table "---announcement:-:flexGridApproverRolesTableId---"
+    Then I softly see value "Fiscal Reviewer" for title "Responsibility" inside table "---announcement:-:flexGridApproverRolesTableId---"
+    Then I softly can see row level action button "Edit" against "Test Automation Organization" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
+    Then I softly can see row level action button "Delete" against "Test Automation Organization" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
+    Then I softly can see row level action button "Send for Review" against "Test Automation Organization" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
+    And I edit the following rows inline in flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "Edit" :
+      | Name          | Description                      |
+      | Automation FO | Review Financial details updated |
+    Then I softly see value "Review Financial details updated" for title "Description" inside table "---announcement:-:flexGridApproverRolesTableId---"
+    And I click on "Delete" icon for "Automation FO" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---"
+    Then I softly see the following messages in the page details :
+      | Record deleted successfully. |
+    When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
+      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "Automation FO" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---"
+    Then I softly see the following messages in the page details :
+      | Review Successfully Initiated. |
+    Then I softly see value "Sent for Review" for title "Status" inside table "---announcement:-:flexGridApproverRolesTableId---"
+    Then I softly see field "Status" as "Submitted for Review"
+    Then I softly see status in Progress-bar is "Submitted for Review" and is "green"
     And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
@@ -82,7 +104,14 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    Then I softly see field "Rating" as "Passed"
+    Then I softly see field "Comments" as "Passed"
+    Then I softly see field "Reviewed by" as "Automation FO"
+    When I click modal button "Submit Review"
+    Then I softly see the following messages in the page details :
+      | Review has been submitted successfully. |
     When I close "Enter Review" modal by clicking the top right x button
+    Then I softly see value "Submitted" for title "Status" inside table "---announcement:-:flexGridApproverRolesTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -219,8 +248,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Directed          |
 
   @announcementWithBlankBudgetPeriod @smoke
-  Scenario Outline:
-  Validate that user should not submit announcement with blank budget period dates
+  Scenario Outline: Validate that user should not submit announcement with blank budget period dates
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1011,7 +1039,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Executive Approver | Automation EXE | Automation Test Description |
       | Program Approver   | Automation PM  | Automation Test Description |
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
-      |  Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
