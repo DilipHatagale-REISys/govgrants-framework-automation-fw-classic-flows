@@ -418,8 +418,6 @@ Feature: Application Intake scenarios without background
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
     Then I save the field labeled "Application Due Date" as "AppDueDate"
-    Then I see field "Application Due Date" contains date less than todays date
-    #Then I see field "Application Due Date" contains date greater than todays date
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"

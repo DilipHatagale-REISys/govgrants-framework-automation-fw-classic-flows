@@ -596,25 +596,4 @@ public class ProjectManager extends ProjectWebServices {
             return false;
         }
     }
-
-    public boolean isFieldDateLessThanTodaysData(String fieldLabel, String lessOrGreater) throws ParseException {
-        String currentDate = EyeThink.saas().pageDetails().getFieldValue(fieldLabel, true);
-        String todayDate = EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy"));
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-        Date actualDate = sdf.parse(currentDate);
-        Date today = sdf.parse(todayDate);
-        if (lessOrGreater.equalsIgnoreCase("less")) {
-            if (actualDate.before(today)){
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            if (actualDate.after(today)){
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
 }
