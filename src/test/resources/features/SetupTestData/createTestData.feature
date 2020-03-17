@@ -1186,3 +1186,21 @@ Feature: Validate creation of data in new Org
     Examples:
       | Award Name                  | Grant Name                  |
       | Automation Permanent Award  | Automation Permanent Award  |
+
+  @competitiveAnnouncementCreatedPastDate
+  Scenario: Validate the create of permanent record of Competitive Announcement with past application date
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitivePastAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    And I navigate to "Overview" sub tab
+    And I enter value "1" into field "fieldApplicationDueDate__c"
+    And I click on "Save" in the page details

@@ -35,7 +35,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     Then I softly see the following messages in the page details :
-      | Budget period added successfully.|
+      | Budget period added successfully. |
     And I save the value from row "2" for column name "Start Date" as "startDate" from flex table "---announcement:-:budgetPeriodTableId---"
     And I save the value from row "2" for column name "End Date" as "endDate" from flex table "---announcement:-:budgetPeriodTableId---"
     Then I softly do not see value "{SavedValue:startDate}" for title "Start Date" inside table "---announcement:-:budgetPeriodTableId---"
@@ -110,14 +110,17 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see the following messages in the page details :
       | Overview Tab: The Answer submission deadline cannot be earlier than Question submission deadline. |
 
-  @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @70506 @userDeleteSupportingDocument @aashish
+  @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @70506 @71951 @userDeleteSupportingDocument @aashish
   Scenario: To Verify that user can delete supporting document checklist While creating the Announcement |
   To Verify that user can Edit fields in supporting document checklist While creating the Announcement |
   To Verify that user can preview business forms while creating Announcement|
   To Verify that user can Edit buisness forms while ctreating Announcement
     When I navigate to "Announcements" tab
     And I click toggle button to select "Announcements - Closed and Archived"
+    And I perform quick search for "Automation Competitive Past Announcement" in "---announcement:-:competitiveAnnouncementTableId---" panel
     Then I softly see value "Closed" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    When I click on "View" icon for "Automation Competitive Past Announcement" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    Then I softly see status in Progress-bar is "Closed" and is "green"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
@@ -262,7 +265,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see the following messages in the page details :
       | Overview Tab - Select applicant types. |
 
-  @70211 @70216 @70217 @userAbletoAssociateActiveRelatedProgram @aashish
+  @70211 @70216 @70217 @73388 @userAbletoAssociateActiveRelatedProgram @aashish
   Scenario: To Verify that user is able to associate active Related Federal/NGO Program | To Verify that user is able to view active Related Federal/NGO Program
   |To Verify that user is able to remove active Related Federal/NGO Program while creating Announcement.
     When I navigate to "Announcements" tab
@@ -270,11 +273,16 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I click on top right button "Associate" in flex table with id "---announcement:-:relatedAnnouncementTableId---"
-    And I click "Add" after selection of "Cal Fires" in the table "---announcement:-:associateForRelated---"
+    And I click "Associate" after selection of "Wildlife Services" in the table "---announcement:-:associateForRelated---"
     And I close modal by clicking the top right x button
-    Then I softly see value "Cal Fires" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId---"
-    And I click on "View" icon for "Cal Fires" inside flex table with id "---announcement:-:relatedAnnouncementTableId---"
-    Then I softly see field "Non-Federal Program" as "Cal Fires"
+    And I perform quick search for "Wildlife Services" in "---announcement:-:relatedAnnouncementTableId---" panel
+    Then I softly see value "Wildlife Services" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId---"
+    Then I softly see value "Federal" for title "Type" inside table "---announcement:-:relatedAnnouncementTableId---"
+    Then I softly see value "Animal And Plant Health Inspection Service" for title "Organization Name" inside table "---announcement:-:relatedAnnouncementTableId---"
+    Then I softly can see row level action button "Remove" against "10.028" in flex table with id "---announcement:-:relatedAnnouncementTableId---"
+    Then I softly can see row level action button "View" against "10.028" in flex table with id "---announcement:-:relatedAnnouncementTableId---"
+    And I click on "View" icon for "Wildlife Services" inside flex table with id "---announcement:-:relatedAnnouncementTableId---"
+    Then I softly see field "Non-Federal Program" as "Wildlife Services"
     And I pause execution for "2" seconds
     Then I softly see status in Progress-bar is "Active" and is "green"
     When I navigate to "Announcements" tab
