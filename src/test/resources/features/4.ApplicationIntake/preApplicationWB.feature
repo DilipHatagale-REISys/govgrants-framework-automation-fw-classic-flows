@@ -603,7 +603,7 @@ Feature: Pre-Application scenarios without background
     Then I softly see the following messages in the page details :
       | Pre-Application Due Date cannot be after Application Due Date |
 
-  @34290 @otherOrganizationUserCannotViewPreApplication
+  @34290 @otherOrganizationUserCannotViewPreApplication @deepika
   Scenario: Validate the Pre-applications are not visible for other organizations
     When I am on "SUBPORTAL" portal
     And I login as "SA" user
@@ -612,7 +612,7 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
 
-  @34006 @preApplicationVisibity
+  @34006 @preApplicationVisibity @deepika
   Scenario Outline: Validate the Pre-applications are visible for their own organization and for child organizations.
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"
@@ -629,7 +629,7 @@ Feature: Pre-Application scenarios without background
       | SPI  |
       | SPA  |
 
-  @34147 @validateRequestedAmountIsGreateThanSubawardFloorAmount
+  @34147 @validateRequestedAmountIsGreateThanSubawardFloorAmount @deepika
   Scenario: Verify SPI & SPA user is not able to Submit Pre-Application to Grantor with Requested Amount greater than Subaward Floor Amount
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"
@@ -690,8 +690,8 @@ Feature: Pre-Application scenarios without background
       | SPI  |
       | SPA  |
 
-  @focusAreaSettingAsNoWhileAnnouncementCreation @deepika @wip
-  Scenario: Validate the focus area setting from the funding opportunity. User should be able to view the focus area settings as No.
+  @73518 @focusAreaSettingAsNoWhileAnnouncementCreation @deepika @wip
+  Scenario: Validate when the focus area setting from the funding opportunity is No, then SPI User should be able to view the focus area settings as No and cannot see the page block
     Given I delete the record "Automation Pre-App Announcement" from the object "Application"
     When I delete the record "Automation Pre-App Announcement" from the object "PreApplication"
     And I delete the record "Automation Pre-App Announcement" from the object "Qualified Announcement"

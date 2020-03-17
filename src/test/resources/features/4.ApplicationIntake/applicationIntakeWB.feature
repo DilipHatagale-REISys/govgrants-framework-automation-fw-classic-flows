@@ -814,7 +814,7 @@ Feature: Application Intake scenarios without background
       | SPI  |
       | SPA  |
 
-  @73367 @spiUserCanViewAllocatedAmountOnceSubmittedToGrantor
+  @73367 @spiUserCanViewAllocatedAmountOnceSubmittedToGrantor @deepika
   Scenario Outline: Validate whether SPI & SPA user were able to view the allocated amount once the Oppurtunity is Converted to Application when Announcement is of type - Formula
     When I am on "SUBPORTAL" portal
     And I login as "<User>" user
@@ -831,7 +831,7 @@ Feature: Application Intake scenarios without background
       | SPI  |
       | SPA  |
 
-  @supportingDocValidationOnApplication @deepika
+  @73516 @73517 @supportingDocValidationOnApplication @deepika
   Scenario: Validate whether User will be able to attach any document if the supporting document details mentioned in the Announcement
    Validate if suppoting document is not uploaded by user while submitting the application then the system should throw an error message on screen
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"

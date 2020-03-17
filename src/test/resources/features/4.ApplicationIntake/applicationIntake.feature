@@ -134,10 +134,10 @@ Feature: Validate all scenarios in the Application Intake
       |                                                | FO   |
       |                                                | EXE  |
 
-  @70458 @70456 @acknowledgeReqiredToSave @deepika @bugged-73498
+  @70458 @70456 @73514 @73515 @acknowledgeReqiredToSave @deepika @bugged-73498
   Scenario: Validate the system should throw an validation message if the application is submitted with Acknowledging it
-  Validate whether user has ability to add and remove new focus area while creating an application | Validate when user try to remove the existing focus area the system should throw a validation message on screen
-    Validate whether user is able to add more focus area to the table while submitting an application
+  Validate whether user has ability to add and remove new focus area while creating an application |Validate whether system should throws a validation message on screen when user tries to remove the existing focus area while submitting an application
+  Validate whether user is able to add more focus area to the table while submitting an application
     Given I click on "Edit" in the page details
     And I enter "EditionAcknowledge" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -227,8 +227,8 @@ Feature: Validate all scenarios in the Application Intake
     When I enter notes with title "Automation Title" and description "Automation Description"
     Then I softly see value "Notes Record" for title "Title" inside table "toggleNotes"
 
-  @70526 @snapshotAfterApplicationIsSubmitted @deepika
-  Scenario Outline: Validate SR user is able to view the Snapshot after Application is Submitted to Grantor status
+  @70526 @73521 @snapshotAfterApplicationIsSubmitted @deepika
+  Scenario Outline: Validate SR user is able to view the Snapshot after Application is Submitted to Grantor status| Validate once the Application is submitted to Grantor then the field Submitted by on Overview Tab will get updated by the User Name.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -259,6 +259,8 @@ Feature: Validate all scenarios in the Application Intake
       | Name           | Project Role             | Is Key Contact |
       | Automation SPI | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
+    And I navigate to "Overview" sub tab
+    Then I softly see field "Submitted By" as "Automation SPI"
     Given I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
