@@ -4402,7 +4402,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Grant Name              |
       | Automation Direct Award |
 
-  @66931   @validateActivateButtonNotDisplayedAfterRejectedBYSPI  @mahadev
+  @66931 @71193 @validateActivateButtonNotDisplayedAfterRejectedBYSPI  @mahadev
   Scenario Outline: To Validate that after Subaward is rejected by the Recipient (SPI) user, activate Button do not appear on the Award owner (PM) profile
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -4488,6 +4488,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     Then I cannot see top right button "Activate" in page detail
+    And I navigate to "Budget" sub tab
+    Then I softly cannot see row level action button "Edit" against Value "Construction" inside "---subAwardStandAlone:-:subAwardBudgetTableId---" flex table
+    Then I softly cannot see row level action button "Edit" against Value "{SavedValue:fundingAccount}" inside "---subAwardStandAlone:-:fundingAccountsTableId---" flex table
     Examples:
       | Grant Name              | Award Name              |
       | Automation Direct Award | Automation Direct Award |

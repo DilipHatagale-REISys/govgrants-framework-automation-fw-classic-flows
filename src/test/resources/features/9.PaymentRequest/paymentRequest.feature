@@ -638,15 +638,17 @@ Feature: Validate all scenarios in Payment Request
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "Green"
 
-  @54593 @54352 @70816 @validatePaidButtonNotDisplayedAfterRejectingReimbursementPR @mahadev
+  @54593 @54666 @54352 @70816 @54664 @54665 @validatePaidButtonNotDisplayedAfterRejectingReimbursementPR @mahadev
   Scenario: Validate the paid button not displayed on reimbursement Payment request after rejection
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
+    And I save the field containing "Available Program Income" as "available program income"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I softly see field "Program Income This action" as "$1,000.00"
+    Then I softly see field "Available Program Income" as "$1,800.00"
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
@@ -655,6 +657,13 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 100000000  | 1        | Feet        | 10                |
     Then I softly see the following messages in the page details contains:
       | Advance applied cannot be greater than the Net Payment. |
+    When I close "Add Line Items" modal by clicking the top right x button
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Program Income Disbursed |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 1000000                  |
+    Then I softly see the following messages in the page details contains:
+      | Program Income Spent cannot be more than Available Program Income |
     When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
@@ -667,6 +676,8 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
+    And I navigate to "Financials" sub tab
+    Then I softly see field "Program Income This action" as "$1,000.00"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name           | Description                 |
@@ -851,7 +862,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     Then I see field "Program Income" as "$1,000.00"
 
-  @54667 @validateProgramIncomeTrackingFieldOnAwardGrantorSide @mahadev
+  @54667 @71175 @validateProgramIncomeTrackingFieldOnAwardGrantorSide @mahadev
   Scenario Outline: Validate Program Income tracking gets updated on award at grantor side after approval of reimbursement PR
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -859,6 +870,8 @@ Feature: Validate all scenarios in Payment Request
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field containing "Program Income This action" as "incomeProgramThis"
+    And I save the field containing "Program Income Spent This Action" as "totalSpent"
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
@@ -892,6 +905,8 @@ Feature: Validate all scenarios in Payment Request
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     When I navigate to "Actuals" sub tab
     Then I see field "Program Income" as "$1,000.00"
+    Then I see field "Program Income" as "{SavedValue:incomeProgramThis}"
+    Then I see field "Program Income Spent" as "{SavedValue:totalSpent}"
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Permanent Award | Automation Permanent Award |
