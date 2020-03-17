@@ -91,8 +91,8 @@ Feature: Application Intake scenarios without background
     Then I see the following messages in the page details :
       | This Opportunity has already been qualified for your Organization. |
 
-  @70462 @70463 @userCanEnterBudgetDetailsApplTitleasOppurtunityTitleField @deepika
-  Scenario: To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on Application |
+  @73366 @70462 @70463 @userCanEnterBudgetDetailsApplTitleasOppurtunityTitleField @deepika
+  Scenario: To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on Application | Validate the pre-Application created date is updated with Today's date
   To verify that the Application title is enforced on the created application on overview tab
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
@@ -111,6 +111,8 @@ Feature: Application Intake scenarios without background
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I navigate to "Overview" sub tab
+    Then I softly see field "Created Date" is getting updated with todays date
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -796,3 +798,36 @@ Feature: Application Intake scenarios without background
       | User |
       | SPI  |
       | SPA  |
+
+  @34315 @appDueDatepassed
+  Scenario Outline: Validate SPI & SPA user is not able to Create an Application if Application Due Date is passed
+    When I am on "SUBPORTAL" portal
+    And I login as "<User>" user
+    When I navigate to "Applications" tab
+    And I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for DueDateValidation" in "---applicationIntake:-:convertedToApplicationTableID---" panel
+    When I click on "View" icon for "Automation Announcement for DueDateValidation" inside table
+    And I save the field containing "Application Due Date" as "Date"
+    Then I cannot see top right button "Create Application" in page detail
+    Examples:
+      | User |
+      | SPI  |
+      | SPA  |
+
+  @73367 @spiUserCanViewAllocatedAmountOnceSubmittedToGrantor
+  Scenario Outline: Validate whether SPI & SPA user were able to view the allocated amount once the Oppurtunity is Converted to Application when Announcement is of type - Formula
+    When I am on "SUBPORTAL" portal
+    And I login as "<User>" user
+    When I navigate to "Applications" tab
+    And I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for DueDateValidation" in "---applicationIntake:-:convertedToApplicationTableID---" panel
+    When I click on "View" icon for "Automation Announcement for DueDateValidation" inside table
+    And I save the field containing "Application Due Date" as "Date"
+    And I navigate to "Overview" sub tab
+    And I save the field containing "Type" as "Formula"
+    Then I see value "$1,000" for title "Allocated Amount" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---applicationIntake:-:formulaAllocatedAmountTableId---"
+    Examples:
+      | User |
+      | SPI  |
+      | SPA  |
+
