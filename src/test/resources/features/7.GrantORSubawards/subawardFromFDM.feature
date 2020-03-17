@@ -1776,7 +1776,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                      | Grant Name                      |
       | Automation Announcement for FDM | Automation Announcement for FDM |
 
-  @67661 @addAnotherFundingAccountAfterSubawardAccepted @jitendra
+  @67661 @71124 @71125 @71123 @addAnotherFundingAccountAfterSubawardAccepted @jitendra
   Scenario Outline: Validate that the new Funding account can be added before Approval by award-owner.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -1786,8 +1786,20 @@ Feature: Validate all scenarios in the award created from FDM
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
-      | Construction    | 1000           | 100        | 100            |
+      | Budget Category | Non-Cash Match |
+      | Supplies        | 100            |
+    Then I softly see value "$100.00" for title "Total Match" against the value "Supplies" inside table "---subAwardFromFDM:-:subAwardBudgetTableId---"
+    Then I softly see value "$100.00" for title "Total Project Cost" against the value "Supplies" inside table "---subAwardFromFDM:-:subAwardBudgetTableId---"
+    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Cash Match |Non-Cash Match |
+      | Supplies        | 100        |         0     |
+    Then I softly see value "$100.00" for title "Total Match" against the value "Supplies" inside table "---subAwardFromFDM:-:subAwardBudgetTableId---"
+    Then I softly see value "$100.00" for title "Total Project Cost" against the value "Supplies" inside table "---subAwardFromFDM:-:subAwardBudgetTableId---"
+    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Cash Match |Non-Cash Match |
+      | Supplies        | 100        |         100     |
+    Then I softly see value "$200.00" for title "Total Match" against the value "Supplies" inside table "---subAwardFromFDM:-:subAwardBudgetTableId---"
+    Then I softly see value "$200.00" for title "Total Project Cost" against the value "Supplies" inside table "---subAwardFromFDM:-:subAwardBudgetTableId---"
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |

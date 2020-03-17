@@ -19,7 +19,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @70616 @70617 @34232 @73303 @73304 @73305 @73306 @submittingAnnouncementForApprovalDR @submittedAnnouncementDeletion @announcementForPastApplicationDueDate
+  @70616 @70617 @34232 @73303 @73304 @73305 @73306 @73320 @submittingAnnouncementForApprovalDR @submittedAnnouncementDeletion @announcementForPastApplicationDueDate
   Scenario Outline: Validate the submission of Announcement for Approval || Validate that only record owner cannot delete Submitted for Approval status announcements || Validate that user can not enter application due date as past date
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -66,10 +66,14 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
-      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
-      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+      | Name           | Responsibility   | Description              | Due Date | Allow Record Editing |
+      | Automation FO  | Fiscal Reviewer  | Review Financial details | 10       | No                   |
+      | Automation PM  | Program Reviewer | Review Financial details | 11       | No                   |
+      | Automation EXE | Program Reviewer | Review Financial details | 11       | No                   |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
+    Then I softly see value "Automation PM" for title "Name" inside table "---announcement:-:flexGridApproverRolesTableId---"
+    Then I softly see value "Automation EXE" for title "Name" inside table "---announcement:-:flexGridApproverRolesTableId---"
     Then I softly see value "Automation FO" for title "Name" inside table "---announcement:-:flexGridApproverRolesTableId---"
     Then I softly see value "Fiscal Reviewer" for title "Responsibility" inside table "---announcement:-:flexGridApproverRolesTableId---"
     Then I softly can see row level action button "Edit" against "Test Automation Organization" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
@@ -80,6 +84,8 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Automation FO | Review Financial details updated |
     Then I softly see value "Review Financial details updated" for title "Description" inside table "---announcement:-:flexGridApproverRolesTableId---"
     And I click on "Delete" icon for "Automation FO" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---"
+    And I click on "Delete" icon for "Automation PM" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---"
+    And I click on "Delete" icon for "Automation EXE" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---"
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
@@ -118,7 +124,12 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click toggle button to select "Directed Announcements - Draft"
     And I perform quick search for "Automation Directed Announcement" in "---announcement:-:annoucementTableId---" panel
     And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "---announcement:-:annoucementTableId---"
-    Given I click on "Complete Review" in the page details
+    Then I softly see field "Status" as "Reviewed"
+    Then I softly see status in Progress-bar is "Reviewed" and is "green"
+    When I navigate to "Responsibilities" tab
+    And I expand nested table containing column value "Fiscal Reviewer"
+    Then I softly see value "Passed" for title "Review Comments" inside table "---announcement:-:flexGridApproverRolesTableId---"
+    Then I softly see value "Passed" for title "Rating" inside table "---announcement:-:flexGridApproverRolesTableId---"
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"

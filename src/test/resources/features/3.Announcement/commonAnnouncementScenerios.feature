@@ -20,7 +20,8 @@ Feature: Validate all common scenarios in the  Announcement tab
     Then I softly see status in Progress-bar is "Created" and is "green"
     When I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    And I click toggle button to select "Formula Announcements - All"
+    And I perform quick search for "Record id" in "---announcement:-:formulaAnnouncementTableId---" panel
     When  I click on "View" icon for "Record id" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
     Then I softly see field "Subrecipient Match (%)" as "10.00%"
 
@@ -92,14 +93,16 @@ Feature: Validate all common scenarios in the  Announcement tab
       | Contact        |
       | Automation EXE |
 
-  @52401 @announcementContactDissociationFA
+  @52401 @73393 @announcementContactDissociationFA
   Scenario Outline: Validate the dissociation of contact to the Announcement
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Add" after selection of "<Contact>" in the table "---announcement:-:annoucementContactTableId---"
     And I refresh the page
+    And I perform quick search for "<Contact>" in "---announcement:-:annoucementContactTableId---" panel
+    Then I softly see value "<Contact>" for title "Name" inside table "---announcement:-:annoucementContactTableId---"
     When I click on "Remove" icon for "<Contact>" inside flex table with id "---announcement:-:contactTableId---"
-    Then I do not see values "Record Id" and "<Contact>" inside table
+    Then I softly do not see values "Record Id" and "<Contact>" inside table
     Examples:
       | Contact        |
       | Automation EXE |
