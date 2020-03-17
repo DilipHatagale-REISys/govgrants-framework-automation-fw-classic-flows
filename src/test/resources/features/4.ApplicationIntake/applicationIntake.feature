@@ -134,15 +134,23 @@ Feature: Validate all scenarios in the Application Intake
       |                                                | FO   |
       |                                                | EXE  |
 
-  @70458 @70456 @acknowledgeReqiredToSave @deepika
+  @70458 @70456 @acknowledgeReqiredToSave @deepika @bugged-73498
   Scenario: Validate the system should throw an validation message if the application is submitted with Acknowledging it
-  Validate whether user has ability to add and remove new focus area while creating an application
+  Validate whether user has ability to add and remove new focus area while creating an application | Validate when user try to remove the existing focus area the system should throw a validation message on screen
+    Validate whether user is able to add more focus area to the table while submitting an application
     Given I click on "Edit" in the page details
     And I enter "EditionAcknowledge" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
     Then I softly can see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
+    When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
+    When I click "Remove" after selection of "Automation Permanent Focus Area" in the table "---applicationIntake:-:focusAreaFlexTableId---"
+    Then I see the following messages in the page details :
+      | Budget Tab - At least one focus area must be in place at all times. |
+    When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
+    When I click "Add" after selection of "Automation Permanent Focus Area1" in the table "---applicationIntake:-:focusAreaFlexTableId---"
+    Then I softly see "Automation Permanent Focus Area1" has been added in "---applicationIntake:-:focusAreaTableId---" flex table
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
