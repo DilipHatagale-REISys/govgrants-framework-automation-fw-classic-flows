@@ -2751,7 +2751,7 @@ Feature: Validate all scenarios of grants and award without background
 
   @70806 @71417 @jitendra @SetRedirectionThresholdtO15
   Scenario Outline: Validate that Budget Redirection threshold setting made on Grant is carried forward to  Budget Redirection Amendment
-    | Verify that user is able to see approved tasks in Completed tasks listing of the grants post subaward approved by Fiscal Officer
+  | Verify that user is able to see approved tasks in Completed tasks listing of the grants post subaward approved by Fiscal Officer
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     And I delete the record "Automation Execution Award" from the object "Payment Request"
     And I delete the record "Automation Execution Award" from the object "subaward"
@@ -3238,5 +3238,5 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see value "Closed/Compeleted" for title "Status" inside table "flexGridRecipientActiveGrants"
     Then I softly do not see value "Activated" for title "Status" inside table "flexGridRecipientActiveGrants"
     Examples:
-      | Award Name                 | Grant Name                 |
+      | Award Name                  | Grant Name                  |
       | Automation Execution Award1 | Automation Execution Award1 |
