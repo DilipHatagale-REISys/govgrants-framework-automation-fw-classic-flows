@@ -802,17 +802,17 @@ Feature: Application Intake scenarios without background
   Scenario Outline: Validate SPI & SPA user is not able to Create an Application if Application Due Date is passed
     When I am on "SUBPORTAL" portal
     And I login as "<User>" user
-    When I navigate to "Applications" tab
+    When I navigate to "Opportunities" tab
     And I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Automation Announcement for DueDateValidation" in "---applicationIntake:-:convertedToApplicationTableID---" panel
     When I click on "View" icon for "Automation Announcement for DueDateValidation" inside table
     And I save the field containing "Application Due Date" as "Date"
-    Then I see field "Application Due Date" contains date greater than todays date
+    Then I see field "Application Due Date" contains date less than todays date
     Then I cannot see top right button "Create Application" in page detail
     Examples:
       | User |
       | SPI  |
-#      | SPA  |
+      | SPA  |
 
   @73367 @spiUserCanViewAllocatedAmountOnceSubmittedToGrantor @deepika
   Scenario Outline: Validate whether SPI & SPA user were able to view the allocated amount once the Oppurtunity is Converted to Application when Announcement is of type - Formula
