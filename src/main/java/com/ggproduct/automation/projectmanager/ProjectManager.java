@@ -597,7 +597,7 @@ public class ProjectManager extends ProjectWebServices {
         }
     }
 
-    public boolean isFieldDateLessThanTodaysData(String fieldLabel, String lessOrGreater) throws ParseException {
+    public boolean isFieldDateGreaterThanOrLessThanTodaysDate(String fieldLabel, String lessOrGreater) throws ParseException {
         String currentDate = EyeThink.saas().pageDetails().getFieldValue(fieldLabel, true);
         String todayDate = EyeThink.core().get().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy"));
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
