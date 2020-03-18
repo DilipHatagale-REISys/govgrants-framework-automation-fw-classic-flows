@@ -21,7 +21,7 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
     Then I softly see field "Pre-Application Required?" as "Yes"
-    Then I save the field labeled "Application Due Date" as "AppDueDate"
+    Then I softly see field "Application Due Date" contains date less than todays date
     Then I softly can see top right button "Qualify" in page detail
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Announcement for Pre-Application" is in "Qualified" status

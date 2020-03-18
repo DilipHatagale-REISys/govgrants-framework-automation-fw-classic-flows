@@ -418,7 +418,6 @@ Feature: Application Intake scenarios without background
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
-    Then I save the field labeled "Application Due Date" as "AppDueDate"
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
@@ -799,7 +798,7 @@ Feature: Application Intake scenarios without background
       | SPI  |
       | SPA  |
 
-  @34315 @appDueDatepassed
+  @34315 @appDueDatepassed @deepika
   Scenario Outline: Validate SPI & SPA user is not able to Create an Application if Application Due Date is passed
     When I am on "SUBPORTAL" portal
     And I login as "<User>" user
@@ -808,13 +807,14 @@ Feature: Application Intake scenarios without background
     And I perform quick search for "Automation Announcement for DueDateValidation" in "---applicationIntake:-:convertedToApplicationTableID---" panel
     When I click on "View" icon for "Automation Announcement for DueDateValidation" inside table
     And I save the field containing "Application Due Date" as "Date"
+    Then I see field "Application Due Date" contains date greater than todays date
     Then I cannot see top right button "Create Application" in page detail
     Examples:
       | User |
       | SPI  |
-      | SPA  |
+#      | SPA  |
 
-  @73367 @spiUserCanViewAllocatedAmountOnceSubmittedToGrantor
+  @73367 @spiUserCanViewAllocatedAmountOnceSubmittedToGrantor @deepika
   Scenario Outline: Validate whether SPI & SPA user were able to view the allocated amount once the Oppurtunity is Converted to Application when Announcement is of type - Formula
     When I am on "SUBPORTAL" portal
     And I login as "<User>" user
