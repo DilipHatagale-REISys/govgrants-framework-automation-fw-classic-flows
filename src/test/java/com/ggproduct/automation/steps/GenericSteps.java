@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Description;
 import javax.mail.MessagingException;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.*;
 
 public class GenericSteps {
@@ -419,5 +420,15 @@ public class GenericSteps {
         }
 
         EyeThink.core().assertion().assertThat(EyeThink.core().get().text("//div[@id='chevronBarId']//ul[2]//li["+expectedIndex+"]//a").trim()).isEqualToIgnoringCase(seeThisString);
+    }
+
+    @Description("Check the Application Due Date is Less/greater than today's Date")
+    @Then("^I (softly see|see) field \"([^\"]*)\" contains date (less|greater) than todays date$")
+    public void isFieldDateGreaterThanOrLessThanTodaysDate(String usage, String fieldLabel, String lessORgreater) throws ParseException {
+        if (usage.contains("softly")) {
+            EyeThink.core().assertion().assertThat(projectManager.isFieldDateGreaterThanOrLessThanTodaysDate(fieldLabel,lessORgreater)).isTrue();
+        } else {
+            Assert.assertTrue(projectManager.isFieldDateGreaterThanOrLessThanTodaysDate(fieldLabel,lessORgreater));
+        }
     }
 }

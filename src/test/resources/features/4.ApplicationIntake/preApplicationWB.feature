@@ -21,7 +21,7 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
     Then I softly see field "Pre-Application Required?" as "Yes"
-    Then I save the field labeled "Application Due Date" as "AppDueDate"
+    Then I softly see field "Application Due Date" contains date less than todays date
     Then I softly can see top right button "Qualify" in page detail
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Announcement for Pre-Application" is in "Qualified" status
@@ -170,13 +170,13 @@ Feature: Pre-Application scenarios without background
 
   @70663 @preApplRequiredIsNoAnnouncementCreation @deepika
   Scenario: Validate whether the User is able to create Pre Application only when the Opportunity setting for Pre Application (No)
-    Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
+    Given I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I enter "CompetitiveAnnouncementforApp" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
     When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -243,8 +243,8 @@ Feature: Pre-Application scenarios without background
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Competitive Announcement" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    When I click on "View" icon for "Automation Competitive Announcement" inside table
+    And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Intake and PreApplication" inside table
     When I click on "Qualify" in the page details
     Then I softly cannot see top right button "Create Pre-Application" in page detail
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -257,19 +257,19 @@ Feature: Pre-Application scenarios without background
     When I am on "SUBPORTAL" portal
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
-    And I perform quick search for "Automation Competitive Announcement" in "---applicationIntake:-:publishedOpputunityTableId---" panel
-    Then I softly do not see "Automation Competitive Announcement" has been added in "---applicationIntake:-:publishedOpputunityTableId---" flex table
+    And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:publishedOpputunityTableId---" panel
+    Then I softly do not see "Automation Announcement for Application Intake and PreApplication" has been added in "---applicationIntake:-:publishedOpputunityTableId---" flex table
 
   @71114 @71115 @preappDueDateValidation @deepika
   Scenario: Validate whether User will be able to submit the pre- application on the last date for submission.
   Validate once the Announcement is published and Pre-Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit to Grantor on pre-application
-    Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
+    Given I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I enter "CompetitiveAnnouncementforApp" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
     When I enter "Creation Second Modal1" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
@@ -340,12 +340,12 @@ Feature: Pre-Application scenarios without background
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Competitive Announcement" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    When I click on "View" icon for "Automation Competitive Announcement" inside table
+    And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Intake and PreApplication" inside table
     When I click on "Qualify" in the page details
     Then I softly can see top right button "Create Pre-Application" in page detail
     And I click on "Create Pre-Application" in the page details
-    When I enter value "Automation Announcement for Application" into field "Title__c"
+    When I enter value "Automation Announcement for Application Intake and PreApplication" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -358,8 +358,8 @@ Feature: Pre-Application scenarios without background
     When I am on "SUBPORTAL" portal
     And I login as "SPI" user
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
-    And I perform quick search for "Automation Competitive Announcement" in "---preApplication:-:recipientPreApplicationsTableId---" panel
-    When I click on "View" icon for "Automation Competitive Announcement" inside table
+    And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---preApplication:-:recipientPreApplicationsTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Intake and PreApplication" inside table
     Then I softly cannot see top right button "Submit to Grantor" in page detail
 
   @71413 @userCannotCreatePreAppWhenSettingIsNo @deepika
@@ -587,12 +587,12 @@ Feature: Pre-Application scenarios without background
 
   @72625 @errorMessageOfPreApplicationDueDate @deepika
   Scenario: Validate whether system generates an error message when Pre Application Due Date is greater than Application Due Date while submitting information
-    Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
+    Given I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I enter "CompetitiveAnnouncementforApp" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
     When I enter "Pre-Application Modal" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
