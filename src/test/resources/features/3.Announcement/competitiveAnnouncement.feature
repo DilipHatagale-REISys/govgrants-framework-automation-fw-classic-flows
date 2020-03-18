@@ -15,7 +15,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @70551 @70552 @70800 @70885 @71595 @72646 @72641 @userCanViewAddAndDeleteFocusArea @aashish
+  @70551 @70552 @70800 @70885 @71595 @72646 @72641 @73537 @userCanViewAddAndDeleteFocusArea @aashish
   Scenario: To Verify that user is able to remove associated focus areas While creating the Announcement | To verify PM can remove non relevant Budget categories from specific Budget Type in Announcement based on the need.
     When I navigate to "Announcements" tab
     And I click toggle button to select "Announcements - Published"
@@ -25,6 +25,11 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
+    When I click on advance filter "#advfAnnoucementPackagesGrantor" of table id "---announcement:-:businessFormlistTableId---"
+    When I enter advance filter values inside id "advfAnnoucementPackagesGrantor"
+      | Package Name | Contains | Grantor Site Visit Forms |
+    Then I softly see value "Grantor Site Visit Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
+    Then I softly see value "Site Visit" for title "Package Type" inside table "---announcement:-:businessFormlistTableId---"
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
     When I click "Add" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
     Then I softly see that "Automation Permanent Focus Area2" has been added in flextable with Id "---announcement:-:AnnouncementServiceArea1TableId---"
@@ -215,15 +220,21 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "4/14/2030" for title "Start Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
     Then I softly see value "4/13/2031" for title "End Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
 
-  @70563 @70556 @70554 @70606 @70718 @userCanViewAndDeleteKPI @aashish
+  @70563 @70556 @70554 @70606 @70718 @73545 @73547 @73564 @73566 @userCanViewAndDeleteKPI @aashish
   Scenario: To  Verify that after associating objectives, related KPIs should be automatically populate while  creating the Announcement
-  | To Verify that user is able to view Objective While creating the Announcement
+  | To Verify that user is able to view Objective While creating the Announcement | Verify KPIs search and filter fuctionality
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
+    And I perform quick search for "Automation Permanent KPI for Regression" in "---announcement:-:kpiflextableid---" panel
     Then I softly see value "Automation Permanent KPI for Regression" for title "Title" inside table "---announcement:-:kpiflextableid---"
+    When I click on advance filter "#advfAnnouncementKeyOutcomes" of table id "---announcement:-:kpiflextableid---"
+    When I enter advance filter values inside id "advfAnnouncementKeyOutcomes"
+      | Title | Contains | Automation Permanent KPI for Regression |
+    Then I softly see value "Automation Permanent KPI for Regression" for title "Title" inside table "---announcement:-:kpiflextableid---"
+    Then I softly see value "KPI-0043" for title "EGMS ID" inside table "---announcement:-:kpiflextableid---"
     When I click on "View" icon for "Automation Permanent KPI for Regression" inside flex table with id "---announcement:-:kpiflextableid---"
     Then I softly see field "Key Performance Indicator" as "Automation Permanent KPI for Regression"
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -237,6 +248,12 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
+    And I perform quick search for "Automation Permanent Objective" in "---announcement:-:objectivesTableId---" panel
+    Then I softly see value "Automation Permanent Objective" for title "Title" inside table "---announcement:-:objectivesTableId---"
+    When I click on advance filter "#advfAnnouncementGranteeStrategicGoalsObjectives" of table id "---announcement:-:objectivesTableId---"
+    When I enter advance filter values inside id "advfAnnouncementGranteeStrategicGoalsObjectives"
+      | Title | Contains | Automation Permanent Objective |
+    Then I softly see value "SPO-0025" for title "EGMS ID" inside table "---announcement:-:objectivesTableId---"
     Then I softly see value "Automation Permanent Objective" for title "Title" inside table "---announcement:-:objectivesTableId---"
     When I click on "View" icon for "Automation Permanent Objective" inside flex table with id "---announcement:-:objectivesTableId---"
     Then I softly see field "Objective" as "Automation Permanent Objective"
@@ -289,10 +306,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-    And I click on "Remove" icon for "Cal Fires" inside flex table with id "---announcement:-:relatedAnnouncementTableId---"
-    Then I softly do not see value "Cal Fires" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId---"
+    And I click on "Remove" icon for "Wildlife Services" inside flex table with id "---announcement:-:relatedAnnouncementTableId---"
+    Then I softly do not see value "Wildlife Services" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId---"
 
-  @70727 @70723 @72482 @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
+  @70727 @70723 @72482 @73536 @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
   Scenario Outline: Validate that user can not enter application due date as past date | Validate that user should not submit announcement with blank budget period dates|To Verify that user can view contact while creating Announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -307,6 +324,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 2000            |
+    When I click on advance filter "#advfAnnouncementFundingAccountGrantor" of table id "---announcement:-:fundingAccountsTableId---"
+    When I enter advance filter values inside id "#advfAnnouncementFundingAccountGrantor"
+      | Pre-Encumbrance | equals to | 2000 |
+    Then I softly see value "$2,000.00" for title "Pre-Encumbrance" inside table "---announcement:-:fundingAccountsTableId---"
     And I click on "Save" in the page details
     When I navigate to "History" sub tab
     And I select "Related Funding Account" from dropdown present on top right of flex table id "History"
