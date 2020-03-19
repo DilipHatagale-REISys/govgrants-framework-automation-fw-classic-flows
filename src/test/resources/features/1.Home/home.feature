@@ -563,17 +563,18 @@ Feature: Validate all scenarios in the home tab
       | Responsibility     | Name           | Description                 |
       | Program Approver   | Automation PM  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
+    And I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Home" tab
     And I navigate to "Reassign" content inside "My Tasks" subheader on left panel
     When I reassign task to "Automation EXE"
-    When I perform quick search for "Approve Program" in "TaskReassignment" panel
+    When I perform quick search for "Record Id" in "TaskReassignment" panel
     And I click "Reassign Selected" after selection of "Approve Program" in the table "TaskReassignment"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Approve Program" in "---home:-:internalHomePendingTaskTableId---" panel
+    When I perform quick search for "Record Id" in "---home:-:internalHomePendingTaskTableId---" panel
     Then I see that "Approve Program" has been added in flextable with Id "---home:-:internalHomePendingTaskTableId---"
 
 # Files tab and Collab are rendered if the Chatter setting is enabled.Both are dependant on each other and if the chatter is disabled, the files and collab are not rendered. We are disabling the chatter on Automation to avoid conenct API's issues.
