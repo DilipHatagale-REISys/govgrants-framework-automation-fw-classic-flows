@@ -177,17 +177,16 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    And I perform quick search for "Automation Permanent Award" in "ActiveGrants" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    And I perform quick search for "Automation Award for Risk Assessment" in "ActiveGrants" panel
+    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     Then I softly cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     When I navigate to "Monitoring" tab
     And I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     When I click toggle button to select "Risk Assessments - All"
-    When I perform quick search for "Automation Permanent Award" in "---auditor:-:monitoringtableid---" panel
-    Then I softly see value "Active" for title "<string>" inside table "<string>"
+    When I perform quick search for "Automation Award for Risk Assessment" in "---auditor:-:monitoringtableid---" panel
     Then I softly see that "Active" has been added in flextable with Id "---auditor:-:monitoringtableid---"
     Examples:
       | User    |

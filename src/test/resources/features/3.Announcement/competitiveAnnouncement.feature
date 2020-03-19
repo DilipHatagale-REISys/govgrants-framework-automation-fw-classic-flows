@@ -15,7 +15,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @70551 @70552 @70800 @70885 @71595 @72646 @72641 @userCanViewAddAndDeleteFocusArea @aashish
+  @70551 @70552 @73405 @73389 @73406 @73387 @70800 @70885 @71595 @72646 @72641 @73537 @userCanViewAddAndDeleteFocusArea @aashish
   Scenario: To Verify that user is able to remove associated focus areas While creating the Announcement | To verify PM can remove non relevant Budget categories from specific Budget Type in Announcement based on the need.
     When I navigate to "Announcements" tab
     And I click toggle button to select "Announcements - Published"
@@ -25,6 +25,15 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
+    And I save the value from row "1" for column name "Name" as "searchedItem" from flex table "---announcement:-:businessFormlistTableId---"
+    And I perform quick search for "{SavedValue:searchedItem}" in "---announcement:-:businessFormlistTableId---" panel
+    Then I softly see value "{SavedValue:searchedItem}" for title "Name" inside table "---announcement:-:businessFormlistTableId---"
+    And I refresh the page
+    When I click on advance filter "#advfAnnoucementPackagesGrantor" of table id "---announcement:-:businessFormlistTableId---"
+    When I enter advance filter values inside id "advfAnnoucementPackagesGrantor"
+      | Package Name | Contains | Grantor Site Visit Forms |
+    Then I softly see value "Grantor Site Visit Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
+    Then I softly see value "Site Visit" for title "Package Type" inside table "---announcement:-:businessFormlistTableId---"
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
     When I click "Add" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
     Then I softly see that "Automation Permanent Focus Area2" has been added in flextable with Id "---announcement:-:AnnouncementServiceArea1TableId---"
@@ -59,6 +68,24 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "$2,000.00" for title "Old Value" inside table "History"
     Then I softly see value "$6,000.00" for title "New Value" inside table "History"
     Then I softly see value "$3,000.00" for title "Old Value" inside table "History"
+    And I navigate to "Financials" sub tab
+    And I perform quick search for "Site work" in "---announcement:-:announcementBudgetCategory---" panel
+    Then I softly see value "Site work" for title "Name" inside table "---announcement:-:announcementBudgetCategory---"
+    And I navigate to "Overview" sub tab
+    And I click on "Edit" in the page details
+    And I enter value "www.google.com" into field "LinkforAdditionalInformation__c"
+    And I click on "Save" in the page details
+    Then I softly see field "Link For Additional Information" as "www.google.com"
+    When I click on top right button "Associate" in flex table with id "---announcment:-:relatedAnnouncementTableId---"
+    And I check "All" boxes in flex table with id "---announcement:-:associateForRelated---"
+    And I click on top right button "Associate" in flex table with id "---announcement:-:associateForRelated---"
+    And I close "Associate" modal by clicking the top right x button
+    And I save the value from row "1" for column name "Program Number" as "prNum" from flex table "---announcment:-:relatedAnnouncementTableId---"
+    And I click on advance filter "#advfRelatedAnnouncementCFDANumbersGrantor" of table id "---announcment:-:relatedAnnouncementTableId---"
+    And I enter advance filter values inside id "advfRelatedAnnouncementCFDANumbersGrantor"
+      | Program Number | Contains | {SavedValue:prNum} |
+    Then I softly see value "{SavedValue:prNum}" for title "Program Number" inside table "---announcment:-:relatedAnnouncementTableId---"
+>>>>>>> 024d67f4a998b7406fd0b577795627df798efe7c
 
   @70290 @70298 @70302 @70799 @73227 @userAllowToEnterDataInQualityAndAvailibility @aashish @smoke
   Scenario: To Verify that user able to see Text fields after select Q&A Availability  as "Yes"  And  user can enter and save all required fields while creating Announcement
@@ -109,7 +136,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see the following messages in the page details :
       | Overview Tab: The Answer submission deadline cannot be earlier than Question submission deadline. |
 
-  @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @70506 @71951 @userDeleteSupportingDocument @aashish
+  @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @70506 @71951 @73408 @userDeleteSupportingDocument @aashish
   Scenario: To Verify that user can delete supporting document checklist While creating the Announcement |
   To Verify that user can Edit fields in supporting document checklist While creating the Announcement |
   To Verify that user can preview business forms while creating Announcement|
@@ -142,6 +169,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see the following messages in the page details :
       | Attachement saved successfully. |
     When I close "Upload Template" modal by clicking the top right x button
+    And I perform quick search for "Automation test description" in "---announcement:-:annChecklist---" panel
+    Then I softly see value "Mandatory" for title "Required" inside table "---announcement:-:annChecklist---"
+    Then I softly see value "Award" for title "Applies To" inside table "---announcement:-:annChecklist---"
+    Then I softly see value "Active" for title "Status" inside table "---announcement:-:annChecklist---"
     Given I edit the following rows inline in flex table with id "---announcement:-:annChecklist---" by clicking "Edit" :
       | Required  | Description                   | Applies To | Status |
       | Mandatory | Automation test description02 | Award      | Active |
@@ -214,15 +245,21 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "4/14/2030" for title "Start Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
     Then I softly see value "4/13/2031" for title "End Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
 
-  @70563 @70556 @70554 @70606 @70718 @userCanViewAndDeleteKPI @aashish
+  @70563 @70556 @70554 @70606 @70718 @73545 @73547 @73564 @73566 @userCanViewAndDeleteKPI @aashish
   Scenario: To  Verify that after associating objectives, related KPIs should be automatically populate while  creating the Announcement
-  | To Verify that user is able to view Objective While creating the Announcement
+  | To Verify that user is able to view Objective While creating the Announcement | Verify KPIs search and filter fuctionality
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
+    And I perform quick search for "Automation Permanent KPI for Regression" in "---announcement:-:kpiflextableid---" panel
     Then I softly see value "Automation Permanent KPI for Regression" for title "Title" inside table "---announcement:-:kpiflextableid---"
+    When I click on advance filter "#advfAnnouncementKeyOutcomes" of table id "---announcement:-:kpiflextableid---"
+    When I enter advance filter values inside id "advfAnnouncementKeyOutcomes"
+      | Title | Contains | Automation Permanent KPI for Regression |
+    Then I softly see value "Automation Permanent KPI for Regression" for title "Title" inside table "---announcement:-:kpiflextableid---"
+    Then I softly see value "KPI-0043" for title "EGMS ID" inside table "---announcement:-:kpiflextableid---"
     When I click on "View" icon for "Automation Permanent KPI for Regression" inside flex table with id "---announcement:-:kpiflextableid---"
     Then I softly see field "Key Performance Indicator" as "Automation Permanent KPI for Regression"
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -236,6 +273,12 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
+    And I perform quick search for "Automation Permanent Objective" in "---announcement:-:objectivesTableId---" panel
+    Then I softly see value "Automation Permanent Objective" for title "Title" inside table "---announcement:-:objectivesTableId---"
+    When I click on advance filter "#advfAnnouncementGranteeStrategicGoalsObjectives" of table id "---announcement:-:objectivesTableId---"
+    When I enter advance filter values inside id "advfAnnouncementGranteeStrategicGoalsObjectives"
+      | Title | Contains | Automation Permanent Objective |
+    Then I softly see value "SPO-0025" for title "EGMS ID" inside table "---announcement:-:objectivesTableId---"
     Then I softly see value "Automation Permanent Objective" for title "Title" inside table "---announcement:-:objectivesTableId---"
     When I click on "View" icon for "Automation Permanent Objective" inside flex table with id "---announcement:-:objectivesTableId---"
     Then I softly see field "Objective" as "Automation Permanent Objective"
@@ -264,7 +307,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see the following messages in the page details :
       | Overview Tab - Select applicant types. |
 
-  @70211 @70216 @70217 @73388 @userAbletoAssociateActiveRelatedProgram @aashish
+  @70211 @70216 @70217 @73388 @73535 @userAbletoAssociateActiveRelatedProgram @aashish
   Scenario: To Verify that user is able to associate active Related Federal/NGO Program | To Verify that user is able to view active Related Federal/NGO Program
   |To Verify that user is able to remove active Related Federal/NGO Program while creating Announcement.
     When I navigate to "Announcements" tab
@@ -288,10 +331,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
-    And I click on "Remove" icon for "Cal Fires" inside flex table with id "---announcement:-:relatedAnnouncementTableId---"
-    Then I softly do not see value "Cal Fires" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId---"
+    And I click on "Remove" icon for "Wildlife Services" inside flex table with id "---announcement:-:relatedAnnouncementTableId---"
+    Then I softly do not see value "Wildlife Services" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId---"
 
-  @70727 @70723 @72482 @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
+  @70727 @70723 @72482 @73536 @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
   Scenario Outline: Validate that user can not enter application due date as past date | Validate that user should not submit announcement with blank budget period dates|To Verify that user can view contact while creating Announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -306,6 +349,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 2000            |
+    When I click on advance filter "#advfAnnouncementFundingAccountGrantor" of table id "---announcement:-:fundingAccountsTableId---"
+    When I enter advance filter values inside id "#advfAnnouncementFundingAccountGrantor"
+      | Pre-Encumbrance | equals to | 2000 |
+    Then I softly see value "$2,000.00" for title "Pre-Encumbrance" inside table "---announcement:-:fundingAccountsTableId---"
     And I click on "Save" in the page details
     When I navigate to "History" sub tab
     And I select "Related Funding Account" from dropdown present on top right of flex table id "History"
@@ -323,6 +370,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on top right button "New" in flex table with id "---announcement:-:contactTableId---"
     And I enter values into fields
       | Value         | Fields           |
+      | xy            | fieldTitle       |
       | TestFirst     | fieldFirstName   |
       | TestLast      | fieldLastName    |
       | abc@test.mail | fieldEmail       |
@@ -332,6 +380,19 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "TestFirst TestLast" for title "Name" inside table "---announcement:-:contactTableId---"
     And I click on "View" icon for "TestFirst TestLast" inside flex table with id "---announcement:-:contactTableId---"
     Then I softly see field "Contact" as "TestFirst TestLast"
+    And I click on top right button "New" in flex table with id "---announcement:-:contactTableId---"
+    And I enter values into fields
+      | Value         | Fields           |
+      | ab            | fieldTitle       |
+      | SecondTest    | fieldFirstName   |
+      | SecondLast    | fieldLastName    |
+      | xyz@test.mail | fieldEmail       |
+      | Secondary     | fieldUserRole__c |
+    And I click on "Save" in the page details
+    And I click on advance filter "#advfAnnouncementContacts" of table id "---announcement:-:contactTableId---"
+    When I enter advance filter values inside id "advfAnnouncementContacts"
+      | Title | Contains | ab |
+    Then I softly see value "ab" for title "Title" inside table "---announcement:-:contactTableId---"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel

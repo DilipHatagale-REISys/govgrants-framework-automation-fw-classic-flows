@@ -234,10 +234,10 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
     Then I softly cannot see top right button "New" for "---auditor:-:externalProgramTableID---" flex table
-    When I perform quick search for "BBG" in "---auditor:-:federalProgramFlexTableId---" panel
-    Then I softly can see row level action button "View" against "BBG" in flex table with id "---auditor:-:federalProgramFlexTableId---"
+    When I perform quick search for "Wildlife Services" in "---auditor:-:federalProgramFlexTableId---" panel
+    Then I softly can see row level action button "View" against "Wildlife Services" in flex table with id "---auditor:-:federalProgramFlexTableId---"
     When I perform quick search for "NGO Program 2" in "---auditor:-:nonfederaltableId---" panel
-    Then I softly can see row level action button "View" against "NGO Program 2" in flex table with id "---auditor:-:nonfederaltableId---"
+    Then I softly see "No Records Found" inside flex table with id "---auditor:-:nonfederaltableId---"
     Examples:
       | User    |
       | AUDITOR |
