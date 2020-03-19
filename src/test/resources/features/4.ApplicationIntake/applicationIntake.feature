@@ -88,9 +88,9 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Back" in the page details
     Then I softly see that "100%" has been added in flextable with Id "---applicationIntake:-:allFormsTableId---"
 
-  @34334 @34346 @70459 @viewSubmitedApplication @smoke @deepika
+  @34334 @34346 @70459 @73602 @viewSubmitedApplication @smoke @deepika
   Scenario Outline: Viewing the application submitted by sub-recipient as Internal user | Validate whether user can view the edit button once application has been submitted to Grantor
-  Verify whether PM, FO,EXE internal user is able to view Submitted Application
+  Verify whether PM, FO,EXE internal user is able to view Submitted Application | Verify when SPI (Record owner of Application) submit the Application to Grantor then it is displayed in the list of Submitted Applications
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -121,6 +121,11 @@ Feature: Validate all scenarios in the Application Intake
       | Name           | Project Role             | Is Key Contact |
       | Automation SPI | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - Submitted"
+    When I perform quick search for "<Application Name>" in "---applicationIntake:-:recipientApplications---" panel
+    Then I softly see "<Application Name>" inside flex table with id "---applicationIntake:-:recipientApplications---"
     Given I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel

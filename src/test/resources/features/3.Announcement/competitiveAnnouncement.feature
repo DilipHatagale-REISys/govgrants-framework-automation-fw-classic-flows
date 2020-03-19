@@ -60,7 +60,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "$6,000.00" for title "New Value" inside table "History"
     Then I softly see value "$3,000.00" for title "Old Value" inside table "History"
 
-
   @70290 @70298 @70302 @70799 @73227 @userAllowToEnterDataInQualityAndAvailibility @aashish @smoke
   Scenario: To Verify that user able to see Text fields after select Q&A Availability  as "Yes"  And  user can enter and save all required fields while creating Announcement
   | To Validate system generated validation message for  Q&A Availability section when "Question Deadline Date",and "Response Deadline date" is greater then Application Due Date.
