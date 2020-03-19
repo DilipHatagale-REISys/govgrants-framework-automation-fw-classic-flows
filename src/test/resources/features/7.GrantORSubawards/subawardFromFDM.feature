@@ -1141,7 +1141,7 @@ Feature: Validate all scenarios in the award created from FDM
   Scenario Outline: Validate payment related settings are get copied from announcement to grant
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Published Competitive Announcements"
+    And I click toggle button to select "All Competitive Announcements"
     When I perform quick search for "<Annoucement Name>" in "---subAwardFromFDM:-:announcemetTableId---" panel
     And I click on "View" icon for "<Annoucement Name>" inside flex table with id "---subAwardFromFDM:-:announcemetTableId---"
     And I save the field labeled "Advance Payment Allowed?" as "IsAdvancePaymentAllowed"
