@@ -85,6 +85,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I enter advance filter values inside id "advfRelatedAnnouncementCFDANumbersGrantor"
       | Program Number | Contains | {SavedValue:prNum} |
     Then I softly see value "{SavedValue:prNum}" for title "Program Number" inside table "---announcment:-:relatedAnnouncementTableId---"
+>>>>>>> 024d67f4a998b7406fd0b577795627df798efe7c
 
   @70290 @70298 @70302 @70799 @73227 @userAllowToEnterDataInQualityAndAvailibility @aashish @smoke
   Scenario: To Verify that user able to see Text fields after select Q&A Availability  as "Yes"  And  user can enter and save all required fields while creating Announcement

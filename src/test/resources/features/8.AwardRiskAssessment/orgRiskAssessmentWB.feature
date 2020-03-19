@@ -86,12 +86,9 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     When I navigate to "Overview" sub tab
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---"
-    And I perform quick search for "automation patricksa" in "---subAwardStandAlone:-:keyContactsTableId---" panel
-    When I click "Add" after selection of "automation patricksa" in the table "---subAwardStandAlone:-:keyContactsTableId---"
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name                  | Project Role             | Is Key Personnel |
-      | automation pratricksa | Project Director/Manager | Checked          |
+      | Name       | Project Role             | Is Key Personnel |
+      | Patrick sa | Project Director/Manager | Checked          |
     And I refresh the page
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
@@ -143,17 +140,8 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside table
     And I click on "Accept after Approval" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
-    And I click on "Activate" in the page details
     Then I see the following messages in the page details contains:
-      | Management Tab - Create and activate a Risk Assessment as the Subaward cannot be issued without an active Risk Assessment. |
+      | Your Organization does not have an active Risk Assessment. Create and activate a Risk Assessment as the Subaward cannot be accepted without an active Risk Assessment. |
     Examples:
       | Award Name                           | Grant Name                           |
       | Automation Award for Risk Assessment | Automation Award for Risk Assessment |
@@ -446,9 +434,9 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
       | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
-      | Program Approver   | Automation PM  | Automation Test Description |
-      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Role             | Name          | Description                 |
+      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | Automation FO | Automation Test Description |
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab

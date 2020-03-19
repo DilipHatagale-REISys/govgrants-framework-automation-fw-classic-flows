@@ -34,7 +34,7 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Overview" sub tab
     Then I softly see field "Created Date" is not editable
 
-  @51084 @66229 @66232 @51085 @51086 @66283 @notifyPendingTaskForSubrecipientSiteVisit @smoke
+  @51084 @66229 @66232 @51085 @51086 @66283 @notifyPendingTaskForSubrecipientSiteVisit @smoke @bugged-73739
   Scenario: Notify Subrecipient and the respective POC from the applicant organization will receive a pending task about the Site Visit
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
