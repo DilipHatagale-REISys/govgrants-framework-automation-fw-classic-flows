@@ -388,7 +388,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | FO    |
       | FD    |
 
-  @jitendra @73630 @73626
+  @jitendra @SystemsErrorAfterApplyingWrongFilter @73630 @73626
   Scenario: To validate system is getting displayed error message while adding invalid values into the filter for Approves section on responsibility tab of announcement
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
