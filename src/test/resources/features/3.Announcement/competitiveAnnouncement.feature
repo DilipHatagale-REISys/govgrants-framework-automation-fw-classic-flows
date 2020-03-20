@@ -282,7 +282,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see the following messages in the page details :
       | Overview Tab - Select applicant types. |
 
-  @70211 @70216 @70217 @73388 @73620 @userAbletoAssociateActiveRelatedProgram @aashish
+  @70211 @70216 @70217 @73388 @73535 @userAbletoAssociateActiveRelatedProgram @aashish
   Scenario: To Verify that user is able to associate active Related Federal/NGO Program | To Verify that user is able to view active Related Federal/NGO Program
   |To Verify that user is able to remove active Related Federal/NGO Program while creating Announcement.
     When I navigate to "Announcements" tab
