@@ -50,7 +50,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly do not see "Related Focus Areas" page block displayed
     Then I softly do not see "Objectives" page block displayed
 
-  @70999 @70997 @70980 @71010 @71011 @71012 @70998 @71022 @71023 @71037 @71027 @validationForErrorMessageOfPreApplication @aashish
+  @70999 @73627 @73632 @70997 @70980 @71010 @71011 @71012 @70998 @71022 @71023 @71037 @71027 @validationForErrorMessageOfPreApplication @aashish
   Scenario: To validate system generated error message when Pre Application Due Date is greater than Application Due Date while submitting information
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -62,6 +62,20 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter "Pre-Application Modal" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "---announcement:-:annChecklist---" by clicking "Add" :
+      | Description | Required  | Applies To  | Status |
+      | Test1       | Mandatory | Application | Active |
+    When I enter the following values into flex table with id "---announcement:-:annChecklist---" by clicking "Add" :
+      | Description | Required  | Applies To  | Status |
+      | Test2       | Mandatory | Application | Active |
+    And I click on advance filter "#advfAnnouncementChecklists" of table id "---announcement:-:annChecklist---"
+    And I enter advance filter values inside id "---announcement:-:annChecklist---"
+      | Description | contains | Test2 |
+    Then I softly see value "Test2" for title "Description" inside table "---announcement:-:annChecklist---"
+    And I enter advance filter values inside id "---announcement:-:annChecklist---"
+      | Description | contains | Test3 |
+    Then I softly see "No Records Found" inside flex table with id "---announcement:-:annChecklist---"
+    And I refresh the page
     Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:preScreenReviewFormTableId---"
     Then I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:preScreenReviewFormTableId---"
     Then I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:preScreenReviewFormTableId---"
@@ -373,3 +387,31 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | users |
       | FO    |
       | FD    |
+
+  @jitendra @SystemsErrorAfterApplyingWrongFilter @73630 @73626
+  Scenario: To validate system is getting displayed error message while adding invalid values into the filter for Approves section on responsibility tab of announcement
+    Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Pre-Application Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
+      | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I click on advance filter "#advfGrantorAnnouncementRolesandResponsibilities" of table id "---announcement:-:approversTableId---"
+    And I enter advance filter values inside id "---announcement:-:approversTableId---"
+      | Responsibility | equals to | Program Reviewer |
+    Then I softly see "No Records Found" inside flex table with id "---announcement:-:approversTableId---"
+    And I navigate to "Setup" sub tab
+    And I click on advance filter "#advfAnnoucementPackagesGrantor" of table id "---announcement:-:businessFormlistTableId---"
+    And I enter advance filter values inside id "---announcement:-:businessFormlistTableId---"
+      | Name | Contains | Anything |
+    Then I softly see "No Records Found" inside flex table with id "---announcement:-:businessFormlistTableId---"
+

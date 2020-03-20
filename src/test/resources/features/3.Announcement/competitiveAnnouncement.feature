@@ -338,7 +338,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Remove" icon for "Wildlife Services" inside flex table with id "---announcement:-:relatedAnnouncementTableId---"
     Then I softly do not see value "Wildlife Services" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId---"
 
-  @70727 @70723 @72482 @73536 @73614 @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
+  @70727 @73624 @70723 @73621 @72482 @73536 @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
   Scenario Outline: Validate that user can not enter application due date as past date | Validate that user should not submit announcement with blank budget period dates|To Verify that user can view contact while creating Announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -357,6 +357,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter advance filter values inside id "#advfAnnouncementFundingAccountGrantor"
       | Pre-Encumbrance | equals to | 2000 |
     Then I softly see value "$2,000.00" for title "Pre-Encumbrance" inside table "---announcement:-:fundingAccountsTableId---"
+    When I enter advance filter values inside id "#advfAnnouncementFundingAccountGrantor"
+      | Pre-Encumbrance | equals to | 3000 |
+    Then I softly see "No Records Found" inside flex table with id "---announcement:-:fundingAccountsTableId---"
     And I click on "Save" in the page details
     When I navigate to "History" sub tab
     And I select "Related Funding Account" from dropdown present on top right of flex table id "History"
@@ -397,6 +400,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter advance filter values inside id "advfAnnouncementContacts"
       | Title | Contains | ab |
     Then I softly see value "ab" for title "Title" inside table "---announcement:-:contactTableId---"
+    When I enter advance filter values inside id "advfAnnouncementContacts"
+      | Title | Contains | who am i |
+    Then I softly see "No Records Found" inside flex table with id "---announcement:-:contactTableId---"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
