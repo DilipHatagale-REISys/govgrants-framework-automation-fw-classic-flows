@@ -19,7 +19,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @70616 @70617 @34232 @73303 @73304 @73305 @73306 @73320 @submittingAnnouncementForApprovalDR @submittedAnnouncementDeletion @announcementForPastApplicationDueDate
+  @70616 @70617 @34232 @73611 @73303 @73612 @73613 @73304 @73305 @73306 @73320 @submittingAnnouncementForApprovalDR @submittedAnnouncementDeletion @announcementForPastApplicationDueDate
   Scenario Outline: Validate the submission of Announcement for Approval || Validate that only record owner cannot delete Submitted for Approval status announcements || Validate that user can not enter application due date as past date
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -74,15 +74,21 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Saved Successfully! |
     Then I softly see value "Automation PM" for title "Name" inside table "---announcement:-:flexGridApproverRolesTableId---"
     Then I softly see value "Automation EXE" for title "Name" inside table "---announcement:-:flexGridApproverRolesTableId---"
+    And I perform quick search for "Automation FO" in "---announcement:-:flexGridApproverRolesTableId---" panel
     Then I softly see value "Automation FO" for title "Name" inside table "---announcement:-:flexGridApproverRolesTableId---"
     Then I softly see value "Fiscal Reviewer" for title "Responsibility" inside table "---announcement:-:flexGridApproverRolesTableId---"
-    Then I softly can see row level action button "Edit" against "Test Automation Organization" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
-    Then I softly can see row level action button "Delete" against "Test Automation Organization" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
-    Then I softly can see row level action button "Send for Review" against "Test Automation Organization" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
+    When I click on advance filter "#advfGrantorAnnouncementReviewersTempGrantor" of table id "---announcement:-:flexGridApproverRolesTableId---"
+    When I enter advance filter values inside id "advfGrantorAnnouncementReviewersTempGrantor"
+      | Responsibility | equals to | Fiscal Reviewer |
+    Then I softly see value "Fiscal Reviewer" for title "Responsibility" inside table "---announcement:-:flexGridApproverRolesTableId---"
+    Then I softly can see row level action button "Edit" against "Automation FO" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
+    Then I softly can see row level action button "Delete" against "Automation FO" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
+    Then I softly can see row level action button "Send for Review" against "Automation FO" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "Edit" :
       | Name          | Description                      |
       | Automation FO | Review Financial details updated |
     Then I softly see value "Review Financial details updated" for title "Description" inside table "---announcement:-:flexGridApproverRolesTableId---"
+    And I perform quick search for "Automation" in "---announcement:-:flexGridApproverRolesTableId---" panel
     And I click on "Delete" icon for "Automation FO" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---"
     And I click on "Delete" icon for "Automation PM" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---"
     And I click on "Delete" icon for "Automation EXE" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---"

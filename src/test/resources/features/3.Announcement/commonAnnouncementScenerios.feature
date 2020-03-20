@@ -22,7 +22,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Formula Announcements - All"
     And I perform quick search for "Record id" in "---announcement:-:formulaAnnouncementTableId---" panel
-    When  I click on "View" icon for "Record id" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    When  I click on "View" icon for "Record id" inside flex table with id "---announcement:-:formulaAnnouncementTableId---"
     Then I softly see field "Subrecipient Match (%)" as "10.00%"
 
   @33936 @announcementCreatedDeleteAccessToOwnerFA

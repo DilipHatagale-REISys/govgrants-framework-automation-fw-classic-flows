@@ -306,7 +306,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see the following messages in the page details :
       | Overview Tab - Select applicant types. |
 
-  @70211 @70216 @70217 @73388 @73535 @userAbletoAssociateActiveRelatedProgram @aashish
+  @70211 @70216 @70217 @73388 @73535 @73620 @userAbletoAssociateActiveRelatedProgram @aashish
   Scenario: To Verify that user is able to associate active Related Federal/NGO Program | To Verify that user is able to view active Related Federal/NGO Program
   |To Verify that user is able to remove active Related Federal/NGO Program while creating Announcement.
     When I navigate to "Announcements" tab
@@ -322,6 +322,11 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "Animal And Plant Health Inspection Service" for title "Organization Name" inside table "---announcement:-:relatedAnnouncementTableId---"
     Then I softly can see row level action button "Remove" against "10.028" in flex table with id "---announcement:-:relatedAnnouncementTableId---"
     Then I softly can see row level action button "View" against "10.028" in flex table with id "---announcement:-:relatedAnnouncementTableId---"
+    When I click on advance filter "#advfRelatedAnnouncementCFDANumbersGrantor" of table id "---announcement:-:relatedAnnouncementTableId---"
+    When I enter advance filter values inside id "advfRelatedAnnouncementCFDANumbersGrantor"
+      | Program Title | Contains | Calfire |
+    Then I see "No Records Found" inside flex table with id "---progressReport:-:relatedAnnouncementTableId---"
+    And I perform quick search for "Wildlife Services" in "---announcement:-:relatedAnnouncementTableId---" panel
     And I click on "View" icon for "Wildlife Services" inside flex table with id "---announcement:-:relatedAnnouncementTableId---"
     Then I softly see field "Non-Federal Program" as "Wildlife Services"
     And I pause execution for "2" seconds
@@ -417,6 +422,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Program Approver   | Automation PM  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
+    When I click on advance filter "#advfAnnouncementBudgetCategory" of table id "---announcement:-:approversTableId---"
+    When I enter advance filter values inside id "advfAnnouncementBudgetCategory"
+      | Responsibility | equals to | Program Approver |
+    Then I softly see value "Program Approver" for title "Responsibility" inside table "---announcement:-:approversTableId---"
     When I enter the following values into flex table with id "---announcement:-:ApproverRolesGrantorgridTableId---" by clicking "New" :
       | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
@@ -2150,3 +2159,16 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly can see top right button "Publish" in page detail
     And I click on "Publish" in the page details
     Then I softly see status in Progress-bar is "Published" and is "green"
+
+  @73616 @userAllowToEnterDataInQualityAndAvailibility @aashish
+  Scenario: To verify user allow to remove budget category when Budget type is Non functional in financial tab for announcement
+    When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    When I navigate to "Financials" sub tab
+    And I click on "Remove" icon for "Personnel" inside flex table with id "---announcement:-:announcementBudgetCategory---"
+    Then I softly see the following messages in the page details :
+      | Record deleted successfully. |
+    And I perform quick search for "Personnel" in "---announcement:-:announcementBudgetCategory---" panel
+    Then I softly do not see value "Personnel" for title "Name" inside table "---announcement:-:announcementBudgetCategory---"

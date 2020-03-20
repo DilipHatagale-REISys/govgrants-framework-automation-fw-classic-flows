@@ -40,7 +40,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Given I delete the record "Automation Formula Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
-    When I navigate to "Directed" content inside "Announcements" subheader on left panel
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click on top right button "New" in flex table with id "---announcement:-:annoucementTableId---"
     And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
