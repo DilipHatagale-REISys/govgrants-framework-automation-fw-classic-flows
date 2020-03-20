@@ -52,7 +52,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on advance filter "#advfAnnouncementServiceArea1" of table id "---announcement:-:AnnouncementServiceArea1TableId--"
     When I enter advance filter values inside id "advfAnnouncementServiceArea1"
       | EGMS ID | Equals to | 00099 |
-    Then I see "No Records Found" inside flex table with id "---announcement:-:AnnouncementServiceArea1TableId--"
+    Then I softly see "No Records Found" inside flex table with id "---announcement:-:AnnouncementServiceArea1TableId--"
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Overview" sub tab
@@ -473,7 +473,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on advance filter "#advfAnnouncementKeyOutcomes" of table id "---announcement:-:kpiflextableid---"
     When I enter advance filter values inside id "advfAnnouncementKeyOutcomes"
       | Title | Contains | AAtamation |
-    Then I see "No Records Found" inside flex table with id "---announcement:-:kpiflextableid---"
+    Then I softly see "No Records Found" inside flex table with id "---announcement:-:kpiflextableid---"
     And I refresh the page
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
