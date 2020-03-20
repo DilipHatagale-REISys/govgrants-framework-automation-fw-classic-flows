@@ -955,7 +955,7 @@ Feature: Application Intake scenarios without background
     Then I see "Supporting Documents" has been added in "Attachments" flex table
 
   @validateFilterCriteriaForGoalsAndObjectives
-  Scenario: Validate the searched functionality for goals and Objectives Associated in section of Performance tab in announcement | Validate the filter criteria for Goals and Objectives in Proposal Tab while creating Application
+  Scenario: Validate the searched functionality for goals and Objectives Associated in section of Performance tab in Application | Validate the filter criteria for Goals and Objectives in Proposal Tab while creating Application
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     Given I delete the record "Automation Competitive Announcement" from the object "Application"
     And I delete the record "Automation Competitive Announcement" from the object "Qualified Announcement"
