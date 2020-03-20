@@ -46,11 +46,11 @@ Feature: Validate all scenarios for Auditor Profile in Amendment Request module
     When I perform quick search for "Created" in "---auditor:-:amendmentRequestTableId---" panel
     Then I can see row level action button "View" against "Created" in flex table with id "---auditor:-:amendmentRequestTableId---"
 
-  @69871 @audiorCanViewAmendmentRecordsofAllStatus @wip
+  @69871 @audiorCanViewAmendmentRecordsofAllStatus
   Scenario: Validate whether Audior Profile all the amendment records created by PM profile
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
     When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I perform quick search for "Funding Change" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
-    Then I see values "	Funding Change" and "State" inside table
-
+    When I click toggle button to select "Amendment Requests - All"
+    And I perform quick search for "Sent to Subrecipient" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see values "Funding Change" and "State" inside table

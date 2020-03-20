@@ -13,7 +13,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | User    |
       | AUDITOR |
 
-  @69179 @69942 @auditorOrgRiskAssessment @smoke @smoke
+  @69179 @69942 @auditorOrgRiskAssessment @smoke
   Scenario Outline: Validate Auditor should have view / read  only access to Organizational Risk Assessment |Validate Auditor should not be  able to Provide revision access
     Given I delete the record "Automation Permanent Organization for Risk Assessment" from the object "ORGANIZATION RISKASSESSMENT"
     When I create a risk assessment record for organization "Automation Permanent Organization for Risk Assessment"
@@ -130,8 +130,8 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | User    |
       | AUDITOR |
 
-  @69870 @70076 @auditorCannotCreateDeleteAwardLevelDeskReview
-  Scenario Outline: Validate Auditor should not be able to Create, Accept and Close the Award Level Desk Review |Validate Auditor should not be able to delete the  created state Award Level Desk Review
+  @70076 @69870 @auditorCannotCreateDeleteAwardLevelDeskReview
+  Scenario Outline: Validate Auditor should not be able to delete the  created state Award Level Desk Review | Validate Auditor should not be able to Create, Accept and Close the Award Level Desk Review
     Given I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -162,6 +162,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     Given I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Automation Desk Review" in "---auditor:-:deskreviewMonitoringTableId---" panel
+    Then I softly cannot see row level action button "Delete" against "Automation Desk Review" in flex table with id "---auditor:-:deskreviewMonitoringTableId---"
     Then I see the following rows under the following headers in table with id "---auditor:-:deskreviewMonitoringTableId---" :
       | Title                  | Actions |
       | Automation Desk Review | View    |
@@ -192,7 +193,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | User    |
       | AUDITOR |
 
-  @69985 @69986 @auditorCannotSendBackProgressReporttoSubrecipient
+  @69986 @69985 @auditorCannotSendBackProgressReporttoSubrecipient
   Scenario: Validate Auditor should not be  able to Send back progress report to S/R | Validate Auditor should have view / read  only access to the progress report record
     Given I delete the record "Automation Permanent Award" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
