@@ -1434,7 +1434,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    Then I see total records count "Total Records:2" in flex table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I see total records count "Total Records:3" in flex table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @63982 @effectiveDatesOnOrgRiskAssessmentIsBlackDraftOnCreated @deepika
   Scenario: Verify that Effective and Expiration dates are blank when Org risk assessment is in created state
