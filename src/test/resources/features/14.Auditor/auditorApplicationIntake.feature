@@ -1,16 +1,34 @@
 @auditorApplication  @auditorNegotiations @auditor
 Feature: Validate all scenarios for Auditor Profile in Application Module
 
-  @Auditorapplication @wip
-  Scenario: Auditor should have view / read  only access to record.
-    Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
-    And I navigate to "Opportunities" tab
-    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Auditor" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    When I click on "View" icon for "Automation Announcement for Auditor" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
-    Then I softly cannot see top right button "Qualify" in page detail
-    Then I softly cannot see top right button "Create Application" in page detail
+  @73805 @auditorCannotViewCreatedStatusPreApplication
+  Scenario: Validate whether Auditor can view the application that is in Created Status
+    Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
+    When I delete the record "Automation Announcement for Application" from the object "PreApplication"
+    And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
+    And I delete the record "Automation Announcement for Application" from the object "Qualified Announcement"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Pre-Application" in "---preApplication:-:notYetQualifiedTable---" panel
+    When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
+    When I click on "Qualify" in the page details
+    And I click on "Create Pre-Application" in the page details
+    When I enter value "Automation Announcement for Application" into field "Title__c"
+    When I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    Given I click on "Edit" in the page details
+    And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    Given I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Pre-Applications - All"
+    And I perform quick search for "Record Id" in "---preApplication:-:preApplicationsGrantorTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---preApplication:-:preApplicationsGrantorTableId---"
+    Then I softly see "No records found" inside flex table with id "---preApplication:-:preApplicationsGrantorTableId---"
 
   @69163 @auditorCannotCreateNegotiation
   Scenario: Validate Auditor should not be  able to  Create Negotiation
@@ -136,8 +154,8 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
       | Application Name                               | User    |
       | Automation Announcement for Application Intake | Auditor |
 
-  @69940 @69941 @audiorPreApplicationToApplication
-  Scenario Outline: Validate Auditor should not be  able to Review/Accept/Reject Preapplication |Validate Auditor should have view / read  only access to record.
+  @69941 @69940 @audiorPreApplicationToApplication
+  Scenario Outline: Validate Auditor should have view / read  only access to submitted pre-application| Validate Auditor should not be  able to Review/Accept/Reject Preapplication
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"
     And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"

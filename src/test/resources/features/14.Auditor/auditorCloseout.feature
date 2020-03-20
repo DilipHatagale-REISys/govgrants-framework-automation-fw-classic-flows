@@ -12,15 +12,14 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
     When I navigate to "Requests" sub tab
     Then I cannot see top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
 
-  @69176 @auditorCannotViewOverriddenCloseout @wip
-  Scenario: Validate Auditor cannot have view access to "Overrridden Status" Closoeut Record
+  @69176 @auditorCannotViewOverriddenCloseout
+  Scenario: Validate Auditor cannot have view access to "Submitted for Approval Status" Closeout Record
     When I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
     And I click toggle button to select "Project Period Closeouts - All"
-    And I perform quick search for "Overridden" in "ProjectPeriodCloseoutGrantor" panel
-    And I click on "View" icon for "Overridden" inside flex table with id "ProjectPeriodCloseoutGrantor"
-    Then I see "No Records Found" inside flex table with id "ProjectPeriodCloseoutGrantor"
+    And I perform quick search for "Submitted for Approval" in "ProjectPeriodCloseoutGrantor" panel
+    Then I see values "Early Completion" and "Submitted for Approval" inside table
 
   @69177 @auditorCannotEditCreatedCloseoutRecordbyPM
   Scenario: Validate Auditor should not be  able to  Edit Closeout Request record created by PM

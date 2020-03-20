@@ -252,4 +252,3 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
-

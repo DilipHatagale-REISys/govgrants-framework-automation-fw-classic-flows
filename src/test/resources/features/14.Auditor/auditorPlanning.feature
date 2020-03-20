@@ -158,7 +158,6 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | EXE   |
       | ADMIN |
 
-
   @67850 @auditorCannotCreateEditActivateOrDeactivateStrategicPlan
   Scenario Outline: Validate Auditor should not be  able to  Create/Edit/Activate/Deactivate Strategic plan
     When I login to "As a Grantor" app as "<User>" user
@@ -213,8 +212,8 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | User    |
       | AUDITOR |
 
-  @69153 @69151 @auditorViewCannotCreateEditFormsandPackages  @deepika
-  Scenario Outline: Auditor should have view / read  only access to Forms and Packages
+  @69151 @69153 @auditorViewCannotCreateEditFormsandPackages  @deepika
+  Scenario Outline: Verify Auditor profile user cannot create a new Forms and Packages |Validate Auditor should have view / read  only access to Forms and Packages|
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
     When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
