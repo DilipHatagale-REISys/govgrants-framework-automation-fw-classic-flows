@@ -458,7 +458,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @57347 @57348 @viewActiveGrantsSubmittedApplicationsOnRelatedLog
+  @73851 @73850 @73856 @57347 @57348 @viewActiveGrantsSubmittedApplicationsOnRelatedLog
   Scenario Outline: Verify all profiles users should be able to view the Submitted Applications and Active Grants.
     Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
     And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
@@ -466,8 +466,12 @@ Feature: Validate all scenarios in the home tab
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I click toggle button to select "Not Yet Qualified Opportunities - Open"
     And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    Then I see value "Automation Announcement for Application Intake" for title "Title" inside table "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    Then I softly see field "Opportunity" as "Automation Announcement for Application Intake"
+    Then I softly see field "Status" as "Published"
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
