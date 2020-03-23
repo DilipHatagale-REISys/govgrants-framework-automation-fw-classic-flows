@@ -78,7 +78,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
       | Title          | Project Role   | Is Key Personnel |
-      | Automation SPA | Fiscal Contact | Checked          |
+      | Automation SPI | Fiscal Contact | Checked          |
     When I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
@@ -154,8 +154,9 @@ Feature: Validate all scenarios in the award created from FDM
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-    And I click on "Delete" icon for "Automation Permanent Funding Account" inside flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    Then I cannot see row level action button "Delete" against "Automation Permanent Funding Account" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    And I click on "Remove" icon for "{SavedValue:fundingAccount}" inside flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
 
   @38219 @65402 @awardReviewInitiationAndCompletion @smoke
   Scenario Outline: Validate review initiation and completion for the award | verify award acceptance
@@ -1813,7 +1814,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I enter in modal "Payment Request Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
-    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---" without waiting for record
+    And I click on "Edit" icon @errorMsgForRiskAssementAfterActivateAwardfor "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---" without waiting for record
     When I enter in modal "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
@@ -1869,7 +1870,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---"
     When I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I get the value from row "2" for column name "EGMS ID" in flex table "SelectAwardFundingAccounts"
+    And I get the value from row "1" for column name "EGMS ID" in flex table "SelectAwardFundingAccounts"
     When I click "Add" after selection of "{SavedValue:lastValueFromTableForCol}" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     Then I see "{SavedValue:lastValueFromTableForCol}" has been added in "---subAwardStandAlone:-:awardFundingAccountsTableId---" flex table
