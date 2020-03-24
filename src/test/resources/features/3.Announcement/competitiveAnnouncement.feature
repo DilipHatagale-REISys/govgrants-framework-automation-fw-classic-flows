@@ -2164,7 +2164,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see status in Progress-bar is "Published" and is "green"
     Then I softly can see top right button "Extend Dates" in page detail
 
-  @73616 @userAllowToEnterDataInQualityAndAvailibility @aashish
+  @73616 @73962 @userAllowToEnterDataInQualityAndAvailibility @aashish
   Scenario: To verify user allow to remove budget category when Budget type is Non functional in financial tab for announcement
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -2176,3 +2176,24 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Record deleted successfully. |
     And I perform quick search for "Personnel" in "---announcement:-:announcementBudgetCategory---" panel
     Then I softly do not see value "Personnel" for title "Name" inside table "---announcement:-:announcementBudgetCategory---"
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    And I refresh the page
+    And I select "Download as PDF" from parallel lines dropdown of "Budget Period Details"
+    When I download the file
+    Then I softly see "Budget Period Details" on page "1" of "govgrants" pdf file
+
+  @73960 @userAllowToDownloadPDFFundingAccount @aashish
+  Scenario: To verify user allow to download PDF for Funding Accounts section in financial tab of announcement
+    When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate" modal by clicking the top right x button
+    And I refresh the page
+    And I select "Download as PDF" from parallel lines dropdown of "Funding Accounts"
+    When I download the file
+    Then I see "Funding Accounts" on page "1" of "govgrants" pdf file
+
