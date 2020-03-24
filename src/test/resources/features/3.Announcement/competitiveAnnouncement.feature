@@ -587,7 +587,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type |
       | Competitive       |
 
-  @70894 @71722 @72471 @72324 @72548  @verifyReviseUnderRevision @aashish @smoke
+  @70894 @71722 @72471 @72324 @72548 @73858 @verifyReviseUnderRevision @aashish @smoke
   Scenario Outline: To Verify that after clicking on revise button, status changes to created.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -796,11 +796,13 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Revise" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
     Then I softly see field "Status" as "Under Revision"
+    Then I softly cannot see top right button "Extend Dates" in page detail
+
     Examples:
       | Announcement Type |
       | Competitive       |
 
-  @70803 @73774 @73773 @70817 @70893 @73775 @34768 @70898 @72490 @announcementApprovalCA @verifyApproverCanNotEdit @aashish
+  @70803 @73849 @73774 @73773 @70817 @70893 @73775 @34768 @70898 @72490 @announcementApprovalCA @verifyApproverCanNotEdit @aashish
   Scenario Outline: Validate the approval of an Announcement | To verify that after unpublished announcement , user can not create application from that announcement
   | To Verify that after submitting for approval, approver can not edit anything on announcement
   |To verify field history update with respect to modification in Pre-Encumbrance field of Announcement
@@ -999,6 +1001,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "History" sub tab
     Then I softly see value "Approved" for title "New Value" inside table "History"
     Then I softly see value "Submitted for Approval" for title "Old Value" inside table "History"
+    Then I softly can see top right button "Extend Dates" in page detail
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
@@ -1977,7 +1980,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type | Active Funding Opportunities id                     |
       | Competitive       | ---announcement:-:competitiveAnnouncementTableId--- |
 
-  @65077 @publishingCompetitiveAnnouncementCA @productBusinessFlowSanity
+  @65077 @73857 @publishingCompetitiveAnnouncementCA @productBusinessFlowSanity
   Scenario: Validate the activation of Competitive Announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -2168,6 +2171,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly can see top right button "Publish" in page detail
     And I click on "Publish" in the page details
     Then I softly see status in Progress-bar is "Published" and is "green"
+    Then I softly can see top right button "Extend Dates" in page detail
 
   @73616 @userAllowToEnterDataInQualityAndAvailibility @aashish
   Scenario: To verify user allow to remove budget category when Budget type is Non functional in financial tab for announcement

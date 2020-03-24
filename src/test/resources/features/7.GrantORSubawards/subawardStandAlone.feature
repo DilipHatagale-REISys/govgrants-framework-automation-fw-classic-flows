@@ -35,6 +35,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "<Contact>" in "---subAwardStandAlone:-:keyContactsTableId---" panel
     When I click "Associate" after selection of "<Contact>" in the table "---subAwardStandAlone:-:keyContactsTableId---"
     When I close "Associate Contacts" modal by clicking the top right x button
+    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
       | Automation SPI | Project Director/Manager | Checked          |
@@ -332,6 +333,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see the following messages in the page details contains:
       | All mandatory terms & conditions within Project Period are already associated. |
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I refresh the page
     And I save the total records from the flex table id "---subAwardStandAlone:-:termsndConditionsTableId---" as "totalRecords"
     Then I softly see total records count "{SavedValue:totalRecords}" in flex table "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I navigate to "Budget" sub tab
@@ -1320,7 +1322,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I save the field labeled "EGMS ID" as "subawardID"
     When I navigate to "Management" sub tab
-    And I click on "Edit" icon for "{SavedValue:subawardID}" inside flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
+    And I click on "Edit" icon for "{SavedValue:subawardID}" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
@@ -1884,7 +1886,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
       | Fiscal Approver  | Automation FO | Automation Test Description |
       | Program Approver | Automation PM | Automation Test Description |
@@ -2144,6 +2146,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
+    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |

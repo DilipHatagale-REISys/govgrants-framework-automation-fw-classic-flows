@@ -234,7 +234,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Terms" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    When I click "Associate" after selection of "Test TC" in the table "---subAwardStandAlone:-:grantTermConditionPopUp---"
+    When I click "Associate" after selection of "TC-11077" in the table "---subAwardStandAlone:-:grantTermConditionPopUp---"
     And I close modal by clicking the top right x button
     And I click on "Edit" icon for "Standard" inside flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I enter value "2" into field "Sequence__c"
@@ -630,6 +630,7 @@ Feature: Validate all scenarios of grants and award without background
     And I get the "EGMS ID"
     And I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I refresh the page
     Then I softly see value "true" for title "Mandatory" against the value "Term" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly cannot see row level action button "Delete" against "Term" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
 
@@ -779,6 +780,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Create Subaward" icon for "<Annoucement>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
     When I click on "Save" in the page details
+    And I refresh the page
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Published Competitive Announcements"
@@ -1299,12 +1301,13 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I refresh the page
     Then I softly cannot see row level action button "Edit" against "Test T&C" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    When I click "Add" after selection of "Test TC" in the table "---subAwardStandAlone:-:grantTermConditionPopUp---"
+    When I click "Add" after selection of "TC-11077" in the table "---subAwardStandAlone:-:grantTermConditionPopUp---"
     When I close "Associate Terms and Conditions" modal by clicking the top right x button
     And I refresh the page
-    Then I softly see value "Test TC" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
+    Then I softly see value "Automation Permanent Terms and Conditions" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
 
   @65794 @65822 @verifySRUserCanEnterBudgetDetails @mahadev
   Scenario Outline: To verify that the Sub Award budget field is editable in the Subrecipient (SPI User) under budget tab
@@ -2739,6 +2742,9 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     And I softly can see top right button "Initiate Desk Review" in flex table with id "GrantorDeskReviewAward"
+    Examples:
+      | Award Name                      | Grant Name                      |
+      | Automation Announcement for FDM | Automation Announcement for FDM |
 
   @71436 @jitendra @activeAwardFilter
   Scenario: Verify that Activated records are getting displayed proper post apply a filter "activated" on grants by SPI/SPA users.
