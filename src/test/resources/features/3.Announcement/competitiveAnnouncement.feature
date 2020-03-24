@@ -802,7 +802,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type |
       | Competitive       |
 
-  @70803 @73849 @70817 @70893 @34768 @70898 @72490 @announcementApprovalCA @verifyApproverCanNotEdit @aashish
+  @70803 @73849 @73774 @73773 @70817 @70893 @73775 @34768 @70898 @72490 @announcementApprovalCA @verifyApproverCanNotEdit @aashish
   Scenario Outline: Validate the approval of an Announcement | To verify that after unpublished announcement , user can not create application from that announcement
   | To Verify that after submitting for approval, approver can not edit anything on announcement
   |To verify field history update with respect to modification in Pre-Encumbrance field of Announcement
@@ -974,6 +974,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
+    When I navigate to "History" sub tab
+    Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
+    Then I softly see value "Created" for title "Old Value" inside table "History"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -995,6 +998,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
     Then I softly can see top right button "Revise" in page detail
+    When I navigate to "History" sub tab
+    Then I softly see value "Approved" for title "New Value" inside table "History"
+    Then I softly see value "Submitted for Approval" for title "Old Value" inside table "History"
     Then I softly can see top right button "Extend Dates" in page detail
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1002,6 +1008,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---announcement:-:pendingTaskTableId---"
     And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I click on "Publish" in the page details
+    When I navigate to "History" sub tab
+    Then I softly see value "Published" for title "New Value" inside table "History"
+    Then I softly see value "Approved" for title "Old Value" inside table "History"
     And I click on "Unpublish" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I pause execution for "2" seconds

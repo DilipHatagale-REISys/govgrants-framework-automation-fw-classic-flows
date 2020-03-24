@@ -19,7 +19,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @73761 @73762 @73765 @70616 @70617 @34232 @73611 @73303 @73612 @73613 @73304 @73305 @73306 @73320 @submittingAnnouncementForApprovalDR @submittedAnnouncementDeletion @announcementForPastApplicationDueDate
+  @73761 @73762 @73764 @73765 @70616 @70617 @34232 @73611 @73303 @73612 @73613 @73304 @73305 @73306 @73320 @submittingAnnouncementForApprovalDR @submittedAnnouncementDeletion @announcementForPastApplicationDueDate
   Scenario Outline: Validate the submission of Announcement for Approval || Validate that only record owner cannot delete Submitted for Approval status announcements || Validate that user can not enter application due date as past date
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -37,6 +37,10 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 500      |
+    When I click on advance filter "#advfAnnouncementBudgetCategory" of table id "---announcement:-:announcementBudgetCategory---"
+    When I enter advance filter values inside id "advfAnnouncementBudgetCategory"
+      | Name | Contains | whos that girl |
+    Then I see "No Records Found" inside flex table with id "---announcement:-:announcementBudgetCategory---"
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"

@@ -1919,15 +1919,22 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
 
-  @65079 @VerifyAwardOwnerCanInitiateReviewProcess @keerti
+  @65079 @73778 @VerifyAwardOwnerCanInitiateReviewProcess @keerti
    Scenario Outline: Verify Award owner can Initiate the Review Process.
+    | To Verify that under related log tab , corresponding data is display about related submitted applications for announcement
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
-    Then I see value "Review Initiated" for title "Status" inside table "RelatedFOApplications"
+    Then I softly see value "Review Initiated" for title "Status" inside table "RelatedFOApplications"
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "<Announcement Name>" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    Then I softly see value "Review Initiated" for title "Status" inside table "---applicationReview:-:relatedFOApplicationsTableId---"
     Examples:
       | Announcement Name                              |
       | Automation Announcement for Application Review |
