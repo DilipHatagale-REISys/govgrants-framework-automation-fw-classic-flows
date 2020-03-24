@@ -15,7 +15,7 @@ Feature: Application Intake scenarios without background
     Then I softly see that "Automation Announcement for Application Review" is in "Qualified" status
     Then I softly can see top right button "Create Application" in page detail
 
-  @70255 @70256 @70257 @spaUserCannotQualifyTheApplication @deepika
+  @70255 @73935 @73940 @73941 @73937 @70256 @70257 @spaUserCannotQualifyTheApplication @deepika
   Scenario: Validate as another SPI / SPA user should not be able to Qualify for the second time| Validate SPA user view the Create Application button in page details
   Validate SPA user can View the Qualified Application under 'Qualified' and not under 'Not Yet Qualified'
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
@@ -27,7 +27,19 @@ Feature: Application Intake scenarios without background
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
+    And I click toggle button to select "Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:qualifiedTableId---" panel
+    Then I softly see value "Automation Announcement for Application Intake" for title "Title" inside table "---applicationIntake:-:qualifiedTableId---"
+    When I click on advance filter "#advfqae" of table id "---applicationIntake:-:qualifiedTableId---"
+    When I enter advance filter values inside id "advfqae"
+      | Opportunity Name | Contains | Automation Announcement for Application Intake |
+    Then I softly see value "Automation Announcement for Application Intake" for title "Title" inside table "---applicationIntake:-:qualifiedTableId---"
+    When I enter advance filter values inside id "advfqae"
+      | EGMS ID | Contains | Aatam123 |
+    Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
+    And I click toggle button to select "Qualified Opportunities - Open"
+    And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:qualifiedTableId---" panel
+    Then I softly see value "Automation Announcement for Application Intake" for title "Title" inside table "---applicationIntake:-:qualifiedTableId---"
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
     Then I softly cannot see top right button "Qualify" in page detail
     Then I softly can see top right button "Create Application" in page detail
