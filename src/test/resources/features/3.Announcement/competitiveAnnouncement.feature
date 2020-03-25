@@ -2206,3 +2206,52 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I download the file
     Then I see "Funding Accounts" on page "1" of "govgrants" pdf file
 
+  @74120 @userAllowToDownloadPDFResponsibility @aashish
+  Scenario: To verify system allow to download PDF for Approvers section in Responsibility tab of announcement
+    When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
+      | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I refresh the page
+    And I select "Download as PDF" from parallel lines dropdown of "Approvers"
+    When I download the file
+    Then I see "Approvers" on page "1" of "govgrants" pdf file
+
+  @74121 @userAllowToDownloadPDFOwner @aashish
+  Scenario: To verify system allow to download PDF for Owner section in Responsibility tab of announcement
+    When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I select "Download as PDF" from parallel lines dropdown of "Owner"
+    When I download the file
+    Then I see "Owner" on page "1" of "govgrants" pdf file
+
+  @74126 @userAllowToDownloadPDFObjective @aashish
+  Scenario: To verify system allow to download PDF for objectives section in setup tab of announcement.
+    When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    When I navigate to "Setup" sub tab
+    And I select "Download as PDF" from parallel lines dropdown of "Objectives"
+    When I download the file
+    Then I see "Objectives" on page "1" of "govgrants" pdf file
+
+  @74129 @userAllowToDownloadPDFKPI @aashish
+  Scenario: To verify system allow to download PDF for Key performance Indicator(KPIs) section in setup tab of announcement
+    When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    When I navigate to "Setup" sub tab
+    And I select "Download as PDF" from parallel lines dropdown of "Key Performance Indicators (KPIs)"
+    When I download the file
+    Then I see "Key Performance Indicators (KPIs)" on page "1" of "govgrants" pdf file
