@@ -1237,3 +1237,15 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "View" icon for "Record id" inside table
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
+
+  @74132 @userAllowToDownloadPDFInvitedApplication
+  Scenario: To verify system allow to download PDF for Invited Applicants section in overview tab of announcement.
+    When I click on "Edit" in the page details
+    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
+    And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST1" in "---announcement:-:directedAddInviteApplicantTableId---" panel
+    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    When I close "Add Organizations" modal by clicking the top right x button
+    And I refresh the page
+    And I select "Download as PDF" from parallel lines dropdown of "Invited Applicants"
+    When I download the file
+    Then I see "Invited Applicants" on page "1" of "govgrants" pdf file

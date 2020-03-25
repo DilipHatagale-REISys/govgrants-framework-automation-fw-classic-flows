@@ -2679,9 +2679,10 @@ Feature: Payment Request scenarios without background
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I perform quick search for "{SavedValue:fundingAccount}" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
@@ -3199,7 +3200,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     And I navigate to "Terms" sub tab
     When I expand nested table containing column value "Payment Request"
-    Then I can see "1" record value is checked for field name "TaskCreated__c"
+    Then I can see "2" record value is checked for field name "TaskCreated__c"
     Examples:
       | Award Name              | Grant Name              | User |
       | Automation Grant For PR | Automation Grant For PR | SPI  |
@@ -3643,7 +3644,7 @@ Feature: Payment Request scenarios without background
       | Automation Permanent Award |
 
   @55689 @canNotCreateAnotherPaymentRequestAfterFinalPaymentRequest @jitendra
-  Scenario Outline: Verify that once User select Is final Payment request option then User cannot create New Payment request .
+  Scenario Outline: Verify that once User select Is final Payment request option then User cannot create New Payment request.
     When I delete the record "Automation Grant For PR" from the object "Award"
     And I delete the record "Automation Grant For PR" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
