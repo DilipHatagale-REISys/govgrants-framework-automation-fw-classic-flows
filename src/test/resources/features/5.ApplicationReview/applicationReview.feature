@@ -126,7 +126,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
 
-  @51062 @smeReviewCompleteReviewForm
+  @51062 @75229 @smeReviewCompleteReviewForm
   Scenario Outline: Complete Review form as Various reviewers in SME Review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -232,7 +232,16 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    Then I see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
+    Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
+    And I navigate to "Announcement" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "<Announcement Name>" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
+    Then I softly can see top right button "Previous Review Step" in page detail
+    Then I softly can see top right button "Back to Announcement" in page detail
+    Then I softly can see top right button "Next Review Step" in page detail
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
