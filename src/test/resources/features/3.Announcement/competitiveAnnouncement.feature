@@ -478,7 +478,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Permits        | 40                 |
     And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
+      | Question Order | Question  | Type `   | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
@@ -2255,3 +2255,14 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I select "Download as PDF" from parallel lines dropdown of "Key Performance Indicators (KPIs)"
     When I download the file
     Then I see "Key Performance Indicators (KPIs)" on page "1" of "govgrants" pdf file
+
+  @74131 @userAllowToDownloadPDFHistory @aashish
+  Scenario: To verify system allow to download PDF for Field history section in history tab of announcement
+    When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    When I navigate to "History" sub tab
+    And I select "Download as PDF" from parallel lines dropdown of "Field History"
+    When I download the file
+    Then I see "Field History" on page "1" of "govgrants" pdf file
