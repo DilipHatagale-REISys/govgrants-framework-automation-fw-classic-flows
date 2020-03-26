@@ -792,21 +792,31 @@ Feature: Application Intake scenarios without background
   Scenario: Validate the Aplications are not visible for other organizations Users
     When I am on "SUBPORTAL" portal
     And I login as "SA" user
-    When I navigate to "Opportunities" tab
-    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:recipientApplications---" panel
+    Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:recipientApplications---"
 
   @73284 @applicationVisibity
   Scenario Outline: Validate the Applications are visible for their own organization and for child organizations.
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
-    When I am on "SUBPORTAL" portal
+    Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "<User>" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
-    Then I softly see that "Automation Announcement for Application Review" has been added in flextable with Id "---applicationReview:-:reviewsTableId---"
+    And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:recipientApplications---" panel
+    Then I softly see that "Automation Announcement for Application Review" has been added in flextable with Id "---applicationReview:-:recipientApplications---"
     Examples:
       | User |
       | SPI  |
@@ -1072,9 +1082,10 @@ Feature: Application Intake scenarios without background
     And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
 
-  @73818 @73820 @73821 @directedPublishedAnnouncementUnderOppurtunitiesTab @deepika
+  @73818 @73820 @73821 @75505 @directedPublishedAnnouncementUnderOppurtunitiesTab @deepika
   Scenario: Validate whether SPI user is able to view the Directed Announcement under Oppurtunities Tab once it is published | Validate whether the SPI user can qualify and create the Application from published Directed Announcement
-  Validate Opportunities created from 'Directed Announcements' are available for qualification for users for all Invited Applicants
+  Validate Opportunities created from 'Directed Announcements' are available for qualification for users for all Invited Applicants |
+  Validate other than invited applications, other users cannot view the Published announcement under oppurtunities when selected announcement of type Directed
     Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
     Given I delete the record "Automation Directed Announcement" from the object "PreApplication"
     Given I delete the record "Automation Directed Announcement" from the object "Application"
@@ -1178,9 +1189,15 @@ Feature: Application Intake scenarios without background
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Directed Announcement" is in "Qualified" status
     Then I softly can see top right button "Create Application" in page detail
+    When I login to "Grants Portal" app as "SPI2" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Directed Announcement" in "---applicationReview:-:reviewsTableId---" panel
+    Then I softly cannot see "Automation Directed Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
 
-  @73822 @73823 @formulaPublishedAnnouncementUnderOppurtunitiesTab @deepika
+  @73822 @73823 @75503 @75504 @formulaPublishedAnnouncementUnderOppurtunitiesTab @deepika
   Scenario: Validate whether SPI user is able to view the Formula Announcement under Oppurtunities Tab once it is published |Validate whether the SPI user can qualify and create the Application from published Formula Announcement
+    Validate all the invited applicants can view the published announcement under Oppurtunities when selected announcement of type Formula| Validate other than invited applications, other users cannot view the Published announcement under oppurtunities when selected announcement of type Formula
     Given I delete the record "Automation Formula Announcement" from the object "PreApplication"
     Given I delete the record "Automation Formula Announcement" from the object "Application"
     And I delete the record "Automation Formula Announcement" from the object "Qualified Announcement"
@@ -1232,6 +1249,12 @@ Feature: Application Intake scenarios without background
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Applicant Organization              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
+    When I click "Add" after selection of "Automation Permanent Organization for Risk Assessment" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    When I close "Add Organizations" modal by clicking the top right x button
+    When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
+      | Applicant Organization   | Allocated Amount |
+      | Bayside Community Center | 1000             |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
@@ -1272,4 +1295,59 @@ Feature: Application Intake scenarios without background
     When I click on "View" icon for "Automation Formula Announcement" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Formula Announcement" is in "Qualified" status
+    Then I softly can see top right button "Create Application" in page detail
+    When I login to "Grants Portal" app as "SA" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Formula Announcement" in "---applicationReview:-:reviewsTableId---" panel
+    Then I softly see "Automation Formula Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I click on "View" icon for "Automation Formula Announcement" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    When I click on "Qualify" in the page details
+    Then I softly see that "Automation Formula Announcement" is in "Qualified" status
+    Then I softly can see top right button "Create Application" in page detail
+    When I login to "Grants Portal" app as "SPI2" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Formula Announcement" in "---applicationReview:-:reviewsTableId---" panel
+    Then I softly cannot see "Automation Formula Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+
+  @75496 @qualifySuccessMessage @deepika @bugged-75495
+  Scenario:  Validate user will be able to view the success message for qualification.
+    Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
+    And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
+    When I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    When I click on "Qualify" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Application is succesully qualified |
+
+  @75501 @75502 @otherOrgUserCanAlsoQualifyAndCreateApplication @deepika
+  Scenario: Validate Opportunities created from 'Competitive Announcements' are available for all External users under Oppurtunities
+  Validate Opportunities created from 'Competitive Announcements' are available for all external users and can qualify and create the Applications
+    Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
+    And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
+    When I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SA" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
+    And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
+    Then I softly see "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    When I click on "Qualify" in the page details
+    Then I softly see that "Automation Announcement for Application Review" is in "Qualified" status
+    Then I softly can see top right button "Create Application" in page detail
+    When I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI2" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panelto
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
+    And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    When I click on "Qualify" in the page details
+    Then I softly see that "Automation Announcement for Application Review" is in "Qualified" status
     Then I softly can see top right button "Create Application" in page detail
