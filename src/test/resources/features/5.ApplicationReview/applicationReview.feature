@@ -126,7 +126,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
 
-  @51062 @smeReviewCompleteReviewForm
+  @51062 @75229 @smeReviewCompleteReviewForm
   Scenario Outline: Complete Review form as Various reviewers in SME Review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -232,7 +232,16 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    Then I see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
+    Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
+    And I navigate to "Announcement" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "<Announcement Name>" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
+    Then I softly can see top right button "Previous Review Step" in page detail
+    Then I softly can see top right button "Back to Announcement" in page detail
+    Then I softly can see top right button "Next Review Step" in page detail
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
@@ -1919,7 +1928,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
 
-  @65079 @73778 @VerifyAwardOwnerCanInitiateReviewProcess @keerti
+  @65079 @73778 @75228 @VerifyAwardOwnerCanInitiateReviewProcess @keerti
    Scenario Outline: Verify Award owner can Initiate the Review Process.
     | To Verify that under related log tab , corresponding data is display about related submitted applications for announcement
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -1935,6 +1944,9 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     Then I softly see value "Review Initiated" for title "Status" inside table "---applicationReview:-:relatedFOApplicationsTableId---"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Steps"
+    When I download the file
+    Then I see "Review Steps" on page "1" of "govgrants" pdf file
     Examples:
       | Announcement Name                              |
       | Automation Announcement for Application Review |
@@ -2110,3 +2122,64 @@ Feature: Validate all scenarios in the Application Review
     Examples:
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
+
+  @75230 @VerifyDownloadPDFforApplicaiton @aashish
+  Scenario Outline: To verify system allow to download PDF for Application section in Related log tab of announcement.
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "<Announcement Name>" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    And I select "Download as PDF" from parallel lines dropdown of "Applications"
+    When I download the file
+    Then I see "Applications" on page "1" of "govgrants" pdf file
+    Examples:
+      | Announcement Name                              |
+      | Automation Announcement for Application Review |
+
+  @75449 @75451 @75450 @75448 @75454 @VerifyAbleToViewApplication @aashish
+  Scenario Outline: To verify user is able to view Applications in Applications section in Related log tab of announcement
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "<Announcement Name>" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    And I perform quick search for "Automation Application" in "---applicationReview:-:relatedFOApplicationsTableId---" panel
+    Then I softly see value "Automation Application" for title "Project Title" inside table "---applicationReview:-:relatedFOApplicationsTableId---"
+    When I click on advance filter "#advfRelatedFOApplications" of table id "---applicationReview:-:relatedFOApplicationsTableId---"
+    When I enter advance filter values inside id "advfRelatedFOApplications"
+      | Project Title | Contains | InvalidValue |
+    Then I softly see "No Records Found" inside flex table with id "---applicationReview:-:relatedFOApplicationsTableId---"
+    And I refresh the page
+    When I click on advance filter "#advfRelatedFOApplications" of table id "---applicationReview:-:relatedFOApplicationsTableId---"
+    When I enter advance filter values inside id "advfRelatedFOApplications"
+      | Project Title | Contains | Automation Application |
+    Then I softly see value "Automation Application" for title "Project Title" inside table "---applicationReview:-:relatedFOApplicationsTableId---"
+    When I click on "View" icon for "Automation Application" inside flex table with id "---applicationReview:-:relatedFOApplicationsTableId---" with wait for record
+    Then I softly see field "Application" as "Automation Application"
+    Then I softly can see "Overview" sub tab at view detail page
+    Then I softly can see "Budget" sub tab at view detail page
+    Then I softly can see "Monitoring" sub tab at view detail page
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "<Announcement Name>" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    And I select "Download as PDF" from parallel lines dropdown of "Funding Decision Memo (FDM)"
+    When I download the file
+    Then I see "Funding Decision Memo (FDM)" on page "1" of "govgrants" pdf file
+    Examples:
+      | Announcement Name                              |
+      | Automation Announcement for Application Review |
