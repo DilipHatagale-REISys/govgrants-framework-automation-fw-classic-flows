@@ -289,11 +289,12 @@ Feature: Validate all scenarios in the Application Intake
     When I click "Add" after selection of "Automation SPA" in the table "---applicationIntake:-:associateNewContactsTableId---"
     Then I see "Automation SPA" has been added in "---applicationReview:-:flexGridAppContactTableId---" flex table
 
-  @73944 @71409 @73947 @73950 @73949 @73948 @maxAppValidationError @deepika
+  @73944 @73945 @71409 @73947 @73950 @73949 @73948 @maxAppValidationError @deepika
   Scenario: Validate whether User  will be able to view the following error message "Reached the Maximum number of Applications" when the limit has been reached.
-    | To verify ,search functionality for Opportunities Converted to Application - All section in opportunities tab
-    | To verify ,view functionality for Opportunities Converted to Application - All section in opportunities tab
-    | To verify, filter functionality for Opportunities converted to application:All table for Opportunity
+  To verify Converted Opportunities should reflect under Opportunities "Converted to Application - Open" list view to External user
+  | To verify ,search functionality for Opportunities Converted to Application - All section in opportunities tab
+  | To verify ,view functionality for Opportunities Converted to Application - All section in opportunities tab
+  | To verify, filter functionality for Opportunities converted to application:All table for Opportunity
     Given I save the field containing "EGMS ID" as "APPId"
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
@@ -328,6 +329,8 @@ Feature: Validate all scenarios in the Application Intake
     When I navigate to "Opportunities" tab
     When I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Opportunities Converted to Application - All"
+    Then I softly see value "Automation Announcement for Application Intake" for title "Title" inside table "cae"
+    And I click toggle button to select "Opportunities Converted to Application - Open"
     Then I softly see value "Automation Announcement for Application Intake" for title "Title" inside table "cae"
     When I perform quick search for "Automation Announcement for Application Intake" in "cae" panel
     And I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "cae"
