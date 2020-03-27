@@ -29,14 +29,20 @@ Feature: Pre-Application scenarios without background
     And I navigate to "Qualified" content inside "Opportunities" subheader on left panel
     Then I softly see value "Automation Announcement for Pre-Application" for title "Title" inside table "---applicationIntake:-:qualifiedTableId---"
 
-  @70253 @72575 @spaUserCannotSubmitanPre-application
+  @70253 @72575 @75595 @spaUserCannotSubmitanPre-application
   Scenario: Validate the SPA users should not be able to Submit the Pre Application | Validate whether SPI user can continue to proceed without providing application title while creating a pre-application
+  Validate whether users from other organizations will be able to create Pre-Applications
+    Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
+    When I delete the record "Automation Announcement for Application" from the object "PreApplication"
+    And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
+    And I delete the record "Automation Announcement for Application" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
     And I login as "SPA" user
     When I navigate to "Opportunities" tab
-    And I navigate to "Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:qualifiedTableId---" panel
-    When I click on "View" icon for "Automation Announcement for Pre-Application" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
+    When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
     When I clear the value from field "Title__c"
     When I click modal button "Save and Continue"
@@ -54,6 +60,14 @@ Feature: Pre-Application scenarios without background
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
     Then I cannot see top right button "Submit Application" in page detail
+    Given I am on "SUBPORTAL" portal
+    And I login as "SA" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Pre-App Announcement" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "Automation Pre-App Announcement" inside table
+    When I click on "Qualify" in the page details
+    Then I softly can see top right button "Create Pre-Application" in page detail
 
   @70660 @70661 @70662 @72623 @preApplRequiredIsYesAnnouncementCreation @deepika @smoke
   Scenario: Validate whether the User is able to create a Pre Application only when the Opportunity setting for Pre Applciation Required (Yes) |

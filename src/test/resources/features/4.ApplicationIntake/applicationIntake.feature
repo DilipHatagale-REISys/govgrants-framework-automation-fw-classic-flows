@@ -155,7 +155,7 @@ Feature: Validate all scenarios in the Application Intake
       | Budget Tab - At least one focus area must be in place at all times. |
     When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
     When I click "Add" after selection of "Automation Permanent Focus Area1" in the table "---applicationIntake:-:focusAreaFlexTableId---"
-    Then I softly see "Automation Permanent Focus Area1" has been added in "---applicationIntake:-:focusAreaTableId---" flex table
+    Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:focusAreaFlexTableId---"
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
