@@ -1928,7 +1928,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                              | Application Name       |
       | Automation Announcement for Application Review | Automation Application |
 
-  @65079 @73778 @75228 @VerifyAwardOwnerCanInitiateReviewProcess @keerti
+  @65079 @73778 @73791 @@75228 @VerifyAwardOwnerCanInitiateReviewProcess @keerti
    Scenario Outline: Verify Award owner can Initiate the Review Process.
     | To Verify that under related log tab , corresponding data is display about related submitted applications for announcement
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -1944,6 +1944,9 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     Then I softly see value "Review Initiated" for title "Status" inside table "---applicationReview:-:relatedFOApplicationsTableId---"
+    Then I softly see value "Completed" for title "Status" against the value "Pre-Screen Review" inside table "---applicationReview:-:reviewStepsTableId---"
+    Then I softly see value "Completed" for title "Status" against the value "SME Review" inside table "---applicationReview:-:reviewStepsTableId---"
+    Then I softly see value "Completed" for title "Status" against the value "Management Review" inside table "---applicationReview:-:reviewStepsTableId---"
     And I select "Download as PDF" from parallel lines dropdown of "Review Steps"
     When I download the file
     Then I see "Review Steps" on page "1" of "govgrants" pdf file

@@ -34,7 +34,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I see the following messages in the page details :
       | If you select Subrecipient Match Required setting as Yes then you need to set value for Required Match % |
 
-  @70553 @70604 @validationForNoFocusArea @smoke @aashish
+  @70553 @70604 @75457 @validationForNoFocusArea @smoke @aashish
   Scenario: To Verify that If user selected focus area as NO then at announcement level then no other focus area are allowed to add while creating the Announcement
   | To Verify that If user selected objective as NO then at announcement level then no other objective are allowed to add while creating the Announcement
     Given I delete the record "Automation Formula Announcement" from the object "Announcement"
@@ -49,6 +49,16 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I navigate to "Setup" sub tab
     Then I softly do not see "Related Focus Areas" page block displayed
     Then I softly do not see "Objectives" page block displayed
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Published Competitive Announcements"
+    And I perform quick search for "Automation Announcement for FDM" in "---announcement:-:announcemetTableId---" panel
+    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---announcement:-:announcemetTableId---"
+    And I navigate to "Related Log" sub tab
+    And I click on "View" icon for "Funding Decision Memo" inside flex table with id "---announcement:-:announcemetTableId---"
+    Then I softly can see "Funding Decision Memo" sub tab at view detail page
+    Then I softly can see "Responsibilities" sub tab at view detail page
+    Then I softly can see "History" sub tab at view detail page
 
   @70999 @73627 @73632 @70997 @70980 @71010 @71011 @71012 @70998 @71022 @71023 @71037 @71027 @validationForErrorMessageOfPreApplication @aashish
   Scenario: To validate system generated error message when Pre Application Due Date is greater than Application Due Date while submitting information
