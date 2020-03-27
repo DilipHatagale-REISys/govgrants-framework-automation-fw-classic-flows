@@ -663,6 +663,28 @@ Feature: Pre-Application scenarios without background
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Requested Amount should be greater than or equal to Subaward Floor Amount. |
 
+  @73866 @73870 @qualifyAnnSPAUser @jitendra
+  Scenario: To verify user allow to view Qualified opportunity  in opportunity tab
+    Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
+    When I delete the record "Automation Announcement for Application" from the object "PreApplication"
+    And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
+    And I delete the record "Automation Announcement for Application" from the object "Qualified Announcement"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Pre-Application" in "---preApplication:-:notYetQualifiedTable---" panel
+    When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
+    When I click on "Qualify" in the page details
+    And I get the "EGMS ID"
+    And I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
+    When I navigate to "Opportunities" tab
+    And I navigate to "Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Pre-Application" in "---preApplication:-:qualifiedOpprtunitesTableId---" panel
+    Then I softly see value "Automation Announcement for Pre-Application" for title "Opportunity Name" inside table "---preApplication:-:qualifiedOpprtunitesTableId---"
+    When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
+    Then I softly see field "Status" as "Qualified"
+
   @34045 @editCreatedApplication @deepika
   Scenario Outline: Verify SPI & SPA user (Record owner of Application) is able to edit created Application
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
