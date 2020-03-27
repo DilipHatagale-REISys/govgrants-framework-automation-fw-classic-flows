@@ -65,10 +65,15 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @53154 @70664 @addBudgetDetailsToPreApplication @smoke
+  @75595 @75596 @53154 @70664 @addBudgetDetailsToPreApplication @smoke
   Scenario: Addition of budget in the budget grid to an pre-application |
   Validate User will be able to view the opportunity focus area in the application budget grid when the focus area settings as Yes while announcement creation
+    Validate the SPI Users will be able to add new focus areas while creating an pre-application | Validate when the oppurtunity has only one focus area then user will not be able see any other focus areas when clicked on Add focus areas
     When I navigate to "Budget" sub tab
+    Then I softly can see top right button "Add Focus Area" in flex table with id "FocusAreaPreApp"
+    When I click on top right button "Add Focus Area" in flex table with id "FocusAreaPreApp"
+    When I click "Add" after selection of "Automation Permanent Focus Area1" in the table "AddPreAppProjects"
+    Then I softly see "No Records Found" inside flex table with id "AddPreAppProjects"
     And I expand nested table containing column value "BP01"
     Then I softly see field "Focus Area : Automation Permanent Focus Area" inside page block
     When I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
@@ -100,11 +105,11 @@ Feature: Validate all scenarios in the Pre-Application
     Then I softly see status in Progress-bar is "Submitted" and is "green"
     Then I softly cannot see top right button "Edit" in page detail
 
-  @34150 @34023 @53162 @70247 @70248 @70249 @70250 @70251 @70524 @preApplicationToApplication @deepika
+  @34150 @34023 @53162 @70247 @70248 @70249 @70250 @70251 @70524 @75584 @preApplicationToApplication @deepika
   Scenario Outline: Validate Grantor accept the submitted pre-application and converted it to application | Validate the subrecipient users able to create application from the approved Pre Application
   Validate Announcement owner will be able to view the Accept and Reject button |Validate the subrecipient users able to create application from the approved Pre Application
   Validate Announcement Owner will be able to view the pending task under announcement tab after every pre application submission happens. |Validate pre-application is converted to Application |Verify whether PM, FO,EXE internal user is able to view Accepted Pre Application
-  Validate SPI user will not able to create application before Pre-Application is Accepted by Grantor
+  Validate SPI user will not able to create application before Pre-Application is Accepted by Grantor | Validate the SPI user can view the Accepted pre-applications under Pre-Applications - Submitted table list
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -138,6 +143,7 @@ Feature: Validate all scenarios in the Pre-Application
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - Submitted"
     And I perform quick search for "<Announcement Name>" in "RecipientPreApplications" panel
+    Then I softly see value "<Announcement Name>" for title "Pre-Application Title" against the value "Accepted" inside table "RecipientPreApplications"
     When I click on "View" icon for "<Announcement Name>" inside table
     Then I softly can see top right button "Create Application" in page detail
     When I click on "Create Application" in the page details
@@ -215,9 +221,9 @@ Feature: Validate all scenarios in the Pre-Application
     When I download the file
     Then I see "Submitted to Grantor" on page "1" of "govgrants" pdf file
 
-  @34155 @34025 @preApplicationRejectionByGrantor @deepika
+  @34155 @34025 @75585 @preApplicationRejectionByGrantor @deepika
   Scenario Outline: Validate when Grantor Rejects the submitted pre-application then the status of Pre-Application status will be in rejected status
-  Validate other than Record Owner PM, FO user will not able to Reject submitted Pre-Application
+  Validate other than Record Owner PM, FO user will not able to Reject submitted Pre-Application | Validate the SPI user can view the rejected pre-applications under Pre-Applications - Submitted table list
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -247,6 +253,7 @@ Feature: Validate all scenarios in the Pre-Application
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - Submitted"
     And I perform quick search for "<Announcement Name>" in "RecipientPreApplications" panel
+    Then I softly see value "<Announcement Name>" for title "Pre-Application Title" against the value "Rejected" inside table "RecipientPreApplications"
     When I click on "View" icon for "<Announcement Name>" inside table
     Then I softly cannot see top right button "Create Application" in page detail
     Examples:
