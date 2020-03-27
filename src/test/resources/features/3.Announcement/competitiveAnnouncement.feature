@@ -15,6 +15,22 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
+    @73959 @pdfDownload @jitendra
+    Scenario: To verify system allow to download pdf for contact section in overview tab of announcement by PM user
+      And I navigate to "Overview" sub tab
+      When I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+      When I click "Add" after selection of "Automation PM" in the table "---announcement:-:annoucementContactTableId---"
+      And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+      And I navigate to "Announcements" tab
+      When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+      And I click toggle button to select "Draft Competitive Announcements"
+      And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+      And I navigate to "Overview" sub tab
+      And I select "Download as PDF" from parallel lines dropdown of "Contacts"
+      And I download the file
+      Then I verify that "pdf" file is downloaded
+      And I see "Contacts" on page "1" of "govgrants" pdf file
+
   @70551 @70552 @73405 @73389 @73406 @73387 @70800 @70885 @71595 @72646 @72641 @73537 @userCanViewAddAndDeleteFocusArea @aashish
   Scenario: To Verify that user is able to remove associated focus areas While creating the Announcement | To verify PM can remove non relevant Budget categories from specific Budget Type in Announcement based on the need.
     When I navigate to "Announcements" tab
