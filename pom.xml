@@ -100,6 +100,7 @@
 					<generatedRunnerDirectory>${generated.runner.directory}</generatedRunnerDirectory>
 					<parallelizationMode>scenarios</parallelizationMode>
 					<includeScenarioTags>(${tags}) and not @wip</includeScenarioTags>
+                    <numberOfTestRuns>${numberOfTimesRunTag}</numberOfTestRuns>
 					<logLevel>minimal</logLevel>
 				</configuration>
 			</plugin>
