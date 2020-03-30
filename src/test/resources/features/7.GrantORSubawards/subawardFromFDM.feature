@@ -2035,4 +2035,4 @@ Feature: Validate all scenarios in the award created from FDM
     Then I see status in Progress-bar is "Activated" and is "green"
     Examples:
       | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM1 | Automation Announcement for FDM1 |
+      | Automation Announcement for FDM | Automation Announcement for FDM |
