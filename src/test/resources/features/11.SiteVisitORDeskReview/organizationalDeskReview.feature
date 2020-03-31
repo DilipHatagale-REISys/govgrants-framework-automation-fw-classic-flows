@@ -723,6 +723,7 @@ Feature: Validate all scenarios in Organizational Desk Review
 
   @55867 @55873 @54460 @NotifyTaskRecipientCannotCreateAndSeeReportAndOutcomesWhenInNotifiedStatusOrgDR @deepika
   Scenario: Validate whether the respective POC from the applicant organization will receive a pending task D will not be able to create / edit the Outcomes and cannot view the report or outcomes while in the Notified status.
+  Validate the external user will receive an email notification when the org desk review is in notified status
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
@@ -742,6 +743,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "DeskReviewId"
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
@@ -750,6 +752,9 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:homePhasePendingTasks---"
     Then I softly cannot see "Reports and Outcomes" sub tab at view detail page
     Then I softly see that "Automation Desk Review Org level" is in "Notified" status
+    When I pause execution for "120" seconds
+    Then I softly can see mail notification for "EXTERNAL" user with following subject:
+      | Desk Review for {SavedValue:DeskReviewId} has been scheduled |
 
   @56001 @deskReviewWithoutFormFillingOrgLevel @deepika
   Scenario: User will not be able to submit the Desk Review for approval without completed forms

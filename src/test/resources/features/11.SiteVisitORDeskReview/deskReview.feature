@@ -40,12 +40,13 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see field "Created Date" is not editable
 
   @51014 @51015 @66147 @notifySubrecipientPendingTaskDeskReview @smoke
-  Scenario: Notify Subrecipient about the respective POC from the applicant organization will receive a pending task about the Desk Review
+  Scenario: Notify Subrecipient about the respective POC from the applicant organization will receive a pending task about the Desk Review | |Validate the external user will receive an email notification when the desk review is in notified status
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
       | Program Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver  | Automation FO  | Automation Test Description |
+    And I save the field labeled "EGMS ID" as "DeskReviewId"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
@@ -53,6 +54,9 @@ Feature: Validate all scenarios in Desk Review
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I click on "Notify" in the page details
     Then I softly see that "Automation Desk Review" is in "Notified" status
+    When I pause execution for "120" seconds
+    Then I softly can see mail notification for "EXTERNAL" user with following subject:
+      | Desk Review for {SavedValue:DeskReviewId} has been scheduled |
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
@@ -939,6 +943,7 @@ Feature: Validate all scenarios in Desk Review
 
   @69411 @61057 @61055 @55370 @66139 @66274 @snapshotAfterSubmitForApprovalDeskReviewIsAcceptedAndClosed @Keerti @skipOnJenkins
   Scenario: Validate whether record Owner is able to view the Accept and Close Button and User view the Snapshot after Desk Review is Submitted for Approval status also after Accepted and Closed |Subrecipient can view Closed Desk Review
+    Validate whether external user will receive an email notification when desk review is accepted and closed.
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -1034,6 +1039,7 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    And I save the field labeled "EGMS ID" as "DeskReviewId"
     Then I softly can see top right button "Accept and Close" in page detail
     And I click on "Accept And Close" in the page details
     And I click on "Menu" in the page details
@@ -1048,6 +1054,9 @@ Feature: Validate all scenarios in Desk Review
     And I perform quick search for "Automation Desk Review" in "---deskreview:-:monitoringTabDeskReviewTableId---" panel
     When I click on "View" icon for "Automation Desk Review" inside flex table with id "---deskreview:-:monitoringTabDeskReviewTableId---"
     Then I softly see status in Progress-bar is "Closed" and is "Green"
+    When I pause execution for "120" seconds
+    Then I softly can see mail notification for "EXTERNAL" user with following subject:
+      | Desk Review Closed |
 
   @67834 @validateDownloadDeskReviewInCSV @deepika @skipOnJenkins
   Scenario: Validate Internal User can Download the Desk Review associated in CSV format

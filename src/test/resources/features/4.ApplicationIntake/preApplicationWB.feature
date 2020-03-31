@@ -495,7 +495,8 @@ Feature: Pre-Application scenarios without background
 
   @72576 @72344 @preApplicationSubmittedToGrantorPendingTask @productBusinessFlowSanity
   Scenario: Validate once the Grantor accepts the submitted pre-application then the changes status to Accepted | Validate whether user can change the pre-application due date while creating the pre-application
-  Validate whether pre-application title field is editable while creating the pre-application
+  Validate whether pre-application title field is editable while creating the pre-application | Validate whether the Announcement owner receives an email notification when the pre-application is submitted to grantor |
+  Validate whether the external user recieves an email notification when the pre-application is accepted by the grantor
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"
     And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
@@ -513,6 +514,7 @@ Feature: Pre-Application scenarios without background
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnId"
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -525,13 +527,19 @@ Feature: Pre-Application scenarios without background
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
+    And I pause execution for "200" seconds
+    Then I softly can see mail notification for "INTERNAL" user with following subject:
+      | Pre-Application Submitted for Announcement {SavedValue:AnnId} by SAN DIEGO ELECTRICAL TRAINING TRUST |
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---preApplication:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside table
     When I click on "Accept" in the page details
-    Then I see status in Progress-bar is "Accepted" and is "Green"
+    Then I softly see status in Progress-bar is "Accepted" and is "Green"
+    And I pause execution for "200" seconds
+    Then I softly can see mail notification for "EXTERNAL" user with following subject:
+      | Pre-Application Automation Announcement for Application for Announcement {SavedValue:AnnId} has been Accepted |
 
   @72523 @SPIUserCannotdeleteTheCreatedPreApplication
   Scenario Outline: Validate whether SPI/SPA user has the ability to delete the created pre-Application
