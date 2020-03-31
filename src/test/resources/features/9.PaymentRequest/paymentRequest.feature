@@ -815,7 +815,7 @@ Feature: Validate all scenarios in Payment Request
     And I refresh the page
     Then I see "Receipt" has been added in "Attachment" flex table
 
-  @54412 @uploadAttachmentFromWorkspaceAdvancePR @mahadev
+  @54412 @uploadAttachmentFromWorkspaceAdvancePR @mahadev @bugged-66960
   Scenario: verify that user can uploaded document from workspace for Advance Payment Request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -827,7 +827,7 @@ Feature: Validate all scenarios in Payment Request
     And I upload attachment "InternalOrganization_Field_Values.xlsx" from workspace
     Then I see "InternalOrganization_Field_Values.xlsx" has been added in "Attachment" flex table
 
-  @54416 @uploadAttachmentFromWorkspaceReimbursementPR @mahadev
+  @54416 @uploadAttachmentFromWorkspaceReimbursementPR @mahadev @bugged-66960
   Scenario: verify that user can upload document from workspace for Reimbursement Payment Request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1841,6 +1841,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
