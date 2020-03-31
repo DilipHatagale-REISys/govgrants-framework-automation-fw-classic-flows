@@ -2607,7 +2607,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click toggle button to select "Draft Competitive Announcements"
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "Record Id" inside table
-    Then I softly can see top right button "Publish" in page detail
     And I click on "Publish" in the page details
     Then I softly can see top right button "Extend Dates" in page detail
 
