@@ -100,8 +100,8 @@ Feature: Validate all scenarios in Organizational Site Visit
       | Program Approver Name |
       | Automation PM         |
 
-  @54454 @54456 @conductAndnotifySubrecipientSiteVisitOrgLevel @smoke @deepika
-  Scenario: Conduct Site Visit and Notify Subrecipient about the Site Visit Org Level | |Validate the external user will receive an email notification when the org level site visit is in notified status
+  @54454 @54456 @75862 @conductAndnotifySubrecipientSiteVisitOrgLevel @smoke @deepika
+  Scenario: Conduct Site Visit and Notify Subrecipient about the Site Visit Org Level | Validate the external user will receive an email notification when the org level site visit is in notified status
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
     And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"

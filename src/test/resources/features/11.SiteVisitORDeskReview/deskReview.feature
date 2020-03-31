@@ -39,8 +39,8 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     Then I softly see field "Created Date" is not editable
 
-  @51014 @51015 @66147 @notifySubrecipientPendingTaskDeskReview @smoke
-  Scenario: Notify Subrecipient about the respective POC from the applicant organization will receive a pending task about the Desk Review | |Validate the external user will receive an email notification when the desk review is in notified status
+  @51014 @51015 @66147 @75859@notifySubrecipientPendingTaskDeskReview @smoke
+  Scenario: Notify Subrecipient about the respective POC from the applicant organization will receive a pending task about the Desk Review |Validate the external user will receive an email notification when the desk review is in notified status
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -943,7 +943,7 @@ Feature: Validate all scenarios in Desk Review
 
   @69411 @61057 @61055 @55370 @66139 @66274 @snapshotAfterSubmitForApprovalDeskReviewIsAcceptedAndClosed @Keerti @skipOnJenkins
   Scenario: Validate whether record Owner is able to view the Accept and Close Button and User view the Snapshot after Desk Review is Submitted for Approval status also after Accepted and Closed |Subrecipient can view Closed Desk Review
-    Validate whether external user will receive an email notification when desk review is accepted and closed.
+  Validate whether external user will receive an email notification when desk review is accepted and closed.
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |

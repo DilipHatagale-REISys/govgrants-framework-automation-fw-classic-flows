@@ -493,7 +493,7 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "Automation Announcement for Pre-Application" in "---preApplication:-:notYetQualifiedTable---" panel
     Then I softly do not see "Automation Announcement for Pre-Application" has been added in "---preApplication:-:notYetQualifiedTable---" flex table
 
-  @72576 @72344 @preApplicationSubmittedToGrantorPendingTask @productBusinessFlowSanity
+  @72576 @75866 @72344 @75865 @preApplicationSubmittedToGrantorPendingTask @productBusinessFlowSanity
   Scenario: Validate once the Grantor accepts the submitted pre-application then the changes status to Accepted | Validate whether user can change the pre-application due date while creating the pre-application
   Validate whether pre-application title field is editable while creating the pre-application | Validate whether the Announcement owner receives an email notification when the pre-application is submitted to grantor |
   Validate whether the external user recieves an email notification when the pre-application is accepted by the grantor

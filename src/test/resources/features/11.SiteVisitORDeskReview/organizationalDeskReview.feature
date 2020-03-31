@@ -721,7 +721,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Conduct" in the page details
     Then I softly see status in Progress-bar is "In Progress" and is "green"
 
-  @55867 @55873 @54460 @NotifyTaskRecipientCannotCreateAndSeeReportAndOutcomesWhenInNotifiedStatusOrgDR @deepika
+  @55867 @55873 @54460 @75861 @NotifyTaskRecipientCannotCreateAndSeeReportAndOutcomesWhenInNotifiedStatusOrgDR @deepika
   Scenario: Validate whether the respective POC from the applicant organization will receive a pending task D will not be able to create / edit the Outcomes and cannot view the report or outcomes while in the Notified status.
   Validate the external user will receive an email notification when the org desk review is in notified status
     Given I navigate to "Related Log" sub tab

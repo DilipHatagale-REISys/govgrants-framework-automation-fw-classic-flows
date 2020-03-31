@@ -5,9 +5,9 @@ Feature: Validate all scenarios in the Risk Assessment
     Given I delete the record "Automation Award for Risk Assessment" from the object "Award"
     Given I delete the record "Automation Award for Risk Assessment" from the object "Grant"
 
-  @58164 @58165 @58166 @65552 @creationOfRiskAssessmentddingApproversSubmitForApproval @deepika @smoke
+  @58164 @58165 @58166 @75867 @65552 @creationOfRiskAssessmentddingApproversSubmitForApproval @deepika @smoke
   Scenario: Validate the Creation of Risk Assessment from Draft Award and whether user is able to Add Approvers and submit Risk Assessment for Approval| Also New Button on peer review table is not availble once submit for approval
-   Validate when the Risk Assessment is submit for approval, the approver will receive an email notification that the PM/Fo has been assigned as approval
+   Validate when the Risk Assessment is submit for approval, the approver will receive an email notification that the PM has been assigned as approval
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
