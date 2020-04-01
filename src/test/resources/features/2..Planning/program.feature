@@ -101,23 +101,62 @@ Feature: Validate all scenarios for program
       | Title                           |
       | Automation Permanent Focus Area |
 
-  @34737 @programObjectiveAssociation
+  @34737 @75894 @75888 @75891 @programObjectiveAssociation
   Scenario Outline: Validate the Association of Objective to the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
-    Then I see that "<Objective>" has been added in flextable with Id "---program:-:objectivesTableId---"
+    Then I softly see that "<Objective>" has been added in flextable with Id "---program:-:objectivesTableId---"
+    And I expand nested table containing column value "SME Review"
+    And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Form Name         | Form Weight (%) |
+      | Fiscal Review     | 25              |
+      | Program Review    | 25              |
+      | Compliance Review | 50              |
+    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Delete" icon for "Schedule" inside flex table with id "---program:-:programReviewPanel---"
+    And I click on "Delete" icon for "Environment" inside flex table with id "---program:-:programReviewPanel---"
+    And I click on "Delete" icon for "Permits" inside flex table with id "---program:-:programReviewPanel---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details :
+      | Setup Tab - SME Review - Compliance Review: At least one section must be added to this form. |
+    And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
+    When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
+      | Reviewer |
+      | David FO |
+    When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
+      | Reviewer |
+      | David FO |
+    And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details :
+      | Saved successfully. |
+    And I select "Download as PDF" from parallel lines dropdown of "Reviewers"
+    And I download the file
+    And I softly see "Reviewers" on page "1" of "govgrants" pdf file
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
 
-  @34738 @programKPIAssociation
+  @34738 @75895 @75896 @75909 @programKPIAssociation
   Scenario Outline: Validate the association of KPI
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "<EGMS Id>" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "<EGMS Id>" in the table "---program:-:associateKPITableId---"
-    Then I see that "<EGMS Id>" has been added in flextable with Id "---program:-:kpiTableId---"
+    Then I softly see that "<EGMS Id>" has been added in flextable with Id "---program:-:kpiTableId---"
+    And I expand nested table containing column value "Management Review"
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:programReviewPanel---"
+    Then I softly see value "Strategic Alignment" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    Then I softly see value "Return on Investment (ROI)" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanel---" by clicking "New" :
+      | Section Order | Section Header    |
+      | 3             | Automation Header |
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    Then I softly see the following messages in the page details :
+      | Saved successfully. |
+    And I perform quick search for "Return on Investment (ROI)" in "---program:-:programReviewPanel---" panel
+    Then I softly see value "Return on Investment (ROI)" for title "Section Header" inside table "---program:-:programReviewPanel---"
     Examples:
       | EGMS Id                                 |
       | Automation Permanent KPI for Regression |
