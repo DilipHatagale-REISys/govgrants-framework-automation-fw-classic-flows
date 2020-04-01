@@ -39,8 +39,9 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     Then I softly see field "Created Date" is not editable
 
-  @51014 @51015 @66147 @75859@notifySubrecipientPendingTaskDeskReview @smoke
-  Scenario: Notify Subrecipient about the respective POC from the applicant organization will receive a pending task about the Desk Review |Validate the external user will receive an email notification when the desk review is in notified status
+  @51014 @51015 @66147 @75859 @notifySubrecipientPendingTaskDeskReview @smoke
+  Scenario: Notify Subrecipient about the respective POC from the applicant organization will receive a pending task about the Desk Review
+  Validate the external user will receive an email notification when the desk review is in notified status
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |

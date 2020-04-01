@@ -91,7 +91,7 @@ Feature: Application Intake scenarios without background
     Given I click on "Back" in the page details
     Then I cannot see top right button "Submit Application" in page detail
 
-  @70464 @userCannotQualifyApplicationSecondTime @wip @deepika
+  @70464 @userCannotQualifyAppli@[0-9]cationSecondTime @wip @deepika
   Scenario: Validate whether an user should not able to qualify the announcement again for once it is Qualified
     Given I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
