@@ -65,12 +65,38 @@ Feature: Validate all scenarios for program
       | Program Approver   | Automation PM  | Automation Test Description |
     Then I see that "Automation EXE" has been added in flextable with Id "---program:-:approverTableId---"
 
-  @34616 @programFocusAreaAssociation
+  @34616 @75830 @75831 @75832 @75840 @75841 @programFocusAreaAssociation
   Scenario Outline: Validate the association of Focus Area for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I click "Add" after selection of "<Title>" in the table "---program:-:associateFocusAreaTableId---"
-    Then I see that "<Title>" has been added in flextable with Id "---program:-:focusAreaTableId---"
+    Then I softly see that "<Title>" has been added in flextable with Id "---program:-:focusAreaTableId---"
+    And I expand nested table containing column value "SME Review"
+    And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Form Name         | Form Weight (%) |
+      | Fiscal Review     | 25              |
+      | Program Review    | 25              |
+      | Compliance Review | 50              |
+    And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see value "25%" for title "Form Weight (%)" against the value "Fiscal Review" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "25%" for title "Form Weight (%)" against the value "Program Review" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "50%" for title "Form Weight (%)" against the value "Compliance Review" inside table "---program:-:reviewStepTableId---"
+    And I click on "Delete" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details :
+      | Record deleted successfully. |
+    When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
+      | Reviewer |
+      | David FO |
+    And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see value "David FO" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "david.fo@yopmail.com" for title "Email" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "Department of Health" for title "Organization Name" inside table "---program:-:reviewStepTableId---"
+    And I click on "Delete" icon for "David FO" inside flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details :
+      | Record deleted successfully. |
+    And I select "Download as PDF" from parallel lines dropdown of "Review Forms"
+    And I download the file
+    And I softly see "Review Forms" on page "1" of "govgrants" pdf file
     Examples:
       | Title                           |
       | Automation Permanent Focus Area |

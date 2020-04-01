@@ -2176,7 +2176,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on modal button Submit Review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -2607,7 +2607,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click toggle button to select "Draft Competitive Announcements"
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "Record Id" inside table
-    Then I softly can see top right button "Publish" in page detail
     And I click on "Publish" in the page details
     Then I softly can see top right button "Extend Dates" in page detail
 
