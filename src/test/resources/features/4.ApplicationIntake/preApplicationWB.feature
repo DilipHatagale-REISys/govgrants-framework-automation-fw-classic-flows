@@ -874,3 +874,53 @@ Feature: Pre-Application scenarios without background
     When I click toggle button to select "Pre-Applications - All"
     And I perform quick search for "Automation Announcement for Pre-Application" in "---preApplication:-:recipientPreApplicationsTableId---" panel
     Then I softly see value "Submitted to Grantor" for title "Status" inside table "---preApplication:-:recipientPreApplicationsTableId---"
+
+  @75962 @75963 @75964 @preAppHistoryFieldGetUdated @deepika @skipOnJenkins
+  Scenario: Validate History Field is getting updated for PM user when Pre Application status is Submitted to Grantor.| Validate the History field is getting updated when internal user accepts the pre-application
+  Validate whether the Internal user is able to view the Snapshot after Pre-Application is Submitted to Grantor status
+    Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
+    When I delete the record "Automation Announcement for Application" from the object "PreApplication"
+    And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
+    And I delete the record "Automation Announcement for Application" from the object "Qualified Announcement"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Pre-Application" in "---preApplication:-:notYetQualifiedTable---" panel
+    When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
+    When I click on "Qualify" in the page details
+    Then I softly see field "Pre-Application Due Date" is not editable
+    And I click on "Create Pre-Application" in the page details
+    When I enter value "Automation Announcement for Application" into field "Title__c"
+    When I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnId"
+    Given I click on "Edit" in the page details
+    And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When  I navigate to "Overview" sub tab
+    When I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 5000   | 5000       | 50             | 100            |
+    When I navigate to "Attachments" sub tab
+    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---preApplication:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside table
+    When I navigate to "History" sub tab
+    Then I softly see value "Submitted to Grantor" for title "New Value" inside table "History"
+    When I click on "Accept" in the page details
+    Then I softly see value "Accepted" for title "New Value" inside table "History"
+    And I softly see value "Submitted to Grantor" for title "Old Value" inside table "History"
+    And I click on "Menu" in the page details
+    And I select "Take Snapshot" from dropdown
+    And I click on hyperlink containing value "Submission"
+    When I download the file
+    Then I see "Submitted to Grantor" on page "1" of "govgrants" pdf file
+

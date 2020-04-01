@@ -714,9 +714,9 @@ Feature: Application Intake scenarios without background
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "Green"
 
-  @72512 @72513 @matchPercentageIFsetAsYES @deepika
-  Scenario: Validate the Match Percentage validation during submit for approval when the Match required setting as Yes
-  Validate if user submits the application without one key personal contact details then the system should throw an error message
+  @72512 @72513 @75965 @75966 @matchPercentageIFsetAsYES @deepika @skipOnJenkins
+  Scenario: Validate the Match Percentage validation during submit for approval when the Match required setting as Yes | Validate if user submits the application without one key personal contact details then the system should throw an error message|
+  Validate History Field is getting updated for PM user when Application status is Submitted to Grantor | Validate whether the Internal user is able to view the Snapshot after Application is Submitted to Grantor status
     Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
     And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
@@ -764,6 +764,18 @@ Feature: Application Intake scenarios without background
       | Construction  | 1000   | 100        | 100            | 100            |
     When I click on "Submit Application" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
+    Given I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    When I click on "View" icon for "Automation Announcement for Application Intake" inside table
+    When I navigate to "History" sub tab
+    Then I softly see value "Submitted to Grantor" for title "New Value" inside table "History"
+    And I click on "Menu" in the page details
+    And I select "Take Snapshot" from dropdown
+    And I click on hyperlink containing value "Submission"
+    When I download the file
+    Then I see "Submitted to Grantor" on page "1" of "govgrants" pdf file
 
   @33799 @createdANDQualifiedApplication @deepika
   Scenario: Validate whether SPI & SPA users are able to view the qualified and created Statuses
@@ -1194,7 +1206,7 @@ Feature: Application Intake scenarios without background
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Automation Directed Announcement" in "---applicationReview:-:reviewsTableId---" panel
-    Then I softly cannot see "Automation Directed Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    Then I softly do not see "Automation Directed Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
 
   @73822 @73823 @75503 @75504 @formulaPublishedAnnouncementUnderOppurtunitiesTab @deepika
   Scenario: Validate whether SPI user is able to view the Formula Announcement under Oppurtunities Tab once it is published |Validate whether the SPI user can qualify and create the Application from published Formula Announcement

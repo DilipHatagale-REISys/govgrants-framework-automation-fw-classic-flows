@@ -19,9 +19,11 @@ Feature: Validate all scenarios in the Pre-Application
     And I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @53151 @72622 @preApplicationCreationProgramIncomeValidation @smoke
-  Scenario: Creating a Pre Application | Validate the user  will be able to view the the Program Income field on the overview tab when the value set as No.
+  @53151 @75961 @72622 @preApplicationCreationProgramIncomeValidation @smoke
+  Scenario: Validate the Creation of Pre Application | Validate the user  will be able to view the the Program Income field on the overview tab when the value set as No.
+   Validate the title entered while creating the pre-application reflects same under Oppurtunity Name
     Then I softly see status in Progress-bar is "Created" and is "Green"
+    Then I softly see field "Opportunity Name" as "Automation Announcement for Application"
     When I navigate to "Overview" sub tab
     And I navigate to "Overview" sub tab
     When I save the field containing "Program Income Allowed?" as "No"
