@@ -86,7 +86,6 @@ Feature: Validate all scenarios for program
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
       | Reviewer |
       | David FO |
-    And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see value "David FO" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
     Then I softly see value "david.fo@yopmail.com" for title "Email" inside table "---program:-:reviewStepTableId---"
     Then I softly see value "Department of Health" for title "Organization Name" inside table "---program:-:reviewStepTableId---"
