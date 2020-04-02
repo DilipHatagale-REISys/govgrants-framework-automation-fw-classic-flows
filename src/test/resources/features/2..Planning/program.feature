@@ -77,7 +77,6 @@ Feature: Validate all scenarios for program
       | Fiscal Review     | 25              |
       | Program Review    | 25              |
       | Compliance Review | 50              |
-    And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see value "25%" for title "Form Weight (%)" against the value "Fiscal Review" inside table "---program:-:reviewStepTableId---"
     Then I softly see value "25%" for title "Form Weight (%)" against the value "Program Review" inside table "---program:-:reviewStepTableId---"
     Then I softly see value "50%" for title "Form Weight (%)" against the value "Compliance Review" inside table "---program:-:reviewStepTableId---"
