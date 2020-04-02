@@ -421,7 +421,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:approversTableId---"
     And I navigate to "Setup" sub tab
     And I click on advance filter "#advfAnnoucementPackagesGrantor" of table id "---announcement:-:businessFormlistTableId---"
-    And I enter advance filter values inside id "---announcement:-:businessFormlistTableId---"
+    And I enter advance filter values inside id "advfAnnoucementPackagesGrantor"
       | Name | Contains | Anything |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:businessFormlistTableId---"
 

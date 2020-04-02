@@ -65,21 +65,24 @@ Feature: Validate all scenarios for program
       | Program Approver   | Automation PM  | Automation Test Description |
     Then I see that "Automation EXE" has been added in flextable with Id "---program:-:approverTableId---"
 
-  @34616 @75830 @75831 @75832 @75840 @75841 @programFocusAreaAssociation
+  @34616 @75821 @75830 @75831 @75832 @75840 @75841 @programFocusAreaAssociation
   Scenario Outline: Validate the association of Focus Area for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I click "Add" after selection of "<Title>" in the table "---program:-:associateFocusAreaTableId---"
     Then I softly see that "<Title>" has been added in flextable with Id "---program:-:focusAreaTableId---"
     And I expand nested table containing column value "SME Review"
+    Then I softly see value "Fiscal Review" for title "Form Name" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "Program Review" for title "Form Name" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "Compliance Review" for title "Form Name" inside table "---program:-:reviewStepTableId---"
     And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Form Name         | Form Weight (%) |
       | Fiscal Review     | 25              |
       | Program Review    | 25              |
       | Compliance Review | 50              |
-    Then I softly see value "25%" for title "Form Weight (%)" against the value "Fiscal Review" inside table "---program:-:reviewStepTableId---"
-    Then I softly see value "25%" for title "Form Weight (%)" against the value "Program Review" inside table "---program:-:reviewStepTableId---"
-    Then I softly see value "50%" for title "Form Weight (%)" against the value "Compliance Review" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "25%" for title "Form Weight (%)" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "25%" for title "Form Weight (%)" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "50%" for title "Form Weight (%)" inside table "---program:-:reviewStepTableId---"
     And I click on "Delete" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
@@ -136,7 +139,7 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @34738 @75895 @75896 @75909 @programKPIAssociation
+  @34738 @75895 @75896 @75909 @75912 @75913 @programKPIAssociation
   Scenario Outline: Validate the association of KPI
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
@@ -155,11 +158,18 @@ Feature: Validate all scenarios for program
       | Saved successfully. |
     And I perform quick search for "Return on Investment (ROI)" in "---program:-:programReviewPanel---" panel
     Then I softly see value "Return on Investment (ROI)" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I click on advance filter "#advfProgramRelatedReviewPanelCategories" of table id "---announcement:-:businessFormlistTableId---"
+    And I enter advance filter values inside id "advfProgramRelatedReviewPanelCategories"
+      | Section Header | contains | Return on Investment (ROI) |
+    Then I softly see value "Return on Investment (ROI)" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I enter advance filter values inside id "advfProgramRelatedReviewPanelCategories"
+      | Section Header | contains | TestInvalidPanel |
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanel---"
     Examples:
       | EGMS Id                                 |
       | Automation Permanent KPI for Regression |
 
-  @34745 @programAttachmentChecklist
+  @34745 @38242 @programAttachmentChecklist
   Scenario: Validate the attachment checklist for the Internal Program
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
@@ -168,7 +178,16 @@ Feature: Validate all scenarios for program
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     When I close "Upload Template" modal by clicking the top right x button
-    Then I see that "Active" has been added in flextable with Id "---program:-:checklistTableId---"
+    Then I softly see that "Active" has been added in flextable with Id "---program:-:checklistTableId---"
+    And I refresh the page
+    When I navigate to "Setup" sub tab
+    And I click on "Delete" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Delete" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Delete" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---"
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details :
+      | Setup Tab - SME Review: At least one form is required for this review step.                                   |
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
 
   @34750 @submittingProgramForApproval
   Scenario: Validate the submission of Program for Approval
