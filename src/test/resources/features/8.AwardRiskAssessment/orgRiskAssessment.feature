@@ -739,7 +739,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     When I click on "Save and Continue" in the page details
     Then I see the following messages in the page details contains:
-      | Acknowledgement is Required to save.|
+      | Acknowledgement is Required to save. |
 
   @62947 @disagreeAcknowledgeForRA @deepika
   Scenario: Validate whether user is able to proceed further process without Acknowledging the Org Level Risk Assessment

@@ -100,8 +100,8 @@ Feature: Validate all scenarios in Organizational Site Visit
       | Program Approver Name |
       | Automation PM         |
 
-  @54454 @54456 @conductAndnotifySubrecipientSiteVisitOrgLevel @smoke @deepika
-  Scenario: Conduct Site Visit and Notify Subrecipient about the Site Visit Org Level
+  @54454 @54456 @75862 @conductAndnotifySubrecipientSiteVisitOrgLevel @smoke @deepika
+  Scenario: Conduct Site Visit and Notify Subrecipient about the Site Visit Org Level | Validate the external user will receive an email notification when the org level site visit is in notified status
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
     And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
@@ -115,6 +115,7 @@ Feature: Validate all scenarios in Organizational Site Visit
       | Responsibilities | Name          | Description                 |
       | Program Approver | Automation PM | Automation Test Description |
       | Fiscal Approver  | Automation FO | Automation Test Description |
+    And I save the field labeled "EGMS ID" as "SiteVisitId"
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
@@ -122,6 +123,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click "Add" after selection of "Automation Announcement for Site Visit" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
     Then I softly see that "Automation Site Visit Org level" is in "Notified" status
+    Then I softly can see mail notification for "EXTERNAL" user with following subject:
+      | Site Visit for {SavedValue:SiteVisitId} has been scheduled |
     When I click on "Conduct" in the page details
     Then I softly see status in Progress-bar is "In Progress" and is "green"
 

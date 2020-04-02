@@ -5,8 +5,9 @@ Feature: Validate all scenarios in the Risk Assessment
     Given I delete the record "Automation Award for Risk Assessment" from the object "Award"
     Given I delete the record "Automation Award for Risk Assessment" from the object "Grant"
 
-  @58164 @58165 @58166 @65552 @creationOfRiskAssessmentddingApproversSubmitForApproval @deepika @smoke
+  @58164 @58165 @58166 @75867 @65552 @creationOfRiskAssessmentddingApproversSubmitForApproval @deepika @smoke
   Scenario: Validate the Creation of Risk Assessment from Draft Award and whether user is able to Add Approvers and submit Risk Assessment for Approval| Also New Button on peer review table is not availble once submit for approval
+   Validate when the Risk Assessment is submit for approval, the approver will receive an email notification that the PM has been assigned as approval
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -18,6 +19,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "RiskId"
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -35,6 +37,9 @@ Feature: Validate all scenarios in the Risk Assessment
       | Program Approver | Automation PM | Automation Test Description |
     Then I softly can see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
     And I click on "Submit for Approval" in the page details
+    And I pause execution for "120" seconds
+    Then I softly can see mail notification for "INTERNAL" user with following subject:
+      |  Subaward Risk Assessment for {SavedValue:RiskId} hasbeen Assigned for Program Approval |
     And I navigate to "Responsibilities" sub tab
     Then I softly cannot see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
