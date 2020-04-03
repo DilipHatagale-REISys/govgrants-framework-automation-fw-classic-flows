@@ -72,10 +72,10 @@ Feature: Validate all scenarios in the Pre-Application
   Validate User will be able to view the opportunity focus area in the application budget grid when the focus area settings as Yes while announcement creation
     Validate the SPI Users will be able to add new focus areas while creating an pre-application | Validate when the oppurtunity has only one focus area then user will not be able see any other focus areas when clicked on Add focus areas
     When I navigate to "Budget" sub tab
-    Then I softly can see top right button "Add Focus Area" in flex table with id "FocusAreaPreApp"
-    When I click on top right button "Add Focus Area" in flex table with id "FocusAreaPreApp"
-    When I click "Add" after selection of "Automation Permanent Focus Area1" in the table "AddPreAppProjects"
-    Then I softly see "No Records Found" inside flex table with id "AddPreAppProjects"
+    Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
+    When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
+    When I click "Add" after selection of "Automation Permanent Focus Area1" in the table "---applicationIntake:-:focusAreaAssociateTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:focusAreaAssociateTableId---"
     And I expand nested table containing column value "BP01"
     Then I softly see field "Focus Area : Automation Permanent Focus Area" inside page block
     When I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
