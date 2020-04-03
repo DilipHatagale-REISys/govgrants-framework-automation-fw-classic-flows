@@ -426,8 +426,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:businessFormlistTableId---"
 
   @73854 @73855 @73852 @73853 @jitendra @filterNotYetQualifiedSPAUser
-    Scenario:  To verify, filter functionality for Not Yet Qualified:All section for announcement by external user
-    | To verify, all closed opportunity which has Not Qualified should reflect under Not Yet Qualified: Closed list view
+  Scenario:  To verify, filter functionality for Not Yet Qualified:All section for announcement by external user
+  | To verify, all closed opportunity which has Not Qualified should reflect under Not Yet Qualified: Closed list view
     When I login to "Grants Portal" app as "SPA" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
@@ -435,10 +435,10 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I save the value from row "1" for column name "Announcement ID" as "annId" from flex table "---announcement:-:opportunityNotQtableId---"
     And I click on advance filter "#advfnyqae" of table id "---announcement:-:opportunityNotQtableId---"
     And I enter advance filter values inside id "advfnyqae"
-    |Announcement ID|Contains|{SavedValue:annId}|
+      | Announcement ID | Contains | {SavedValue:annId} |
     Then I softly see value "{SavedValue:annId}" for title "Announcement ID" inside table "---announcement:-:opportunityNotQtableId---"
     And I enter advance filter values inside id "advfnyqae"
-      |Announcement ID|Contains|I am laughing|
+      | Announcement ID | Contains | I am laughing |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:opportunityNotQtableId---"
     And I refresh the page
     And I click toggle button to select "Not Yet Qualified Opportunities - Closed"
@@ -447,24 +447,24 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I perform quick search for "Automation Announcement for Application Intake" in "---announcement:-:opportunityNotQtableId---" panel
     Then I softly see value "Automation Announcement for Application Intake" for title "Title" inside table "---announcement:-:opportunityNotQtableId---"
 
-    @73866 @73870 @jitendra @viewQualifiedOpportunitySPA
-    Scenario: To verify user allow to view Qualified opportunity  in opportunity tab
-      | To verify, searched functionality for Qualified Opportunities :All section for opportunities phase
-      Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
-      And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
-      Given I am on "SUBPORTAL" portal
-      When I login to "Grants Portal" app as "SPI" user
-      And I navigate to "Opportunities" tab
-      When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-      And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-      When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
-      When I click on "Qualify" in the page details
-      When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-      And I navigate to "Opportunities" tab
-      When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
-      And I click toggle button to select "Qualified Opportunities - All"
-      And I perform quick search for "Automation Announcement for Application Intake" in "---preApplication:-:qualifiedOpprtunitesTableId---" panel
-      Then I softly see value "Automation Announcement for Application Intake" for title "Title" inside table "---preApplication:-:qualifiedOpprtunitesTableId---"
-      And I save the value from row "1" for column name "EGMS ID" as "egms id" from flex table "---preApplication:-:qualifiedOpprtunitesTableId---"
-      And I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---preApplication:-:qualifiedOpprtunitesTableId---"
-      Then I softly see field "EGMS ID" as "{SavedValue:egms id}"
+  @73866 @73870 @jitendra @viewQualifiedOpportunitySPA
+  Scenario: To verify user allow to view Qualified opportunity  in opportunity tab
+  | To verify, searched functionality for Qualified Opportunities :All section for opportunities phase
+    Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
+    And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I click on "Qualify" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Opportunities" tab
+    When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
+    And I click toggle button to select "Qualified Opportunities - All"
+    And I perform quick search for "Automation Announcement for Application Intake" in "---preApplication:-:qualifiedOpprtunitesTableId---" panel
+    Then I softly see value "Automation Announcement for Application Intake" for title "Title" inside table "---preApplication:-:qualifiedOpprtunitesTableId---"
+    And I save the value from row "1" for column name "EGMS ID" as "egms id" from flex table "---preApplication:-:qualifiedOpprtunitesTableId---"
+    And I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---preApplication:-:qualifiedOpprtunitesTableId---"
+    Then I softly see field "EGMS ID" as "{SavedValue:egms id}"
