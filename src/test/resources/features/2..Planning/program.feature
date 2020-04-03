@@ -65,12 +65,20 @@ Feature: Validate all scenarios for program
       | Program Approver   | Automation PM  | Automation Test Description |
     Then I see that "Automation EXE" has been added in flextable with Id "---program:-:approverTableId---"
 
-  @34616 @75821 @75830 @75831 @75836 @75832 @75840 @75841 @programFocusAreaAssociation
+  @34616 @75992 @75821 @75830 @75831 @75836 @75832 @75840 @75841 @programFocusAreaAssociation
   Scenario Outline: Validate the association of Focus Area for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I click "Add" after selection of "<Title>" in the table "---program:-:associateFocusAreaTableId---"
     Then I softly see that "<Title>" has been added in flextable with Id "---program:-:focusAreaTableId---"
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
+      | Reviewer |
+      | David FO |
+    Then I softly see value "David FO" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "david.fo@yopmail.com.invalid" for title "Email" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "Department of Health" for title "Organization Name" inside table "---program:-:reviewStepTableId---"
+    And I refresh the page
     And I expand nested table containing column value "SME Review"
     Then I softly see value "Fiscal Review" for title "Form Name" inside table "---program:-:reviewStepTableId---"
     Then I softly see value "Program Review" for title "Form Name" inside table "---program:-:reviewStepTableId---"
@@ -89,14 +97,13 @@ Feature: Validate all scenarios for program
     When I enter the following values into flex table with id "---program:-:reviewFormTableId---" by clicking "New" :
       | Form Name         | Minimum Number of Reviews per Application | Required? |
       | Automation Review | 1                                         | Checked   |
-    #And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
       | Reviewer |
       | David FO |
     Then I softly see value "David FO" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
-    Then I softly see value "david.fo@yopmail.com" for title "Email" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "david.fo@yopmail.com.invalid" for title "Email" inside table "---program:-:reviewStepTableId---"
     Then I softly see value "Department of Health" for title "Organization Name" inside table "---program:-:reviewStepTableId---"
     And I click on "Delete" icon for "David FO" inside flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details :
@@ -134,8 +141,7 @@ Feature: Validate all scenarios for program
       | David FO |
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
       | Reviewer |
-      | David FO |
-    And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
+      | Sarah PM |
     Then I softly see the following messages in the page details :
       | Saved successfully. |
     And I select "Download as PDF" from parallel lines dropdown of "Reviewers"
@@ -145,7 +151,7 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @34738 @75895 @75896 @75909 @75912 @75913 @programKPIAssociation
+  @34738 @75991 @75993 @75895 @75896 @75909 @75912 @75913 @programKPIAssociation
   Scenario Outline: Validate the association of KPI
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
@@ -153,6 +159,17 @@ Feature: Validate all scenarios for program
     When I click "Add" after selection of "<EGMS Id>" in the table "---program:-:associateKPITableId---"
     Then I softly see that "<EGMS Id>" has been added in flextable with Id "---program:-:kpiTableId---"
     And I expand nested table containing column value "Management Review"
+    When I enter the following values into flex table with id "---program:-:reviewFormTableId---" by clicking "New" :
+      | Form Name         | Minimum Number of Reviews per Application | Required? |
+      | Automation Review | 1                                         | Checked   |
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
+      | Reviewer |
+      | David FO |
+      | Sarah PM |
+    Then I softly see the following messages in the page details :
+      | Saved successfully. |
     And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:programReviewPanel---"
     Then I softly see value "Strategic Alignment" for title "Section Header" inside table "---program:-:programReviewPanel---"
     Then I softly see value "Return on Investment (ROI)" for title "Section Header" inside table "---program:-:programReviewPanel---"
@@ -175,7 +192,7 @@ Feature: Validate all scenarios for program
       | EGMS Id                                 |
       | Automation Permanent KPI for Regression |
 
-  @34745 @38242 @programAttachmentChecklist
+  @34745 @75997 @76112 @38242 @programAttachmentChecklist
   Scenario: Validate the attachment checklist for the Internal Program
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
@@ -187,6 +204,17 @@ Feature: Validate all scenarios for program
     Then I softly see that "Active" has been added in flextable with Id "---program:-:checklistTableId---"
     And I refresh the page
     When I navigate to "Setup" sub tab
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see value "Budget" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    Then I softly see value "Match" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    Then I softly see value "Program Income" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on "Review Form" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see value "Capability" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    Then I softly see value "Approach" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    Then I softly see value "Impact" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I close "Review Form" modal by clicking the top right x button
     And I click on "Delete" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---"
     And I click on "Delete" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---"
     And I click on "Delete" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---"
@@ -194,6 +222,37 @@ Feature: Validate all scenarios for program
     Then I softly see the following messages in the page details :
       | Setup Tab - SME Review: At least one form is required for this review step.                                   |
       | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
+
+  @75990 @75996 @75994 @prescreenReviewPanel
+  Scenario: To validate system generated validation message for Pre-screen review,when review panel categories has not associated with Pre-screen review form in setup tab in planning phase
+    When I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---"
+    When I enter the following values into flex table with id "---program:-:reviewFormTableId---" by clicking "New" :
+      | Form Name         | Minimum Number of Reviews per Application | Required? |
+      | Automation Review | 1                                         | Checked   |
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    Then I softly see value "Eligibility" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    Then I softly see value "Completeness" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I click on "Delete" icon for "Eligibility" inside flex table with id "---program:-:programReviewPanel---"
+    And I click on "Delete" icon for "Completeness" inside flex table with id "---program:-:programReviewPanel---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details :
+      | Setup Tab - Pre-Screen Review - Pre-Screen: At least one section must be added to this form. |
+
+  @75995 @managementreviewReviewPanel
+  Scenario: To validate system generated validation message for management review,when review panel categories has not associated with management form in setup tab in planning phase
+    When I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Management Review"
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Delete" icon for "Return on Investment (ROI)" inside flex table with id "---program:-:programReviewPanel---"
+    And I click on "Delete" icon for "Strategic Alignment" inside flex table with id "---program:-:programReviewPanel---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details :
+      | Setup Tab - Management Review - Management Review: At least one section must be added to this form. |
 
   @34750 @submittingProgramForApproval
   Scenario: Validate the submission of Program for Approval
