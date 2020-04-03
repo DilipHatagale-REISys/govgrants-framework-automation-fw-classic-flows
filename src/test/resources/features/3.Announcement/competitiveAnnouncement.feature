@@ -2142,6 +2142,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
     When I close "Associate" modal by clicking the top right x button
+    And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 20000           |
@@ -2178,7 +2179,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click modal button "Save"
     And I click on modal button Submit Review
     When I close "Enter Review" modal by clicking the top right x button
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Draft Competitive Announcements"

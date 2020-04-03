@@ -65,7 +65,7 @@ Feature: Validate all scenarios for program
       | Program Approver   | Automation PM  | Automation Test Description |
     Then I see that "Automation EXE" has been added in flextable with Id "---program:-:approverTableId---"
 
-  @34616 @75821 @75830 @75831 @75832 @75840 @75841 @programFocusAreaAssociation
+  @34616 @75821 @75830 @75831 @75836 @75832 @75840 @75841 @programFocusAreaAssociation
   Scenario Outline: Validate the association of Focus Area for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
@@ -86,6 +86,12 @@ Feature: Validate all scenarios for program
     And I click on "Delete" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
+    When I enter the following values into flex table with id "---program:-:reviewFormTableId---" by clicking "New" :
+      | Form Name         | Minimum Number of Reviews per Application | Required? |
+      | Automation Review | 1                                         | Checked   |
+    #And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
       | Reviewer |
       | David FO |
