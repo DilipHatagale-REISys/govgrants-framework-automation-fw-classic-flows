@@ -88,9 +88,9 @@ Feature: Validate all scenarios for program
       | Fiscal Review     | 25              |
       | Program Review    | 25              |
       | Compliance Review | 50              |
-    Then I softly see value "25%" for title "Form Weight (%)" inside table "---program:-:reviewStepTableId---"
-    Then I softly see value "25%" for title "Form Weight (%)" inside table "---program:-:reviewStepTableId---"
-    Then I softly see value "50%" for title "Form Weight (%)" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "25.00%" for title "Form Weight (%)" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "25.00%" for title "Form Weight (%)" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "50.00%" for title "Form Weight (%)" inside table "---program:-:reviewStepTableId---"
     And I click on "Delete" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
@@ -135,7 +135,6 @@ Feature: Validate all scenarios for program
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details :
       | Setup Tab - SME Review - Compliance Review: At least one section must be added to this form. |
-    And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
       | Reviewer |
       | David FO |
@@ -169,8 +168,8 @@ Feature: Validate all scenarios for program
       | David FO |
       | Sarah PM |
     Then I softly see the following messages in the page details :
-      | Saved successfully. |
-    And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:programReviewPanel---"
+      | Saved Successfully! |
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewStepTableId---"
     Then I softly see value "Strategic Alignment" for title "Section Header" inside table "---program:-:programReviewPanel---"
     Then I softly see value "Return on Investment (ROI)" for title "Section Header" inside table "---program:-:programReviewPanel---"
     When I enter the following values into flex table with id "---program:-:programReviewPanel---" by clicking "New" :
@@ -228,9 +227,9 @@ Feature: Validate all scenarios for program
     When I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---"
-    When I enter the following values into flex table with id "---program:-:reviewFormTableId---" by clicking "New" :
-      | Form Name         | Minimum Number of Reviews per Application | Required? |
-      | Automation Review | 1                                         | Checked   |
+    When I enter the following values into flex table with id "---program:-:programReviewPanel---" by clicking "New" :
+      | Section Order | Section Header    |
+      | 1             | Automation Header |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     Then I softly see value "Eligibility" for title "Section Header" inside table "---program:-:programReviewPanel---"
