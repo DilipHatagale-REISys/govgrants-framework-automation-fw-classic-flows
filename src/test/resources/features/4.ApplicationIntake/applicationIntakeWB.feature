@@ -1376,7 +1376,7 @@ Feature: Application Intake scenarios without background
     Then I softly see that "Automation Announcement for Application Review" is in "Qualified" status
     Then I softly can see top right button "Create Application" in page detail
 
-  @34017 @focusAreaSettingAsNO @deepika
+  @34017 @34291@focusAreaSettingAsNO @deepika
   Scenario: Validate when the funding opportunity  has focus area setting as No then the  User will not be able to view the focus area section when creating the Pre Application
   Validate whether the user is able to Edit the budget category while creating an Application
     Given I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Application"

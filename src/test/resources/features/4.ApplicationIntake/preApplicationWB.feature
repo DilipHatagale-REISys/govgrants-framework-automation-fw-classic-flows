@@ -529,7 +529,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Submit to Grantor" in the page details
     And I pause execution for "200" seconds
     Then I softly can see mail notification for "INTERNAL" user with following subject:
-      | Pre-Application Submitted for Announcement {SavedValue:AnnId} by SAN DIEGO ELECTRICAL TRAINING TRUST |
+      | Pre-Application Submitted for Announcement by SAN DIEGO ELECTRICAL TRAINING TRUST |
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -539,7 +539,7 @@ Feature: Pre-Application scenarios without background
     Then I softly see status in Progress-bar is "Accepted" and is "Green"
     And I pause execution for "200" seconds
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
-      | Pre-Application Automation Announcement for Application for Announcement {SavedValue:AnnId} has been Accepted |
+      | Pre-Application Automation Announcement for Application for Announcement has been Accepted |
 
   @72523 @SPIUserCannotdeleteTheCreatedPreApplication
   Scenario Outline: Validate whether SPI/SPA user has the ability to delete the created pre-Application
