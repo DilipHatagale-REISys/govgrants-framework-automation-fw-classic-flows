@@ -67,7 +67,6 @@ Feature: Validate all scenarios in Closeout
 
   @50979 @50978 @overrideCloseoutAndsubmitForApproval @smoke
   Scenario Outline: Grant owner overrides the Closeout and is submitted for approval
-    When I navigate to "Overview" sub tab
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
     When I enter "Creation" values from "Closeout_Field_Values.xlsx"
