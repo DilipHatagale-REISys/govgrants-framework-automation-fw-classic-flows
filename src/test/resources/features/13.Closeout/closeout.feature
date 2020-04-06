@@ -67,6 +67,7 @@ Feature: Validate all scenarios in Closeout
 
   @50979 @50978 @overrideCloseoutAndsubmitForApproval @smoke
   Scenario Outline: Grant owner overrides the Closeout and is submitted for approval
+    When I navigate to "Overview" sub tab
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
     When I enter "Creation" values from "Closeout_Field_Values.xlsx"
@@ -319,3 +320,24 @@ Feature: Validate all scenarios in Closeout
     When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
+
+  @40066 @40605 @40608 @NavigatingToTheCRSection @AcknowledgementSectionHasDefaultNullValueBeforeSentToSubRecipient @AutoPopulatedFieldsCloseoutEffectiveDateAndTheCloseoutActivitiesDueDate
+  Scenario: Navigating to the Closeout Request
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Project Period End Date" as "ProjectPeriodEndDate"
+    And I navigate to "Requests" sub tab
+    Then I softly see field "Closeout Requests" inside page block
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I save the field labeled "Acknowledgement" as "Acknowledgement"
+    And I save the field labeled "Acknowledgement Date" as "AcknowledgementDate"
+    And I save the field labeled "Acknowledgement By" as "AcknowledgementBy"
+    And I click on "Save" in the page details
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Closeout Effective Date" as "CloseoutEffectiveDate"
+    Then I softly see that the saved value "{SavedValue:Acknowledgement}" and "" are equal
+    Then I softly see that the saved value "{SavedValue:AcknowledgementDate}" and " " are equal
+    Then I softly see that the saved value "{SavedValue:AcknowledgementBy}" and " " are equal
+    Then I softly see that the saved value "{SavedValue:ProjectPeriodEndDate}" and "{SavedValue:CloseoutEffectiveDate}" are equal
+
