@@ -1,7 +1,7 @@
 @auditorHome @auditor
 Feature: Validate all scenarios for Auditor Profile in Home Module
 
-  @69181 @auditorCannotCreateEditInternalOrganizations @smoke
+  @68181 @auditorCannotCreateEditInternalOrganizations @smoke
   Scenario Outline: Validate Auditor should not be  able to Create/Edit internal organization.
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
