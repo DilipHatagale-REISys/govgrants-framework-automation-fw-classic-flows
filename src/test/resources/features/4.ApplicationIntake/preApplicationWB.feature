@@ -635,7 +635,7 @@ Feature: Pre-Application scenarios without background
     Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
 
   @34006 @preApplicationVisibity @deepika
-  Scenario Outline: Validate the Pre-applications are visible for their own organization and for child organizations.
+  Scenario Outline: Validate the Pre-applications are visible for their own organization and for child organizations. |
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"
     And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
@@ -958,3 +958,32 @@ Feature: Pre-Application scenarios without background
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Requested Amount should be greater than or equal to Subaward Floor Amount.                         |
       | Budget Tab - Enter budget details for the first budget period before submitting a Pre-Application to the Grantor. |
+
+  @76379 @spaCannotViewCreatedPreApplicationBySPI @deepika
+  Scenario: Validate whether created Pre-Application by SPI user(Record owner of pre- Application)are visible for their child (SPA) organizations
+    Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
+    When I delete the record "Automation Announcement for Application" from the object "PreApplication"
+    And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
+    And I delete the record "Automation Announcement for Application" from the object "Qualified Announcement"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Pre-Application" in "---preApplication:-:notYetQualifiedTable---" panel
+    When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
+    When I click on "Qualify" in the page details
+    And I navigate to "Performance" sub tab
+    And I click on "Create Pre-Application" in the page details
+    When I enter value "Automation Announcement for Application" into field "Title__c"
+    When I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    Given I click on "Edit" in the page details
+    And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPA" user
+    When I navigate to "Applications" tab
+    And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    And I perform quick search for "Automation Pre-App Announcement" in "---preApplication:-:recipientPreApplicationsTableId---" panel
+    Then I see "No Records Found" inside flex table with id "---preApplication:-:recipientPreApplicationsTableId---"
