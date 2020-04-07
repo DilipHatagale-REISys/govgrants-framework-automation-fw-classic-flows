@@ -320,23 +320,78 @@ Feature: Validate all scenarios in Closeout
     And I "Approve" in the approval decision
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
 
-  @40066 @40605 @40608 @NavigatingToTheCRSection @AcknowledgementSectionHasDefaultNullValueBeforeSentToSubRecipient @AutoPopulatedFieldsCloseoutEffectiveDateAndTheCloseoutActivitiesDueDate
-  Scenario: Navigating to the Closeout Request
+  @40066 @40605 @40608 @40071 @NavigationAcknowledgementAutopopulatedFieldsGrantOverview @ @Keerti
+  Scenario: Navigating to the Closeout Request/Validating whether the Acknowledgement section has Default Null Value before sent to sub-recipient
+  / Verifying the Auto-populated fields Closeout Effective Date and the Closeout Activities Due date
+  /Validating whether the fields are carried forward from the Grant Overview tab to Closeout Grant Overview Tab
     And I navigate to "Overview" sub tab
     And I save the field labeled "Project Period End Date" as "ProjectPeriodEndDate"
+    And I save the field value having link labeled "Subrecipient Organization" as "SubrecipientOrganization"
+    And I save the field value having link labeled "Funding Organization" as "FundingOrganization"
     And I navigate to "Requests" sub tab
     Then I softly see field "Closeout Requests" inside page block
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
     When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    And I save the field labeled "Acknowledgement" as "Acknowledgement"
+    And I save the field labeled "Acknowledgement" as "AcknowledgementCheck"
     And I save the field labeled "Acknowledgement Date" as "AcknowledgementDate"
     And I save the field labeled "Acknowledgement By" as "AcknowledgementBy"
-    And I click on "Save" in the page details
+    When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
     And I save the field labeled "Closeout Effective Date" as "CloseoutEffectiveDate"
-    Then I softly see that the saved value "{SavedValue:Acknowledgement}" and "" are equal
+    And I save the field value having link labeled "Subrecipient Organization" as "CloseoutSubrecipientOrganization"
+    And I save the field value having link labeled "Funding Organization" as "CloseoutFundingOrganization"
+    Then I softly see that the saved value "{SavedValue:AcknowledgementCheck}" and "" are equal
     Then I softly see that the saved value "{SavedValue:AcknowledgementDate}" and " " are equal
     Then I softly see that the saved value "{SavedValue:AcknowledgementBy}" and " " are equal
     Then I softly see that the saved value "{SavedValue:ProjectPeriodEndDate}" and "{SavedValue:CloseoutEffectiveDate}" are equal
+    Then I softly see that the saved value "{SavedValue:SubrecipientOrganization}" and "{SavedValue:CloseoutSubrecipientOrganization}" are equal
+    Then I softly see that the saved value "{SavedValue:FundingOrganization}" and "{SavedValue:CloseoutFundingOrganization}" are equal
 
+  @40636 @40747 @40743 @ChecklistSupportingDocumentNotes @Keerti
+  Scenario: Verifying the Checklist of Closeout Request/ Validate the Supporting Document Checklist Section / Validate the user can add the Notes for Closeout Requests
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Checklist" sub tab
+    Then I softly see field "Has the subrecipient submitted all payment requests?" as "Yes"
+    Then I softly see field "Did the subrecipient incur any costs after the period of performance end date?" as "Yes"
+    Then I softly see field "Have all submitted payments to the subrecipient been issued, including the final payment?" as "Yes"
+    Then I softly see field "Have all expenditures been reviewed for allowability?" as "Yes"
+    Then I softly see field "Is there an unspent balance remaining on this award?" as "Yes"
+    Then I softly see field "Have all indirect expenses been posted to the award?" as "Yes"
+    Then I softly see field "Comments" as "Automation test description"
+    Then I softly see field "Has the subrecipient met the match requirement?" as "Yes"
+    Then I softly see field "Has the subrecipient provided supporting documentation for all reported match, including third party in-kind match?" as "Yes"
+    Then I softly see field "Comments" as "Automation test description"
+    Then I softly see field "Did the subrecipient fully expend program income earned during the award period prior to the closeout of the award?" as "Yes"
+    Then I softly see field "Has the subrecipient returned unexpended program income to the funding organiation, if required by program regulations?" as "Yes"
+    Then I softly see field "Comments" as "Automation test description"
+    Then I softly see field "Has the subrecipient completed the scope of work as outlined in the subaward agreement?" as "Yes"
+    Then I softly see field "Has the subrecipient met all deliverable requirements?" as "Yes"
+    Then I softly see field "Has the subrecipient submitted required documentation of performance completion?" as "Yes"
+    Then I softly see field "Did the subrecipient request an extension to the period of performance?" as "Yes"
+    Then I softly see field "Comments" as "Automation test description"
+    Then I softly see field "Has the subrecipient submitted all programmatic or progress reports?" as "Yes"
+    Then I softly see field "Has the subrecipient submitted all required site visit reports?" as "Yes"
+    Then I softly see field "Has the funding organization program staff reviewed and accepted all reports?" as "Yes"
+    Then I softly see field "Is the subrecipient required to provide ongoing outcome or compliance reporting after the period of performance end date?" as "Yes"
+    Then I softly see field "Comments" as "Automation test description"
+    Then I softly see field "Has the subrecipient submitted a equipment inventory?" as "Yes"
+    Then I softly see field "Has the subrecipient put in place the required deed restrictions or mortgage liens for real property acquired, constructed, rehabilitated, or reconstructed with federal award funds?" as "Yes"
+    Then I softly see field "Did the subrecipient make facility or infrastructure improvements that trigger change of use requirements and is the subrecipient required to provide ongoing maintenance?" as "Yes"
+    Then I softly see field "Comments" as "Automation test description"
+    Then I softly see field "Has the subrecipient completed all corrective actions for any open findings/concerns?" as "Yes"
+    Then I softly see field "Has the funding organization reviewed and accepted all corrective actions?" as "Yes"
+    Then I softly see field "Comments" as "Automation test description"
+    When I navigate to "Attachments" sub tab
+    When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
+      | Description                 | Required  | Status |
+      | Automation test description | Mandatory | Active |
+    Then I softly see value "Automation test description" for title "Description" inside table "CloseoutChecklistsFlexToggle"
+    And I add notes records
+    When I close "Add Notes" modal by clicking the top right x button
+    Then I softly see table with header "Notes" contains records "Notes Record"
