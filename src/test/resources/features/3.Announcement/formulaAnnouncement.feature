@@ -992,6 +992,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
     When I close "Associate" modal by clicking the top right x button
+    And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -1011,7 +1012,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
-      |  Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
       | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "Automation FO" inside table
     And I get the "EGMS ID"
@@ -1147,8 +1148,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
+    And I refresh the page
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
-      | Applicant Organization                              | Allocated Amount |
+      | Applicant Organization              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
