@@ -59,13 +59,13 @@ Feature: Pre-Application scenarios without background
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
-    Then I cannot see top right button "Submit Application" in page detail
+    Then I softly cannot see top right button "Submit Application" in page detail
     Given I am on "SUBPORTAL" portal
     And I login as "SA" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Pre-App Announcement" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    When I click on "View" icon for "Automation Pre-App Announcement" inside table
+    And I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
     When I click on "Qualify" in the page details
     Then I softly can see top right button "Create Pre-Application" in page detail
 
@@ -73,6 +73,9 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate whether the User is able to create a Pre Application only when the Opportunity setting for Pre Applciation Required (Yes) |
   Validate whether User is able to view the following error message "Reached the Maximum number of Applications" when the limit has been reached.
   Validate whether User is able to view the Leverage column in the budget grid when the value set as Yes. |Validate the user  will be able to view the the Program Income field on the overview tab when the value set as Yes.
+    Given I delete the record "Automation Pre-App Announcement" from the object "PreApplication"
+    When I delete the record "Automation Pre-App Announcement" from the object "Application"
+    And I delete the record "Automation Pre-App Announcement" from the object "Qualified Announcement"
     Given I delete the record "Automation Pre-App Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -144,9 +147,6 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "Record id" inside table
     And I click on "Publish" in the page details
-    Given I delete the record "Automation Pre-App Announcement" from the object "Application"
-    When I delete the record "Automation Pre-App Announcement" from the object "PreApplication"
-    And I delete the record "Automation Pre-App Announcement" from the object "Qualified Announcement"
     When I am on "SUBPORTAL" portal
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
@@ -830,9 +830,10 @@ Feature: Pre-Application scenarios without background
     And I navigate to "Budget" sub tab
     Then I cannot see page block "Focus Area"
 
-  @33998 @35054 @validateListOfSubmittedApplication @deepika
+  @33998 @34353 @35054 @validateListOfSubmittedApplication @deepika
   Scenario: Verify when SPI (Record owner of Pre-Application) submit the Pre-Application to Grantor then it is displayed in the list of Submitted Pre-Applications and disappeared from the list of Not yet qualified Opputunities
-  Verify if the opportunity has only one focus area, then the application budget periods are automatically associated to that focus area
+  Verify if the opportunity has only one focus area, then the application budget periods are automatically associated to that focus area |
+  Validate whether SPI user can edit the pre-application once it is submitted to grantor.
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"
     And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
@@ -865,6 +866,7 @@ Feature: Pre-Application scenarios without background
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
+    Then I softly cannot see top right button "Edit" in page detail
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Automation Announcement for Pre-Application" in "---preApplication:-:notYetQualifiedTable---" panel
@@ -875,9 +877,9 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "Automation Announcement for Pre-Application" in "---preApplication:-:recipientPreApplicationsTableId---" panel
     Then I softly see value "Submitted to Grantor" for title "Status" inside table "---preApplication:-:recipientPreApplicationsTableId---"
 
-  @75962 @75963 @75964 @preAppHistoryFieldGetUdated @deepika @skipOnJenkins
+  @75962 @75963 @34156 @75964 @preAppHistoryFieldGetUdated @deepika @skipOnJenkins
   Scenario: Validate History Field is getting updated for PM user when Pre Application status is Submitted to Grantor.| Validate the History field is getting updated when internal user accepts the pre-application
-  Validate whether the Internal user is able to view the Snapshot after Pre-Application is Submitted to Grantor status
+  Validate whether the Internal user is able to view the Snapshot after Pre-Application is Submitted to Grantor status | Validate whether spi user can view the snapshot once the pre-application is submitted to grantor
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"
     And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
@@ -908,6 +910,8 @@ Feature: Pre-Application scenarios without background
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
+    When I navigate to "History" sub tab
+    Then I softly see snapshot with name containing "Pre-Application" as name
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
