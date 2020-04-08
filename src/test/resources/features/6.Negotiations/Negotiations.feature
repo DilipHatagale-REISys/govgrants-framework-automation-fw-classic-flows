@@ -6,7 +6,7 @@ Feature: Validate all scenarios in Negotiations
     When I delete the record "Automation Site Visit" from the object "Site Visit"
     And I delete the record "Automation Announcement for FDM" from the object "FDM"
 
-  @57032 @57031 @66071 @66448 @negotiationInitiatedAndSendToRecipient @deepika
+  @66071 @57031 @66448 @57032 @negotiationInitiatedAndSendToRecipient @deepika
   Scenario: Validate the the Negotiation option on the Approved FDM and Announcement Owner can send the Negotiation request to the Applicant
   Validate the Status Field when the Negotiation Request is "Sent to Subrecipient"
     Given I login to "As a Grantor" app as "dynamicUser" user
@@ -26,7 +26,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly see field "Status" as "Sent to Subrecipient"
     Then I softly see that "Automation Announcement for FDM" is in "Negotiation Initiated" status
 
-  @57034 @57033 @65295 @65310 @65356 @submitToGrantorbySubrecipientCompleteNegotiation @deepika @smoke
+  @65295 @57033 @65310 @57034 @65356 @submitToGrantorbySubrecipientCompleteNegotiation @deepika @smoke
   Scenario: Validate the Applicants able to submit the Application after edit and Internal Agency user decision on Completing the Negotiation | Validate task for SR user
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -63,7 +63,7 @@ Feature: Validate all scenarios in Negotiations
     Then I softly see status in Progress-bar is "Negotiated" and is "green"
     Then I softly can see top right button "Create Subaward" in page detail
 
-  @57035 @57036 @TaskCreatedforSPinegotiationIconAfterFDMApproved @deepika
+  @57036 @57035 @TaskCreatedforSPinegotiationIconAfterFDMApproved @deepika
   Scenario: Validate Applicants will be able to view Negotiation Icon after FDM Approved and receive the Negotiation request from the Internal Agency
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -85,7 +85,7 @@ Feature: Validate all scenarios in Negotiations
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
     Then I softly see that "Negotiation Request" has been added in flextable with Id "---negotiation:-:homePendingTasks---"
 
-  @57038 @57037 @sendBackToSubrecipientForFurtherChanges @deepika
+  @57037 @57038 @sendBackToSubrecipientForFurtherChanges @deepika
   Scenario: Validate whether the users receive the pending Task when  Submit to Grantor and able to select Send Back to Subrecipient for further changes
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -135,7 +135,7 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     Then I can see row level action button "Create Subaward" against "Automation Announcement for FDM" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
 
-  @57214 @57039 @66450 @createAwardButtonAfterNegotiationComplete @deepika @smoke
+  @66450 @57214 @57039 @createAwardButtonAfterNegotiationComplete @deepika @smoke
   Scenario: Validate whether user will be able to view and select the Create Award button after the negotiation is completed
   Validate when the Negotiation Request is sent to Subrecipient, Application response page block is available for subrecipient to enter the details and provide them to Grantor and grantor can view them
     Given I login to "As a Grantor" app as "dynamicUser" user
@@ -176,7 +176,7 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---negotiation:-:negotiationCompletedTaskTableId---"
     Then I softly can see top right button "Create Subaward" in page detail
 
-  @57217 @57212 @createEditNegotiationButton @deepika
+  @57212 @57217 @createEditNegotiationButton @deepika
   Scenario: Validate whether users Applicant try to edit the Application after Submit to Grantor and will not be able to perform Negotiation on the Application once it is completed
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -314,7 +314,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
     Then I softly can see "Negotiations" sub tab at view detail page
     When I click on "Send to Subrecipient" in the page details
-    Then I cannot see top right button "Create Subaward" in page detail
+    Then I softly cannot see top right button "Create Subaward" in page detail
 
   @57496 @57495 @65293 @userEditNegotiationIntitiatededitButtonHiddenOnceSendtoSubrecipient @deepika
   Scenario: Validate whether user to able to see the Edit Negotiation Button once created and Send to Subrecipient

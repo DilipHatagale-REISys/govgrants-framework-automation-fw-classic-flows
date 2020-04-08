@@ -54,7 +54,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly see status in Progress-bar is "Notified" and is "green"
     When I pause execution for "120" seconds
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
-      | Site Visit for {SavedValue:SiteVisitId} has been scheduled |
+      | Site Visit for has been scheduled |
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
