@@ -1,8 +1,9 @@
 package com.ggproduct.automation.steps;
 
+import com.automation.rei.handlers.govgrants;
 import com.ggproduct.automation.projectmanager.ProjectManager;
-import eyethink.automation.bots.Register.EyeThink;
-import eyethink.automation.bots.objects.Elements;
+import com.testingblaze.objects.Elements;
+import com.testingblaze.register.I;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -16,7 +17,8 @@ import javax.mail.MessagingException;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
 public class GenericSteps {
     ProjectManager projectManager;
@@ -84,9 +86,9 @@ public class GenericSteps {
         } else if (usage.equals("do not see")) {
             Assert.assertFalse(projectManager.isValueInsideFlexTable(valueToBeSearch, flexTableHeader));
         } else if (usage.equals("softly see")) {
-            EyeThink.core().assertion().assertThat(projectManager.isValueInsideFlexTable(valueToBeSearch, flexTableHeader)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(projectManager.isValueInsideFlexTable(valueToBeSearch, flexTableHeader)).isTrue();
         } else {
-            EyeThink.core().assertion().assertThat(projectManager.isValueInsideFlexTable(valueToBeSearch, flexTableHeader)).isFalse();
+            I.amPerforming().assertionsTo().assertThat(projectManager.isValueInsideFlexTable(valueToBeSearch, flexTableHeader)).isFalse();
         }
     }
 
@@ -121,7 +123,7 @@ public class GenericSteps {
     public void iSeeMailSubject(String usage, String userType, List<String> subjectList) throws MessagingException {
         String subject = subjectList.get(0);
         if (usage.contains("softly")) {
-            EyeThink.core().assertion().assertThat(projectManager.validateMailSubject(userType, subject)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(projectManager.validateMailSubject(userType, subject)).isTrue();
         } else {
             Assert.assertTrue(projectManager.validateMailSubject(userType, subject));
         }
@@ -131,7 +133,7 @@ public class GenericSteps {
     @And("^I navigate to last page in flex table \"([^\"]*)\"$")
     public void iNavigateToLastPageInFlexTable(String flexTableId) {
         try {
-            EyeThink.saas().flexTable().flexTablePagination(flexTableId, "Last");
+            govgrants.perform().flexTable().flexTablePagination(flexTableId, "Last");
         } catch (Exception e) {
             // eating exception....
         }
@@ -147,22 +149,22 @@ public class GenericSteps {
     @Then("^I (verify|softly verify) that the Schedule end date is matching with Reporting Period End Date$")
     public void iVerifyThatTheScheduleEndDateIsMatchingWithReportingPeriodEndDate(String usage) {
         if (usage.contains("softly")) {
-            EyeThink.core().assertion().assertThat(EyeThink.core().Properties().getValue("lastValueFromTableForCol"))
-                    .isEqualTo(EyeThink.core().Properties().getValue("ScheduleEndDate"));
+            I.amPerforming().assertionsTo().assertThat(I.amPerforming().propertiesFileOperationsTo().getValue("lastValueFromTableForCol"))
+                    .isEqualTo(I.amPerforming().propertiesFileOperationsTo().getValue("ScheduleEndDate"));
         } else {
-            Assert.assertEquals(EyeThink.core().Properties().getValue("lastValueFromTableForCol"),
-                    EyeThink.core().Properties().getValue("ScheduleEndDate"));
+            Assert.assertEquals(I.amPerforming().propertiesFileOperationsTo().getValue("lastValueFromTableForCol"),
+                    I.amPerforming().propertiesFileOperationsTo().getValue("ScheduleEndDate"));
         }
     }
 
     @Then("^I (verify|softly verify) that the Schedule start date is matching with Reporting Period start Date$")
     public void iVerifyThatTheScheduleStartDateIsMatchingWithReportingPeriodStartDate(String usage) {
         if (usage.contains("softly")) {
-            EyeThink.core().assertion().assertThat(EyeThink.core().Properties().getValue("lastValueFromTableForCol"))
-                    .isEqualTo(EyeThink.core().Properties().getValue("ScheduleStartDate"));
+            I.amPerforming().assertionsTo().assertThat(I.amPerforming().propertiesFileOperationsTo().getValue("lastValueFromTableForCol"))
+                    .isEqualTo(I.amPerforming().propertiesFileOperationsTo().getValue("ScheduleStartDate"));
         } else {
-            Assert.assertEquals(EyeThink.core().Properties().getValue("lastValueFromTableForCol"),
-                    EyeThink.core().Properties().getValue("ScheduleStartDate"));
+            Assert.assertEquals(I.amPerforming().propertiesFileOperationsTo().getValue("lastValueFromTableForCol"),
+                    I.amPerforming().propertiesFileOperationsTo().getValue("ScheduleStartDate"));
         }
     }
 
@@ -178,29 +180,29 @@ public class GenericSteps {
         } else if (editable.equals("do not see")) {
             Assert.assertFalse(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle));
         } else if (editable.equals("softly see")) {
-            EyeThink.core().assertion().assertThat(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle)).isTrue();
         } else {
-            EyeThink.core().assertion().assertThat(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle)).isFalse();
+            I.amPerforming().assertionsTo().assertThat(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle)).isFalse();
         }
     }
 
     @When("I add the Notes for progress report")
-    public void iAddTheNotesForProgressReport() {
+    public void iAddTheNotesForProgressupdatingOfReportWith() {
         projectManager.addNotesToPR();
     }
 
     @Then("^I (softly verify|verify) that the file \"([^\"]*)\" is downloaded$")
     public void iVerifyThatTheFileIsDownloaded(String usage, String fileName) {
-        EyeThink.core().WaitFor().makeThreadSleep(10000);
+        I.amPerforming().waitFor().makeThreadSleep(10000);
         boolean yes = false;
-        File[] list = EyeThink.core().file().getCompleteFilesListOnLocalDirectory(System.getProperty("user.dir") + "/target");
+        File[] list = I.amPerforming().fileHandling().toGetCompleteFilesListOnLocalDirectory(System.getProperty("user.dir") + "/target");
         for (File f : list) {
             if (fileName.equalsIgnoreCase(f.getName())) {
                 yes = true;
             }
         }
         if (usage.contains("softly")) {
-            EyeThink.core().assertion().assertThat(yes).isTrue();
+            I.amPerforming().assertionsTo().assertThat(yes).isTrue();
         } else {
             Assert.assertTrue(yes);
         }
@@ -211,13 +213,13 @@ public class GenericSteps {
 
         boolean verify = true;
         try {
-            EyeThink.saas().inputForms().inputFormDataByFieldApiName(fieldApi, value, false);
+            govgrants.perform().inputForms().inputFormDataByFieldApiName(fieldApi, value, false);
             verify = false;
         } catch (Exception ex) {
 
         }
         if (usage.contains("softly")) {
-            EyeThink.core().assertion().assertThat(verify).isTrue();
+            I.amPerforming().assertionsTo().assertThat(verify).isTrue();
         } else {
             Assert.assertTrue(verify);
         }
@@ -226,17 +228,17 @@ public class GenericSteps {
     @Then("^I (softly see|see) snapshot with name containing \"([^\"]*)\" as name$")
     public void iSeeSnapshotWithNameContainingAsName(String usage, String snapshotName) {
         if (usage.contains("softly")) {
-            EyeThink.core().assertion().assertThat(EyeThink.core().elementReference().of(By.xpath("//tbody//tr//*[contains(text(),'" + snapshotName + "')]")).isDisplayed()).isTrue();
+            I.amPerforming().assertionsTo().assertThat(I.amPerforming().getElementReference().of(By.xpath("//tbody//tr//*[contains(text(),'" + snapshotName + "')]")).isDisplayed()).isTrue();
         } else {
-            Assert.assertTrue(EyeThink.core().elementReference().of(By.xpath("//tbody//tr//*[contains(text(),'" + snapshotName + "')]")).isDisplayed());
+            Assert.assertTrue(I.amPerforming().getElementReference().of(By.xpath("//tbody//tr//*[contains(text(),'" + snapshotName + "')]")).isDisplayed());
         }
     }
 
     @And("I create multiple records from sheet {string} of {string} with following data")
     public void createMultipleData(String sheetName, String spreadsheetName, List<List<String>> testData) {
-        String[][] data = EyeThink.core().file().excel().readExcelFile(spreadsheetName, sheetName);
+        String[][] data = I.amPerforming().fileHandling().forExcelAnd().readExcelFile(spreadsheetName, sheetName);
         String currentSubTab = "";
-        Map<String, Map<String, String>> map = EyeThink.core().convert().convertListOfListsToMapOfMaps(testData);
+        Map<String, Map<String, String>> map = I.amPerforming().conversionOf().listOfListsToMapOfMaps(testData);
 
         String key = map.keySet().iterator().next();
         Map<String, String> testDataMap = map.get(key);
@@ -245,9 +247,9 @@ public class GenericSteps {
 
             for (int i = 2; i < data.length; i++) {
                 int colLen = data[i].length;
-                EyeThink.saas().mainPage().clickMainMenuBar(testDataMap.get("Navigation"));
-                EyeThink.saas().sideBar().clickSideBarContent(testDataMap.get("subHeader"), testDataMap.get("subHeaderContent"));
-                EyeThink.saas().flexTable().clickTableTopRightButton(testDataMap.get("FlexTableId"), testDataMap.get("PageDetailsButton"));
+                govgrants.perform().mainPage().clickMainMenuBar(testDataMap.get("Navigation"));
+                govgrants.perform().sideBar().clickSideBarContent(testDataMap.get("subHeader"), testDataMap.get("subHeaderContent"));
+                govgrants.perform().flexTable().clickTableTopRightButton(testDataMap.get("FlexTableId"), testDataMap.get("PageDetailsButton"));
 
                 for (int j = 0; j < colLen; j++) {
                     String subTab = data[0][j].trim();
@@ -255,14 +257,14 @@ public class GenericSteps {
                     String value = data[i][j].trim();
 
                     if (subTab != null && !"None".equalsIgnoreCase(subTab) && !subTab.equalsIgnoreCase(currentSubTab)) {
-                        EyeThink.saas().pageDetails().clickSubTabsInsideTableView(subTab);
+                        govgrants.perform().pageDetails().clickSubTabsInsideTableView(subTab);
                         currentSubTab = subTab;
                     }
-                    EyeThink.saas().inputForms().inputFormDataByFieldApiName(apiName, value, false);
+                    govgrants.perform().inputForms().inputFormDataByFieldApiName(apiName, value, false);
                 }
 
-                EyeThink.saas().modal().clickModalContentSpecificButton(testDataMap.get("ModalButton"));
-                EyeThink.saas().pageDetails().clickAnyTopRightButton("Save");
+                govgrants.perform().modal().clickModalContentSpecificButton(testDataMap.get("ModalButton"));
+                govgrants.perform().pageDetails().clickAnyTopRightButton("Save");
             }
         }
     }
@@ -275,7 +277,7 @@ public class GenericSteps {
     @Then("^I (softly see|see) \"([^\"]*)\" image as \"([^\"]*)\"$")
     public void compareImages(String usage, String fieldLabel, String imageName) throws IOException {
         if (usage.contains("softly")) {
-            EyeThink.core().assertion().assertThat(projectManager.assertRiskLevelImage(fieldLabel, imageName)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(projectManager.assertRiskLevelImage(fieldLabel, imageName)).isTrue();
         } else {
             Assert.assertTrue(projectManager.assertRiskLevelImage(fieldLabel, imageName));
         }
@@ -284,7 +286,7 @@ public class GenericSteps {
     @Then("^I (softly see|see) selected element \"([^\"]*)\"$")
     public void saveCurrentSelectedElementValue(String usage, String elementText) {
         if (usage.contains("softly")) {
-            EyeThink.core().assertion().assertThat(projectManager.getSelectedSubTab(elementText)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(projectManager.getSelectedSubTab(elementText)).isTrue();
         } else {
             Assert.assertTrue(projectManager.getSelectedSubTab(elementText));
         }
@@ -293,7 +295,7 @@ public class GenericSteps {
     @Then("^I can (softly see|see) modal button \"([^\"]*)\"$")
     public void iCanSeeModalButton(String usage, String buttonName) {
         if (usage.contains("softly")) {
-            EyeThink.core().assertion().assertThat(projectManager.isButtonDisplayedOnModal(buttonName)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(projectManager.isButtonDisplayedOnModal(buttonName)).isTrue();
         } else {
             Assert.assertTrue(projectManager.isButtonDisplayedOnModal(buttonName));
         }
@@ -307,9 +309,9 @@ public class GenericSteps {
     @Then("^I (see|softly see) that Budget Period field contains the updated Budget Period End Date$")
     public void iSeeThatBudgetPeriodFieldContainsTheUpdatedBudgetPeriodEndDate(String usage) {
         if (usage.contains("softly")) {
-            EyeThink.core().assertion().assertThat(EyeThink.saas().pageDetails().getFieldValue("Budget Period")).contains(EyeThink.saas().pageDetails().getFieldValue("Budget Period End Date"));
+            I.amPerforming().assertionsTo().assertThat(govgrants.perform().pageDetails().getFieldValue("Budget Period")).contains(govgrants.perform().pageDetails().getFieldValue("Budget Period End Date"));
         } else {
-            Assert.assertTrue(EyeThink.saas().pageDetails().getFieldValue("Budget Period").contains(EyeThink.saas().pageDetails().getFieldValue("Budget Period End Date")));
+            Assert.assertTrue(govgrants.perform().pageDetails().getFieldValue("Budget Period").contains(govgrants.perform().pageDetails().getFieldValue("Budget Period End Date")));
         }
     }
 
@@ -321,21 +323,21 @@ public class GenericSteps {
 
     @And("I click {string} button in modal")
     public void iClickButtonInModal(String buttonName) {
-        EyeThink.core().click().on(By.xpath("//div[@id='ModalDivID']//button[contains(text(),'" + buttonName + "')]"));
+        I.amPerforming().click().on(By.xpath("//div[@id='ModalDivID']//button[contains(text(),'" + buttonName + "')]"));
     }
 
     @Then("I see that approver is not present after searching in dropdown")
     public void iSeeThatApproverIsNotPresentAfterSearchingInDropdown() {
-        WebElement ll = EyeThink.core().elementReference().of(By.xpath("//div[@id='select2-drop' and contains(@style,'block')]//li"));
+        WebElement ll = I.amPerforming().getElementReference().of(By.xpath("//div[@id='select2-drop' and contains(@style,'block')]//li"));
         Assert.assertTrue(ll.getText().equalsIgnoreCase("No matches found"));
     }
 
     @And("I search {string} approver in flex table with id {string}")
     public void iSearchApproverInFlexTaableWithId(String user, String flexTableDivId) {
-        EyeThink.core().elementReference().of((By.xpath("//div[@id='" + flexTableDivId + "']//td")));
-        EyeThink.saas().flexTable().clickTableActionIcon(flexTableDivId, "Edit");
-        EyeThink.core().click().on(By.xpath("//*[@id='" + flexTableDivId + "']//td[1]//span[@class='select2-chosen']"));
-        EyeThink.core().enterText().in(By.xpath("//div[@id='select2-drop']//input[@class='select2-input']"), user);
+        I.amPerforming().getElementReference().of((By.xpath("//div[@id='" + flexTableDivId + "']//td")));
+        govgrants.perform().flexTable().clickTableActionIcon(flexTableDivId, "Edit");
+        I.amPerforming().click().on(By.xpath("//*[@id='" + flexTableDivId + "']//td[1]//span[@class='select2-chosen']"));
+        I.amPerforming().textInput().in(By.xpath("//div[@id='select2-drop']//input[@class='select2-input']"), user);
     }
 
     @Then("^I (softly verify|verify) that All the following projects roles are available in picklist :$")
@@ -372,10 +374,10 @@ public class GenericSteps {
     public void iDoNotSeeFieldLabelPresentOnPageUnderTable(String usage, String fieldLabel, String tableHeaderTitle) {
         if (usage.contains("softly")) {
             if (usage.contains("not")) {
-                EyeThink.core().assertion().assertThat(projectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle))
+                I.amPerforming().assertionsTo().assertThat(projectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle))
                         .isFalse().as("Field " + fieldLabel + " is still present on the page under table " + tableHeaderTitle);
             } else {
-                EyeThink.core().assertion().assertThat(projectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle))
+                I.amPerforming().assertionsTo().assertThat(projectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle))
                         .isTrue().as("Field " + fieldLabel + " is not present on the page under table " + tableHeaderTitle);
             }
         } else {
@@ -393,25 +395,25 @@ public class GenericSteps {
 
     @And("^I click on top right button \"([^\"]*)\" in notes flex table having header \"([^\"]*)\"$")
     public void clickOnTopButtonInFlexTable(String buttonName, String flextTableHeader){
-        EyeThink.core().click().on(By.xpath("//*["+EyeThink.core().xpath().translate(flextTableHeader)+"]//ancestor::div[(@id and @class='ng-scope')]//button[text()='"+buttonName+"' or @title='"+buttonName+"']"));
+        I.amPerforming().click().on(By.xpath("//*["+I.amPerforming().sanityOfXpathTo().translate(flextTableHeader)+"]//ancestor::div[(@id and @class='ng-scope')]//button[text()='"+buttonName+"' or @title='"+buttonName+"']"));
     }
 
     @And("^I edit the notes$")
     public void iEditTheNotes() {
-        EyeThink.core().click().on(By.xpath("//div[contains(@id,'toggleNotes')]//a[@title='Edit']"));
+        I.amPerforming().click().on(By.xpath("//div[contains(@id,'toggleNotes')]//a[@title='Edit']"));
         By notesTitle = By.xpath("//div[@id='addAtt']//label[text()='Title']/..//input");
         By notesDescriptionPath = By.xpath("//div[@id='addAtt']//label[text()='Description']/..//textarea");
-        EyeThink.core().enterText().clear(notesDescriptionPath);
-        EyeThink.core().enterText().clear(notesTitle);
-        EyeThink.core().enterText().in(notesTitle, "Updated Notes Record");
-        EyeThink.core().enterText().in(notesDescriptionPath, "Updated Automation Notes");
+        I.amPerforming().textInput().toClear(notesDescriptionPath);
+        I.amPerforming().textInput().toClear(notesTitle);
+        I.amPerforming().textInput().in(notesTitle, "Updated Notes Record");
+        I.amPerforming().textInput().in(notesDescriptionPath, "Updated Automation Notes");
     }
 
     @Description("Check the users status against value in Approval History table inside Hsitory Tab")
     @Then("I see {string} against {string} in approval history")
     public void seeStatusOfRecordInApprovalHistory(String seeThisString, String againstThisString) {
         By listOfsUsers = By.xpath("//div[@id='chevronBarId']//ul[1]//li//a");
-        List<Elements> listOfLoc = EyeThink.core().elementReference().listOfElements().of(listOfsUsers);
+        List<Elements> listOfLoc = I.amPerforming().getElementReference().forListOfElements().of(listOfsUsers);
         int expectedIndex = 0;
         for (int i=0; i<listOfLoc.size(); i++){
             if (listOfLoc.get(i).getText().trim().equalsIgnoreCase(againstThisString)){
@@ -419,14 +421,14 @@ public class GenericSteps {
             }
         }
 
-        EyeThink.core().assertion().assertThat(EyeThink.core().get().text("//div[@id='chevronBarId']//ul[2]//li["+expectedIndex+"]//a").trim()).isEqualToIgnoringCase(seeThisString);
+        I.amPerforming().assertionsTo().assertThat(I.amPerforming().actionToGet().text("//div[@id='chevronBarId']//ul[2]//li["+expectedIndex+"]//a").trim()).isEqualToIgnoringCase(seeThisString);
     }
 
     @Description("Check the Application Due Date is Less/greater than today's Date")
     @Then("^I (softly see|see) field \"([^\"]*)\" contains date (less|greater) than todays date$")
     public void isFieldDateGreaterThanOrLessThanTodaysDate(String usage, String fieldLabel, String lessORgreater) throws ParseException {
         if (usage.contains("softly")) {
-            EyeThink.core().assertion().assertThat(projectManager.isFieldDateGreaterThanOrLessThanTodaysDate(fieldLabel,lessORgreater)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(projectManager.isFieldDateGreaterThanOrLessThanTodaysDate(fieldLabel,lessORgreater)).isTrue();
         } else {
             Assert.assertTrue(projectManager.isFieldDateGreaterThanOrLessThanTodaysDate(fieldLabel,lessORgreater));
         }
@@ -437,11 +439,11 @@ public class GenericSteps {
     public void iClickOnModalButtonSubmitReview() {
         try {
             By buttonPath = By.xpath("//div[@id='footerButtonsPanel']//*[text()='Submit Review' or @title='Submit Review']");
-            EyeThink.core().click().on(buttonPath);
+            I.amPerforming().click().on(buttonPath);
         } catch (Exception ee) {
-            EyeThink.core().WaitFor().makeThreadSleep(5000);
+            I.amPerforming().waitFor().makeThreadSleep(5000);
             By buttonPath = By.xpath("//div[@id='footerButtonsPanel']//*[text()='Submit Review' or @title='Submit Review']");
-            EyeThink.core().click().on(buttonPath);
+            I.amPerforming().click().on(buttonPath);
         }
     }
 }

@@ -1,11 +1,9 @@
 package com.ggproduct.automation.steps;
 
-import com.ggproduct.automation.projectmanager.ProjectManager;
 import com.ggproduct.automation.projectmanager.UsersAndURL;
-import eyethink.automation.bots.Register.AuthorizedProject;
-import eyethink.automation.bots.Register.EyeThink;
-import eyethink.automation.bots.Report.CSS;
-import eyethink.automation.bots.controller.TestSetupController;
+import com.testingblaze.controller.TestSetupController;
+import com.testingblaze.register.EnvironmentFactory;
+import com.testingblaze.report.CSS;
 import io.cucumber.java.Before;
 
 import java.awt.*;
@@ -21,14 +19,15 @@ public class setup {
     private TestSetupController userController;
     private static CSS report;
 
-    public setup(TestSetupController userController,ProjectManager projectManager) {
+    public setup(TestSetupController userController) {
         this.userController = userController;
-        EyeThink.setRegister(AuthorizedProject.SAAS_GOVGRANTS_PRODUCT);
         if(report == null) {
             this.report = new CSS();
-            report.reportConfigWriteUp(System.getProperty("user.dir"),"GovGrants Product Test Automation");
+            EnvironmentFactory.setProjectName("GovGrants Product Test Automation");
+            EnvironmentFactory.setOrgName("REI Systems [Saas Business Unit]");
+            EnvironmentFactory.setProjectPath(System.getProperty("user.dir"));
+            report.reportConfigWriteUp();
         }
-        projectManager.initData();
     }
 
     @Before(order = 2)
