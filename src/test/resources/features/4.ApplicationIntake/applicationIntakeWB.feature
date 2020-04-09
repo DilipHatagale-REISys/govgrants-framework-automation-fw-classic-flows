@@ -1733,7 +1733,7 @@ Feature: Application Intake scenarios without background
     And I click on "Save" in the page details
     Given I click on "Back" in the page details
     When I click on "Submit Application" in the page details
-    Then I see status in Progress-bar is "Submitted" and is "Green"
+    Then I softly see status in Progress-bar is "Submitted" and is "Green"
 
 
 
