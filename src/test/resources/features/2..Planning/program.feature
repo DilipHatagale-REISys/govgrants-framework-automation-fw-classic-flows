@@ -65,13 +65,17 @@ Feature: Validate all scenarios for program
       | Program Approver   | Automation PM  | Automation Test Description |
     Then I see that "Automation EXE" has been added in flextable with Id "---program:-:approverTableId---"
 
-  @34616 @75992 @75821 @75830 @75831 @75836 @75832 @75840 @75841 @programFocusAreaAssociation
+  @34616 @76118 @75992 @75821 @75830 @75831 @75836 @75832 @75840 @75841 @programFocusAreaAssociation
   Scenario Outline: Validate the association of Focus Area for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I click "Add" after selection of "<Title>" in the table "---program:-:associateFocusAreaTableId---"
     Then I softly see that "<Title>" has been added in flextable with Id "---program:-:focusAreaTableId---"
     And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---"
+    And I perform quick search for "Completeness" in "---program:-:programReviewPanel---" panel
+    Then I softly see value "Completeness" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I close "Review Form" modal by clicking the top right x button
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
       | Reviewer |
       | David FO |
@@ -115,7 +119,7 @@ Feature: Validate all scenarios for program
       | Title                           |
       | Automation Permanent Focus Area |
 
-  @34737 @75894 @75888 @75891 @programObjectiveAssociation
+  @34737 @76116 @76117 @76113 @76115 @75894 @75888 @75891 @programObjectiveAssociation
   Scenario Outline: Validate the Association of Objective to the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
@@ -127,7 +131,33 @@ Feature: Validate all scenarios for program
       | Fiscal Review     | 25              |
       | Program Review    | 25              |
       | Compliance Review | 50              |
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanel---" by clicking "New" :
+      | Section Order | Section Header    |
+      | 4             | Automation Header |
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    Then I softly see value "Automation Header" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on "Review Form" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanel---" by clicking "New" :
+      | Section Order | Section Header    |
+      | 4             | Automation Header |
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    Then I softly see value "Automation Header" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I close "Review Form" modal by clicking the top right x button
     And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see value "Schedule" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    Then I softly see value "Environment" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    Then I softly see value "Permits" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanel---" by clicking "New" :
+      | Section Order | Section Header    |
+      | 3             | Automation Header |
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    Then I softly see value "Automation Header" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I click on "Delete" icon for "Automation Header" inside flex table with id "---program:-:programReviewPanel---"
     And I click on "Delete" icon for "Schedule" inside flex table with id "---program:-:programReviewPanel---"
     And I click on "Delete" icon for "Environment" inside flex table with id "---program:-:programReviewPanel---"
     And I click on "Delete" icon for "Permits" inside flex table with id "---program:-:programReviewPanel---"
@@ -175,7 +205,6 @@ Feature: Validate all scenarios for program
     When I enter the following values into flex table with id "---program:-:programReviewPanel---" by clicking "New" :
       | Section Order | Section Header    |
       | 3             | Automation Header |
-    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     Then I softly see the following messages in the page details :
       | Saved successfully. |
     And I perform quick search for "Return on Investment (ROI)" in "---program:-:programReviewPanel---" panel
@@ -191,7 +220,7 @@ Feature: Validate all scenarios for program
       | EGMS Id                                 |
       | Automation Permanent KPI for Regression |
 
-  @34745 @75997 @76112 @38242 @programAttachmentChecklist
+  @34745 @75997 @76112 @76119 @38242 @programAttachmentChecklist
   Scenario: Validate the attachment checklist for the Internal Program
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
@@ -214,6 +243,10 @@ Feature: Validate all scenarios for program
     Then I softly see value "Approach" for title "Section Header" inside table "---program:-:programReviewPanel---"
     Then I softly see value "Impact" for title "Section Header" inside table "---program:-:programReviewPanel---"
     And I close "Review Form" modal by clicking the top right x button
+    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---"
+    And I perform quick search for "Permit" in "---program:-:programReviewPanel---" panel
+    Then I softly see value "Permits" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I close "Review Form" modal by clicking the top right x button
     And I click on "Delete" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---"
     And I click on "Delete" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---"
     And I click on "Delete" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---"
@@ -222,20 +255,22 @@ Feature: Validate all scenarios for program
       | Setup Tab - SME Review: At least one form is required for this review step.                                   |
       | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
 
-  @75990 @75996 @75994 @prescreenReviewPanel
+  @76114 @75990 @75996 @75994 @prescreenReviewPanel
   Scenario: To validate system generated validation message for Pre-screen review,when review panel categories has not associated with Pre-screen review form in setup tab in planning phase
     When I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanel---" by clicking "New" :
       | Section Order | Section Header    |
-      | 1             | Automation Header |
+      | 3             | Automation Header |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
+    Then I softly see value "Automation Header" for title "Section Header" inside table "---program:-:programReviewPanel---"
     Then I softly see value "Eligibility" for title "Section Header" inside table "---program:-:programReviewPanel---"
     Then I softly see value "Completeness" for title "Section Header" inside table "---program:-:programReviewPanel---"
     And I click on "Delete" icon for "Eligibility" inside flex table with id "---program:-:programReviewPanel---"
     And I click on "Delete" icon for "Completeness" inside flex table with id "---program:-:programReviewPanel---"
+    And I click on "Delete" icon for "Automation Header" inside flex table with id "---program:-:programReviewPanel---"
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details :
@@ -531,3 +566,137 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "Record Id" inside flex table with id "---program:-:programsTableId---"
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
+
+  @76333 @76334 @76332 @SMEProgramReviewFormAndFiscalReviewForm @keerti
+  Scenario Outline: To verify Filter functionality for review panel categories section in program review form in SME review step of setup tab in planning
+    /To validate system is getting displayed error message for program review form, while adding invalid values into the filter for review panel categories section on setup tab of planning
+    /To validate system is getting displayed error message for fiscal review form, while adding invalid values into the filter for review panel categories section on setup tab of planning
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    #And I close "Review Form" modal by clicking the top right x button
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Program review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability     | 15                 |
+      | Approach       | 60                 |
+      | Impact         | 25                 |
+    And I click on advance filter "#advfProgramRelatedReviewPanelCategories" of table id "---program:-:programReviewPanel---"
+    And I enter advance filter values inside id "advfProgramRelatedReviewPanelCategories"
+      | Section Order | equals to | 3 |
+    Then I softly see value "3" for title "Section Order" inside table "---program:-:programReviewPanel---"
+    And I enter advance filter values inside id "advfProgramRelatedReviewPanelCategories"
+      | Section Order | equals to | 5 |
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanel---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget         | 75                 |
+      | Match          | 75                 |
+      | Program Income | 10                 |
+    And I click on advance filter "#advfProgramRelatedReviewPanelCategories" of table id "ProgramRelatedReviewPanelCategoriesFlexToggle"
+    And I enter advance filter values inside id "advfProgramRelatedReviewPanelCategories"
+      | Section Order | equals to | 5 |
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanel---"
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
+
+  @76336 @76337 @WithoutPrescreenReviewFormWithoutManagementReviewForm @keerti
+  Scenario: To validate system generated error message, When Prescreen review step has not associated with any review form in review form section in setup tab of planning
+    / To validate system generated error message, When management review step has not associated with any review form in review form section in setup tab of planning
+    Given I delete the record "Automation Execution Internal Program" from the object "Program"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Delete" icon for "Pre-Screen" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    Then I softly see "No Records Found" inside flex table with id "ProgramReviewStepTemplatesFlexToggle"
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - Pre-Screen Review: At least one form is required for this review step |
+    And I expand nested table containing column value "Management Review"
+    And I click on "Delete" icon for "Management Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    Then I softly see "No Records Found" inside flex table with id "ProgramReviewStepTemplatesFlexToggle"
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - Management Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0% |
+
+  @76481 @76482 @ManagenementReviewPanalCatergoryReviewFormWeight @keerti
+  Scenario: To validate system generated error message , When Total section Weight is less than 100% for all Review Panel Categories in management review form for management review step in planning phase
+    /To validate system generated error message ,When management review form Weight : 0% & total section weight : 100 % for all review panel categories for management review step in planning phase
+    Given I delete the record "Automation Execution Internal Program" from the object "Program"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+    And I expand nested table containing column value "Management Review"
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Header                 | Section Weight (%) |
+      | Return on Investment (ROI)     | 60                 |
+      | Strategic Alignment            | 30                 |
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%, it is currently 90%. |
+    And I click on "Edit" icon for "Management Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    When I enter value "0" into field "Weight__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Header                 | Section Weight (%) |
+      | Return on Investment (ROI)     | 60                 |
+      | Strategic Alignment            | 40                 |
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - Management Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
