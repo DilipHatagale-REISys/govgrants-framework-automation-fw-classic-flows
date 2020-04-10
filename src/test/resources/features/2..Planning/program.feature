@@ -587,7 +587,7 @@ Feature: Validate all scenarios for program
       | Management Review | 25              |
       | SME Review        | 75              |
     And I expand nested table containing column value "SME Review"
-    And I click on "Review Form" icon for "Program review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Review Form" icon for "Program review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Capability     | 15                 |
@@ -601,7 +601,7 @@ Feature: Validate all scenarios for program
       | Section Order | equals to | 5 |
     Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanel---"
     And I close "Review Form" modal by clicking the top right x button
-    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Budget         | 75                 |
@@ -641,13 +641,13 @@ Feature: Validate all scenarios for program
       | Management Review | 25              |
       | SME Review        | 75              |
     And I expand nested table containing column value "Pre-Screen Review"
-    And I click on "Delete" icon for "Pre-Screen" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Delete" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---"
     Then I softly see "No Records Found" inside flex table with id "ProgramReviewStepTemplatesFlexToggle"
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review: At least one form is required for this review step |
     And I expand nested table containing column value "Management Review"
-    And I click on "Delete" icon for "Management Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Delete" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
     Then I softly see "No Records Found" inside flex table with id "ProgramReviewStepTemplatesFlexToggle"
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -680,7 +680,7 @@ Feature: Validate all scenarios for program
       | Management Review | 25              |
       | SME Review        | 75              |
     And I expand nested table containing column value "Management Review"
-    And I click on "Review Form" icon for "Management Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header                 | Section Weight (%) |
       | Return on Investment (ROI)     | 70                 |
@@ -689,7 +689,7 @@ Feature: Validate all scenarios for program
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%, it is currently 120%. |
-    And I click on "Review Form" icon for "Management Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header                 | Section Weight (%) |
       | Return on Investment (ROI)     | 60                 |
@@ -698,10 +698,10 @@ Feature: Validate all scenarios for program
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%, it is currently 90%. |
-    And I click on "Edit" icon for "Management Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Edit" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
     When I enter value "0" into field "Weight__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
-    And I click on "Review Form" icon for "Management Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header                 | Section Weight (%) |
       | Return on Investment (ROI)     | 60                 |
@@ -730,22 +730,22 @@ Feature: Validate all scenarios for program
       | SME Review        | 50              |
       | Pre-Screen Review | 20              |
     And I expand nested table containing column value "Pre-Screen Review"
-    And I click on "Edit" icon for "Pre-Screen" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Edit" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---"
     When I enter value "100" into field "Weight__c"
     When I enter value "1" into field "MinimumNumberOfReviewers__c"
     When I enter value "Checked" into field "Required__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
-    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---"
     And I expand nested table containing column value "Eligibility"
-    And I click on "Delete" icon for "1" inside flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    And I click on "Delete" icon for "2" inside flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see "No Records Found" inside flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
+    And I click on "Delete" icon for "1" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "2" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     And I expand nested table containing column value "Completeness"
-    And I click on "Delete" icon for "1" inside flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    And I click on "Delete" icon for "2" inside flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    And I click on "Delete" icon for "3" inside flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    And I click on "Delete" icon for "4" inside flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see "No Records Found" inside flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
+    And I click on "Delete" icon for "1" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "2" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "4" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -775,14 +775,14 @@ Feature: Validate all scenarios for program
       | SME Review        | 75              |
       | Pre-Screen Review | 0               |
     And I expand nested table containing column value "SME Review"
-    And I click on "Edit" icon for "Compliance Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Edit" icon for "Compliance Review" inside flex table with id "---program:-:reviewFormPanelId---"
     When I enter value "0" into field "Weight__c"
-    And I click on "Edit" icon for "Fiscal Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Edit" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
     When I enter value "30" into field "Weight__c"
-    And I click on "Edit" icon for "Program Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Edit" icon for "Program Review" inside flex table with id "---program:-:reviewFormPanelId---"
     When I enter value "70" into field "Weight__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
-    And I click on "Review Form" icon for "Program review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Review Form" icon for "Program review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Capability     | 0                  |
@@ -795,7 +795,7 @@ Feature: Validate all scenarios for program
       | Setup Tab - SME Review - Program Review: A score cannot be associated to a question in the Approach section because it does not have a weight    |
       | Setup Tab - SME Review - Program Review: A score cannot be associated to a question in the Impact section because it does not have a weight.     |
       | Setup Tab - SME Review - Program Review: A weighted form must contain weighted sections.                                                         |
-    And I click on "Review Form" icon for "Program review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Review Form" icon for "Program review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header | Section Weight (%)  |
       | Capability     | 50                  |
@@ -805,7 +805,7 @@ Feature: Validate all scenarios for program
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%, it is currently 120%. |
-    And I click on "Review Form" icon for "Program review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Review Form" icon for "Program review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header | Section Weight (%)  |
       | Capability     | 60                  |
@@ -839,71 +839,71 @@ Feature: Validate all scenarios for program
       | SME Review        | 75              |
       | Pre-Screen Review | 0               |
     And I expand nested table containing column value "Pre-Screen Review"
-    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---"
     And I expand nested table containing column value "Eligibility"
-    Then I softly see value "2" for title "Question Order" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "Is applicant a legal entity registered in State of California?" for title "Question" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "Yes/No" for title "Type" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "0" for title "Max Score" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Edit" against "2" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Delete" against "2" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
+    Then I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Is applicant a legal entity registered in State of California?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "2" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "2" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     And I expand nested table containing column value "Completeness"
-    Then I softly see value "4" for title "Question Order" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "If applicable, were the required public comment processes observed and documented?" for title "Question" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "Yes/No" for title "Type" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "0" for title "Max Score" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Edit" against "4" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Delete" against "4" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see "Total Records:2" inside flex table with id "flexGridProgramReviewPanelCategories"
+    Then I softly see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "If applicable, were the required public comment processes observed and documented?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "Total Records:2" inside flex table with id "---program:-:programReviewPanel---"
     And I close "Review Form" modal by clicking the top right x button
     And I expand nested table containing column value "SME Review"
-    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I expand nested table containing column value "Schedule"
-    Then I softly see value "3" for title "Question Order" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "Are state resources available to support proposed schedule?" for title "Question" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "Yes/No" for title "Type" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "0" for title "Max Score" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Edit" against "3" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Delete" against "3" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
+    Then I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Are state resources available to support proposed schedule?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "3" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "3" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     And I expand nested table containing column value "Environment"
-    Then I softly see value "3" for title "Question Order" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "Does the application include leverage funds? Is documentation of the leverage included in the application?" for title "Question" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "Yes/No" for title "Type" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "0" for title "Max Score" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Edit" against "3" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Delete" against "3" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
+    Then I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Does the application include leverage funds? Is documentation of the leverage included in the application?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "3" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "3" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     And I expand nested table containing column value "Permits"
-    Then I softly see value "3" for title "Question Order" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "When will the first applicable permit expire?" for title "Question" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "Yes/No" for title "Type" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "0" for title "Max Score" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Edit" against "3" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Delete" against "3" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see "Total Records:3" inside flex table with id "flexGridProgramReviewPanelCategories"
+    Then I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "When will the first applicable permit expire?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "3" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "3" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "Total Records:3" inside flex table with id "---program:-:programReviewPanel---"
     And I close "Review Form" modal by clicking the top right x button
-    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "ProgramReviewStepPanelTemplatesFlexToggle"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I expand nested table containing column value "Budget"
-    Then I softly see value "6" for title "Question Order" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "How much are similar projects typically awarded?" for title "Question" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "Currency" for title "Type" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "0" for title "Max Score" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Edit" against "6" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Delete" against "6" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
+    Then I softly see value "6" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "How much are similar projects typically awarded?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Currency" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "6" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "6" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     And I expand nested table containing column value "Match"
-    Then I softly see value "3" for title "Question Order" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "Does the application include leverage funds? Is documentation of the leverage included in the application?" for title "Question" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "Written" for title "Type" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "0" for title "Max Score" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Edit" against "3" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Delete" against "3" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
+    Then I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Does the application include leverage funds? Is documentation of the leverage included in the application?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "3" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "3" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     And I expand nested table containing column value "Program Income"
-    Then I softly see value "2" for title "Question Order" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "Does the budget outline how program income will be used and tracked? Are the proposed program income uses consistent with program requirements?" for title "Question" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "Written" for title "Type" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see value "10" for title "Max Score" inside table "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Edit" against "2" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly can see row level action button "Delete" against "2" in flex table with id "ProgramRelatedReviewPanelQuestionsFlexToggle"
-    Then I softly see "Total Records:3" inside flex table with id "flexGridProgramReviewPanelCategories"
+    Then I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Does the budget outline how program income will be used and tracked? Are the proposed program income uses consistent with program requirements?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "10" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "2" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "2" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "Total Records:3" inside flex table with id "---program:-:programReviewPanel---"
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
