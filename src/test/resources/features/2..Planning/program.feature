@@ -931,6 +931,7 @@ Feature: Validate all scenarios for program
     And I expand nested table containing column value "Management Review"
     And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I expand nested table containing column value "Return on Investment (ROI)"
+    And I click on parallel lines menu bar with data target value "#ProgramRelatedReviewPanelQuestionsFlexToggle"
     And I select "Download as PDF" from parallel lines dropdown of "Review Questions"
     And I download the file
     Then I softly verify that "pdf" file is downloaded
@@ -948,6 +949,7 @@ Feature: Validate all scenarios for program
     Then I softly see "Assess the overall impact of this project" on page "1" of "govgrants" pdf file
     Then I softly see "YesNo" on page "1" of "govgrants" pdf file
     Then I softly see "20" on page "1" of "govgrants" pdf file
+    And I switch to parent tab
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 4              | Test      | Written | 0         |
@@ -960,6 +962,7 @@ Feature: Validate all scenarios for program
     Then I softly can see row level action button "Edit" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly can see row level action button "Delete" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     And I expand nested table containing column value "Strategic Alignment"
+    And I click on parallel lines menu bar with data target value "#ProgramRelatedReviewPanelQuestionsFlexToggle"
     And I select "Download as PDF" from parallel lines dropdown of "Review Questions"
     And I download the file
     Then I softly verify that "pdf" file is downloaded
@@ -977,6 +980,7 @@ Feature: Validate all scenarios for program
     Then I softly see "Assess the overall impact of this project" on page "1" of "govgrants" pdf file
     Then I softly see "YesNo" on page "1" of "govgrants" pdf file
     Then I softly see "20" on page "1" of "govgrants" pdf file
+    And I switch to parent tab
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 3              | Test 1    | Written | 0         |
@@ -1021,12 +1025,12 @@ Feature: Validate all scenarios for program
       | Saved Successfully! |
     Then I softly see value "Written" for title "Type" against the value "3" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
-    Then I softly see the following messages in the page details :
+    Then I see the following messages in the page details contains:
       | Record deleted successfully. |
     Then I softly do not see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I expand nested table containing column value "Strategic Alignment"
     And I click on "Delete" icon for "Assess the overall impact of this project." inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
-    Then I softly see the following messages in the page details :
+    Then I see the following messages in the page details contains:
       | Record deleted successfully. |
     Then I softly do not see value "Assess the overall impact of this project." for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
     Examples:
@@ -1073,3 +1077,5 @@ Feature: Validate all scenarios for program
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review - Pre-Screen: A weighted form must contain weighted sections. |
+
+
