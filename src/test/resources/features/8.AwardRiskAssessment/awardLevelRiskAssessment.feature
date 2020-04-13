@@ -39,7 +39,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on "Submit for Approval" in the page details
     And I pause execution for "120" seconds
     Then I softly can see mail notification for "INTERNAL" user with following subject:
-      | Subaward Risk Assessment for has been Assigned for Program Approval |
+      | Subaward Risk Assessment for {SavedValue:RiskId} has been Assigned for Program Approval |
     And I navigate to "Responsibilities" sub tab
     Then I softly cannot see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
