@@ -1,7 +1,7 @@
 package com.ggproduct.automation.pageobjects;
 
 import com.ggproduct.automation.projectmanager.ProjectManager;
-import eyethink.automation.bots.Register.EyeThink;
+import com.testingblaze.register.I;
 import org.openqa.selenium.By;
 
 import java.time.format.DateTimeFormatter;
@@ -29,14 +29,14 @@ public class AmendmentRequestPage extends ProjectManager {
      * @Author - Mahadev.hanme
       */
     public void enterRevisedEncumbrance(String awardName) {
-        EyeThink.core().enterText().clear(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"));
-        EyeThink.core().enterText().in(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"),calculateRevisedEncumbrance(awardName).toString());
+        I.amPerforming().textInput().toClear(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"));
+        I.amPerforming().textInput().in(By.xpath("//field[@field-name='ActualEncumbrance__c']/input"),calculateRevisedEncumbrance(awardName).toString());
     }
 
     public void updatedBudgetPeriodEndDate(String offset, String awardName) {
         String rawDate = getFieldValueFromAPI(awardName, "GrantAwardName__c", "Award__c", "BudgetPeriodEndDate__c");
         String[] rawDateSplitted = rawDate.split(" ")[0].split("-");
         String fieldValue = rawDateSplitted[1] + "/" + rawDateSplitted[2] + "/" + rawDateSplitted[0];
-        EyeThink.core().Properties().saveValue("updatedBudgetPeriodDate", EyeThink.core().get().dateWithOffsetFromGivenDate(fieldValue,Integer.parseInt(offset),DateTimeFormatter.ofPattern("M/d/uuuu")));
+        I.amPerforming().propertiesFileOperationsTo().saveValue("updatedBudgetPeriodDate", I.amPerforming().actionToGet().dateWithOffsetFromGivenDate(fieldValue,Integer.parseInt(offset),DateTimeFormatter.ofPattern("M/d/uuuu")));
     }
 }

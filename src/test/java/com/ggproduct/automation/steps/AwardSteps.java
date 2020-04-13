@@ -1,9 +1,9 @@
 package com.ggproduct.automation.steps;
 
+import com.automation.rei.handlers.govgrants;
 import com.ggproduct.automation.pageobjects.AwardPage;
-import eyethink.automation.bots.Register.EyeThink;
-import eyethink.automation.bots.Report.LogLevel;
-import eyethink.automation.bots.objects.Elements;
+import com.testingblaze.objects.Elements;
+import com.testingblaze.register.I;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
@@ -17,7 +17,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class AwardSteps {
     AwardPage awardPage;
@@ -30,7 +29,7 @@ public class AwardSteps {
     @Then("^I (see|softly see) textarea field \"([^\"]*)\" is editable$")
     public void iSeeTextareaFieldIsEditable(String usage,String fieldAPIName) {
         if (usage.contains("softly")) {
-            EyeThink.core().assertion().assertThat(awardPage.isFieldEditable(fieldAPIName)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(awardPage.isFieldEditable(fieldAPIName)).isTrue();
         } else {
             Assert.assertTrue(awardPage.isFieldEditable(fieldAPIName));
         }
@@ -43,8 +42,8 @@ public class AwardSteps {
 
     @And("^I mouse hover to link contains \"([^\"]*)\"$")
     public void iMouseHoverToLinkContains(String link) {
-        EyeThink.core().scroll().moveToElement(EyeThink.core()
-        .elementReference().of(By.xpath("//a[text()='"+link+"']")));
+        I.amPerforming().scroll().toMoveToElement(I.amPerforming()
+        .getElementReference().of(By.xpath("//a[text()='"+link+"']")));
     }
 
     @And("^I save the field value having link labeled \"([^\"]*)\" as \"([^\"]*)\"$")
@@ -54,7 +53,7 @@ public class AwardSteps {
 
     @And("^I click \"([^\"]*)\" link present on hovered tooltip$")
     public void iClickLinkPresentOnHoveredTooltip(String text) {
-        EyeThink.core().click().on(By.xpath("//div[contains(@class,'form-group')]//a[text()='"+text+"']"));
+        I.amPerforming().click().on(By.xpath("//div[contains(@class,'form-group')]//a[text()='"+text+"']"));
     }
 
     @Then("^I (softly see|see) page title contains as \"([^\"]*)\"$")
@@ -64,16 +63,16 @@ public class AwardSteps {
 
     @And("^I calculate the total from the column header \"([^\"]*)\" and saved it as \"([^\"]*)\" from the flex table \"([^\"]*)\"$")
     public void iCalculateTheTotalFromTheColumnHeaderAndSavedItAsFromTheFlexTable(String colName, String key, String tableId) {
-        EyeThink.core().WaitFor().makeThreadSleep(5000);
-        WebElement row = EyeThink.core().elementReference().of(By.xpath("//div[@id='" + tableId + "']//table//tbody//tr"));
-        Map<String, Integer> columnMapping = EyeThink.saas().flexTable().constructColumnMapping(row, Collections.singleton(colName));
+        I.amPerforming().waitFor().makeThreadSleep(5000);
+        WebElement row = I.amPerforming().getElementReference().of(By.xpath("//div[@id='" + tableId + "']//table//tbody//tr"));
+        Map<String, Integer> columnMapping = govgrants.perform().flexTable().constructColumnMapping(row, Collections.singleton(colName));
         By specificColumnValue = By.xpath("//div[@id='ActiveGrants']//th//span[text()='"+colName+"']/ancestor::thead/following-sibling::tbody/tr[not(contains(@ng-if,'noRecords'))]//td["+columnMapping.get(colName)+"]/span/span");
-        EyeThink.core().WaitFor().WaitForElementListToBePresent(specificColumnValue);
-        List<Elements> rowValues = EyeThink.core().elementReference().listOfElements().of(specificColumnValue);
+        I.amPerforming().waitFor().ElementListToBePresent(specificColumnValue);
+        List<Elements> rowValues = I.amPerforming().getElementReference().forListOfElements().of(specificColumnValue);
         double total = rowValues.stream().mapToDouble(
                 locator-> {
                     try {
-                        EyeThink.core().elementReference().of(locator);
+                        I.amPerforming().getElementReference().of(locator);
                         return NumberFormat.getCurrencyInstance(Locale.US).parse(locator.getText()).doubleValue();
                     } catch (ParseException e) {
                         e.printStackTrace();
@@ -82,7 +81,7 @@ public class AwardSteps {
                 }
         ).sum();
 
-        EyeThink.core().Properties().saveValue(key,String.valueOf(total));
+        I.amPerforming().propertiesFileOperationsTo().saveValue(key,String.valueOf(total));
     }
 
     @Then("^I (softly see|see) the field \"([^\"]*)\" is equal to the sum of the following fields :$")
@@ -97,7 +96,7 @@ public class AwardSteps {
 
     @And("^I save the total records from the flex table id \"([^\"]*)\" as \"([^\"]*)\"$")
     public void iGetTheTotalRecordsFromTheFlexTableId(String flexTableId, String key) {
-       EyeThink.core().Properties().saveValue(key,EyeThink.core().get().text(By.xpath(
+       I.amPerforming().propertiesFileOperationsTo().saveValue(key,I.amPerforming().actionToGet().text(By.xpath(
              "//div[@id='"+flexTableId+"']//*[@ng-bind='totalRecords'] | //div[@id='"+flexTableId+"']//table//tfoot//tr[last()]//*[contains(@class, 'ng-binding')]"
        )));
     }

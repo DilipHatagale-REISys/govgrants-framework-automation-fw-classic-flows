@@ -60,6 +60,39 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly can see "Responsibilities" sub tab at view detail page
     Then I softly can see "History" sub tab at view detail page
 
+  @75546 @75639 @75544 @75545 @75543 @jitendra @downloadPDF
+  Scenario: To verify system allow to download PDF for Announcement-published table for announcement tab
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Published Competitive Announcements"
+    And I perform quick search for "Automation Announcement for FDM" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    Then I softly see value "Automation Announcement for FDM" for title "Announcement Name" inside table "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I navigate to "Collab" sub tab
+    And I click on advance filter "#advfCommunicationHistory" of table id "---announcement:-:collabMessages---"
+    And I enter advance filter values inside id "advfCommunicationHistory"
+      | Subject | Contains | Dont mess with jitu |
+    Then I softly see "No Records Found" inside flex table with id "---announcement:-:collabMessages---"
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Published Competitive Announcements"
+    And I click on advance filter "#advfActiveFundingOpportunitiesCompitive" of table id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter advance filter values inside id "advfActiveFundingOpportunitiesCompitive"
+      | Announcement Name | Contains | Automation Announcement for FDM |
+    Then I softly see value "Automation Announcement for FDM" for title "Announcement Name" inside table "---announcement:-:competitiveAnnouncementTableId---"
+    And I refresh the page
+    And I click on advance filter "#advfActiveFundingOpportunitiesCompitive" of table id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter advance filter values inside id "advfActiveFundingOpportunitiesCompitive"
+      | Announcement Name | Contains | Dont mess with jitu |
+    Then I softly see "No Records Found" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I refresh the page
+    And I click on parallel menu button in flex table titled "Published Competitive Announcements"
+    And I select "Download as PDF" from dropdown
+    And I download the file
+    And I pause execution for "20" seconds
+    And I softly see "Published Competitive Announcements" on page "1" of "govgrants" pdf file
+
+
   @70999 @73627 @73632 @70997 @70980 @71010 @71011 @71012 @70998 @71022 @71023 @71037 @71027 @validationForErrorMessageOfPreApplication @aashish
   Scenario: To validate system generated error message when Pre Application Due Date is greater than Application Due Date while submitting information
     Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
