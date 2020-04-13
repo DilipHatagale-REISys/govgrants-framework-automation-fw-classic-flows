@@ -1,5 +1,6 @@
 package com.framework.automation.steps;
 
+import com.testingblaze.objects.InstanceRecording;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
@@ -14,6 +15,5 @@ import org.junit.runner.RunWith;
         strict=true
 )
 public class CustomCreator {
-
 }
 
