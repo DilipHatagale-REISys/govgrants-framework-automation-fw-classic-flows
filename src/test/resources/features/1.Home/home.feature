@@ -26,7 +26,7 @@ Feature: Validate all scenarios in the home tab
       | Organization name                     |
       | Internal Automation Organization Test |
 
-  @56708 @56709 @56710 @internalOrganizationViewADMINEditPMView @smoke
+  @56710 @56708 @internalOrganizationViewADMINEditPMView @smoke
   Scenario Outline: Validate whether all users have view access to Internal Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -59,7 +59,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56714 @56715 @activeIndividualSubrecipientsEdit
+  @56715 @56714 @activeIndividualSubrecipientsEdit
   Scenario Outline: Validate whether ADMIN/DA have Edit access to Active Individual Subrecipients and Subrecipient Organizations
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -72,7 +72,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @56716 @56717 @56718 @internalContactsViewCreateEdit @smoke
+  @56717 @56716 @56718 @internalContactsViewCreateEdit @smoke
   Scenario Outline: Validate that Internal contacts are accessible across agencies and can be create, Edit and view access to Contacts by any Internal users
     Given I delete the record "Automation PO" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
@@ -92,7 +92,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56720 @56721 @smeReviewersContactViewAndCreate @smoke
+  @56721 @56720 @smeReviewersContactViewAndCreate @smoke
   Scenario Outline: Verifying all Internal Users has View access to SME Reviewers Contact
     Given I delete the record "Automation SME" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
@@ -135,7 +135,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56724 @56725 @56726 @termsandConditionsViewCreateAdminEdit @bug-69291 @smoke
+  @56725 @56724 @56726 @termsandConditionsViewCreateAdminEdit @bug-69291 @smoke
   Scenario Outline: Verifying all Internal Users has View, Create and Edit access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Planning" tab
@@ -145,20 +145,53 @@ Feature: Validate all scenarios in the home tab
     When I click modal button "Save"
     When I close "New" modal by clicking the top right x button
     When I perform quick search for "TC-598383" in "---home:-:termsAndConditionsTableId---" panel
-     Then I softly see value "Active" for title "Status" against the value "TC-598383" inside table "---home:-:termsAndConditionsTableId---"
+    Then I softly see value "Active" for title "Status" against the value "TC-598383" inside table "---home:-:termsAndConditionsTableId---"
+    Then I softly can see row level action button "View" against "TC-598383" in flex table with id "---home:-:termsAndConditionsTableId---"
     Then I softly can see row level action button "Edit" against "TC-598383" in flex table with id "---home:-:termsAndConditionsTableId---"
     Examples:
       | User  |
       | ADMIN |
 
-  @56727 @56728 @56729 @56730 @eindunsRegistrationSamgovRegistrationcontactUsView @wip
-  Scenario Outline: Validate whether all users have view access to EINRegistration,DUNSRegistration,SAM.Gov and Contactview
+  @56727 @einRegistration
+  Scenario Outline: Validate whether all users have view access to EINRegistration
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
-    Then I navigate to "EIN Registration" content inside "Useful Links" subheader on left panel
-    Then I navigate to "DUNS Registration" content inside "Useful Links" subheader on left panel
-    Then I navigate to "SAM.gov Registration" content inside "Useful Links" subheader on left panel
-    Then I navigate to "Contact Us" content inside "Technical Support" subheader on left panel
+    And I navigate to "EIN Registration" content inside "Useful Links" subheader on left panel
+    Then I navigate to url "https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online"
+    Examples:
+      | User  |
+      | ADMIN |
+      | EXE   |
+      | PM    |
+
+  @56728 @dunsRegistration
+  Scenario Outline: Validate whether ADMIN have view access to DUNSRegistration
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Home" tab
+    And I navigate to "DUNS Registration" content inside "Useful Links" subheader on left panel
+    Then I navigate to url "https://www.dnb.com/duns-number/view-update-company-credit-file.html"
+    Examples:
+      | User  |
+      | ADMIN |
+
+  @56729 @samgovRegistration
+  Scenario Outline: Validate whether all users have view access to SAM.Gov Registration
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Home" tab
+    And I navigate to "SAM.gov Registration" content inside "Useful Links" subheader on left panel
+    Then I navigate to url "https://www.sam.gov/SAM/"
+    Examples:
+      | User  |
+      | ADMIN |
+      | EXE   |
+      | PM    |
+
+  @56730 @contactUs
+  Scenario Outline: Validate whether all users have view access to Contactview
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Home" tab
+    And I navigate to "Contact Us" content inside "Technical Support" subheader on left panel
+    Then I softly can see page block "Contact GovGrants"
     Examples:
       | User  |
       | ADMIN |
@@ -269,6 +302,7 @@ Feature: Validate all scenarios in the home tab
     And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
     When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
+    Then I softly can see row level action button "Edit" against "Automation Contact" in flex table with id "---home:-:relatedContactsTableId---"
     And I click on "Edit" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
     When I enter "RelatedContactsEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
@@ -330,14 +364,15 @@ Feature: Validate all scenarios in the home tab
     When I click on "Delete" icon for "New IDC" inside flex table with id "---home:-:indirectRateFlextableId---"
     Then I do not see values "New IDC" and "Title" inside table
 
-  @56883 @56912 @adminOrPMEditAccessToOwnOrgInternalOrganizationPageHeader @wip
-  Scenario Outline: Users with Admin/ PM profiles can edit their own organizations and Internal organization page has Header
+  @56883 @56912 @adminOrPMEditAccessToOwnOrgInternalOrganizationPageHeader @bug-77017
+  Scenario Outline: Validate whether Users with Admin/ PM profiles can edit their own organizations and Internal organization page has Header
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    Then I softly can see row level action button "Edit" against "Test Automation Organization" in flex table with id "---home:-:internalOrganizationId---"
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
-    Then I see that "Internal Organization" is in "Active" status
+    Then I softly see that "Internal Organization" is in "Active" status
     Examples:
       | User  |
       | ADMIN |
@@ -400,7 +435,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @57344 @57345 @59015 @homePendingTaskCompletedAndTaskCount
+   @57344 @57345 @homePendingTaskCompletedAndTaskCount
   Scenario: Validate whether user is able to view the total count of pending Tasks assigned to user and Pending Task and Completed Task on the left Navigation shows Pending Tasks across all the Modules
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -442,7 +477,7 @@ Feature: Validate all scenarios in the home tab
     Then I softly see values "Approve Program" and "Not Started" inside table
     And I click on "Start" icon for "Record Id" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
     When I "Approve" in the approval decision
-    And I navigate to "Planning" tab
+    And I navigate to "Home" tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---home:-:completedAssignedToMe---" panel
     Then I softly see values "Approve Program" and "Completed" inside table
@@ -458,7 +493,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @73851 @73850 @73856 @57347 @57348 @viewActiveGrantsSubmittedApplicationsOnRelatedLog
+  @73851 @73856 @73850 @57347 @57348 @viewActiveGrantsSubmittedApplicationsOnRelatedLog
   Scenario Outline: Verify all profiles users should be able to view the Submitted Applications and Active Grants.
     Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
     And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
@@ -468,7 +503,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Not Yet Qualified Opportunities - Open"
     And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    Then I see value "Automation Announcement for Application Intake" for title "Title" inside table "---applicationIntake:-:activeOpportunitiesTableId---"
+    Then I softly see value "Automation Announcement for Application Intake" for title "Title" inside table "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     Then I softly see field "Opportunity" as "Automation Announcement for Application Intake"
     Then I softly see field "Status" as "Published"
@@ -514,6 +549,8 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Related Log" sub tab
     When I perform quick search for "Automation Announcement for Application Intake" in "RecipientAppReviewList" panel
     Then I softly can see row level action button "View" against "Automation Announcement for Application Intake" in flex table with id "RecipientAppReviewList"
+    When I perform quick search for "Automation Award for Amendment Request" in "ActiveGrantsByOrganization" panel
+    Then I softly can see row level action button "View" against "Automation Award for Amendment Request" in flex table with id "ActiveGrantsByOrganization"
     Examples:
       | User  |
       | ADMIN |
@@ -676,7 +713,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Record Id" in "---home:-:externalPendingTasktableId---" panel
     Then I see value "Record id" for title "EGMS ID" inside table "---home:-:externalPendingTasktableId---"
 
-  @indUserEditProfile @deepika
+  @62106 @indUserEditProfile @deepika
   Scenario: Verify whether the Individual Sub Profile Users can view their own contact information under Overview Tab
     Given I am on "SUBPORTAL" portal
     When I login as "IND" user
@@ -716,13 +753,14 @@ Feature: Validate all scenarios in the home tab
 
   @62912 @VerifyrecentlyViewedRecordAndDetailsOnMiniPageLayoutAndHoverLink @keerti @wip
   Scenario: The Internal User should be able to view the recently viewed record and details on the Mini pagelayout and the hover link  will take to the record
-    Given I login to "As a Grantor" app as "<User>" user
+    Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Home" tab
-    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    And I navigate to "Internal" content inside "Organization" subheader on left panel
+    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     When I navigate to "Planning" tab
-    And I click on recently viewed record of "Sme Reviewers"
-    Then I click on the hover link  will take to the record on Minipagelayout
-    Then I see "Sme Reviewers" page
+    And I mouse hover to link contains "Test Automation Organization"
+    Then I softly see page title contains as "Test Automation Organization"
 
   @62911 @VerifyStatusIsNewForInvitation/BulkInvitationISentStatusChanges @keerti
   Scenario Outline: Validate once Contact has registered the status will be New , when the Invitation/Bulk Invitation is sent, the status changes from Invitation Sent

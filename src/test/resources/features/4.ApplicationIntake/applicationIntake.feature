@@ -89,7 +89,7 @@ Feature: Validate all scenarios in the Application Intake
     Then I softly see that "100%" has been added in flextable with Id "---applicationIntake:-:allFormsTableId---"
 
   @34334 @34346 @70459 @73602 @viewSubmitedApplication @smoke @deepika
-  Scenario Outline: Viewing the application submitted by sub-recipient as Internal user | Validate whether user can view the edit button once application has been submitted to Grantor
+  Scenario Outline: Validate Viewing the application submitted by sub-recipient as Internal user | Validate whether user can view the edit button once application has been submitted to Grantor
   Verify whether PM, FO,EXE internal user is able to view Submitted Application | Verify when SPI (Record owner of Application) submit the Application to Grantor then it is displayed in the list of Submitted Applications
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"

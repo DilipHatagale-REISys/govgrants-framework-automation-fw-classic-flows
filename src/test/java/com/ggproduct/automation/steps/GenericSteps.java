@@ -431,4 +431,17 @@ public class GenericSteps {
             Assert.assertTrue(projectManager.isFieldDateGreaterThanOrLessThanTodaysDate(fieldLabel,lessORgreater));
         }
     }
+
+    @Description("To click on Submit Review modal button of Grantor Review")
+    @And("^I click on modal button Submit Review$")
+    public void iClickOnModalButtonSubmitReview() {
+        try {
+            By buttonPath = By.xpath("//div[@id='footerButtonsPanel']//*[text()='Submit Review' or @title='Submit Review']");
+            EyeThink.core().click().on(buttonPath);
+        } catch (Exception ee) {
+            EyeThink.core().WaitFor().makeThreadSleep(5000);
+            By buttonPath = By.xpath("//div[@id='footerButtonsPanel']//*[text()='Submit Review' or @title='Submit Review']");
+            EyeThink.core().click().on(buttonPath);
+        }
+    }
 }

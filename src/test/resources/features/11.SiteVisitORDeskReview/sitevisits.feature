@@ -34,8 +34,8 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Overview" sub tab
     Then I softly see field "Created Date" is not editable
 
-  @51084 @66229 @66232 @51085 @51086 @66283 @notifyPendingTaskForSubrecipientSiteVisit @smoke @bugged-73739
-  Scenario: Notify Subrecipient and the respective POC from the applicant organization will receive a pending task about the Site Visit
+  @51084 @66229 @66232 @51085 @51086 @66283 @75869 @notifyPendingTaskForSubrecipientSiteVisit @smoke @bugged-73739
+  Scenario: Notify Subrecipient and the respective POC from the applicant organization will receive a pending task about the Site Visit|Validate the external user will receive an email notification when the site visit is in notified status
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -52,10 +52,9 @@ Feature: Validate all scenarios in the Site Visit
     And I save the field labeled "EGMS ID" as "SiteVisitId"
     Then I softly see that "Automation Site Visit" is in "Notified" status
     Then I softly see status in Progress-bar is "Notified" and is "green"
+    When I pause execution for "120" seconds
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
-      | Site Visit for {SavedValue:SiteVisitId} has been scheduled |
-    Then I softly can see mail notification for "INTERNAL" user with following subject:
-      | Site Visit Approval Requested |
+      | Site Visit for has been scheduled |
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -907,8 +906,9 @@ Feature: Validate all scenarios in the Site Visit
     When I download the file
     Then I see "Sent to Subrecipient" on page "1" of "govgrants" pdf file
 
-  @60832 @65385 @theSnapshotAfterSubmitForApproval @deepika @skipOnJenkins
+  @60832 @65385 @75868 @theSnapshotAfterSubmitForApproval @deepika @skipOnJenkins
   Scenario: Validate whether record Owner is able to view the Snapshot after Site Visits Accepted and Closed | Also whether the Subrecipient can view the site viist that is accepted and closed by record owner
+  Validate whether external user will receive an email notification when Site Visit is accepted and closed.
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -989,6 +989,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "Automation Site Visit" inside table
     And I click on "Accept And Close" in the page details
     Then I softly see status in Progress-bar is "Closed" and is "Green"
+    When I pause execution for "120" seconds
+    Then I softly can see mail notification for "EXTERNAL" user with following subject:
+      | Site Visit Closed |
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
