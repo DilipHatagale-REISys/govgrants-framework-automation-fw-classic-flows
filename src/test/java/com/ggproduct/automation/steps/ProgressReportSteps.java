@@ -1,7 +1,7 @@
 package com.ggproduct.automation.steps;
 
 import com.ggproduct.automation.pageobjects.ProgressReportPage;
-import eyethink.automation.bots.Register.EyeThink;
+import com.testingblaze.register.I;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -49,7 +49,7 @@ public class ProgressReportSteps {
 
     @And("^I click on Link containing value \"([^\"]*)\" in flex table id \"([^\"]*)\"$")
     public void clickOnLink(String linkText, String tableId) {
-        EyeThink.core().click().on(By.xpath("//*[@id='"+tableId+"']//a[contains(text(),'"+linkText+"')]"));
+        I.amPerforming().click().on(By.xpath("//*[@id='"+tableId+"']//a[contains(text(),'"+linkText+"')]"));
     }
 
     @Description("To compare date field with todays date")
@@ -101,9 +101,9 @@ public class ProgressReportSteps {
         } else if (seeornot.equalsIgnoreCase("do not se")) {
             Assert.assertFalse(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption));
         } else if (seeornot.equalsIgnoreCase("softly see")) {
-            EyeThink.core().assertion().assertThat(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption)).isTrue();
         } else if (seeornot.equalsIgnoreCase("softly do not see")) {
-            EyeThink.core().assertion().assertThat(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption)).isFalse();
+            I.amPerforming().assertionsTo().assertThat(progressReportPage.isbuttonDisplayedOnApprovalDecisionBox(radiobuttonOption)).isFalse();
         }
     }
 
@@ -117,7 +117,7 @@ public class ProgressReportSteps {
     @Then("^I (see|softly see) value \"([^\"]*)\" is \"([^\"]*)\" the value \"([^\"]*)\"$")
     public void iSeeValueIsTheValue(String usage, String savedValue1, String compare, String savedValue2) {
         if (usage.contains("softly")) {
-            EyeThink.core().assertion().assertThat(progressReportPage.compareTwoFieldValues(savedValue1, compare, savedValue2)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(progressReportPage.compareTwoFieldValues(savedValue1, compare, savedValue2)).isTrue();
         } else {
             Assert.assertTrue(progressReportPage.compareTwoFieldValues(savedValue1, compare, savedValue2));
         }

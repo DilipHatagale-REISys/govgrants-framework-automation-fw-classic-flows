@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        glue = {"setup","com.ggproduct.automation.steps","com.automation.rei.govgrantsSteps","eyethink.automation.bots.bdd","eyethink.automation.bots.Register"},
+        glue = {"setup","com.ggproduct.automation.steps","com.automation.rei.govgrantsSteps","com.testingblaze.actionsfactory.gherkin","com.testingblaze.register"},
         features = {"src/test/resources/features"},
-        plugin = {"json:target/cucumber-report/cucumber.json","html:target/cucumber-html","eyethink.automation.bots.controller.ReportingLogsPlugin"},
+        plugin = {"json:target/cucumber-report/cucumber.json","html:target/cucumber-html","com.testingblaze.controller.ReportingLogsPlugin"},
         tags = {"@testCompareImagesYellow"},
         monochrome = true
 )

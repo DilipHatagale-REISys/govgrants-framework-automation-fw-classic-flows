@@ -1,14 +1,14 @@
 package com.ggproduct.automation.projectmanager;
 
-import eyethink.automation.bots.Register.EnvironmentFetcher;
-import eyethink.automation.bots.Register.EyeThink;
+import com.testingblaze.register.EnvironmentFactory;
+import com.testingblaze.register.I;
 import io.restassured.response.Response;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 public class ProjectWebServices {
-    private static String endPoint = EnvironmentFetcher.getEnvironmentUrl();
+    private static String endPoint = EnvironmentFactory.getEnvironmentUrl();
     private String defaultEndPointGetToken = "/services/oauth2/token" +
             "?grant_type=password" +
             "&client_id=3MVG9ic.6IFhNpPq_k9vYkenIh973gbcI2GBHkEu4.ukW4PZidcRmrQ6ma0lg.fdcZRtLB4IL1HgKKB87Y5Ab" +
@@ -24,7 +24,7 @@ public class ProjectWebServices {
      */
     private void getAuthToken() {
         setDefaultEndPointGetToken();
-        Response response = EyeThink.core().apiCall().postCall(null, null, endPoint + getDefaultEndPointGetToken(), null, null, null);
+        Response response = I.amPerforming().restHttp().postCall(null, null, endPoint + getDefaultEndPointGetToken(), null, null, null);
         tokenString = response.body().jsonPath().getString("access_token");
     }
 
@@ -53,7 +53,7 @@ public class ProjectWebServices {
         }
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationDeletionApi?objectType=" + objectType
                 + "&recordName=" + recordName;
-        Response response = EyeThink.core().apiCall().DeleteCall(null, null, finalEndPoint, "Authorization", "Bearer " + tokenString,
+        Response response = I.amPerforming().restHttp().DeleteCall(null, null, finalEndPoint, "Authorization", "Bearer " + tokenString,
                 null);
         System.out.println(finalEndPoint);
         response.prettyPrint();
@@ -100,7 +100,7 @@ public class ProjectWebServices {
         getAuthToken();
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationGetFieldValue?objectType=" + objectType
                 + "&fieldValue=" + recordName + "&fieldName=" + fieldName;
-        Response response = EyeThink.core().apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
+        Response response = I.amPerforming().restHttp().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
         response.prettyPrint();
         assertStatusCode(response);
         return response;
@@ -123,7 +123,7 @@ public class ProjectWebServices {
         getAuthToken();
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationGetFieldValue?objectType=" + objectType
                 + "&fieldValue=" + recordName + "&fieldName=" + fieldName + "&outputFieldName=" + outputFieldName;
-        Response response =  EyeThink.core().apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
+        Response response =  I.amPerforming().restHttp().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
         response.prettyPrint();
         assertStatusCode(response);
         return response;
@@ -149,22 +149,22 @@ public class ProjectWebServices {
         finalEndPoint = endPoint + "/services/apexrest/productAutomationRunBatchJob?type=" + objectType + "&recordName="
                 + recordName;
 
-        response = EyeThink.core().apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
+        response = I.amPerforming().restHttp().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
         assertStatusCode(response);
 
         jobID = response.asString().replace("\"", "");
         finalEndPoint = endPoint + "/services/apexrest/productAutomationGetBatchJobStatus?batchId=" + jobID;
-        EyeThink.core().WaitFor().makeThreadSleep(20000);
+        I.amPerforming().waitFor().makeThreadSleep(20000);
         long apiWaitTimer = (System.currentTimeMillis()) / 1000 + 120;
         while (apiWaitTimer > System.currentTimeMillis() / 1000) {
-            response = EyeThink.core().apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
+            response = I.amPerforming().restHttp().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
             assertStatusCode(response);
             status = response.asString().replace("\"", "");
             if (status.equalsIgnoreCase("Completed") || status.equalsIgnoreCase("Aborted")) {
                 System.out.println("Batch Status is :" + status);
                 break;
             }
-            EyeThink.core().WaitFor().makeThreadSleep(3000);
+            I.amPerforming().waitFor().makeThreadSleep(3000);
         }
 
         if (status.equalsIgnoreCase("Completed") && objectName.length == 1) {
@@ -177,7 +177,7 @@ public class ProjectWebServices {
     public Response riskAssessmentApi(String organizationName) {
         getAuthToken();
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationRiskAssessmentApi?recordName=" + organizationName;
-        Response response = EyeThink.core().apiCall().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
+        Response response = I.amPerforming().restHttp().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
         response.prettyPrint();
         assertStatusCode(response);
         return response;

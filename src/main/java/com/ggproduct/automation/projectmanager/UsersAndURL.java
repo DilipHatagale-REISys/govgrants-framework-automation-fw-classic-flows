@@ -1,8 +1,9 @@
 package com.ggproduct.automation.projectmanager;
 
-import eyethink.automation.bots.Register.EnvironmentFetcher;
-import eyethink.automation.bots.controller.UsersController;
-import eyethink.automation.bots.corelib.Properties_Logs;
+
+import com.testingblaze.controller.UsersController;
+import com.testingblaze.misclib.Properties_Logs;
+import com.testingblaze.register.EnvironmentFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -29,9 +30,9 @@ public class UsersAndURL implements UsersController {
     @Override
     public String getUserName(String userLevel) {
         String userName = null;
-        if ((EnvironmentFetcher.getEnvironmentName() != null) && (EnvironmentFetcher.getEnvironmentName().contains("QA"))) {
+        if ((EnvironmentFactory.getEnvironmentName() != null) && (EnvironmentFactory.getEnvironmentName().contains("QA"))) {
             userName = getQAEnvironmentUser(setUpUserLevel(userLevel));
-        } else if ((EnvironmentFetcher.getEnvironmentName() != null) && (EnvironmentFetcher.getEnvironmentName().contains("TEST8"))) {
+        } else if ((EnvironmentFactory.getEnvironmentName() != null) && (EnvironmentFactory.getEnvironmentName().contains("TEST8"))) {
             userName = getTest8EnvironmentUser(setUpUserLevel(userLevel));
         } else {
             userName = getAUTOEnvironmentUser(setUpUserLevel(userLevel));
@@ -42,9 +43,9 @@ public class UsersAndURL implements UsersController {
     @Override
     public String getPassword(String userLevel) {
         String password = null;
-        if (EnvironmentFetcher.getEnvironmentName().contains("QA")) {
+        if (EnvironmentFactory.getEnvironmentName().contains("QA")) {
             password = getQAEnvironmentPassword(setUpUserLevel(userLevel));
-        } else if (EnvironmentFetcher.getEnvironmentName().contains("TEST8")) {
+        } else if (EnvironmentFactory.getEnvironmentName().contains("TEST8")) {
             password = getTest8EnvironmentPassword(setUpUserLevel(userLevel));
         } else
             password = getAUTOEnvironmentPassword(setUpUserLevel(userLevel));
