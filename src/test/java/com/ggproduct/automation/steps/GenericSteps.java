@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.*;
+import java.util.List;
 
 public class GenericSteps {
     ProjectManager projectManager;
@@ -443,5 +444,11 @@ public class GenericSteps {
             By buttonPath = By.xpath("//div[@id='footerButtonsPanel']//*[text()='Submit Review' or @title='Submit Review']");
             EyeThink.core().click().on(buttonPath);
         }
+    }
+
+    @And("I click on parallel menu button in flex table titled {string}")
+    public void iClickOnParallelMenuButtonInFlexTableTitled(String flexTableTitle) {
+        By menuButton = By.xpath("//*["+EyeThink.core().xpath().equals("text()",flexTableTitle)+"]//ancestor::div[@id and contains(@class,'ng-scope') and @ng-controller]//div[@class='panel-heading']//*[@title='Menu' or contains(@class,'fa-bars')]");
+        EyeThink.core().click().on(menuButton);
     }
 }
