@@ -446,4 +446,10 @@ public class GenericSteps {
             I.amPerforming().click().on(buttonPath);
         }
     }
+
+    @And("I click on parallel menu button in flex table titled {string}")
+    public void iClickOnParallelMenuButtonInFlexTableTitled(String flexTableTitle) {
+        By menuButton = By.xpath("//*["+I.amPerforming().sanityOfXpathTo().equals("text()",flexTableTitle)+"]//ancestor::div[@id and contains(@class,'ng-scope') and @ng-controller]//div[@class='panel-heading']//*[@title='Menu' or contains(@class,'fa-bars')]");
+        I.amPerforming().click().on(menuButton);
+    }
 }

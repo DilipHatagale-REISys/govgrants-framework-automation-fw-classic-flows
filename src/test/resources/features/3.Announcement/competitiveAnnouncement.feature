@@ -26,6 +26,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       And I click toggle button to select "Draft Competitive Announcements"
       And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
       And I navigate to "Overview" sub tab
+      And I click on parallel menu button in flex table titled "Contacts"
       And I select "Download as PDF" from parallel lines dropdown of "Contacts"
       And I download the file
       Then I verify that "pdf" file is downloaded
@@ -43,6 +44,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Overview" sub tab
+    And I click on parallel menu button in flex table titled "Related Federal/NGO Program"
     And I select "Download as PDF" from parallel lines dropdown of "Related Federal/NGO Program"
     And I download the file
     Then I verify that "pdf" file is downloaded
@@ -56,6 +58,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Financials" sub tab
+    And I click on parallel menu button in flex table titled "Budget Categories"
     And I select "Download as PDF" from parallel lines dropdown of "Budget Categories"
     And I download the file
     Then I verify that "pdf" file is downloaded
@@ -69,6 +72,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
+    And I click on parallel menu button in flex table titled "Business Forms"
     And I select "Download as PDF" from parallel lines dropdown of "Business Forms"
     And I download the file
     Then I verify that "pdf" file is downloaded
@@ -86,6 +90,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
+    And I click on parallel menu button in flex table titled "Supporting Documents Checklist"
     And I select "Download as PDF" from parallel lines dropdown of "Supporting Documents Checklist"
     And I download the file
     Then I verify that "pdf" file is downloaded
@@ -106,6 +111,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
+    And I click on parallel menu button in flex table titled "Approvers"
     And I select "Download as PDF" from parallel lines dropdown of "Approvers"
     And I download the file
     Then I verify that "pdf" file is downloaded
@@ -124,6 +130,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
+    And I click on parallel menu button in flex table titled "Peer Reviewers"
     And I select "Download as PDF" from parallel lines dropdown of "Peer Reviewers"
     And I download the file
     Then I verify that "pdf" file is downloaded
@@ -140,6 +147,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
+    And I click on parallel menu button in flex table titled "Related Focus Areas"
     And I select "Download as PDF" from parallel lines dropdown of "Related Focus Areas"
     And I download the file
     Then I verify that "pdf" file is downloaded

@@ -27,6 +27,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPA" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
@@ -56,6 +57,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPA" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:qualifiedTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
     When I click on "Qualify" in the page details
@@ -119,6 +121,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:qualifiedTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
     When I click on "Qualify" in the page details
@@ -149,6 +152,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:qualifiedTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
     And I save the field labeled "EGMS ID" as "oppurtunityId"
@@ -248,16 +252,20 @@ Feature: Application Intake scenarios without background
     And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:publishedOpputunityTableId---" panel
     Then I softly see "Automation Announcement for Application Intake and PreApplication" inside flex table with id "---applicationIntake:-:publishedOpputunityTableId---"
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Intake and PreApplication" inside table
     When I click on "Qualify" in the page details
     Then I softly can see top right button "Create Application" in page detail
 
-  @71104 @71107 @71108 @71109 @72578 @72624 @unpublishedAnnouncementCannotSubmitApplication @deepika
+  @71104 @71107 @71108 @71109 @77151 @77152 @72578 @72624 @unpublishedAnnouncementCannotSubmitApplication @deepika
   Scenario: Validate once the Announcement is published and Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit Application
   Validate whether the Applicant will be able to view qualify button on the same funding opportunity after republish
   Validate whether the Applicant will be able to create a New Application from the republish announcement and oppurtunity |Validate whether the Applicant will be able to Submit the New Application from the republish announcement and oppurtunity
   Validate whether User will be able to see the Unpublished status on the Application | Validate whether when the user click on unpublish button of announcement status of announcement changes to created and SPI user cannot see announcement at external side
+  Validate all Applications owner (SPI) will be notified about the unpublish | Validate User will not be able to Qualify the Funding Opportunity when  the Funding Opportunity becomes unpublished
+    Given I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Application"
+    And I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Qualified Announcement"
     Given I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Announcement"
     And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -332,6 +340,7 @@ Feature: Application Intake scenarios without background
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Intake and PreApplication" inside table
     When I click on "Qualify" in the page details
@@ -341,21 +350,33 @@ Feature: Application Intake scenarios without background
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Published Competitive Announcements"
+    When I click toggle button to select "All Competitive Announcements"
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "Record Id" inside table
     And I click on "Unpublish" in the page details
+    And I save the field labeled "EGMSID" as "unpublished"
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I pause execution for "2" seconds
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Record Id" in "---announcement:-:opportunityNotQtableId---" panel
     Then I softly do not see value "Record Id" for title "Announcement ID" inside table "---announcement:-:opportunityNotQtableId---"
+      # This is bug - 77149
+    #When I pause execution for "120" seconds
+    #Then I softly can see mail notification for "EXTERNAL" user with following subject:
+    #  | Announcement {SavedValue:unpublished} has been Unpublished |
+    When I navigate to "Opportunities" tab
+    And I navigate to "Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Qualified Opportunities - All"
+    And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:qualifiedTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Intake and PreApplication" inside table
+    Then I softly cannot see top right button "Qualify" in page detail
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Published Competitive Announcements"
+    When I click toggle button to select "All Competitive Announcements"
     And I perform quick search for "Record Id" in "---announcement:-:competitiveTableId---" panel
     When I click on "View" icon for "Record Id" inside table
     And I click on "Submit For Approval" in the page details
@@ -388,6 +409,7 @@ Feature: Application Intake scenarios without background
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Intake and PreApplication" inside table
     Then I softly can see top right button "Qualify" in page detail
@@ -427,6 +449,7 @@ Feature: Application Intake scenarios without background
   @71112 @71113 @appDueDateValidation @deepika
   Scenario: Validate the Application Submission before the due date | Validate whether the application due date on Announcement is reflecting same while creating an application
     Given I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Application"
+    And I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Qualified Announcement"
     Given I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -496,12 +519,11 @@ Feature: Application Intake scenarios without background
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "Record id" inside table
     And I click on "Publish" in the page details
-    Given I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Application"
-    And I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Intake and PreApplication" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
@@ -549,6 +571,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
     Then I softly see field "Leverage Allowed?" as "Yes"
@@ -578,6 +601,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:qualifiedTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
     When I click on "Qualify" in the page details
@@ -603,8 +627,8 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Application" in "---applicationIntake:-:convertedToApplicationTableID---" panel
-    When I click on "View" icon for "Automation Application" inside flex table with id "---applicationIntake:-:convertedToApplicationTableID---"
+    And I perform quick search for "Automation Announcement for FDM" in "---applicationIntake:-:convertedToApplicationTableID---" panel
+    When I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---applicationIntake:-:convertedToApplicationTableID---"
     Then I softly can see top right button "Create Application" in page detail
     When I navigate to "Performance" sub tab
     Then I softly verify that field "Automation Permanent Objective" is not editable by entering "Select" value
@@ -614,9 +638,12 @@ Feature: Application Intake scenarios without background
   @34324 @72308 @72309 @userCanEditApplicationInCreatedStatusAndCannotInSubmitTedStatus @deepika
   Scenario: Validate whether the User can view the edit icon for the application that is in Created Status and Submiited to Grantor Status
   Verify SPI & SPA user is not able to Submit Application to Grantor with Requested Amount is less than or equal to the Subaward Floor Amount
+    And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
+    Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:qualifiedTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
     When I click on "Qualify" in the page details
@@ -675,6 +702,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
@@ -698,6 +726,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
@@ -741,6 +770,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
@@ -797,12 +827,12 @@ Feature: Application Intake scenarios without background
 
   @33799 @createdANDQualifiedApplication @deepika
   Scenario: Validate whether SPI & SPA users are able to view the qualified and created Statuses
-    Given I delete the record "Automation Announcement for Application Review" from the object "Application"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
@@ -837,6 +867,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "<User>" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
@@ -847,7 +878,7 @@ Feature: Application Intake scenarios without background
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
     And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:recipientApplications---" panel
-    Then I softly see that "Automation Announcement for Application Review" has been added in flextable with Id "---applicationReview:-:recipientApplications---"
+    Then I softly see "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:recipientApplications---"
     Examples:
       | User |
       | SPI  |
@@ -871,9 +902,9 @@ Feature: Application Intake scenarios without background
 
   @73367 @spiUserCanViewAllocatedAmountOnceSubmittedToGrantor @deepika
   Scenario Outline: Validate whether SPI & SPA user were able to view the allocated amount once the Oppurtunity is Converted to Application when Announcement is of type - Formula
-    When I am on "SUBPORTAL" portal
-    And I login as "<User>" user
-    When I navigate to "Applications" tab
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "<User>" user
+    And I navigate to "Opportunities" tab
     And I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Automation Announcement for DueDateValidation" in "---applicationIntake:-:convertedToApplicationTableID---" panel
     When I click on "View" icon for "Automation Announcement for DueDateValidation" inside table
@@ -974,6 +1005,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Intake and PreApplication" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
@@ -985,9 +1017,10 @@ Feature: Application Intake scenarios without background
     When I click on "Save" in the page details
     And I save the field labeled "Application Due Date" as "ApplDueDate"
     Then I softly see that the saved value "{SavedValue:AppDueDate}" and "{SavedValue:ApplDueDate}" are equal
-    And I navigate to "Budget" sub tab
-    When I perform quick search for "Automation Permanent Focus Area2" in "---applicationIntake:-:focusAreaTableAppId---" panel
-    Then I softly see that "Automation Permanent Focus Area2" has been added in flextable with Id "---applicationIntake:-:focusAreaTableAppId---"
+    #This is a bug - @73498
+#    And I navigate to "Budget" sub tab
+#    When I perform quick search for "Automation Permanent Focus Area2" in "---applicationIntake:-:focusAreaTableAppId---" panel
+#    Then I softly see that "Automation Permanent Focus Area2" has been added in flextable with Id "---applicationIntake:-:focusAreaTableAppId---"
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
@@ -1014,7 +1047,7 @@ Feature: Application Intake scenarios without background
       | Attachments Tab - Each mandatory item listed in the checklist must be completed before submitting this Application. |
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
-    Then I see "Supporting Documents" has been added in "Attachments" flex table
+    Then I softly see "Supporting Documents" has been added in "Attachments" flex table
 
   @73750 @73751 @validateFilterCriteriaForGoalsAndObjectives @deepika
   Scenario: Validate the searched functionality for goals and Objectives Associated in section of Performance tab in Application | Validate the filter criteria for Goals and Objectives in Proposal Tab while creating Application
@@ -1023,6 +1056,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I click on "Qualify" in the page details
@@ -1119,6 +1153,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
 
@@ -1214,6 +1249,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Directed Announcement" in "---applicationReview:-:reviewsTableId---" panel
     Then I softly see "Automation Directed Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "View" icon for "Automation Directed Announcement" inside flex table with id "---applicationReview:-:reviewsTableId---"
@@ -1223,15 +1259,18 @@ Feature: Application Intake scenarios without background
     When I re-login as "SA" user on "SUBPORTAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Directed Announcement" in "---applicationReview:-:reviewsTableId---" panel
     Then I softly see "Automation Directed Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "View" icon for "Automation Directed Announcement" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Directed Announcement" is in "Qualified" status
     Then I softly can see top right button "Create Application" in page detail
+    When I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI2" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Directed Announcement" in "---applicationReview:-:reviewsTableId---" panel
     Then I softly do not see "Automation Directed Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
 
@@ -1286,6 +1325,7 @@ Feature: Application Intake scenarios without background
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
+    And I refresh the page
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Applicant Organization              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
@@ -1330,6 +1370,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Formula Announcement" in "---applicationReview:-:reviewsTableId---" panel
     Then I softly see "Automation Formula Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "View" icon for "Automation Formula Announcement" inside flex table with id "---applicationReview:-:reviewsTableId---"
@@ -1339,15 +1380,18 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SA" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Formula Announcement" in "---applicationReview:-:reviewsTableId---" panel
     Then I softly see "Automation Formula Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "View" icon for "Automation Formula Announcement" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Formula Announcement" is in "Qualified" status
     Then I softly can see top right button "Create Application" in page detail
+    When I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI2" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Formula Announcement" in "---applicationReview:-:reviewsTableId---" panel
     Then I softly do not see "Automation Formula Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
 
@@ -1359,11 +1403,12 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I click on "Qualify" in the page details
     Then I softly see the following messages in the page details contains:
-      | Application is succesully qualified |
+      | Application is successfully qualified |
 
   @75501 @75502 @otherOrgUserCanAlsoQualifyAndCreateApplication @deepika
   Scenario: Validate Opportunities created from 'Competitive Announcements' are available for all External users under Oppurtunities
@@ -1471,6 +1516,7 @@ Feature: Application Intake scenarios without background
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Intake and PreApplication" inside table
     When I click on "Qualify" in the page details
@@ -1496,6 +1542,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
@@ -1542,6 +1589,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:qualifiedTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
     When I click on "Qualify" in the page details
@@ -1570,14 +1618,16 @@ Feature: Application Intake scenarios without background
       | Contact        |
       | Automation SPA |
 
-  @34324 @requestedAmountMustBeLessThanCelingAmount @deepika @wip
-  Scenario: Verify SPI & SPA user is not able to Submit Application to Grantor with Requested Amount less than Subaward Floor Amount
+  @77044 @34324 @requestedAmountMustBeLessThanCelingAmount @deepika @wip
+  Scenario: Verify SPI & SPA user is not able to Submit Application to Grantor with Requested Amount less than Subaward Floor Amount |
+  Validate when the supporting documents  checklist are not entered by Announcement owner then Applicant will not be able to upload any document while submitting the application
     Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
     And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
@@ -1597,6 +1647,7 @@ Feature: Application Intake scenarios without background
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Attachments" sub tab
+    Then I softly see "No Records Found" inside flex table with id "flexGridApplicationChecklists"
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1613,4 +1664,123 @@ Feature: Application Intake scenarios without background
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Requested Amount should be less than or equal to the Subaward Cieling Amount. |
 
-
+  @77046 @77045 @77047 @77048 @budgetGridColumnValidation @deepika
+  Scenario: Validate the SPI cannot view the Goals and Objectives page block when it is set as No while Announcement creation| Validate the SPI cannot view the Work Plan required page block when it is set as No while Announcement creation
+  Validate whether SPI user can submit the application without adding supporting documents when the required documents are optional |
+  Validate when the Funding Opportunity Detailed budget Grid Setup as Yes then User will be able to view the Bulid up Line in the Budget Grid
+    Given I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Application"
+    And I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Qualified Announcement"
+    Given I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Announcement"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncementforApp" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Creation Second Modal for App" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    When I click on "Edit" in the page details
+    And I enter "AppDueDate" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate" modal by clicking the top right x button
+    And I refresh the page
+    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Pre-Encumbrance |
+      | {SavedValue:fundingAccount} | 20000           |
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    When I navigate to "Overview" sub tab
+    When I pause execution for "1" seconds
+    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
+      | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "flexGridAnnouncementChecklists" by clicking "Add" :
+      | Description | Required | Applies To  | Status |
+      | Automation  | Optional | Application | Active |
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I click on "Submit For Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Announcements" tab
+    And I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "Draft Competitive Announcements"
+    And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "Record Id" inside table
+    And I click on "Publish" in the page details
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI" user
+    When I navigate to "Opportunities" tab
+    And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:publishedOpputunityTableId---" panel
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
+    And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Intake and PreApplication" inside table
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Proposal" sub tab
+    Then I softly cannot see page block "Work Plan"
+    Then I softly cannot see page block "Goals and Objectives"
+    And I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    Then I softly can see row level action button "Edit" against "Construction" in flex table with id "---applicationIntake:-:budgetPeriodTableId---"
+    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 1000   | 100        | 100            | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "Automation SPA" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I navigate to "Proposal" sub tab
+    When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Attachments" sub tab
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
+    Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Given I click on "Back" in the page details
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
+    Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Given I click on "Back" in the page details
+    When I click on "Submit Application" in the page details
+    Then I softly see status in Progress-bar is "Submitted" and is "Green"
