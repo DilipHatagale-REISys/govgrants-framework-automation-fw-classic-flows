@@ -996,7 +996,7 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @76925 @76924 @76938 @ModificationDeletionReviewQuestion @keerti
+  @76925 @76924 @76938 @ModificationDeletionManagementReviewQuestion @keerti
   Scenario Outline: To verify user able to modify review question in Return on Investment (ROI) of Review Panel Categories in management review form for management review step in planning phase
   | To verify user able to delete review question with success message in Return on Investment (ROI) of Review Panel Categories in management review form for management review step in planning phase
   | To verify user able to delete review question with success message in Strategic Alignment of Review Panel Categories in management review form for management review step in planning phase
@@ -1037,8 +1037,10 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @38246 @ValidatingPre-ScreeningTotalSectionWeight @keerti
+  @38246 @77115 @77106 @ValidatingPre-ScreenReviewFormAndComplianceReviewAdditionDeletion @keerti
   Scenario: To validate system generated error message ,When Total section Weight is 0% for all Review Panel Categories in prescreening review form for prescreening review step in planning phase
+  | To verify user able to modify review question  in Environment of Review Panel Categories in compliance review form for SME review step in planning phase
+  | To verify user able to add new review question with success message in Permits of Review Panel Categories in compliance review form for SME review step in planning phase
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -1077,5 +1079,127 @@ Feature: Validate all scenarios for program
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review - Pre-Screen: A weighted form must contain weighted sections. |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Compliance review" inside flex table with id "---program:-:reviewFormPanelId---"
+    And I expand nested table containing column value "Environment"
+    When I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      | Question Order | Type        |
+      | 3              | Number      |
+     Then I softly see the following messages in the page details contains:
+    | Saved Successfully! |
+    Then I softly see value "Number" for title "Type" against the value "3" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I see the following messages in the page details contains:
+      | Record deleted successfully. |
+    Then I softly do not see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
 
+  @77118 @77116 @77122 @77120 @ValidatingAdditionModificationDeletionOfPermitsReview @keerti
+  Scenario Outline: To verify user allow to download PDF for review question in Permits of Review Panel Categories in compliance review form for SME review step in planning phase
+  | To verify user able to add new review question with success message in Permits of Review Panel Categories in compliance review form for SME review step in planning phase
+  | To verify user able to modify review question in Permits of Review Panel Categories in compliance review form for SME review step in planning phase
+  | To verify user able to delete review question with success message in Permits of Review Panel Categories in compliance review form for SME review step in planning phase
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Compliance review" inside flex table with id "---program:-:reviewFormPanelId---"
+    And I expand nested table containing column value "Permits"
+    And I click on parallel lines menu bar with data target value "#ProgramRelatedReviewPanelQuestionsFlexToggle"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Questions"
+    And I download the file
+    Then I softly see "Are state resources available to support proposed schedule?" on page "1" of "govgrants" pdf file
+    Then I softly see "Does the application include leverage funds? Is documentation of the leverage included in the application?" on page "1" of "govgrants" pdf file
+    Then I softly see "When will the first applicable permit expire?" on page "2" of "govgrants" pdf file
+    Then I softly see "Permits " on page "1" of "govgrants" pdf file
+    Then I softly see "Environment" on page "1" of "govgrants" pdf file
+    Then I softly see "Schedule" on page "1" of "govgrants" pdf file
+    Then I softly see "Review Questions" on page "1" of "govgrants" pdf file
+    Then I softly see "Question Order" on page "1" of "govgrants" pdf file
+    Then I softly see " Question Type" on page "1" of "govgrants" pdf file
+    Then I softly see "Max Score" on page "1" of "govgrants" pdf file
+    And I switch to parent tab
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 4              | Test      | Written | 0         |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    Then I softly see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Test" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      | Question Order | Type        |
+      | 3              | Date        |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    Then I softly do not see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
 
+  @77124 @77123 @ValidatingPDFAndBudgetReviewForm @keerti
+  Scenario Outline: To verify user allow to download PDF for review question in Budget of Review Panel Categories in Fiscal review form for SME review step in planning phase
+  | To verify user able to add new review question with success message in Budget of Review Panel Categories in Fiscal review form for SME review step in planning phase
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    And I expand nested table containing column value "Budget"
+    And I click on parallel lines menu bar with data target value "#ProgramRelatedReviewPanelQuestionsFlexToggle"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Questions"
+    And I download the file
+    Then I softly see "Budget" on page "1" of "govgrants" pdf file
+    Then I softly see "How much are similar projects typically awarded?" on page "1" of "govgrants" pdf file
+    Then I softly see "Program Income" on page "1" of "govgrants" pdf file
+    Then I softly see "Are the match costs allowable, allocable, and reasonable?" on page "1" of "govgrants" pdf file
+    Then I softly see "Match" on page "1" of "govgrants" pdf file
+    Then I softly see "Does the application include leverage funds? Is documentation of the leverage included in the application?" on page "1" of "govgrants" pdf file
+    Then I softly see "Review Questions" on page "1" of "govgrants" pdf file
+    Then I softly see "Question Order" on page "1" of "govgrants" pdf file
+    Then I softly see " Question Type" on page "1" of "govgrants" pdf file
+    Then I softly see "Max Score" on page "1" of "govgrants" pdf file
+    And I switch to parent tab
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 7              | Test 7    | Written | 0         |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    Then I softly see value "7" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Test 7" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "7" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "7" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
