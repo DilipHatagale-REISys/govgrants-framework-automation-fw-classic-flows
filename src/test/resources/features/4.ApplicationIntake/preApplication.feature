@@ -67,7 +67,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @75596 @70664 @53154 @addBudgetDetailsToPreApplication @smoke
+  @75596 @70248 @70664 @53154 @addBudgetDetailsToPreApplication @smoke
   Scenario: Validate addition of budget in the budget grid to an pre-application |
   Validate User will be able to view the opportunity focus area in the application budget grid when the focus area settings as Yes while announcement creation
     Validate the SPI Users will be able to add new focus areas while creating an pre-application | Validate when the oppurtunity has only one focus area then user will not be able see any other focus areas when clicked on Add focus areas

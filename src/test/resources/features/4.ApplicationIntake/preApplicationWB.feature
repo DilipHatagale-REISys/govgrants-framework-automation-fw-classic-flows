@@ -1,7 +1,7 @@
 @preAplicationWB @regression @app
 Feature: Pre-Application scenarios without background
 
-  @70252 @70254 @71410 @71411 @71412 @71921 @71925 @verifyCreateApplicationandQualifyButtons
+  @71921 @71411 @71412 @71410 @70252 @70254 @71925 @verifyCreateApplicationandQualifyButtons
   Scenario: Verify whether SPI user is able to qualify opportunity a Pre-Application| Verify Create Pre- Application button is displayed to SR User when User click on Qualify Button.
   Validate whether user is able to view the qualify button and qualify the opportunity before creating the pre-application
   Validate the user is able to create Pre Application only when the Opportunity setting for Pre Applciation Required (Yes)
@@ -32,7 +32,7 @@ Feature: Pre-Application scenarios without background
     When I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:qualifiedTableId---" panel
     Then I softly see value "Automation Announcement for Pre-Application" for title "Opportunity Name" inside table "---applicationIntake:-:qualifiedTableId---"
 
-  @70253 @72575 @75595 @spaUserCannotSubmitanPre-application
+  @72575 @70253 @75595 @spaUserCannotSubmitanPre-application
   Scenario: Validate the SPA users should not be able to Submit the Pre Application | Validate whether SPI user can continue to proceed without providing application title while creating a pre-application
   Validate whether users from other organizations will be able to create Pre-Applications
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
@@ -74,7 +74,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly can see top right button "Create Pre-Application" in page detail
 
-  @70660 @70661 @70662 @72623 @preApplRequiredIsYesAnnouncementCreation @deepika @smoke
+  @70660 @72623 @70662 @70661 @preApplRequiredIsYesAnnouncementCreation @deepika @smoke
   Scenario: Validate whether the User is able to create a Pre Application only when the Opportunity setting for Pre Applciation Required (Yes) |
   Validate whether User is able to view the following error message "Reached the Maximum number of Applications" when the limit has been reached.
   Validate whether User is able to view the Leverage column in the budget grid when the value set as Yes. |Validate the user  will be able to view the the Program Income field on the overview tab when the value set as Yes.
@@ -270,20 +270,8 @@ Feature: Pre-Application scenarios without background
     When I click on "View" icon for "Automation Announcement for Application Intake and PreApplication" inside table
     When I click on "Qualify" in the page details
     Then I softly cannot see top right button "Create Pre-Application" in page detail
-    And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    When I navigate to "Announcements" tab
-    And I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "All Competitive Announcements"
-    And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    When I click on "View" icon for "Record Id" inside table
-    And I click on "Unpublish" in the page details
-    When I am on "SUBPORTAL" portal
-    And I login as "SPI" user
-    When I navigate to "Opportunities" tab
-    And I perform quick search for "Automation Announcement for Application Intake and PreApplication" in "---applicationIntake:-:publishedOpputunityTableId---" panel
-    Then I softly do not see "Automation Announcement for Application Intake and PreApplication" has been added in "---applicationIntake:-:publishedOpputunityTableId---" flex table
 
-  @71114 @71115 @preappDueDateValidation @deepika
+  @71115 @71114 @preappDueDateValidation @deepika
   Scenario: Validate whether User will be able to submit the pre- application on the last date for submission.
   Validate once the Announcement is published and Pre-Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit to Grantor on pre-application
     Given I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Application"
@@ -403,8 +391,8 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly cannot see top right button "Create Pre-Application" in page detail
 
-  @34154 @72515 @72516 @72518 @72519 @72520 @preapplicationInformationCopiedToApplication @deepika
-  Scenario: Validate the Pre Application information is copied to Application | Validate whether user is able toa cknowledge the application submission by entering the mandatory details.
+  @72516 @72518 @34154 @72519 @72520 @72515 @preapplicationInformationCopiedToApplication @deepika
+  Scenario: Validate the Pre Application information is copied to Application | Validate whether user is able to acknowledge the application submission by entering the mandatory details.
   Validate the Match Percentage validation during submit for approval when the Match required setting as Yes | Validate when the pre-application is submitted to grantor then the pending task is created for PM user
   Validate the once the PM user accepts the pre-application when is submitted to grantor using the pending task, then the task moved from pending to Completed task table
   Validate other than record Owner Pm , other users will not be to Accept submitted Pre-Application
@@ -460,7 +448,7 @@ Feature: Pre-Application scenarios without background
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---preApplication:-:pendingTaskTableId---" panel
-    Then I softly see "No Records Found" inside flex table with id "---preApplication:-:pendingTaskTableId---"
+    And I softly see "No Records Found" inside flex table with id "---preApplication:-:pendingTaskTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -485,8 +473,8 @@ Feature: Pre-Application scenarios without background
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
     Then I softly see selected element "{SavedValue:subawardfloor}"
-    Then I softly see selected element "{SavedValue:subawardcieling}"
-    Then I softly see selected element "{SavedValue:matchrequired}"
+    And I softly see selected element "{SavedValue:subawardcieling}"
+    And I softly see selected element "{SavedValue:matchrequired}"
 
   @72522 @preapplicationQualifiedIsAddedToTheTable @deepika @smoke
   Scenario: Validate once Application is qualified then user can view the Qualified Application from Qualfied Table and it is removed from Non -yet qualified table
@@ -622,8 +610,8 @@ Feature: Pre-Application scenarios without background
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I softly see field "Opportunity Title" is not editable
-    Then I softly see field "Opportunity Type" is not editable
-    Then I softly see field "Pre-Application Due Date" is not editable
+    And I softly see field "Opportunity Type" is not editable
+    And I softly see field "Pre-Application Due Date" is not editable
     When I navigate to "Opportunities" tab
     And I navigate to "Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:qualifiedTableId---" panel
@@ -667,7 +655,7 @@ Feature: Pre-Application scenarios without background
     Then I see total records count "Total Records: 1" in flex table "---applicationIntake:-:activeOpportunitiesTableId---"
 
   @34006 @preApplicationVisibity @deepika
-  Scenario Outline: Validate the Pre-applications are visible for their own organization and for child organizations. |
+  Scenario Outline: Validate the Pre-applications are visible for their own organization and for child organizations.
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"
     And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
@@ -868,7 +856,7 @@ Feature: Pre-Application scenarios without background
     And I navigate to "Budget" sub tab
     Then I cannot see page block "Focus Area"
 
-  @33998 @34353 @35054 @validateListOfSubmittedApplication @deepika
+  @35054 @34353 @33998 @validateListOfSubmittedApplication @deepika
   Scenario: Verify when SPI (Record owner of Pre-Application) submit the Pre-Application to Grantor then it is displayed in the list of Submitted Pre-Applications and disappeared from the list of Not yet qualified Opputunities
   Verify if the opportunity has only one focus area, then the application budget periods are automatically associated to that focus area |
   Validate whether SPI user can edit the pre-application once it is submitted to grantor.
@@ -917,7 +905,7 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "Automation Announcement for Pre-Application" in "---preApplication:-:recipientPreApplicationsTableId---" panel
     Then I softly see value "Submitted to Grantor" for title "Status" inside table "---preApplication:-:recipientPreApplicationsTableId---"
 
-  @75962 @75963 @34156 @75964 @preAppHistoryFieldGetUdated @deepika @skipOnJenkins
+  @34156 @75962 @75963 @75964 @preAppHistoryFieldGetUdated @deepika @skipOnJenkins
   Scenario: Validate History Field is getting updated for PM user when Pre Application status is Submitted to Grantor.| Validate the History field is getting updated when internal user accepts the pre-application
   Validate whether the Internal user is able to view the Snapshot after Pre-Application is Submitted to Grantor status | Validate whether spi user can view the snapshot once the pre-application is submitted to grantor
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
@@ -967,7 +955,7 @@ Feature: Pre-Application scenarios without background
     And I select "Take Snapshot" from dropdown
     And I click on hyperlink containing value "Submission"
     When I download the file
-    Then I see "Submitted to Grantor" on page "1" of "govgrants" pdf file
+    Then I softly see "Submitted to Grantor" on page "1" of "govgrants" pdf file
 
   @34146 @preAppCannotBeSubmittedWithZeroAmount @deepika
   Scenario: Verify SPI user is not able to Submit Pre-Application to Grantor with zero budget/requested amount

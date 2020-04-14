@@ -16,7 +16,7 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Save" in the page details
 
   @34044 @70332 @applicationCreation
-  Scenario: Validate creation of an Application |Validate once application is in created status, the user can view the Submit Application Button in page details
+  Scenario: Validate creation of an Application | Validate once application is in created status, the user can view the Submit Application Button in page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
     Then I softly can see top right button "Submit Application" in page detail
 
@@ -54,7 +54,7 @@ Feature: Validate all scenarios in the Application Intake
     Then I see the following messages in the page details contains:
       | Saved Successfully! |
 
-  @69367 @50969 @70333 @formFillingApplication @smoke
+  @70333 @69367 @50969 @formFillingApplication @smoke
   Scenario: To fill and complete the form in Application | Validate whether user is allowed to proceed without filling Mandatory forms
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
@@ -88,7 +88,7 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Back" in the page details
     Then I softly see that "100%" has been added in flextable with Id "---applicationIntake:-:allFormsTableId---"
 
-  @34334 @34346 @70459 @73602 @viewSubmitedApplication @smoke @deepika
+  @34346 @73602 @34334 @70459 @viewSubmitedApplication @smoke @deepika
   Scenario Outline: Validate Viewing the application submitted by sub-recipient as Internal user | Validate whether user can view the edit button once application has been submitted to Grantor
   Verify whether PM, FO,EXE internal user is able to view Submitted Application | Verify when SPI (Record owner of Application) submit the Application to Grantor then it is displayed in the list of Submitted Applications
     When I click on "Edit" in the page details
@@ -139,7 +139,7 @@ Feature: Validate all scenarios in the Application Intake
       |                                                | FO   |
       |                                                | EXE  |
 
-  @70458 @70456 @73514 @73515 @acknowledgeReqiredToSave @deepika @bugged-73498
+  @70458 @73514 @73515 @70456 @acknowledgeReqiredToSave @deepika @bugged-73498
   Scenario: Validate the system should throw an validation message if the application is submitted with Acknowledging it
   Validate whether user has ability to add and remove new focus area while creating an application |Validate whether system should throws a validation message on screen when user tries to remove the existing focus area while submitting an application
   Validate whether user is able to add more focus area to the table while submitting an application
@@ -148,10 +148,10 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
-    Then I softly can see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
+    And I softly can see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
     When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
     When I click "Remove" after selection of "Automation Permanent Focus Area" in the table "---applicationIntake:-:focusAreaFlexTableId---"
-    Then I see the following messages in the page details :
+    Then I softly see the following messages in the page details :
       | Budget Tab - At least one focus area must be in place at all times. |
     When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
     When I click "Add" after selection of "Automation Permanent Focus Area1" in the table "---applicationIntake:-:focusAreaFlexTableId---"
@@ -208,7 +208,7 @@ Feature: Validate all scenarios in the Application Intake
     Then I see the following messages in the page details contains:
       | Proposal Tab - Provide target values for all Key Performance Indicators. |
 
-  @70470 @70528 @validateVariousRolesAppearApplication @deepika
+  @70528 @70470 @validateVariousRolesAppearApplication @deepika
   Scenario: To Validate that various roles appear in the project roles dropdown in contact table on application of  SPI profile |Validate the Created Date of Application display on Overview Tab
   Validate whether Application Title field is editable after creating the Application
     When I navigate to "Overview" sub tab
@@ -232,7 +232,7 @@ Feature: Validate all scenarios in the Application Intake
     When I enter notes with title "Automation Title" and description "Automation Description"
     Then I softly see value "Notes Record" for title "Title" inside table "toggleNotes"
 
-  @70526 @73521 @snapshotAfterApplicationIsSubmitted @deepika
+  @73521 @70526 @snapshotAfterApplicationIsSubmitted @deepika
   Scenario Outline: Validate SR user is able to view the Snapshot after Application is Submitted to Grantor status| Validate once the Application is submitted to Grantor then the field Submitted by on Overview Tab will get updated by the User Name.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
@@ -289,7 +289,7 @@ Feature: Validate all scenarios in the Application Intake
     When I click "Add" after selection of "Automation SPA" in the table "---applicationIntake:-:associateNewContactsTableId---"
     Then I see "Automation SPA" has been added in "---applicationReview:-:flexGridAppContactTableId---" flex table
 
-  @73944 @73945 @71409 @73947 @73950 @73949 @73948 @maxAppValidationError @deepika
+  @73944 @73945 @71409 @73947 @73950 @73948 @73949@maxAppValidationError @deepika
   Scenario: Validate whether User  will be able to view the following error message "Reached the Maximum number of Applications" when the limit has been reached.
   To verify Converted Opportunities should reflect under Opportunities "Converted to Application - Open" list view to External user
   | To verify ,search functionality for Opportunities Converted to Application - All section in opportunities tab

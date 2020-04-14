@@ -1,7 +1,7 @@
 @applicationIntakeWB @regression @app
 Feature: Application Intake scenarios without background
 
-  @76373 @65078 @69366 @VerifyCreateApplicationButton @keerti @smoke
+  @76373 @69366 @65078 @VerifyCreateApplicationButton @keerti @smoke
   Scenario: Verify whether SPI user is able to qualify opportunity | Verify Create Application button is displayed to SR User when User click on Qualify Button.
   Validate whether SPI has access to 'Not yet Qualified' list view
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
@@ -18,7 +18,7 @@ Feature: Application Intake scenarios without background
     Then I softly see that "Automation Announcement for Application Review" is in "Qualified" status
     Then I softly can see top right button "Create Application" in page detail
 
-  @70255 @73935 @73940 @73941 @73937 @70256 @70257 @spaUserCannotQualifyTheApplication @deepika
+  @70257 @73937 @73940 @73935 @73941 @70255 @70256 @spaUserCannotQualifyTheApplication @deepika
   Scenario: Validate as another SPI / SPA user should not be able to Qualify for the second time| Validate SPA user view the Create Application button in page details
   Validate SPA user can View the Qualified Application under 'Qualified' and not under 'Not Yet Qualified'
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
@@ -48,7 +48,7 @@ Feature: Application Intake scenarios without background
     Then I softly cannot see top right button "Qualify" in page detail
     Then I softly can see top right button "Create Application" in page detail
 
-  @72579 @76374 @70258 @spaUsersCannotSubmitAnApplication @deepika
+  @72579 @77380 @76374 @70258 @spaUsersCannotSubmitAnApplication @deepika
   Scenario: Validate the SPA users should not be able to Submit the Application | Validate whether SPI user can continue to proceed without providing application title while creating a pre-application
   Validate whether user should be able to enter the required information for the creation  Application | Validate that the user is able to view the added setting while the creating an application
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
@@ -112,7 +112,7 @@ Feature: Application Intake scenarios without background
     Then I see the following messages in the page details :
       | This Opportunity has already been qualified for your Organization. |
 
-  @73366 @70462 @70463 @userCanEnterBudgetDetailsApplTitleasOppurtunityTitleField @deepika
+  @70463 @73366 @70462 @userCanEnterBudgetDetailsApplTitleasOppurtunityTitleField @deepika
   Scenario: To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on Application | Validate the pre-Application created date is updated with Today's date
   To verify that the Application title is enforced on the created application on overview tab
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
@@ -170,7 +170,7 @@ Feature: Application Intake scenarios without background
     And I click "PG-TAO-0001" link present on hovered tooltip
     Then I softly see page title contains as "Automation Permanent Internal Program"
 
-  @71110 @73755 @appdueDateValidation @deepika @smoke
+  @73755 @71110 @appdueDateValidation @deepika @smoke
   Scenario: Validate whether User will be able to submit the application on the last date for submission.| Validate once the announcement is published, then it will be availble for external SPI/SPA users under Oppurtunities Tab
     Given I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Application"
     And I delete the record "Automation Announcement for Application Intake and PreApplication" from the object "Qualified Announcement"
@@ -258,7 +258,7 @@ Feature: Application Intake scenarios without background
     When I click on "Qualify" in the page details
     Then I softly can see top right button "Create Application" in page detail
 
-  @71104 @71107 @71108 @71109 @77151 @77152 @72578 @72624 @unpublishedAnnouncementCannotSubmitApplication @deepika
+  @71104 @72578 @72624 @77151 @77152 @71107 @71109 @71108 @unpublishedAnnouncementCannotSubmitApplication @deepika
   Scenario: Validate once the Announcement is published and Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit Application
   Validate whether the Applicant will be able to view qualify button on the same funding opportunity after republish
   Validate whether the Applicant will be able to create a New Application from the republish announcement and oppurtunity |Validate whether the Applicant will be able to Submit the New Application from the republish announcement and oppurtunity
@@ -444,7 +444,7 @@ Feature: Application Intake scenarios without background
       | Name           | Project Role             | Is Key Contact |
       | Automation SPI | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
-    Then I see status in Progress-bar is "Submitted" and is "Green"
+    Then I softly see status in Progress-bar is "Submitted" and is "Green"
 
   @71112 @71113 @appDueDateValidation @deepika
   Scenario: Validate the Application Submission before the due date | Validate whether the application due date on Announcement is reflecting same while creating an application
@@ -557,10 +557,10 @@ Feature: Application Intake scenarios without background
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name           | Project Role             | Is Key Contact |
       | Automation SPI | Project Director/Manager | Checked        |
-    When I click on "Submit Application" in the page details
+    When I click on "Submit Application" in xthe page details
     Then I see status in Progress-bar is "Submitted" and is "Green"
 
-  @71408 @71488 @71489 @71490 @preApplicationSettinsAsNowhileAnnouncementCreation @deepika
+  @71408 @71488 @71490 @71489 @preApplicationSettinsAsNowhileAnnouncementCreation @deepika
   Scenario: Validate whether user is able to create Application only when the Opportunity setting for Pre Application (No)
   Validate whether User will be able to view the Match column in the budget grid when the value set as Yes
   Validate whether User will be able to view the Leverage column in the budget grid when the value set as Yes.
@@ -590,7 +590,7 @@ Feature: Application Intake scenarios without background
     Then I softly can see page block "Focus Area"
     When I expand nested table containing column value "BP01"
     Then I softly see all values "$0.00" under column "Total Match" inside flextable with id "---applicationIntake:-:budgetPeriodTableId---"
-    Then I softly see all values "$0.00" under column "Other Leverage" inside flextable with id "---applicationIntake:-:budgetPeriodTableId---"
+    And I softly see all values "$0.00" under column "Other Leverage" inside flextable with id "---applicationIntake:-:budgetPeriodTableId---"
 
   @72305 @72306 @isKeyContactWhileCreatingApplication @deepika
   Scenario: Validate whether user can see a Sucess message after making the Contact User a Is key Contact and associate the Project Role
@@ -635,7 +635,7 @@ Feature: Application Intake scenarios without background
     When I navigate to "History" sub tab
     Then I softly cannot see field "Snapshot" inside page block
 
-  @34324 @72308 @72309 @userCanEditApplicationInCreatedStatusAndCannotInSubmitTedStatus @deepika
+  @72308 @34324 @72309 @userCanEditApplicationInCreatedStatusAndCannotInSubmitTedStatus @deepika
   Scenario: Validate whether the User can view the edit icon for the application that is in Created Status and Submiited to Grantor Status
   Verify SPI & SPA user is not able to Submit Application to Grantor with Requested Amount is less than or equal to the Subaward Floor Amount
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
@@ -1425,7 +1425,7 @@ Feature: Application Intake scenarios without background
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Announcement for Application Review" is in "Qualified" status
-    Then I softly can see top right button "Create Application" in page detail
+    And I softly can see top right button "Create Application" in page detail
     When I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI2" user
     And I navigate to "Opportunities" tab
@@ -1435,7 +1435,7 @@ Feature: Application Intake scenarios without background
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Announcement for Application Review" is in "Qualified" status
-    Then I softly can see top right button "Create Application" in page detail
+    And I softly can see top right button "Create Application" in page detail
 
   @34017 @34291 @focusAreaSettingAsNO @deepika
   Scenario: Validate when the funding opportunity  has focus area setting as No then the  User will not be able to view the focus area section when creating the Pre Application
@@ -1534,7 +1534,7 @@ Feature: Application Intake scenarios without background
       | Construction  | 1000   | 0          | 0              | 0              |
     Then I softly see value "1000" for title "Budget" against the value "Construction" inside table "---applicationIntake:-:budgetPeriodTableId---"
 
-  @34322 @34291 @zeroBudgetRequestedAmount @deepika
+  @34322 @zeroBudgetRequestedAmount @deepika
   Scenario: Verify SPI user is not able to Submit Application to Grantor with zero budget/requested amount
     Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
     And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
