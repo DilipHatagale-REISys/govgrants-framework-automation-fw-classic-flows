@@ -5,7 +5,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Given I delete the record "Automation Permanent Organization for Risk Assessment" from the object "ORGANIZATION RISKASSESSMENT"
     When I create a risk assessment record for organization "Automation Permanent Organization for Risk Assessment"
     Given I am on "SUBPORTAL" portal
-    When I login as "SA" user
+    When I login to "Grants Portal" app as "SA" user
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Automation Permanent Organization for Risk Assessment" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
@@ -383,8 +383,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Revise Risk Assessment" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
     Then I do not see values "EGMS ID" and "Automation Permanent Organization for Risk Assessment" inside table
 
-  @62520 @taskCreationWhenGrantorProvideAccess @deepika
-  Scenario: Validate task is created for Subrecipient User when Grantor provides access to Revise Risk Assessment
+  @62520 @77260 @taskCreationWhenGrantorProvideAccess @deepika
+  Scenario: Validate task is created for Subrecipient User when Grantor provides access to Revise Risk Assessment | Validate when the external user request for new assessment, the internal user recives an email notification to Revise Risk Assessment for Subrecipient Organization
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
@@ -409,7 +409,10 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Revise Risk Assessment" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
-    Then I see values "Automation Permanent Organization for Risk Assessment" and "Revise Risk Assessment" inside table
+    Then I softly see values "Automation Permanent Organization for Risk Assessment" and "Revise Risk Assessment" inside table
+    And I pause execution for "120" seconds
+    Then I softly can see mail notification for "INTERNAL" user with following subject:
+      | Request to Revise Risk Assessment for Subrecipient Organization Automation Permanent Organization for Risk Assessment |
 
   @62305 @grantorProvidedAccessForRevisionRequest @deepika
   Scenario: Validate whether Grantor is able to provide access for the revision request of org level risk Assessment

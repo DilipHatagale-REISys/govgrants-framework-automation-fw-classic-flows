@@ -518,8 +518,16 @@ Feature: Pre-Application scenarios without background
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"
     And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
     And I delete the record "Automation Announcement for Application" from the object "Qualified Announcement"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Published Competitive Announcements"
+    And I perform quick search for "Automation Announcement for Pre-Application" in "---announcement:-:competitiveTableId---" panel
+    And I click on "View" icon for "Automation Announcement for Pre-Application" inside flex table with id "---announcement:-:competitiveTableId---"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnId"
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
+    And I login as "SPI" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -531,8 +539,6 @@ Feature: Pre-Application scenarios without background
     When I enter value "Automation Announcement for Application" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    And I get the "EGMS ID"
-    And I save the field labeled "EGMS ID" as "AnnId"
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -544,18 +550,20 @@ Feature: Pre-Application scenarios without background
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
+    And I get the "EGMS ID"
+    And I save the field containing "EGMS ID" as "preappID"
     When I click on "Submit to Grantor" in the page details
     And I pause execution for "200" seconds
     Then I softly can see mail notification for "INTERNAL" user with following subject:
-      | Pre-Application Submitted for Announcement by SAN DIEGO ELECTRICAL TRAINING TRUST |
+      | Pre-Application Submitted for Announcement {SavedValue:AnnId} by SAN DIEGO ELECTRICAL TRAINING TRUST |
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---preApplication:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside table
+    When I perform quick search for "{SavedValue:preappID}" in "---preApplication:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:preappID}" inside table
     When I click on "Accept" in the page details
     Then I softly see status in Progress-bar is "Accepted" and is "Green"
-    And I pause execution for "200" seconds
+    And I pause execution for "150" seconds
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
       | Pre-Application Automation Announcement for Application for Announcement {SavedValue:AnnId} has been Accepted |
 

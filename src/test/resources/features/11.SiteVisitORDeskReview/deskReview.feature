@@ -221,8 +221,9 @@ Feature: Validate all scenarios in Desk Review
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
 
-  @51021 @66557 @51022 @66549 @51023 @66146 @66485 @66550 @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient
+  @51021 @66557 @51022 @66549 @51023 @66146 @66485 @77256 @66550 @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient
   Scenario: Send Desk Review to Subrecipient, Corrective Actions and Submit to Grantor by Subrecipient |Validate whether pending task is created for Program approver under Home Tab when the award owner submits the Desk Review for approval
+    Validate when the desk review is submitted by the Subrecipient to grantor, the internal user recieves an email notification
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -303,6 +304,9 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see that "Automation Desk Review" is in "Sent to Subrecipient" status
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
+    And I pause execution for "200" seconds
+    Then I softly can see mail notification for "INTERNAL" user with following subject:
+      | Desk Review Report Submitted by Subrecipient |
     And I re-login as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -318,6 +322,7 @@ Feature: Validate all scenarios in Desk Review
 
   @55279 @66469 @66148 @approverSendBackToUserDeskReview @deepika
   Scenario: Validate whether the approver will be able to SendBack to Owner |Validate Pending task is not created to fiscal approver when program approver performs send to the owner.
+  Verify when the FO user Send Back to owner during approval process of desk review, the record owner recieves an email notification
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -354,19 +359,23 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Save" in the page details
     When I click on "Back" in the page details
     And I get the "EGMS ID"
+    When I save the field containing "EGMS ID" as "dvID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I perform quick search for "{SavedValue:dvID}" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for ""{SavedValue:dvID}"" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I "Send to Owner" in the approval decision
     Then I softly see status in Progress-bar is "Created" and is "green"
+    And I pause execution for "200" seconds
+    Then I softly can see mail notification for "INTERNAL" user with following subject:
+      | Desk Review Report for "{SavedValue:dvID}" has been Sent Back |
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    Then I softly do not see value "Record Id" for title "EGMS ID" inside table "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I perform quick search for "{SavedValue:dvID}" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    Then I softly do not see value "{SavedValue:dvID}" for title "EGMS ID" inside table "---deskreview:-:monitoringTabPhasePendingTasks---"
 
   @55280 @55281 @approverForwardUserReceivePendingTaskDeskReview @deepika
   Scenario: Validate when the approver forward Site Visit to other user, the Pending Task will be created to the User
@@ -942,9 +951,9 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "{SavedValue:Record Id}" in "History" panel
     Then I see value "Active" for title "New Value" inside table "History"
 
-  @69411 @61057 @61055 @55370 @66139 @66274 @snapshotAfterSubmitForApprovalDeskReviewIsAcceptedAndClosed @Keerti @skipOnJenkins
+  @69411 @61057 @61055 @55370 @66139 @77253 @66274 @snapshotAfterSubmitForApprovalDeskReviewIsAcceptedAndClosed @Keerti @skipOnJenkins
   Scenario: Validate whether record Owner is able to view the Accept and Close Button and User view the Snapshot after Desk Review is Submitted for Approval status also after Accepted and Closed |Subrecipient can view Closed Desk Review
-  Validate whether external user will receive an email notification when desk review is accepted and closed.
+  Validate whether the approver receives an email notification to approve the desk review| Validate whether external user will receive an email notification when desk review is accepted and closed.
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -988,6 +997,9 @@ Feature: Validate all scenarios in Desk Review
     And I click on hyperlink which contains todays date with text "SnapShot on"
     When I download the file
     Then I softly see "{SavedValue:EGMSID}" on page "1" of "govgrants" pdf file
+    And I pause execution for "200" seconds
+    Then I softly can see mail notification for "INTERNAL" user with following subject:
+      | Desk Review Approval Requested |
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel

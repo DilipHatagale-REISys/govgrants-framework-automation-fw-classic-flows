@@ -1,4 +1,4 @@
-@applicationReview @regression @appReview
+@applicationReview @regression @app
 Feature: Validate all scenarios in the Application Review
 
   Background: Submit the application for Review
