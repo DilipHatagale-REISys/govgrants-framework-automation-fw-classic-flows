@@ -1146,6 +1146,7 @@ Feature: Validate all scenarios for program
       | 3              | Date        |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
+    Then I softly see value "Date" for title "Type" against the value "3" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly see the following messages in the page details contains:
       | Record deleted successfully. |
@@ -1154,9 +1155,11 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @77124 @77123 @ValidatingPDFAndBudgetReviewForm @keerti
+  @77124 @77123 @77170 @77171 @ValidatingPDFAdditionDeletionModificationInBudgetFiscalReviewForm @keerti
   Scenario Outline: To verify user allow to download PDF for review question in Budget of Review Panel Categories in Fiscal review form for SME review step in planning phase
   | To verify user able to add new review question with success message in Budget of Review Panel Categories in Fiscal review form for SME review step in planning phase
+  | To verify user able to delete review question with success message in Budget of Review Panel Categories in Fiscal review form for SME review step in planning phase
+  | To verify user able to modify review question in Budget of Review Panel Categories in Fiscal review form for SME review step in planning phase
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1200,6 +1203,303 @@ Feature: Validate all scenarios for program
     Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly can see row level action button "Edit" against "7" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly can see row level action button "Delete" against "7" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "6" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    Then I softly do not see value "6" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      | Question Order | Type        |
+      | 3              | Date        |
+    Then I softly see value "Date" for title "Type" against the value "3" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
+
+  @77172 @ValidatingAdditionInMatchFiscalReviewForm @keerti
+  Scenario: To verify user able to add new review question with success message in Match of Review Panel Categories in Fiscal review form for SME review step in planning phase
+    Given I delete the record "Automation Execution Internal Program" from the object "Program"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+        | Step Name         | Step Weight (%) |
+        | Management Review | 25              |
+        | SME Review        | 75              |
+        | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    And I expand nested table containing column value "Match"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 4              | Test 4    | Yes/No  | 0         |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    Then I softly see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Test 4" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+
+  @77173 @77176 @77174 @ValidatingPDFModificationDeletionInMatchFiscalReviewForm @keerti
+  Scenario Outline:  To verify user allow to download PDF for review question in match of Review Panel Categories in Fiscal review form for SME review step in planning phase
+  | To verify user able to modify review question in Match of Review Panel Categories in fiscal review form for SME review step in planning phase
+  | To verify user able to delete review question with success message in Match of Review Panel Categories in fiscal review form for SME review step in planning phase
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    And I expand nested table containing column value "Budget"
+    And I click on parallel lines menu bar with data target value "#ProgramRelatedReviewPanelQuestionsFlexToggle"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Questions"
+    And I download the file
+    Then I softly see "Budget" on page "1" of "govgrants" pdf file
+    Then I softly see "Is the budget arithmetically correct and consistent with funding opportunity?" on page "1" of "govgrants" pdf file
+    Then I softly see "Program Income" on page "1" of "govgrants" pdf file
+    Then I softly see "Will program income be generated during this project?" on page "2" of "govgrants" pdf file
+    Then I softly see "Match" on page "1" of "govgrants" pdf file
+    Then I softly see "Does the application include leverage funds? Is documentation of the leverage included in the application?" on page "1" of "govgrants" pdf file
+    Then I softly see "Review Questions" on page "1" of "govgrants" pdf file
+    Then I softly see "Question Order" on page "1" of "govgrants" pdf file
+    Then I softly see "Question Type" on page "1" of "govgrants" pdf file
+    Then I softly see "Max Score" on page "1" of "govgrants" pdf file
+    And I switch to parent tab
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 7              | Test 7    | Written | 0         |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    Then I softly see value "7" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Test 7" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "7" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "7" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      | Question Order | Type        |
+      | 3              | Date        |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    Then I softly see value "Date" for title "Type" against the value "3" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    Then I softly do not see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
+
+
+  @77189 @ValidatingAdditionInProgramIncomeFiscalReviewForm @keerti
+  Scenario Outline: To verify user able to add new review question with success message in Program Income of Review Panel Categories in Fiscal review form for SME review step in planning phase
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    And I expand nested table containing column value "Program Income"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 3              | Test 3    | Date    | 0         |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    Then I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Test 3" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "3" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "3" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
+
+  @76477 @ValidatingProgramReviewFormWithoutQuestion @keerti
+  Scenario Outline: To validate system generated error message,for Program Review form, If Review Panel Categories not associated with review question in SME review step of setup tab in planing
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Edit" icon for "Compliance Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    When I enter value "10" into field "Weight__c"
+    And I click on "Edit" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    When I enter value "40" into field "Weight__c"
+    And I click on "Edit" icon for "Program Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    When I enter value "50" into field "Weight__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Review Form" icon for "Program Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    And I expand nested table containing column value "Capability"
+    And I click on "Delete" icon for "1" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "2" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I expand nested table containing column value "Approach"
+    And I click on "Delete" icon for "1" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "2" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "4" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "5" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "6" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "7" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "8" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "9" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "10" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I expand nested table containing column value "Impact"
+    And I click on "Delete" icon for "1" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "2" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Capability section because it is weighted |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Approach section because it is weighted   |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Impact section because it is weighted     |
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
+
+  @76476 @ValidatingFiscalReviewFormWithoutQuestion @keerti
+  Scenario Outline: To validate system generated error message,for Fiscal Review form, If Review Panel Categories not associated with review question in SME review step of setup tab in planing
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0              |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Edit" icon for "Compliance Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    When I enter value "10" into field "Weight__c"
+    And I click on "Edit" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    When I enter value "40" into field "Weight__c"
+    And I click on "Edit" icon for "Program Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    When I enter value "50" into field "Weight__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    And I expand nested table containing column value "Budget"
+    And I click on "Delete" icon for "1" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "2" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "4" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "5" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "6" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I expand nested table containing column value "Match"
+    And I click on "Delete" icon for "1" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "2" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I expand nested table containing column value "Program Income"
+    And I click on "Delete" icon for "1" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "2" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Budget section because it is weighted.         |
+      | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Match section because it is weighted.          |
+      | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Program Income section because it is weighted. |
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
+
+  @38244 @ValidatingManagementReviewFormWithoutQuestion @keerti
+  Scenario Outline: To validate system generated error message,for management review form, If Review Panel Categories not associated with review question in management review step of setup tab in planing
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "Management Review"
+    And I click on "Edit" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    When I enter value "100" into field "Weight__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    And I expand nested table containing column value "Return on Investment (ROI)"
+    And I click on "Delete" icon for "1" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "2" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I expand nested table containing column value "Strategic Alignment"
+    And I click on "Delete" icon for "1" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "2" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Strategic Alignment section because it is weighted.     |
+      | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Return on Investment (ROI) section because it is weighted.|
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
