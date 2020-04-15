@@ -283,7 +283,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Submit to Grantor" in the page details
     And I pause execution for "120" seconds
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
-      | An Application Negotiation Request for Application has been Requested |
+      | An Application Negotiation Request for Application {SavedValue:EGMSID} has been Requested |
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel

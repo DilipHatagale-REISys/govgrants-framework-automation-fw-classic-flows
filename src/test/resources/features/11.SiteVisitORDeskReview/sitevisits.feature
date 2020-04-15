@@ -47,19 +47,19 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
-   And I refresh the page
+    And I refresh the page
     And I click on "Notify" in the page details
     And I save the field labeled "EGMS ID" as "SiteVisitId"
     Then I softly see that "Automation Site Visit" is in "Notified" status
     Then I softly see status in Progress-bar is "Notified" and is "green"
     When I pause execution for "120" seconds
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
-      | Site Visit for has been scheduled |
+      | Site Visit for {SavedValue:SiteVisitId} has been scheduled |
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    Then I softly see value "Record Id" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    And I perform quick search for "{SavedValue:SiteVisitId}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    Then I softly see value "{SavedValue:SiteVisitId}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
   @51087 @51088 @51090 @addingOutcomeSiteVisitAndSubmittingForApprovalSiteVisit
   Scenario: Validate conduct, adding outcomes and submitting site visits for approval
@@ -548,8 +548,8 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I see that "Approve Site Visit" has been added in flextable with Id "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
-  @55277 @55276 @approverForwardUserGetPendingTask @deepika
-  Scenario: Validate when the Approver forward Site Visit to other user, the Pending Task will be created to the User
+  @55277 @55276 @77257 @approverForwardUserGetPendingTask @deepika
+  Scenario: Validate when the Approver forward Site Visit to other user, the Pending Task will be created to the User |Validate when the site viist record is forwarded to another user, an email notification is sent to record owner on same.
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -583,24 +583,28 @@ Feature: Validate all scenarios in the Site Visit
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
+    And I save the field containing "EGMS ID" as "siteVisitID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I perform quick search for "{SavedValue:siteVisitID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:siteVisitID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I perform quick search for "{SavedValue:siteVisitID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:siteVisitID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I "Reassign" to user "Automation EXE" in the approval decision
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I pause execution for "200" seconds
+    Then I softly can see mail notification for "INTERNAL" user with following subject:
+      | Site Visit Report for {SavedValue:siteVisitID} has been Forwarded |
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    When I perform quick search for "{SavedValue:siteVisitID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I softly see that "Approve Site Visit" has been added in flextable with Id "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
   @61861 @55278 @55210 @pmUserCanFOuserCannotViewAcceptandCloseSiteVisits @deepika
@@ -743,8 +747,9 @@ Feature: Validate all scenarios in the Site Visit
     When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     Then I softly cannot see "Reports and Outcomes" sub tab at view detail page
 
-  @56009 @55212 @sendBacktoOwnerReceivePendingTaskSV @deepika
+  @56009 @77251 @55212 @sendBacktoOwnerReceivePendingTaskSV @deepika
   Scenario: Validate when Site Visit record sent back to Recipients when outcomes are not properly addressed and recipients will be able to receive a pending task
+  Verify when the FO user Send Back to owner during approval process of site visits , the record owner recieves an email notification
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -778,24 +783,28 @@ Feature: Validate all scenarios in the Site Visit
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
+    And I save the field containing "EGMS ID" as "svID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I perform quick search for "{SavedValue:svID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:svID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I perform quick search for "{SavedValue:svID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:svID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I "Send to Owner" in the approval decision
     Then I softly see status in Progress-bar is "Created" and is "green"
+    And I pause execution for "200" seconds
+    Then I softly can see mail notification for "INTERNAL" user with following subject:
+      | Site Visit Report for {SavedValue:svID} has been Sent Back |
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    When I perform quick search for "{SavedValue:svID}" in "---sitevisits:-:manageSiteVisitTableId---" panel
     Then I softly see that "Automation Site Visit" has been added in flextable with Id "---sitevisits:-:manageSiteVisitTableId---"
 
   @60830 @56038 @FieldHistoryUpdatedSendBackToOwnerByPM @keerti
