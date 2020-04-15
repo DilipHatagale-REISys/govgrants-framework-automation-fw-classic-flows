@@ -24,7 +24,7 @@ Feature: Validate all scenarios for program
       | Program flextable Header  | Program                               |
       | Internal Programs - Draft | Automation Execution Internal Program |
 
-  @66389 @updateFieldsValidationCheck @jitendra
+  @66389 @35985 @38247 @updateFieldsValidationCheck @jitendra
   Scenario: To verify that the user is able to modified created internal program settings and view the added setting by the creating a direct grant.
     Then I click on "Edit" in the page details
     And I enter "Edition1" values from "Program_Field_Values.xlsx"
@@ -32,6 +32,21 @@ Feature: Validate all scenarios for program
     Then I softly see field "Focus Area Required?" as "No"
     Then I softly see field "KPI" as "No"
     Then I softly see field "Objectives Required?" as "No"
+    And I navigate to "Setup" sub tab
+    Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "SME Review" for title "Step Name" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "Management Review" for title "Step Name" inside table "---program:-:reviewStepTableId---"
+    And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Pre-Screen Review | 0               |
+      | SME Review        | 50              |
+      | Management Review | 50              |
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details :
+      | There are no errors with the review step templates. |
+
 
   @34503 @programCreation
   Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
