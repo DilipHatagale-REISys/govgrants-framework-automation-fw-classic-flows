@@ -60,7 +60,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly can see "Responsibilities" sub tab at view detail page
     Then I softly can see "History" sub tab at view detail page
 
-  @75546 @75639 @75645 @75646 @75544 @75545 @75543 @jitendra @downloadPDF
+  @75546 @75639 @75633 @75645 @75646 @75544 @75545 @75543 @jitendra @downloadPDF
   Scenario: To verify system allow to download PDF for Announcement-published table for announcement tab
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -78,8 +78,14 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I send the email under collab tab with following details:
       | To                              | Subject | Body             |
       | internal.user.product@gmail.com | jitu    | this is bodyless |
+    # next 2 Then statements are combined to validate the single test @75633
+    Then I softly see the following messages in the page details :
+      | Email sent succesfully. |
     And I close "Send Email" modal by clicking the top right x button
     And I refresh the page
+    And I pause execution for "31" seconds
+    Then I softly can see mail notification for "INTERNAL" user with following subject:
+      | jitu |
     And I click on "View" icon for "jitu" inside flex table with id "---announcement:-:collabMessages---"
     Then I softly see following details for email sent under collab:
       | abc@gmail.com |

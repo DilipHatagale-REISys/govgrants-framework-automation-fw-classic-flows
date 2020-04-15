@@ -24,7 +24,7 @@ Feature: Validate all scenarios for program
       | Program flextable Header  | Program                               |
       | Internal Programs - Draft | Automation Execution Internal Program |
 
-  @66389 @35985 @38247 @updateFieldsValidationCheck @jitendra
+  @66389 @35985 @38247 @75816 @75817 @updateFieldsValidationCheck @jitendra
   Scenario: To verify that the user is able to modified created internal program settings and view the added setting by the creating a direct grant.
     Then I click on "Edit" in the page details
     And I enter "Edition1" values from "Program_Field_Values.xlsx"
@@ -46,6 +46,20 @@ Feature: Validate all scenarios for program
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details :
       | There are no errors with the review step templates. |
+    And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Pre-Screen Review | 20               |
+      | SME Review        | 50              |
+      | Management Review | 50              |
+    Then I softly see the following messages in the page details :
+      | Setup Tab - The total Review Step weight must equal 100%, it is currently 120.00%. |
+    And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Pre-Screen Review | 0               |
+      | SME Review        | 50              |
+      | Management Review | 30              |
+    Then I softly see the following messages in the page details :
+      | Setup Tab - The total Review Step weight must equal 100%, it is currently 80.00%. |
 
 
   @34503 @programCreation
