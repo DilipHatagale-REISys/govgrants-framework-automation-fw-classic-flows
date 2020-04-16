@@ -1528,7 +1528,7 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @76479 @ValidatingAdditionInMatchFiscalReviewForm @keerti
+  @76479 @ValidatingTotalSectionWeightInManagmentReview @keerti
   Scenario: To validate system generated error message ,When Total section Weight is 0% for all Review Panel Categories in management review form for management review step in planning phase
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1567,10 +1567,11 @@ Feature: Validate all scenarios for program
       | Setup Tab - Management Review - Management Review: A weighted form must contain weighted sections.                                                                         |
 
 
-  @77289 @77290 @77291 @77292 @SMEReviewTotalSectionWeightValidation @keerti
-  Scenario Outline: To validate system generated error message ,When Total section Weight is 0% for all Review Panel Categories in program review form for SME review step in planning phase
-  | To validate system generated error message , When Total section Weight is more than 100% for all Review Panel Categories in program review form for SME review step in planning phase
-  | To validate system generated error message , When Total section Weight is less than 100% for all Review Panel Categories in program review form for SME review step in planning phase
+  @77290 @77289 @77292 @77291  @PDFAdditionModificationDeletionInApproach @keerti
+  Scenario Outline: To verify user allow to download PDF for review question in Approach of Review Panel Categories in Program review form for SME review step in planning phase
+  | To verify user able to add new review question with success message in Approach of Review Panel Categories in Program review form for SME review step in planning phase
+  | To verify user able to modify review question in Approach of Review Panel Categories in Program review form for SME review step in planning phase
+  | To verify user able to delete review question with success message in Approach of Review Panel Categories in Program review form for SME review step in planning phase
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1632,7 +1633,7 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @77293 @77294 @77343 @SMEReviewTotalSectionWeightValidation @keerti
+  @77293 @77294 @77343 @AdditionPDFModificationInImpact @keerti
   Scenario Outline: To verify user able to add new review question with success message in Impact of Review Panel Categories in Program review form for SME review step in planning phase
   | To verify user allow to download PDF for review question in Impact of Review Panel Categories in Program review form for SME review step in planning phase
   | To verify user able to modify review question in Impact of Review Panel Categories in Program review form for SME review step in planning phase
