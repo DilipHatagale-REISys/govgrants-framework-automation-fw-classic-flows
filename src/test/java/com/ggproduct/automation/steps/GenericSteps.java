@@ -476,28 +476,4 @@ public class GenericSteps {
             I.amPerforming().assertionsTo().assertThat(I.amPerforming().checkToSee().isDisplayed(path)).isTrue();
         }
     }
-
-    /**
-     * Use this step to validate the multiple keywords from downloaded pdf
-     * @param shouldBeDisplayed - assertion field
-     * @param fileName - name of the pdf file without extension
-     * @param rowData - data in list of map
-     *                e.g |  Detail  |  Page Number  |
-     *                    |     abc  |    1          |
-     *                Here abc is the text that we have to validate on page number 1
-     */
-    @Then("^I (softly see|see) following details in \"([^\"]*)\" pdf file:$")
-    public void iSeeFollowingDetailsInPdfFile(String shouldBeDisplayed, String fileName, List<Map<String,String>> rowData) {
-        int size = rowData.size();
-        for(int i = 1; i <size; i++){
-            String pageNumber = rowData.get(i).get("Page Number");
-            String text = rowData.get(i).get("Detail");
-            if (shouldBeDisplayed.contains("softly")) {
-                I.amPerforming().assertionsTo().assertThat("softly see".equalsIgnoreCase(shouldBeDisplayed)).isEqualTo(govgrants.perform().mainPage().assertTextInPDF(text, Integer.parseInt(pageNumber), fileName));
-            } else {
-                Assert.assertEquals("see".equalsIgnoreCase(shouldBeDisplayed), govgrants.perform().mainPage().assertTextInPDF(text, Integer.parseInt(pageNumber), fileName));
-            }
-        }
-
-    }
 }
