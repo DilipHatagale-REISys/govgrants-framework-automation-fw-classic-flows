@@ -57,7 +57,7 @@ Feature: Validate all scenarios for program
       | There are no errors with the review step templates. |
     And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
-      | Pre-Screen Review | 20               |
+      | Pre-Screen Review | 20              |
       | SME Review        | 50              |
       | Management Review | 50              |
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
@@ -83,7 +83,7 @@ Feature: Validate all scenarios for program
     And I expand nested table containing column value "Management Review"
     And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewStepTableId---"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
-      | Section Order | Section Header             |
+      | Section Order | Section Header                  |
       | 1             | Return on Investment (ROI) Test |
     Then I softly see value "Return on Investment (ROI) Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
     And I click on "Delete" icon for "Return on Investment (ROI) Test" inside flex table with id "---program:-:programReviewPanel---"
@@ -97,7 +97,7 @@ Feature: Validate all scenarios for program
       | SME Review        | 1           |
       | Management Review | 1           |
 
-  @75918 @75925 @75923 @75919 @75926 @75924 @jitendra @addReviewerInPre-ScreenAndManagementReview
+  @75918 @75925 @75923 @75919 @75926 @75924 @75975 @75978 @75977 @jitendra @addReviewerInPre-ScreenAndManagementReview
   Scenario: To verify user able to add reviewers in reviewers section for pre-screening review step in setup tab of planning
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -124,11 +124,27 @@ Feature: Validate all scenarios for program
     And I select "Download as PDF" from dropdown
     And I download the file
     Then I softly see following details in "govgrants" pdf file:
-      | Detail   | Page Number |
+      | Detail        | Page Number |
       | Automation PM | 1           |
     And I switch to parent tab
     And I click on "Delete" icon for "Automation PM" inside flex table with id "---program:-:reviewStepTableId---"
     Then I softly do not see value "Automation PM" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
+    And I refresh the page
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Delete" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---"
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details :
+      | Setup Tab - Pre-Screen Review: At least one form is required for this review step. |
+    And I refresh the page
+    And I expand nested table containing column value "Management Review"
+    And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Form Weight (%) | Form Name              |
+      | 100.00%         | Management Review Test |
+    Then I softly see value "Management Review Test" for title "Form Name" inside table "---program:-:reviewStepTableId---"
+    And I click on "Delete" icon for "Management Review Test" inside flex table with id "---program:-:reviewStepTableId---"
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - Management Review: At least one form is required for this review step. |
 
   @34731 @programEdition
   Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
@@ -662,8 +678,8 @@ Feature: Validate all scenarios for program
 
   @76333 @76334 @76332 @SMEProgramReviewFormAndFiscalReviewForm @keerti
   Scenario Outline: To verify Filter functionality for review panel categories section in program review form in SME review step of setup tab in planning
-    /To validate system is getting displayed error message for program review form, while adding invalid values into the filter for review panel categories section on setup tab of planning
-    /To validate system is getting displayed error message for fiscal review form, while adding invalid values into the filter for review panel categories section on setup tab of planning
+  /To validate system is getting displayed error message for program review form, while adding invalid values into the filter for review panel categories section on setup tab of planning
+  /To validate system is getting displayed error message for fiscal review form, while adding invalid values into the filter for review panel categories section on setup tab of planning
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -710,7 +726,7 @@ Feature: Validate all scenarios for program
 
   @76336 @76337 @WithoutPrescreenReviewFormWithoutManagementReviewForm @keerti
   Scenario: To validate system generated error message, When Prescreen review step has not associated with any review form in review form section in setup tab of planning
-    / To validate system generated error message, When management review step has not associated with any review form in review form section in setup tab of planning
+  / To validate system generated error message, When management review step has not associated with any review form in review form section in setup tab of planning
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -748,8 +764,8 @@ Feature: Validate all scenarios for program
 
   @76480 @76481 @76482 @ManagenementReviewPanalCatergoryReviewFormWeight @keerti
   Scenario: To validate system generated error message , When Total section Weight is more than 100% for all Review Panel Categories in management review form for management review step in planning phase
-    | To validate system generated error message , When Total section Weight is less than 100% for all Review Panel Categories in management review form for management review step in planning phase
-    | To validate system generated error message ,When management review form Weight : 0% & total section weight : 100 % for all review panel categories for management review step in planning phase
+  | To validate system generated error message , When Total section Weight is less than 100% for all Review Panel Categories in management review form for management review step in planning phase
+  | To validate system generated error message ,When management review form Weight : 0% & total section weight : 100 % for all review panel categories for management review step in planning phase
     Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -775,18 +791,18 @@ Feature: Validate all scenarios for program
     And I expand nested table containing column value "Management Review"
     And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
-      | Section Header                 | Section Weight (%) |
-      | Return on Investment (ROI)     | 70                 |
-      | Strategic Alignment            | 50                 |
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 70                 |
+      | Strategic Alignment        | 50                 |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%, it is currently 120%. |
     And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
-      | Section Header                 | Section Weight (%) |
-      | Return on Investment (ROI)     | 60                 |
-      | Strategic Alignment            | 30                 |
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 60                 |
+      | Strategic Alignment        | 30                 |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -796,9 +812,9 @@ Feature: Validate all scenarios for program
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
     And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
-      | Section Header                 | Section Weight (%) |
-      | Return on Investment (ROI)     | 60                 |
-      | Strategic Alignment            | 40                 |
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 60                 |
+      | Strategic Alignment        | 40                 |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -849,8 +865,8 @@ Feature: Validate all scenarios for program
 
   @76579 @76580 @76581 @SMEReviewTotalSectionWeightValidation @keerti
   Scenario Outline: To validate system generated error message ,When Total section Weight is 0% for all Review Panel Categories in program review form for SME review step in planning phase
-    | To validate system generated error message , When Total section Weight is more than 100% for all Review Panel Categories in program review form for SME review step in planning phase
-    | To validate system generated error message , When Total section Weight is less than 100% for all Review Panel Categories in program review form for SME review step in planning phase
+  | To validate system generated error message , When Total section Weight is more than 100% for all Review Panel Categories in program review form for SME review step in planning phase
+  | To validate system generated error message , When Total section Weight is less than 100% for all Review Panel Categories in program review form for SME review step in planning phase
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -890,20 +906,20 @@ Feature: Validate all scenarios for program
       | Setup Tab - SME Review - Program Review: A weighted form must contain weighted sections.                                                         |
     And I click on "Review Form" icon for "Program review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
-      | Section Header | Section Weight (%)  |
-      | Capability     | 50                  |
-      | Approach       | 50                  |
-      | Impact         | 20                  |
+      | Section Header | Section Weight (%) |
+      | Capability     | 50                 |
+      | Approach       | 50                 |
+      | Impact         | 20                 |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%, it is currently 120%. |
     And I click on "Review Form" icon for "Program review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
-      | Section Header | Section Weight (%)  |
-      | Capability     | 60                  |
-      | Approach       | 30                  |
-      | Impact         | 0                   |
+      | Section Header | Section Weight (%) |
+      | Capability     | 60                 |
+      | Approach       | 30                 |
+      | Impact         | 0                  |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -914,8 +930,8 @@ Feature: Validate all scenarios for program
 
   @76583 @76584 @76586 @PrescreeningSMEReviewQuestionValidation @keerti
   Scenario Outline: To verify,review question section displayed by default for all review panel categories for prrescreening review form in prescreening review step of planning phase
-    |To verify,review question section displayed by default for all review panel categories for compliance review form in SME review step of planning phase
-    |To verify,review question section displayed by default for all review panel categories for Fiscal review form in SME review step of planning phase
+  |To verify,review question section displayed by default for all review panel categories for compliance review form in SME review step of planning phase
+  |To verify,review question section displayed by default for all review panel categories for Fiscal review form in SME review step of planning phase
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1044,8 +1060,8 @@ Feature: Validate all scenarios for program
     Then I softly see "20" on page "1" of "govgrants" pdf file
     And I switch to parent tab
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 4              | Test      | Written | 0         |
+      | Question Order | Question | Type    | Max Score |
+      | 4              | Test     | Written | 0         |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -1075,8 +1091,8 @@ Feature: Validate all scenarios for program
     Then I softly see "20" on page "1" of "govgrants" pdf file
     And I switch to parent tab
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 3              | Test 1    | Written | 0         |
+      | Question Order | Question | Type    | Max Score |
+      | 3              | Test 1   | Written | 0         |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -1112,8 +1128,8 @@ Feature: Validate all scenarios for program
     And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I expand nested table containing column value "Return on Investment (ROI)"
     When I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      | Question Order | Type        |
-      | 3              | Written     |
+      | Question Order | Type    |
+      | 3              | Written |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "Written" for title "Type" against the value "3" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -1165,9 +1181,9 @@ Feature: Validate all scenarios for program
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
     And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
-      | Section Header | Section Weight (%)  |
-      | Eligibility    | 0                   |
-      | Completeness   | 0                   |
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 0                  |
+      | Completeness   | 0                  |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -1176,8 +1192,8 @@ Feature: Validate all scenarios for program
     And I click on "Review Form" icon for "Compliance review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I expand nested table containing column value "Environment"
     When I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      | Question Order | Type        |
-      | 3              | Number      |
+      | Question Order | Type   |
+      | 3              | Number |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "Number" for title "Type" against the value "3" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -1224,8 +1240,8 @@ Feature: Validate all scenarios for program
     Then I softly see "Max Score" on page "1" of "govgrants" pdf file
     And I switch to parent tab
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 4              | Test      | Written | 0         |
+      | Question Order | Question | Type    | Max Score |
+      | 4              | Test     | Written | 0         |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -1235,8 +1251,8 @@ Feature: Validate all scenarios for program
     Then I softly can see row level action button "Edit" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly can see row level action button "Delete" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      | Question Order | Type        |
-      | 3              | Date        |
+      | Question Order | Type |
+      | 3              | Date |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "Date" for title "Type" against the value "3" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -1286,8 +1302,8 @@ Feature: Validate all scenarios for program
     Then I softly see "Max Score" on page "1" of "govgrants" pdf file
     And I switch to parent tab
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 7              | Test 7    | Written | 0         |
+      | Question Order | Question | Type    | Max Score |
+      | 7              | Test 7   | Written | 0         |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "7" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -1301,8 +1317,8 @@ Feature: Validate all scenarios for program
       | Record deleted successfully. |
     Then I softly do not see value "6" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
     When I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      | Question Order | Type        |
-      | 3              | Date        |
+      | Question Order | Type |
+      | 3              | Date |
     Then I softly see value "Date" for title "Type" against the value "3" inside table "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
@@ -1331,16 +1347,16 @@ Feature: Validate all scenarios for program
     When I close "Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
-        | Step Name         | Step Weight (%) |
-        | Management Review | 25              |
-        | SME Review        | 75              |
-        | Pre-Screen Review | 0               |
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
     And I expand nested table containing column value "SME Review"
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 4              | Test 4    | Yes/No  | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 4              | Test 4   | Yes/No | 0         |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -1387,8 +1403,8 @@ Feature: Validate all scenarios for program
     Then I softly see "Max Score" on page "1" of "govgrants" pdf file
     And I switch to parent tab
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 7              | Test 7    | Written | 0         |
+      | Question Order | Question | Type    | Max Score |
+      | 7              | Test 7   | Written | 0         |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "7" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -1398,8 +1414,8 @@ Feature: Validate all scenarios for program
     Then I softly can see row level action button "Edit" against "7" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly can see row level action button "Delete" against "7" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      | Question Order | Type        |
-      | 3              | Date        |
+      | Question Order | Type |
+      | 3              | Date |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "Date" for title "Type" against the value "3" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -1433,8 +1449,8 @@ Feature: Validate all scenarios for program
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 3              | Test 3    | Date    | 0         |
+      | Question Order | Question | Type | Max Score |
+      | 3              | Test 3   | Date | 0         |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -1520,7 +1536,7 @@ Feature: Validate all scenarios for program
       | Step Name         | Step Weight (%) |
       | Management Review | 25              |
       | SME Review        | 75              |
-      | Pre-Screen Review | 0              |
+      | Pre-Screen Review | 0               |
     And I expand nested table containing column value "SME Review"
     And I click on "Edit" icon for "Compliance Review" inside flex table with id "---program:-:reviewFormPanelId---"
     When I enter value "10" into field "Weight__c"
@@ -1591,8 +1607,8 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Strategic Alignment section because it is weighted.     |
-      | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Return on Investment (ROI) section because it is weighted.|
+      | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Strategic Alignment section because it is weighted.        |
+      | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Return on Investment (ROI) section because it is weighted. |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
