@@ -97,7 +97,7 @@ Feature: Validate all scenarios for program
       | SME Review        | 1           |
       | Management Review | 1           |
 
-  @75918 @75919 @jitendra @addReviewerInPre-ScreenAndManagementReview
+  @75918 @75925 @75923 @75919 @75926 @75924 @jitendra @addReviewerInPre-ScreenAndManagementReview
   Scenario: To verify user able to add reviewers in reviewers section for pre-screening review step in setup tab of planning
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -105,12 +105,30 @@ Feature: Validate all scenarios for program
       | Reviewer |
       | David FO |
     Then I softly see value "David FO" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
+    And I click on parallel menu button in flex table titled "Reviewers"
+    And I select "Download as PDF" from dropdown
+    And I download the file
+    Then I softly see following details in "govgrants" pdf file:
+      | Detail   | Page Number |
+      | David FO | 1           |
+    And I switch to parent tab
+    And I click on "Delete" icon for "David FO" inside flex table with id "---program:-:reviewStepTableId---"
+    Then I softly do not see value "David FO" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
     And I refresh the page
     And I expand nested table containing column value "Management Review"
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
       | Reviewer      |
       | Automation PM |
     Then I softly see value "Automation PM" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
+    And I click on parallel menu button in flex table titled "Reviewers"
+    And I select "Download as PDF" from dropdown
+    And I download the file
+    Then I softly see following details in "govgrants" pdf file:
+      | Detail   | Page Number |
+      | Automation PM | 1           |
+    And I switch to parent tab
+    And I click on "Delete" icon for "Automation PM" inside flex table with id "---program:-:reviewStepTableId---"
+    Then I softly do not see value "Automation PM" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
 
   @34731 @programEdition
   Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
