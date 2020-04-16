@@ -61,7 +61,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on parallel menu button in flex table titled "Budget Categories"
     And I select "Download as PDF" from parallel lines dropdown of "Budget Categories"
     And I download the file
-    Then I verify that "pdf" file is downloaded
     And I see "Budget Categories" on page "1" of "govgrants" pdf file
 
   @74107 @pdfDownloadBusinessForm @jitendra
@@ -75,7 +74,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on parallel menu button in flex table titled "Business Forms"
     And I select "Download as PDF" from parallel lines dropdown of "Business Forms"
     And I download the file
-    Then I verify that "pdf" file is downloaded
     And I see "Business Forms" on page "1" of "govgrants" pdf file
 
   @74108 @pdfDownloadSuppDocChekLst @jitendra
@@ -93,7 +91,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on parallel menu button in flex table titled "Supporting Documents Checklist"
     And I select "Download as PDF" from parallel lines dropdown of "Supporting Documents Checklist"
     And I download the file
-    Then I verify that "pdf" file is downloaded
     And I see "Supporting Documents Checklist" on page "1" of "govgrants" pdf file
 
   @75616 @74118 @pdfDownloadApprover @jitendra
@@ -114,7 +111,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on parallel menu button in flex table titled "Approvers"
     And I select "Download as PDF" from parallel lines dropdown of "Approvers"
     And I download the file
-    Then I verify that "pdf" file is downloaded
     And I see "Approvers" on page "1" of "govgrants" pdf file
 
   @74117 @pdfDownloadReviewSteps @jitendra
@@ -133,7 +129,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on parallel menu button in flex table titled "Peer Reviewers"
     And I select "Download as PDF" from parallel lines dropdown of "Peer Reviewers"
     And I download the file
-    Then I verify that "pdf" file is downloaded
     And I see "Peer Reviewers" on page "1" of "govgrants" pdf file
 
   @74124 @pdfDownloadFocusArea @jitendra
@@ -150,7 +145,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on parallel menu button in flex table titled "Related Focus Areas"
     And I select "Download as PDF" from parallel lines dropdown of "Related Focus Areas"
     And I download the file
-    Then I verify that "pdf" file is downloaded
     And I see "Related Focus Areas" on page "1" of "govgrants" pdf file
 
   @70551 @70552 @73405 @73389 @73406 @73387 @70800 @70885 @71595 @72646 @72641 @73537 @userCanViewAddAndDeleteFocusArea @aashish

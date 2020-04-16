@@ -24,18 +24,27 @@ Feature: Validate all scenarios for program
       | Program flextable Header  | Program                               |
       | Internal Programs - Draft | Automation Execution Internal Program |
 
-  @66389 @35985 @38247 @75816 @75817 @updateFieldsValidationCheck @jitendra
+  @34503 @66389 @35985 @75815 @38247 @75816 @75817 @75812 @75813 @75910 @75911 @75814 @updateFieldsValidationCheck @jitendra
   Scenario: To verify that the user is able to modified created internal program settings and view the added setting by the creating a direct grant.
-    Then I click on "Edit" in the page details
+    Then I softly see status in Progress-bar is "Created" and is "Green"
+    And I click on "Edit" in the page details
     And I enter "Edition1" values from "Program_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I softly see field "Focus Area Required?" as "No"
-    Then I softly see field "KPI" as "No"
-    Then I softly see field "Objectives Required?" as "No"
+    And I softly see field "KPI" as "No"
+    And I softly see field "Objectives Required?" as "No"
     And I navigate to "Setup" sub tab
     Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---program:-:reviewStepTableId---"
-    Then I softly see value "SME Review" for title "Step Name" inside table "---program:-:reviewStepTableId---"
-    Then I softly see value "Management Review" for title "Step Name" inside table "---program:-:reviewStepTableId---"
+    And I softly see value "SME Review" for title "Step Name" inside table "---program:-:reviewStepTableId---"
+    And I softly see value "Management Review" for title "Step Name" inside table "---program:-:reviewStepTableId---"
+    And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Pre-Screen Review | 0               |
+      | SME Review        | 0               |
+      | Management Review | 0               |
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - The total Review Step weight must equal 100%, it is currently 0.00%. |
     And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Pre-Screen Review | 0               |
@@ -51,20 +60,57 @@ Feature: Validate all scenarios for program
       | Pre-Screen Review | 20               |
       | SME Review        | 50              |
       | Management Review | 50              |
-    Then I softly see the following messages in the page details :
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
       | Setup Tab - The total Review Step weight must equal 100%, it is currently 120.00%. |
     And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Pre-Screen Review | 0               |
       | SME Review        | 50              |
       | Management Review | 30              |
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details :
       | Setup Tab - The total Review Step weight must equal 100%, it is currently 80.00%. |
+    And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Order | Step Name         |
+      | 1          | Update pre-review |
+    Then I softly see value "Update pre-review" for title "Step Name" inside table "---program:-:reviewStepTableId---"
+    And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Order | Step Name         |
+      | 1          | Pre-Screen Review |
+    And I click on "Delete" icon for "Pre-Screen Review" inside flex table with id "---program:-:reviewStepTableId---"
+    Then I softly do not see value "Pre-Screen Review" for title "Step Name" inside table "---program:-:reviewStepTableId---"
+    And I expand nested table containing column value "Management Review"
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewStepTableId---"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Order | Section Header             |
+      | 1             | Return on Investment (ROI) Test |
+    Then I softly see value "Return on Investment (ROI) Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I click on "Delete" icon for "Return on Investment (ROI) Test" inside flex table with id "---program:-:programReviewPanel---"
+    Then I softly do not see value "Return on Investment (ROI) Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I refresh the page
+    And I click on parallel menu button in flex table titled "Review Steps"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Steps"
+    And I download the file
+    Then I softly see following details in "govgrants" pdf file:
+      | Detail            | Page Number |
+      | SME Review        | 1           |
+      | Management Review | 1           |
 
-
-  @34503 @programCreation
-  Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
-    Then I see status in Progress-bar is "Created" and is "Green"
+  @75918 @75919 @jitendra @addReviewerInPre-ScreenAndManagementReview
+  Scenario: To verify user able to add reviewers in reviewers section for pre-screening review step in setup tab of planning
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
+      | Reviewer |
+      | David FO |
+    Then I softly see value "David FO" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
+    And I refresh the page
+    And I expand nested table containing column value "Management Review"
+    When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
+      | Reviewer      |
+      | Automation PM |
+    Then I softly see value "Automation PM" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
 
   @34731 @programEdition
   Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
