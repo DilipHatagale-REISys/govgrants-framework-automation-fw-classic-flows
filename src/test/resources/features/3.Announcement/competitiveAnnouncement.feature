@@ -29,8 +29,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       And I click on parallel menu button in flex table titled "Contacts"
       And I select "Download as PDF" from parallel lines dropdown of "Contacts"
       And I download the file
-      Then I verify that "pdf" file is downloaded
-      And I see "Contacts" on page "1" of "govgrants" pdf file
+      Then I see "Contacts" on page "1" of "govgrants" pdf file
 
   @73958 @pdfDownloadRelatedFederal @jitendra
   Scenario: To verify system allow to download PDF for Related Federal/NGO program in overview tab of announcement
@@ -47,8 +46,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on parallel menu button in flex table titled "Related Federal/NGO Program"
     And I select "Download as PDF" from parallel lines dropdown of "Related Federal/NGO Program"
     And I download the file
-    Then I verify that "pdf" file is downloaded
-    And I see "Related Federal/NGO Program" on page "1" of "govgrants" pdf file
+    Then I see "Related Federal/NGO Program" on page "1" of "govgrants" pdf file
 
   @74105 @pdfDownloadBudgetCategory @jitendra
   Scenario: To verify system allow to download PDF for Budget Categories section in financial tab of announcement
@@ -61,8 +59,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on parallel menu button in flex table titled "Budget Categories"
     And I select "Download as PDF" from parallel lines dropdown of "Budget Categories"
     And I download the file
-    Then I verify that "pdf" file is downloaded
-    And I see "Budget Categories" on page "1" of "govgrants" pdf file
+    Then I see "Budget Categories" on page "1" of "govgrants" pdf file
 
   @74107 @pdfDownloadBusinessForm @jitendra
   Scenario: To verify system allow to download PDF for Business Forms section in setup tab of announcement
@@ -75,8 +72,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on parallel menu button in flex table titled "Business Forms"
     And I select "Download as PDF" from parallel lines dropdown of "Business Forms"
     And I download the file
-    Then I verify that "pdf" file is downloaded
-    And I see "Business Forms" on page "1" of "govgrants" pdf file
+    Then I see "Business Forms" on page "1" of "govgrants" pdf file
 
   @74108 @pdfDownloadSuppDocChekLst @jitendra
   Scenario: To verify system allow to download PDF for Supporting Documents Checklist section in setup tab of announcement
@@ -93,8 +89,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on parallel menu button in flex table titled "Supporting Documents Checklist"
     And I select "Download as PDF" from parallel lines dropdown of "Supporting Documents Checklist"
     And I download the file
-    Then I verify that "pdf" file is downloaded
-    And I see "Supporting Documents Checklist" on page "1" of "govgrants" pdf file
+    Then I see "Supporting Documents Checklist" on page "1" of "govgrants" pdf file
 
   @75616 @74118 @pdfDownloadApprover @jitendra
   Scenario: To verify system allow to download PDF for Peer Reviewers section in Responsibility tab of announcement
@@ -114,8 +109,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on parallel menu button in flex table titled "Approvers"
     And I select "Download as PDF" from parallel lines dropdown of "Approvers"
     And I download the file
-    Then I verify that "pdf" file is downloaded
-    And I see "Approvers" on page "1" of "govgrants" pdf file
+    Then I see "Approvers" on page "1" of "govgrants" pdf file
 
   @74117 @pdfDownloadReviewSteps @jitendra
   Scenario: To verify system allow to download pdf for Review Steps section in setup tab of announcement
@@ -133,8 +127,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on parallel menu button in flex table titled "Peer Reviewers"
     And I select "Download as PDF" from parallel lines dropdown of "Peer Reviewers"
     And I download the file
-    Then I verify that "pdf" file is downloaded
-    And I see "Peer Reviewers" on page "1" of "govgrants" pdf file
+    Then I see "Peer Reviewers" on page "1" of "govgrants" pdf file
 
   @74124 @pdfDownloadFocusArea @jitendra
   Scenario: To verify system allow to download PDF for Related Focus Area section in setup tab of announcement
@@ -150,8 +143,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on parallel menu button in flex table titled "Related Focus Areas"
     And I select "Download as PDF" from parallel lines dropdown of "Related Focus Areas"
     And I download the file
-    Then I verify that "pdf" file is downloaded
-    And I see "Related Focus Areas" on page "1" of "govgrants" pdf file
+    Then I see "Related Focus Areas" on page "1" of "govgrants" pdf file
 
   @70551 @70552 @73405 @73389 @73406 @73387 @70800 @70885 @71595 @72646 @72641 @73537 @userCanViewAddAndDeleteFocusArea @aashish
   Scenario: To Verify that user is able to remove associated focus areas While creating the Announcement | To verify PM can remove non relevant Budget categories from specific Budget Type in Announcement based on the need.
