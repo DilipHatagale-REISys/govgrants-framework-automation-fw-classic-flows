@@ -229,7 +229,7 @@ Feature: Validate all scenarios in the Application Intake
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "General Assurances"
     Then I softly see "Active" has been added in "Attachments" flex table
     And I add notes records
-    When I enter notes with title "Automation Title" and description "Automation Description"
+    When I enter notes with title "Title" and description "Description"
     Then I softly see value "Notes Record" for title "Title" inside table "toggleNotes"
 
   @73521 @70526 @snapshotAfterApplicationIsSubmitted @deepika

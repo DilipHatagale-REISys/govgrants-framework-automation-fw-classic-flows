@@ -4,6 +4,7 @@ import com.automation.rei.handlers.govgrants;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 import com.testingblaze.objects.Elements;
 import com.testingblaze.register.I;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -475,5 +476,10 @@ public class GenericSteps {
             By path = By.xpath("//div[@id='sendEmail']//*[text()='" + text.get(i).get(0) + "']");
             I.amPerforming().assertionsTo().assertThat(I.amPerforming().checkToSee().isDisplayed(path)).isTrue();
         }
+    }
+
+    @Before(order = 5)
+    public void initializeData() {
+        projectManager.initData();
     }
 }
