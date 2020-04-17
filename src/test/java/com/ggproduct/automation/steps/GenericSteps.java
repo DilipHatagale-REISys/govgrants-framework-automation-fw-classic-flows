@@ -4,6 +4,7 @@ import com.automation.rei.handlers.govgrants;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 import com.testingblaze.objects.Elements;
 import com.testingblaze.register.I;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -394,8 +395,8 @@ public class GenericSteps {
     }
 
     @And("^I click on top right button \"([^\"]*)\" in notes flex table having header \"([^\"]*)\"$")
-    public void clickOnTopButtonInFlexTable(String buttonName, String flextTableHeader){
-        I.amPerforming().click().on(By.xpath("//*["+I.amPerforming().sanityOfXpathTo().translate(flextTableHeader)+"]//ancestor::div[(@id and @class='ng-scope')]//button[text()='"+buttonName+"' or @title='"+buttonName+"']"));
+    public void clickOnTopButtonInFlexTable(String buttonName, String flextTableHeader) {
+        I.amPerforming().click().on(By.xpath("//*[" + I.amPerforming().sanityOfXpathTo().translate(flextTableHeader) + "]//ancestor::div[(@id and @class='ng-scope')]//button[text()='" + buttonName + "' or @title='" + buttonName + "']"));
     }
 
     @And("^I edit the notes$")
@@ -415,22 +416,22 @@ public class GenericSteps {
         By listOfsUsers = By.xpath("//div[@id='chevronBarId']//ul[1]//li//a");
         List<Elements> listOfLoc = I.amPerforming().getElementReference().forListOfElements().of(listOfsUsers);
         int expectedIndex = 0;
-        for (int i=0; i<listOfLoc.size(); i++){
-            if (listOfLoc.get(i).getText().trim().equalsIgnoreCase(againstThisString)){
+        for (int i = 0; i < listOfLoc.size(); i++) {
+            if (listOfLoc.get(i).getText().trim().equalsIgnoreCase(againstThisString)) {
                 expectedIndex = expectedIndex + 1;
             }
         }
 
-        I.amPerforming().assertionsTo().assertThat(I.amPerforming().actionToGet().text("//div[@id='chevronBarId']//ul[2]//li["+expectedIndex+"]//a").trim()).isEqualToIgnoringCase(seeThisString);
+        I.amPerforming().assertionsTo().assertThat(I.amPerforming().actionToGet().text("//div[@id='chevronBarId']//ul[2]//li[" + expectedIndex + "]//a").trim()).isEqualToIgnoringCase(seeThisString);
     }
 
     @Description("Check the Application Due Date is Less/greater than today's Date")
     @Then("^I (softly see|see) field \"([^\"]*)\" contains date (less|greater) than todays date$")
     public void isFieldDateGreaterThanOrLessThanTodaysDate(String usage, String fieldLabel, String lessORgreater) throws ParseException {
         if (usage.contains("softly")) {
-            I.amPerforming().assertionsTo().assertThat(projectManager.isFieldDateGreaterThanOrLessThanTodaysDate(fieldLabel,lessORgreater)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(projectManager.isFieldDateGreaterThanOrLessThanTodaysDate(fieldLabel, lessORgreater)).isTrue();
         } else {
-            Assert.assertTrue(projectManager.isFieldDateGreaterThanOrLessThanTodaysDate(fieldLabel,lessORgreater));
+            Assert.assertTrue(projectManager.isFieldDateGreaterThanOrLessThanTodaysDate(fieldLabel, lessORgreater));
         }
     }
 
@@ -449,12 +450,41 @@ public class GenericSteps {
 
     @And("I click on parallel menu button in flex table titled {string}")
     public void iClickOnParallelMenuButtonInFlexTableTitled(String flexTableTitle) {
-        By menuButton = By.xpath("//*["+I.amPerforming().sanityOfXpathTo().equals("text()",flexTableTitle)+"]//ancestor::div[@id and contains(@class,'ng-scope') and @ng-controller]//div[@class='panel-heading']//*[@title='Menu' or contains(@class,'fa-bars')]");
+        By menuButton = By.xpath("//*[" + I.amPerforming().sanityOfXpathTo().equals("text()", flexTableTitle) + "]//ancestor::div[@id and contains(@class,'ng-scope') and @ng-controller]//div[contains(@class,'panel-heading')]//*[@title='Menu' or contains(@class,'fa-bars')]");
+        if(I.amPerforming().getElementReference().forListOfElements().of(menuButton).size() > 2){
+            menuButton = By.xpath("//*[" + I.amPerforming().sanityOfXpathTo().equals("text()", flexTableTitle) + "]//ancestor::div[contains(@class,'panel-heading')]//*[@title='Menu' or contains(@class,'fa-bars')]");
+        }
         I.amPerforming().click().on(menuButton);
     }
 
+    @And("I send the email under collab tab with following details:")
+    public void iSendTheEmailUnderCollabTabWithFollowingDetails(List<List<String>> emaiDetails) {
+        for (int i = 1; i < emaiDetails.size(); i++) {
+            List<String> ll = emaiDetails.get(i);
+            I.amPerforming().textInput().toClear(By.xpath("//*[@id='upload']/div[2]/div/div/div[1]/input"));
+            I.amPerforming().textInput().in(By.xpath("//*[@id='upload']/div[2]/div/div/div[1]/input"), ll.get(0));
+            I.amPerforming().textInput().toClear(By.xpath("//input[@id='inputPassword']"));
+            I.amPerforming().textInput().in(By.xpath("//input[@id='inputPassword']"), ll.get(1));
+            I.amPerforming().click().on(By.xpath("//div[@id='sendEmail']//*[text()='Send']"));
+        }
+
+    }
+
+    @Then("^I (softly see|see) following details for email sent under collab:$")
+    public void iSoftlySeeFollowingDetailsForEmailSentUnderCollab(String usage, List<List<String>> text) {
+        for (int i = 0; i < text.size(); i++) {
+            By path = By.xpath("//div[@id='sendEmail']//*[text()='" + text.get(i).get(0) + "']");
+            I.amPerforming().assertionsTo().assertThat(I.amPerforming().checkToSee().isDisplayed(path)).isTrue();
+        }
+    }
+
+    @Before(order = 5)
+    public void initializeData() {
+        projectManager.initData();
+    }
     @And("I delete all rows inside flex table with id {string}")
     public void performDeleteActionForAllRows(String flexTableId) {
         projectManager.clickAllDeleteButtonsInsideFlexTable(flexTableId);
     }
+
 }

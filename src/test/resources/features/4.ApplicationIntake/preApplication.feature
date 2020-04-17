@@ -25,7 +25,6 @@ Feature: Validate all scenarios in the Pre-Application
     Then I softly see status in Progress-bar is "Created" and is "Green"
     Then I softly see field "Opportunity Name" as "Automation Announcement for Application"
     When I navigate to "Overview" sub tab
-    And I navigate to "Overview" sub tab
     When I save the field containing "Program Income Allowed?" as "No"
     Then I softly cannot see field "Estimated Program Income For Project Period" inside page block
 
