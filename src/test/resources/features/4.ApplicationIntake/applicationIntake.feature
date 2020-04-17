@@ -284,7 +284,7 @@ Feature: Validate all scenarios in the Application Intake
   @70525 @userCanAssociateNewContact @deepika
   Scenario:Validate whether user is able to associate new contacts while creating an application
     And I navigate to "Overview" sub tab
-    When I click on top right button "Associate" in flex table with id "---applicationRe  view:-:flexGridAppContactTableId---"
+    When I click on top right button "Associate" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I perform quick search for "Automation SPA" in "---applicationIntake:-:associateNewContactsTableId---" panel
     When I click "Add" after selection of "Automation SPA" in the table "---applicationIntake:-:associateNewContactsTableId---"
     Then I see "Automation SPA" has been added in "---applicationReview:-:flexGridAppContactTableId---" flex table
