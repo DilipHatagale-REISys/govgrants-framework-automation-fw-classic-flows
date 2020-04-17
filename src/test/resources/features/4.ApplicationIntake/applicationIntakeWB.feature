@@ -49,7 +49,7 @@ Feature: Application Intake scenarios without background
     Then I softly can see top right button "Create Application" in page detail
 
   @72579 @77380 @76374 @70258 @spaUsersCannotSubmitAnApplication @deepika
-  Scenario: Validate the SPA users should not be able to Submit the Application | Validate whether SPI user can continue to proceed without providing application title while creating a pre-application
+  Scenario: Validate the SPA users should not be able to Submit the Application | Validate whether SPI user can continue to proceed without providing application title while creating a application
   Validate whether user should be able to enter the required information for the creation  Application | Validate that the user is able to view the added setting while the creating an application
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
@@ -113,7 +113,7 @@ Feature: Application Intake scenarios without background
       | This Opportunity has already been qualified for your Organization. |
 
   @70463 @73366 @70462 @userCanEnterBudgetDetailsApplTitleasOppurtunityTitleField @deepika
-  Scenario: To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on Application | Validate the pre-Application created date is updated with Today's date
+  Scenario: To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on Application | Validate the Application created date is updated with Today's date
   To verify that the Application title is enforced on the created application on overview tab
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
@@ -635,8 +635,9 @@ Feature: Application Intake scenarios without background
     When I navigate to "History" sub tab
     Then I softly cannot see field "Snapshot" inside page block
 
-  @72308 @34324 @72309 @userCanEditApplicationInCreatedStatusAndCannotInSubmitTedStatus @deepika
+  @72308 @77658 @34324 @72309 @userCanEditApplicationInCreatedStatusAndCannotInSubmitTedStatus @deepika
   Scenario: Validate whether the User can view the edit icon for the application that is in Created Status and Submiited to Grantor Status
+  Validate whether SPI user have delete access to delete the Application that is in Created Sttaus
   Verify SPI & SPA user is not able to Submit Application to Grantor with Requested Amount is less than or equal to the Subaward Floor Amount
     And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
@@ -655,8 +656,10 @@ Feature: Application Intake scenarios without background
     When I click on "Save" in the page details
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:recipientApplications---" panel
     Then I softly can see row level action button "Edit" against "Automation Announcement for Application Review" in flex table with id "---applicationIntake:-:recipientApplications---"
+    Then I softly cannot see row level action button "Delete" against "Automation Announcement for Application Review" in flex table with id "---applicationIntake:-:recipientApplications---"
     When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:recipientApplications---"
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
@@ -691,6 +694,7 @@ Feature: Application Intake scenarios without background
     When I click on "Submit Application" in the page details
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:recipientApplications---" panel
     Then I softly cannot see row level action button "Edit" against "Automation Announcement for Application Review" in flex table with id "---applicationIntake:-:recipientApplications---"
 
@@ -1336,7 +1340,7 @@ Feature: Application Intake scenarios without background
       | Applicant Organization   | Allocated Amount |
       | Bayside Community Center | 1000             |
     When I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+    And I softly see "Record Id" inside flex table with id "---preApplication:-:preappCompletedTasksTableId---"
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
     And I get the "EGMS ID"
@@ -1612,6 +1616,7 @@ Feature: Application Intake scenarios without background
     When I login to "Grants Portal" app as "SPA" user
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
     And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:recipientApplications---" panel
     Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:recipientApplications---"
     Examples:
@@ -1784,3 +1789,61 @@ Feature: Application Intake scenarios without background
     Given I click on "Back" in the page details
     When I click on "Submit Application" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
+
+  @77585 @expiredApplicationErrorMessage @deepika
+  Scenario: Validate user should not be able to Qualify on the Closed opportunity and an error message is displayed as "Funding Opportunity Cannot be Qualified after Deadline"
+    When I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Applications" tab
+    When I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - Expired"
+    And I perform quick search for "Fromula Ann App 2" in "---applicationIntake:-:recipientApplications---" panel
+    Then I softly see the following messages in the page details contains:
+      | This application cannot be submitted. The application due date has passed. |
+
+  @77657 @snapshotHistoryApplication @deepika
+  Scenario: Validate whether SPI user will be able to take the snapshot on page when the Application is in Created status and is saved under snapshot history
+    Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
+    And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
+    And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Menu" in the page details
+    And I select "Take Snapshot" from dropdown
+    When I navigate to "History" sub tab
+    And I click on hyperlink containing value "Snapshot on"
+    When I download the file
+    Then I see "Created" on page "1" of "govgrants" pdf file
+
+    Scenario: Validate whether SPI user have delete access to delete the Application that is in Created Sttaus
+      And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
+      Given I am on "SUBPORTAL" portal
+      When I login to "Grants Portal" app as "SPI" user
+      And I navigate to "Opportunities" tab
+      When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+      When I click toggle button to select "Not Yet Qualified Opportunities - All"
+      And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:qualifiedTableId---" panel
+      When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
+      When I click on "Qualify" in the page details
+      When I click on "Create Application" in the page details
+      And I click modal button "Save and Continue"
+      When I click on "Save" in the page details
+      When I click on "Edit" in the page details
+      And I enter "Edition" values from "Application_Field_Values.xlsx"
+      When I click on "Save" in the page details
+      And I navigate to "Applications" tab
+      When I navigate to "Applications" content inside "Applications" subheader on left panel
+      When I click toggle button to select "Applications - All"
+      And I perform quick search for "Automation Announcement for Application Review" in "---applicationIntake:-:recipientApplications---" panel
+      Then I softly can see row level action button "Edit" against "Automation Announcement for Application Review" in flex table with id "---applicationIntake:-:recipientApplications---"

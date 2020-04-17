@@ -289,7 +289,7 @@ Feature: Validate all scenarios in the Application Intake
     When I click "Add" after selection of "Automation SPA" in the table "---applicationIntake:-:associateNewContactsTableId---"
     Then I see "Automation SPA" has been added in "---applicationReview:-:flexGridAppContactTableId---" flex table
 
-  @73944 @73945 @71409 @73947 @73950 @73948 @73949@maxAppValidationError @deepika
+  @73944 @73945 @71409 @73947 @73950 @73948 @73949 @maxAppValidationError @deepika
   Scenario: Validate whether User  will be able to view the following error message "Reached the Maximum number of Applications" when the limit has been reached.
   To verify Converted Opportunities should reflect under Opportunities "Converted to Application - Open" list view to External user
   | To verify ,search functionality for Opportunities Converted to Application - All section in opportunities tab

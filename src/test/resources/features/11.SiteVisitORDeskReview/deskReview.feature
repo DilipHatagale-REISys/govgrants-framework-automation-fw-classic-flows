@@ -949,7 +949,7 @@ Feature: Validate all scenarios in Desk Review
     And I "Send to Owner" in the approval decision
     When I navigate to "History" sub tab
     When I perform quick search for "{SavedValue:Record Id}" in "History" panel
-    Then I see value "Active" for title "New Value" inside table "History"
+    Then I see value "Created" for title "New Value" inside table "History"
 
   @69411 @61057 @61055 @55370 @66139 @77253 @66274 @snapshotAfterSubmitForApprovalDeskReviewIsAcceptedAndClosed @Keerti @skipOnJenkins
   Scenario: Validate whether record Owner is able to view the Accept and Close Button and User view the Snapshot after Desk Review is Submitted for Approval status also after Accepted and Closed |Subrecipient can view Closed Desk Review
