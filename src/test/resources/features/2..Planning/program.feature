@@ -581,7 +581,6 @@ Feature: Validate all scenarios for program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
-    #And I close "Review Form" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Management Review | 25              |
@@ -723,7 +722,6 @@ Feature: Validate all scenarios for program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
-    #And I close "Review Form" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Management Review | 25              |
@@ -768,7 +766,6 @@ Feature: Validate all scenarios for program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
-    #And I close "Review Form" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Management Review | 25              |
