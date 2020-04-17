@@ -452,4 +452,9 @@ public class GenericSteps {
         By menuButton = By.xpath("//*["+I.amPerforming().sanityOfXpathTo().equals("text()",flexTableTitle)+"]//ancestor::div[@id and contains(@class,'ng-scope') and @ng-controller]//div[@class='panel-heading']//*[@title='Menu' or contains(@class,'fa-bars')]");
         I.amPerforming().click().on(menuButton);
     }
+
+    @And("I delete all rows inside flex table with id {string}")
+    public void performDeleteActionForAllRows(String flexTableId) {
+        projectManager.clickAllDeleteButtonsInsideFlexTable(flexTableId);
+    }
 }
