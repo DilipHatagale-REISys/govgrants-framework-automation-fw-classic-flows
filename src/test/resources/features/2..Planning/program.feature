@@ -97,7 +97,7 @@ Feature: Validate all scenarios for program
       | SME Review        | 1           |
       | Management Review | 1           |
 
-  @75918 @75925 @75923 @75919 @75926 @75924 @75975 @75978 @75977 @jitendra @addReviewerInPre-ScreenAndManagementReview
+  @75918 @75925 @75923 @75919 @75926 @75924 @75983 @75979 @75975 @75978 @75984 @75982 @75977 @jitendra @addReviewerInPre-ScreenAndManagementReview
   Scenario: To verify user able to add reviewers in reviewers section for pre-screening review step in setup tab of planning
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -131,9 +131,23 @@ Feature: Validate all scenarios for program
     Then I softly do not see value "Automation PM" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
     And I refresh the page
     And I expand nested table containing column value "Pre-Screen Review"
+    And I click on parallel menu button in flex table titled "Review Forms"
+    And I select "Download as PDF" from dropdown
+    And I download the file
+    Then I softly see following details in "govgrants" pdf file:
+      | Detail     | Page Number |
+      | Pre-Screen | 1           |
+    And I switch to parent tab
+    And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Form Name  | Form Weight (%) |
+      | Pre-Screen | 100.00%         |
+    Then I softly see the following messages in the page details contains:
+      | You cannot associate a weight to an optional panel : |
+    And I refresh the page
+    And I expand nested table containing column value "Pre-Screen Review"
     And I click on "Delete" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---"
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
-    Then I softly see the following messages in the page details :
+    Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review: At least one form is required for this review step. |
     And I refresh the page
     And I expand nested table containing column value "Management Review"
@@ -141,7 +155,15 @@ Feature: Validate all scenarios for program
       | Form Weight (%) | Form Name              |
       | 100.00%         | Management Review Test |
     Then I softly see value "Management Review Test" for title "Form Name" inside table "---program:-:reviewStepTableId---"
+    And I click on parallel menu button in flex table titled "Review Forms"
+    And I select "Download as PDF" from dropdown
+    And I download the file
+    Then I softly see following details in "govgrants" pdf file:
+      | Detail                 | Page Number |
+      | Management Review Test | 1           |
+    And I switch to parent tab
     And I click on "Delete" icon for "Management Review Test" inside flex table with id "---program:-:reviewStepTableId---"
+    Then I softly do not see value "Management Review Test" for title "Form Name" inside table "---program:-:reviewStepTableId---"
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Management Review: At least one form is required for this review step. |
