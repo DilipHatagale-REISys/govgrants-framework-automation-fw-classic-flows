@@ -187,8 +187,8 @@ Feature: Validate all scenarios in the Pre-Application
     Examples:
       | Announcement Name                       | User |
       | Automation Announcement for Application | PM   |
-#      |                                         | FO   |
-#      |                                         | EXE  |
+      |                                         | FO   |
+      |                                         | EXE  |
 
   @70468 @acknowledgeRequiredForPre-App @deepika
   Scenario: Validate the system should throw an validation message if the pre-application is submitted with Acknowledging it
