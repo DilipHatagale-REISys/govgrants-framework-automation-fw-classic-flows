@@ -168,74 +168,74 @@ Feature: Validate all scenarios for program
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Management Review: At least one form is required for this review step. |
 
-    @76129 @76125 @76292 @76130 @76126 @76293 @76127 @76131 @76128 @76132 @jitendra
-    Scenario: To verify search functionality for review panel categories section in fiscal review form in SME review step of setup tab in planning
-      And I navigate to "Setup" sub tab
+  @76129 @76125 @76292 @76130 @76126 @76293 @76127 @76131 @76128 @76132 @jitendra
+  Scenario: To verify search functionality for review panel categories section in fiscal review form in SME review step of setup tab in planning
+    And I navigate to "Setup" sub tab
       #76129
-      And I expand nested table containing column value "SME Review"
-      And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---"
-      And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
-        | Section Order | Section Header    |
-        | 2             | Match Test  |
-      Then I softly see the following messages in the page details :
-        | Saved Successfully! |
-      And I softly see value "Match Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Order | Section Header |
+      | 2             | Match Test     |
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    And I softly see value "Match Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
       #76125
-      And I perform quick search for "Match Test" in "---program:-:programReviewPanel---" panel
-      Then I softly see total records count "Total Records:1" in flex table "---program:-:programReviewPanel---"
+    And I perform quick search for "Match Test" in "---program:-:programReviewPanel---" panel
+    Then I softly see total records count "Total Records:1" in flex table "---program:-:programReviewPanel---"
       #76292
-      And I click on "Delete" icon for "Match Test" inside flex table with id "---program:-:programReviewPanel---"
-      Then I softly see the following messages in the page details contains:
-        | Record deleted successfully. |
-      And I softly do not see value "Match Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
-      And I refresh the page
+    And I click on "Delete" icon for "Match Test" inside flex table with id "---program:-:programReviewPanel---"
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    And I softly do not see value "Match Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I refresh the page
       #76130
-      And I expand nested table containing column value "SME Review"
-      And I click on "Review Form" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---"
-      And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
-        | Section Order | Section Header    |
-        | 2             | Impact Test  |
-      Then I softly see the following messages in the page details :
-        | Saved Successfully! |
-      And I softly see value "Impact Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Order | Section Header |
+      | 2             | Impact Test    |
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    And I softly see value "Impact Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
       #76126
-      And I perform quick search for "Impact Test" in "---program:-:programReviewPanel---" panel
-      Then I softly see total records count "Total Records:1" in flex table "---program:-:programReviewPanel---"
+    And I perform quick search for "Impact Test" in "---program:-:programReviewPanel---" panel
+    Then I softly see total records count "Total Records:1" in flex table "---program:-:programReviewPanel---"
       #76293
-      And I click on "Delete" icon for "Impact Test" inside flex table with id "---program:-:programReviewPanel---"
-      Then I softly see the following messages in the page details contains:
-        | Record deleted successfully. |
-      And I softly do not see value "Impact Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
-      And I refresh the page
+    And I click on "Delete" icon for "Impact Test" inside flex table with id "---program:-:programReviewPanel---"
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    And I softly do not see value "Impact Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I refresh the page
       #76127
-      And I expand nested table containing column value "Pre-Screen Review"
-      And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---"
-      And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
-        | Section Order | Section Header    |
-        | 1             | Eligibility Test  |
-      Then I softly see the following messages in the page details :
-        | Saved Successfully! |
-      And I softly see value "Eligibility Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Order | Section Header   |
+      | 1             | Eligibility Test |
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    And I softly see value "Eligibility Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
       #76131
-      And I click on "Delete" icon for "Eligibility Test" inside flex table with id "---program:-:programReviewPanel---"
-      Then I softly see the following messages in the page details contains:
-        | Record deleted successfully. |
-      And I softly do not see value "Eligibility Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
-      And I refresh the page
+    And I click on "Delete" icon for "Eligibility Test" inside flex table with id "---program:-:programReviewPanel---"
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    And I softly do not see value "Eligibility Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I refresh the page
       #76128
-      And I expand nested table containing column value "SME Review"
-      And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---"
-      And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
-        | Section Order | Section Header    |
-        | 2             | Environment Test  |
-      Then I softly see the following messages in the page details :
-        | Saved Successfully! |
-      And I softly see value "Environment Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Order | Section Header   |
+      | 2             | Environment Test |
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    And I softly see value "Environment Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
       #76132
-      And I click on "Delete" icon for "Environment Test" inside flex table with id "---program:-:programReviewPanel---"
-      Then I softly see the following messages in the page details contains:
-        | Record deleted successfully. |
-      And I softly do not see value "Environment Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
+    And I click on "Delete" icon for "Environment Test" inside flex table with id "---program:-:programReviewPanel---"
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    And I softly do not see value "Environment Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
 
   @34731 @programEdition
   Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
