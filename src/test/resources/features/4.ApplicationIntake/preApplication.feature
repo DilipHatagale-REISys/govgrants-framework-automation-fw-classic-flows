@@ -262,8 +262,9 @@ Feature: Validate all scenarios in the Pre-Application
       | Announcement Name                       |
       | Automation Announcement for Application |
 
-  @75523 @75522 @preApplicationPDFRelatedLog @aashish
+  @75523 @77655 @75522 @preApplicationPDFRelatedLog @aashish
   Scenario Outline: To verify system allow to download PDF for Pre-application section in Related log tab of announcement | To verify user able to view Pre-Applications in Pre-Applications section in Related log tab of announcement
+   Validate whether user can view the Accepted Status on progress bar once the pre-application is accepted by Grantor
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -297,6 +298,7 @@ Feature: Validate all scenarios in the Pre-Application
     And I perform quick search for "<Announcement Name>" in "RecipientPreApplications" panel
     Then I softly see value "<Announcement Name>" for title "Pre-Application Title" against the value "Accepted" inside table "RecipientPreApplications"
     When I click on "View" icon for "<Announcement Name>" inside table
+    Then I softly see status in Progress-bar is "Accepted" and is "Green"
     Then I softly can see top right button "Create Application" in page detail
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
@@ -334,7 +336,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Related Log" sub tab
     And I select "Download as PDF" from parallel lines dropdown of "Pre-Applications"
     And I download the file
-    Then I see "Pre-Applications" on page "1" of "govgrants" pdf file
+    Then I softly see "Pre-Applications" on page "1" of "govgrants" pdf file
     Examples:
       | Announcement Name                       |
       | Automation Announcement for Application |
