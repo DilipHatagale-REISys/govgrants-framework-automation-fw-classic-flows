@@ -21,9 +21,9 @@ Feature: Validate all scenarios in the Pre-Application
 
   @53151 @75961 @72622 @preApplicationCreationProgramIncomeValidation @smoke
   Scenario: Validate the Creation of Pre Application | Validate the user  will be able to view the the Program Income field on the overview tab when the value set as No.
-   Validate the title entered while creating the pre-application reflects same under Oppurtunity Name
+  Validate the title entered while creating the pre-application reflects same under Oppurtunity Name
     Then I softly see status in Progress-bar is "Created" and is "Green"
-    Then I softly see field "Opportunity Name" as "Automation Announcement for Application"
+    Then I softly see field "Opportunity Title" as "Automation Announcement for Pre-Application"
     When I navigate to "Overview" sub tab
     When I save the field containing "Program Income Allowed?" as "No"
     Then I softly cannot see field "Estimated Program Income For Project Period" inside page block
@@ -69,12 +69,13 @@ Feature: Validate all scenarios in the Pre-Application
   @75596 @70248 @70664 @53154 @addBudgetDetailsToPreApplication @smoke
   Scenario: Validate addition of budget in the budget grid to an pre-application |
   Validate User will be able to view the opportunity focus area in the application budget grid when the focus area settings as Yes while announcement creation
-    Validate the SPI Users will be able to add new focus areas while creating an pre-application | Validate when the oppurtunity has only one focus area then user will not be able see any other focus areas when clicked on Add focus areas
+  Validate the SPI Users will be able to add new focus areas while creating an pre-application | Validate when the oppurtunity has only one focus area then user will not be able see any other focus areas when clicked on Add focus areas
     When I navigate to "Budget" sub tab
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
-    When I click "Add" after selection of "Automation Permanent Focus Area1" in the table "---applicationIntake:-:focusAreaAssociateTableId---"
+    When I perform quick search for "Automation Permanent Focus Area1" in "---applicationIntake:-:focusAreaAssociateTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:focusAreaAssociateTableId---"
+    And I close modal by clicking the top right x button
     And I expand nested table containing column value "BP01"
     Then I softly see field "Focus Area : Automation Permanent Focus Area" inside page block
     When I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
@@ -87,7 +88,7 @@ Feature: Validate all scenarios in the Pre-Application
   Scenario: Validate the attachment checklist of the PreApplication
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
-    Then I see "Active" has been added in "Attachments" flex table
+    Then I see "Other" has been added in "Attachments" flex table
 
   @70466 @53160 @70467 @submitPreApplication @smoke @deepika
   Scenario: Submitting an pre application to Grantor |To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on pre-application
@@ -132,7 +133,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record id" in "---preApplication:-:pendingTaskTableId---" panel
+    When I perform quick search for "Record Id" in "---preApplication:-:pendingTaskTableId---" panel
     Then I softly see that "Record Id" has been added in flextable with Id "---preApplication:-:pendingTaskTableId---"
     And I click on "Start" icon for "Record id" inside flex table with id "---preApplication:-:pendingTaskTableId---"
     Then I softly can see top right button "Accept" in page detail
@@ -144,7 +145,7 @@ Feature: Validate all scenarios in the Pre-Application
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - Submitted"
     And I perform quick search for "<Announcement Name>" in "RecipientPreApplications" panel
-    Then I softly see value "<Announcement Name>" for title "Pre-Application Title" against the value "Accepted" inside table "RecipientPreApplications"
+    Then I softly see "Record Id" inside flex table with id "RecipientPreApplications"
     When I click on "View" icon for "<Announcement Name>" inside table
     Then I softly can see top right button "Create Application" in page detail
     When I click on "Create Application" in the page details
@@ -176,7 +177,6 @@ Feature: Validate all scenarios in the Pre-Application
       | Automation SPI | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
-    Then I softly see that "Record Id" is in "Converted to Application" status
     Given I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -187,8 +187,8 @@ Feature: Validate all scenarios in the Pre-Application
     Examples:
       | Announcement Name                       | User |
       | Automation Announcement for Application | PM   |
-      |                                         | FO   |
-      |                                         | EXE  |
+#      |                                         | FO   |
+#      |                                         | EXE  |
 
   @70468 @acknowledgeRequiredForPre-App @deepika
   Scenario: Validate the system should throw an validation message if the pre-application is submitted with Acknowledging it
@@ -203,7 +203,7 @@ Feature: Validate all scenarios in the Pre-Application
     Then I softly see the following messages in the page details :
       | Overview Tab - Enter an Acknowledgement before submitting this Pre-Application. |
 
-  @70523 @snapshotAfterPreApplicationIsSubmitted @deepika
+  @70523 @snapshotAfterPreApplicationIsSubmitted @deepika @skipOnJenkins
   Scenario:  Validate SR user is able to view the Snapshot after Pre- Application is Submitted to Grantor status
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
@@ -262,9 +262,9 @@ Feature: Validate all scenarios in the Pre-Application
       | Announcement Name                       |
       | Automation Announcement for Application |
 
-  @75523 @77655 @75522 @preApplicationPDFRelatedLog @aashish
+  @75523 @77655 @75522 @preApplicationPDFRelatedLog @aashish @skipOnJenkins
   Scenario Outline: To verify system allow to download PDF for Pre-application section in Related log tab of announcement | To verify user able to view Pre-Applications in Pre-Applications section in Related log tab of announcement
-   Validate whether user can view the Accepted Status on progress bar once the pre-application is accepted by Grantor
+  Validate whether user can view the Accepted Status on progress bar once the pre-application is accepted by Grantor
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -331,6 +331,7 @@ Feature: Validate all scenarios in the Pre-Application
     Given I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "All Competitive Announcements"
     And I perform quick search for "Automation Announcement for Pre-Application" in "ActiveFundingOpportunitiesCompitive" panel
     And I click on "View" icon for "Automation Announcement for Pre-Application" inside flex table with id "ActiveFundingOpportunitiesCompitive"
     When I navigate to "Related Log" sub tab

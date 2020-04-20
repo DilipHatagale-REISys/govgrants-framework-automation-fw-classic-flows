@@ -152,6 +152,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
     Then I can see top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
     Examples:
       | User  |
