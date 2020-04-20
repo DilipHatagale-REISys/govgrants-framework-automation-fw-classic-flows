@@ -22,7 +22,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     When I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I navigate to "Subawards" sub tab
     And I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:subawardsTableId---" panel
-   Then I softly cannot see row level action button "Edit" against Value "Automation Permanent Award" inside "---subAwardStandAlone:-:subawardsTableId---" flex table
+    Then I softly cannot see row level action button "Edit" against Value "Automation Permanent Award" inside "---subAwardStandAlone:-:subawardsTableId---" flex table
 
   @69170 @auditorCanViewActiveGrantAward
   Scenario: Validate Auditor should have view / read  only access to Active Grant/Award
