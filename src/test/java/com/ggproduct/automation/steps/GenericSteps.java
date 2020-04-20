@@ -482,4 +482,9 @@ public class GenericSteps {
     public void initializeData() {
         projectManager.initData();
     }
+    @And("I delete all rows inside flex table with id {string}")
+    public void performDeleteActionForAllRows(String flexTableId) {
+        projectManager.clickAllDeleteButtonsInsideFlexTable(flexTableId);
+    }
+
 }
