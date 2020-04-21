@@ -624,4 +624,25 @@ public class ProjectManager extends ProjectWebServices {
             }
         }
     }
+
+    /**
+     * @param flextableId - Table Id
+     * @author Keerti Munde
+     */
+    public void clickAllDeleteButtonsInsideFlexTable(String flextableId) {
+        By columnSelector = By.xpath("//*[@id='" + flextableId + "']//table//tr//td[1]");
+        List<Elements> rowValues=I.amPerforming().getElementReference().forListOfElements().of(columnSelector);
+        int rowSize= rowValues.size();
+        int counter=0;
+        for(int i=rowValues.size()-1; i>=0; i--) {
+            List<Elements> rowValues2 = I.amPerforming().getElementReference().forListOfElements().of(columnSelector);
+            if(rowValues2.get(counter).getText().equalsIgnoreCase("No Records Found")) {
+                counter++;
+            }
+            else{
+                I.amPerforming().click().on(govgrants.perform().flexTable().getTableActionIcon(flextableId, "Delete", rowValues2.get(counter).getText()));
+                govgrants.perform().modal().acceptPopUp();
+            }
+        }
+    }
 }
