@@ -122,8 +122,8 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Automation Site Visit" in "---auditor:-:sitevisitMonitoringTableId---" panel
     Then I see the following rows under the following headers in table with id "---auditor:-:sitevisitMonitoringTableId---" :
-      | Title                  | Actions |
-      | Automation Site Visit  | View    |
+      | Title                 | Actions |
+      | Automation Site Visit | View    |
     And I click on "View" icon for "Automation Site Visit" inside flex table with id "---auditor:-:sitevisitMonitoringTableId---"
     Then I softly cannot see top right button "Accept and Close" in page detail
     Examples:

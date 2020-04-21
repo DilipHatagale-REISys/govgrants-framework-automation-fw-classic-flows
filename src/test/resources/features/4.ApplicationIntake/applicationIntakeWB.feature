@@ -354,7 +354,7 @@ Feature: Application Intake scenarios without background
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "Record Id" inside table
     And I click on "Unpublish" in the page details
-    And I save the field labeled "EGMSID" as "unpublished"
+    And I save the field labeled "EGMS ID" as "unpublished"
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I pause execution for "2" seconds
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -1254,9 +1254,9 @@ Feature: Application Intake scenarios without background
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
-    And I perform quick search for "Automation Directed Announcement" in "---applicationReview:-:reviewsTableId---" panel
+    And I perform quick search for "Automation Directed Announcement" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     Then I softly see "Automation Directed Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
-    When I click on "View" icon for "Automation Directed Announcement" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    When I click on "View" icon for "Automation Directed Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Directed Announcement" is in "Qualified" status
     Then I softly can see top right button "Create Application" in page detail
@@ -1264,9 +1264,9 @@ Feature: Application Intake scenarios without background
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
-    And I perform quick search for "Automation Directed Announcement" in "---applicationReview:-:reviewsTableId---" panel
+    And I perform quick search for "Automation Directed Announcement" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     Then I softly see "Automation Directed Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
-    When I click on "View" icon for "Automation Directed Announcement" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    When I click on "View" icon for "Automation Directed Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Directed Announcement" is in "Qualified" status
     Then I softly can see top right button "Create Application" in page detail
@@ -1275,8 +1275,8 @@ Feature: Application Intake scenarios without background
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
-    And I perform quick search for "Automation Directed Announcement" in "---applicationReview:-:reviewsTableId---" panel
-    Then I softly do not see "Automation Directed Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    And I perform quick search for "Automation Directed Announcement" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
 
   @73822 @73823 @75503 @75504 @formulaPublishedAnnouncementUnderOppurtunitiesTab @deepika
   Scenario: Validate whether SPI user is able to view the Formula Announcement under Oppurtunities Tab once it is published |Validate whether the SPI user can qualify and create the Application from published Formula Announcement
@@ -1336,6 +1336,7 @@ Feature: Application Intake scenarios without background
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "Automation Permanent Organization for Risk Assessment" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
+    And I refresh the page
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Applicant Organization   | Allocated Amount |
       | Bayside Community Center | 1000             |
@@ -1375,7 +1376,7 @@ Feature: Application Intake scenarios without background
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
-    And I perform quick search for "Automation Formula Announcement" in "---applicationReview:-:reviewsTableId---" panel
+    And I perform quick search for "Automation Formula Announcement" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     Then I softly see "Automation Formula Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "View" icon for "Automation Formula Announcement" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I click on "Qualify" in the page details
@@ -1385,9 +1386,9 @@ Feature: Application Intake scenarios without background
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
-    And I perform quick search for "Automation Formula Announcement" in "---applicationReview:-:reviewsTableId---" panel
+    And I perform quick search for "Automation Formula Announcement" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     Then I softly see "Automation Formula Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
-    When I click on "View" icon for "Automation Formula Announcement" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    When I click on "View" icon for "Automation Formula Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Formula Announcement" is in "Qualified" status
     Then I softly can see top right button "Create Application" in page detail
@@ -1396,7 +1397,7 @@ Feature: Application Intake scenarios without background
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
-    And I perform quick search for "Automation Formula Announcement" in "---applicationReview:-:reviewsTableId---" panel
+    And I perform quick search for "Automation Formula Announcement" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     Then I softly do not see "Automation Formula Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
 
   @75496 @qualifySuccessMessage @deepika @bugged-75495
@@ -1414,7 +1415,7 @@ Feature: Application Intake scenarios without background
     Then I softly see the following messages in the page details contains:
       | Application is successfully qualified |
 
-  @75501 @75502 @otherOrgUserCanAlsoQualifyAndCreateApplication @deepika
+  @75501 @75502 @otherOrgUserCanAlsoQualifyAndCreateApplication @deepika @wip
   Scenario: Validate Opportunities created from 'Competitive Announcements' are available for all External users under Oppurtunities
   Validate Opportunities created from 'Competitive Announcements' are available for all external users and can qualify and create the Applications
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
@@ -1580,10 +1581,10 @@ Feature: Application Intake scenarios without background
       | Automation SPI | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - Requested Amount should be greater than or equal to the Subaward Floor Amount.   |
-      | Budget Tab - To submit this application, provide the match details (Cash Match/Non-Cash Match). |
-      | Budget Tab - The Subrecipient Match should not be less than the given value.                    |
       | Budget Tab - Enter budget details before submitting an Application to the Grantor.              |
+      | Overview Tab - Requested Amount should be greater than or equal to the Subaward Floor Amount.   |
+      | Budget Tab - The Subrecipient Match should not be less than the given value.                    |
+      | Budget Tab - To submit this application, provide the match details (Cash Match/Non-Cash Match). |
 
   @76376 @76378 @contactAssociationforApplication @deepika
   Scenario Outline: Validate whether SPI user is allowed to add contacts while creating an Application | Validate whether created Application by SPI user(Record owner of Application)are visible for their child (SPA) organizations
@@ -1801,7 +1802,7 @@ Feature: Application Intake scenarios without background
     Then I softly see the following messages in the page details contains:
       | This application cannot be submitted. The application due date has passed. |
 
-  @77657 @snapshotHistoryApplication @deepika
+  @77657 @snapshotHistoryApplication @deepika @skipOnJenkins
   Scenario: Validate whether SPI user will be able to take the snapshot on page when the Application is in Created status and is saved under snapshot history
     Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
     And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"

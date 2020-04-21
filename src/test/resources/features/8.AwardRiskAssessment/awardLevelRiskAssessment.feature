@@ -233,7 +233,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Fiscal Approver  | Automation FO | Automation Test Description |
       | Program Approver | Automation PM | Automation Test Description |
     And I click on "Submit for Approval" in the page details
-    Then I see the following messages in the page details :
+    Then I see the following messages in the page details contains:
       | Assessment Tab - Complete all of the questions on the Risk Assessment form. |
 
   @58174 @58175 @peerReviewIntiationforRiskAssessment @deepika
@@ -483,7 +483,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Activate" in the page details
-    Then I see the following messages in the page details :
+    Then I see the following messages in the page details contains:
       | Management Tab - Create and activate a Risk Assessment as the Subaward cannot be issued without an active Risk Assessment. |
     Examples:
       | Award Name                           | Grant Name                           |
@@ -1240,7 +1240,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Overview" sub tab
     Then I see "Risk Level" image as "green.png"
 
-  @59807 @highRiskRAAssessmentFieldColorRed @deepika @wip
+  @59807 @highRiskRAAssessmentFieldColorRed @deepika
   Scenario: Validate after selecting certain combinations of answers on the  Form and submitting RA for approval, system sets high Risk with color as red
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2884,7 +2884,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Attachments" sub tab
     Then I cannot see top right button "Add" for "Attachments" flex table
 
-  @66869 @RAChangedtoYellowAfterRAisApproved @keerti @wip
+  @66869 @RAChangedtoYellowAfterRAisApproved @keerti
   Scenario: Validate the moderate level of Risk Assessment, that changes to yellow color as per the provided Assessment once Risk Assessment is approved
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
