@@ -15,7 +15,7 @@ Feature: Validate all scenarios in Closeout
   Scenario: To create and Edit an Adhoc Closeout Request
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-    When I enter "Creation" values from "Closeout_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -25,7 +25,7 @@ Feature: Validate all scenarios in Closeout
   Scenario: Send Closeout Request to Subrecipient and assigning approvers to the closeout Request
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-    When I enter "Creation" values from "Closeout_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -42,7 +42,7 @@ Feature: Validate all scenarios in Closeout
   Scenario: Validate whether Subrecipient enters closeout fields and acknowledges
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-    When I enter "Creation" values from "Closeout_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -69,7 +69,7 @@ Feature: Validate all scenarios in Closeout
   Scenario Outline: Grant owner overrides the Closeout and is submitted for approval
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-    When I enter "Creation" values from "Closeout_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     And I get the "EGMS ID"
@@ -154,7 +154,7 @@ Feature: Validate all scenarios in Closeout
   Scenario: Approval of Closeout
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-    When I enter "Creation" values from "Closeout_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -195,7 +195,7 @@ Feature: Validate all scenarios in Closeout
   Scenario: Happy path of Scheduled closeout
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-    When I enter "Creation" values from "Closeout_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
