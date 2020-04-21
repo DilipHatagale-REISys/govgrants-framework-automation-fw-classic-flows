@@ -1784,3 +1784,104 @@ Feature: Application Intake scenarios without background
     Given I click on "Back" in the page details
     When I click on "Submit Application" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
+
+  @71941 @closedQualifiedOpportunities @keerti @wip
+  Scenario: To verify that closed opportunities can reflect under closed qualified opportunities
+    Given I delete the record "Automation Formula Announcement" from the object "PreApplication"
+    Given I delete the record "Automation Formula Announcement" from the object "Application"
+    And I delete the record "Automation Formula Announcement" from the object "Qualified Announcement"
+    Given I delete the record "Automation Formula Announcement" from the object "Announcement"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Formula Announcements - Draft"
+    And I click on top right button "New" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
+    And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    When I click on "Edit" in the page details
+    And I enter "Edition3" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "SelectAnnFundingAccounts"
+    When I close "Associate" modal by clicking the top right x button
+    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Pre-Encumbrance |
+      | {SavedValue:fundingAccount} | 100             |
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    When I navigate to "Overview" sub tab
+    When I pause execution for "1" seconds
+    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
+    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
+      | Role               | Name           | Description                 |
+      | Program Approver   | Automation PM  | Automation Test Description |
+      | Executive Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver    | Automation FO  | Automation Test Description |
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
+    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    When I close "Add Organizations" modal by clicking the top right x button
+    And I refresh the page
+    When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
+      | Applicant Organization              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    When I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
+    And I get the "EGMS ID"
+    And I click on "Submit For Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Announcements" tab
+    And I navigate to "Formula" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "Formula Announcements - Draft"
+    And I perform quick search for "Record Id" in "ActiveFundingOpportunitiesFormula" panel
+    When I click on "View" icon for "Record id" inside table
+    And I click on "Publish" in the page details
+    When I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
+    And I perform quick search for "Automation Formula Announcement" in "---applicationReview:-:reviewsTableId---" panel
+    Then I softly see "Automation Formula Announcement" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I click on "View" icon for "Automation Formula Announcement" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    When I click on "Qualify" in the page details
+    Then I softly see that "Automation Formula Announcement" is in "Qualified" status
+    And I navigate to "Opportunities" tab
+    When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Qualified Opportunities - Closed"
+    And I perform quick search for "Automation Formula Announcement" in "---announcement:-:qualifiedOpportunityId---" panel
+    Then I softly see "Automation Formula Announcement" inside flex table with id "---announcement:-:qualifiedOpportunityId---"
