@@ -2611,9 +2611,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Publish" in the page details
     Then I softly can see top right button "Extend Dates" in page detail
 
-  @75524 @75632 @publishedAllowToDownloadPDF @keerti @wip
+  @75524 @publishedAllowToDownloadPDF
   Scenario: To verify system allow to download PDF for Announcement after publishing it
-  | To verify search functionality for messages section in collab tab for announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -2805,19 +2804,3 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I select "Download As PDF" from dropdown
     And I download the file
     And I see "Automation Competitive Announcement" on page "1" of "govgrants" pdf file
-    And I switch to parent tab
-    And I navigate to "Collab" sub tab
-    And I click on advance filter "#advfCommunicationHistory" of table id "---announcement:-:collabMessages---"
-    And I enter advance filter values inside id "advfCommunicationHistory"
-      | Subject | Contains | Dont mess with jitu |
-    Then I softly see "No Records Found" inside flex table with id "---announcement:-:collabMessages---"
-    And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
-    And I send the email under collab tab with following details:
-      | To                              | Subject | Body             |
-      | internal.user.product@gmail.com | jitu    | this is bodyless |
-    And I close "Send Email" modal by clicking the top right x button
-    Then I softly see the following messages in the page details :
-      | Email sent succesfully. |
-    Then I softly see following details for email sent under collab:
-      | abc@gmail.com |
-      | jitu          |
