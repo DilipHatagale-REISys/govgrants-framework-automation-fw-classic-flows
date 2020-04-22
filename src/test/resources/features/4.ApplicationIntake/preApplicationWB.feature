@@ -23,7 +23,6 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
     Then I softly see field "Pre-Application Required?" as "Yes"
-    Then I softly see field "Application Due Date" contains date less than todays date
     Then I softly can see top right button "Qualify" in page detail
     When I click on "Qualify" in the page details
     Then I softly see that "Automation Announcement for Pre-Application" is in "Qualified" status
@@ -940,7 +939,9 @@ Feature: Pre-Application scenarios without background
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
     When I navigate to "History" sub tab
-    Then I softly see snapshot with name containing "Pre-Application" as name
+    And I click on "Menu" in the page details
+    And I select "Take Snapshot" from dropdown
+    Then I softly see snapshot with name containing "SnapShot on" as name
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1232,7 +1233,7 @@ Feature: Pre-Application scenarios without background
     Then I softly see all values "$0.00" under column "Total Match" inside flextable with id "---preApplication:-:budgetCategoryGridTableId---"
     And I softly see all values "$0.00" under column "Other Leverage" inside flextable with id "---preApplication:-:budgetCategoryGridTableId---"
 
-  @77656 @snapshotHistoryPreApplication @deepika
+  @77656 @snapshotHistoryPreApplication @deepika @skipOnJenkins
   Scenario: Validate whether SPI user will be able to take the snapshot on page when the pre-application is in draft status and is saved under snapshot history
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"

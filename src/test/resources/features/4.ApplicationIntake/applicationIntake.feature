@@ -154,8 +154,9 @@ Feature: Validate all scenarios in the Application Intake
     Then I softly see the following messages in the page details :
       | Budget Tab - At least one focus area must be in place at all times. |
     When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
-    When I click "Add" after selection of "Automation Permanent Focus Area1" in the table "---applicationIntake:-:focusAreaFlexTableId---"
+    When I perform quick search for "Automation Permanent Focus Area1" in "---applicationIntake:-:focusAreaFlexTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:focusAreaFlexTableId---"
+    And I close modal by clicking the top right x button
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
@@ -230,9 +231,10 @@ Feature: Validate all scenarios in the Application Intake
     Then I softly see "Active" has been added in "Attachments" flex table
     And I add notes records
     When I enter notes with title "Title" and description "Description"
+    And I close modal by clicking the top right x button
     Then I softly see value "Notes Record" for title "Title" inside table "toggleNotes"
 
-  @73521 @70526 @snapshotAfterApplicationIsSubmitted @deepika
+  @73521 @70526 @snapshotAfterApplicationIsSubmitted @deepika @skipOnJenkins
   Scenario Outline: Validate SR user is able to view the Snapshot after Application is Submitted to Grantor status| Validate once the Application is submitted to Grantor then the field Submitted by on Overview Tab will get updated by the User Name.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
@@ -285,9 +287,9 @@ Feature: Validate all scenarios in the Application Intake
   Scenario:Validate whether user is able to associate new contacts while creating an application
     And I navigate to "Overview" sub tab
     When I click on top right button "Associate" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    When I perform quick search for "Automation SPA" in "---applicationIntake:-:associateNewContactsTableId---" panel
-    When I click "Add" after selection of "Automation SPA" in the table "---applicationIntake:-:associateNewContactsTableId---"
-    Then I see "Automation SPA" has been added in "---applicationReview:-:flexGridAppContactTableId---" flex table
+    When I perform quick search for "automation spa" in "---applicationIntake:-:associateNewContactsTableId---" panel
+    When I click "Add" after selection of "automation spa" in the table "---applicationIntake:-:associateNewContactsTableId---"
+    Then I see "automation spa" has been added in "---applicationReview:-:flexGridAppContactTableId---" flex table
 
   @73944 @73945 @71409 @73947 @73950 @73948 @73949 @maxAppValidationError @deepika
   Scenario: Validate whether User  will be able to view the following error message "Reached the Maximum number of Applications" when the limit has been reached.
@@ -335,7 +337,7 @@ Feature: Validate all scenarios in the Application Intake
     When I perform quick search for "Automation Announcement for Application Intake" in "cae" panel
     And I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "cae"
     When I click on "Create Application" in the page details
-    Then I softly see the following messages in the page details :
+    Then I softly see the following messages in the page details contains:
       | Application cannot be created as you have reached the maximum limit for allowed applications for {SavedValue:APPId} |
     And I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Opportunities" tab

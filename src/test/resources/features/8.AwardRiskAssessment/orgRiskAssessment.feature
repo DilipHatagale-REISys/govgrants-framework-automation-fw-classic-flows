@@ -1376,7 +1376,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Automation Permanent Organization for Risk Assessment" in "---orgRiskAssessment:-:activeOrgTableID---" panel
     When I click on "View" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:activeOrgTableID---"
     And I navigate to "Risk Assessment" sub tab
-    Then I see field "Overall Risk" as "32.00%"
+    Then I see field "Overall Risk" as "27.00%"
 
   @63980 @validateRiskAssesmentActiveInPDF @deepika @skipOnJenkins
   Scenario: Verify that user can check PDF files with validation for Org Risk Assessment
