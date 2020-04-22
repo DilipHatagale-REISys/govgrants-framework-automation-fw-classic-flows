@@ -2640,3 +2640,205 @@ Feature: Validate all scenarios for program
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
+
+  @77805 @77806 @validatingErrorMessagePrescreeningReviewForm @keerti
+  Scenario Outline: To validate system generated error message, Max score set as 0 on all questions and weight as 60% on Review Panel Categories of "Completeness" under prescreening review form of the prescreening reviews steps of setup tab of planning phase.
+  | To validate system generated error message, Max score set as 0 on all questions and weight as 60% on Review Panel Categories of "Eligibility" under prescreening review form of the prescreening reviews steps of setup tab of planning phase.
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 50              |
+      | SME Review        | 25              |
+      | Pre-Screen Review | 25              |
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Edit" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---"
+    When I enter value "100" into field "Weight__c"
+    When I enter value "1" into field "MinimumNumberOfReviewers__c"
+    When I enter value "Checked" into field "Required__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---"
+    And I expand nested table containing column value "Completeness"
+    And I click on "Edit" icon for "Completeness" inside flex table with id "---program:-:programReviewPanel---"
+    When I enter value "60" into field "Weight__c"
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type      | Max Score |
+      | 1              | Test 1    | Yes/No    | 0         |
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted. |
+    And I refresh the page
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Edit" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---"
+    When I enter value "100" into field "Weight__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---"
+    And I expand nested table containing column value "Eligibility"
+    And I click on "Edit" icon for "Eligibility" inside flex table with id "---program:-:programReviewPanel---"
+    When I enter value "40" into field "Weight__c"
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type      | Max Score |
+      | 1              | Test 1    | Yes/No    | 0         |
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Eligibility section because it is weighted. |
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
+
+
+  @77807 @validatingSuccessMessagemanagementReviewForm @keerti
+  Scenario Outline: To validate system generated success message, Max score set as 100 for any 1 questions and weight as 60% on Review Panel Categories of "Return on Investment (ROI)" under management review form of the management reviews steps of setup tab of planning phase
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 50              |
+      | SME Review        | 50              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "Management Review"
+    And I click on "Edit" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    When I enter value "100" into field "Weight__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    And I expand nested table containing column value "Return on Investment (ROI)"
+    And I click on "Edit" icon for "Return on Investment (ROI)" inside flex table with id "---program:-:programReviewPanel---"
+    When I enter value "60" into field "Weight__c"
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type      | Max Score |
+      | 1              | Test 1    | Yes/No    | 100       |
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | There are no errors with the review step templates. |
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
+
+  @78040 @78042 @78044 @validatingSuccessMessageFiscalcomplianceReviewForm @keerti
+  Scenario Outline: To validate system generated success message, Max score set as 100 for any 1 questions and weight as 60% on Review Panel Categories of "Match" under Fiscal review form of the SME reviews steps of setup tab of planning phase.
+  | To validate system generated success message, Max score set as 100 for any 1 questions and weight as 60% on Review Panel Categories of "Program Income" under Fiscal review form of the SME reviews steps of setup tab of planning phase.
+  | To validate system generated success message, Max score set as 100 for any 1 questions and weight as 60% on Review Panel Categories of "Schedule" under compliance review form of the SME reviews steps of setup tab of planning phase.
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 50              |
+      | SME Review        | 50              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Edit" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    When I enter value "50" into field "Weight__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    And I expand nested table containing column value "Match"
+    And I click on "Edit" icon for "Match" inside flex table with id "---program:-:programReviewPanel---"
+    When I enter value "60" into field "Weight__c"
+    And I click on "Edit" icon for "Program Income" inside flex table with id "---program:-:programReviewPanel---"
+    When I enter value "20" into field "Weight__c"
+    And I click on "Edit" icon for "Budget" inside flex table with id "---program:-:programReviewPanel---"
+    When I enter value "20" into field "Weight__c"
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type      | Max Score |
+      | 1              | Test 1    | Yes/No    | 100       |
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type      | Max Score |
+      | 2              | Test 2    | Yes/No    | 0         |
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type      | Max Score |
+      | 3              | Test 3    | Yes/No    | 0         |
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | There are no errors with the review step templates. |
+    And I refresh the page
+    And I expand nested table containing column value "SME Review"
+    And I click on "Edit" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    When I enter value "50" into field "Weight__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    And I expand nested table containing column value "Program Income"
+    And I click on "Edit" icon for "Program Income" inside flex table with id "---program:-:programReviewPanel---"
+    When I enter value "60" into field "Weight__c"
+    And I click on "Edit" icon for "Match" inside flex table with id "---program:-:programReviewPanel---"
+    When I enter value "20" into field "Weight__c"
+    And I click on "Edit" icon for "Budget" inside flex table with id "---program:-:programReviewPanel---"
+    When I enter value "20" into field "Weight__c"
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type      | Max Score |
+      | 1              | Test 1    | Yes/No    | 100       |
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | There are no errors with the review step templates. |
+    And I refresh the page
+    And I expand nested table containing column value "SME Review"
+    And I click on "Edit" icon for "Compliance Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    When I enter value "50" into field "Weight__c"
+    When I enter value "1" into field "MinimumNumberOfReviewers__c"
+    When I enter value "Checked" into field "Required__c"
+    And I click on "Edit" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    When I enter value "0" into field "Weight__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewFormPanelId---"
+    And I click on "Edit" icon for "Schedule" inside flex table with id "---program:-:programReviewPanel---"
+    When I enter value "0" into field "Weight__c"
+    And I click on "Edit" icon for "Environment" inside flex table with id "---program:-:programReviewPanel---"
+    When I enter value "0" into field "Weight__c"
+    And I expand nested table containing column value "Permits"
+    And I click on "Edit" icon for "Permits" inside flex table with id "---program:-:programReviewPanel---"
+    When I enter value "100" into field "Weight__c"
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type      | Max Score   |
+      | 1              | Test 1    | Yes/No    | 100         |
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type      | Max Score   |
+      | 2              | Test 2    | Yes/No    | 0           |
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type      | Max Score   |
+      | 3              | Test 3    | Yes/No    | 0           |
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | There are no errors with the review step templates. |
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
