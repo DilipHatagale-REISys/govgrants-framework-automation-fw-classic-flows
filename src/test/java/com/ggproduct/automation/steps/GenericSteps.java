@@ -487,4 +487,9 @@ public class GenericSteps {
         projectManager.clickAllDeleteButtonsInsideFlexTable(flexTableId);
     }
 
+    @And("I clear all the filter from the table id {string}")
+    public void iClearAllTheFilterFromTheTableId(String filterTableId) {
+        By clearAll = By.xpath("//*[@id='"+filterTableId+"']//*[@title='Clear All']//i");
+        I.amPerforming().click().on(clearAll);
+    }
 }
