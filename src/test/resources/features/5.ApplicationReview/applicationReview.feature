@@ -1,46 +1,46 @@
 @applicationReview @regression @app
 Feature: Validate all scenarios in the Application Review
 
-  Background: Submit the application for Review
-    Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
-    Given I delete the record "Automation Application" from the object "APPLICATION"
-    And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
-    When I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
-    And I navigate to "Opportunities" tab
-    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
-    When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
-    When I click on "Qualify" in the page details
-    When I click on "Create Application" in the page details
-    When I enter value "Automation Application" into field "Title__c"
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "Application_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Budget" sub tab
-    When I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
-      | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 1000   | 100        | 100            |
-    When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    And I enter value "Checked" into field "IsKeyContact__c"
-    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    When I navigate to "Proposal" sub tab
-    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
-    And I navigate to "Attachments" sub tab
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
-    And I get the "EGMS ID"
-    When I click on "Submit Application" in the page details
+#  Background: Submit the application for Review
+#    Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
+#    Given I delete the record "Automation Application" from the object "APPLICATION"
+#    And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
+#    When I am on "SUBPORTAL" portal
+#    When I login to "Grants Portal" app as "SPI" user
+#    And I navigate to "Opportunities" tab
+#    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+#    And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
+#    When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
+#    When I click on "Qualify" in the page details
+#    When I click on "Create Application" in the page details
+#    When I enter value "Automation Application" into field "Title__c"
+#    And I click modal button "Save and Continue"
+#    When I enter "Edition" values from "Application_Field_Values.xlsx"
+#    When I click on "Save" in the page details
+#    And I navigate to "Budget" sub tab
+#    When I expand nested table containing column value "BP01"
+#    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
+#      | Category Name | Budget | Cash Match | Non-Cash Match |
+#      | Construction  | 1000   | 100        | 100            |
+#    When I navigate to "Overview" sub tab
+#    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+#    And I enter value "Checked" into field "IsKeyContact__c"
+#    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+#    When I navigate to "Proposal" sub tab
+#    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
+#      | EGMS ID                                 | Target |
+#      | Automation Permanent KPI for Regression | 10     |
+#    And I navigate to "Attachments" sub tab
+#    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+#    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+#    And I click on "Save" in the page details
+#    When I click on "Back" in the page details
+#    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+#    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+#    And I click on "Save" in the page details
+#    When I click on "Back" in the page details
+#    And I get the "EGMS ID"
+#    When I click on "Submit Application" in the page details
 
   @51066 @38463 @38462 @38464 @65082 @smeReviewEnterDueInDays @smeReviewAddReviewer @smeReviewAssignApplicationToReviewer @smeReviewSendForReview @smoke @jitendra
   Scenario Outline: Enter Due in Days for all review forms in SME-review | Verify Pending Task is created for Reviewer
@@ -1984,6 +1984,7 @@ Feature: Validate all scenarios in the Application Review
 
   @72346 @applicationReviewHappyPath @productBusinessFlowSanity
   Scenario Outline: Validate the complete review process for an application
+    And  I wait for "120" seconds
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -2183,6 +2184,247 @@ Feature: Validate all scenarios in the Application Review
     And I select "Download as PDF" from parallel lines dropdown of "Funding Decision Memo (FDM)"
     When I download the file
     Then I see "Funding Decision Memo (FDM)" on page "1" of "govgrants" pdf file
+    Examples:
+      | Announcement Name                              |
+      | Automation Announcement for Application Review |
+
+  @78318 @reviewSteps @keerti
+  Scenario Outline: To verify user will be able to view the review steps under the respective announcement related log tab
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    And I wait for "30" seconds
+    Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    Examples:
+      | Announcement Name                              |
+      | Automation Announcement for Application Review |
+
+  @78320 @SMEReviewStep @keerti
+  Scenario Outline: To verify User will be able to click the view icon on the SME review step under announcement related log tab review step section
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "SME Review" inside flex table with id "---announcement:-:reviewStepTableId---" with wait for record
+    Then I softly can see page block "Forms"
+    Then I softly can see page block "Reviewers"
+    Then I softly can see page block "Applications"
+    Then I softly can see page block "Reviews"
+    Then I softly can see page block "System Information"
+    Examples:
+      | Announcement Name                              |
+      | Automation Announcement for Application Review |
+
+  @78090 @validatingApplicationUnderReviewTable @keerti
+  Scenario Outline: To Validate the Announcement owner will be able to view the announcement under "Application Under Review" table
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:EGMSID}" in "---applicationReview:-:announcementListTableId---" panel
+    Then I softly see value "<Announcement Name>" for title "Announcement Title" against the value "{SavedValue:EGMSID}" inside table "---applicationReview:-:announcementListTableId---"
+    Examples:
+      | Announcement Name                              |
+      | Automation Announcement for Application Review |
+
+
+  @78321 @managementReviewStep @keerti
+  Scenario Outline: To verify User will be able to click the view icon on the management review step under announcement related log tab review step section
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "Management Review" inside flex table with id "---announcement:-:reviewStepTableId---" with wait for record
+    Then I softly can see page block "Forms"
+    Then I softly can see page block "Reviewers"
+    Then I softly can see page block "Applications"
+    Then I softly can see page block "Reviews"
+    Then I softly can see page block "System Information"
+    Examples:
+      | Announcement Name                              |
+      | Automation Announcement for Application Review |
+
+  @78322 @ValidatingprescreenReviewStepFormWithRequired @keerti
+  Scenario Outline: To verify user able to setup the Due Days for the review & set field "Required" :Checked in prescreen review step in related log table in Application phase
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---announcement:-:reviewStepTableId---" with wait for record
+    Then I softly can see page block "Forms"
+    And I click on "Edit" icon for "Pre-Screen" inside flex table with id "---applicationReview:-:reviewStepFormId---"
+    When I enter value "Pre-Screen" into field "PanelName__c"
+    When I enter value "7" into field "DueInDays__c"
+    When I enter value "Checked" into field "Required__c"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:reviewStepFormId---"
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    Then I softly see value "7" for title "Due in Days" inside table "---applicationReview:-:reviewStepFormId---"
+    Examples:
+      | Announcement Name                              |
+      | Automation Announcement for Application Review |
+
+  @78323 @ValidatingprescreenReviewStepForm @keerti
+  Scenario Outline: To verify user able to setup the Due Days for the review & set field "Required" :Unchecked in prescreen review step in related log table in Application phase
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---announcement:-:reviewStepTableId---" with wait for record
+    Then I softly can see page block "Forms"
+    And I click on "Edit" icon for "Pre-Screen" inside flex table with id "---applicationReview:-:reviewStepFormId---"
+    When I enter value "Pre-Screen" into field "PanelName__c"
+    When I enter value "7" into field "DueInDays__c"
+    When I enter value "0" into field "MinimumNumberOfReviewers__c"
+    When I enter value "UnChecked" into field "Required__c"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:reviewStepFormId---"
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    Then I softly see value "7" for title "Due in Days" inside table "---applicationReview:-:reviewStepFormId---"
+    Examples:
+      | Announcement Name                              |
+      | Automation Announcement for Application Review |
+
+  @78328 @validatingComplianceReviewStepForm @keerti
+  Scenario Outline: To verify user able to setup the Due Days for the review & set field "Required" :Checked in prescreen review step in related log table in Application phase
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "<Announcement Name>" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "SME Review" inside flex table with id "---announcement:-:reviewStepTableId---" with wait for record
+    Then I softly can see page block "Forms"
+    And I click on "Edit" icon for "Program Review" inside flex table with id "---applicationReview:-:reviewStepFormId---"
+    When I enter value "Checked" into field "Required__c"
+    When I enter value "7" into field "DueInDays__c"
+    And I click on "Edit" icon for "Fiscal Review" inside flex table with id "---applicationReview:-:reviewStepFormId---"
+    When I enter value "Checked" into field "Required__c"
+    When I enter value "7" into field "DueInDays__c"
+    And I click on "Edit" icon for "Compliance Review" inside flex table with id "---applicationReview:-:reviewStepFormId---"
+    When I enter value "7" into field "DueInDays__c"
+    When I enter value "Checked" into field "Required__c"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:reviewStepFormId---"
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    Then I softly see value "7" for title "Due in Days" against the value "Compliance Review" inside table "---applicationReview:-:reviewStepFormId---"
+    Examples:
+      | Announcement Name                              |
+      | Automation Announcement for Application Review |
+
+  @79201 @79204 @numberOfreviewersAndDeleteReviewers @keerti
+  Scenario Outline: To verify user,able to set the maximum number of reviewers for each application in prescreening review step
+  | To verify that,user able to delete Reviewers in prescreening review step in related log tab of Appliction phase
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---announcement:-:reviewStepTableId---" with wait for record
+    Then I softly can see page block "Reviewers"
+    And I click table top right button "Add" in flex table with id "---applicationReview:-:reviewersTableId---"
+    When I enter value "Automation FO" into field "Reviewer__c"
+    And I click on hyperlink containing value "Automation FO"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:reviewersTableId---"
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    Then I softly see value "Automation FO" for title "Reviewer" inside table "---applicationReview:-:reviewersTableId---"
+    And I click on "Remove from Form" icon for "Automation FO" inside flex table with id "---applicationReview:-:reviewersTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    Then I softly do not see value "Automation FO" for title "Reviewers" inside table "---applicationReview:-:reviewersTableId---"
+    Examples:
+      | Announcement Name                              |
+      | Automation Announcement for Application Review |
+
+  @79206 @pdfForReviewSteps @keerti
+  Scenario Outline: To verify user able to download pdf for Review Steps section in related log tab of Apllication phase.
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "<Announcement Name>" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    And I click on parallel menu button in flex table titled "Review Steps"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Steps"
+    And I download the file
+    Then I softly see "Pre-Screen Review" on page "1" of "govgrants" pdf file
+    Then I softly see "SME Review" on page "1" of "govgrants" pdf file
+    Then I softly see "Management" on page "1" of "govgrants" pdf file
+    Then I softly see "Review" on page "1" of "govgrants" pdf file
+    Examples:
+      | Announcement Name                              |
+      | Automation Announcement for Application Review |
+
+  @79202 @deleteReviewersInSMERview @keerti
+  Scenario Outline:  To verify that,user able to delete Reviewers in SME review step in related log tab of Appliction phase
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "SME Review" inside flex table with id "---announcement:-:reviewStepTableId---" with wait for record
+    Then I softly can see page block "Reviewers"
+    And I click table top right button "Add" in flex table with id "---applicationReview:-:reviewersTableId---"
+    When I enter value "Automation FO" into field "Reviewer__c"
+    And I click on hyperlink containing value "Automation FO"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:reviewersTableId---"
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    Then I softly see value "Automation FO" for title "Reviewer" inside table "---applicationReview:-:reviewersTableId---"
+    And I click on "Remove from Form" icon for "Automation FO" inside flex table with id "---applicationReview:-:reviewersTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    Then I softly do not see value "Automation FO" for title "Reviewers" inside table "---applicationReview:-:reviewersTableId---"
     Examples:
       | Announcement Name                              |
       | Automation Announcement for Application Review |
