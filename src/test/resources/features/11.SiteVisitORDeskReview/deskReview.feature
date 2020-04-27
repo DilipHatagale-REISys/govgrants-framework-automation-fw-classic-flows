@@ -39,7 +39,7 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Overview" sub tab
     Then I softly see field "Created Date" is not editable
 
-  @51014 @51015 @66147 @75859 @notifySubrecipientPendingTaskDeskReview @smoke
+  @51014 @51015 @66147 @75859 @notifySubrecipientPendingTaskDeskReview @smoke @73739
   Scenario: Notify Subrecipient about the respective POC from the applicant organization will receive a pending task about the Desk Review
   Validate the external user will receive an email notification when the desk review is in notified status
     Given I navigate to "Responsibilities" sub tab
@@ -223,7 +223,7 @@ Feature: Validate all scenarios in Desk Review
 
   @51021 @66557 @51022 @66549 @51023 @66146 @66485 @77256 @66550 @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient
   Scenario: Send Desk Review to Subrecipient, Corrective Actions and Submit to Grantor by Subrecipient |Validate whether pending task is created for Program approver under Home Tab when the award owner submits the Desk Review for approval
-    Validate when the desk review is submitted by the Subrecipient to grantor, the internal user recieves an email notification
+  Validate when the desk review is submitted by the Subrecipient to grantor, the internal user recieves an email notification
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
@@ -334,6 +334,7 @@ Feature: Validate all scenarios in Desk Review
     When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
@@ -863,6 +864,7 @@ Feature: Validate all scenarios in Desk Review
     When I click "Associate" after selection of "Automation EXE" in the table "---deskreview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab

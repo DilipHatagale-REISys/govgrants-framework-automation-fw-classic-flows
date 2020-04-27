@@ -758,6 +758,7 @@ Feature: Risk Assessment scenarios without background
       | Program Approver   | Automation PM  | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
       | Executive Approver | Automation EXE | Automation Test Description |
+    When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -811,13 +812,13 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Management" sub tab
     Then I softly see value "Active" for title "Status" against the value "{SavedValue:RiskValue}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
     When I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
-    And I save the field labeled "EGMS ID" as "RISKID"
+    And I save the field labeled "EGMS ID" as "RiskID"
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    And I perform quick search for "{SavedValue:RISKID}" in "---riskassessment:-:organizationprofileviewTableId---" panel
+    And I perform quick search for "{SavedValue:RiskID}" in "---riskassessment:-:organizationprofileviewTableId---" panel
     When I click on "View" icon for "Active" inside flex table with id "---riskassessment:-:organizationprofileviewTableId---"
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
 
@@ -854,8 +855,12 @@ Feature: Risk Assessment scenarios without background
     When I enter values into fields
       | Value                       | Field                              |
       | Automation Test Description | fieldFundingChangeJustification__c |
-      | 1000                        | fieldRequestedChangeInBudget__c    |
+      | 2000                        | fieldRequestedChangeInBudget__c    |
     And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "Automation Award for Amendment Request"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
@@ -868,7 +873,12 @@ Feature: Risk Assessment scenarios without background
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
-    When I click on "Add Line Items" icon for "Site work" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I click on "Add Line Items" icon for "Supplies" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Awarded Budget |
+      | Extra Salary | The narrative | 1000           |
+    When I close "Add Line Items" modal by clicking the top right x button
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
@@ -878,7 +888,12 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---"
+    And I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "{SavedValue:fundingAccount}" inside flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
+    When I enter Revised Encumbrance for award "Automation Award for Amendment Request"
+    And I click on top right button "Save" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -889,16 +904,11 @@ Feature: Risk Assessment scenarios without background
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Grant/Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Grant/Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    When I navigate to "Subawards" sub tab
-    And I get the "EGMS ID"
-    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
-    And I navigate to "Management" sub tab
-    And I click on "View" icon for "Approved" inside flex table with id "---amendment:-:amendmentRequestTableId---"
-    When I click on "Amend Subaward" in the page details
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - Approved"
+    And I perform quick search for "Record Id" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -911,13 +921,13 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Management" sub tab
     Then I softly see value "Active" for title "Status" against the value "{SavedValue:RiskValue}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
     When I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
-    And I save the field labeled "EGMS ID" as "RISKID"
+    And I save the field labeled "EGMS ID" as "RiskID"
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    And I perform quick search for "{SavedValue:RISKID}" in "---riskassessment:-:organizationprofileviewTableId---" panel
+    And I perform quick search for "{SavedValue:RiskID}" in "---riskassessment:-:organizationprofileviewTableId---" panel
     When I click on "View" icon for "Active" inside flex table with id "---riskassessment:-:organizationprofileviewTableId---"
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
 
@@ -1018,8 +1028,7 @@ Feature: Risk Assessment scenarios without background
     And I click on "View" icon for "Automation Grant/Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     When I perform quick search for "Active" in "---subAwardStandAlone:-:riskAssessmentTableId---" panel
-    Then I softly see value "Active" for title "Status" against the value "{SavedValue:RiskAssessmentID}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
-    Then I softly can see top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    Then I softly cannot see top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
