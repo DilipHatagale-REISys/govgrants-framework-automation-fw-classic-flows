@@ -346,7 +346,7 @@ public class GenericSteps {
         projectManager.compareContactListEquality(usage, projectRoles);
     }
 
-    @Then("^I (softly see|see) that the saved value \"([^\"]*)\" and \"([^\"]*)\" are equal$")
+    @Then("^I (softly see|see|softly cannot see) that the saved value \"([^\"]*)\" and \"([^\"]*)\" are equal$")
     public void iSeeThatTheSavedValueAndAreEqual(String usage, String savedValue1, String savedValue2) {
         projectManager.compareTwoSavedStringValueEquality(usage, savedValue1, savedValue2);
     }
