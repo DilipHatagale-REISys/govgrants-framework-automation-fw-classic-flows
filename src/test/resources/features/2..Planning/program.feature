@@ -2851,7 +2851,6 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-
   @77807 @validatingSuccessMessagemanagementReviewForm @keerti
   Scenario Outline: To validate system generated success message, Max score set as 100 for any 1 questions and weight as 60% on Review Panel Categories of "Return on Investment (ROI)" under management review form of the management reviews steps of setup tab of planning phase
     And I click on "Edit" in the page details

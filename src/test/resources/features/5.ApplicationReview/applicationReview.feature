@@ -1,46 +1,46 @@
 @applicationReview @regression @app
 Feature: Validate all scenarios in the Application Review
 
-#  Background: Submit the application for Review
-#    Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
-#    Given I delete the record "Automation Application" from the object "APPLICATION"
-#    And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
-#    When I am on "SUBPORTAL" portal
-#    When I login to "Grants Portal" app as "SPI" user
-#    And I navigate to "Opportunities" tab
-#    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-#    And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
-#    When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
-#    When I click on "Qualify" in the page details
-#    When I click on "Create Application" in the page details
-#    When I enter value "Automation Application" into field "Title__c"
-#    And I click modal button "Save and Continue"
-#    When I enter "Edition" values from "Application_Field_Values.xlsx"
-#    When I click on "Save" in the page details
-#    And I navigate to "Budget" sub tab
-#    When I expand nested table containing column value "BP01"
-#    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
-#      | Category Name | Budget | Cash Match | Non-Cash Match |
-#      | Construction  | 1000   | 100        | 100            |
-#    When I navigate to "Overview" sub tab
-#    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-#    And I enter value "Checked" into field "IsKeyContact__c"
-#    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-#    When I navigate to "Proposal" sub tab
-#    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
-#      | EGMS ID                                 | Target |
-#      | Automation Permanent KPI for Regression | 10     |
-#    And I navigate to "Attachments" sub tab
-#    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-#    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
-#    And I click on "Save" in the page details
-#    When I click on "Back" in the page details
-#    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-#    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
-#    And I click on "Save" in the page details
-#    When I click on "Back" in the page details
-#    And I get the "EGMS ID"
-#    When I click on "Submit Application" in the page details
+  Background: Submit the application for Review
+    Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
+    Given I delete the record "Automation Application" from the object "APPLICATION"
+    And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
+    When I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    When I enter value "Automation Application" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match |
+      | Construction  | 1000   | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I navigate to "Proposal" sub tab
+    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Attachments" sub tab
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I get the "EGMS ID"
+    When I click on "Submit Application" in the page details
 
   @51066 @38463 @38462 @38464 @65082 @smeReviewEnterDueInDays @smeReviewAddReviewer @smeReviewAssignApplicationToReviewer @smeReviewSendForReview @smoke @jitendra
   Scenario Outline: Enter Due in Days for all review forms in SME-review | Verify Pending Task is created for Reviewer
@@ -2201,11 +2201,17 @@ Feature: Validate all scenarios in the Application Review
     Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---announcement:-:reviewStepTableId---" with wait for record
+    Then I softly can see page block "Forms"
+    Then I softly can see page block "Reviewers"
+    Then I softly can see page block "Applications"
+    Then I softly can see page block "Reviews"
+    Then I softly can see page block "System Information"
     Examples:
       | Announcement Name                              |
       | Automation Announcement for Application Review |
 
-  @78320 @SMEReviewStep @keerti
+  @78320 @SMEReviewStepSMEReviewFormIcon @keerti
   Scenario Outline: To verify User will be able to click the view icon on the SME review step under announcement related log tab review step section
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab

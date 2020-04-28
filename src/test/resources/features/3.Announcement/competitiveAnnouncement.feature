@@ -3010,7 +3010,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Subject | Contains | jitu |
     Then I softly see "jitu" inside flex table with id "---announcement:-:collabMessages---"
 
-
   @75632 @searchFunctionalityForMessagesInCollab @keerti
   Scenario: To verify search functionality for messages section in collab tab for announcement
     When I click on "Edit" in the page details
