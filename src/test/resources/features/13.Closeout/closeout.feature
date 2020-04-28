@@ -309,6 +309,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
     And I enter "Override" values from "Closeout_Field_Values.xlsx"
+    And I enter "TerminationEdition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Override" in the page details
     And I click on "Submit for Approval" in the page details
