@@ -346,14 +346,9 @@ public class GenericSteps {
         projectManager.compareContactListEquality(usage, projectRoles);
     }
 
-    @Then("^I (softly see|see) that the saved value \"([^\"]*)\" and \"([^\"]*)\" are equal$")
+    @Then("^I (softly see|see|softly cannot see) that the saved value \"([^\"]*)\" and \"([^\"]*)\" are equal$")
     public void iSeeThatTheSavedValueAndAreEqual(String usage, String savedValue1, String savedValue2) {
         projectManager.compareTwoSavedStringValueEquality(usage, savedValue1, savedValue2);
-    }
-
-    @Then("^I (see|softly see) multiple selected options in \"([^\"]*)\":$")
-    public void iSeeFollowingOptionsIn(String usage, String cellName, List<String> options) {
-        projectManager.verifyMultipleSelectedOption(usage, cellName, options);
     }
 
     @Then("^I (softly see|see) initial budget balance \"([^\"]*)\" is decreased by \"([^\"]*)\" and is matched with current budget balance \"([^\"]*)\"$")
