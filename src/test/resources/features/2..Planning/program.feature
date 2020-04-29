@@ -2,7 +2,7 @@
 Feature: Validate all scenarios for program
 
   Background: Create Program
-    Given I delete the record "Automation Execution Internal Program" from the object "Program"
+    Given I delete the record "Automation Internal Program" from the object "Program"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -240,7 +240,7 @@ Feature: Validate all scenarios for program
       | Record deleted successfully. |
     And I softly do not see value "Environment Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
 
-  @76294 @76295 @76296 @76297 @76298 @76486 @76497 @76498 @76566 @76567 @76570 @76571 @76572 @76573 @76574 @jitendra
+  @76294 @76295 @76296 @76297 @76298 @76486 @76497 @76498 @76566 @76567 @76570 @76571 @76572 @76573 @76574 @76496 @jitendra
   Scenario: To validate the filters of program review panel
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -391,6 +391,91 @@ Feature: Validate all scenarios for program
       | Setup Tab - SME Review - Fiscal Review: A score cannot be associated to a question in the Match section because it does not have a weight          |
       | Setup Tab - SME Review - Fiscal Review: A score cannot be associated to a question in the Program Income section because it does not have a weight |
       | Setup Tab - SME Review - Fiscal Review: The total section weight must equal 100% or 0%, it is currently 90%                                        |
+    And I refresh the page
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Eligibility    | 60                 |
+      | Completeness   | 60                 |
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - Pre-Screen Review - Pre-Screen: The total section weight must equal 100% or 0%, it is currently 120%.                                     |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated with at least one question in the Completeness section because it is weighted. |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated with at least one question in the Eligibility section because it is weighted.  |
+
+  @76943 @76944 @76948 @76947 @76984 @76985 @77098 @jitendra
+  Scenario: To verify user able to modify review question in Strategic Alignment of Review Panel Categories in management review form for management review step in planning phase
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Management Review"
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewStepTableId---"
+    And I expand nested table containing column value "Strategic Alignment"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      | Question Order | Type   |
+      | 2              | Yes/No |
+      #76943 following 2 assertion belongs to this
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I refresh the page
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---"
+    And I expand nested table containing column value "Eligibility"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question | Type   | Max Score |
+      | 3              | Test 2   | Yes/No | 0         |
+      #76944 following 5 assertion belongs to this
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Test 2" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      | Question Order | Type    |
+      | 2              | Written |
+       #76948 following 2 assertion belongs to this
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "2" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+      #76947 following 2 assertion belongs to this
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    And I softly do not see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I collapse nested table containing column value "Eligibility"
+    And I expand nested table containing column value "Completeness"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question | Type   | Max Score |
+      | 5              | Test 5   | Yes/No | 0         |
+      #76984 following 5 assertion belongs to this
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "5" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Test 5" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I click on parallel menu button in flex table titled "Review Questions"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Questions"
+    And I download the file
+      #76985 following 5 assertion belongs to this
+    Then I softly see "Completeness" on page "1" of "govgrants" pdf file
+    And I switch to parent tab
+    And I refresh the page
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---"
+    And I expand nested table containing column value "Schedule"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question | Type   | Max Score |
+      | 4              | Test 4   | Yes/No | 0         |
+      #77098 following 5 assertion belongs to this
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Test 4" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
 
   @34731 @programEdition
   Scenario: Verifying if the EXE, PM, PO has create access to Internal Program
