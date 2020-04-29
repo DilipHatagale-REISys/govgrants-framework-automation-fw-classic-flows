@@ -3077,3 +3077,27 @@ Feature: Validate all scenarios for program
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
+
+  @78087 @validateSuccessMessageForReviewStepSection @keerti
+    Scenario Outline: To validate success message,when user click on validate button in review step section of setup tab in planning phase
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 40              |
+      | SME Review        | 60              |
+      | Pre-Screen Review | 0               |
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | There are no errors with the review step templates. |
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |

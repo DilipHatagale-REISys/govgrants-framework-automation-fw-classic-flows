@@ -520,29 +520,6 @@ public class ProjectManager extends ProjectWebServices {
         }
     }
 
-    /**
-     * @param usage    - softly or not
-     * @param cellName - MultiCell value
-     * @param options -List of selected option
-     * @author aashish pardeshi
-     */
-    public void verifyMultipleSelectedOption(String usage, String cellName, List<String> options) {
-        List<String> selectedOptions = new ArrayList<>();
-        List<WebElement> ll = I.amPerforming().dropDownSelection().from(By.xpath("//td[@class='"+cellName+"']//following::td/select")).getOptions();
-        for (WebElement e : ll) {
-            selectedOptions.add(e.getText().trim());
-        }
-        System.out.println(selectedOptions);
-        if (usage.contains("softly")) {
-            I.amPerforming().assertionsTo().assertThat(
-                    options.containsAll(selectedOptions)
-            ).isTrue();
-        } else {
-            Assert.assertTrue(
-                    options.containsAll(selectedOptions)
-            );
-        }
-    }
     public void validateModalEnlargeAndGrantDetails(String usage) {
         By modalEnlarge = By.xpath("//div[@id='editDiv']/div[2]");
         List<String> ids = List.of(
