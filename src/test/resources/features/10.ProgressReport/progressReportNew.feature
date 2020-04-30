@@ -1,4 +1,4 @@
-@progressReportNew @regression @progressReport @wip
+@progressReportNew @regression @progressReport
 Feature: Validate all scenarios in Progress Report with respect to Amendment Request
 
   @60726 @60727 @60721 @60656 @60657 @validateReviewedPRAfterFundingChangeAmendmentIsCarryForwarded @mahadev
@@ -25,6 +25,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
     When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
@@ -7067,8 +7068,8 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I navigate to "Management" sub tab
     Then I softly see value "Created" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientGrantProgressReportTableId---"
     Examples:
-      | Award Name                   | Grant Name                 |
-      | Automation   Execution Award | Automation Execution Award |
+      | Award Name                 | Grant Name                 |
+      | Automation Execution Award | Automation Execution Award |
 
   @62240 @62247 @validateSubmittedForApprovalPRAfterTCAmendmentIsCarryForwardedAonGrantAtInternalportalAndPM @jitendra
   Scenario Outline: Validate Progress reports with Submitted for approval Status is carried forward at Performance Tab Subaward Overview at SR user end when Award owner performed Terms and Conditions Change Amendment.
@@ -7445,7 +7446,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     When I navigate to "Performance" sub tab
-    Then I softly see value "Sent Back to Sub-recipient" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:grantorProgressReportsTableId---"
+    Then I softly do not see value "Sent Back to Sub-recipient" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:grantorProgressReportsTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel

@@ -1,4 +1,4 @@
-@progressReport @regression @wip
+@progressReport @regression
 Feature: Validate all scenarios in Progress Report
 
   Background: To create a progress report
@@ -118,11 +118,7 @@ Feature: Validate all scenarios in Progress Report
   Scenario: To validate Error Messages for fields required for Submission of Progress Report
     And I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details contains:
-      | Overview Tab - Certify the progress report by checking the acknowledgment box before submitting to Grantor. |
-      | Performance Tab - Enter at least one Key Accomplishment before submitting to Grantor.                       |
-      | Performance Tab - Enter at least one Obstacle before submitting to Grantor.                                 |
-      | Performance Tab - Enter at least one Plan before submitting to Grantor.                                     |
-      | Forms and Attachments Tab - Fill all the required data in the form before submitting to Grantor.            |
+    |Forms and Attachments Tab - Fill all the required data in the form before submitting to Grantor. |
 
   @51106 @internalSentProgressReportToSubRecipient
   Scenario: To send back the Progress Report
