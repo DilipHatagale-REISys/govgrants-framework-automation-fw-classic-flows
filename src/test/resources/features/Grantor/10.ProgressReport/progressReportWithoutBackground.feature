@@ -1,4 +1,4 @@
-@regression @progressReport
+@regression @progressReport @progressReportNB
 Feature: Validate scenarios in Progress Report without background
 
   @37184 @ValidateScheduleFrequencyQuarterlyScheduleBaseAsCalendar @mahadev
