@@ -99,7 +99,7 @@ Feature: Application Intake scenarios without background
     Given I click on "Back" in the page details
     Then I cannot see top right button "Submit Application" in page detail
 
-  @70464 @userCannotQualifyApplicationSecondTime @wip @deepika
+  @70464 @userCannotQualifyApplicationSecondTime @deepika
   Scenario: Validate whether an user should not able to qualify the announcement again for once it is Qualified
     Given I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
     Given I am on "SUBPORTAL" portal
@@ -1415,7 +1415,7 @@ Feature: Application Intake scenarios without background
     Then I softly see the following messages in the page details contains:
       | Application is successfully qualified |
 
-  @75501 @75502 @otherOrgUserCanAlsoQualifyAndCreateApplication @deepika @wip
+  @75501 @75502 @otherOrgUserCanAlsoQualifyAndCreateApplication @deepika
   Scenario: Validate Opportunities created from 'Competitive Announcements' are available for all External users under Oppurtunities
   Validate Opportunities created from 'Competitive Announcements' are available for all external users and can qualify and create the Applications
     Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
@@ -1624,7 +1624,7 @@ Feature: Application Intake scenarios without background
       | Contact        |
       | Automation SPA |
 
-  @77044 @34324 @requestedAmountMustBeLessThanCelingAmount @deepika @wip
+  @77044 @34324 @requestedAmountMustBeLessThanCelingAmount @deepika
   Scenario: Verify SPI & SPA user is not able to Submit Application to Grantor with Requested Amount less than Subaward Floor Amount |
   Validate when the supporting documents  checklist are not entered by Announcement owner then Applicant will not be able to upload any document while submitting the application
     Given I delete the record "Automation Announcement for Application Intake" from the object "Application"

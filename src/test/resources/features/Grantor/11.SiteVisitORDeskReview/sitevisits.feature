@@ -1123,7 +1123,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I softly see "No Records Found" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
-  @61178 @addAttachmentToSiteVisit @deepika @wip
+  @61178 @addAttachmentToSiteVisit @deepika
   Scenario: Validate whether PM will be able to add any specific docuements required along with the supporting documents details under the attachments section
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Other"

@@ -758,7 +758,7 @@ Feature: Pre-Application scenarios without background
       | SPI  |
       | SPA  |
 
-  @73518 @focusAreaSettingAsNoWhileAnnouncementCreation @deepika @wip
+  @73518 @focusAreaSettingAsNoWhileAnnouncementCreation @deepika
   Scenario: Validate when the focus area setting from the funding opportunity is No, then SPI User should be able to view the focus area settings as No and cannot see the page block
     Given I delete the record "Automation Pre-App Announcement" from the object "Application"
     When I delete the record "Automation Pre-App Announcement" from the object "PreApplication"
@@ -1201,7 +1201,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "green"
 
-  @77583 @preApplicationMatchrequiredYes @deepika @wip
+  @77583 @preApplicationMatchrequiredYes @deepika
   Scenario: Validate whether User will be able to view the Match column in the budget grid when the value set as Yes while announcement creation with pre-application is set as yes
     Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
     When I delete the record "Automation Announcement for Application" from the object "PreApplication"

@@ -835,7 +835,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Complete Review" in the page details
     Then I see status in Progress-bar is "In Progress" and is "green"
 
-  @55998 @UploadsupportingDocumentChecklistFromWorkSpace @deepika @wip
+  @55998 @UploadsupportingDocumentChecklistFromWorkSpace @deepika
   Scenario: User will be able to review the supporting document checklist submitted by the subrecipient
     When I navigate to "Attachments" sub tab
     And I upload attachment "InternalOrganization_Field_Values.xlsx" from workspace
@@ -1159,7 +1159,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I perform quick search for "Record Id" in "DeskReview" panel
     Then I softly see "No Records Found" inside flex table with id "DeskReview"
 
-  @65073 @recordOwnerhasAccesstoDeleteassociatedContactand @deepika @wip
+  @65073 @recordOwnerhasAccesstoDeleteassociatedContactand @deepika
   Scenario: Validate whether record owner has access to delete the asoociated Contact and Award to Desk Review Org Level |
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"

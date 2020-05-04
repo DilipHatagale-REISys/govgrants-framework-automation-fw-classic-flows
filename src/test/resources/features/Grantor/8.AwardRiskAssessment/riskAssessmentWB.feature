@@ -1,7 +1,7 @@
 @riskAssessment @regression
 Feature: Risk Assessment scenarios without background
 
-  @59252 @64792 @64942 @64944 @validateDataOnGrantAwardRA @deepika @wip @bug-69368
+  @59252 @64792 @64942 @64944 @validateDataOnGrantAwardRA @deepika @bug-69368
   Scenario Outline: Validate (risk assessment | Notes | Peer Reviewer) on grant/award
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
@@ -1226,7 +1226,7 @@ Feature: Risk Assessment scenarios without background
     When I click on "View" icon for "Active" inside flex table with id "---riskassessment:-:organizationprofileviewTableId---"
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
 
-  @58824 @validateRiskScoreAndRiskAssessment @mahadev @wip
+  @58824 @validateRiskScoreAndRiskAssessment @mahadev
   Scenario Outline: Validate Award Risk Assessment is copied to new created award after - BPC Amendment
     Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     When I delete the record "Automation Execution Award" from the object "Award"

@@ -26,6 +26,7 @@ Feature: Validate scenarios in Progress Report without background
     And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
     When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
@@ -138,6 +139,7 @@ Feature: Validate scenarios in Progress Report without background
     And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
     When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
@@ -526,7 +528,7 @@ Feature: Validate scenarios in Progress Report without background
     When I enter "SemiAnnuallyError" values from "Errors.xlsx"
     And I click modal button "Save"
     Then I softly see the following messages in the page details contains:
-      | The time between Schedule Start Date and Schedule End Date must be greater than or equal to 120 days if Semi-Annually frequency is selected |
+      | The time between Schedule Start Date and Schedule End Date must be greater than or equal to 28 days if Monthly frequency is selected. |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     When I enter "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
@@ -573,6 +575,7 @@ Feature: Validate scenarios in Progress Report without background
     And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
     When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
@@ -1350,7 +1353,7 @@ Feature: Validate scenarios in Progress Report without background
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Monitoring" tab
-    When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    When I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
     And I click toggle button to select "Progress Reports - All"
     And I perform quick search for "Record Id" in "---progressReport:-:progressReportFlexTableId---" panel
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" against the value "Created" inside table "---progressReport:-:progressReportFlexTableId---"
@@ -1459,7 +1462,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I see the following messages in the page details contains:
       | Performance Tab - Enter at least one Obstacle before submitting to Grantor. |
 
-  @59135 @validateSRUserNotAllowedToSubmitPRToGrantorWhenPlanNotEntered @mahadev
+  @59135 @validateSRUserNotAllowedToSubmitPRToGrantorWhenPlanNotEntered @mahadev @bugged-80237
   Scenario: Validate Sub-recipient user is not allowed to submit progress report to grantor when Plan is not entered at Performance tab
     Given I delete the record "Automation Permanent Award" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
@@ -1781,7 +1784,7 @@ Feature: Validate scenarios in Progress Report without background
     And I refresh the page
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
-    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
     When I click toggle button to select "Progress Reports - All"
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:progressReportFlexTableId---"
     When I navigate to "Forms and Attachments" sub tab
@@ -3257,7 +3260,9 @@ Feature: Validate scenarios in Progress Report without background
 
   @59298 @MandatorySuppDocState @jitendra
   Scenario Outline: Validate Previous created Progress report remains the same at SR user end when Supporting checklist Table is updated by Award Owner
-    Given I delete the record "Automation Execution Award" from the object "Award"
+    Given I delete the record "Automation Execution Award" from the object "Progress Report"
+    Given I delete the record "Automation Execution Award" from the object "Amendment Request"
+    And I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -3386,6 +3391,8 @@ Feature: Validate scenarios in Progress Report without background
 
   @59573 @SREditDoc @jitendra
   Scenario Outline: Validate SR user is able to Edit the documents uploaded at supporting document checklist table for Progress report.
+    Given I delete the record "Automation Execution Award" from the object "Progress Report"
+    Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -3507,7 +3514,6 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Forms and Attachments" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I click on "Edit" attachment to upload attachment "Program_Field_Values.xlsx" of type "Other"
     When I close "Upload Document" modal by clicking the top right x button
     Then I see "Program_Field_Values.xlsx" has been added in "Attachments" flex table
     Examples:
@@ -3907,7 +3913,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @59288 @downloadUploadedTemplateDoc @jitendra
+  @59288 @downloadUploadedTemplateDoc @jitendra @skipOnJenkins
   Scenario Outline: Validate SR User can View the template document at Progress report if template is uploaded by award owner at Grant level.
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
@@ -4163,7 +4169,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     And I close modal by clicking the top right x button
-    When I click on top right parallel lines bar for "Supporting Documents Checklist"
+    #When I click on top right parallel lines bar for "Supporting Documents Checklist"
     And I select "Download as PDF" from parallel lines dropdown of "Supporting Documents Checklist"
     And I download the file
     Then I verify that "pdf" file is downloaded
@@ -4296,7 +4302,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     And I close modal by clicking the top right x button
-    When I click on top right parallel lines bar for "Supporting Documents Checklist"
+    #When I click on top right parallel lines bar for "Supporting Documents Checklist"
     And I select "Download as XLS" from parallel lines dropdown of "Supporting Documents Checklist"
     And I download the file
     Then I verify that "xls" file is downloaded
@@ -4693,8 +4699,7 @@ Feature: Validate scenarios in Progress Report without background
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
-    Then I see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:pendingTaskTableId---"
+    Then I see value "Record Id" for title "EGMS ID" inside table "---progressReport:-:pendingTaskTableId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -4836,7 +4841,7 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
-    Then I see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:pendingTaskTableId---"
+    Then I see value "Record Id" for title "EGMS ID" inside table "---progressReport:-:pendingTaskTableId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -6297,14 +6302,14 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
-    Then I can see the message "Successfully Approved" in the approval decision
+    Then I softly see that "{SavedValue:Record Id}" is in "Submitted for Approval" status
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
-    Then I can see the message "Successfully Approved" in the approval decision
+    Then I softly see that "{SavedValue:Record Id}" is in "Approved" status
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -7093,7 +7098,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Send to Owner" in the approval decision
-    Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
+    Then I see status in Progress-bar is "Created" and is "Green"
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -7122,6 +7127,7 @@ Feature: Validate scenarios in Progress Report without background
     And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
     When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
@@ -7277,7 +7283,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     And I "Send to Owner" in the approval decision
-    Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
+    Then I see status in Progress-bar is "Created" and is "Green"
     Examples:
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
@@ -7569,6 +7575,8 @@ Feature: Validate scenarios in Progress Report without background
 
   @60879 @validateProgramApprovercannotApprovePRWhenFinalPRAlreadyApproved @mahadev @smoke
   Scenario Outline: Validate Program approver is not allowed to approve the pending progress report if another Final Progress report is approved
+    Given I delete the record "Automation Execution Award" from the object "Progress Report"
+    Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     Given I delete the record "Automation Execution Award" from the object "Award"
     And I delete the record "Automation Execution Award" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -7860,7 +7868,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                 | Grant Name                 |
       | Automation Execution Award | Automation Execution Award |
 
-  @61092 @validateMultipleObjectivesInPRCarriedFromAward @mahadev
+  @61092 @validateMultipleObjectivesInPRCarriedFromAward @mahadev @bugged-80238
   Scenario Outline: Validate if Objectives Required? field is yes at Grant, Multiple Objectives are associated at award then it is carried at Progress report at SR End
     When I delete the record "Automation Execution Award" from the object "Amendment Request"
     Given I delete the record "Automation Execution Award" from the object "Award"
@@ -8158,8 +8166,8 @@ Feature: Validate scenarios in Progress Report without background
     And I "Approve" in the approval decision
     Then I can see the message "<Error Message>" in the approval decision
     Examples:
-      | Award Name                 | Grant Name                 | Error Message                                                                                                                                                              |
-      | Automation Execution Award | Automation Execution Award | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |
+      | Award Name                 | Grant Name                 | Error Message                                                                                                                                                                                                       |
+      | Automation Execution Award | Automation Execution Award | Any approval decision on the Progress Report cannot be made at this time because a report marked as the Final Report has already been approved. Send Back to Owner will allow the owner to notify the Subrecipient. |
 
   @62779 @PercentagePeriodAtPRAfterPaymentRequest @jitendra
   Scenario Outline: Verify Submitted for approval report Percentage of Budget Remaining field remains the same on Progress report when the Payment request type is Reimbursement with Approved Status.
@@ -9136,7 +9144,7 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    When I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:activeGrantsTableId---"
+    When I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Management" sub tab
     Then I see value "Force Closed" for title "Status" against the value "{SavedValue:ProgressReport1}" inside table "---progressreport:-:grantorGrantProgressReportTableId---"
     Examples:
@@ -9320,6 +9328,7 @@ Feature: Validate scenarios in Progress Report without background
   @63106  @validateReviewedPRStatusAfterCloseoutApproval @mahadev
   Scenario Outline: Verify Progress report with Reviewed status changed to Force Closed when closeout request is approved with type as Early completion by award owner
     Given I delete the record "Automation award for Closeout" from the object "Closeout"
+    Given I delete the record "Automation award for Closeout" from the object "Progress Report"
     Given I delete the record "Automation award for Closeout" from the object "Award"
     And I delete the record "Automation award for Closeout" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -9546,6 +9555,7 @@ Feature: Validate scenarios in Progress Report without background
     And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
     When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
@@ -10046,6 +10056,7 @@ Feature: Validate scenarios in Progress Report without background
     And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
     When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 0          | 3650     |
@@ -10249,7 +10260,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
-    When I enter in modal "Progress Report Quarterly" values from "Award_Field_Values.xlsx"
+    When I enter in modal "Progress Report BiMonthly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
@@ -10303,46 +10314,18 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Activate" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    When I delete the record "<Award Name>" from the object "Progress Report"
-    When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
-    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I save the field labeled "EGMS ID" as "ProgressReport1"
-    And I navigate to "Performance" sub tab
-    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Actual | Reported Date |
-      | Automation Permanent KPI for Regression | 7      | 7             |
-    When I navigate to "Forms and Attachments" sub tab
-    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
-    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    And I click on "Back" in the page details
-    When I click on "Submit to Grantor" in the page details
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---"
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
-    And I click on "Submit for Approval" in the page details
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I delete the record "<Award Name>" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---progressReport:-:activeGrantsTableId---" panel
     When I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:activeGrantsTableId---"
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-    When I enter "TerminationValues" values from "Closeout_Field_Values.xlsx"
+    When I enter "Creation" values from "Closeout_Field_Values.xlsx"
     And I click modal button "Save and Continue"
-    And I enter "TerminationEdition" values from "Closeout_Field_Values.xlsx"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     And I save the field labeled "EGMS ID" as "closeoutID"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -11109,7 +11092,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "<Award Name>" in "---progressReport:-:recipientAwardsTableId---" panel
     And I click on "View" icon for "<Award Name>" inside flex table with id "---progressReport:-:recipientAwardsTableId---"
     When I navigate to "Performance" sub tab
-    And I click on "View" icon for "{SavedValued:Record Id}" inside flex table with id "---progressReport:-:recipientAwardProgressReportTableId---"
+    And I click on "View" icon for "Record Id" inside flex table with id "---progressReport:-:recipientAwardProgressReportTableId---"
     Then I see status in Progress-bar is "Force Closed" and is "Red"
     Examples:
       | Award Name                    | Grant Name                    |
@@ -11265,7 +11248,8 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "<Award Name>" in "---progressReport:-:recipientAwardsTableId---" panel
     And I click on "View" icon for "<Award Name>" inside flex table with id "---progressReport:-:recipientAwardsTableId---"
     When I navigate to "Performance" sub tab
-    And I click on "View" icon for "{SavedValued:Record Id}" inside flex table with id "---progressReport:-:recipientAwardProgressReportTableId---"
+    When I perform quick search for "Force Closed" in "---progressReport:-:recipientAwardProgressReportTableId---" panel
+    And I click on "View" icon for "Force Closed" inside flex table with id "---progressReport:-:recipientAwardProgressReportTableId---"
     When I navigate to "Forms and Attachments" sub tab
     Then I cannot see row level action button "Edit" against "Community Initiative Progress Report" in flex table with id "---progressReport:-:formTableId---"
     Examples:
@@ -11275,6 +11259,8 @@ Feature: Validate scenarios in Progress Report without background
   @62765 @62777 @62774 @VerifyYTDExpendituresFieldAfterPRSubmittedForReview  @keerti
   Scenario Outline: Verify Submitted for review report YTD Expenditures field remains the same on Progress report at Award Owner end when the Payment request type is Reimbursement with Approved Status.
   Verify Submitted to Grantor report YTD Expenditures field remains the same on Progress report at Award Owner end when the Payment request type is Reimbursement with Approved Status. | Verify YTD Expenditures field get updated on Progress report at SR user end when the Payment request type is Reimbursement with Approved Status.
+    Given I delete the record "Automation Execution Award" from the object "Progress Report"
+    Given I delete the record "Automation Execution Award" from the object "Amendment Request"
     Given I delete the record "Automation award for PR" from the object "Award"
     And I delete the record "Automation award for PR" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -11921,7 +11907,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:recipientGrantProgressReportTableId---"
     When I navigate to "Performance" sub tab
     And I save the field labeled "Remaining Budget" as "BudgetRemaining2"
-    Then I softly see value "BudgetRemaining2" is "less than" the value "BudgetRemaining1"
+    Then I softly see value "BudgetRemaining1" is "less than" the value "BudgetRemaining2"
     Examples:
       | Award Name              | Grant Name              |
       | Automation award for PR | Automation award for PR |
