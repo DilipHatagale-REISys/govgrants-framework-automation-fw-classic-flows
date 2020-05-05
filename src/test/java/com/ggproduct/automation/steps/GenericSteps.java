@@ -487,4 +487,12 @@ public class GenericSteps {
         By clearAll = By.xpath("//*[@id='"+filterTableId+"']//*[@title='Clear All']//i");
         I.amPerforming().click().on(clearAll);
     }
+
+    @And("I enter value {string} in my feed section and share the post")
+    public void iEnterValueInMyFeedSectionAndShareThePost(String value) {
+        By feedSection = By.xpath("//div/textarea[@class='mention-for-post']");
+        I.amPerforming().textInput().in(feedSection, value);
+        I.amPerforming().click().on(By.xpath("//div[@class='mentions-input-box']//div[3]"));
+        I.amPerforming().click().on(By.xpath("//div/input[@id='PostToFeedButton']"));
+    }
 }

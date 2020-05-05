@@ -2805,8 +2805,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I download the file
     And I see "Automation Competitive Announcement" on page "1" of "govgrants" pdf file
 
-  @75635 @filterFunctionalityForMessagesIncollab @keerti
-    Scenario: To verify filter functionality for messages section in collab tab for announcement
+  @75635 @75624 @filterFunctionalityForMessagesMyFeedIncollab @keerti
+  Scenario: To verify filter functionality for messages section in collab tab for announcement
+  | To verify ,user able to delete post in My Feed section in collab tab in announcement.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -2998,6 +2999,16 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Publish" in the page details
     Then I softly see status in Progress-bar is "Published" and is "green"
     And I navigate to "Collab" sub tab
+    And I enter value "test @Sarah PM" in my feed section and share the post
+    And I refresh the page
+    And I wait for "30" seconds
+    And I enter value "testing collab @Sarah PM" in my feed section and share the post
+    Then I softly see "Sarah PM" inside flex table with id "---announcement:-:myFeedTableId---"
+    Then I softly see "test" inside flex table with id "---announcement:-:myFeedTableId---"
+    Then I softly see "testing collab" inside flex table with id "---announcement:-:myFeedTableId---"
+    And I click on hyperlink containing value "More Options"
+    And I click on hyperlink containing value "Delete"
+    Then I softly do not see "testing collab" inside flex table with id "---announcement:-:collabMessages---"
     And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
     And I send the email under collab tab with following details:
       | To                              | Subject | Body             |
@@ -3010,8 +3021,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Subject | Contains | jitu |
     Then I softly see "jitu" inside flex table with id "---announcement:-:collabMessages---"
 
-  @75632 @searchFunctionalityForMessagesInCollab @keerti
+  @75632 @75621 @searchFunctionalityForMessagesMyFeedInCollab @keertiF
   Scenario: To verify search functionality for messages section in collab tab for announcement
+  | To verify entered My Feed from the collab tab section of announcement is getting displayed on home phase.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -3203,6 +3215,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Publish" in the page details
     Then I softly see status in Progress-bar is "Published" and is "green"
     And I navigate to "Collab" sub tab
+    And I enter value "Hi @Automation PM" in my feed section and share the post
+    Then I softly see "Automation PM" inside flex table with id "---announcement:-:myFeedTableId---"
     And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
     And I send the email under collab tab with following details:
       | To                              | Subject | Body             |
@@ -3212,3 +3226,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I close "Send Email" modal by clicking the top right x button
     When I perform quick search for "jitu" in "---announcement:-:collabMessages---" panel
     Then I softly see "jitu" inside flex table with id "---announcement:-:collabMessages---"
+    And I navigate to "Home" tab
+    Then I softly see "Automation PM" inside flex table with id "---announcement:-:homeCollabFeedId---"
+    Then I softly see "Hi" inside flex table with id "---announcement:-:homeCollabFeedId---"
