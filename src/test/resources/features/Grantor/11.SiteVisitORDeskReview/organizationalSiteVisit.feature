@@ -850,7 +850,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I see the following messages in the page details :
       | Reports and Outcomes Tab - Fill all the required data in the form before submitting. |
 
-  @56005 @uploadsupportingDocumentChecklistFromWorkSpace @deepika @wip
+  @56005 @uploadsupportingDocumentChecklistFromWorkSpace @deepika
   Scenario: User will be able to review the supporting document checklist submitted by the subrecipient
     When I navigate to "Attachments" sub tab
     And I upload attachment "InternalOrganization_Field_Values.xlsx" from workspace

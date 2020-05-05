@@ -1,31 +1,6 @@
 @home @regression
 Feature: Validate all scenarios in the home tab
 
-  @35024 @internalOrganizationCreate @nonFunctional @wip
-  Scenario: Verifying if the Admin has create access to Internal Organization
-    Given I delete the record "Product Automation permanent Orgtn" from the object "ACCOUNT"
-    Given I login to "As Administrator" app as "Admin" user
-    When I navigate to "Setup" tab
-    And I navigate to "Internal Organizations" content inside "Manage Organizations" subheader on left panel
-    And I click on top right button "New" in flex table with id "---home:-:organizationId---"
-    When I enter "RequiredForSave" values from "InternalOrganization_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    Then I see that "State Organization" is in "Created" status
-
-  @35637 @internalOrganizationAdminEdit @nonFunctional @wip
-  Scenario Outline: Verifying if the Admin has edit access to Internal Organization
-    Given I login to "As Administrator" app as "Admin" user
-    When I navigate to "Setup" tab
-    And I navigate to "Internal Organizations" content inside "Manage Organizations" subheader on left panel
-    When I click on "View" icon for "<Organization name>" inside flex table with id "---home:-:organizationId---"
-    When I click on "Edit" in the page details
-    When I enter value "Automation" into field "Abbreviation__c"
-    And I click on "Save" in the page details
-    Then I see that "Internal Organization" is in "Created" status
-    Examples:
-      | Organization name                     |
-      | Internal Automation Organization Test |
-
   @56710 @56708 @internalOrganizationViewADMINEditPMView @smoke
   Scenario Outline: Validate whether all users have view access to Internal Organization
     Given I login to "As a Grantor" app as "<User>" user
