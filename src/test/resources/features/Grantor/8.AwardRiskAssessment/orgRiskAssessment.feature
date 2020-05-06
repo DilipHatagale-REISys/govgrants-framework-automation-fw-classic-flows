@@ -232,7 +232,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "History" sub tab
     Then I see value "Active" for title "New Value" inside table "History"
 
-  @62317 @messageInfoToAuthorizedSignatory @deepika @wip
+  @62317 @messageInfoToAuthorizedSignatory @deepika
   Scenario: Validate when Request New Assessment button is clicked a message is displayed to Authrozed Signatory
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1165,7 +1165,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I see the following messages in the page details contains:
       | Assessment Tab - Complete all of the questions on the Risk Assessment form. |
 
-  @63075 @VerifyEffectiveDateAndExpirationDate @keerti @wip
+  @63075 @VerifyEffectiveDateAndExpirationDate @keerti
   Scenario: Validate whether the Active Org Risk Assessment for Organization is updated for one year under Effective Date and Expiration Date fields inside flextable
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1610,7 +1610,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "View" icon for "{user:fullName}" inside flex table with id "---home:-:indActiveAccountId---"
     Then I can see "Risk Assessment" sub tab at view detail page
 
-  @64514 @overallRiSKScoreWhenAssessmentSelectedDiffTypeQuestions @deepika @wip
+  @64514 @overallRiSKScoreWhenAssessmentSelectedDiffTypeQuestions @deepika
   Scenario: Validate the High level Risk Score, that shows the Overall Score as per the provided Assessment once Risk Assessment is Active
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1626,7 +1626,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
     When I navigate to "Overview" sub tab
-    #Then I softly see "Risk Level" image as "red.png"
     Then I softly see field "Overall Score" as "76.0%"
 
   @64515 @overallRiSKScoreWhenAssessmentSelectedDiffQuestions @deepika

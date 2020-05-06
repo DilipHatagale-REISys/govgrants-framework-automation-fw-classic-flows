@@ -138,7 +138,7 @@ Feature: Validate all scenarios in Strategic Plan
     Then I see that "Automation Permanent KPI for Regression" has been added in flextable with Id "---strategicplan:-:ObjectivesKPITableId---"
 
     #marking as notFunctional as we can not activate multiple strategic plan for one organization
-  @34721 @strategicPlanHappyPath @notFunctional @wip
+  @34721 @strategicPlanHappyPath @notFunctional
   Scenario: strategic plan Happy Path
     And I click on "Edit" in the page details
     When I enter "StrategicPlanEdition" values from "StrategicPlan_Field_Values.xlsx"
@@ -177,7 +177,8 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Back To Strategic Goal" in the page details
     When I click on "Back To Strategic Plan" in the page details
     And I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Active" and is "Green"
+    Then I softly see the following messages in the page details contains:
+      | The Agency already has an active Strategic Plan associated with it. Cannot activate more than one Strategic Plan for an Agency |
 
   @34727 @Validate_StrategicPlanGoals @smoke
   Scenario: Validate the Strategic plan can not be activated without goals by User - Admin/EXE/PM
