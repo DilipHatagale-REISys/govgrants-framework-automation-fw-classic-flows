@@ -495,4 +495,28 @@ public class GenericSteps {
         I.amPerforming().click().on(By.xpath("//div[@class='mentions-input-box']//div[3]"));
         I.amPerforming().click().on(By.xpath("//div/input[@id='PostToFeedButton']"));
     }
+
+    @Given("I published the announcement {string} with properties {string}")
+    public void iPublishedTheAnnouncementWithProperties(String arg0, String arg1) {
+    }
+
+    @Given("I initiated an application review for application {string} on announcement {string} with properties {string}")
+    public void iInitiatedAnApplicationReviewOnAnnouncement(String applicationTitle, String announcmentTitle, String filter) {
+        projectManager.initateApplicationReviewOnAnnouncement(applicationTitle, announcmentTitle, filter);
+    }
+
+    @Given("I created approved FDM on application {string}")
+    public void iCreatedApprovedFDMWithProperties(String applicationName) {
+        projectManager.approveDFM(applicationName);
+    }
+
+    @Given("I activate award from FDM having application name {string}")
+    public void iActivateAwardFromDFMWith(String applicationName) {
+        projectManager.activateFMD(applicationName);
+    }
+
+    @Given("I created award from approved FDM with announcement {string}")
+    public void iCreatedAwardFromApprovedFDMWithAnnouncement(String announcementName) {
+        projectManager.createAwardFromFDM(announcementName);
+    }
 }
