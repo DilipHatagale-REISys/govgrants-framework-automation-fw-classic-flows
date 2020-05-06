@@ -215,8 +215,7 @@ public class ProjectApis extends ProjectWebServices{
         JsonObject awardServiceArea = new JsonObject();
         JsonArray awardServiceAreaArray = new JsonArray();
         awardServiceArea.addProperty("ServiceArea",map.get("Automation Permanent Focus Area"));
-        awardServiceArea.addProperty("GATStartDate",I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(25, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceArea.addProperty("GATStartDate","2020-05-31");
         awardServiceArea.addProperty("GATEndDate",I.amPerforming()
                 .actionToGet().currentDateWithOffsetInDesiredFormat(365, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         awardServiceAreaArray.add(awardServiceArea);
