@@ -34,6 +34,7 @@ import java.util.Properties;
  */
 public class ProjectManager extends ProjectWebServices {
     UsersAndURL usersAndURL = new UsersAndURL();
+    ProjectApis projectApis = new ProjectApis();
     public final String defaultLongText = "Automation test description";
     private String fieldValue;
 
@@ -621,5 +622,21 @@ public class ProjectManager extends ProjectWebServices {
                 govgrants.perform().modal().acceptPopUp();
             }
         }
+    }
+
+    public void initateApplicationReviewOnAnnouncement(String applicationTitle, String announcementTitle, String filter) {
+        initiateApplicationReview(projectApis.applicationReview(applicationTitle, announcementTitle, filter));
+    }
+
+    public void approveDFM(String applicationName) {
+        approveDFMPostCall(projectApis.defaultRequestPayroleForApprovedDFM(),applicationName);
+    }
+
+    public void createAwardFromFDM(String announcementName) {
+        createAwardFromFDMPostCall(projectApis.defaultPayloadCreateAwardFromFDM(announcementName));
+    }
+
+    public void activateFMD(String applicationName) {
+        activateAwardFromFDMPostCall(projectApis.defaultPayloadActivateAwardFromFDM(), applicationName);
     }
 }

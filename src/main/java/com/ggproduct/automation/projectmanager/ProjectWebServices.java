@@ -1,11 +1,14 @@
 package com.ggproduct.automation.projectmanager;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.testingblaze.register.EnvironmentFactory;
 import com.testingblaze.register.I;
 import io.restassured.response.Response;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
 public class ProjectWebServices {
     private static String endPoint = EnvironmentFactory.getEnvironmentUrl();
@@ -22,7 +25,7 @@ public class ProjectWebServices {
     /**
      * get token for authentication of Delete request
      */
-    private void getAuthToken() {
+    public void getAuthToken() {
         setDefaultEndPointGetToken();
         Response response = I.amPerforming().restHttp().postCall(null, null, endPoint + getDefaultEndPointGetToken(), null, null, null);
         tokenString = response.body().jsonPath().getString("access_token");
@@ -181,5 +184,74 @@ public class ProjectWebServices {
         response.prettyPrint();
         assertStatusCode(response);
         return response;
+    }
+
+    public String getIdOf(String objectName, String findMyId){
+        String finalEndPoint= endPoint+"/services/apexrest/getRecordIds/v1";
+        JsonObject parent = new JsonObject();
+        JsonArray array = new JsonArray();
+        array.add(findMyId);
+        parent.add(objectName,array);
+
+        getAuthToken();
+        Response response = I.amPerforming().restHttp().postCall(parent,null,finalEndPoint,"Authorization", "Bearer " + tokenString,null);
+        assertStatusCode(response);
+        Map<String, String> map = response.jsonPath().getMap("$");
+        return map.get(findMyId);
+    }
+
+    public String getRecordTypeId(String objectName, String findMyId){
+        String endpoint= endPoint+"/services/apexrest/getRecordTypeIds/v1";
+        JsonObject parent = new JsonObject();
+        parent.addProperty(objectName,findMyId);
+
+        getAuthToken();
+        Response response = I.amPerforming().restHttp().postCall(parent,null,endpoint,"Authorization", "Bearer " + tokenString,null);
+        assertStatusCode(response);
+        Map<String, String> map = response.jsonPath().getMap("$");
+        return map.get(objectName);
+    }
+
+    public void initiateApplicationReview(JsonObject jsonObject){
+        getAuthToken();
+        String finalEndPoint = endPoint +"/services/apexrest/CreateFDM/v1";
+        Response response = I.amPerforming().restHttp().postCall(jsonObject,null,
+                finalEndPoint, "Authorization", "Bearer " + tokenString,null);
+        assertStatusCode(response);
+    }
+
+    public Map<String, String> getMultipleIds(JsonObject jsonObject){
+        String finalEndPoint= endPoint+"/services/apexrest/getRecordIds/v1";
+        getAuthToken();
+        Response response = I.amPerforming().restHttp().postCall(jsonObject,null,finalEndPoint,"Authorization", "Bearer " + tokenString,null);
+        assertStatusCode(response);
+        return response.jsonPath().getMap("$");
+    }
+
+    public void approveDFMPostCall(JsonObject jsonObject, String applicationName) {
+        getAuthToken();
+        String finalEndPoint = endPoint +"/services/apexrest/CreateFDM/v2?AppId="+getIdOf("Application__c",applicationName);
+        Response response = I.amPerforming().restHttp().postCall(jsonObject,null,
+                finalEndPoint, "Authorization", "Bearer " + tokenString,null);
+        assertStatusCode(response);
+    }
+
+    public void createAwardFromFDMPostCall(JsonObject jsonObject){
+        getAuthToken();
+        String finalEndPoint = endPoint +"/services/apexrest/activateAwardFromFDM/v1";
+        I.amPerforming().waitFor().makeThreadSleep(5000);
+        Response response = I.amPerforming().restHttp().postCall(jsonObject,null,
+                finalEndPoint, "Authorization", "Bearer " + tokenString,null);
+        response.prettyPrint();
+        assertStatusCode(response);
+    }
+
+    public void activateAwardFromFDMPostCall(JsonObject jsonObject,String applicationName){
+        getAuthToken();
+        String finalEndPoint = endPoint +"/services/apexrest/activateAwardFromFDM/v2?GrantId="+getIdOf("Grant__c",applicationName);
+        Response response = I.amPerforming().restHttp().postCall(jsonObject,null,
+                finalEndPoint, "Authorization", "Bearer " + tokenString,null);
+        response.prettyPrint();
+        assertStatusCode(response);
     }
 }
