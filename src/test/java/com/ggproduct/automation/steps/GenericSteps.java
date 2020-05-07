@@ -492,6 +492,7 @@ public class GenericSteps {
     public void iEnterValueInMyFeedSectionAndShareThePost(String value) {
         By feedSection = By.xpath("//div/textarea[@class='mention-for-post']");
         I.amPerforming().textInput().in(feedSection, value);
+        I.amPerforming().waitFor().makeThreadSleep(2000);
         I.amPerforming().click().on(By.xpath("//div[@class='mentions-input-box']//div[3]"));
         I.amPerforming().click().on(By.xpath("//div/input[@id='PostToFeedButton']"));
     }
