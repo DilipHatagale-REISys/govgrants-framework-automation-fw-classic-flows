@@ -193,7 +193,7 @@ public class ProjectApis extends ProjectWebServices{
         JsonArray awardArray = new JsonArray();
         award.addProperty("GrantAwardDescription","Award Created From Automation API");
         award.addProperty("BudgetPeriodEndDate", I.amPerforming()
-        .actionToGet().currentDateWithOffsetInDesiredFormat(365, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        .actionToGet().currentDateWithOffsetInDesiredFormat(600, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         awardArray.add(award);
         parent.add("Award",awardArray);
 
@@ -215,9 +215,8 @@ public class ProjectApis extends ProjectWebServices{
         JsonObject awardServiceArea = new JsonObject();
         JsonArray awardServiceAreaArray = new JsonArray();
         awardServiceArea.addProperty("ServiceArea",map.get("Automation Permanent Focus Area"));
-        awardServiceArea.addProperty("GATStartDate","2020-05-31");
-        awardServiceArea.addProperty("GATEndDate",I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(365, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceArea.add("GATStartDate",JsonNull.INSTANCE);
+        awardServiceArea.add("GATEndDate",JsonNull.INSTANCE);
         awardServiceAreaArray.add(awardServiceArea);
         parent.add("AwardServiceArea",awardServiceAreaArray);
 
@@ -245,6 +244,9 @@ public class ProjectApis extends ProjectWebServices{
         return parent;
     }
 
+    /**
+     * @return
+     */
     public JsonObject defaultPayloadActivateAwardFromFDM(){
         JsonObject parent = new JsonObject();
         JsonArray termConditionSchedule = new JsonArray();
@@ -273,6 +275,298 @@ public class ProjectApis extends ProjectWebServices{
         termConditionSchedule.add(progressReport);
 
         parent.add("TermConditionSchedule",termConditionSchedule);
+
+        return parent;
+    }
+
+
+    /**
+     * @param annType
+     * @param annName
+     * @param filter
+     * @return
+     * This method include switch cases. If we wants to change the some parameter from the default payload returned by method
+     * @see #getDefaultPayloadPublishAnn(String,String) then we can simply create our own method having parameter(this parameter would be json object return
+     * by method getDefaultPayloadPublishAnn(String,String)) and then we can create out own swtich case and call that method under this switch case. And pass
+     * this switch cases from feature step....
+     * e.g take a look at BUDGETPERIODDATES case below...
+     */
+    public JsonObject publishAnnPayload(String annType, String annName, String filter){
+        JsonObject json = getDefaultPayloadPublishAnn(annType, annName);
+        filter = filter.toUpperCase();
+
+        switch (filter){
+            case "BUDGETPERIODDATES":
+                return updateBudgetPeridDateForAnnouncement(json);
+            default:
+                return json;
+        }
+    }
+
+    private JsonObject updateBudgetPeridDateForAnnouncement(JsonObject json) {
+
+        JsonObject bperiod = json.getAsJsonArray("BudgetPeriod").get(0).getAsJsonObject();
+        JsonArray bperiodA = new JsonArray();
+
+        bperiod.addProperty("BudgetStartDate",
+                I.amPerforming().actionToGet().currentDateWithOffsetInDesiredFormat(11, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        bperiodA.add(bperiod);
+        json.add("BudgetPeriod",bperiodA);
+        return json;
+    }
+
+    /**
+     * @param annType Formula, Competitive Directed
+     * @param annName any name
+     * @return JsonObject
+     * This method return the default request payload for publishing the announcement
+     */
+    public JsonObject getDefaultPayloadPublishAnn(String annType, String annName){
+
+        String program = "Automation Permanent Internal Program";
+        JsonObject parent = new JsonObject();
+
+        JsonObject ann = new JsonObject();
+        JsonArray annA = new JsonArray();
+
+        ann.addProperty("name",annName);
+        ann.addProperty("AnnouncementType",annType);
+        ann.addProperty("Program",getIdOf("Program__c",program));
+        ann.addProperty("BudgetType","Non-Construction");
+        ann.addProperty("MaxApplicationsAllowed",500);
+        ann.addProperty("IsMatchRequired","Yes");
+        ann.addProperty("GranteeMatch",10);
+        ann.addProperty("IsProgramIncomeAnticipated","Yes");
+        ann.addProperty("LaverageAllowed","Yes");
+        ann.addProperty("PreApplicationNeeded","No");
+        ann.addProperty("PreApplicationDueDate",I.amPerforming()
+                .actionToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        ann.addProperty("ApplicationDueDate",I.amPerforming()
+                .actionToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        ann.addProperty("FocusAreaRequired","Yes");
+        ann.addProperty("IsGoalsRequired","Yes");
+        ann.addProperty("KPIsRequired","Yes");
+        ann.addProperty("WBSRequired","No");
+        ann.addProperty("RiskAssessment_Required","Yes");
+        ann.addProperty("AreExpensesBuildIUpLevel","No");
+        ann.addProperty("IsAdvancePermitted","No");
+        ann.addProperty("IsNegotiationsAllowed","No");
+        ann.addProperty("EligibleApplicantTypes","04;05");
+        ann.addProperty("AwardFloor",1000);
+        ann.addProperty("AwardCeiling",10000);
+        ann.addProperty("EstimatedFundingAmount",10000);
+        ann.addProperty("OwnerId",getIdOf("User","Automation PM"));
+        ann.addProperty("RecordTypeId",getRecordTypeId("Announcement__c","Grantor"));
+
+        annA.add(ann);
+        parent.add("Announcement",annA);
+
+        JsonObject serviceArea = new JsonObject();
+        JsonArray serviceAreaA = new JsonArray();
+        serviceArea.add("ServiceArea", JsonNull.INSTANCE);
+        serviceAreaA.add(serviceArea);
+        parent.add("AnnouncementServiceArea",serviceAreaA);
+
+        JsonObject awardFundingAccount = new JsonObject();
+        JsonArray awardFundingAccountArray = new JsonArray();
+        awardFundingAccount.addProperty("FundingAccount",getIdOf("FundingAccount__c",I.amPerforming().propertiesFileOperationsTo()
+        .getValue("fundingAccount")));
+        awardFundingAccount.addProperty("PreEncumbranceAmount","1000");
+        awardFundingAccountArray.add(awardFundingAccount);
+        parent.add("AwardFundingAccount",awardFundingAccountArray);
+
+        JsonObject kpiGoalsObjectives = new JsonObject();
+        JsonArray kpiGoalsObjectivesArrays = new JsonArray();
+        kpiGoalsObjectives.add("StrategicPlan",JsonNull.INSTANCE);
+        kpiGoalsObjectivesArrays.add(kpiGoalsObjectives);
+        parent.add("KPIGoalsObjectives",kpiGoalsObjectivesArrays);
+
+        JsonObject keyOutcome = new JsonObject();
+        JsonArray keyOutcomeArray = new JsonArray();
+        keyOutcome.add("MasterKPI",JsonNull.INSTANCE);
+        keyOutcomeArray.add(keyOutcome);
+        parent.add("KeyOutcome",keyOutcomeArray);
+
+        JsonObject budgetPeriod = new JsonObject();
+        JsonArray budgetPeriodArray = new JsonArray();
+
+        budgetPeriod.addProperty("BudgetStartDate",I.amPerforming()
+                .actionToGet().currentDateWithOffsetInDesiredFormat(50, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        budgetPeriod.addProperty("BudgetEndDate",I.amPerforming()
+                .actionToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        budgetPeriodArray.add(budgetPeriod);
+        parent.add("BudgetPeriod",budgetPeriodArray);
+
+        JsonObject invApp = new JsonObject();
+        JsonArray invAppA = new JsonArray();
+        invApp.addProperty("Organization",getIdOf("Account","SAN DIEGO ELECTRICAL TRAINING TRUST"));
+        invApp.addProperty("AllocatedAmount",2000);
+        invAppA.add(invApp);
+        parent.add("InvitedApplicant",invAppA);
+
+        return parent;
+    }
+
+    /**
+     * @param grantName
+     * @param filter
+     * @return
+     * This method include switch cases. If we wants to change the some parameter from the default payload returned by method
+     * @see #defaultPayloadCreateStandaloneAward(String) then we can simply create our own method having parameter(this parameter would be json object return
+     * by method defaultPayloadCreateStandaloneAward(String)) and then we can create out own swtich case and call that method under this switch case. And pass
+     * this switch cases from feature step....
+     */
+    public JsonObject payloadForCreateStandaloneAward(String grantName, String filter){
+        filter = filter.toUpperCase();
+        JsonObject json = defaultPayloadCreateStandaloneAward(grantName);
+
+        switch (filter){
+            case "NO_RISK_ASSEMENT":
+                return json;
+            default:
+                return json;
+        }
+    }
+
+
+    /**
+     * @param grantName
+     * @return this method will return json object of detault request payload for creating the standalone award...
+     * @see ProjectWebServices#getIdOf(String, String)
+     * @see ProjectWebServices#getRecordTypeId(String, String)
+     */
+    public JsonObject defaultPayloadCreateStandaloneAward(String grantName){
+        JsonObject parent = new JsonObject();
+
+        JsonObject grant = new JsonObject();
+        JsonArray grantA = new JsonArray();
+
+        grant.addProperty("ProjectTitle",grantName);
+        grant.addProperty("GrantAbbreviation","1234");
+        grant.addProperty("GrantNumber","31231232");
+        grant.addProperty("ProjectPeriodStartDate",
+                I.amPerforming()
+                        .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        grant.addProperty("ProjectPeriodEndDate",
+                I.amPerforming()
+                        .actionToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        grant.addProperty("BudgetCategoryPackage","Construction");
+        grant.addProperty("GrantType","Formula Grant");
+        grant.addProperty("GrantDescription","API Testing For Award Activation From Direct Grant");
+        grant.addProperty("ExternalOrganization",getIdOf("Account","Test Automation Organization"));
+        grant.addProperty("InternalOrganization",getIdOf("Account","SAN DIEGO ELECTRICAL TRAINING TRUST"));
+        grant.addProperty("Program",getIdOf("Program__c","Automation Permanent Internal Program"));
+        grant.addProperty("DoesGrantAllowIndirect","Yes");
+        grant.addProperty("IsMatchRequired","Yes");
+        grant.addProperty("MaintenanceOfEffort","Yes");
+        grant.addProperty("LaverageAllowed","Yes");
+        grant.addProperty("IsProgramIncomeAnticipated","Yes");
+        grant.addProperty("IsAdvancePermitted","Yes");
+        grant.addProperty("FocusAreaRequired","Yes");
+        grant.addProperty("IsGoalsRequired","Yes");
+        grant.addProperty("KPIsRequired","Yes");
+        grant.addProperty("RiskAssessment_Required","Yes");
+        grant.addProperty("WBSRequired","Yes");
+        grant.addProperty("IsBuildUpFunctionality","Yes");
+        grant.addProperty("AreExpensesBuildIUpLevel","Yes");
+        grant.addProperty("GranteeMatch",10);
+        grant.addProperty("BudgetCloseoutrequestRequired","Yes");
+        grant.addProperty("CostSharing","Cash Match");
+        grant.addProperty("RecordTypeId",getRecordTypeId("Grant__c","Grantor"));
+        grant.addProperty("OwnerId",getIdOf("User","Automation PM"));
+        grantA.add(grant);
+        parent.add("Grant",grantA);
+
+        JsonObject award = new JsonObject();
+        JsonArray awardArray = new JsonArray();
+        award.addProperty("GrantAwardDescription","Award Created From Automation API");
+        award.addProperty("BudgetPeriodEndDate", I.amPerforming()
+                .actionToGet().currentDateWithOffsetInDesiredFormat(600, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardArray.add(award);
+        parent.add("Award",awardArray);
+
+        JsonObject awardFundingAccount = new JsonObject();
+        JsonArray awardFundingAccountArray = new JsonArray();
+        awardFundingAccount.addProperty("FundingAccount",getIdOf("FundingAccount__c",I.amPerforming().propertiesFileOperationsTo()
+                .getValue("fundingAccount")));
+        awardFundingAccount.addProperty("PreEncumbranceAmount","1000");
+        awardFundingAccountArray.add(awardFundingAccount);
+        parent.add("AwardFundingAccount",awardFundingAccountArray);
+
+        JsonObject buildUpItems = new JsonObject();
+        JsonArray buildUpItemsA = new JsonArray();
+        buildUpItems.addProperty("BudgetCategory","Construction");
+        buildUpItems.addProperty("Title","Construction");
+        buildUpItems.addProperty("Narrative","Test Build-up");
+        buildUpItems.addProperty("AwardedBudget",1000);
+        buildUpItems.addProperty("CashMatch",100);
+        buildUpItems.addProperty("NonCashMatch",100);
+        buildUpItems.add("OtherLeverageOptional",JsonNull.INSTANCE);
+        buildUpItemsA.add(buildUpItems);
+        parent.add("BuildUpItems",buildUpItemsA);
+
+        JsonObject paymentRequestSchedule = new JsonObject();
+        JsonArray schdeuleArray = new JsonArray();
+        paymentRequestSchedule.addProperty("SubmissionTitle","Grant API Test");
+        paymentRequestSchedule.addProperty("CalReportingStartDate",
+                I.amPerforming()
+                        .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        paymentRequestSchedule.addProperty("CalReportingEndDate",
+                I.amPerforming()
+                        .actionToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        paymentRequestSchedule.addProperty("Frequency","Annually");
+        paymentRequestSchedule.addProperty("ScheduleBase","Calendar");
+        paymentRequestSchedule.addProperty("SubmissionType","Payment Request");
+        schdeuleArray.add(paymentRequestSchedule);
+
+        JsonObject progressReportSchedule = new JsonObject();
+        progressReportSchedule.addProperty("SubmissionTitle","Grant Progress Report");
+        progressReportSchedule.addProperty("CalReportingStartDate",
+                I.amPerforming()
+                        .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        progressReportSchedule.addProperty("CalReportingEndDate",
+                I.amPerforming()
+                        .actionToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        progressReportSchedule.addProperty("Frequency","Annually");
+        progressReportSchedule.addProperty("ScheduleBase","Calendar");
+        progressReportSchedule.addProperty("SubmissionType","Progress Report");
+        schdeuleArray.add(progressReportSchedule);
+
+        parent.add("PaymentRequestSchedule",schdeuleArray);
+
+        JsonObject awardServiceArea = new JsonObject();
+        JsonArray awardServiceAreaArray = new JsonArray();
+        awardServiceArea.addProperty("ServiceArea",getIdOf("ServiceArea__c","Automation Permanent Focus Area"));
+        awardServiceArea.addProperty("GATStartDate",
+                I.amPerforming()
+                        .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceArea.addProperty("GATEndDate",
+                I.amPerforming()
+                        .actionToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        awardServiceAreaArray.add(awardServiceArea);
+        parent.add("AwardServiceArea",awardServiceAreaArray);
+
+        JsonObject kpiGoalsObjectives = new JsonObject();
+        JsonArray kpiGoalsObjectivesArrays = new JsonArray();
+        kpiGoalsObjectives.addProperty("StrategicPlan",getIdOf("StrategicPlan__c","Automation Permanent Strategic Plan"));
+        kpiGoalsObjectivesArrays.add(kpiGoalsObjectives);
+        parent.add("KPIGoalsObjectives",kpiGoalsObjectivesArrays);
+
+        JsonObject keyOutcome = new JsonObject();
+        JsonArray keyOutcomeArray = new JsonArray();
+        keyOutcome.addProperty("MasterKPI",getIdOf("MasterKPI__c","Automation Permanent KPI for Regression")); // KPI id
+        keyOutcome.addProperty("Target","10");
+        keyOutcomeArray.add(keyOutcome);
+        parent.add("KeyOutcome",keyOutcomeArray);
+
+        // Add key contacts
+        JsonObject keyContacts = new JsonObject();
+        JsonArray keyContactsArray = new JsonArray();
+        keyContacts.addProperty("ProjectRole","Project Director/Manager");
+        keyContacts.addProperty("Contact",getIdOf("Contact","Automation SPI")); // Automation SPI id
+        keyContacts.addProperty("IsKeyContact",true);
+        keyContactsArray.add(keyContacts);
+        parent.add("KeyContacts",keyContactsArray);
 
         return parent;
     }
