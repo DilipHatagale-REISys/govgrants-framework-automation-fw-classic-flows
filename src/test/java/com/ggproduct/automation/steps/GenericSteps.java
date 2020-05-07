@@ -492,12 +492,9 @@ public class GenericSteps {
     public void iEnterValueInMyFeedSectionAndShareThePost(String value) {
         By feedSection = By.xpath("//div/textarea[@class='mention-for-post']");
         I.amPerforming().textInput().in(feedSection, value);
+        I.amPerforming().waitFor().makeThreadSleep(2000);
         I.amPerforming().click().on(By.xpath("//div[@class='mentions-input-box']//div[3]"));
         I.amPerforming().click().on(By.xpath("//div/input[@id='PostToFeedButton']"));
-    }
-
-    @Given("I published the announcement {string} with properties {string}")
-    public void iPublishedTheAnnouncementWithProperties(String arg0, String arg1) {
     }
 
     @Given("I initiated an application review for application {string} on announcement {string} with properties {string}")
@@ -518,5 +515,15 @@ public class GenericSteps {
     @Given("I created award from approved FDM with announcement {string}")
     public void iCreatedAwardFromApprovedFDMWithAnnouncement(String announcementName) {
         projectManager.createAwardFromFDM(announcementName);
+    }
+
+    @And("I published {string} type announcement having name {string} and properties {string}")
+    public void iPublishedTypeAnnouncementHavingNameAndProperties(String annType, String annName, String filter) {
+        projectManager.publishAnnouncment(annType,annName,filter);
+    }
+
+    @And("I activated standalone subaward {string} with properties {string}")
+    public void iActivatedStandaloneSubawardWithProperties(String grantName, String filter) {
+        projectManager.activateSubaward(grantName,filter);
     }
 }

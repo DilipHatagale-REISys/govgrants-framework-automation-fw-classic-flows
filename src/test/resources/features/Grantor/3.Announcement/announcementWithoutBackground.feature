@@ -526,3 +526,53 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I save the value from row "1" for column name "EGMS ID" as "egms id" from flex table "---preApplication:-:qualifiedOpprtunitesTableId---"
     And I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---preApplication:-:qualifiedOpprtunitesTableId---"
     Then I softly see field "EGMS ID" as "{SavedValue:egms id}"
+
+  @73857 @75635 @75624 @publishingExtendDatedButtonDisplay
+  Scenario: To Verify that Extend Dates(Revise) button will be shown when Announcement status is Published  for announcement
+    And I delete the record "Announcement Tests for life" from the object "Announcement"
+    Given I published "Competitive" type announcement having name "Announcement Tests for life" and properties "default"
+    And I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "Published Competitive Announcements"
+    And I perform quick search for "Announcement Tests for life" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "Announcement Tests for life" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    Then I softly can see top right button "Extend Dates" in page detail
+    And I navigate to "Collab" sub tab
+    And I enter value "test @Sarah PM" in my feed section and share the post
+    And I refresh the page
+    And I wait for "30" seconds
+    And I enter value "testing collab @Sarah PM" in my feed section and share the post
+    Then I softly see "Sarah PM" inside flex table with id "---announcement:-:myFeedTableId---"
+    Then I softly see "test" inside flex table with id "---announcement:-:myFeedTableId---"
+    Then I softly see "testing collab" inside flex table with id "---announcement:-:myFeedTableId---"
+    And I click on hyperlink containing value "More Options"
+    And I click on hyperlink containing value "Delete"
+    And I click modal button "OK"
+    Then I softly do not see "testing collab" inside flex table with id "---announcement:-:collabMessages---"
+    And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
+    And I send the email under collab tab with following details:
+      | To                              | Subject | Body             |
+      | internal.user.product@gmail.com | jitu    | this is bodyless |
+    Then I softly see the following messages in the page details :
+      | Email sent succesfully. |
+    And I close "Send Email" modal by clicking the top right x button
+    And I click on advance filter "#advfCommunicationHistory" of table id "---announcement:-:collabMessages---"
+    And I enter advance filter values inside id "advfCommunicationHistory"
+      | Subject | Contains | jitu |
+    Then I softly see "jitu" inside flex table with id "---announcement:-:collabMessages---"
+
+  @75524 @publishedAllowToDownloadPDF
+  Scenario: To verify system allow to download PDF for Announcement after publishing it
+    And I delete the record "Announcement Tests for pdf" from the object "Announcement"
+    Given I published "Competitive" type announcement having name "Announcement Tests for pdf" and properties "default"
+    And I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "Published Competitive Announcements"
+    And I perform quick search for "Announcement Tests for pdf" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "Announcement Tests for pdf" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "Menu" in the page details
+    And I select "Download As PDF" from dropdown
+    And I download the file
+    And I see "Announcement Tests for pdf" on page "1" of "govgrants" pdf file

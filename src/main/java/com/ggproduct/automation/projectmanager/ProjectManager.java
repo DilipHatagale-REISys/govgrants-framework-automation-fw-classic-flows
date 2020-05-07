@@ -628,15 +628,49 @@ public class ProjectManager extends ProjectWebServices {
         initiateApplicationReview(projectApis.applicationReview(applicationTitle, announcementTitle, filter));
     }
 
+
+    /**
+     * @param applicationName name of application
+     */
     public void approveDFM(String applicationName) {
         approveDFMPostCall(projectApis.defaultRequestPayroleForApprovedDFM(),applicationName);
     }
 
+
+    /**
+     * @param announcementName name of announcement on which application is created with same name as announcement
+     */
     public void createAwardFromFDM(String announcementName) {
         createAwardFromFDMPostCall(projectApis.defaultPayloadCreateAwardFromFDM(announcementName));
     }
 
+
+    /**
+     * @param applicationName name of application from which we have to create activate FDM
+     * @see  ProjectApis#defaultPayloadActivateAwardFromFDM()
+     */
     public void activateFMD(String applicationName) {
         activateAwardFromFDMPostCall(projectApis.defaultPayloadActivateAwardFromFDM(), applicationName);
+    }
+
+    /**
+     * @param annType type of announcement such as Formula, Competitive, Directed
+     * @param annName name of announcement
+     * @param filter if we want to change anything from default payload then we can create
+     *               our own filter in publishAnnPayload(String, String) method
+     * @see  ProjectApis#publishAnnPayload(String, String, String)
+     */
+    public void publishAnnouncment(String annType, String annName, String filter) {
+        publishAnnouncementPostCall(projectApis.publishAnnPayload(annType,annName,filter));
+    }
+
+    /**
+     * @param grantName name of award
+     * @param filter if we want to change anything from default payload then we can create
+     *               our own filter in payloadForCreateStandaloneAward(String, String) method
+     * @see ProjectApis#payloadForCreateStandaloneAward(String, String)
+     */
+    public void activateSubaward(String grantName, String filter) {
+        activateSubawardGetCall(projectApis.payloadForCreateStandaloneAward(grantName, filter),grantName);
     }
 }

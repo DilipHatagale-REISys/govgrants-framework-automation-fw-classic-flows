@@ -2311,6 +2311,29 @@ Feature: Validate all scenarios of grants and award without background
     Then I see the following messages in the page details contains:
       | Budget Tab - At least one focus area must be in place at all times during the budget period. Adjust the focus area dates accordingly. |
 
+  @66096 @defaultPackageAssociateWithSubaward @aashish
+  Scenario Outline: To Verify that the Default package associated with subaward should be displayed correctly |
+  To verify that Initiate Desk review button appear on site visit table of management tab of Award owner after Subaward is activated
+    Given I delete the record "<Award Name>" from the object "Award"
+    And I delete the record "<Award Name>" from the object "Grant"
+    And I activated standalone subaward "<Award Name>" with properties "default"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:grantsTableId---"
+    And I navigate to "Attachments" sub tab
+    Then I softly see value "Grantor Site Visit Forms" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
+    Then I softly see value "Grantor Progress Report Forms" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
+    Then I softly see value "Organization Desk Review" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I navigate to "Management" sub tab
+    And I softly can see top right button "Initiate Desk Review" in flex table with id "GrantorDeskReviewAward"
+    Examples:
+      | Award Name         |
+      | Package Test Award |
+
   @71436 @jitendra @activeAwardFilter
   Scenario: Verify that Activated records are getting displayed proper post apply a filter "activated" on grants by SPI/SPA users.
     When I login to "As a Grantor" app as "dynamicUser" user
