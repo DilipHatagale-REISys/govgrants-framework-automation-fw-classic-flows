@@ -1,8 +1,7 @@
 @awardFromFDMWithAPI @regression
 Feature: Validate all scenarios of Subaward From FDM and activating an Award using API
 
-  @awardSiteVisitAndDeskReview
-  Scenario Outline: Validate award site visit and desk review creation
+  Background: Activating Subaward from FDM using API
     Given I delete the record "Automation Announcement for FDM" from the object "Progress Report"
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
@@ -10,6 +9,9 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
     When I login to "As a Grantor" app as "dynamicUser" user
     Given I created award from approved FDM with announcement "Automation Announcement for FDM"
     And I activate award from FDM having application name "Automation Announcement for FDM"
+
+  @awardSiteVisitAndDeskReview
+  Scenario Outline: Validate award site visit and desk review creation
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -44,13 +46,6 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
 
   @38224 @awardHappyPathFromFDM @productBusinessFlowSanity
   Scenario: : Validate  the activation of subaward from FDM happy path and the status changes to Activated
-    Given I delete the record "Automation Announcement for FDM" from the object "Progress Report"
-    Given I delete the record "Automation Desk Review" from the object "Desk Review"
-    When I delete the record "Automation Site Visit" from the object "Site Visit"
-    And I delete the record "Automation Announcement for FDM" from the object "FDM"
-    When I login to "As a Grantor" app as "dynamicUser" user
-    Given I created award from approved FDM with announcement "Automation Announcement for FDM"
-    And I activate award from FDM having application name "Automation Announcement for FDM"
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -62,13 +57,6 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
 
   @75517 @75519 @75521 @75518 @grantRelateLogsDetails
   Scenario Outline: To verify user able to search grant in grant section in Related log tab of announcement.
-    Given I delete the record "Automation Announcement for FDM" from the object "Progress Report"
-    Given I delete the record "Automation Desk Review" from the object "Desk Review"
-    When I delete the record "Automation Site Visit" from the object "Site Visit"
-    And I delete the record "Automation Announcement for FDM" from the object "FDM"
-    When I login to "As a Grantor" app as "dynamicUser" user
-    Given I created award from approved FDM with announcement "Automation Announcement for FDM"
-    And I activate award from FDM having application name "Automation Announcement for FDM"
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Published Competitive Announcements"
@@ -94,13 +82,6 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
 
   @75528 @FederalGrantRelateLogsDetails
   Scenario Outline: To verify user able to search Active Federal/NGO grant in Active Federal/NGO grant section in Related log tab of announcement
-    Given I delete the record "Automation Announcement for FDM" from the object "Progress Report"
-    Given I delete the record "Automation Desk Review" from the object "Desk Review"
-    When I delete the record "Automation Site Visit" from the object "Site Visit"
-    And I delete the record "Automation Announcement for FDM" from the object "FDM"
-    When I login to "As a Grantor" app as "dynamicUser" user
-    Given I created award from approved FDM with announcement "Automation Announcement for FDM"
-    And I activate award from FDM having application name "Automation Announcement for FDM"
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Published Competitive Announcements"
