@@ -150,7 +150,7 @@ Feature: Validate all scenarios in Closeout
       | Award Name                 |
       | Automation Permanent Award |
 
-  @adhocCloseoutHappyPath @smoke @notFunctional @wip
+  @50980 @adhocCloseoutHappyPath @smoke @notFunctional @wip
   Scenario: Approval of Closeout
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -191,7 +191,7 @@ Feature: Validate all scenarios in Closeout
       | Approval   | Start         | Approve  |                   |
     Then I see status in Progress-bar is "Completed" and is "green"
 
-  @scheduledCloseoutHappyPath @notFunctional @wip
+  @50982 @scheduledCloseoutHappyPath @notFunctional @wip
   Scenario: Happy path of Scheduled closeout
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
