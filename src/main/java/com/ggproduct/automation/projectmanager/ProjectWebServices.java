@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class ProjectWebServices {
     private static String endPoint = EnvironmentFactory.getEnvironmentUrl();
-    private String defaultEndPointGetToken = "/services/oauth2/token" +
+    private static String defaultEndPointGetToken = "/services/oauth2/token" +
             "?grant_type=password" +
             "&client_id=3MVG9ic.6IFhNpPq_k9vYkenIh973gbcI2GBHkEu4.ukW4PZidcRmrQ6ma0lg.fdcZRtLB4IL1HgKKB87Y5Ab" +
             "&client_secret=6105591870206036129" +
@@ -22,10 +22,14 @@ public class ProjectWebServices {
     private String jobID;
     private String status;
 
+    static {
+        getAuthToken();
+    }
+
     /**
      * get token for authentication of Delete request
      */
-    public void getAuthToken() {
+    public static void getAuthToken() {
         setDefaultEndPointGetToken();
         Response response = I.amPerforming().restHttp().postCall(null, null, endPoint + getDefaultEndPointGetToken(), null, null, null);
         tokenString = response.body().jsonPath().getString("access_token");
@@ -64,27 +68,27 @@ public class ProjectWebServices {
         assertStatusCode(response);
     }
 
-    private String getDefaultEndPointGetToken() {
+    private static String getDefaultEndPointGetToken() {
         return defaultEndPointGetToken;
     }
 
-    private void setDefaultEndPointGetToken() throws RuntimeException{
+    private static void setDefaultEndPointGetToken() throws RuntimeException{
         String env = "";
         if (System.getProperty("env") != null)
             env = System.getProperty("env").toUpperCase();
 
         switch (env) {
             case "QA":
-                this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR&client_secret=1408645120361878326&username=mayuresh.g@ggp.test7&password=Salesforce_2019";
+                defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR&client_secret=1408645120361878326&username=mayuresh.g@ggp.test7&password=Salesforce_2019";
                 break;
             case "AUTO":
-                this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG92DxHaawSd0luAabE5ir8xlXoKuHsm5noVyqnHFUOo829AX1MfWuFpJhCDn0__e7EWt_DixBbuY2yy1.H&client_secret=BAAC6A7374660FC52DFAF43304D80F6E4EF17DA8C3F9503F6E3380EEEEF20784&username=manu.admin@ggp.test8.automation&password=GoProduct@12345";
+                defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG92DxHaawSd0luAabE5ir8xlXoKuHsm5noVyqnHFUOo829AX1MfWuFpJhCDn0__e7EWt_DixBbuY2yy1.H&client_secret=BAAC6A7374660FC52DFAF43304D80F6E4EF17DA8C3F9503F6E3380EEEEF20784&username=manu.admin@ggp.test8.automation&password=GoProduct@12345";
                 break;
             case "TEST8":
-                this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG90D5vR7Utjboc8b3nxgWl_TIAtGV_TgV2OQsaOZNGnhetFSjnMGSvL67KfRN99.Z0ne32YZHHlzdyCb_a&client_secret=F1F4C218C1E6AB1ECA2DD46CDCFB204D66FCEFA2DB939003C5C4B207DAF0A736&username=manu.admin@ggp.test8.automation&password=GoProduct@1234";
+                defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG90D5vR7Utjboc8b3nxgWl_TIAtGV_TgV2OQsaOZNGnhetFSjnMGSvL67KfRN99.Z0ne32YZHHlzdyCb_a&client_secret=F1F4C218C1E6AB1ECA2DD46CDCFB204D66FCEFA2DB939003C5C4B207DAF0A736&username=manu.admin@ggp.test8.automation&password=GoProduct@1234";
                 break;
             default:
-                this.defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR&client_secret=1408645120361878326&username=mayuresh.g@ggp.test7&password=Salesforce_2019";
+                defaultEndPointGetToken = "/services/oauth2/token?grant_type=password&client_id=3MVG9dZJodJWITSuFoeXeOau_jPysAF1tDTnpScZyZwXUGhS_ZudVpjPfvLFrO78TVtOgK6flv6R5a4OV8QnR&client_secret=1408645120361878326&username=mayuresh.g@ggp.test7&password=Salesforce_2019";
         }
     }
 
@@ -193,7 +197,6 @@ public class ProjectWebServices {
         array.add(findMyId);
         parent.add(objectName,array);
 
-        getAuthToken();
         Response response = I.amPerforming().restHttp().postCall(parent,null,finalEndPoint,"Authorization", "Bearer " + tokenString,null);
         assertStatusCode(response);
         Map<String, String> map = response.jsonPath().getMap("$");
@@ -205,7 +208,6 @@ public class ProjectWebServices {
         JsonObject parent = new JsonObject();
         parent.addProperty(objectName,findMyId);
 
-        getAuthToken();
         Response response = I.amPerforming().restHttp().postCall(parent,null,endpoint,"Authorization", "Bearer " + tokenString,null);
         assertStatusCode(response);
         Map<String, String> map = response.jsonPath().getMap("$");
@@ -213,7 +215,6 @@ public class ProjectWebServices {
     }
 
     public void initiateApplicationReview(JsonObject jsonObject){
-        getAuthToken();
         String finalEndPoint = endPoint +"/services/apexrest/CreateFDM/v1";
         Response response = I.amPerforming().restHttp().postCall(jsonObject,null,
                 finalEndPoint, "Authorization", "Bearer " + tokenString,null);
@@ -222,14 +223,12 @@ public class ProjectWebServices {
 
     public Map<String, String> getMultipleIds(JsonObject jsonObject){
         String finalEndPoint= endPoint+"/services/apexrest/getRecordIds/v1";
-        getAuthToken();
         Response response = I.amPerforming().restHttp().postCall(jsonObject,null,finalEndPoint,"Authorization", "Bearer " + tokenString,null);
         assertStatusCode(response);
         return response.jsonPath().getMap("$");
     }
 
     public void approveDFMPostCall(JsonObject jsonObject, String applicationName) {
-        getAuthToken();
         String finalEndPoint = endPoint +"/services/apexrest/CreateFDM/v2?AppId="+getIdOf("Application__c",applicationName);
         Response response = I.amPerforming().restHttp().postCall(jsonObject,null,
                 finalEndPoint, "Authorization", "Bearer " + tokenString,null);
@@ -237,7 +236,6 @@ public class ProjectWebServices {
     }
 
     public void createAwardFromFDMPostCall(JsonObject jsonObject){
-        getAuthToken();
         String finalEndPoint = endPoint +"/services/apexrest/activateAwardFromFDM/v1";
         I.amPerforming().waitFor().makeThreadSleep(5000);
         Response response = I.amPerforming().restHttp().postCall(jsonObject,null,
@@ -247,11 +245,32 @@ public class ProjectWebServices {
     }
 
     public void activateAwardFromFDMPostCall(JsonObject jsonObject,String applicationName){
-        getAuthToken();
         String finalEndPoint = endPoint +"/services/apexrest/activateAwardFromFDM/v2?GrantId="+getIdOf("Grant__c",applicationName);
         Response response = I.amPerforming().restHttp().postCall(jsonObject,null,
                 finalEndPoint, "Authorization", "Bearer " + tokenString,null);
         response.prettyPrint();
         assertStatusCode(response);
+    }
+
+    public void publishAnnouncementPostCall(JsonObject jsonObject) {
+        String finalEndPoint = endPoint + "/services/apexrest/PublishAnnouncement";
+        Response response = I.amPerforming().restHttp().postCall(jsonObject, null,
+                finalEndPoint, "Authorization", "Bearer " + tokenString, null);
+        response.prettyPrint();
+        assertStatusCode(response);
+    }
+
+    public void activateSubawardGetCall(JsonObject jsonObject,String awardName){
+        String createAwardEndPoint = endPoint +"/services/apexrest/activateAwardFromGrant/v1";
+        Response response = I.amPerforming().restHttp().postCall(jsonObject,null,
+                createAwardEndPoint, "Authorization", "Bearer " + tokenString,null);
+        response.prettyPrint();
+        assertStatusCode(response);
+
+        String activateAwardEndPoint = endPoint +"/services/apexrest/activateAwardFromGrant/v2?AwardId="+getIdOf("Award__c",awardName);
+        Response response1 = I.amPerforming().restHttp().getCall(
+                activateAwardEndPoint, "Authorization", "Bearer " + tokenString);
+        response1.prettyPrint();
+        assertStatusCode(response1);
     }
 }
