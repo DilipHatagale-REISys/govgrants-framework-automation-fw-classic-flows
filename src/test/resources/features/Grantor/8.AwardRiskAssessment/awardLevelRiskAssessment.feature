@@ -313,7 +313,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridRiskAssessmentApproverRoles"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     Then I softly see the following messages in the page details contains:
       | Review has been submitted successfully. |
     When I close "Review" modal by clicking the top right x button
@@ -1540,7 +1540,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridRiskAssessmentApproverRoles"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I close "Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1792,7 +1792,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridRiskAssessmentApproverRoles"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I close "Review" modal by clicking the top right x button
     Then I see status in Progress-bar is "Submitted for Review" and is "Green"
 
@@ -1838,7 +1838,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridRiskAssessmentApproverRoles"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I close "Review" modal by clicking the top right x button
     Then I softly cannot see top right button "Edit" in page detail
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -3393,7 +3393,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I enter a review as "Passed"
     When I click modal button "Save"
     And I pause execution for "5" seconds
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I close "Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "DynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab

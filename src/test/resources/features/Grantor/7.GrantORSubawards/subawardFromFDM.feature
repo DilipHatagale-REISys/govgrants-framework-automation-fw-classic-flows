@@ -253,7 +253,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     Then I softly see that "Submitted" has been added in flextable with Id "---subAwardFromFDM:-:peerReviewersTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -362,7 +362,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -492,7 +492,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -606,7 +606,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -747,7 +747,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1833,7 +1833,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I enter a review as "Passed"
     When I click modal button "Save"
     And I pause execution for "5" seconds
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel

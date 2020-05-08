@@ -313,7 +313,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridRiskAssessmentApproverRoles"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I close "Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab

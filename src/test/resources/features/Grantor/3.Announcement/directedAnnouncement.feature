@@ -139,7 +139,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly see field "Rating" as "Passed"
     Then I softly see field "Comments" as "Passed"
     Then I softly see field "Reviewed by" as "Automation FO"
-    When I click modal button "Submit Review"
+    When I click on submit review
     Then I softly see the following messages in the page details :
       | Review has been submitted successfully. |
     When I close "Enter Review" modal by clicking the top right x button
