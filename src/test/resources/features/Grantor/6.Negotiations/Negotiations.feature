@@ -2,6 +2,7 @@
 Feature: Validate all scenarios in Negotiations
 
   Background: To setup data
+    Given I delete the record "Automation Announcement for FDM" from the object "Progress Report"
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
     And I delete the record "Automation Announcement for FDM" from the object "FDM"

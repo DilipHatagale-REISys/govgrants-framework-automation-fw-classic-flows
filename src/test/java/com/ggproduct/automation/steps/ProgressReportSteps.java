@@ -47,11 +47,6 @@ public class ProgressReportSteps {
         progressReportPage.clickOnLink(linkName);
     }
 
-    @And("^I click on Link containing value \"([^\"]*)\" in flex table id \"([^\"]*)\"$")
-    public void clickOnLink(String linkText, String tableId) {
-        I.amPerforming().click().on(By.xpath("//*[@id='"+tableId+"']//a[contains(text(),'"+linkText+"')]"));
-    }
-
     @Description("To compare date field with todays date")
     @Then("^I (softly see|see) field \"([^\"]*)\" is getting updated with todays date$")
     public void iSeeFieldIsGettingUpdatedWithTodaysDate(String usage, String fieldLabel) {
