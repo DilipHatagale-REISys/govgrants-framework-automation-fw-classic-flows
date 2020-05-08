@@ -576,3 +576,30 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I select "Download As PDF" from dropdown
     And I download the file
     And I see "Announcement Tests for pdf" on page "1" of "govgrants" pdf file
+
+  @75632 @75621 @searchFunctionalityForMessagesMyFeedInCollab @keerti
+  Scenario: To verify search functionality for messages section in collab tab for announcement
+  | To verify entered My Feed from the collab tab section of announcement is getting displayed on home phase.
+    And I delete the record "Automation Competitive Announcement" from the object "Announcement"
+    Given I published "Competitive" type announcement having name "Automation Competitive Announcement" and properties "default"
+    And I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "Published Competitive Announcements"
+    And I perform quick search for "Automation Competitive Announcement" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I navigate to "Collab" sub tab
+    And I enter value "Hi @Automation PM" in my feed section and share the post
+    Then I softly see "Automation PM" inside flex table with id "---announcement:-:myFeedTableId---"
+    And I click on top right button "Send Email" in flex table with id "---announcement:-:collabMessages---"
+    And I send the email under collab tab with following details:
+      | To                              | Subject | Body             |
+      | internal.user.product@gmail.com | jitu    | this is bodyless |
+    Then I softly see the following messages in the page details :
+      | Email sent succesfully. |
+    And I close "Send Email" modal by clicking the top right x button
+    When I perform quick search for "jitu" in "---announcement:-:collabMessages---" panel
+    Then I softly see "jitu" inside flex table with id "---announcement:-:collabMessages---"
+    And I navigate to "Home" tab
+    Then I softly see "Automation PM" inside flex table with id "---announcement:-:homeCollabFeedId---"
+    Then I softly see "Hi" inside flex table with id "---announcement:-:homeCollabFeedId---"
