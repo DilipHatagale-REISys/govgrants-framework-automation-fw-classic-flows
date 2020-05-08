@@ -2,7 +2,7 @@
 Feature: Risk Assessment scenarios without background
 
   @59252 @64792 @64942 @64944 @validateDataOnGrantAwardRA @deepika @bug-69368
-  Scenario Outline: Validate (risk assessment | Notes | Peer Reviewer) on grant/award
+  Scenario Outline: Validate (risk assessment | Notes | Peer Reviewer) on grant/award when Risk Assessment is set as No in announcement
     Given I delete the record "Automation Desk Review" from the object "Desk Review"
     When I delete the record "Automation Site Visit" from the object "Site Visit"
     And I delete the record "<Announcement Name>" from the object "Subaward"
