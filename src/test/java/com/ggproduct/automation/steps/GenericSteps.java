@@ -526,4 +526,10 @@ public class GenericSteps {
     public void iActivatedStandaloneSubawardWithProperties(String grantName, String filter) {
         projectManager.activateSubaward(grantName,filter);
     }
+
+    @And("I click on submit review")
+    public void iClickOnSubmitReview() {
+        By submit_button = By.xpath("//div[@class='panel-footer']//div[@id='footerButtonsPanel']//*[text()='Submit Review' or @title='Submit Review']");
+        I.amPerforming().click().on(submit_button);
+    }
 }
