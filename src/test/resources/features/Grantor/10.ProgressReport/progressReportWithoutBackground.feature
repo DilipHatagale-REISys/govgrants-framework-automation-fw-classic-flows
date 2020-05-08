@@ -6944,7 +6944,7 @@ Feature: Validate scenarios in Progress Report without background
       | Cannot Rate | Rating__c         |
       | Passed      | ReviewComments__c |
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -7359,7 +7359,7 @@ Feature: Validate scenarios in Progress Report without background
       | Cannot Rate | Rating__c         |
       | Passed      | ReviewComments__c |
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -7913,7 +7913,7 @@ Feature: Validate scenarios in Progress Report without background
       | Cannot Rate | Rating__c         |
       | Passed      | ReviewComments__c |
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab

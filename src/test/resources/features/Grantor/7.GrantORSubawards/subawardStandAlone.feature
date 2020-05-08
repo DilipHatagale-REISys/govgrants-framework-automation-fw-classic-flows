@@ -422,7 +422,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     Then I softly see that "Submitted" has been added in flextable with Id "---subAwardStandAlone:-:peerReviewersTableId---"
     Examples:
       | Award Name              | Grant Name              |
@@ -3529,7 +3529,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click modal button "Save"
     Then I can softly see modal button "Submit Review"
     Then I can softly see modal button "Edit"
-    And I click modal button "Submit Review"
+    And I click on submit review
     Then I softly see value "Submitted" for title "Status" against the value "Automation FO" inside table "---subAwardStandAlone:-:peerReviewersTableId---"
     Examples:
       | Award Name              | Grant Name              |
@@ -3624,7 +3624,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     Then I softly see value "Submitted" for title "Status" against the value "Automation FO" inside table "---subAwardStandAlone:-:peerReviewersTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -3737,7 +3737,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3849,7 +3849,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -4096,7 +4096,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -4239,7 +4239,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel

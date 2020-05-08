@@ -1072,7 +1072,7 @@ Feature: Validate all scenarios in Organizational Site Visit
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I close "Site Visit Reviewers" modal by clicking the top right x button
     Then I cannot see top right button "Edit" in page detail
 

@@ -739,7 +739,7 @@ Feature: Validate all scenarios in Desk Review
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
-    And I click modal button "Submit Review"
+    And I click on submit review
     When I close "Site Visit Reviewers" modal by clicking the top right x button
     Then I softly cannot see top right button "Edit" in page detail
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal

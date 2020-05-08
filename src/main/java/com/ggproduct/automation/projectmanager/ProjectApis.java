@@ -465,9 +465,9 @@ public class ProjectApis extends ProjectWebServices{
         grant.addProperty("FocusAreaRequired","Yes");
         grant.addProperty("IsGoalsRequired","Yes");
         grant.addProperty("KPIsRequired","Yes");
-        grant.addProperty("RiskAssessment_Required","Yes");
-        grant.addProperty("WBSRequired","Yes");
-        grant.addProperty("IsBuildUpFunctionality","Yes");
+        grant.addProperty("RiskAssessment_Required","No");
+        grant.addProperty("WBSRequired","No");
+        grant.addProperty("IsBuildUpFunctionality","No");
         grant.addProperty("AreExpensesBuildIUpLevel","Yes");
         grant.addProperty("GranteeMatch",10);
         grant.addProperty("BudgetCloseoutrequestRequired","Yes");
@@ -542,7 +542,7 @@ public class ProjectApis extends ProjectWebServices{
                         .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         awardServiceArea.addProperty("GATEndDate",
                 I.amPerforming()
-                        .actionToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                        .actionToGet().currentDateWithOffsetInDesiredFormat(600, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         awardServiceAreaArray.add(awardServiceArea);
         parent.add("AwardServiceArea",awardServiceAreaArray);
 
