@@ -165,8 +165,8 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     Then I softly see value "Submitted for Review" for title "Status" against the value "{SavedValue:PR2}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Then I softly see value "Reviewed" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                   | Grant Name                   |
+      | Automation Execution Award_1 | Automation Execution Award_1 |
 
   @60658 @validateSubmittedForApprovalPRAfterFundingChangeAmendmentIsCarryForwarded @mahadev
   Scenario Outline: Validate Progress report with Submitted For Approval Status is carried forward at Performance Tab Subaward Overview at SR user end when Award owner performed Funding Change Amendment
@@ -176,6 +176,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I activated standalone subaward "<Award Name>" with properties "default"
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
+    And I delete the record "<Award Name>" from the object "Progress Report"
     And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
@@ -277,8 +278,8 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I navigate to "Performance" sub tab
     Then I see value "Submitted for Approval" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                   | Grant Name                   |
+      | Automation Execution Award_2 | Automation Execution Award_2 |
 
   @61450 @61449 @62251 @validateApprovedPRAfterBPCAmendmentIsCarryForwarded @jitendra
   Scenario Outline: Validate Approved Progress reports is not carried forward after BPC Amendment
@@ -289,6 +290,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -337,7 +339,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I get the updated budget end date by offset "1" for award "Automation Execution Award"
+    And I get the updated budget end date by offset "1" for award "<Award Name>"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
@@ -397,8 +399,8 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I navigate to "Performance" sub tab
     Then I softly do not see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                   | Grant Name                   |
+      | Automation Execution Award_3 | Automation Execution Award_3 |
 
   @61442 @61448 @validateSentBackToRecipientPRAfterBPCAmendmentIsCarryForwarded @jitendra
   Scenario Outline: Validate Send Back to Subrecipient Progress reports is carried forward after BPC amendment
@@ -409,6 +411,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -444,7 +447,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I get the updated budget end date by offset "1" for award "Automation Execution Award"
+    And I get the updated budget end date by offset "1" for award "<Award Name>"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
@@ -497,8 +500,8 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I navigate to "Performance" sub tab
     Then I softly see value "Sent Back to Subrecipient" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                    | Grant Name                    |
+      | Automation Execution Award_23 | Automation Execution Award_23 |
 
   @61439 @61445 @validateSubmittedForReviewPRAfterBPCAmendmentIsCarryForwarded @mahadev
   Scenario Outline: Validate Submitted for Review Progress report is carried forward after BPC amendment
@@ -509,6 +512,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -550,7 +554,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I get the updated budget end date by offset "1" for award "Automation Execution Award"
+    And I get the updated budget end date by offset "1" for award "<Award Name>"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
@@ -698,6 +702,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -795,6 +800,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -901,6 +907,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1008,6 +1015,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1110,6 +1118,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1236,6 +1245,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1362,6 +1372,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1686,6 +1697,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1813,6 +1825,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1932,6 +1945,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2061,6 +2075,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2170,6 +2185,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2274,6 +2290,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2367,6 +2384,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2487,7 +2505,9 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -2547,6 +2567,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2674,6 +2695,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2771,6 +2793,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2888,6 +2911,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2994,6 +3018,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3074,6 +3099,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3584,6 +3610,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3804,6 +3831,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3907,6 +3935,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -4010,6 +4039,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -4444,6 +4474,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "Activate" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -4575,6 +4606,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -4606,7 +4638,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I get the updated budget end date by offset "1" for award "Automation Execution Award"
+    And I get the updated budget end date by offset "1" for award "<Award Name>"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
@@ -4687,6 +4719,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -4754,6 +4787,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I activated standalone subaward "<Award Name>" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
+    And I delete the record "<Award Name>" from the object "Progress Report"
     And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
@@ -4855,6 +4889,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I activated standalone subaward "<Award Name>" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
+    And I delete the record "<Award Name>" from the object "Progress Report"
     And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
@@ -4984,6 +5019,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -5045,6 +5081,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I activated standalone subaward "<Award Name>" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
+    And I delete the record "<Award Name>" from the object "Progress Report"
     And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
@@ -5244,6 +5281,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
@@ -5328,6 +5366,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I activated standalone subaward "<Award Name>" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
+    And I delete the record "<Award Name>" from the object "Progress Report"
     And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
@@ -5444,6 +5483,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -5547,6 +5587,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I activated standalone subaward "<Award Name>" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
+    And I delete the record "<Award Name>" from the object "Progress Report"
     And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
@@ -5709,6 +5750,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "Activate" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -5792,6 +5834,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "Activate" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -5812,6 +5855,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I activated standalone subaward "<Award Name>" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
+    And I delete the record "<Award Name>" from the object "Progress Report"
     And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
@@ -5933,6 +5977,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -6005,6 +6050,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -6045,7 +6091,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I get the updated budget end date by offset "1" for award "Automation Execution Award"
+    And I get the updated budget end date by offset "1" for award "<Award Name>"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
@@ -6112,6 +6158,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -6172,7 +6219,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I get the updated budget end date by offset "1" for award "Automation Execution Award"
+    And I get the updated budget end date by offset "1" for award "<Award Name>"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
@@ -6250,12 +6297,13 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     When I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I get the updated budget end date by offset "1" for award "Automation Execution Award"
+    And I get the updated budget end date by offset "1" for award "<Award Name>"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
