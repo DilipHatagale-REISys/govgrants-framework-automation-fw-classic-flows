@@ -52,7 +52,6 @@ public class ProjectWebServices {
      */
     public void deletionApi(String recordName, String objectType) {
         System.out.print("Making API call... ");
-        getAuthToken();
         try {
             recordName = URLEncoder.encode(recordName, StandardCharsets.UTF_8.toString());
             objectType = URLEncoder.encode(objectType, StandardCharsets.UTF_8.toString());
@@ -104,7 +103,6 @@ public class ProjectWebServices {
      * get the EGMS ID
      */
     public Response automateGetApi(String recordName, String fieldName, String objectType) {
-        getAuthToken();
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationGetFieldValue?objectType=" + objectType
                 + "&fieldValue=" + recordName + "&fieldName=" + fieldName;
         Response response = I.amPerforming().restHttp().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
@@ -127,7 +125,6 @@ public class ProjectWebServices {
      * @param outputFieldName - use it in case you want to get any field value other than EGMS ID.
      */
     public Response automateGetApi(String recordName, String fieldName, String objectType, String outputFieldName) {
-        getAuthToken();
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationGetFieldValue?objectType=" + objectType
                 + "&fieldValue=" + recordName + "&fieldName=" + fieldName + "&outputFieldName=" + outputFieldName;
         Response response =  I.amPerforming().restHttp().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
@@ -151,7 +148,6 @@ public class ProjectWebServices {
     public Response automationBatchExecuteApi(String objectType, String recordName, String... objectName) {
         String finalEndPoint, objectApiName = "";
         Response response = null;
-        getAuthToken();
         objectApiName = objectName[0];
         finalEndPoint = endPoint + "/services/apexrest/productAutomationRunBatchJob?type=" + objectType + "&recordName="
                 + recordName;
@@ -182,7 +178,6 @@ public class ProjectWebServices {
     }
 
     public Response riskAssessmentApi(String organizationName) {
-        getAuthToken();
         String finalEndPoint = endPoint + "/services/apexrest/productAutomationRiskAssessmentApi?recordName=" + organizationName;
         Response response = I.amPerforming().restHttp().getCall(finalEndPoint, "Authorization", "Bearer " + tokenString);
         response.prettyPrint();
