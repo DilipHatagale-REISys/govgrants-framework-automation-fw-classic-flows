@@ -421,11 +421,21 @@ public class ProjectApis extends ProjectWebServices{
         JsonObject json = defaultPayloadCreateStandaloneAward(grantName);
 
         switch (filter){
-            case "NO_RISK_ASSEMENT":
-                return json;
+            case "NO_RISK_ASSESSMENT":
+                return payloadForCreateStandAloneWithNORiskAssement(json);
             default:
                 return json;
         }
+    }
+
+    private JsonObject payloadForCreateStandAloneWithNORiskAssement(JsonObject defaultPayload) {
+       JsonObject grant = defaultPayload.getAsJsonArray("Grant").get(0).getAsJsonObject();
+       JsonArray newA = new JsonArray();
+
+       grant.addProperty("RiskAssessment_Required","No");
+       newA.add(grant);
+       defaultPayload.add("Grant",newA);
+       return defaultPayload;
     }
 
 
