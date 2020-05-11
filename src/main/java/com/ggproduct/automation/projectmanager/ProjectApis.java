@@ -298,9 +298,42 @@ public class ProjectApis extends ProjectWebServices{
         switch (filter){
             case "BUDGETPERIODDATES":
                 return updateBudgetPeridDateForAnnouncement(json);
+            case "NO_RISK_ASSESSMENT":
+                return updateRiskAssesmentAsNoForAnnouncement(json);
+            case "PRE_APPLICATION_YES":
+                return updatePreApplicationAsYesForAnnouncement(json);
+            case "FOCUS_AREA_NO":
+                return updateFocusAreaForAnnouncement(json,"No");
             default:
                 return json;
         }
+    }
+
+    private JsonObject updateFocusAreaForAnnouncement(JsonObject json, String no) {
+        JsonObject pre_application = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        pre_application.addProperty("FocusAreaRequired",no);
+        pre.add(pre_application);
+        json.add("Announcement",pre);
+        return json;
+    }
+
+    private JsonObject updatePreApplicationAsYesForAnnouncement(JsonObject json) {
+        JsonObject pre_application = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        pre_application.addProperty("PreApplicationNeeded","Yes");
+        pre.add(pre_application);
+        json.add("Announcement",pre);
+        return json;
+    }
+
+    private JsonObject updateRiskAssesmentAsNoForAnnouncement(JsonObject json) {
+        JsonObject risk_assessment = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray risk = new JsonArray();
+        risk_assessment.addProperty("RiskAssessment_Required","No");
+        risk.add(risk_assessment);
+        json.add("Announcement",risk);
+        return json;
     }
 
     private JsonObject updateBudgetPeridDateForAnnouncement(JsonObject json) {
