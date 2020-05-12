@@ -1,9 +1,6 @@
 @fundingSource @regression @planning
 Feature: Validate all scenarios in Funding Source
 
-  Background: To setup data
-    Given I delete the record "Automation Execution Funding Source" from the object "Funding Source"
-
   @51034 @creationOfFundingSource
   Scenario: Creation of Funding Source
     When I login to "As a Grantor" app as "EXE" user
@@ -149,8 +146,8 @@ Feature: Validate all scenarios in Funding Source
     When I navigate to "Planning" tab
     And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click toggle button to select "Internal Funding Sources - Active"
-    When I perform quick search for "Automation Execution Funding Source" in "---fundingsource:-:fundingSourceTableId---" panel
-    And I click on "View" icon for "Automation Execution Funding Source" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Funding Source}" in "---fundingsource:-:fundingSourceTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Funding Source}" inside table
     Then I cannot see top right button "Deactivate" in page detail
 
   @52666 @reactivateFundingSource @mahadev

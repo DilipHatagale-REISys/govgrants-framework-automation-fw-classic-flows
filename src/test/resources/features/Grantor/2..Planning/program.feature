@@ -2,7 +2,6 @@
 Feature: Validate all scenarios for program
 
   Background: Create Program
-    Given I delete the record "Automation Internal Program" from the object "Program"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -1057,7 +1056,6 @@ Feature: Validate all scenarios for program
   @76336 @76337 @WithoutPrescreenReviewFormWithoutManagementReviewForm @keerti
   Scenario: To validate system generated error message, When Prescreen review step has not associated with any review form in review form section in setup tab of planning
   / To validate system generated error message, When management review step has not associated with any review form in review form section in setup tab of planning
-    Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -1096,7 +1094,6 @@ Feature: Validate all scenarios for program
   Scenario: To validate system generated error message , When Total section Weight is more than 100% for all Review Panel Categories in management review form for management review step in planning phase
   | To validate system generated error message , When Total section Weight is less than 100% for all Review Panel Categories in management review form for management review step in planning phase
   | To validate system generated error message ,When management review form Weight : 0% & total section weight : 100 % for all review panel categories for management review step in planning phase
-    Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -1496,7 +1493,6 @@ Feature: Validate all scenarios for program
   Scenario: To validate system generated error message ,When Total section Weight is 0% for all Review Panel Categories in prescreening review form for prescreening review step in planning phase
   | To verify user able to modify review question  in Environment of Review Panel Categories in compliance review form for SME review step in planning phase
   | To verify user able to add new review question with success message in Permits of Review Panel Categories in compliance review form for SME review step in planning phase
-    Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -1681,7 +1677,6 @@ Feature: Validate all scenarios for program
 
   @77172 @ValidatingAdditionInMatchFiscalReviewForm @keerti
   Scenario: To verify user able to add new review question with success message in Match of Review Panel Categories in Fiscal review form for SME review step in planning phase
-    Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -1946,7 +1941,6 @@ Feature: Validate all scenarios for program
 
   @76479 @ValidatingTotalSectionWeightInManagmentReview @keerti
   Scenario: To validate system generated error message ,When Total section Weight is 0% for all Review Panel Categories in management review form for management review step in planning phase
-    Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -2491,7 +2485,6 @@ Feature: Validate all scenarios for program
 
   @77407 @validatingValidationMsgUnderPermitsReviewPanelCategories @keerti
   Scenario: To validate system generated validation message, When Max score:0, for all review questions under the Permits review panel categories and  Weight is present, in Compliance Review form of SME review steps in planning phase
-    Given I delete the record "Automation Execution Internal Program" from the object "Program"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
