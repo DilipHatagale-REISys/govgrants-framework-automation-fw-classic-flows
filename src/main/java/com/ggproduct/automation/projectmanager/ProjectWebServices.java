@@ -5,10 +5,13 @@ import com.google.gson.JsonObject;
 import com.testingblaze.register.EnvironmentFactory;
 import com.testingblaze.register.I;
 import io.restassured.response.Response;
+import org.apache.commons.lang.StringUtils;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ProjectWebServices {
     private static String endPoint = EnvironmentFactory.getEnvironmentUrl();
@@ -267,5 +270,95 @@ public class ProjectWebServices {
                 activateAwardEndPoint, "Authorization", "Bearer " + tokenString);
         response1.prettyPrint();
         assertStatusCode(response1);
+    }
+
+    public void deleteAward(String recordName){
+        deletionApi(recordName,"Amendment Request");
+        deletionApi(recordName,"Payment Request");
+        deletionApi(recordName,"subaward");
+        deletionApi(recordName,"Award");
+        deletionApi(recordName,"Grant");
+    }
+
+    public void deleteFDM(List<String> recordNames){
+        for (String record : recordNames){
+            if(StringUtils.containsIgnoreCase(record,"desk review")){
+                deletionApi(record,"Desk Review");
+            }
+        }
+
+        for (String record : recordNames){
+            if(StringUtils.containsIgnoreCase(record,"site visit")){
+                deletionApi(record,"Site Visit");
+            }
+        }
+
+        for (String record : recordNames){
+            if(StringUtils.containsIgnoreCase(record,"fdm")){
+                deletionApi(record,"FDM");
+            }
+        }
+    }
+
+    public void deleteAnnouncement(String annName){
+        deletionApi(annName,"Announcement");
+    }
+
+    public void deleteFocusArea(String recordName){
+        deletionApi(recordName,"Focus Area");
+    }
+
+    public void deleteFundingSource(String recordName){
+        deletionApi(recordName,"Funding Source");
+    }
+
+    public void deleteKPI(String recordName){
+        deletionApi(recordName,"KPI");
+    }
+
+    public void deleteProgram(String recordName){
+        deletionApi(recordName,"Program");
+    }
+
+    public void deleteStrategicPlan(String recordName){
+        deletionApi(recordName,"Strategic Plan");
+    }
+
+    public void deleteSiteVisit(String recordName){
+        deletionApi(recordName,"Site Visit");
+    }
+
+    public void deleteRecordInHooks(){
+        List<String> recordNameList = I.amPerforming().propertiesFileOperationsTo().getAllSavedKeys().stream()
+                .filter(Keys -> Keys.startsWith("AUTOMATION RUNTIME")).collect(Collectors.toList());
+
+        if (recordNameList.stream().anyMatch("award"::equalsIgnoreCase)){
+            deleteAward(recordNameList.get(0));
+        }
+
+        if (recordNameList.stream().anyMatch("fdm"::equalsIgnoreCase)){
+            deleteFDM(recordNameList);
+        }
+
+        for (String record : recordNameList){
+            if (StringUtils.containsIgnoreCase(record,"focus area")){
+                deleteFocusArea(I.amPerforming().propertiesFileOperationsTo().getValue(record));
+            }
+            if (StringUtils.containsIgnoreCase(record,"funding source")){
+                deleteFundingSource(I.amPerforming().propertiesFileOperationsTo().getValue(record));
+            }
+            if (StringUtils.containsIgnoreCase(record,"kpi")){
+                deleteKPI(I.amPerforming().propertiesFileOperationsTo().getValue(record));
+            }
+            if (StringUtils.containsIgnoreCase(record,"program")){
+                deleteProgram(I.amPerforming().propertiesFileOperationsTo().getValue(record));
+            }
+            if (StringUtils.containsIgnoreCase(record,"strategic plan")){
+                deleteStrategicPlan(I.amPerforming().propertiesFileOperationsTo().getValue(record));
+            }
+            if (StringUtils.containsIgnoreCase(record,"site visit")){
+                deleteSiteVisit(I.amPerforming().propertiesFileOperationsTo().getValue(record));
+            }
+        }
     }
 }
