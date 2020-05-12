@@ -1,9 +1,11 @@
 package com.ggproduct.automation.steps;
 
+import com.ggproduct.automation.projectmanager.ProjectWebServices;
 import com.ggproduct.automation.projectmanager.UsersAndURL;
 import com.testingblaze.controller.TestSetupController;
 import com.testingblaze.register.EnvironmentFactory;
 import com.testingblaze.report.CSS;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
 import java.awt.*;
@@ -18,6 +20,7 @@ import java.io.IOException;
 public class setup {
     private TestSetupController userController;
     private static CSS report;
+    ProjectWebServices projectWebServices;
 
     public setup(TestSetupController userController) {
         this.userController = userController;
@@ -35,5 +38,11 @@ public class setup {
         userController.usersController(new UsersAndURL());
     }
 
-
+    @After(order = 1)
+    public void deleteMe(){
+        if(projectWebServices == null) {
+            projectWebServices = new ProjectWebServices();
+        }
+        projectWebServices.deleteRecordInHooks();
+    }
 }

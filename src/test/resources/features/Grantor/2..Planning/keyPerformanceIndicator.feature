@@ -1,9 +1,6 @@
 @kpi @regression @planning
 Feature: Validate all scenarios in Key Performance Indicator(KPI)
 
-  Background: To setup data
-    Given I delete the record "Automation Execution KPI" from the object "KPI"
-
   @34735 @creationOfKPI
   Scenario Outline: Creation of KPI
     When I login to "As a Grantor" app as "<User>" user
@@ -98,8 +95,8 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     And I click toggle button to select "Key Performance Indicators (KPI) - Draft" in "---keyperformanceindicator:-:kpiTableId---"
-    When I perform quick search for "Automation Execution KPI" in "---keyperformanceindicator:-:kpiTableId---" panel
-    Then I cannot see row level action button "Edit" against "Automation Execution KPI" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    Then I cannot see row level action button "Edit" against "{SavedValue:Automation Runtime KPI}" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
 
   @52622 @userFODeelteKPI
   Scenario: Negative Case-Verfiy that PM user cannot Delete the record
@@ -116,8 +113,8 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     And I click toggle button to select "Key Performance Indicators (KPI) - Draft" in "---keyperformanceindicator:-:kpiTableId---"
-    When I perform quick search for "Automation Execution KPI" in "---keyperformanceindicator:-:kpiTableId---" panel
-    Then I cannot see row level action button "Delete" against "Automation Execution KPI" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    Then I cannot see row level action button "Delete" against "{SavedValue:Automation Runtime KPI}" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
 
   @52623 @deactivateKPI
   Scenario Outline: Negative Case-Verfiy that EXE can deactivate the record
@@ -154,8 +151,8 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     And I click toggle button to select "Key Performance Indicators (KPI) -Active"
-    When I perform quick search for "Automation Execution KPI" in "---keyperformanceindicator:-:kpiTableId---" panel
-    And I click on "View" icon for "Automation Execution KPI" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime KPI}" inside table
     Then I cannot see top right button "Deactivate" in page detail
     Examples:
       | User |
@@ -177,8 +174,8 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     And I click toggle button to select "Key Performance Indicators (KPI) - Inactive"
-    When I perform quick search for "Automation Execution KPI" in "---keyperformanceindicator:-:kpiTableId---" panel
-    And I click on "View" icon for "Automation Execution KPI" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime KPI}" inside table
     Then I see status in Progress-bar is "Inactive" and is "Green"
 
   @72340 @activateKPI @productBusinessFlowSanity
