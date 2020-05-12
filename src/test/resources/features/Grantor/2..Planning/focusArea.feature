@@ -1,16 +1,13 @@
 @focusArea @regression @planning
 Feature: Validate all scenarios in Focus Area
 
-  Background: To setup data
-    Given I delete the record "Automation Execution Focus Area" from the object "Focus Area"
-
   @34512 @creationOfFocusArea @smoke
   Scenario: Creation of Focus Area by User - Admin/EXE/PM
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
-    When I enter value "Automation Execution Focus Area" into field "Title__c"
+    When I enter value "Automation Runtime Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     Then I see status in Progress-bar is "Created" and is "Green"
 
@@ -20,7 +17,7 @@ Feature: Validate all scenarios in Focus Area
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
-    When I enter value "Automation Execution Focus Area" into field "Title__c"
+    When I enter value "Automation Runtime Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     When I enter value "Automation Test Description" into field "Description__c"
     And I click on "Save" in the page details
@@ -32,7 +29,7 @@ Feature: Validate all scenarios in Focus Area
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
-    When I enter value "Automation Execution Focus Area" into field "Title__c"
+    When I enter value "Automation Runtime Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
@@ -50,7 +47,7 @@ Feature: Validate all scenarios in Focus Area
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
-    When I enter value "Automation Execution Focus Area" into field "Title__c"
+    When I enter value "Automation Runtime Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I click on "Activate" in the page details
@@ -69,31 +66,31 @@ Feature: Validate all scenarios in Focus Area
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
-    When I enter value "Automation Execution Focus Area" into field "Title__c"
+    When I enter value "Automation Runtime Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Planning" tab
     And I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click toggle button to select "Focus Area - Draft" in "---focusarea:-:focusAreaTableId---"
-    When I perform quick search for "Automation Execution Focus Area" in "---focusarea:-:focusAreaTableId---" panel
-    Then I cannot see row level action button "Edit" against "Automation Execution Focus Area" in flex table with id "---focusarea:-:focusAreaTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Focus Area}" in "---focusarea:-:focusAreaTableId---" panel
+    Then I cannot see row level action button "Edit" against "{SavedValue:Automation Runtime Focus Area}" in flex table with id "---focusarea:-:focusAreaTableId---"
 
-  @52620 @userFODeletefocusArea
+  @52620 @userFODeletefocusArea @aa
   Scenario: Negative Case-Verfiy that FO user cannot Delete the record
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
-    When I enter value "Automation Execution Focus Area" into field "Title__c"
+    When I enter value "Automation Runtime Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Planning" tab
     And I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click toggle button to select "Focus Area - Draft" in "---focusarea:-:focusAreaTableId---"
-    When I perform quick search for "Automation Execution Focus Area" in "---focusarea:-:focusAreaTableId---" panel
-    Then I cannot see row level action button "Delete" against "Automation Execution Focus Area" in flex table with id "---focusarea:-:focusAreaTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Focus Area}" in "---focusarea:-:focusAreaTableId---" panel
+    Then I cannot see row level action button "Delete" against "{SavedValue:Automation Runtime Focus Area}" in flex table with id "---focusarea:-:focusAreaTableId---"
 
   @53220 @deactivatingfocusArea
   Scenario: Verfiy deactivating focus area by user - Admin/EXE/PM
@@ -101,7 +98,7 @@ Feature: Validate all scenarios in Focus Area
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
-    When I enter value "Automation Execution Focus Area" into field "Title__c"
+    When I enter value "Automation Runtime Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     When I enter value "Automation Test Description" into field "Description__c"
     When I click on "Save" in the page details
@@ -115,7 +112,7 @@ Feature: Validate all scenarios in Focus Area
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
-    When I enter value "Automation Execution Focus Area" into field "Title__c"
+    When I enter value "Automation Runtime Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     When I enter value "Automation Test Description" into field "Description__c"
     When I click on "Save" in the page details
@@ -124,8 +121,8 @@ Feature: Validate all scenarios in Focus Area
     When I navigate to "Planning" tab
     And I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click toggle button to select "Focus Area - Active" in "---focusarea:-:focusAreaTableId---"
-    When I perform quick search for "Automation Execution Focus Area" in "---focusarea:-:focusAreaTableId---" panel
-    And I click on "View" icon for "Automation Execution Focus Area" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Focus Area}" in "---focusarea:-:focusAreaTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Focus Area}" inside table
     Then I cannot see top right button "Deactivate" in page detail
 
   @52476 @closedfocusAreaListView
@@ -134,7 +131,7 @@ Feature: Validate all scenarios in Focus Area
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
-    When I enter value "Automation Execution Focus Area" into field "Title__c"
+    When I enter value "Automation Runtime Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     When I enter value "Automation Test Description" into field "Description__c"
     When I click on "Save" in the page details
@@ -143,8 +140,8 @@ Feature: Validate all scenarios in Focus Area
     When I navigate to "Planning" tab
     And I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click toggle button to select "Focus Area - Inactive" in "---focusarea:-:focusAreaTableId---"
-    When I perform quick search for "Automation Execution Focus Area" in "---focusarea:-:focusAreaTableId---" panel
-    And I click on "View" icon for "Automation Execution Focus Area" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Focus Area}" in "---focusarea:-:focusAreaTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Focus Area}" inside table
     Then I see status in Progress-bar is "Closed" and is "Green"
 
   @72335 @activationOfFocusArea @productBusinessFlowSanity
@@ -153,7 +150,7 @@ Feature: Validate all scenarios in Focus Area
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
-    When I enter in modal value "Automation Execution Focus Area" into field "Title__c"
+    When I enter in modal value "Automation Runtime Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     When I enter value "Automation Test Description" into field "Description__c"
     And I click on "Save" in the page details
