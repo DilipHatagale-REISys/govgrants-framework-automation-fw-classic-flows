@@ -2,7 +2,6 @@
 Feature: Validate all scenarios in Strategic Plan
 
   Background: To setup data
-    Given I delete the record "Automation Execution Strategic Plan" from the object "Strategic Plan"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
     When I navigate to "Strategic Plans" content inside "Setup" subheader on left panel
@@ -11,34 +10,21 @@ Feature: Validate all scenarios in Strategic Plan
     And I enter "StrategicPlanCreation" values from "StrategicPlan_Field_Values.xlsx"
     And I click modal button "Save and Close"
 
-  @50954 @creationOfStrategicPlan
-  Scenario: Creation of Strategic Plan by user - Admin/EXE/PM
-    Then I see that "Status" is in "Draft" status
-
-  @50955 @editionOfStrategicPlan
+  @50954 @50955 @33798 @50956 @editionOfStrategicPlan
   Scenario: Edition of Strategic Plan by user - Admin/EXE/PM
+    Then I softly see that "Status" is in "Draft" status
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
-    Then I see that "Status" is in "Draft" status
-
-  @50956 @addAttachmentToStrategicPlan
-  Scenario: Addition of Attachment to Strategic Plan by user - Admin/EXE/PM
-    When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
-    And I click on "Save" in the page details
-    When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Plan"
-    Then I see "Strategic Plan" has been added in "Attachments" flex table
-
-  @33798 @creationOfStrategicGoal
-  Scenario: Creation of Strategic Goal inside a Strategic Plan by User - Admin/EXE/PM
-    When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
-    And I click on "Save" in the page details
+    Then I softly see that "Status" is in "Draft" status
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter value "Automation Execution Strategic Goal" into field "fieldStrategyTitle__c"
     When I click modal button "Save and Close"
     And I click on "Save" in the page details
     When I click on "Back To Strategic Plan" in the page details
-    Then I see that "Automation Execution Strategic Goal" has been added in flextable with Id "---strategicplan:-:strategicGoalObjectivesTableId---"
+    Then I softly see that "Automation Execution Strategic Goal" has been added in flextable with Id "---strategicplan:-:strategicGoalObjectivesTableId---"
+    When I navigate to "Attachments" sub tab
+    When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Plan"
+    Then I softly see "Strategic Plan" has been added in "Attachments" flex table
 
   @51045 @editionOfStrategicGoal
   Scenario: Edition of Strategic Goal inside a Strategic Plan by User - Admin/EXE/PM
