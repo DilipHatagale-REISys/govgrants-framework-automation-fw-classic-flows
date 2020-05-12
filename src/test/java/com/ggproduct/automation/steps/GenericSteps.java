@@ -509,6 +509,9 @@ public class GenericSteps {
 
     @Given("I activate award from FDM having application name {string}")
     public void iActivateAwardFromDFMWith(String applicationName) {
+        String newAppName = applicationName+I.amPerforming().addOnsTo().getRandomNumber();
+        I.amPerforming().propertiesFileOperationsTo().saveValue(applicationName,newAppName);
+        applicationName = newAppName;
         projectManager.activateFMD(applicationName);
     }
 
@@ -519,11 +522,17 @@ public class GenericSteps {
 
     @And("I published {string} type announcement having name {string} and properties {string}")
     public void iPublishedTypeAnnouncementHavingNameAndProperties(String annType, String annName, String filter) {
+        String newAnnName = annName+I.amPerforming().addOnsTo().getRandomNumber();
+        I.amPerforming().propertiesFileOperationsTo().saveValue(annName,newAnnName);
+        annName = newAnnName;
         projectManager.publishAnnouncment(annType,annName,filter);
     }
 
     @And("I activated standalone subaward {string} with properties {string}")
     public void iActivatedStandaloneSubawardWithProperties(String grantName, String filter) {
+        String newGrantName = grantName+I.amPerforming().addOnsTo().getRandomNumber();
+        I.amPerforming().propertiesFileOperationsTo().saveValue(grantName,newGrantName);
+        grantName = newGrantName;
         projectManager.activateSubaward(grantName,filter);
     }
 
