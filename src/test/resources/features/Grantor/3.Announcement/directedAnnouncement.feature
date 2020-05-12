@@ -2,11 +2,6 @@
 Feature: Validate all scenarios in the directed Announcement tab
 
   Background: Create Announcement
-    Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
-    Given I delete the record "Automation Directed Announcement" from the object "PreApplication"
-    Given I delete the record "Automation Directed Announcement" from the object "Application"
-    And I delete the record "Automation Directed Announcement" from the object "Qualified Announcement"
-    Given I delete the record "Automation Directed Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
@@ -148,8 +143,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Directed Announcements - Draft"
-    And I perform quick search for "Automation Directed Announcement" in "---announcement:-:annoucementTableId---" panel
-    And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "---announcement:-:annoucementTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Directed Announcement}" in "---announcement:-:annoucementTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Directed Announcement}" inside flex table with id "---announcement:-:annoucementTableId---"
     Then I softly see field "Status" as "Reviewed"
     Then I softly see status in Progress-bar is "Reviewed" and is "green"
     When I navigate to "Responsibilities" tab
@@ -337,8 +332,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Directed Announcements - Draft"
-    And I perform quick search for "Automation Directed Announcement" in "---announcement:-:annoucementTableId---" panel
-    And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "---announcement:-:annoucementTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Directed Announcement}" in "---announcement:-:annoucementTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Directed Announcement}" inside flex table with id "---announcement:-:annoucementTableId---"
     Given I click on "Complete Review" in the page details
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -517,8 +512,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Directed Announcements - Draft"
-    And I perform quick search for "Automation Directed Announcement" in "---announcement:-:annoucementTableId---" panel
-    And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "---announcement:-:annoucementTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Directed Announcement}" in "---announcement:-:annoucementTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Directed Announcement}" inside flex table with id "---announcement:-:annoucementTableId---"
     Given I click on "Complete Review" in the page details
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -639,7 +634,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    Then I softly do not see values "Record Id" and "Automation Directed Announcement" inside table
+    Then I softly do not see values "Record Id" and "{SavedValue:Automation Runtime Directed Announcement}" inside table
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
@@ -716,8 +711,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Directed Announcements - Draft"
-    And I perform quick search for "Automation Directed Announcement" in "---announcement:-:annoucementTableId---" panel
-    And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "---announcement:-:annoucementTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Directed Announcement}" in "---announcement:-:annoucementTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Directed Announcement}" inside flex table with id "---announcement:-:annoucementTableId---"
     Given I click on "Complete Review" in the page details
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -842,7 +837,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    Then I softly do not see values "Record Id" and "Automation Directed Announcement" inside table
+    Then I softly do not see values "Record Id" and "{SavedValue:Automation Runtime Directed Announcement}" inside table
     Examples:
       | Announcement Type |
       | Directed          |
@@ -903,8 +898,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Directed Announcements - Draft"
-    And I perform quick search for "Automation Directed Announcement" in "---announcement:-:annoucementTableId---" panel
-    And I click on "View" icon for "Automation Directed Announcement" inside flex table with id "---announcement:-:annoucementTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Directed Announcement}" in "---announcement:-:annoucementTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Directed Announcement}" inside flex table with id "---announcement:-:annoucementTableId---"
     Given I click on "Complete Review" in the page details
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -1028,7 +1023,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    Then I softly do not see values "Record Id" and "Automation Directed Announcement" inside table
+    Then I softly do not see values "Record Id" and "{SavedValue:Automation Runtime Directed Announcement}" inside table
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
@@ -1036,7 +1031,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    Then I softly do not see values "Record Id" and "Automation Directed Announcement" inside table
+    Then I softly do not see values "Record Id" and "{SavedValue:Automation Runtime Directed Announcement}" inside table
     When I navigate to "Announcements" tab
     And I navigate to "Directed" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Directed Announcements - Rejected"

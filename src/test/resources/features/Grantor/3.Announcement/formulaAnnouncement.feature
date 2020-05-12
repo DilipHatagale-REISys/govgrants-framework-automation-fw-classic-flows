@@ -2,7 +2,6 @@
 Feature: Validate all scenarios in the Formula Announcement tab
 
   Background: Create Announcement
-    Given I delete the record "Automation Formula Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -579,7 +578,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    Then I softly do not see values "Record Id" and "Automation Formula Announcement" inside table
+    Then I softly do not see values "Record Id" and "{SavedValue:Automation Runtime Formula Announcement}" inside table
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
@@ -781,7 +780,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    Then I softly do not see values "Record Id" and "Automation Formula Announcement" inside table
+    Then I softly do not see values "Record Id" and "{SavedValue:Automation Runtime Formula Announcement}" inside table
 
   @announcementPostRejectionCheckInListViewFA @announcementPostRejectCompletedTaskForUserFA @announcementApprovalRejectionFA @announcementRejectPendingTaskForNextApproverFA @announcementPostRejectPendingTaskForUserFA @announcementPostRejectCheckFieldHistoryFA
   Scenario: Validate the rejected announcement will reflect under "Rejected Announcements" list view || Validate the field history after rejection of an announcement || Validate that after rejection of an Announcement task get added to it's completed task table. || Validate that after rejection of an Announcement task get deleted from pending task table.|| Validate the reject functionality of an Announcement || Validate that after rejection from 1st approver, 2nd user should not get pending task
@@ -950,7 +949,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Applicant Organization              | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
-    When I navigate to "Financials" sub tab
+    When I navigate to "Financials" sub tabn
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
@@ -973,7 +972,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    Then I softly do not see values "Record Id" and "Automation Formula Announcement" inside table
+    Then I softly do not see values "Record Id" and "{SavedValue:Automation Runtime Formula Announcement}" inside table
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
@@ -981,7 +980,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    Then I softly do not see values "Record Id" and "Automation Formula Announcement" inside table
+    Then I softly do not see values "Record Id" and "{SavedValue:Automation Runtime Formula Announcement}" inside table
 
   @72343 @publishingFormulaAnnouncement @productBusinessFlowSanity
   Scenario: Validate the activation of Formula Announcement and the status changes to published
@@ -1033,8 +1032,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Formula Announcements - Draft"
-    When I perform quick search for "Automation Formula Announcement" in "ActiveFundingOpportunitiesFormula" panel
-    And I click on "View" icon for "Automation Formula Announcement" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "ActiveFundingOpportunitiesFormula" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside table
     Given I click on "Complete Review" in the page details
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
