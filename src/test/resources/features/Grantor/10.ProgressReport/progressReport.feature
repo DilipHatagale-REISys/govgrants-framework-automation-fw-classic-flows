@@ -2,8 +2,9 @@
 Feature: Validate all scenarios in Progress Report
 
   Background: To create a progress report
-    Given I delete the record "Automation Permanent Award" from the object "Progress Report"
-    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
+    And I activated standalone subaward "Automation Runtime award" with properties "default"
+    Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
     And I navigate to "Monitoring" tab
@@ -65,10 +66,10 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---progressReport:-:recipientActiveGrantId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---progressReport:-:recipientActiveGrantId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---"
     And I navigate to "Terms" sub tab
     Then I softly cannot see row level action button "Edit" against "Progress Report" in flex table with id "---progressreport:-:progressReportsScheduleId---"
 
@@ -301,10 +302,10 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---progressReport:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---progressReport:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---progressReport:-:subawardsTableId---"
     And I navigate to "Performance" sub tab
     Then I softly see value "7" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:awardKPITableId---"
 
@@ -549,8 +550,8 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Performance" sub tab
     Then I softly see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
     Examples:
-      | Grant Name                 |
-      | Automation Permanent Award |
+      | Grant Name                            |
+      | {SavedValue:Automation Runtime award} |
 
   @57646 @57690 @verifyProgressReportTablUpdatedWithStatusSubmittedForApprovalAtSubPortal @mahadev
   Scenario Outline: Verify Progress report table get updated with status Submitted for Approval at grantee portal | To edit Progress Report
@@ -592,8 +593,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:recipientAwardProgressReportTableId---"
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
     Examples:
-      | Grant Name                 |
-      | Automation Permanent Award |
+      | Grant Name                            |
+      | {SavedValue:Automation Runtime award} |
 
   @34931 @submitProgressReportToGrantorInternalUser @jitendra
   Scenario Outline: Verify that all internal users can view submitted Progress Reports
@@ -630,12 +631,12 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "<activeGrantsTableId>" panel
-    And I click on "View" icon for "Automation Permanent Award" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "<activeGrantsTableId>" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "<subawardsTableId>"
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "<subawardsTableId>"
     And I navigate to "Terms" sub tab
-    When I click on "Edit" icon for "Automation Permanent Award" inside flex table with id "<progressReportsScheduleId>"
+    When I click on "Edit" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "<progressReportsScheduleId>"
     And I enter value "Annually" into field "fieldFrequency__c"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
@@ -749,8 +750,8 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Management" sub tab
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" against the value "Submitted for Approval" inside table "---progressReport:-:recipientGrantProgressReportTableId---"
     Examples:
-      | Grant Name                 |
-      | Automation Permanent Award |
+      | Grant Name                            |
+      | {SavedValue:Automation Runtime award} |
 
   @58662 @NotEditButtonInPRScheduleForSPI @jitendra
   Scenario: Validate SPI user is not allowed to change the Progress report Schedule on Active subaward when status of Progress Report is submitted to Grantor.
@@ -770,10 +771,10 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---progressReport:-:recipientActiveGrantId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---progressReport:-:recipientActiveGrantId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---"
     When I navigate to "Terms" sub tab
     Then I cannot see row level action button "Edit" against "Progress Report" in flex table with id "---progressreport:-:progressReportsScheduleId---"
 
@@ -809,8 +810,8 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Management" sub tab
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" against the value "Submitted to Grantor" inside table "---progressReport:-:grantorGrantProgressReportTableId---"
     Examples:
-      | Grant Name                 |
-      | Automation Permanent Award |
+      | Grant Name                            |
+      | {SavedValue:Automation Runtime award} |
 
   @59039 @59042 @validateInternalUserIsAllowedToAddProgramApproverOnProgressReport  @mahadev
   Scenario: Validate Internal user is allowed to add Program Approver when Progress report status is Submitted to Grantor | Validate SPI user 'does not' have edit access to Performance Narrative Table under Progress report when Progress report state is Submitted to Grantor State.
@@ -873,8 +874,8 @@ Feature: Validate all scenarios in Progress Report
     Then I softly see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
     Then I softly see value "Created" for title "Status" against the value "{SavedValue:ProgressReport2}" inside table "---progressReport:-:recipientAwardProgressReportTableId---"
     Examples:
-      | Award Name                 |
-      | Automation Permanent Award |
+      | Award Name                            |
+      | {SavedValue:Automation Runtime award} |
 
   @58753 @PMNoPRshown @jitendra
   Scenario: Validate Internal user should not see progress report under Sub-award performance tab when Progress report is in Draft status.
@@ -882,10 +883,10 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Performance" sub tab
     Then I do not see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:progressReportFlexTableId---"
 
@@ -908,10 +909,10 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Performance" sub tab
     Then I see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:grantorProgressReportsTableId---"
 
@@ -995,8 +996,8 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---progressReport:-:recipientActiveGrantId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---progressReport:-:recipientActiveGrantId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
     When I navigate to "Management" sub tab
     And I click on "View" icon for "Submitted for Approval" inside flex table with id "---progressReport:-:recipientGrantProgressReportTableId---"
     And I navigate to "Forms and Attachments" sub tab
@@ -1129,8 +1130,8 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
     When I navigate to "Management" sub tab
     Then I softly see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:grantorGrantProgressReportTableId---"
 
@@ -1314,7 +1315,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
-    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c,false"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c,false"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1333,8 +1334,8 @@ Feature: Validate all scenarios in Progress Report
     When I save the value from row "1" for column name "Reported Date" as "ReportedDate" from flex table "---progressReport:-:kpiTableId---"
     Then I softly see the Reported Date field contains todays date
     Examples:
-      | Grant Name                 |
-      | Automation Permanent Award |
+      | Grant Name                            |
+      | {SavedValue:Automation Runtime award} |
 
   @59899 @validateSubmittedProgressReportsAtManagementTabOnGrantAtInternalSide @mahadev
   Scenario Outline: Validate Progress Reports table at Management tab on grant overview is getting updated with progress report whose status is Submitted to Grantor at Award owner End
@@ -1361,8 +1362,8 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Management" sub tab
     Then I see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---progressReport:-:grantorGrantProgressReportTableId---"
     Examples:
-      | Grant Name                 |
-      | Automation Permanent Award |
+      | Grant Name                            |
+      | {SavedValue:Automation Runtime award} |
 
   @59900 @validateSentBackProgressReportsAtManagementTabOnGrantAtInternalSide @mahadev
   Scenario Outline: Validate Progress Reports at Management tab on Grant is getting updated with Progress report whose status is sent back to sub recipient at Award owner End
@@ -1394,8 +1395,8 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Management" sub tab
     Then I see value "Sent Back to Subrecipient" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---progressReport:-:grantorGrantProgressReportTableId---"
     Examples:
-      | Grant Name                 |
-      | Automation Permanent Award |
+      | Grant Name                            |
+      | {SavedValue:Automation Runtime award} |
 
   @59901 @validateSubmittedForApprovalProgressReportsAtManagementTabOnGrantAtInternalSide @mahadev
   Scenario Outline: Validate Progress Reports at Management tab on Grant overview is getting updated with Progress report whose status is submitted for approval at Award owner End
@@ -1432,8 +1433,8 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Management" sub tab
     Then I see value "Submitted for Approval" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---progressReport:-:grantorGrantProgressReportTableId---"
     Examples:
-      | Grant Name                 |
-      | Automation Permanent Award |
+      | Grant Name                            |
+      | {SavedValue:Automation Runtime award} |
 
   @59902 @validateApprovedProgressReportsAtManagementTabOnGrantAtInternalSide @mahadev
   Scenario Outline: Validate Progress Reports at Management tab on Grant overview is getting updated with Progress report whose status is Approved at Award owner End
@@ -1478,8 +1479,8 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Management" sub tab
     Then I see value "Approved" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---progressReport:-:grantorGrantProgressReportTableId---"
     Examples:
-      | Grant Name                 |
-      | Automation Permanent Award |
+      | Grant Name                            |
+      | {SavedValue:Automation Runtime award} |
 
   @59898 @validateSRUserIsAbleToViewSnapshotHistory @mahadev @skipOnJenkins
   Scenario: Validate SR user is able to view the Snapshot after Progress report is Submitted to Grantor status
@@ -1596,8 +1597,8 @@ Feature: Validate all scenarios in Progress Report
     When I save the value from row "1" for column name "Reported Date" as "ReportedDate" from flex table "---progressReport:-:kpiTableId---"
     Then I softly see the Reported Date field contains todays date
     Examples:
-      | Grant Name                 |
-      | Automation Permanent Award |
+      | Grant Name                            |
+      | {SavedValue:Automation Runtime award} |
 
   @60020 @60022 @60021 @60023 @validateReviewedProgressReportsAtManagementTabOnGrantAtInternalSide @mahadev
   Scenario Outline: Validate Progress Reports Table at Management tab on Grant overview is getting updated with Progress report whose status is Reviewed at Award owner end | Validate Progress Reports Table at Management tab on Grant overview is getting updated with Progress report whose status is Submitted for Review at SR User end
@@ -1674,8 +1675,8 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Management" sub tab
     Then I softly see value "Reviewed" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---progressReport:-:recipientGrantProgressReportTableId---"
     Examples:
-      | Grant Name                 |
-      | Automation Permanent Award |
+      | Grant Name                            |
+      | {SavedValue:Automation Runtime award} |
 
   @59571 @59839 @updateKPIValue @jitendra
   Scenario: Validate Supporting checklist Table is empty if Supporting document checklist data is not added at Grant at SR user end. |Validate Actual Field value on (KPIs) table under performance tab at subaward overview is getting updated with the values entered by SR user when PR status is Approved.
@@ -1739,10 +1740,10 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Performance" sub tab
     Then I softly see value "95" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:kpiTableId---"
 
@@ -1806,8 +1807,8 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
     And I navigate to "Management" sub tab
     Then I see value "Approved" for title "Status" inside table "---progressReport:-:recipientGrantProgressReportTableId---"
 
@@ -1836,8 +1837,8 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---"
     And I navigate to "Management" sub tab
     Then I see value "Sent Back to Subrecipient" for title "Status" inside table "---progressReport:-:recipientGrantProgressReportTableId---"
 
@@ -1858,8 +1859,8 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Submit to Grantor" in the page details
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I perform quick search for "Automation Permanent Award" in "---progressReport:-:recipientActiveGrantId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
+    And I perform quick search for "{SavedValue:Automation Runtime award}" in "---progressReport:-:recipientActiveGrantId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
     When I navigate to "Management" sub tab
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" against the value "Submitted to Grantor" inside table "---progressReport:-:recipientGrantProgressReportTableId---"
 
@@ -1893,8 +1894,8 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     When I click toggle button to select "Grants - Active"
-    And I perform quick search for "Automation Permanent Award" in "---progressReport:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:activeGrantsTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime award}" in "---progressReport:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---progressReport:-:activeGrantsTableId---"
     When I navigate to "Management" sub tab
     Then I see value "{SavedValue:Record Id}" for title "EGMS ID" against the value "Submitted for Approval" inside table "---progressReport:-:grantorGrantProgressReportTableId---"
 
@@ -1970,10 +1971,10 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
     When I navigate to "Management" sub tab
-    When I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:grantorGrantProgressReportTableId---"
+    When I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---progressReport:-:grantorGrantProgressReportTableId---"
     And I navigate to "Overview" sub tab
     Then I softly verify that field "IsFinalReport__c" is not editable by entering "Select" value
 
@@ -2093,10 +2094,10 @@ Feature: Validate all scenarios in Progress Report
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    When I perform quick search for "Automation Permanent Award" in "---progressReport:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---progressReport:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
     And I navigate to "Management" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside table
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
     And I navigate to "Responsibilities" sub tab
     And I expand nested table containing column value "Automation FO"
     Then I softly see value "Cannot Rate" for title "Rating" inside table "GrantorProgressReportReviewsTempFlexToggle"
@@ -2169,8 +2170,8 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---progressReport:-:recipientActiveGrantId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---progressReport:-:recipientActiveGrantId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---progressReport:-:recipientActiveGrantId---"
     When I navigate to "Management" sub tab
     And I click on "View" icon for "Record Id" inside flex table with id "---progressreport:-:recipientGrantProgressReportTableId---"
     Then I see field "Report Frequency" as "Monthly"
@@ -2257,10 +2258,10 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside table
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
     And I navigate to "Performance" sub tab
     Then I softly cannot see row level action button "Edit" against "{SavedValue:Record Id}" in flex table with id "AwardStrategicGoalsObjectives"
 

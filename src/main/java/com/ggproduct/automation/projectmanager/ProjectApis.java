@@ -456,9 +456,55 @@ public class ProjectApis extends ProjectWebServices{
         switch (filter){
             case "NO_RISK_ASSESSMENT":
                 return payloadForCreateStandAloneWithNORiskAssement(json);
+            case "NO_ADVANCE_PERMISSION":
+                return payloadForPaymentRequestToCreateStandaloneAward(json);
+            case "IS_BUILDUP_FUNCTIONALITY_YES":
+                return createAwardWtithBuildUpFunctionalityYes(json);
+            case "NO_PROGRAM_INCOME_ANTICIPATE":
+                return createAwardWtithNoProgramIncomeAnticipate(json);
+
             default:
                 return json;
         }
+    }
+
+    private JsonObject createAwardWtithNoProgramIncomeAnticipate(JsonObject json) {
+        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+
+        grant.addProperty("RiskAssessment_Required","No");
+        grant.addProperty("IsAdvancePermitted","No");
+        grant.addProperty("IsBuildUpFunctionality","Yes");
+        grant.addProperty("WBSRequired","No");
+        newA.add(grant);
+        json.add("Grant",newA);
+        return json;
+    }
+
+    private JsonObject createAwardWtithBuildUpFunctionalityYes(JsonObject json) {
+        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+
+        grant.addProperty("RiskAssessment_Required","Yes");
+        grant.addProperty("IsProgramIncomeAnticipated","No");
+        grant.addProperty("IsBuildUpFunctionality","No");
+        grant.addProperty("WBSRequired","No");
+        newA.add(grant);
+        json.add("Grant",newA);
+        return json;
+    }
+
+    private JsonObject payloadForPaymentRequestToCreateStandaloneAward(JsonObject json) {
+        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+
+        grant.addProperty("RiskAssessment_Required","No");
+        grant.addProperty("IsAdvancePermitted","No");
+        grant.addProperty("IsBuildUpFunctionality","No");
+        grant.addProperty("WBSRequired","No");
+        newA.add(grant);
+        json.add("Grant",newA);
+        return json;
     }
 
     private JsonObject payloadForCreateStandAloneWithNORiskAssement(JsonObject defaultPayload) {

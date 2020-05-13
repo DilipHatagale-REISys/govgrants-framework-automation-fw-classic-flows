@@ -6,7 +6,7 @@ Feature: Validate scenarios in Progress Report without background
     When I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -35,7 +35,7 @@ Feature: Validate scenarios in Progress Report without background
     When I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -96,7 +96,7 @@ Feature: Validate scenarios in Progress Report without background
     When I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -113,8 +113,8 @@ Feature: Validate scenarios in Progress Report without background
     Then I see the following messages in the page details contains:
       | Schedule Start date cannot be before Budget Period Start Date |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @55312 @taskCreationForSubrecipientProgressReportAtGranteePortal @mahadev
   Scenario: Validate  task is created for Sub-recipient user when batch is executed on active award
@@ -133,7 +133,7 @@ Feature: Validate scenarios in Progress Report without background
     When I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -176,8 +176,8 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see the following messages in the page details contains:
       | Reporting Period Start Date is Required to save. |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @55314 @34934 @updateOfSemiAnnualFrequencyOnModalBeforeClose @jitendra
   Scenario Outline: Validate User is allowed to change frequency Not applicable to Semi-Annually , schedule base as calendar on progress report schedule when the award is active
@@ -185,7 +185,7 @@ Feature: Validate scenarios in Progress Report without background
     When I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -208,8 +208,8 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see the following messages in the page details contains:
       | Schedule End date cannot be after Project Period End Date |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @58532 @58665 @58737 @verifyUserIsAllowedToChangeFrequencyAsMonthlyOnProgressReportSchedule  @mahadev
   Scenario Outline: Verify User is allowed to change frequency as Monthly, on progress report schedule when Progress report is approved on active award
@@ -218,7 +218,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -304,8 +304,8 @@ Feature: Validate scenarios in Progress Report without background
     And I click modal button "Save"
     Then I softly see field "Frequency" as "Quarterly"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @34944 @validateInternalUserIsAbleToSeeSchedulesGeneratedUnderScheduledActivitiesOnActiveAward  @mahadev
   Scenario Outline: Validate Internal User is able to see the Schedules generated under Scheduled Activities on active award
@@ -393,7 +393,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I navigate to "Grants" tab
@@ -420,8 +420,8 @@ Feature: Validate scenarios in Progress Report without background
     And I save the value from row "1" for column name "EGMS ID" as "EGMSID2" from flex table "---progressReport:-:progressReportsTaskScheduleId---"
     Then I softly see progress report table is getting updated with count "Total Records:5" inside flextable with Id "---progressReport:-:progressReportsTaskScheduleId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @34935 @58751 @ValidateOnActiveAwardProgressReportIsCreatedAtSubRecipientEndWhenBatchIsExecuted @mahadev
   Scenario Outline: : Validate sub-recipient user can see progress report under Performance tab at Sub-award View when Batch is executed | Validate on active award Progress report is created at Sub-recipient end when batch is executed
@@ -454,7 +454,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPA" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -470,7 +470,7 @@ Feature: Validate scenarios in Progress Report without background
     And I navigate to "Terms" sub tab
     Then I softly cannot see row level action button "Edit" against "Progress Report" in flex table with id "---progressreport:-:progressReportsScheduleId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+    When I delete the record "{SavedValue:Automation Runtime Award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -506,13 +506,14 @@ Feature: Validate scenarios in Progress Report without background
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     Then I softly see value "Annually" for title "Frequency" inside table "---subAwardStandAlone:-:progressReportScheduleTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @58885 @34937 @verifySubrecipientUserAbleToSeeDraftProgressReportAtMonitoringTab @mahadev
   Scenario: Verify that sub-recipient user will be able to see Draft Progress Report at Progress Reports - Draft table on active award by using List View | Validate draft progress report at under monitoring tab is not present at Internal User end using List view
-    Given I delete the record "Automation Permanent Award" from the object "Progress Report"
-    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I delete the record "{SavedValue:Automation Runtime Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Award}" having object api name as "ProgressReports__c"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Monitoring" tab
     When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
@@ -527,9 +528,10 @@ Feature: Validate scenarios in Progress Report without background
 
   @58967 @validateUserNotifiedColumnIsUpdatedWithACheckedMarkForMultipleProgressReportsScheduleWhenGeneratedForSRUser @mahadev
   Scenario Outline: Validate user notified column is updated with a tick mark for multiple Progress reports Schedule when task is generated for SR user
-    Given I delete the record "Automation Permanent Award" from the object "Progress Report"
-    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c,false"
-    When I create a post award record "ProgressReport" for the Award "Automation Permanent Award" having object api name as "ProgressReports__c,false"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I delete the record "{SavedValue:Automation Runtime Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Award}" having object api name as "ProgressReports__c,false"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Award}" having object api name as "ProgressReports__c,false"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -542,8 +544,8 @@ Feature: Validate scenarios in Progress Report without background
     And I expand nested table containing column value "Progress Report"
     Then I can see "2" record value is checked for field name "TaskCreated__c"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59132 @validateSRUserNotAllowedToSubmitPRToGrantorWhenAcknowledgemetNotChecked @mahadev
   Scenario: Validate Sub-recipient user is not allowed to submit progress report to grantor when Acknowledgement box is not checked at Overview tab
@@ -663,7 +665,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -716,15 +718,15 @@ Feature: Validate scenarios in Progress Report without background
     And I click modal button "Save"
     Then I softly see field "Frequency" as "Quarterly"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59199 @59200 @NotModifySupportDocListAfterSubmitToGrantor @jitendra
   Scenario Outline: Validate SR User is not able to modify Supporting Documents Checklist table when Progress report is Submitted to Grantor | Validate SR User is able to modify Supporting Documents Checklist table when Progress report status is sent back to sub-recipient
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -768,15 +770,15 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Forms and Attachments" sub tab
     Then I softly can see row level action button "Attach" against "Automation" in flex table with id "---progressReport:-:progressReportChecklistsTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59189 @validateSubmitProgressReportWithoutUploadingSupportingDocument @mahadev
   Scenario Outline: Validate SR is allowed to submit Progress report to grantor without uploading Supporting document When Supporting document checklist is selected Optional at Grant
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -800,15 +802,15 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59190 @validateSubrecipientDocumentLinkFieldValueIsNotApplicable @mahadev
   Scenario Outline: Validate by default Subrecipient document link field value is Not Applicable at SR user end when Supporting document checklist is selected Mandatory at Grant
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -824,15 +826,15 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Forms and Attachments" sub tab
     Then I see value "Not Applicable" for title "Subrecipient Document Link" against the value "Active" inside table "---progressreport:-:progressReportChecklistsTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59193 @validateDocumentLinkFieldValueChangeToViewHyperlink @mahadev
   Scenario Outline: Validate once document is uploaded by SR user than Document Link field value change to view hyperlink on created Progress report
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -861,15 +863,15 @@ Feature: Validate scenarios in Progress Report without background
     When I close "Upload Document" modal by clicking the top right x button
     Then I see value "View" for title "Subrecipient Document Link" against the value "Active" inside table "flexGridProgressReportChecklists"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59283 @validateSubrecipientDocumentLinkFieldValueIsNotApplicableWhenOptional @mahadev
   Scenario Outline: Validate by default Template Link field value is Not Applicable at Progress report if template is not uploaded by award owner at Grant
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -885,15 +887,15 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Forms and Attachments" sub tab
     Then I see value "Not Applicable" for title "Subrecipient Document Link" against the value "Active" inside table "---progressreport:-:progressReportChecklistsTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59284 @validateSubrecipientDocumentLinkFieldValueIsNotApplicableWhenOptional @jitendra
   Scenario Outline: Validate at SR User side Template Link field value is View Hyperlink at Progress report if template is uploaded by award owner at Grant.
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -915,15 +917,15 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Forms and Attachments" sub tab
     Then I see value "View" for title "Template Link" against the value "Active" inside table "---progressreport:-:ProgressReportChecklistTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59289 @TemplateLinkOptional @jitendra
   Scenario Outline: Validate  Supporting Checklist Table at Progress Report is generated with the latest updated data by award owner at SR User End
     When I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -936,7 +938,7 @@ Feature: Validate scenarios in Progress Report without background
       | Description | Required |
       | Automation  | Optional |
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    When I delete the record "Automation Execution Award" from the object "Progress Report"
+    When I delete the record "{SavedValue:Automation Runtime Award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -948,15 +950,15 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Forms and Attachments" sub tab
     Then I see value "Optional" for title "Required" against the value "Automation" inside table "---progressreport:-:progressReportChecklistsTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59140 @attachementSavedSuccessfully @jitendra
   Scenario Outline: Validate SR user is able to attach the document from Upload file from computer option when Supporting document checklist is selected Mandatory at Grant
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -981,11 +983,12 @@ Feature: Validate scenarios in Progress Report without background
     Then I see the following messages in the page details contains:
       | Attachment saved successfully |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59569 @validateSubmittedByFieldNotDisplayedOnPR @mahadev
   Scenario Outline: Validate Submitted By field at Certification table is not present on Progress report at SR user end when the progress report status is Created
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     Given I delete the record "<Award Name>" from the object "Progress Report"
     And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
@@ -1000,15 +1003,15 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "View" icon for "Record Id" inside flex table with id "---progressreport:-:recipientGrantProgressReportTableId---"
     Then I cannot see field "Submitted By:" inside page block
     Examples:
-      | Grant Name                 | Award Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Grant Name                            | Award Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59565 @validateSupportingDocumentUploadedIsReflectingUnderAttachmentsTable @mahadev
   Scenario Outline: Validate document uploaded at supporting  document checklist table is getting reflected at Attachments table also in progress report
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1028,8 +1031,8 @@ Feature: Validate scenarios in Progress Report without background
     When I close "Upload Document" modal by clicking the top right x button
     Then I see "Program_Field_Values.xlsx" has been added in "Attachments" flex table
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @58880 @validateDraftProgressReportNotDisplayedToAwardOwner @mahadev
   Scenario: Verify that Internal user is not be able to see Draft Progress Report on active award by using List View
@@ -1046,7 +1049,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1082,15 +1085,15 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Forms and Attachments" sub tab
     Then I see "Automation SPI" has been added in "Attachments" flex table
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59672 @validateAwardOwnerCanNotDeleteSupportingDocumentChecklist @mahadev
   Scenario Outline: Validate Internal User is not able to delete the uploaded supporting documents by SPI user when Progress report status is submitted to Grantor
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1126,15 +1129,15 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Forms and Attachments" sub tab
     Then I cannot see row level action button "Delete" against Value "Automation SPI" inside "Attachments" flex table
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59673 @validateAwardOwnerCanNotUploadSupportingDocumentChecklist @mahadev
   Scenario Outline: Validate Internal User is not able to upload new supporting documents when Progress report status is submitted to Grantor
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1170,15 +1173,15 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Forms and Attachments" sub tab
     Then I cannot see top right button "Add" for "Attachments" flex table
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59298 @MandatorySuppDocState @jitendra
   Scenario Outline: Validate Previous created Progress report remains the same at SR user end when Supporting checklist Table is updated by Award Owner
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1204,8 +1207,8 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Forms and Attachments" sub tab
     Then I see value "Mandatory" for title "Required" against the value "Active" inside table "---progressreport:-:progressReportChecklistsTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59573 @59572 @59188 @59574 @59288 @dowloadAttachment @jitendra
   Scenario Outline: : Validate SR User is able to download the uploaded document from attachment table on Progress report | Validate SR user is able to download the document from Subrecipient Document Link field when document is uploaded.
@@ -1213,7 +1216,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1245,15 +1248,15 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Delete" icon under attachment flex table
     Then I softly do not see "Program_Field_Values.xlsx" has been added in "Attachments" flex table
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59196 @59197 @downloadPRthroughLinkPDF @jitendra @skipOnJenkins
   Scenario Outline: Validate SR User is able to download Supporting document checklist table in PDF format at Progress report with Status as Active.| Validate SR User is able to download Supporting document checklist table in XLS format when the table status is Active.
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1284,8 +1287,8 @@ Feature: Validate scenarios in Progress Report without background
     And I download the file
     Then I softly verify that "xls" file is downloaded
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @60106 @60025 @60107 @validateFinalReportFieldIsEditable @mahadev
   Scenario Outline: Validate Final Report? field is editable when the Progress report status is Sent Back to Subrecipient | Validate System should generate pending task for award owner for the Final Progress report when the status is Submitted to Grantor
@@ -1293,7 +1296,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1333,15 +1336,15 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---"
     Then I softly see checkbox field "Final Report?" is editable
     Examples:
-      | Award Name                 |
-      | Automation Execution Award |
+      | Award Name                            |
+      | {SavedValue:Automation Runtime Award} |
 
   @60108 @60109 @validatePendingTaskForFinalProgressReportForProgramApproval @mahadev
   Scenario Outline: Validate pending task for Program approver for the Final Progress report when the status is Submitted for Approval
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1389,8 +1392,8 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     Then I softly see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:pendingTaskTableId---"
     Examples:
-      | Award Name                 |
-      | Automation Execution Award |
+      | Award Name                            |
+      | {SavedValue:Automation Runtime Award} |
 
   @60193 @60195 @60194 @60192 @validatePendingTaskForProgramApproverWhenFinalPRIsPendingToBeApproved @mahadev
   Scenario Outline: Validate System should generate pending task for Program approver for the next Progress report when Report marked Final is pending at his end
@@ -1398,7 +1401,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1495,11 +1498,12 @@ Feature: Validate scenarios in Progress Report without background
     Then I see the following messages in the page details contains:
       | Overview Tab - This Progress Report cannot be submitted to the Grantor because a report marked as the Final report has been approved. |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @59903 @validateProgressReportTableOnGrant @mahadev
   Scenario Outline: Validate Progress Reports Table at Management tab on Grant overview is getting updated with Progress report whose status is Created at SR User End
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     Given I delete the record "<Award Name>" from the object "Progress Report"
     And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
@@ -1513,8 +1517,8 @@ Feature: Validate scenarios in Progress Report without background
     And I navigate to "Management" sub tab
     Then I see value "Record ID" for title "EGMS ID" inside table "---progressReport:-:recipientGrantProgressReportTableId---"
     Examples:
-      | Award Name                 |
-      | Automation Permanent Award |
+      | Award Name                            |
+      | {SavedValue:Automation Runtime Award} |
 
   @60190 @60191 @deniedToSumbAnotherPRAfterPRisApproved @jitendra
   Scenario Outline: Verify User is allowed to change frequency as Monthly, on progress report schedule when Progress report is approved on active award
@@ -1522,7 +1526,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "NO_RISK_ASSESSMENT"
+    And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1606,8 +1610,8 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Submit for Approval" in the page details
     Then I can see the message "<Error Message>" in the approval decision
     Examples:
-      | Award Name                 | Error Message                                                                                                                                                              |
-      | Automation Execution Award | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |
+      | Award Name                            | Error Message                                                                                                                                                              |
+      | {SavedValue:Automation Runtime Award} | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |
 
   @59195 @validateErrorMessageForForm @Keerti
   Scenario: Validate SR User is not allowed to submit progress report to Grantor When All forms Percentage is less than 100%
@@ -1644,7 +1648,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1694,15 +1698,15 @@ Feature: Validate scenarios in Progress Report without background
     And I "Approve" in the approval decision
     Then I softly see that "{SavedValue:Record Id}" is in "Approved" status
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @60303 @validateAwardOwnerCanSendBackFinalPR @mahadev
   Scenario Outline: Validate Award Owner can send Progress report to Sub-recipient for edition which is marked as Final
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1734,15 +1738,15 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Send Back to Subrecipient" in the page details
     Then I see status in Progress-bar is "Sent Back to Subrecipient" and is "red"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @60196 @validateSRUserCanSubmitPR @mahadev
   Scenario Outline: Validate SR User can Submit another Progress report if Final marked Progress report is pending for Submit for approval at Award owner end
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1789,15 +1793,15 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @60304 @validateAwardOwnerCanSendFinalPrforApproval @jitendra
   Scenario Outline: Validate Program report Marked as Final is Submitted for Approval when it is Submitted to Grantor after send back to Sub-recipient Status
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1851,15 +1855,15 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @60882 @validateFiscalApprovercannotForwardProgressReportWhenFinalprogressreportAlreadyApproved @mahadev
   Scenario Outline: Validate Fiscal Approver cannot Forward the Progress report when Final progress report request is already approved
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -1944,15 +1948,15 @@ Feature: Validate scenarios in Progress Report without background
     And I "Reassign" to user "Automation EXE" in the approval decision
     Then I can see the message "<Error Message>" in the approval decision
     Examples:
-      | Award Name                 | Grant Name                 | Error Message                                                                                                                                                              |
-      | Automation Execution Award | Automation Execution Award | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |
+      | Award Name                            | Grant Name                            | Error Message                                                                                                                                                              |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |
 
   @60883 @validateProgramApproverCanApproveProgressReportWhenFinalprogressreportAlreadyApproved @mahadev
   Scenario Outline: Validate Program Approver can Send back Progress report to Owner when Final progress report request is already approved
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -2039,15 +2043,15 @@ Feature: Validate scenarios in Progress Report without background
     And I "Send to Owner" in the approval decision
     Then I see status in Progress-bar is "Created" and is "Green"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @60884 @validateFiscalApprovercanSendBackProgressReportWhenFinalprogressreportAlreadyApproved @mahadev
   Scenario Outline: Validate Fiscal Approver can send back Progress report to owner when Final progress report request is already approved
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -2134,15 +2138,15 @@ Feature: Validate scenarios in Progress Report without background
     And I "Send to Owner" in the approval decision
     Then I see status in Progress-bar is "Created" and is "Green"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @60880 @validateFiscalApprovercannotApproveProgressReportWhenFinalprogressreportAlreadyApproved @mahadev
   Scenario Outline: Validate Fiscal Approver cannot Approve the Progress report when Final progress report request is already approved
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -2232,8 +2236,8 @@ Feature: Validate scenarios in Progress Report without background
     And I "Approve" in the approval decision
     Then I can see the message "<Error Message>" in the approval decision
     Examples:
-      | Award Name                 | Grant Name                 | Error Message                                                                                                                                                              |
-      | Automation Execution Award | Automation Execution Award | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |
+      | Award Name                            | Grant Name                            | Error Message                                                                                                                                                              |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |
 
   @60919 @fundingorgOnPROverviewTab @jitendra
   Scenario: Validate on Progress report Funding Organization field at Report Overview table under Overview tab is same as Award
@@ -2338,7 +2342,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -2424,15 +2428,15 @@ Feature: Validate scenarios in Progress Report without background
     When I "Approve" in the approval decision
     Then I can see the message "<Error Message>" in the approval decision
     Examples:
-      | Award Name                 | Grant Name                 | Error Message                                                                                                                                                              |
-      | Automation Execution Award | Automation Execution Award | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |
+      | Award Name                            | Grant Name                            | Error Message                                                                                                                                                              |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |
 
   @61090 @validateObjectiveNotDisplayedInPR @mahadev
   Scenario Outline: Validate if Objectives Required? field is No at Grant, then Objectives table should not present on Progress report at SR End
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -2446,16 +2450,16 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Save" in the page details
     Then I cannot see page block "Objectives"
     Examples:
-      | Award Name                 |
-      | Automation Execution Award |
+      | Award Name                            |
+      | {SavedValue:Automation Runtime Award} |
 
   @61092 @validateMultipleObjectivesInPRCarriedFromAward @mahadev @bugged-80238
   Scenario Outline: Validate if Objectives Required? field is yes at Grant, Multiple Objectives are associated at award then it is carried at Progress report at SR End
-    When I delete the record "Automation Execution Award" from the object "Amendment Request"
+    When I delete the record "{SavedValue:Automation Runtime Award}" from the object "Amendment Request"
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -2471,15 +2475,15 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see value "Automation Permanent Objective" for title "Title" inside table "---progressReport:-:objectivesTableId---"
     Then I softly see value "Automation Permanent Objective2" for title "Title" inside table "---progressReport:-:objectivesTableId---"
     Examples:
-      | Award Name                 |
-      | Automation Execution Award |
+      | Award Name                            |
+      | {SavedValue:Automation Runtime Award} |
 
   @60881 @validateProgramApprovercannotApproveProgressReportWhenFinalprogressreportApproved @mahadev
   Scenario Outline: Validate Program Approver cannot approve the progress report when Final progress report is already approved
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -2566,15 +2570,15 @@ Feature: Validate scenarios in Progress Report without background
     And I "Approve" in the approval decision
     Then I can see the message "<Error Message>" in the approval decision
     Examples:
-      | Award Name                 | Grant Name                 | Error Message                                                                                                                                                                                                       |
-      | Automation Execution Award | Automation Execution Award | Any approval decision on the Progress Report cannot be made at this time because a report marked as the Final Report has already been approved. Send Back to Owner will allow the owner to notify the Subrecipient. |
+      | Award Name                            | Grant Name                            | Error Message                                                                                                                                                                                                       |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | Any approval decision on the Progress Report cannot be made at this time because a report marked as the Final Report has already been approved. Send Back to Owner will allow the owner to notify the Subrecipient. |
 
   @62779 @PercentagePeriodAtPRAfterPaymentRequest @jitendra
   Scenario Outline: Verify Submitted for approval report Percentage of Budget Remaining field remains the same on Progress report when the Payment request type is Reimbursement with Approved Status.
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -2665,14 +2669,14 @@ Feature: Validate scenarios in Progress Report without background
     Then I see field "Perentage of Budget Remaining" as "{savedValue:PercentageRemainingBudget}"
     Examples:
       | Award Name                  | Grant Name                  |
-      | Automation Execution1 Award | Automation Execution1 Award |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @62246 @62237 @validateReviewedPRAfterTCAmendmentIsCarryForwardedA @mahadev
   Scenario Outline: Validate progress report with reviewed status is carry forwarded after TC amendment
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -2792,15 +2796,15 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Performance" sub tab
     Then I softly see value "Reviewed" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @62245 @62238 @validateSubmittedForReviewPRAfterTCAmendmentIsCarryForwardedAonAwardAtInternalportal @mahadev
   Scenario Outline: Validate progress report with Submitted for Review status is carry forwarded at internal portal on award after Terms and conditions amendment
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -2900,15 +2904,12 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Performance" sub tab
     Then I softly see value "Submitted for Review" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @63112 @validateReviewedPRStatusAfterCloseoutApprovalAtTermination @jitendra
   Scenario Outline: Verify Progress report with Reviewed status changed to  Force Closed when closeout request is approved with type as Termination by award owner.
-    Given I delete the record "<Award Name>" from the object "Amendment Request"
-    And I delete the record "<Award Name>" from the object "Award"
-    And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -3024,7 +3025,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -3109,7 +3110,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -3194,7 +3195,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -3310,7 +3311,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -3401,7 +3402,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -3477,7 +3478,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -3545,7 +3546,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -3640,7 +3641,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3709,7 +3710,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -3802,7 +3803,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -3905,7 +3906,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -4010,7 +4011,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4078,7 +4079,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4149,7 +4150,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -4282,7 +4283,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -4405,7 +4406,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -4538,7 +4539,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -4649,7 +4650,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -4725,7 +4726,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -4790,7 +4791,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -4854,7 +4855,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -4940,7 +4941,7 @@ Feature: Validate scenarios in Progress Report without background
     Given I delete the record "<Award Name>" from the object "Amendment Request"
     And I delete the record "<Award Name>" from the object "Award"
     And I delete the record "<Award Name>" from the object "Grant"
-    And I activated standalone subaward "<Award Name>" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I delete the record "<Award Name>" from the object "Progress Report"
