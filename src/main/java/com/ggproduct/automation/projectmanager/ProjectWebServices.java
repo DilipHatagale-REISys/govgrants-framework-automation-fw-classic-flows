@@ -301,8 +301,11 @@ public class ProjectWebServices {
         }
     }
 
-    public void deleteAnnouncement(String annName){
-        deletionApi(annName,"Announcement");
+    public void deleteAnnouncement(String recordName){
+        deletionApi(recordName,"APPLICATION REVIEWS");
+        deletionApi(recordName,"Application");
+        deletionApi(recordName,"PreApplication");
+        deletionApi(recordName,"Announcement");
     }
 
     public void deleteFocusArea(String recordName){
@@ -362,12 +365,25 @@ public class ProjectWebServices {
             if (StringUtils.containsIgnoreCase(record,"payment")){
                 deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Payment Request");
             }
+            if (StringUtils.containsIgnoreCase(record,"application")){
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"APPLICATION REVIEWS");
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"PreApplication");
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Application");
+            }
         }
 
         if (recordNameList.stream().anyMatch(s -> s.toLowerCase().contains("award"))){
             for(String record : recordNameList){
                 if (StringUtils.containsIgnoreCase(record,"award")){
                     deleteAward(I.amPerforming().propertiesFileOperationsTo().getValue(record));
+                }
+            }
+        }
+
+        if (recordNameList.stream().anyMatch(s -> s.toLowerCase().contains("announcement"))){
+            for(String record : recordNameList){
+                if (StringUtils.containsIgnoreCase(record,"announcement")){
+                    deleteAnnouncement(I.amPerforming().propertiesFileOperationsTo().getValue(record));
                 }
             }
         }
