@@ -2,7 +2,6 @@
 Feature: Validate all common scenarios in the  Announcement tab
 
   Background: Create Announcement
-    Given I delete the record "Automation Formula Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel

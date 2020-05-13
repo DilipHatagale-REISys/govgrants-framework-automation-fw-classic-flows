@@ -2,7 +2,6 @@
 Feature: Validate all scenarios in the Competitive Announcement tab
 
   Background: Create Announcement
-    Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -24,7 +23,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       And I navigate to "Announcements" tab
       When I navigate to "Competitive" content inside "Announcements" subheader on left panel
       And I click toggle button to select "Draft Competitive Announcements"
-      And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+      And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
       And I navigate to "Overview" sub tab
       And I click on parallel menu button in flex table titled "Contacts"
       And I select "Download as PDF" from parallel lines dropdown of "Contacts"
@@ -41,7 +40,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
-    And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Overview" sub tab
     And I click on parallel menu button in flex table titled "Related Federal/NGO Program"
     And I select "Download as PDF" from parallel lines dropdown of "Related Federal/NGO Program"
@@ -54,7 +53,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
-    And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Financials" sub tab
     And I click on parallel menu button in flex table titled "Budget Categories"
     And I select "Download as PDF" from parallel lines dropdown of "Budget Categories"
@@ -67,7 +66,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
-    And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
     And I click on parallel menu button in flex table titled "Business Forms"
     And I select "Download as PDF" from parallel lines dropdown of "Business Forms"
@@ -84,7 +83,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
-    And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
     And I click on parallel menu button in flex table titled "Supporting Documents Checklist"
     And I select "Download as PDF" from parallel lines dropdown of "Supporting Documents Checklist"
@@ -104,7 +103,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
-    And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
     And I click on parallel menu button in flex table titled "Approvers"
     And I select "Download as PDF" from parallel lines dropdown of "Approvers"
@@ -122,7 +121,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
-    And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
     And I click on parallel menu button in flex table titled "Peer Reviewers"
     And I select "Download as PDF" from parallel lines dropdown of "Peer Reviewers"
@@ -138,7 +137,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
-    And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Setup" sub tab
     And I click on parallel menu button in flex table titled "Related Focus Areas"
     And I select "Download as PDF" from parallel lines dropdown of "Related Focus Areas"
@@ -1565,7 +1564,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    Then I softly do not see values "Record Id" and "Automation Competitive Announcement" inside table
+    Then I softly do not see values "Record Id" and "{SavedValue:Automation Runtime Competitive Announcement}" inside table
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
@@ -1573,7 +1572,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    Then I softly do not see values "Record Id" and "Automation Competitive Announcement" inside table
+    Then I softly do not see values "Record Id" and "{SavedValue:Automation Runtime Competitive Announcement}" inside table
     Examples:
       | Announcement Type |
       | Competitive       |
@@ -1757,7 +1756,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    Then I softly do not see values "Record Id" and "Automation Competitive Announcement" inside table
+    Then I softly do not see values "Record Id" and "{SavedValue:Automation Runtime Competitive Announcement}" inside table
     Examples:
       | Announcement Type |
       | Competitive       |
@@ -2113,7 +2112,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    Then I softly do not see values "Record Id" and "Automation Competitive Announcement" inside table
+    Then I softly do not see values "Record Id" and "{SavedValue:Automation Runtime Competitive Announcement}" inside table
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
