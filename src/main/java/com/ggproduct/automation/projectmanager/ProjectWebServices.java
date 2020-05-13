@@ -273,9 +273,10 @@ public class ProjectWebServices {
     }
 
     public void deleteAward(String recordName){
+        deletionApi(recordName,"Progress Report");
+        deletionApi(recordName,"Progress Report");
         deletionApi(recordName,"Amendment Request");
         deletionApi(recordName,"Payment Request");
-        deletionApi(recordName,"subaward");
         deletionApi(recordName,"Award");
         deletionApi(recordName,"Grant");
     }
@@ -332,14 +333,6 @@ public class ProjectWebServices {
         List<String> recordNameList = I.amPerforming().propertiesFileOperationsTo().getAllSavedKeys().stream()
                 .filter(Keys -> Keys.startsWith("AUTOMATION RUNTIME")).collect(Collectors.toList());
 
-        if (recordNameList.stream().anyMatch("award"::equalsIgnoreCase)){
-            deleteAward(recordNameList.get(0));
-        }
-
-        if (recordNameList.stream().anyMatch("fdm"::equalsIgnoreCase)){
-            deleteFDM(recordNameList);
-        }
-
         for (String record : recordNameList){
             if (StringUtils.containsIgnoreCase(record,"focus area")){
                 deleteFocusArea(I.amPerforming().propertiesFileOperationsTo().getValue(record));
@@ -359,6 +352,28 @@ public class ProjectWebServices {
             if (StringUtils.containsIgnoreCase(record,"site visit")){
                 deleteSiteVisit(I.amPerforming().propertiesFileOperationsTo().getValue(record));
             }
+            if (StringUtils.containsIgnoreCase(record,"desk")){
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Desk Review");
+                deleteSiteVisit(I.amPerforming().propertiesFileOperationsTo().getValue(record));
+            }
+            if (StringUtils.containsIgnoreCase(record,"amendment")){
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Amendment Request");
+            }
+            if (StringUtils.containsIgnoreCase(record,"payment")){
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Payment Request");
+            }
+        }
+
+        if (recordNameList.stream().anyMatch(s -> s.toLowerCase().contains("award"))){
+            for(String record : recordNameList){
+                if (StringUtils.containsIgnoreCase(record,"award")){
+                    deleteAward(I.amPerforming().propertiesFileOperationsTo().getValue(record));
+                }
+            }
+        }
+
+        if (recordNameList.stream().anyMatch(s -> s.toLowerCase().contains("fdm"))){
+            deleteFDM(recordNameList);
         }
     }
 }
