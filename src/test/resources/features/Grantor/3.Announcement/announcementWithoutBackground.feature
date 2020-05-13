@@ -3,7 +3,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
 
   @70878 @70373 @70821 @70978 @validationOverrideProgramSetting @aashish
   Scenario: To Verify that user can override program settings at Announcement level
-    Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -21,7 +20,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
 
   @70369 @validationForSubrecipientMatch @smoke @aashish
   Scenario: To Validate system generates validation message for  by keeping the "Subrecipient Match(%)" field as blank while creating Announcement
-    Given I delete the record "Automation Formula Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -37,7 +35,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
   @70553 @70604 @75457 @validationForNoFocusArea @smoke @aashish
   Scenario: To Verify that If user selected focus area as NO then at announcement level then no other focus area are allowed to add while creating the Announcement
   | To Verify that If user selected objective as NO then at announcement level then no other objective are allowed to add while creating the Announcement
-    Given I delete the record "Automation Formula Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -52,8 +49,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Published Competitive Announcements"
-    And I perform quick search for "Automation Announcement for FDM" in "---announcement:-:announcemetTableId---" panel
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---announcement:-:announcemetTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for FDM tests}" in "---announcement:-:announcemetTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for FDM tests}" inside flex table with id "---announcement:-:announcemetTableId---"
     And I navigate to "Related Log" sub tab
     And I click on "View" icon for "Funding Decision Memo" inside flex table with id "---announcement:-:announcemetTableId---"
     Then I softly can see "Funding Decision Memo" sub tab at view detail page
@@ -62,13 +59,14 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
 
   @75546 @75639 @75633 @75645 @75646 @75544 @75545 @75543 @jitendra @downloadPDF
   Scenario: To verify system allow to download PDF for Announcement-published table for announcement tab
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for FDM tests" and properties "default"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Published Competitive Announcements"
-    And I perform quick search for "Automation Announcement for FDM" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    Then I softly see value "Automation Announcement for FDM" for title "Announcement Name" inside table "---announcement:-:competitiveAnnouncementTableId---"
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for FDM tests}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    Then I softly see value "{SavedValue:Automation Runtime Announcement for FDM tests}" for title "Announcement Name" inside table "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for FDM tests}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Collab" sub tab
     And I click on advance filter "#advfCommunicationHistory" of table id "---announcement:-:collabMessages---"
     And I enter advance filter values inside id "advfCommunicationHistory"
@@ -103,8 +101,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click toggle button to select "Published Competitive Announcements"
     And I click on advance filter "#advfActiveFundingOpportunitiesCompitive" of table id "---announcement:-:competitiveAnnouncementTableId---"
     And I enter advance filter values inside id "advfActiveFundingOpportunitiesCompitive"
-      | Announcement Name | Contains | Automation Announcement for FDM |
-    Then I softly see value "Automation Announcement for FDM" for title "Announcement Name" inside table "---announcement:-:competitiveAnnouncementTableId---"
+      | Announcement Name | Contains | {SavedValue:Automation Runtime Announcement for FDM tests} |
+    Then I softly see value "{SavedValue:Automation Runtime Announcement for FDM tests}" for title "Announcement Name" inside table "---announcement:-:competitiveAnnouncementTableId---"
     And I refresh the page
     And I click on advance filter "#advfActiveFundingOpportunitiesCompitive" of table id "---announcement:-:competitiveAnnouncementTableId---"
     And I enter advance filter values inside id "advfActiveFundingOpportunitiesCompitive"
@@ -120,7 +118,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
 
   @70999 @73627 @73632 @70997 @70980 @71010 @71011 @71012 @70998 @71022 @71023 @71037 @71027 @validationForErrorMessageOfPreApplication @aashish
   Scenario: To validate system generated error message when Pre Application Due Date is greater than Application Due Date while submitting information
-    Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -213,11 +210,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
 
   @71445 @71580 @71593 @userCanValidateGeratedErrorMessage @aashish @bugged
   Scenario: To validate system generates error message,when user giving form weight but review steps weight is 0 in Announcement
-    Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
-    Given I delete the record "Automation Directed Announcement" from the object "PreApplication"
-    Given I delete the record "Automation Directed Announcement" from the object "Application"
-    And I delete the record "Automation Directed Announcement" from the object "Qualified Announcement"
-    Given I delete the record "Automation Directed Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
@@ -245,11 +237,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
 
   @71150 @71578 @71303 @71051 @71054 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish @smoke
   Scenario: To validate system generated error message when total Review Form  weight(%) is more than 100 % while creating Announcement
-    Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
-    Given I delete the record "Automation Directed Announcement" from the object "PreApplication"
-    Given I delete the record "Automation Directed Announcement" from the object "Application"
-    And I delete the record "Automation Directed Announcement" from the object "Qualified Announcement"
-    Given I delete the record "Automation Directed Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
@@ -392,11 +379,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
 
   @71293 @71295 @71440 @71416 @verifyUserCanAddReviewers @aashish
   Scenario: To verify that user is allow to add reviewers to review forms while creating Announcement | To verify default review forms & reviewer section are populated on Draft announcement
-    Given I delete the record "Automation Directed Announcement" from the object "APPLICATION REVIEWS"
-    Given I delete the record "Automation Directed Announcement" from the object "PreApplication"
-    Given I delete the record "Automation Directed Announcement" from the object "Application"
-    And I delete the record "Automation Directed Announcement" from the object "Qualified Announcement"
-    Given I delete the record "Automation Directed Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
@@ -458,7 +440,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
 
   @jitendra @SystemsErrorAfterApplyingWrongFilter @73630 @73626
   Scenario: To validate system is getting displayed error message while adding invalid values into the filter for Approves section on responsibility tab of announcement
-    Given I delete the record "Automation Competitive Announcement" from the object "Announcement"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -502,41 +483,39 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click toggle button to select "Not Yet Qualified Opportunities - Closed"
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:opportunityNotQtableId---"
     And I click toggle button to select "Not Yet Qualified Opportunities - All"
-    And I perform quick search for "Automation Announcement for Application Intake" in "---announcement:-:opportunityNotQtableId---" panel
-    Then I softly see value "Automation Announcement for Application Intake" for title "Title" inside table "---announcement:-:opportunityNotQtableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Application Intake}" in "---announcement:-:opportunityNotQtableId---" panel
+    Then I softly see value "{SavedValue:Automation Runtime Announcement for Application Intake}" for title "Title" inside table "---announcement:-:opportunityNotQtableId---"
 
   @73866 @73870 @jitendra @viewQualifiedOpportunitySPA
   Scenario: To verify user allow to view Qualified opportunity  in opportunity tab
   | To verify, searched functionality for Qualified Opportunities :All section for opportunities phase
-    Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
-    And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
+    Given I published "Directed" type announcement having name "Automation Runtime Announcement for Application Intake" and properties "default"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Application Intake}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Application Intake}" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Qualified Opportunities - All"
-    And I perform quick search for "Automation Announcement for Application Intake" in "---preApplication:-:qualifiedOpprtunitesTableId---" panel
-    Then I softly see value "Automation Announcement for Application Intake" for title "Title" inside table "---preApplication:-:qualifiedOpprtunitesTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Application Intake}" in "---preApplication:-:qualifiedOpprtunitesTableId---" panel
+    Then I softly see value "{SavedValue:Automation Runtime Announcement for Application Intake}" for title "Title" inside table "---preApplication:-:qualifiedOpprtunitesTableId---"
     And I save the value from row "1" for column name "EGMS ID" as "egms id" from flex table "---preApplication:-:qualifiedOpprtunitesTableId---"
-    And I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---preApplication:-:qualifiedOpprtunitesTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Application Intake}" inside flex table with id "---preApplication:-:qualifiedOpprtunitesTableId---"
     Then I softly see field "EGMS ID" as "{SavedValue:egms id}"
 
   @73857 @75635 @75624 @publishingExtendDatedButtonDisplay
   Scenario: To Verify that Extend Dates(Revise) button will be shown when Announcement status is Published  for announcement
-    And I delete the record "Announcement Tests for life" from the object "Announcement"
-    Given I published "Competitive" type announcement having name "Announcement Tests for life" and properties "default"
+    Given I published "Competitive" type announcement having name "Announcement Runtime for Announcement Extend" and properties "default"
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Published Competitive Announcements"
-    And I perform quick search for "Announcement Tests for life" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    And I click on "View" icon for "Announcement Tests for life" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I perform quick search for "{SavedValue:Announcement Runtime for Announcement Extend}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "{SavedValue:Announcement Runtime for Announcement Extend}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     Then I softly can see top right button "Extend Dates" in page detail
     And I navigate to "Collab" sub tab
     And I enter value "test @Sarah PM" in my feed section and share the post
@@ -564,30 +543,28 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
 
   @75524 @publishedAllowToDownloadPDF
   Scenario: To verify system allow to download PDF for Announcement after publishing it
-    And I delete the record "Announcement Tests for pdf" from the object "Announcement"
-    Given I published "Competitive" type announcement having name "Announcement Tests for pdf" and properties "default"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for pdf Tests" and properties "default"
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Published Competitive Announcements"
-    And I perform quick search for "Announcement Tests for pdf" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    And I click on "View" icon for "Announcement Tests for pdf" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I perform quick search for "{SavedValue:Automation Announcement for pdf Tests}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Announcement for pdf Tests}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I click on "Menu" in the page details
     And I select "Download As PDF" from dropdown
     And I download the file
-    And I see "Announcement Tests for pdf" on page "1" of "govgrants" pdf file
+    And I see "{SavedValue:Automation Announcement for pdf Tests}" on page "1" of "govgrants" pdf file
 
   @75632 @75621 @searchFunctionalityForMessagesMyFeedInCollab @keerti
   Scenario: To verify search functionality for messages section in collab tab for announcement
   | To verify entered My Feed from the collab tab section of announcement is getting displayed on home phase.
-    And I delete the record "Automation Competitive Announcement" from the object "Announcement"
-    Given I published "Competitive" type announcement having name "Automation Competitive Announcement" and properties "default"
+    Given I published "Competitive" type announcement having name "Automation Runtime Competitive Announcement" and properties "default"
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Published Competitive Announcements"
-    And I perform quick search for "Automation Competitive Announcement" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    And I click on "View" icon for "Automation Competitive Announcement" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Competitive Announcement}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I navigate to "Collab" sub tab
     And I enter value "Hi @Automation PM" in my feed section and share the post
     Then I softly see "Automation PM" inside flex table with id "---announcement:-:myFeedTableId---"
