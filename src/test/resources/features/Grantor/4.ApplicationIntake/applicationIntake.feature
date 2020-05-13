@@ -2,14 +2,13 @@
 Feature: Validate all scenarios in the Application Intake
 
   Background: Qualify Announcement and Create Application
-    Given I delete the record "Automation Announcement for Application Intake" from the object "Application"
-    And I delete the record "Automation Announcement for Application Intake" from the object "Qualified Announcement"
+    And I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    When I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
@@ -135,7 +134,7 @@ Feature: Validate all scenarios in the Application Intake
     Then I softly cannot see top right button "Edit" in page detail
     Examples:
       | Application Name                               | User |
-      | Automation Announcement for Application Intake | PM   |
+      | {SavedValue:Automation Runtime Announcement Application} | PM   |
       |                                                | FO   |
       |                                                | EXE  |
 
@@ -281,7 +280,7 @@ Feature: Validate all scenarios in the Application Intake
     Then I see "Submitted to Grantor" on page "1" of "govgrants" pdf file
     Examples:
       | Application Name                               |
-      | Automation Announcement for Application Intake |
+      | {SavedValue:Automation Runtime Announcement Application} |
 
   @70525 @userCanAssociateNewContact @deepika
   Scenario:Validate whether user is able to associate new contacts while creating an application
@@ -331,11 +330,11 @@ Feature: Validate all scenarios in the Application Intake
     When I navigate to "Opportunities" tab
     When I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Opportunities Converted to Application - All"
-    Then I softly see value "Automation Announcement for Application Intake" for title "Title" inside table "cae"
+    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "cae"
     And I click toggle button to select "Opportunities Converted to Application - Open"
-    Then I softly see value "Automation Announcement for Application Intake" for title "Title" inside table "cae"
-    When I perform quick search for "Automation Announcement for Application Intake" in "cae" panel
-    And I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "cae"
+    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "cae"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "cae" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside flex table with id "cae"
     When I click on "Create Application" in the page details
     Then I softly see the following messages in the page details contains:
       | Application cannot be created as you have reached the maximum limit for allowed applications for {SavedValue:APPId} |
@@ -343,8 +342,8 @@ Feature: Validate all scenarios in the Application Intake
     And I navigate to "Opportunities" tab
     When I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Opportunities Converted to Application - All"
-    When I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:convertedToApplicationTableID---" panel
-    Then I softly see value "Automation Announcement for Application Intake" for title "Title" inside table "---applicationIntake:-:convertedToApplicationTableID---"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---applicationIntake:-:convertedToApplicationTableID---" panel
+    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "---applicationIntake:-:convertedToApplicationTableID---"
     And I save the value from row "1" for column name "Funding Opportunity Id" as "oppId" from flex table "---applicationIntake:-:convertedToApplicationTableID---"
     And I click on advance filter "#advfcae" of table id "---applicationIntake:-:convertedToApplicationTableID---"
     And I enter advance filter values inside id "---applicationIntake:-:convertedToApplicationTableID---"
@@ -354,8 +353,8 @@ Feature: Validate all scenarios in the Application Intake
     And I click on advance filter "#advfcae" of table id "---applicationIntake:-:convertedToApplicationTableID---"
     And I enter advance filter values inside id "---applicationIntake:-:convertedToApplicationTableID---"
       | Funding Opportunity Id | Contains | {SavedValue:oppId} |
-    Then I softly see value "Automation Announcement for Application Intake" for title "Title" inside table "---applicationIntake:-:convertedToApplicationTableID---"
+    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "---applicationIntake:-:convertedToApplicationTableID---"
     And I refresh the page
-    When I perform quick search for "Automation Announcement for Application Intake" in "---applicationIntake:-:convertedToApplicationTableID---" panel
-    And I click on "View" icon for "Automation Announcement for Application Intake" inside flex table with id "---applicationIntake:-:convertedToApplicationTableID---"
-    Then I softly see field "Opportunity Name" as "Automation Announcement for Application Intake"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---applicationIntake:-:convertedToApplicationTableID---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside flex table with id "---applicationIntake:-:convertedToApplicationTableID---"
+    Then I softly see field "Opportunity Name" as "{SavedValue:Automation Runtime Announcement Application}"

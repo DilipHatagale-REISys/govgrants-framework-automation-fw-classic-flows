@@ -2,19 +2,16 @@
 Feature: Validate all scenarios in the Pre-Application
 
   Background: Qualify Announcement and Create PreApplication
-    Given I delete the record "Automation Announcement for Pre-Application" from the object "Application"
-    When I delete the record "Automation Announcement for Application" from the object "PreApplication"
-    And I delete the record "Automation Announcement for Pre-Application" from the object "Qualified Announcement"
-    And I delete the record "Automation Announcement for Application" from the object "Qualified Announcement"
+    And I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
     When I am on "SUBPORTAL" portal
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Pre-Application" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    When I click on "View" icon for "Automation Announcement for Pre-Application" inside table
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside table
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
-    When I enter value "Automation Announcement for Application" into field "Title__c"
+    When I enter value "{SavedValue:Automation Runtime Announcement Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -23,7 +20,7 @@ Feature: Validate all scenarios in the Pre-Application
   Scenario: Validate the Creation of Pre Application | Validate the user  will be able to view the the Program Income field on the overview tab when the value set as No.
   Validate the title entered while creating the pre-application reflects same under Oppurtunity Name
     Then I softly see status in Progress-bar is "Created" and is "Green"
-    Then I softly see field "Opportunity Title" as "Automation Announcement for Pre-Application"
+    Then I softly see field "Opportunity Title" as "{SavedValue:Automation Runtime Announcement Application}"
     When I navigate to "Overview" sub tab
     When I save the field containing "Program Income Allowed?" as "No"
     Then I softly cannot see field "Estimated Program Income For Project Period" inside page block
@@ -185,10 +182,10 @@ Feature: Validate all scenarios in the Pre-Application
     And I click on "View" icon for "Record Id" inside flex table with id "---applicationIntake:-:applicantGrantorApplicationsTableId---"
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
     Examples:
-      | Announcement Name                       | User |
-      | Automation Announcement for Application | PM   |
-      |                                         | FO   |
-      |                                         | EXE  |
+      | Announcement Name                                        | User |
+      | {SavedValue:Automation Runtime Announcement Application} | PM   |
+      |                                                          | FO   |
+      |                                                          | EXE  |
 
   @70468 @acknowledgeRequiredForPre-App @deepika
   Scenario: Validate the system should throw an validation message if the pre-application is submitted with Acknowledging it
@@ -259,8 +256,8 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "View" icon for "<Announcement Name>" inside table
     Then I softly cannot see top right button "Create Application" in page detail
     Examples:
-      | Announcement Name                       |
-      | Automation Announcement for Application |
+      | Announcement Name                                        |
+      | {SavedValue:Automation Runtime Announcement Application} |
 
   @75523 @77655 @75522 @preApplicationPDFRelatedLog @aashish @skipOnJenkins
   Scenario Outline: To verify system allow to download PDF for Pre-application section in Related log tab of announcement | To verify user able to view Pre-Applications in Pre-Applications section in Related log tab of announcement
@@ -332,12 +329,12 @@ Feature: Validate all scenarios in the Pre-Application
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "All Competitive Announcements"
-    And I perform quick search for "Automation Announcement for Pre-Application" in "ActiveFundingOpportunitiesCompitive" panel
-    And I click on "View" icon for "Automation Announcement for Pre-Application" inside flex table with id "ActiveFundingOpportunitiesCompitive"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "ActiveFundingOpportunitiesCompitive" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside flex table with id "ActiveFundingOpportunitiesCompitive"
     When I navigate to "Related Log" sub tab
     And I select "Download as PDF" from parallel lines dropdown of "Pre-Applications"
     And I download the file
     Then I softly see "Pre-Applications" on page "1" of "govgrants" pdf file
     Examples:
-      | Announcement Name                       |
-      | Automation Announcement for Application |
+      | Announcement Name                                        |
+      | {SavedValue:Automation Runtime Announcement Application} |
