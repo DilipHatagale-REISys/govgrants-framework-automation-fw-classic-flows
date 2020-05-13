@@ -3,9 +3,9 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
 
   @38313 @taskCreationForSubrecipientUser @mahadev
   Scenario Outline: Validate task is getting created for SPI user
+    And I activated standalone subaward "Automation Runtime award" with properties "default"
     Given I delete the record "<Award Name>" from the object "Payment Request"
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I create a post award record "PaymentRequest" for the Award "Automation Permanent Award" having object api name as "PaymentRequest__c"
+    When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "<Login User>" user
     And I navigate to "Monitoring" tab
@@ -13,14 +13,14 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
     Examples:
-      | Award Name                 | Login User |
-      | Automation Permanent Award | SPI        |
-      | Automation Permanent Award | SPA        |
+      | Award Name                            | Login User |
+      | {SavedValue:Automation Runtime award} | SPI        |
+      | {SavedValue:Automation Runtime award} | SPA        |
 
   @55398 @submittedPRDisplayedInCompletedTask @mahadev
   Scenario Outline: Validate submitted payment request displays under completed task for SPI user
+    And I activated standalone subaward "Automation Runtime award" with properties "default"
     Given I delete the record "<Award Name>" from the object "Payment Request"
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
@@ -42,15 +42,14 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
     When I perform quick search for "Record Id" in "---paymentRequest:-:completedTaskTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:completedTaskTableId---"
     Examples:
-      | Award Name                 |
-      | Automation Permanent Award |
+      | Award Name                            |
+      | {SavedValue:Automation Runtime award} |
 
   @72351 @scheduledReimbursementPaymentRequestHappyPath @productBusinessFlowSanity
   Scenario Outline: Validate the Scheduled Payment Request happy path and the status changes to 'Paid' and is green
+    And I activated standalone subaward "Automation Runtime award" with properties "default"
     Given I delete the record "<Award Name>" from the object "Payment Request"
-    When I delete the record "Automation Payment Request2" from the object "Payment Request"
-    When I delete the record "Automation Payment Request" from the object "Payment Request"
-    When I create a post award record "PaymentRequest" for the Award "Automation Permanent Award" having object api name as "PaymentRequest__c"
+    When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Monitoring" tab
@@ -97,5 +96,5 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
     When I close "{SavedValue:EGMSID}" modal by clicking the top right x button
     Then I see status in Progress-bar is "Paid" and is "Green"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime award} | {SavedValue:Automation Runtime award} |
