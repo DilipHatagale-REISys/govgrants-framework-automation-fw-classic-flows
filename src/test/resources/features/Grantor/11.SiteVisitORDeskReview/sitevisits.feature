@@ -2,15 +2,15 @@
 Feature: Validate all scenarios in the Site Visit
 
   Background: Data setup for Site Visit
-    Given I delete the record "Automation Site Visit" from the object "Site Visit"
+    Given I activated standalone subaward "Automation Award Runtime Site Visit" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I perform quick search for "Automation Permanent Award" in "ActiveGrants" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    And I perform quick search for "{SavedValue:Automation Award Runtime Site Visit}" in "ActiveGrants" panel
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
     And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
@@ -50,7 +50,7 @@ Feature: Validate all scenarios in the Site Visit
     And I refresh the page
     And I click on "Notify" in the page details
     And I save the field labeled "EGMS ID" as "SiteVisitId"
-    Then I softly see that "Automation Site Visit" is in "Notified" status
+    Then I softly see that "{SavedValue:Automation Award Runtime Site Visit}" is in "Notified" status
     Then I softly see status in Progress-bar is "Notified" and is "green"
     When I pause execution for "120" seconds
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
@@ -188,7 +188,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "Automation Site Visit" inside table
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside table
     Given I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
 
@@ -328,17 +328,17 @@ Feature: Validate all scenarios in the Site Visit
     Then I do not see value "New" for title "Automation Observation" inside table "---sitevisits:-:correctiveTableId---"
     Examples:
       | Site Visit Name       |
-      | Automation Site Visit |
+      | {SavedValue:Automation Award Runtime Site Visit} |
 
   @39159 @siteVisitDeleteAccesstoOwner @deepika
   Scenario Outline: Verify that record owner can delete created state site visit from Award level
     Given I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     And I click on "Delete" icon for "<Site Visit Name>" inside table
-    Then I do not see values "Automation Site Visit" and "Title" inside table
+    Then I do not see values "{SavedValue:Automation Award Runtime Site Visit}" and "Title" inside table
     Examples:
       | Site Visit Name       |
-      | Automation Site Visit |
+      | {SavedValue:Automation Award Runtime Site Visit} |
 
   @39169 @reportsAndOutcomesEditAccess @deepika
   Scenario: Verify that upon conduct,  Reports And Outcomes tab are editable to the internal user for an award  level site visit
@@ -805,7 +805,7 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "{SavedValue:svID}" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    Then I softly see that "Automation Site Visit" has been added in flextable with Id "---sitevisits:-:manageSiteVisitTableId---"
+    Then I softly see that "{SavedValue:Automation Award Runtime Site Visit}" has been added in flextable with Id "---sitevisits:-:manageSiteVisitTableId---"
 
   @60830 @56038 @FieldHistoryUpdatedSendBackToOwnerByPM @keerti
   Scenario:  To Validate field history update post Award level Site Visit is send back to owner by program approver and Submit for Approval button
@@ -995,7 +995,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "Automation Site Visit" inside table
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside table
     And I click on "Accept And Close" in the page details
     Then I softly see status in Progress-bar is "Closed" and is "Green"
     When I pause execution for "120" seconds
@@ -1010,8 +1010,8 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I perform quick search for "Automation Site Visit" in "ApplicantSiteVisitReports" panel
-    When I click on "View" icon for "Automation Site Visit" inside flex table with id "ApplicantSiteVisitReports"
+    And I perform quick search for "{SavedValue:Automation Award Runtime Site Visit}" in "ApplicantSiteVisitReports" panel
+    When I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "ApplicantSiteVisitReports"
     Then I softly see status in Progress-bar is "Closed" and is "Green"
 
   @60834 @AdditionOfAttachmentForAwardSiteVisits @keerti
@@ -1395,9 +1395,9 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
     And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
@@ -1408,9 +1408,9 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     Then I see that "{SavedValue:secID}" has been added in flextable with Id "---sitevisits:-:grantorSiteVisitsTableID---"
 
@@ -1419,12 +1419,12 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
-    Then I softly can see row level action button "Delete" against "Automation Site Visit" in flex table with id "GrantorSiteVisitsAward"
-    When I click on "Delete" icon for "Automation Site Visit" inside flex table with id "GrantorSiteVisitsAward"
+    Then I softly can see row level action button "Delete" against "{SavedValue:Automation Award Runtime Site Visit}" in flex table with id "GrantorSiteVisitsAward"
+    When I click on "Delete" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "GrantorSiteVisitsAward"
     Then I softly see the following messages in the page details contains:
       | Record deleted successfully. |
 
@@ -1554,12 +1554,12 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     When I perform quick search for "Record Id" in "GrantorSiteVisitsAward" panel
-    Then I see that "Automation Site Visit" has been added in flextable with Id "GrantorSiteVisitsAward"
+    Then I see that "{SavedValue:Automation Award Runtime Site Visit}" has been added in flextable with Id "GrantorSiteVisitsAward"
 
   @66392 @66384 @66561 @validateSendBackToSubRecipientButton @mahadev
   Scenario: To verify that Send back to subrecipient button appear on the top right corner of the page of award owner(PM) in site visit page when status is submitted to grantor
@@ -1735,4 +1735,4 @@ Feature: Validate all scenarios in the Site Visit
     Then I see status in Progress-bar is "Closed" and is "green"
     Examples:
       | Site Visit Name       |
-      | Automation Site Visit |
+      | {SavedValue:Automation Award Runtime Site Visit} |

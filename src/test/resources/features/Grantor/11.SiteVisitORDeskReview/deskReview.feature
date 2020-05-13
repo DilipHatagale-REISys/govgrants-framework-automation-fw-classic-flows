@@ -2,15 +2,15 @@
 Feature: Validate all scenarios in Desk Review
 
   Background: Create Desk Review
-    Given I delete the record "Automation Desk Review" from the object "Desk Review"
+    Given I activated standalone subaward "Automation Award Runtime Desk Review" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---deskreview:-:internalActiveGrants---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalActiveGrants---"
+    When I perform quick search for "{SavedValue:Automation Award Runtime Desk Review}" in "---deskreview:-:internalActiveGrants---" panel
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Desk Review}" inside flex table with id "---deskreview:-:internalActiveGrants---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Desk Review}" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "---deskreview:-:managementInitiateDRtableid---"
     And I enter "Creation" values from "DeskReview_Field_Values.xlsx"
@@ -54,7 +54,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
     When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I click on "Notify" in the page details
-    Then I softly see that "Automation Desk Review" is in "Notified" status
+    Then I softly see that "{SavedValue:Automation Award Runtime Desk Review}" is in "Notified" status
     When I pause execution for "120" seconds
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
       | Desk Review for {SavedValue:DeskReviewId} has been scheduled |
@@ -69,7 +69,7 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
-    Then I softly see that "Automation Desk Review" is in "Notified" status
+    Then I softly see that "{SavedValue:Automation Award Runtime Desk Review}" is in "Notified" status
 
   @51016 @51017 @conductAddingOutcomeDeskReview
   Scenario: Conduct and Adding outcomes to Desk Review
@@ -301,7 +301,7 @@ Feature: Validate all scenarios in Desk Review
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
     And I collapse nested table containing column value "Automation Finding"
-    Then I softly see that "Automation Desk Review" is in "Sent to Subrecipient" status
+    Then I softly see that "{SavedValue:Automation Award Runtime Desk Review}" is in "Sent to Subrecipient" status
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     And I pause execution for "200" seconds
@@ -311,12 +311,12 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---deskreview:-:internalActiveGrants---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalActiveGrants---"
+    When I perform quick search for "{SavedValue:Automation Award Runtime Desk Review}" in "---deskreview:-:internalActiveGrants---" panel
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Desk Review}" inside flex table with id "---deskreview:-:internalActiveGrants---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Desk Review}" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
-    And I click on "View" icon for "Automation Desk Review" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Desk Review}" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
     Then I softly can see top right button "Send Back to Subrecipient" in page detail
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
 
@@ -536,10 +536,10 @@ Feature: Validate all scenarios in Desk Review
     Given I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     And I click on "Delete" icon for "<Desk Review Name>" inside table
-    Then I do not see values "Automation Desk Review" and "Title" inside table
+    Then I do not see values "{SavedValue:Automation Award Runtime Desk Review}" and "Title" inside table
     Examples:
       | Desk Review Name       |
-      | Automation Desk Review |
+      | {SavedValue:Automation Award Runtime Desk Review} |
 
   @55365 @55363 @SendBackToOnwerDeskReviewUnderMonitoringTab @deepika
   Scenario: Validate whether the approver sendback to owner, the record owner will get a pending task
@@ -595,7 +595,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    Then I softly see that "Automation Desk Review" has been added in flextable with Id "---deskreview:-:deskReviewGridViewTableId---"
+    Then I softly see that "{SavedValue:Automation Award Runtime Desk Review}" has been added in flextable with Id "---deskreview:-:deskReviewGridViewTableId---"
 
   @55366 @detailsOnDeskReviewBeforeNotification @deepika
   Scenario: Verify user is not able to delete desk review record if it is not in Created state (Negative TC)
@@ -1066,8 +1066,8 @@ Feature: Validate all scenarios in Desk Review
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
-    And I perform quick search for "Automation Desk Review" in "---deskreview:-:monitoringTabDeskReviewTableId---" panel
-    When I click on "View" icon for "Automation Desk Review" inside flex table with id "---deskreview:-:monitoringTabDeskReviewTableId---"
+    And I perform quick search for "{SavedValue:Automation Award Runtime Desk Review}" in "---deskreview:-:monitoringTabDeskReviewTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Award Runtime Desk Review}" inside flex table with id "---deskreview:-:monitoringTabDeskReviewTableId---"
     Then I softly see status in Progress-bar is "Closed" and is "Green"
     When I pause execution for "120" seconds
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
@@ -1087,13 +1087,13 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalActiveGrants---"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Desk Review}" inside flex table with id "---deskreview:-:internalActiveGrants---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Desk Review}" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
-    Then I softly can see row level action button "Delete" against "Automation Desk Review" in flex table with id "---deskreview:-:managementInitiateDRtableid---"
-    When I click on "Delete" icon for "Automation Desk Review" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
-    And I perform quick search for "Automation Desk Review" in "---deskreview:-:managementInitiateDRtableid---" panel
+    Then I softly can see row level action button "Delete" against "{SavedValue:Automation Award Runtime Desk Review}" in flex table with id "---deskreview:-:managementInitiateDRtableid---"
+    When I click on "Delete" icon for "{SavedValue:Automation Award Runtime Desk Review}" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
+    And I perform quick search for "{SavedValue:Automation Award Runtime Desk Review}" in "---deskreview:-:managementInitiateDRtableid---" panel
     Then I softly see "No Records Found" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
 
   @65245 @historyOfDeskReviewsendbacktoOwner @deepika
@@ -1220,12 +1220,12 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalActiveGrants---"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Desk Review}" inside flex table with id "---deskreview:-:internalActiveGrants---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Desk Review}" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
     When I perform quick search for "Record Id" in "---deskreview:-:managementInitiateDRtableid---" panel
-    Then I see that "Automation Desk Review" has been added in flextable with Id "---deskreview:-:managementInitiateDRtableid---"
+    Then I see that "{SavedValue:Automation Award Runtime Desk Review}" has been added in flextable with Id "---deskreview:-:managementInitiateDRtableid---"
 
   @72354 @deskReviewAcceptAndClose @productBusinessFlowSanity
   Scenario: Validate once the Award level Desk Review is clicked on Accept and Close butted then status changes to closed
