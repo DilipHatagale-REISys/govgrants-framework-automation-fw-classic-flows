@@ -2,7 +2,6 @@
 Feature: Validate all scenarios in Organizational Site Visit
 
   Background: Creation of Organizational Site Visit
-    Given I delete the record "Automation Site Visit Org level" from the object "Site Visit"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel

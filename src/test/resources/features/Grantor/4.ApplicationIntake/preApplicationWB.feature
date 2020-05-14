@@ -45,7 +45,6 @@ Feature: Pre-Application scenarios without background
     When I click modal button "Save and Continue"
     Then I softly see the following messages in the page details contains:
       | Pre-Application Title is Required to save. |
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -85,7 +84,6 @@ Feature: Pre-Application scenarios without background
     Then I softly see that "{SavedValue:Automation Runtime Announcement for Pre-App}" is in "Qualified" status
     Then I softly can see top right button "Create Pre-Application" in page detail
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-App}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -145,9 +143,9 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly can see top right button "Create Pre-Application" in page detail
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for PreApp and App}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
+    When I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -191,7 +189,6 @@ Feature: Pre-Application scenarios without background
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-Application}" inside table
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I save the field labeled "Subaward Floor" as "subawardfloor"
@@ -297,7 +294,6 @@ Feature: Pre-Application scenarios without background
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-Application}" inside table
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     Given I click on "Edit" in the page details
@@ -345,7 +341,6 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly see field "Pre-Application Due Date" is not editable
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     Given I click on "Edit" in the page details
@@ -387,7 +382,6 @@ Feature: Pre-Application scenarios without background
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-Application}" inside table
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -416,7 +410,6 @@ Feature: Pre-Application scenarios without background
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-Application}" inside table
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -493,7 +486,6 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly see field "Pre-Application Due Date" is not editable
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -545,7 +537,6 @@ Feature: Pre-Application scenarios without background
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-Application}" inside table
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I navigate to "Applications" tab
@@ -572,7 +563,6 @@ Feature: Pre-Application scenarios without background
     And I save the field containing "Maximum # Applications Allowed" as "1"
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-App}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -599,7 +589,6 @@ Feature: Pre-Application scenarios without background
     And I navigate to "Performance" sub tab
     Then I softly can see page block "Focus Areas"
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -642,7 +631,6 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly see field "Pre-Application Due Date" is not editable
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -692,7 +680,6 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     And I navigate to "Performance" sub tab
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -726,7 +713,6 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     And I navigate to "Performance" sub tab
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -831,7 +817,6 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly can see top right button "Create Application" in page detail
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-App}" into field "Title__c"
     When I click modal button "Save and Continue"
     Then I softly can see top right button "Submit to Grantor" in page detail
     And I click on "Save" in the page details
@@ -866,7 +851,6 @@ Feature: Pre-Application scenarios without background
     Then I softly see field "Focus Area Required?" as "Yes"
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     Given I click on "Edit" in the page details
@@ -892,7 +876,6 @@ Feature: Pre-Application scenarios without background
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-Application}" inside table
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement for Pre-Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     Given I click on "Edit" in the page details

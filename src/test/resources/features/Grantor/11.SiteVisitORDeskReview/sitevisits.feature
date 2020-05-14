@@ -327,7 +327,7 @@ Feature: Validate all scenarios in the Site Visit
     And I expand nested table containing column value "Automation Observation"
     Then I do not see value "New" for title "Automation Observation" inside table "---sitevisits:-:correctiveTableId---"
     Examples:
-      | Site Visit Name       |
+      | Site Visit Name                                  |
       | {SavedValue:Automation Award Runtime Site Visit} |
 
   @39159 @siteVisitDeleteAccesstoOwner @deepika
@@ -337,7 +337,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Delete" icon for "<Site Visit Name>" inside table
     Then I do not see values "{SavedValue:Automation Award Runtime Site Visit}" and "Title" inside table
     Examples:
-      | Site Visit Name       |
+      | Site Visit Name                                  |
       | {SavedValue:Automation Award Runtime Site Visit} |
 
   @39169 @reportsAndOutcomesEditAccess @deepika
@@ -1734,5 +1734,5 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
     Examples:
-      | Site Visit Name       |
+      | Site Visit Name                                  |
       | {SavedValue:Automation Award Runtime Site Visit} |

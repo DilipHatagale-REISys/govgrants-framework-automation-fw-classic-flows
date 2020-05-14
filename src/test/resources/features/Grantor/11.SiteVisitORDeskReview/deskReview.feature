@@ -538,7 +538,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Delete" icon for "<Desk Review Name>" inside table
     Then I do not see values "{SavedValue:Automation Award Runtime Desk Review}" and "Title" inside table
     Examples:
-      | Desk Review Name       |
+      | Desk Review Name                                  |
       | {SavedValue:Automation Award Runtime Desk Review} |
 
   @55365 @55363 @SendBackToOnwerDeskReviewUnderMonitoringTab @deepika

@@ -11,7 +11,6 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside table
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
-    When I enter value "{SavedValue:Automation Runtime Announcement Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
