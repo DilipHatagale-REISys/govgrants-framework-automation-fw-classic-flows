@@ -282,21 +282,40 @@ public class ProjectWebServices {
     }
 
     public void deleteFDM(List<String> recordNames){
+
         for (String record : recordNames){
             if(StringUtils.containsIgnoreCase(record,"desk review")){
-                deletionApi(record,"Desk Review");
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Desk Review");
             }
         }
 
         for (String record : recordNames){
             if(StringUtils.containsIgnoreCase(record,"site visit")){
-                deletionApi(record,"Site Visit");
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Site Visit");
+            }
+        }
+
+        for (String record : recordNames){
+            if(StringUtils.containsIgnoreCase(record,"application")){
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"APPLICATION REVIEWS");
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"PreApplication");
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Application");
+            }
+        }
+
+        for (String record : recordNames){
+            if(StringUtils.containsIgnoreCase(record,"announcement")){
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Announcement");
             }
         }
 
         for (String record : recordNames){
             if(StringUtils.containsIgnoreCase(record,"fdm")){
-                deletionApi(record,"FDM");
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Progress Report");
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"FDM");
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"subaward");
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Award");
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Grant");
             }
         }
     }
@@ -357,13 +376,19 @@ public class ProjectWebServices {
             }
             if (StringUtils.containsIgnoreCase(record,"desk")){
                 deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Desk Review");
-                deleteSiteVisit(I.amPerforming().propertiesFileOperationsTo().getValue(record));
             }
             if (StringUtils.containsIgnoreCase(record,"amendment")){
                 deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Amendment Request");
             }
             if (StringUtils.containsIgnoreCase(record,"payment")){
                 deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Payment Request");
+            }
+            if (StringUtils.containsIgnoreCase(record,"risk")){
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"ORGANIZATION RISKASSESSMENT");
+            }
+            if (StringUtils.containsIgnoreCase(record,"contact")){
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"Contact");
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"DUNS");
             }
             if (StringUtils.containsIgnoreCase(record,"application")){
                 deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record),"APPLICATION REVIEWS");
