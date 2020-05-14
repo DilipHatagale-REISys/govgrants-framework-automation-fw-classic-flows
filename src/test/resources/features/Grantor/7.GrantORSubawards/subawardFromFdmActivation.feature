@@ -2,23 +2,22 @@
 Feature: Validate all scenarios of Subaward From FDM and activating an Award using API
 
   Background: Activating Subaward from FDM using API
-    Given I delete the record "Automation Announcement for FDM" from the object "Progress Report"
-    Given I delete the record "Automation Desk Review" from the object "Desk Review"
-    When I delete the record "Automation Site Visit" from the object "Site Visit"
-    And I delete the record "Automation Announcement for FDM" from the object "FDM"
     When I login to "As a Grantor" app as "dynamicUser" user
-    Given I created award from approved FDM with announcement "Automation Announcement for FDM"
-    And I activate award from FDM having application name "Automation Announcement for FDM"
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}"
+    And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
 
   @50999 @51000 @awardSiteVisitAndDeskReview
   Scenario Outline: Validate award site visit and desk review creation
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I perform quick search for "Automation Announcement for FDM" in "ActiveGrants" panel
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "ActiveGrants"
+    And I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "ActiveGrants" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "flexGridRelatedAwards1"
     When I navigate to "Management" sub tab
     When I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
     And I enter "Site Visit" values from "Award_Field_Values.xlsx"
@@ -41,8 +40,8 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
     Examples:
-      | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @75517 @75519 @75521 @75518 @grantRelateLogsDetails
   Scenario Outline: To verify user able to search grant in grant section in Related log tab of announcement.
@@ -66,8 +65,8 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:relatedloggrant---"
     Then I softly see field "Subaward" as "<Grant Name>"
     Examples:
-      | Grant Name                      |
-      | Automation Announcement for FDM |
+      | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} |
 
   @75528 @FederalGrantRelateLogsDetails
   Scenario Outline: To verify user able to search Active Federal/NGO grant in Active Federal/NGO grant section in Related log tab of announcement
@@ -79,8 +78,8 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
     When I navigate to "Related Log" sub tab
     Then I see value "<Grant Name>" for title "Grant Title" inside table "---subAwardFromFDM:-:relatedloggrant---"
     Examples:
-      | Grant Name                      |
-      | Automation Announcement for FDM |
+      | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} |
 
   @66096 @defaultPackageAssociateWithSubaward @aashish
   Scenario: : To Verify that the Default package associated with subaward should be displayed correctly |
@@ -88,10 +87,10 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
     Given I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I perform quick search for "Automation Announcement for FDM" in "ActiveGrants" panel
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "ActiveGrants"
+    And I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "ActiveGrants" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "flexGridRelatedAwards1"
     And I get the "EGMS ID"
     Then I softly see that "Subaward" is in "Activated" status
     And I navigate to "Grants" tab
@@ -181,7 +180,7 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
     And I navigate to "Overview" sub tab
     Then I softly see field "Subaward Type" as "continuation"
     Then I softly see field "Version Number" as "1"
-    Then I softly see that "Automation Announcement for FDM" is in "Pending Activation" status
+    Then I softly see that "{SavedValue:Automation Runtime FDM Announcement}" is in "Pending Activation" status
     Examples:
-      | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |

@@ -2,17 +2,16 @@
 Feature: Validate all scenarios in the award created from FDM
 
   Background: Create award from FDM
-    Given I delete the record "Automation Announcement for FDM" from the object "Progress Report"
-    Given I delete the record "Automation Desk Review" from the object "Desk Review"
-    When I delete the record "Automation Site Visit" from the object "Site Visit"
-    And I delete the record "Automation Announcement for FDM" from the object "FDM"
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
+    And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
-    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    And I click on "Create Subaward" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    And I click on "Create Subaward" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -51,8 +50,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:grantsTableId---" panel
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:grantsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:grantsTableId---"
     And I navigate to "Attachments" sub tab
     And I see value "Progress Report" for title "Package Type" inside table "---subAwardFromFDM:-:grantPackagesTableId---"
 
@@ -146,8 +145,8 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "Accept" in the page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
     Examples:
-      | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @67662 @deleteFSmultiple @jitendra
   Scenario: Validate review initiation and completion for the award | verify award acceptance
@@ -267,8 +266,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Complete Review" in the page details
     Then I softly see field "Status" as "Reviewed"
     Examples:
-      | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @67671 @doNotSeeSubawardButtonAfterRejectingByEXE @jitendra
   Scenario Outline: Validate User is allowed to utilize money greater than Pre En-cumbrance Balance but less than available Balance
@@ -378,8 +377,8 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
     Examples:
-      | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @67665 @67564 @validateEncumberanceGreaterAndLessValue @jitendra
   Scenario: Validate that the encumbrance value should not be less than budget value before Submitting for approval
@@ -509,10 +508,10 @@ Feature: Validate all scenarios in the award created from FDM
     When I "Approve" in the approval decision
     And I pause execution for "100" seconds
     Then I can see mail notification for "EXTERNAL" user with following subject:
-      | Subaward <award id> has been created for the Grant.  |
+      | Subaward <award id> has been created for the Grant. |
     Examples:
-      | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @66938 @67698 @doNotSeeSubawardButtonAfterRejectingByEXE @jitendra @smoke
   Scenario Outline: To Validate that if FDM is rejected by EXE user, subaward button in Action column cannot be seen for the Application. in Recommended Application table.
@@ -640,12 +639,12 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
-    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    Then I softly cannot see row level action button "Create Subaward" against "Automation Announcement for FDM" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    Then I softly cannot see row level action button "Create Subaward" against "{SavedValue:Automation Runtime FDM Announcement}" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
     Examples:
-      | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @38222  @50994 @65418 @65420 @awardApprovalAndSendToRecipientAfterApproval
   Scenario Outline: Validate award approval and send to subrecipient after approval | validate submit for approval button displayed
@@ -693,7 +692,7 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see the following messages in the page details contains:
       | Performance Tab - Enter Target values. |
     When I navigate to "Performance" sub tab
-        And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
       | Automation Permanent KPI for Regression | 10     |
     And I click on "Submit for Approval" in the page details
@@ -788,8 +787,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Send to Subrecipient" in the page details
     Then I softly see that "Status" is in "Sent to Subrecipient after Approval" status
     Examples:
-      | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @50997 @awardAcceptanceByRecipientAfterApproval @smoke
   Scenario Outline: Validate award acceptance by sub-recipient after approval
@@ -904,8 +903,8 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "Accept after Approval" in the page details
     Then I see status in Progress-bar is "Accepted" and is "Green"
     Examples:
-      | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @67557 @PRFrequencyNotEnterAndSubmitForApprove @jitendra
   Scenario Outline: To validate that if frequency column is not set in the payment requests schedule Table  by the Grantor (Internal user pm profile ) and Submit for approval button is clicked the validation message must appear.
@@ -991,8 +990,8 @@ Feature: Validate all scenarios in the award created from FDM
     Then I see the following messages in the page details contains:
       | Terms Tab - Provide the Payment Request Schedule details before submitting for approval. |
     Examples:
-      | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
 
   @54166 @validatePaymentRelatedSettingOnAwardFromAnnouncement @mahadev @smoke
@@ -1010,8 +1009,8 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:grantsTableId---"
     Then I see field "Advance Payment Allowed?" as "{savedValue:IsAdvancePaymentAllowed}"
     Examples:
-      | Annoucement Name                | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Annoucement Name                                 | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @64943 @verifyApproversCarryForwardedFromAnnoucementToAward @mahadev @wip
   Scenario: Verify Approvers added at announcement is same on subaward when grant which is created with application
@@ -1025,8 +1024,8 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
-    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I save the field labeled "Estimated Project Period Start Date" as "ProjectPeriodStartDate"
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1041,16 +1040,16 @@ Feature: Validate all scenarios in the award created from FDM
     And I click modal button "Save"
     Then I see field "Reporting Period Start Date" as "{SavedValue:ProjectPeriodStartDate}"
     Examples:
-      | Grant Name                      | Award Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Grant Name                                       | Award Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @45726 @VerifyProjectPeriodStartDateIsSameAsScheduleEndDateOnAwardCreatedFromFDM @mahadev
   Scenario Outline: Verify if award is created from FDM then Project Period End Date populated same as progress report schedule End date
     And I navigate to "Applications" tab
     When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
-    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:fdmTableId---" panel
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I save the field labeled "Estimated Project Period End Date" as "ProjectPeriodEndDate"
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1065,8 +1064,8 @@ Feature: Validate all scenarios in the award created from FDM
     And I click modal button "Save"
     Then I see field "Reporting Period End Date" as "{SavedValue:ProjectPeriodEndDate}"
     Examples:
-      | Grant Name                      | Award Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Grant Name                                       | Award Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @64560 @64561 @64571 @64715 @64716 @validateFieldsOnGrant
   Scenario Outline: Verify (Subrecipient Match Required? | Advance Payment Allowed? | Required Match% setting | Are Expense Details Required on Reimbursements? | Risk Assessment Required?) entered at announcement is same on grant
@@ -1081,8 +1080,8 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see field "Are Expense Details Required on Reimbursements?" as "Yes"
     Then I softly see field "Advance Payment Allowed?" as "Yes"
     Examples:
-      | Grant Name                      |
-      | Automation Announcement for FDM |
+      | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} |
 
   @45745 @VerifyAwardRejectionByS/R @keerti
   Scenario Outline: Validate the rejection of award by recipient after approval
@@ -1162,8 +1161,8 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "Reject" in the page details
     Then I see status in Progress-bar is "Rejected" and is "Red"
     Examples:
-      | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @45765 @validateNoDeleteActionDisplayedforGrant
   Scenario Outline:  Validate award is not deleted for application initiated grant
@@ -1188,8 +1187,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     Then I cannot see row level action button "Delete" against "<Grant Name>" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     Examples:
-      | Grant Name                      |
-      | Automation Announcement for FDM |
+      | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} |
 
   @38214 @validateViewAccessToDraftGrantForInternalUsers  @mahadev
   Scenario Outline: Verify all internal users can view draft grants
@@ -1208,10 +1207,10 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "View" icon for "<Grant Name>" inside table
     Then I softly see field "Status" as "Draft"
     Examples:
-      | Grant Name                      |
-      | Automation Announcement for FDM |
+      | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} |
 
-   @64570 @64566 @64720 @64721 @64569 @64719 @64723 @64568 @64564 @64718 @64562 @VerifyWorkPlanRequiredFocusAreaRequiredProjectPeriodStartDateProjectPeriodEndDate @keerti
+  @64570 @64566 @64720 @64721 @64569 @64719 @64723 @64568 @64564 @64718 @64562 @VerifyWorkPlanRequiredFocusAreaRequiredProjectPeriodStartDateProjectPeriodEndDate @keerti
   Scenario Outline: Verify Work Plan Required? field setting entered at announcement is same on grant which is created with application.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -1246,8 +1245,8 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see field "Internal Program" as "{SavedValue:ProgramID}"
     Then I softly cannot see field "Pre-Application Required?" inside page block
     Examples:
-      | Grant Name                      |
-      | Automation Announcement for FDM |
+      | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} |
 
   @64785  @verifyAnnoucementNameCarryForwardedOnGrant
   Scenario Outline: Verify Announcement Name is carried forward to Grant Title on grant which is created with application
@@ -1258,8 +1257,8 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "View" icon for "<Annoucement>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     Then I see field "Grant" as "<Annoucement>"
     Examples:
-      | Annoucement                     |
-      | Automation Announcement for FDM |
+      | Annoucement                                      |
+      | {SavedValue:Automation Runtime FDM Announcement} |
 
   @64788 @VerifyFundingAccountFieldOnBudgetTab  @keerti
   Scenario Outline: Verify Funding Account field on Budget Tab Subaward overview is same as announcement financial tab.
@@ -1279,8 +1278,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I navigate to "Budget" sub tab
     Then I see value "{SavedValue:lastValueFromTableForCol}" for title "Funding Account" inside table "flexGridAwardFundingAccounts"
     Examples:
-      | Grant Name                      | Award Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Grant Name                                       | Award Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @64791 @VerifyKeyPerformanceIndicatorsValue @keerti
   Scenario Outline: Verify Key Performance Indicators (KPIs) value Performance tab Subaward overview is same as announcement Key Performance Indicators (KPIs) table setup Tab.
@@ -1302,10 +1301,10 @@ Feature: Validate all scenarios in the award created from FDM
     When I navigate to "Performance" sub tab
     Then I see value "{SavedValue:Domain}" for title "Domain" inside table "GrantorAwardKeyOutcomesgrid"
     Examples:
-      | Grant Name                      | Award Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Grant Name                                       | Award Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-    @64790 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti
+  @64790 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti
   Scenario Outline: Verify Objectives field value Performance tab Subaward overview is same as announcement Objectives table setup Tab.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -1325,10 +1324,10 @@ Feature: Validate all scenarios in the award created from FDM
     When I navigate to "Performance" sub tab
     Then I see value "{SavedValue:EGMSID}" for title "EGMS ID" inside table "GrantorAwardGoalsObjectives"
     Examples:
-      | Grant Name                      | Award Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Grant Name                                       | Award Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @64722 @VerifyRelatedFocusAreasField @keerti 
+  @64722 @VerifyRelatedFocusAreasField @keerti
   Scenario Outline: Verify Related Focus Areas field value setup tab overview at announcement is same on grant which is created with application Overview Tab.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
@@ -1346,8 +1345,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I navigate to "Overview" sub tab
     Then I see value "{SavedValue:title}" for title "Title" inside table "GrantFocusAreas"
     Examples:
-      | Grant Name                      |
-      | Automation Announcement for FDM |
+      | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} |
 
   @65409  @verifyErrorMessageForFocusArea
   Scenario Outline: To verify the action on adding a focus area start and end end date in between the budget period date in the budget tab of subaward phase in the award owner profile PM User category
@@ -1413,8 +1412,8 @@ Feature: Validate all scenarios in the award created from FDM
     Then I see the following messages in the page details contains:
       | Focus area start date should be between budget period. |
     Examples:
-      | Grant Name                      | Award Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Grant Name                                       | Award Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @65412 @addFederalProgram
   Scenario Outline: To verify that federal program can be added from the award owner profile in overview tab after the sub award is accepted by the sub recipient
@@ -1505,8 +1504,8 @@ Feature: Validate all scenarios in the award created from FDM
     And I pause execution for "3" seconds
     Then I see total records count "Total Records:1" in flex table "---subAwardStandAlone:-:federalProgramTableId---"
     Examples:
-      | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @64793 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti
   Scenario: Verify SR user is not able to view the grant whose status is draft.
@@ -1524,16 +1523,16 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Published Competitive Announcements"
-    And I perform quick search for "Automation Announcement for FDM" in "ActiveFundingOpportunitiesCompitive" panel
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "ActiveFundingOpportunitiesCompitive"
+    And I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "ActiveFundingOpportunitiesCompitive" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "ActiveFundingOpportunitiesCompitive"
     When I navigate to "Related Log" sub tab
     And I click on "View" icon for "Converted to Award" inside flex table with id "RelatedFOApplications"
     When I save the field labeled "EGMS ID" as "APPID"
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "Automation Announcement for FDM" in "---subAwardFromFDM:-:grantsTableId---" panel
-    And I click on "View" icon for "Automation Announcement for FDM" inside flex table with id "---subAwardFromFDM:-:grantsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:grantsTableId---"
     When I click on hyperlink containing value "{SavedValue:APPID}"
     Then I see status in Progress-bar is "Converted to Award" and is "green"
 
@@ -1631,8 +1630,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I navigate to "Budget" sub tab
     Then I cannot see row level action button "Edit" against "{SavedValue:fundingAccount}" in flex table with id "---subAwardFromFDM:-:fundingAccountsTableId---"
     Examples:
-      | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @67661 @71124 @71125 @71123 @addAnotherFundingAccountAfterSubawardAccepted @jitendra
   Scenario Outline: Validate that the new Funding account can be added before Approval by award-owner.
@@ -1649,13 +1648,13 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see value "$100.00" for title "Total Match" against the value "Supplies" inside table "---subAwardFromFDM:-:subAwardBudgetTableId---"
     Then I softly see value "$100.00" for title "Total Project Cost" against the value "Supplies" inside table "---subAwardFromFDM:-:subAwardBudgetTableId---"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Cash Match |Non-Cash Match |
-      | Supplies        | 100        |         0     |
+      | Budget Category | Cash Match | Non-Cash Match |
+      | Supplies        | 100        | 0              |
     Then I softly see value "$100.00" for title "Total Match" against the value "Supplies" inside table "---subAwardFromFDM:-:subAwardBudgetTableId---"
     Then I softly see value "$100.00" for title "Total Project Cost" against the value "Supplies" inside table "---subAwardFromFDM:-:subAwardBudgetTableId---"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Cash Match |Non-Cash Match |
-      | Supplies        | 100        |         100     |
+      | Budget Category | Cash Match | Non-Cash Match |
+      | Supplies        | 100        | 100            |
     Then I softly see value "$200.00" for title "Total Match" against the value "Supplies" inside table "---subAwardFromFDM:-:subAwardBudgetTableId---"
     Then I softly see value "$200.00" for title "Total Project Cost" against the value "Supplies" inside table "---subAwardFromFDM:-:subAwardBudgetTableId---"
     When I navigate to "Overview" sub tab
@@ -1732,8 +1731,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     Then I see "{SavedValue:lastValueFromTableForCol}" has been added in "---subAwardStandAlone:-:awardFundingAccountsTableId---" flex table
     Examples:
-      | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @38224 @awardHappyPathFromFDM @productBusinessFlowSanity
   Scenario Outline: Validate  the activation of subaward from FDM happy path and the status changes to Activated
@@ -1891,5 +1890,5 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Activated" and is "green"
     Examples:
-      | Award Name                      | Grant Name                      |
-      | Automation Announcement for FDM | Automation Announcement for FDM |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
