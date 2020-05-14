@@ -2,6 +2,7 @@
 Feature: Validate all scenarios in Organizational Desk Review
 
   Background: Creation of Organizational Desk Review
+    Given I activated standalone subaward "Automation Award Runtime Record" with properties "default"
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
@@ -96,7 +97,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     And I click on "Notify" in the page details
     Then I softly see that "{SavedValue:Automation Runtime Desk Review Org level}" is in "Notified" status
 
@@ -119,7 +120,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -163,7 +164,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -207,7 +208,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -271,7 +272,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -363,7 +364,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -460,7 +461,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -526,7 +527,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -604,7 +605,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -712,7 +713,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     Then I softly can see top right button "Notify" in page detail
     And I click on "Notify" in the page details
@@ -740,7 +741,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "DeskReviewId"
     And I click on "Notify" in the page details
@@ -774,7 +775,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -801,7 +802,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -875,7 +876,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -929,7 +930,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     And I refresh the page
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
@@ -1010,7 +1011,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -1073,7 +1074,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -1174,8 +1175,8 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on "Remove" icon for "Automation SPI" inside flex table with id "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     Then I softly see "No Records Found" inside flex table with id "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I click on "Remove" icon for "Automation Award for Amendment Request" inside flex table with id "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    And I click on "Remove" icon for "{SavedValue:Automation Award Runtime Record}" inside flex table with id "---orgLevelDeskReview:-:selectAwardId---"
     Then I softly see "No Records Found" inside flex table with id "---orgLevelDeskReview:-:selectAwardId---"
 
   @65150 @reviewerCanNotEditAfterSubmittingtheReviewOrgLevel @deepika
@@ -1197,7 +1198,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -1242,7 +1243,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details

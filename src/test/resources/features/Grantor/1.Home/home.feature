@@ -49,18 +49,17 @@ Feature: Validate all scenarios in the home tab
 
   @56717 @56716 @56718 @internalContactsViewCreateEdit @smoke
   Scenario Outline: Validate that Internal contacts are accessible across agencies and can be create, Edit and view access to Contacts by any Internal users
-    Given I delete the record "Automation PO" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
     And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
     When I click modal button "Save"
-    When I perform quick search for "Automation PO" in "---home:-:internalContactTableId---" panel
-    Then I softly can see row level action button "View" against "Automation PO" in flex table with id "flexTableRandomID"
-    And I click on "View" icon for "Automation PO" inside flex table with id "---home:-:internalContactTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:internalContactTableId---" panel
+    Then I softly can see row level action button "View" against "{SavedValue:Automation Runtime Contact}" in flex table with id "flexTableRandomID"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---"
     Then I softly see field "Organization" as "Test Automation Organization"
-    Then I softly can see row level action button "Edit" against "Automation PO" in flex table with id "---home:-:internalContactTableId---"
+    Then I softly can see row level action button "Edit" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:internalContactTableId---"
     Examples:
       | User  |
       | ADMIN |
@@ -69,16 +68,15 @@ Feature: Validate all scenarios in the home tab
 
   @56721 @56720 @smeReviewersContactViewAndCreate @smoke
   Scenario Outline: Verifying all Internal Users has View access to SME Reviewers Contact
-    Given I delete the record "Automation SME" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
-    Then I softly see values "Automation SME" and "New" inside table
-    When I perform quick search for "Automation SME" in "---home:-:reviewersTableId---" panel
-    Then I softly can see row level action button "View" against "Automation SME" in flex table with id "---home:-:reviewersTableId---"
+    Then I softly see values "{SavedValue:Automation Runtime Contact}" and "New" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
+    Then I softly can see row level action button "View" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:reviewersTableId---"
     Examples:
       | User  |
       | ADMIN |
@@ -90,7 +88,7 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-    And I click on "Send Invitation" icon for "Automation SME" inside flex table with id "---home:-:reviewersTableId---"
+    And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---"
     Examples:
       | User  |
       | ADMIN |
@@ -102,8 +100,8 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation SME" in "---home:-:reviewersTableId---" panel
-    Then I can see row level action button "View" against "Automation SME" in flex table with id "---home:-:reviewersTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
+    Then I can see row level action button "View" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:reviewersTableId---"
     Examples:
       | User  |
       | ADMIN |
@@ -196,10 +194,10 @@ Feature: Validate all scenarios in the home tab
     And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
     When I click modal button "Save"
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "flexTableRandomID" panel
-    When I click on "Edit" icon for "Automation PO" inside flex table with id "flexTableRandomID"
+    When I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "flexTableRandomID"
     And I enter "Edition1" values from "InternalContact_Field_Values.xlsx"
     And I click modal button "Save"
-    And I perform quick search for "Automation PO" in "flexTableRandomID" panel
+    And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "flexTableRandomID" panel
     Then I see value "Active" for title "Status" inside table "flexTableRandomID"
     Examples:
       | User  |
@@ -209,16 +207,15 @@ Feature: Validate all scenarios in the home tab
 
   @56719 @56734 @subrecipientContactsCreateEdit @smoke
   Scenario Outline: Verifying if the Internal Users has create and Edit access to Subrecipient Contact
-    Given I delete the record "Automation Manager" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
     When I click modal button "Save"
-    When I click on "View" icon for "Automation Manager" inside flex table with id "---home:-:internalContactTableId---"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---"
     Then I softly see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
-    When I click on "Edit" icon for "Automation Manager" inside flex table with id "---home:-:internalContactTableId---"
+    When I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---"
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"
     Then I softly see value "New" for title "Status" inside table "---home:-:internalContactTableId---"
@@ -228,14 +225,13 @@ Feature: Validate all scenarios in the home tab
 
   @56735 @smereviewersContactEdition
   Scenario Outline: Verifying all Internal Users has Edit access to SME ---home:-:reviewersTableId--- Contact
-    Given I delete the record "Automation SME" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I click on "Edit" icon for "Automation SME" inside flex table with id "---home:-:reviewersTableId---"
+    And I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---"
     When I enter "Edition" values from "PotentialContact_Field_values.xlsx"
     And I click modal button "Save"
     Then I see value "New" for title "Status" inside table "---home:-:reviewersTableId---"
@@ -266,7 +262,6 @@ Feature: Validate all scenarios in the home tab
 
   @56739 @56907 @relatedContactsCreationEdition
   Scenario Outline: The Internal Users should be able to Create and Edit Related Contacts
-    Given I delete the record "Automation Contact" from the object "Contact"
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
@@ -275,9 +270,9 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
     And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
-    Then I softly can see row level action button "Edit" against "Automation Contact" in flex table with id "---home:-:relatedContactsTableId---"
-    And I click on "Edit" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:relatedContactsTableId---" panel
+    Then I softly can see row level action button "Edit" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:relatedContactsTableId---"
+    And I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:relatedContactsTableId---"
     When I enter "RelatedContactsEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit" modal by clicking the top right x button
@@ -289,7 +284,6 @@ Feature: Validate all scenarios in the home tab
 
   @56738 @deletionOfRelatedContact
   Scenario:  Validate whether the admin is able to Delete Related Contacts
-    Given I delete the record "Automation Contact" from the object "Contact"
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
@@ -298,22 +292,21 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
     And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
-    And I click on "Delete" icon for "Automation Contact" inside flex table with id "---home:-:relatedContactsTableId---"
-    When I perform quick search for "Automation Contact" in "---home:-:relatedContactsTableId---" panel
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:relatedContactsTableId---" panel
+    And I click on "Delete" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:relatedContactsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:relatedContactsTableId---" panel
     Then I see "No Records Found" inside flex table with id "---home:-:relatedContactsTableId---"
 
   @56740 @56741 @56742 @dunsNumberCreationEditionAndDeletion @smoke @bug-69292
   Scenario Outline: Validate whether ADMIN and DA users can Create, Edit and delete the DUNS Number
-    Given I delete the record "Test Automation Organization" from the object "DUNS"
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     When I enter the following values into flex table with id "---home:-:dunsTableId---" by clicking "New" :
-      | DUNS Number | Entity Name as Registered | Location |
-      | 138047990   | Test132                   | HernNdon |
+      | DUNS Number | Entity Name as Registered    | Location |
+      | 138047990   | Automation Runtime DUNS Name | HernNdon |
     Then I softly see values "138047990" and "HernNdon" inside table
     When I click on "Edit" icon for "138047990" inside flex table with id "---home:-:dunsTableId---"
     And I click on top right button "Save" in flex table with id "---home:-:dunsTableId---"
@@ -409,7 +402,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-   @57344 @57345 @homePendingTaskCompletedAndTaskCount
+  @57344 @57345 @homePendingTaskCompletedAndTaskCount
   Scenario: Validate whether user is able to view the total count of pending Tasks assigned to user and Pending Task and Completed Task on the left Navigation shows Pending Tasks across all the Modules
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -649,30 +642,34 @@ Feature: Validate all scenarios in the home tab
 
   @62105 @externalUserhomePendingTask @deepika
   Scenario: The Pending Task on the left Navigation shows Pending Tasks that are created for Subrecipient Users
+    Given I activated standalone subaward "Automation Award Runtime Site Visit" with properties "default"
+    Given I activated standalone subaward "Automation Award Runtime Record" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "ActiveGrants"
+    And I perform quick search for "{SavedValue:Automation Award Runtime Site Visit}" in "ActiveGrants" panel
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
     And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I get the "EGMS ID"
     Given I navigate to "Responsibilities" sub tab
-    When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
       | Program Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver  | Automation FO  | Automation Test Description |
+    And I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
-    When I click "Associate" after selection of "Automation EXE" in the table "---sitevisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
-    When I click "Associate" after selection of "Automation Award for Amendment Request" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
@@ -734,10 +731,10 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-    And I click on "Send Invitation" icon for "Automation SME" inside flex table with id "---home:-:reviewersTableId---"
+    And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---"
     And I click "Send" button in modal
     When I close "Send Invitation" modal by clicking the top right x button
-    And I perform quick search for "Automation SME" in "---home:-:reviewersTableId---" panel
+    And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     Then I see value "Invitation Sent" for title "Status" inside table "---home:-:reviewersTableId---"
     Examples:
       | User  |
