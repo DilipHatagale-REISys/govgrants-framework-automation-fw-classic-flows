@@ -509,9 +509,6 @@ public class GenericSteps {
 
     @Given("I activate award from FDM having application name {string}")
     public void iActivateAwardFromDFMWith(String applicationName) {
-        String newAppName = applicationName+I.amPerforming().addOnsTo().getRandomNumber();
-        I.amPerforming().propertiesFileOperationsTo().saveValue(applicationName,newAppName);
-        applicationName = newAppName;
         projectManager.activateFMD(applicationName);
     }
 
