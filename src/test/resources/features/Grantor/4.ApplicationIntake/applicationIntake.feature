@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Application Intake
 
   Background: Qualify Announcement and Create Application
-    And I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
