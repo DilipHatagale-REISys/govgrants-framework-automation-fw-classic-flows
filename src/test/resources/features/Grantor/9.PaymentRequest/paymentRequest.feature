@@ -2,13 +2,14 @@
 Feature: Validate all scenarios in Payment Request
 
   Background: Navigate to award
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
-    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientsSubawardTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
 
   @38840 @creationOfAdhocReimbursementPaymentRequest @smoke
   Scenario: To create an Adhoc Reimbursement Payment Request
@@ -70,8 +71,8 @@ Feature: Validate all scenarios in Payment Request
       | {SavedValue:fundingAccount} | 20                    |
     Then I softly see value "$20.00" for title "Net Spent This Action" inside table "---paymentRequest:-:fundingAccountTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @51072 @51071 @54352 @addApproverInPRAndSubmitPaymentRequestForApproval @smoke
   Scenario Outline: Selection of approvers in Reimbursement Payment Request | Submitting Reimbursement Payment Request for approval
@@ -116,8 +117,8 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @51073 @approvalOfPaymentRequest
   Scenario Outline: Approval of Reimbursement Payment Request
@@ -158,8 +159,8 @@ Feature: Validate all scenarios in Payment Request
     When I "Approve" in the approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @38835 @paymentRequestRejectionByFOUser @mahadev
   Scenario: Validate the Reimbursement Payment request Rejection by FO user
@@ -332,8 +333,8 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     Then I see field "Acknowledgement" as "I Disagree"
     Examples:
-      | Award Name                 |
-      | Automation Permanent Award |
+      | Award Name                            |
+      | {SavedValue:Automation Runtime Award} |
 
   @53846 @SPAUserNotAbleToSubmitPaymentRequest @mahadev
   Scenario Outline: Validate SPA user not able to submit payment Request
@@ -360,8 +361,8 @@ Feature: Validate all scenarios in Payment Request
     And I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---"
     Then I cannot see top right button "Submit to Grantor" in page detail
     Examples:
-      | Award Name                 |
-      | Automation Permanent Award |
+      | Award Name                            |
+      | {SavedValue:Automation Runtime Award} |
 
   @53841 @CreationOfAdvancePaymentRequest @mahadev
   Scenario: Advance Payment Request creation
@@ -419,8 +420,8 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     Then I cannot see top right button "Submit to Grantor" in page detail
     Examples:
-      | Award Name                 |
-      | Automation Permanent Award |
+      | Award Name                            |
+      | {SavedValue:Automation Runtime Award} |
 
   @53980 @captureConfirmationMessageAfterApprovingAdvancePR @mahadev
   Scenario: Capture confirmation message after approving advance payment request
@@ -905,8 +906,8 @@ Feature: Validate all scenarios in Payment Request
     Then I see field "Program Income" as "{SavedValue:incomeProgramThis}"
     Then I see field "Program Income Spent" as "{SavedValue:totalSpent}"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @54741 @validateFOUserNotAbleToDisallowAmountInAdvancePR @mahadev
   Scenario: Validate FO User not able to disallow amount in Advance Payment Request
@@ -1158,7 +1159,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on "Delete" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---"
     Then I do not see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:paymentRequestTableId---"
@@ -1496,8 +1497,8 @@ Feature: Validate all scenarios in Payment Request
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Approved |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @55629 @PRSubmittingForApproveEmailNotificationReimbursement @jitendra
   Scenario Outline: Verify that on submitting for approval , user is able to check email (Reimbursement)
@@ -1539,8 +1540,8 @@ Feature: Validate all scenarios in Payment Request
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Submitted for Approval |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @55635 @forwardedEmailNotificationAdvancePR @jitendra
   Scenario: Verify that on Forward , user will receive email notifications for Payment Request (Advance)
@@ -1684,8 +1685,8 @@ Feature: Validate all scenarios in Payment Request
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> from <subrecipient name> has been Sent Back |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @55639 @forwaredPREmailNotificationReimbursement @jitendra
   Scenario Outline: Verify that on Forward , user is able to check  email notifications Payment Request (Reimbursement)
@@ -1727,8 +1728,8 @@ Feature: Validate all scenarios in Payment Request
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Forwarded |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @55637 @rejectPREmailNotificationReimbursement @jitendra
   Scenario Outline: Verify that on Reject , user is able to check  email notifications Payment Request (Reimbursement)
@@ -1770,8 +1771,8 @@ Feature: Validate all scenarios in Payment Request
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Rejected |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @55633 @rejectEmailNotificationAdvance @jitendra
   Scenario: Verify that on Reject, user is able to check  email notifications Payment Request (Advance)
@@ -1963,8 +1964,8 @@ Feature: Validate all scenarios in Payment Request
     Then I see the text containing :
       | Financials Tab - Advance requested cannot be greater than Encumbrance balance |
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @38836 @validateForwardedAdvancePRShownToAssignedUser @mahadev
   Scenario: Validate the Payment Request forwarded is shown to the assigned user
@@ -2043,8 +2044,8 @@ Feature: Validate all scenarios in Payment Request
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I do not see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @54597 @validateStatusAndAmountInPDF @jitendra @skipOnJenkins
   Scenario Outline: Verify that user can check PDF files with validation for amount and status
@@ -2098,8 +2099,8 @@ Feature: Validate all scenarios in Payment Request
     And I download the file
     Then I see "Approved" on page "1" of "govgrants" pdf file
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @72349 @adhocReimbursementHappyPath @productBusinessFlowSanity
   Scenario Outline: Validate the Reimbursement Payment Request happy path and the status changes to 'Paid'
@@ -2142,8 +2143,8 @@ Feature: Validate all scenarios in Payment Request
     When I close "{SavedValue:EGMSID}" modal by clicking the top right x button
     Then I see status in Progress-bar is "Paid" and is "green"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @72350 @adhocAdvanceHappyPath @productBusinessFlowSanity
   Scenario Outline: Validate the Advance Payment Request happy path and the status changes to 'Paid'
@@ -2190,7 +2191,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter "Adhoc Reimbursement Creation" values from "PaymentRequest_Field_Values.xlsx"
@@ -2232,5 +2233,5 @@ Feature: Validate all scenarios in Payment Request
     When I close "{SavedValue:EGMSID}" modal by clicking the top right x button
     Then I see status in Progress-bar is "Paid" and is "green"
     Examples:
-      | Award Name                 | Grant Name                 |
-      | Automation Permanent Award | Automation Permanent Award |
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |

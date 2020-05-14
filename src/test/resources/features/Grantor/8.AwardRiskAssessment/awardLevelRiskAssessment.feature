@@ -1,10 +1,6 @@
 @riskAssessment @awardLevelRiskAssessment @regression
 Feature: Validate all scenarios in the Risk Assessment
 
-  Background: To setup data
-    Given I delete the record "Automation Award for Risk Assessment" from the object "Award"
-    Given I delete the record "Automation Award for Risk Assessment" from the object "Grant"
-
   @58164 @58165 @58166 @75867 @65552 @creationOfRiskAssessmentddingApproversSubmitForApproval @deepika @smoke
   Scenario: Validate the Creation of Risk Assessment from Draft Award and whether user is able to Add Approvers and submit Risk Assessment for Approval| Also New Button on peer review table is not availble once submit for approval
   Validate when the Risk Assessment is submit for approval, the approver will receive an email notification that the PM has been assigned as approval
@@ -202,7 +198,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:homePendingTaskTableId---" panel
-    Then I softly do not see values "Record Id" and "Automation Award for Risk Assessment" inside table
+    Then I softly do not see values "Record Id" and "{SavedValue:Automation Runtime Award for Risk Assessment}" inside table
 
   @58173 @validationsBeforeSubmitForApproval @deepika
   Scenario: Validate whether system generates an error message if the user tries to proceed on the risk assessment without  entering all required fields before submitting for approval process
@@ -486,8 +482,8 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I see the following messages in the page details contains:
       | Management Tab - Create and activate a Risk Assessment as the Subaward cannot be issued without an active Risk Assessment. |
     Examples:
-      | Award Name                           | Grant Name                           |
-      | Automation Award for Risk Assessment | Automation Award for Risk Assessment |
+      | Award Name                                                | Grant Name                                                |
+      | {SavedValue:Automation Runtime Award for Risk Assessment} | {SavedValue:Automation Runtime Award for Risk Assessment} |
 
   @58818 @buttonforRiskAssessmentNotHiddenAfterSubmitforApproval @deepika
   Scenario: Validate New button still be avialble on the Table post Risk Assessment is submitted for approval.
@@ -522,10 +518,10 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     Then I can see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
 
@@ -612,10 +608,10 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
@@ -639,10 +635,10 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
@@ -668,10 +664,10 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -683,10 +679,10 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Activate" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -872,15 +868,15 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "Automation Award for Risk Assessment " in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment " inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment} " in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment} " inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     Examples:
-      | Award Name                           | Grant Name                           |
-      | Automation Award for Risk Assessment | Automation Award for Risk Assessment |
+      | Award Name                                                | Grant Name                                                |
+      | {SavedValue:Automation Runtime Award for Risk Assessment} | {SavedValue:Automation Runtime Award for Risk Assessment} |
 
   @58936 @acknowledgementIsRequiredToContinue @deepika
   Scenario: Validate System generates an error message if the user tries to proceed on the risk assessment without providing acknowledgment
@@ -987,7 +983,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
-    Then I see values "Automation Award for Risk Assessment" and "Active" inside table
+    Then I see values "{SavedValue:Automation Runtime Award for Risk Assessment}" and "Active" inside table
 
   @59324 @otherThanRecordOnwerFoUserCannotEditSubmitForApprovalRiskAssessment @deepika
   Scenario: Validate the 'Edit' button is not available on page detail and Non award owner can't / does not have permission to submit the Risk Assessment for Approval
@@ -1159,10 +1155,10 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
-    Then I cannot see row level action button "Edit" against "Automation Award for Risk Assessment" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    Then I cannot see row level action button "Edit" against "{SavedValue:Automation Runtime Award for Risk Assessment}" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     Examples:
-      | Award Name                           | Grant Name                           |
-      | Automation Award for Risk Assessment | Automation Award for Risk Assessment |
+      | Award Name                                                | Grant Name                                                |
+      | {SavedValue:Automation Runtime Award for Risk Assessment} | {SavedValue:Automation Runtime Award for Risk Assessment} |
 
   @59789 @recordOwnerCanEDittheCreatedRiskAssessment @deepika
   Scenario: Validate whether the record owner view the page level Edit Button on the Risk Assessment record that is in Created status
@@ -1409,10 +1405,10 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     Then I see the following messages in the page details contains:
@@ -1732,10 +1728,10 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "Automation Award for Risk Assessment " in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment " inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment} " in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment} " inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     And I pause execution for "5" seconds
     And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
@@ -1743,8 +1739,8 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I see the following messages in the page details contains:
       | This Subaward risk assessment cannot be processed further as the related Subaward has been activated and is associated with an active Subaward risk assessment. |
     Examples:
-      | Award Name                           | Grant Name                           |
-      | Automation Award for Risk Assessment | Automation Award for Risk Assessment |
+      | Award Name                                                | Grant Name                                                |
+      | {SavedValue:Automation Runtime Award for Risk Assessment} | {SavedValue:Automation Runtime Award for Risk Assessment} |
 
   @59876 @reviewerCanEditAssessmentFormWhenAllowRecordEditingIsSetAsYes @deepika @smoke
   Scenario: Validate when Allow Record Editing is set to 'Yes' then reviewer can Edit the Risk Assessment form
@@ -2026,8 +2022,8 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "{SavedValue:SecID}" in "---riskassessment:-:riskAssessmentGridViewExternalTableId---" panel
     Then I do not see value "{SavedValue:SecID}" for title "Status" inside table "---riskassessment:-:riskAssessmentGridViewExternalTableId---"
     Examples:
-      | Grant Name                           | Award Name                           |
-      | Automation Award for Risk Assessment | Automation Award for Risk Assessment |
+      | Grant Name                                                | Award Name                                                |
+      | {SavedValue:Automation Runtime Award for Risk Assessment} | {SavedValue:Automation Runtime Award for Risk Assessment} |
 
   @60208 @validateRecordOwnerISAbleToViewRASnapshot @deepika @skipOnJenkins
   Scenario: Validate Record Owner user is able to view the Snapshot after Risk Assessment is Submitted for Approval status
@@ -2296,10 +2292,10 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     Then I see value "Submitted for Approval" for title "Status" against the value "{SavedValue:RISKID}" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"
 
@@ -2529,8 +2525,8 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "View" icon for "Active" inside flex table with id "---riskassessment:-:organizationprofileviewTableId---"
     Then I see status in Progress-bar is "Active" and is "Green"
     Examples:
-      | Award Name                           | Grant Name                           |
-      | Automation Award for Risk Assessment | Automation Award for Risk Assessment |
+      | Award Name                                                | Grant Name                                                |
+      | {SavedValue:Automation Runtime Award for Risk Assessment} | {SavedValue:Automation Runtime Award for Risk Assessment} |
 
   @60787 @60785  @intialRiskAssessmentToExpiredRAViewedFromMonitoringTable @deepika
   Scenario:  Validate when the succeeding Risk Assessments are made active then the  Initial Risk Assessment should be marked as Expired and can be viewed from Risk Asessment table and from the Monitoring table
@@ -2581,11 +2577,11 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:subawardsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -2619,11 +2615,11 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:subawardsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     And I perform quick search for "{SavedValue:ExpiredID}" in "---subAwardStandAlone:-:riskAssessmentTableId---" panel
     And I click on "View" icon for "{SavedValue:ExpiredID}" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
@@ -2706,11 +2702,11 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:subawardsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -2740,10 +2736,10 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name           | Project Role             | Is Key Personnel |
@@ -2766,10 +2762,10 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
@@ -2795,10 +2791,10 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -2810,10 +2806,10 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I click on "Activate" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -3027,7 +3023,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
-    Then I see that "Automation Award for Risk Assessment" has been added in flextable with Id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
+    Then I see that "{SavedValue:Automation Runtime Award for Risk Assessment}" has been added in flextable with Id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
 
   @65460 @riskLevelISNAforCreatedStatusRA @deepika
   Scenario: Validate for the Risk Assessment that is in created state the Risk Level is shown as NA inside table
@@ -3099,11 +3095,11 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    When I perform quick search for "Automation Award for Risk Assessment" in "---subAwardStandAlone:-:subawardsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Management" sub tab
     Then I see total records count "Total Records:1" in flex table "---subAwardStandAlone:-:riskAssessmentTableId---"
 

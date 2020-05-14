@@ -33,7 +33,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -60,7 +60,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -83,7 +83,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I navigate to "Financials" sub tab
@@ -106,7 +106,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I navigate to "Financials" sub tab
     When I enter value "I Agree" into field "TermsAgreement__c"
@@ -133,7 +133,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I navigate to "Financials" sub tab
@@ -206,7 +206,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -235,7 +235,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -264,7 +264,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -277,7 +277,7 @@ Feature: Payment Request scenarios without background
 
   @54498 @ValidateInActiveSuppportingDocumentChecklistOnAdvancePR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is not displayed on advance payment request if selected as Inactive on grant
-    And I delete the record "Automation Payment Request" from the object "Payment Request"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Grants" tab
@@ -287,14 +287,14 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
     Then I see "No Records Found" inside flex table with id "---paymentRequest:-:checklistTableId---"
     Examples:
-      | Award Name                 |
-      | Automation Permanent Award |
+      | Award Name                            |
+      | {SavedValue:Automation Runtime Award} |
 
   @54495 @ValidateActiveSuppportingDocumentChecklistOnAdvancePR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is displayed on advance payment request
@@ -310,7 +310,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -334,7 +334,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -363,7 +363,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -391,7 +391,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -429,7 +429,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -452,7 +452,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -505,7 +505,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -557,7 +557,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -612,7 +612,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -649,7 +649,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -673,7 +673,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -701,7 +701,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -738,18 +738,17 @@ Feature: Payment Request scenarios without background
 
   @51067 @EditionOfReimbursementPaymentRequest @mahadev
   Scenario Outline: Edition of Reimbursement Payment Request
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Permanent Award" from the object "Payment Request"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "<Login User>" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
-    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientsSubawardTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I navigate to "Financials" sub tab
     When I enter value "I Agree" into field "TermsAgreement__c"
@@ -765,18 +764,17 @@ Feature: Payment Request scenarios without background
 
   @51068 @ReimbursementPaymentRequestAddAttachment
   Scenario Outline: Validate the attachment for Reimbursement Payment Request
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Permanent Award" from the object "Payment Request"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
-    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientsSubawardTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -791,18 +789,17 @@ Feature: Payment Request scenarios without background
 
   @55400 @EditActionNotDisplayedReimbursementPR @mahadev
   Scenario Outline: validate edit action should not be displayed for budget categories for Reimbursement Payment request
-    Given I delete the record "Automation Payment Request" from the object "Payment Request"
-    And I delete the record "Automation Permanent Award" from the object "Payment Request"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
-    When I perform quick search for "Automation Permanent Award" in "---paymentRequest:-:recipientsSubawardTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -817,7 +814,6 @@ Feature: Payment Request scenarios without background
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "<User>" user
-    And I delete the record "<Award Name>" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -848,7 +844,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request 3" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request 3" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -866,7 +862,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request 4" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request 4" into field "Title__c"
     And I enter value "Checked" into field "IsFinalPR__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -982,8 +978,8 @@ Feature: Payment Request scenarios without background
     Then I see the text containing :
       | Schedule Start date cannot be before Budget Period Start Date. |
     Examples:
-      | Grant Name                 |
-      | Automation Permanent Award |
+      | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} |
 
   @55689 @canNotCreateAnotherPaymentRequestAfterFinalPaymentRequest @jitendra
   Scenario Outline: Verify that once User select Is final Payment request option then User cannot create New Payment request.
@@ -999,7 +995,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Payment Request 3" into field "Title__c"
+    When I enter value "Automation Runtime Payment Request 3" into field "Title__c"
     And I enter value "Checked" into field "IsFinalPR__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
