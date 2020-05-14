@@ -89,8 +89,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
 
   @69126 @auditorCanViewCreatedContact
   Scenario Outline: Validate Auditor should have view / read  only access to record.
-    Given I delete the record "Automation PO" from the object "Contact"
-    Given I login to "As a Grantor" app as "ADMIN" user
+    Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
@@ -99,9 +98,9 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
-    When I perform quick search for "Automation PO" in "---home:-:internalContactTableId---" panel
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:internalContactTableId---" panel
     Then I softly can see row level action button "View" against "Automation PO" in flex table with id "---home:-:internalContactTableId---"
-    And I click on "View" icon for "Automation PO" inside flex table with id "---home:-:internalContactTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---"
     Then I softly see field "Organization" as "Test Automation Organization"
     Examples:
       | User    |
@@ -146,23 +145,23 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
 
   @69142 @auditorCannotCreateEditSubrecipientContact @smoke
   Scenario Outline: Validate Auditor cannot Create/Edit any subrecipient contact user
-    Given I delete the record "Automation Manager" from the object "Contact"
-    Given I login to "As a Grantor" app as "ADMIN" user
+    Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
     When I click modal button "Save"
-    When I click on "View" icon for "Automation Manager" inside flex table with id "---home:-:internalContactTableId---"
-    When I click on "Edit" icon for "Automation Manager" inside flex table with id "---home:-:internalContactTableId---"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---"
+    Then I softly see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    When I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---"
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
     Then I softly cannot see top right button "New" in flex table with id "---home:-:subrecipientcontactTableId---"
-    When I perform quick search for "Automation Manager" in "---home:-:subrecipientcontactTableId---" panel
-    Then I softly cannot see row level action button "Edit" against "Automation Manager" in flex table with id "---home:-:subrecipientcontactTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:subrecipientcontactTableId---" panel
+    Then I softly cannot see row level action button "Edit" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:subrecipientcontactTableId---"
     Examples:
       | User    |
       | AUDITOR |
@@ -170,6 +169,17 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
   @69143 @auditorViewSubrecipientContacts
   Scenario Outline: Validate Auditor should have view / read  only access to subrecipient contacts
     Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Home" tab
+    And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
+    When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
+    And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---"
+    Then I softly see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    When I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---"
+    And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
     When I perform quick search for "Automation Manager" in "---home:-:subrecipientcontactTableId---" panel

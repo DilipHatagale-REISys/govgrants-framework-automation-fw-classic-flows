@@ -40,6 +40,7 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
 
   @69161 @auditorProfileCannotEditAnnouncement
   Scenario Outline: Validate Auditor user should not be able to Edit Announcement
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -49,18 +50,19 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
       | Announcement Name | Actions |
       | <Announcement>    | View    |
     Examples:
-      | User    | Announcement                                |
-      | AUDITOR | Automation Announcement for Pre-Application |
+      | User    | Announcement                                             |
+      | AUDITOR | {SavedValue:Automation Runtime Announcement Application} |
 
   @69162 @auditorCompetitiveAnnouncement
   Scenario: Validate Auditor should not be able to Create/Edit/Review/Approve announcement
-    When I login to "As a Grantor" app as "dynamicUser" user
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
+    When I login to "As a Grantor" app as "Auditor" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Published Competitive Announcements"
     Then I softly cannot see top right button "New" in flex table with id "ActiveFundingOpportunitiesCompitive"
-    And I perform quick search for "Automation Announcement for Pre-Application" in "ActiveFundingOpportunitiesCompitive" panel
-    When I click on "View" icon for "Automation Announcement for Pre-Application" inside flex table with id "ActiveFundingOpportunitiesCompitive"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "ActiveFundingOpportunitiesCompitive" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside flex table with id "ActiveFundingOpportunitiesCompitive"
     When I navigate to "Financials" sub tab
     Then I softly cannot see top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I navigate to "Overview" sub tab
