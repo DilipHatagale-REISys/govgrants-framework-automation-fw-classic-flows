@@ -74,7 +74,7 @@ public class ProjectApis extends ProjectWebServices{
         keyContacts.addProperty("Contact",getIdOf("Contact",contactName)); // Automation SPI id
         keyContacts.addProperty("IsKeyContact",true);
         keyContactsArray.add(keyContacts);
-        parent.add("KeyContacts",keyContactsArray);
+        parent.add("KeyContact",keyContactsArray);
 
         JsonObject keyOutcome = new JsonObject();
         JsonArray keyOutcomeArray = new JsonArray();
@@ -193,7 +193,7 @@ public class ProjectApis extends ProjectWebServices{
         JsonArray awardArray = new JsonArray();
         award.addProperty("GrantAwardDescription","Award Created From Automation API");
         award.addProperty("BudgetPeriodEndDate", I.amPerforming()
-        .actionToGet().currentDateWithOffsetInDesiredFormat(600, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        .actionToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         awardArray.add(award);
         parent.add("Award",awardArray);
 
@@ -256,7 +256,7 @@ public class ProjectApis extends ProjectWebServices{
         paymentRequest.addProperty("CalReportingStartDate", I.amPerforming()
                 .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         paymentRequest.addProperty("CalReportingEndDate", I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(365, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .actionToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         paymentRequest.addProperty("Frequency","Bi-Monthly");
         paymentRequest.addProperty("ScheduleBase","Reporting Period");
         paymentRequest.addProperty("SubmissionType","Payment Request");
@@ -268,7 +268,7 @@ public class ProjectApis extends ProjectWebServices{
         progressReport.addProperty("CalReportingStartDate", I.amPerforming()
                 .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         progressReport.addProperty("CalReportingEndDate", I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(365, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .actionToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         progressReport.addProperty("Frequency","Bi-Monthly");
         progressReport.addProperty("ScheduleBase","Reporting Period");
         progressReport.addProperty("SubmissionType","Progress Report");
