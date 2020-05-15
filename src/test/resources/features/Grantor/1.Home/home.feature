@@ -90,6 +90,11 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
+    And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I save the contact name as "Automation Runtime Contact"
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---"
     Examples:
       | User  |
@@ -101,6 +106,11 @@ Feature: Validate all scenarios in the home tab
   Scenario Outline: Verify that system allows user to see the detail page of Active SME Reviewer contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
+    And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I save the contact name as "Automation Runtime Contact"
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     Then I can see row level action button "View" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:reviewersTableId---"
@@ -738,6 +748,11 @@ Feature: Validate all scenarios in the home tab
   Scenario Outline: Validate once Contact has registered the status will be New , when the Invitation/Bulk Invitation is sent, the status changes from Invitation Sent
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
+    And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I save the contact name as "Automation Runtime Contact"
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---"
     And I click "Send" button in modal
