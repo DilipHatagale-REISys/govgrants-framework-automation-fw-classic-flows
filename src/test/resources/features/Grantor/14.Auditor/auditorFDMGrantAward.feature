@@ -1,4 +1,4 @@
-@auditorGrant/Award @auditor
+@auditorGrant/Award @auditor @parallel-regression @regression
 Feature: Validate all scenarios for Auditor Profile in Grant/Award
 
   @69168 @auditorCannotCreateGrantandSubaward @smoke

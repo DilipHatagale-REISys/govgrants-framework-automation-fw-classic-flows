@@ -1,4 +1,4 @@
-@paymentRequest @regression
+@paymentRequest @regression @parallel-regression
 Feature: Scheduled Reimbursement Payment Request Scenarios
 
   @38313 @taskCreationForSubrecipientUser @mahadev

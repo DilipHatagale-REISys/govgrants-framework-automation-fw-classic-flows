@@ -1,4 +1,4 @@
-@amendmentRequests @regression
+@amendmentRequests @regression @parallel-regression
 Feature: Amendment Request scenarios without background
 
   @54853 @ValidateRevisedBudgetAmountBalanceUpdatedOnAdvancePaymentRequest @mahadev @smoke

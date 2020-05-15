@@ -1,4 +1,4 @@
-@preAplicationWB @regression @app
+@preAplicationWB @regression @parallel-regression @app
 Feature: Pre-Application scenarios without background
 
   @71921 @71411 @71412 @71410 @70252 @70254 @71925 @verifyCreateApplicationandQualifyButtons

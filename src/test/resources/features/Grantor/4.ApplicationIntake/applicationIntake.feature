@@ -1,4 +1,4 @@
-@applicationIntake @regression @app
+@applicationIntake @regression @parallel-regression @app
 Feature: Validate all scenarios in the Application Intake
 
   Background: Qualify Announcement and Create Application

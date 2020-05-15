@@ -459,6 +459,8 @@ public class ProjectApis extends ProjectWebServices{
         switch (filter){
             case "NO_RISK_ASSESSMENT":
                 return payloadForCreateStandAloneWithNORiskAssement(json);
+            case "YES_RISK_ASSESSMENT":
+                return payloadForCreateStandAloneWithYesRiskAssement(json);
             case "NO_ADVANCE_PERMISSION":
                 return payloadForPaymentRequestToCreateStandaloneAward(json);
             case "IS_BUILDUP_FUNCTIONALITY_YES":
@@ -533,6 +535,16 @@ public class ProjectApis extends ProjectWebServices{
        newA.add(grant);
        defaultPayload.add("Grant",newA);
        return defaultPayload;
+    }
+
+    private JsonObject payloadForCreateStandAloneWithYesRiskAssement(JsonObject defaultPayload) {
+        JsonObject grant = defaultPayload.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+
+        grant.addProperty("RiskAssessment_Required","Yes");
+        newA.add(grant);
+        defaultPayload.add("Grant",newA);
+        return defaultPayload;
     }
 
 

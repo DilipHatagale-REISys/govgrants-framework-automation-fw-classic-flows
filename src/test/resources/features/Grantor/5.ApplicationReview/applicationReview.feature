@@ -1,4 +1,4 @@
-@applicationReview @regression
+@applicationReview @regression @parallel-regression
 Feature: Validate all scenarios in the Application Review
 
   Background: Submit the application for Review

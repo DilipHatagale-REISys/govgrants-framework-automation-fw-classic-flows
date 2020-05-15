@@ -1,4 +1,4 @@
-@kpi @regression @planning
+@kpi @regression @parallel-regression @planning
 Feature: Validate all scenarios in Key Performance Indicator(KPI)
 
   @34735 @creationOfKPI

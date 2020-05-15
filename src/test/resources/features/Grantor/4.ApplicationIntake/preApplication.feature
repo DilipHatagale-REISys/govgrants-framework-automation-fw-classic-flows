@@ -1,4 +1,4 @@
-@preApplication @regression @app
+@preApplication @regression @parallel-regression @app
 Feature: Validate all scenarios in the Pre-Application
 
   Background: Qualify Announcement and Create PreApplication
