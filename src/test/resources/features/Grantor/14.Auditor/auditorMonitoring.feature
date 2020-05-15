@@ -1,4 +1,4 @@
-@auditorMonitoring @auditor @parallel-regression
+@auditorMonitoring @auditor @parallel-regression @regression
 Feature: Validate all scenarios for Auditor Profile in Monitoring module
 
   @69178 @auditorPaymentRequest

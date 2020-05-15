@@ -1,4 +1,4 @@
-@auditorAnnouncement @auditor @parallel-regression
+@auditorAnnouncement @auditor @parallel-regression @regression
 Feature: Validate all scenarios for Auditor Profile in Announcement Module
 
   @69159 @auditorCannotCreateAnnouncement
