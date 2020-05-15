@@ -133,10 +133,10 @@ Feature: Validate all scenarios in the Application Intake
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
     Then I softly cannot see top right button "Edit" in page detail
     Examples:
-      | Application Name                               | User |
+      | Application Name                                         | User |
       | {SavedValue:Automation Runtime Announcement Application} | PM   |
-      |                                                | FO   |
-      |                                                | EXE  |
+      |                                                          | FO   |
+      |                                                          | EXE  |
 
   @70458 @73514 @73515 @70456 @acknowledgeReqiredToSave @deepika @bugged-73498
   Scenario: Validate the system should throw an validation message if the application is submitted with Acknowledging it
@@ -279,7 +279,7 @@ Feature: Validate all scenarios in the Application Intake
     When I download the file
     Then I see "Submitted to Grantor" on page "1" of "govgrants" pdf file
     Examples:
-      | Application Name                               |
+      | Application Name                                         |
       | {SavedValue:Automation Runtime Announcement Application} |
 
   @70525 @userCanAssociateNewContact @deepika

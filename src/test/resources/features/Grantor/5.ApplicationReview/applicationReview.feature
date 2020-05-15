@@ -2,19 +2,18 @@
 Feature: Validate all scenarios in the Application Review
 
   Background: Submit the application for Review
-    Given I delete the record "Automation Announcement for Application Review" from the object "APPLICATION REVIEWS"
-    Given I delete the record "Automation Application" from the object "APPLICATION"
-    And I delete the record "Automation Announcement for Application Review" from the object "Qualified Announcement"
-    When I am on "SUBPORTAL" portal
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
+    Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "Automation Announcement for Application Review" in "---applicationReview:-:reviewsTableId---" panel
-    When I click on "View" icon for "Automation Announcement for Application Review" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
-    When I enter value "Automation Application" into field "Title__c"
     And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I click on "Edit" in the page details
     When I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
@@ -49,6 +48,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -123,8 +123,8 @@ Feature: Validate all scenarios in the Application Review
     When I refresh the page
     Then I softly see that "Sent for Review" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @51062 @75229 @smeReviewCompleteReviewForm
   Scenario Outline: Complete Review form as Various reviewers in SME Review
@@ -133,9 +133,11 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    And I get the "EGMS ID"
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
@@ -243,8 +245,8 @@ Feature: Validate all scenarios in the Application Review
     Then I softly can see top right button "Back to Announcement" in page detail
     Then I softly can see top right button "Next Review Step" in page detail
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @51063 @promoteToNextFromSMEReview
   Scenario Outline:Promoting from SME Review to the next review step for an application
@@ -253,6 +255,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -356,8 +359,8 @@ Feature: Validate all scenarios in the Application Review
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     Then I see that "Promoted to Management Review Step" has been added in flextable with Id "---applicationReview:-:appTableId---"
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @51064 @managementReviewEnterDueInDays
   Scenario Outline: Enter Due in Days for all review forms in Management review
@@ -366,6 +369,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -473,8 +477,8 @@ Feature: Validate all scenarios in the Application Review
       | Management Review | 5           |
     Then I see that "5" has been added in flextable with Id "---applicationReview:-:formTableId---"
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @51061 @managementReviewAddReviewer
   Scenario Outline: Add a reviewer to each review step in Management Review
@@ -483,6 +487,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -593,8 +598,8 @@ Feature: Validate all scenarios in the Application Review
       | Automation FO |
     Then I see that "Automation FO" has been added in flextable with Id "---applicationReview:-:reviewersTableId---"
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @51060 @managementReviewAssignApplicationToReviewer
   Scenario Outline: Assign Application to Reviewer in management Review
@@ -603,6 +608,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -718,8 +724,8 @@ Feature: Validate all scenarios in the Application Review
     When I close "Assign Applications" modal by clicking the top right x button
     Then I see that "Assigned" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @51059 @managementReviewSendForReview @smoke
   Scenario Outline: Choose the reviewers and send for review in Management Review
@@ -728,6 +734,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -845,8 +852,8 @@ Feature: Validate all scenarios in the Application Review
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     Then I see that "Sent for Review" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @51058 @64948 @managementReviewCompleteReviewForm
   Scenario Outline: Complete Review form as Various reviewers in Management Review
@@ -855,6 +862,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -989,8 +997,8 @@ Feature: Validate all scenarios in the Application Review
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     Then I softly can see top right button "Funding Decision Memo" in page detail
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @51057 @promoteToFDMFromManagementReview
   Scenario Outline:Promoting from Last review step review to the FDM step for an application
@@ -999,6 +1007,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -1134,8 +1143,8 @@ Feature: Validate all scenarios in the Application Review
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     Then I see that "Review Step" is in "Completed" status
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @51056 @64949 @subAwardAbbreviationInFDM
   Scenario Outline: Adding a sub-award abbreviation in FDM | Verify when user click on Funding Decision Memo button it navigate to Funding Decision Memo Page
@@ -1144,6 +1153,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -1284,8 +1294,8 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Save" in the page details
     Then I softly see that "Funding Decision Memo" is in "Created" status
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @51055 @recommendationForApplicationInFDM
   Scenario Outline: Adding a recommendation for an application in FDM
@@ -1294,6 +1304,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -1432,12 +1443,12 @@ Feature: Validate all scenarios in the Application Review
     When I enter value "AuGr" into field "GrantCode__c"
     And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title      | Recommended Budget | Recommend for Funding | Comments    |
-      | Automation Application | 500                | Yes                   | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
     Then I see that "Recommended" has been added in flextable with Id "flexGridFundingDecisionMemoApplications"
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @51054 @approverAssignmentForApplicationInFDM
   Scenario Outline: Assigning an approver in FDM
@@ -1446,6 +1457,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -1588,16 +1600,16 @@ Feature: Validate all scenarios in the Application Review
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title      | Recommended Budget | Recommend for Funding | Comments    |
-      | Automation Application | 500                | Yes                   | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
       | Executive Approver | Automation EXE | Automation Test Description |
     Then I see that "Automation EXE" has been added in flextable with Id "flexGridGrantorReviewStepRolesandResponsibilities"
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @51053 @submitForApprovalFDM
   Scenario Outline: Submitting the FDM for approval
@@ -1606,6 +1618,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -1748,8 +1761,8 @@ Feature: Validate all scenarios in the Application Review
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title      | Recommended Budget | Recommend for Funding | Comments    |
-      | Automation Application | 500                | Yes                   | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -1757,8 +1770,8 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @51052 @approveFDM @applicationReviewAndFDMHappyPath @smoke
   Scenario Outline: Approving FDM as the assigned user
@@ -1767,6 +1780,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -1909,8 +1923,8 @@ Feature: Validate all scenarios in the Application Review
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title      | Recommended Budget | Recommend for Funding | Comments    |
-      | Automation Application | 500                | Yes                   | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
@@ -1925,12 +1939,12 @@ Feature: Validate all scenarios in the Application Review
     When I "Approve" in the approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @65079 @73778 @73791 @@75228 @VerifyAwardOwnerCanInitiateReviewProcess @keerti
-   Scenario Outline: Verify Award owner can Initiate the Review Process.
-    | To Verify that under related log tab , corresponding data is display about related submitted applications for announcement
+  Scenario Outline: Verify Award owner can Initiate the Review Process.
+  | To Verify that under related log tab , corresponding data is display about related submitted applications for announcement
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -1951,8 +1965,8 @@ Feature: Validate all scenarios in the Application Review
     When I download the file
     Then I see "Review Steps" on page "1" of "govgrants" pdf file
     Examples:
-      | Announcement Name                              |
-      | Automation Announcement for Application Review |
+      | Announcement Name                                               |
+      | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @65083  @verifyValidationMessageOnSendForReview @mahadev
   Scenario Outline: Verify Validation message is shown if application is not selected for submitting the review process
@@ -1961,6 +1975,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -1979,17 +1994,17 @@ Feature: Validate all scenarios in the Application Review
     Then I see the following messages in the page details :
       | Please select the reviews to send. |
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @72346 @applicationReviewHappyPath @productBusinessFlowSanity
   Scenario Outline: Validate the complete review process for an application
-    And  I wait for "120" seconds
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -2124,8 +2139,8 @@ Feature: Validate all scenarios in the Application Review
     When I click on "Funding Decision Memo" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @75230 @VerifyDownloadPDFforApplicaiton @aashish
   Scenario Outline: To verify system allow to download PDF for Application section in Related log tab of announcement.
@@ -2144,8 +2159,8 @@ Feature: Validate all scenarios in the Application Review
     When I download the file
     Then I see "Applications" on page "1" of "govgrants" pdf file
     Examples:
-      | Announcement Name                              |
-      | Automation Announcement for Application Review |
+      | Announcement Name                                               |
+      | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @75449 @75451 @75450 @75448 @75454 @VerifyAbleToViewApplication @aashish
   Scenario Outline: To verify user is able to view Applications in Applications section in Related log tab of announcement
@@ -2160,8 +2175,8 @@ Feature: Validate all scenarios in the Application Review
     And I perform quick search for "<Announcement Name>" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" with wait for record
     And I navigate to "Related Log" sub tab
-    And I perform quick search for "Automation Application" in "---applicationReview:-:relatedFOApplicationsTableId---" panel
-    Then I softly see value "Automation Application" for title "Project Title" inside table "---applicationReview:-:relatedFOApplicationsTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:relatedFOApplicationsTableId---" panel
+    Then I softly see value "{SavedValue:Automation Runtime Announcement Application Review}" for title "Project Title" inside table "---applicationReview:-:relatedFOApplicationsTableId---"
     When I click on advance filter "#advfRelatedFOApplications" of table id "---applicationReview:-:relatedFOApplicationsTableId---"
     When I enter advance filter values inside id "advfRelatedFOApplications"
       | Project Title | Contains | InvalidValue |
@@ -2169,10 +2184,10 @@ Feature: Validate all scenarios in the Application Review
     And I refresh the page
     When I click on advance filter "#advfRelatedFOApplications" of table id "---applicationReview:-:relatedFOApplicationsTableId---"
     When I enter advance filter values inside id "advfRelatedFOApplications"
-      | Project Title | Contains | Automation Application |
-    Then I softly see value "Automation Application" for title "Project Title" inside table "---applicationReview:-:relatedFOApplicationsTableId---"
-    When I click on "View" icon for "Automation Application" inside flex table with id "---applicationReview:-:relatedFOApplicationsTableId---" with wait for record
-    Then I softly see field "Application" as "Automation Application"
+      | Project Title | Contains | {SavedValue:Automation Runtime Announcement Application Review} |
+    Then I softly see value "{SavedValue:Automation Runtime Announcement Application Review}" for title "Project Title" inside table "---applicationReview:-:relatedFOApplicationsTableId---"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:relatedFOApplicationsTableId---" with wait for record
+    Then I softly see field "Application" as "{SavedValue:Automation Runtime Announcement Application Review}"
     Then I softly can see "Overview" sub tab at view detail page
     Then I softly can see "Budget" sub tab at view detail page
     Then I softly can see "Monitoring" sub tab at view detail page
@@ -2185,8 +2200,8 @@ Feature: Validate all scenarios in the Application Review
     When I download the file
     Then I see "Funding Decision Memo (FDM)" on page "1" of "govgrants" pdf file
     Examples:
-      | Announcement Name                              |
-      | Automation Announcement for Application Review |
+      | Announcement Name                                               |
+      | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @78318 @78319 @79203 @reviewStepsAndPreScreenReview @keerti
   Scenario Outline: To verify user will be able to view the review steps under the respective announcement related log tab
@@ -2197,7 +2212,8 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     And I wait for "30" seconds
     Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
@@ -2219,8 +2235,8 @@ Feature: Validate all scenarios in the Application Review
     And I softly can see "History" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
     Examples:
-      | Announcement Name                              |
-      | Automation Announcement for Application Review |
+      | Announcement Name                                               |
+      | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @78320 @79661 @79662 @79663 @SMEReviewStepSMEReviewFormIcon @keerti
   Scenario Outline: To verify User will be able to click the view icon on the SME review step under announcement related log tab review step section
@@ -2232,7 +2248,8 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
@@ -2259,8 +2276,8 @@ Feature: Validate all scenarios in the Application Review
     Then I softly see "Permits" inside flex table with id "---applicationReview:-:reviewPanelCategoriesTableId---"
     And I close "Review Form" modal by clicking the top right x button
     Examples:
-      | Announcement Name                              |
-      | Automation Announcement for Application Review |
+      | Announcement Name                                               |
+      | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @78090 @validatingApplicationUnderReviewTable @keerti
   Scenario Outline: To Validate the Announcement owner will be able to view the announcement under "Application Under Review" table
@@ -2269,15 +2286,16 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "{SavedValue:EGMSID}" in "---applicationReview:-:announcementListTableId---" panel
     Then I softly see value "<Announcement Name>" for title "Announcement Title" against the value "{SavedValue:EGMSID}" inside table "---applicationReview:-:announcementListTableId---"
     Examples:
-      | Announcement Name                              |
-      | Automation Announcement for Application Review |
+      | Announcement Name                                               |
+      | {SavedValue:Automation Runtime Announcement Application Review} |
 
 
   @78321 @managementReviewStep @keerti
@@ -2287,7 +2305,8 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
@@ -2300,8 +2319,8 @@ Feature: Validate all scenarios in the Application Review
     Then I softly can see page block "System Information"
 
     Examples:
-      | Announcement Name                              |
-      | Automation Announcement for Application Review |
+      | Announcement Name                                               |
+      | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @78322 @ValidatingprescreenReviewStepFormWithRequired @keerti
   Scenario Outline: To verify user able to setup the Due Days for the review & set field "Required" :Checked in prescreen review step in related log table in Application phase
@@ -2310,7 +2329,8 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
@@ -2325,8 +2345,8 @@ Feature: Validate all scenarios in the Application Review
       | Saved Successfully! |
     Then I softly see value "7" for title "Due in Days" inside table "---applicationReview:-:reviewStepFormId---"
     Examples:
-      | Announcement Name                              |
-      | Automation Announcement for Application Review |
+      | Announcement Name                                               |
+      | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @78323 @ValidatingprescreenReviewStepForm @keerti
   Scenario Outline: To verify user able to setup the Due Days for the review & set field "Required" :Unchecked in prescreen review step in related log table in Application phase
@@ -2335,7 +2355,8 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
@@ -2350,17 +2371,19 @@ Feature: Validate all scenarios in the Application Review
       | Saved Successfully! |
     Then I softly see value "7" for title "Due in Days" inside table "---applicationReview:-:reviewStepFormId---"
     Examples:
-      | Announcement Name                              |
-      | Automation Announcement for Application Review |
+      | Announcement Name                                               |
+      | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @78328 @validatingComplianceReviewStepForm @keerti
   Scenario Outline: To verify user able to setup the Due Days for the review & set field "Required" :Checked in prescreen review step in related log table in Application phase
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Announcements" tab
-    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "All Competitive Announcements"
-    And I perform quick search for "<Announcement Name>" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
     Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
@@ -2379,8 +2402,8 @@ Feature: Validate all scenarios in the Application Review
       | Saved Successfully! |
     Then I softly see value "7" for title "Due in Days" against the value "Compliance Review" inside table "---applicationReview:-:reviewStepFormId---"
     Examples:
-      | Announcement Name                              |
-      | Automation Announcement for Application Review |
+      | Announcement Name                                               |
+      | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @79201 @79204 @numberOfreviewersAndDeleteReviewers @keerti
   Scenario Outline: To verify user,able to set the maximum number of reviewers for each application in prescreening review step
@@ -2390,7 +2413,8 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
@@ -2408,16 +2432,18 @@ Feature: Validate all scenarios in the Application Review
       | Record deleted successfully. |
     Then I softly do not see value "Automation FO" for title "Reviewers" inside table "---applicationReview:-:reviewersTableId---"
     Examples:
-      | Announcement Name                              |
-      | Automation Announcement for Application Review |
+      | Announcement Name                                               |
+      | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @79206 @pdfForReviewSteps @keerti
   Scenario Outline: To verify user able to download pdf for Review Steps section in related log tab of Apllication phase.
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Announcements" tab
-    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    And I perform quick search for "<Announcement Name>" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" with wait for record
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     And I click on parallel menu button in flex table titled "Review Steps"
     And I select "Download as PDF" from parallel lines dropdown of "Review Steps"
@@ -2427,8 +2453,8 @@ Feature: Validate all scenarios in the Application Review
     Then I softly see "Management" on page "1" of "govgrants" pdf file
     Then I softly see "Review" on page "1" of "govgrants" pdf file
     Examples:
-      | Announcement Name                              |
-      | Automation Announcement for Application Review |
+      | Announcement Name                                               |
+      | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @79202 @deleteReviewersInSMERview @keerti
   Scenario Outline:  To verify that,user able to delete Reviewers in SME review step in related log tab of Appliction phase
@@ -2437,6 +2463,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
@@ -2456,18 +2483,18 @@ Feature: Validate all scenarios in the Application Review
       | Record deleted successfully. |
     Then I softly do not see value "Automation FO" for title "Reviewers" inside table "---applicationReview:-:reviewersTableId---"
     Examples:
-      | Announcement Name                              |
-      | Automation Announcement for Application Review |
+      | Announcement Name                                               |
+      | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @79664 @79665 @TabOfApplicationPhase @keerti
   Scenario Outline: To verify that,user able to click view icon for Application in SME review step in related log tab of Appliction phase
   | To verify that,user able to click view icon for Application in Management review step in related log tab of Application phase
-    And  I wait for "120" seconds
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -2597,8 +2624,8 @@ Feature: Validate all scenarios in the Application Review
     And I softly can see "History" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @79749 @79755 @79748 @79747 @79753 @79754 @verifingReviewSectionAndReviewQuestion @keerti
   Scenario Outline: To verify the user able to assign reviewers in the reviews section for Pre-screening review steps of related log tab in the Application phase.
@@ -2612,16 +2639,17 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     And I get the "Announcement EGMS ID"
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
-     | Form Name  | Due in Days |
-     | Pre-Screen | 5           |
+      | Form Name  | Due in Days |
+      | Pre-Screen | 5           |
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-     | Reviewer      |
-     | Automation PM |
+      | Reviewer      |
+      | Automation PM |
     And I click on "Assign" icon for "Automation PM" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
@@ -2760,8 +2788,8 @@ Feature: Validate all scenarios in the Application Review
     Then I softly see field "Assess the overall impact of this project." as "Automation test description"
     Then I softly see field "Score (Max: 20)" as "3"
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @79960 @79961 @verifingCompletedTaskForPrescreenManagementReview @keerti
   Scenario Outline: To verify the tasks will be displayed on completed tasks for the reviewer, when reviewer submit Reviews form successfully,for prescreen review step in  Application phase
@@ -2771,6 +2799,7 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
@@ -2912,5 +2941,5 @@ Feature: Validate all scenarios in the Application Review
     And I perform quick search for "Record ID" in "---applicationReview:-:completedTaskTableId---" panel
     Then I softly see value "Record ID" for title "EGMS ID" inside table "---applicationReview:-:completedTaskTableId---"
     Examples:
-      | Announcement Name                              | Application Name       |
-      | Automation Announcement for Application Review | Automation Application |
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |

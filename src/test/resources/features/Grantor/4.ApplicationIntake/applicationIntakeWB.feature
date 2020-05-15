@@ -63,7 +63,6 @@ Feature: Application Intake scenarios without background
     When I click modal button "Save and Continue"
     Then I softly see the following messages in the page details contains:
       | Application Title is Required to save. |
-    When I enter value "{SavedValue:Automation Runtime Announcement Application Review}" into field "Title__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I click on "Edit" in the page details
@@ -925,7 +924,7 @@ Feature: Application Intake scenarios without background
     And I click toggle button to select "Formula Announcements - All"
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "ActiveFundingOpportunitiesFormula" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "ActiveFundingOpportunitiesFormula"
-   When I get the "EGMS ID"
+    When I get the "EGMS ID"
     When I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Opportunities" tab
@@ -1079,10 +1078,7 @@ Feature: Application Intake scenarios without background
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
-    When I clear the value from field "Title__c"
     When I click modal button "Save and Continue"
-    When I enter value "{SavedValue:Automation Runtime Announcement Application Review}" into field "Title__c"
-    And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
