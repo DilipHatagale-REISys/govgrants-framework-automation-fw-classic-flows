@@ -1,4 +1,4 @@
-@auditorApplication  @auditorNegotiations @auditor
+@auditorApplication  @auditorNegotiations @auditor @parallel-regression @regression
 Feature: Validate all scenarios for Auditor Profile in Application Module
 
   @73805 @auditorCannotViewCreatedStatusPreApplication

@@ -1,4 +1,4 @@
-@grantAndAward @awardFromFDM @regression
+@grantAndAward @awardFromFDM @regression @parallel-regression
 Feature: Validate all scenarios in the award created from FDM
 
   Background: Create award from FDM

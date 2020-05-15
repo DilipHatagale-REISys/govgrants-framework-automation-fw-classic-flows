@@ -1,4 +1,4 @@
-@auditorAmendmentRequest @auditor
+@auditorAmendmentRequest @auditor @parallel-regression @regression
 Feature: Validate all scenarios for Auditor Profile in Amendment Request module
 
   @69172 @auditorCannotCreateAmendmentRequest @smoke

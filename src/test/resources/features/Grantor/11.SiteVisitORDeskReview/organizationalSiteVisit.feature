@@ -1,4 +1,4 @@
-@organizationalSiteVisit @regression @siteVisit
+@organizationalSiteVisit @regression @parallel-regression @siteVisit
 Feature: Validate all scenarios in Organizational Site Visit
 
   Background: Creation of Organizational Site Visit
