@@ -450,6 +450,7 @@ Feature: Pre-Application scenarios without background
 
   @34290 @otherOrganizationUserCannotViewPreApplication @deepika
   Scenario: Validate the Pre-applications are visible for other organizations
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Applicationn" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
     And I login as "SA" user
     When I navigate to "Opportunities" tab
