@@ -368,7 +368,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Accept" in the page details
     And I pause execution for "150" seconds
     Then I softly can see mail notification for "EXTERNAL" user with following subject:
-      | Pre-Application Automation Announcement for Application for Announcement {SavedValue:AnnId} has been Accepted |
+      | Pre-Application {SavedValue:Automation Runtime Announcement for Pre-Application} {SavedValue:AnnId} has been Accepted |
 
   @72523 @SPIUserCannotdeleteTheCreatedPreApplication
   Scenario Outline: Validate whether SPI/SPA user has the ability to delete the created pre-Application

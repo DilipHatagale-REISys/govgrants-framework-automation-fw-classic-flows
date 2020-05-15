@@ -93,15 +93,15 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
 
   @69869 @auditorCannotCreateAwardLevelSiteVisit
   Scenario Outline: Validate Auditor should not be able to Create, Edit, Delete and Accept and Close the Award Level Site Visit
-    Given I activated standalone subaward "Automation Award Runtime Site Visit" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I perform quick search for "{SavedValue:Automation Award Runtime Site Visit}" in "ActiveGrants" panel
-    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "ActiveGrants"
+    And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "ActiveGrants" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
     And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
@@ -112,11 +112,11 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     Given I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Award Runtime Site Visit}" in "---auditor:-:sitevisitMonitoringTableId---" panel
+    When I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---auditor:-:sitevisitMonitoringTableId---" panel
     Then I see the following rows under the following headers in table with id "---auditor:-:sitevisitMonitoringTableId---" :
       | Title                 | Actions |
       | Automation Site Visit | View    |
-    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "---auditor:-:sitevisitMonitoringTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---auditor:-:sitevisitMonitoringTableId---"
     Then I softly cannot see top right button "Accept and Close" in page detail
     Examples:
       | User    |
@@ -124,25 +124,25 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
 
   @70076 @69870 @auditorCannotCreateDeleteAwardLevelDeskReview
   Scenario Outline: Validate Auditor should not be able to delete the  created state Award Level Desk Review | Validate Auditor should not be able to Create, Accept and Close the Award Level Desk Review
-    Given I activated standalone subaward "Automation Award Runtime Site Visit" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I perform quick search for "{SavedValue:Automation Award Runtime Site Visit}" in "ActiveGrants" panel
-    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "ActiveGrants"
+    And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "ActiveGrants" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     Then I softly cannot see top right button "Initiate Desk Review" in flex table with id "GrantorDeskReviewAward"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Award Runtime Site Visit}" in "---deskreview:-:internalActiveGrants---" panel
-    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "---deskreview:-:internalActiveGrants---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---deskreview:-:internalActiveGrants---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---deskreview:-:internalActiveGrants---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "---deskreview:-:managementInitiateDRtableid---"
     And I enter "Creation" values from "DeskReview_Field_Values.xlsx"
@@ -166,21 +166,21 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
 
   @69872 @69979 @auditorCannotCreateAwardLevelRiskAssessment
   Scenario Outline: Validate Auditor should not be able to Create Award Level Risk Assessment/ Validate whether Auditor can View the active Risk assessment from Monitoring Tab
-    Given I activated standalone subaward "Automation Award Runtime Site Visit" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    And I perform quick search for "Automation Award for Risk Assessment" in "ActiveGrants" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "ActiveGrants"
+    And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "ActiveGrants" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     Then I softly cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     When I navigate to "Monitoring" tab
     And I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
     When I click toggle button to select "Risk Assessments - All"
-    When I perform quick search for "Automation Award for Risk Assessment" in "---auditor:-:monitoringtableid---" panel
+    When I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---auditor:-:monitoringtableid---" panel
     Then I softly see that "Active" has been added in flextable with Id "---auditor:-:monitoringtableid---"
     Examples:
       | User    |
@@ -227,16 +227,16 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
 
   @70075 @auditorCannotBeAnApprover
   Scenario: Validate approver user is not allowed to reassign tasks their tasks to Auditor.
-    Given I activated standalone subaward "Automation Award Runtime Site Visit" with properties "default"
-    Given I activated standalone subaward "Automation Award Runtime Record" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I perform quick search for "{SavedValue:Automation Award Runtime Site Visit}" in "ActiveGrants" panel
-    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "ActiveGrants"
+    And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "ActiveGrants" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
     And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
@@ -254,7 +254,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
-    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     And I navigate to "Reports and Outcomes" sub tab
