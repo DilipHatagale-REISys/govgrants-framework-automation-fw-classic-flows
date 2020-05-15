@@ -789,12 +789,6 @@ Feature: Application Intake scenarios without background
     And I save the value from row "1" for column name "EGMS ID" as "searchedItem" from flex table "---applicationIntake:-:goalsAndObjectivesTableId---"
     And I perform quick search for "{SavedValue:searchedItem}" in "---applicationIntake:-:goalsAndObjectivesTableId---" panel
     Then I softly see value "{SavedValue:searchedItem}" for title "EGMS ID" inside table "---applicationIntake:-:goalsAndObjectivesTableId---"
-    And I refresh the page
-    When I click on advance filter "#advfFocusAreaApp" of table id "---applicationIntake:-:goalsAndObjectivesTableId---"
-    When I enter advance filter values inside id "#advfFocusAreaApp"
-      | Title | Contains | Automation Permanent Objective |
-    Then I softly see value "Automation Permanent Objective" for title "Title" inside table "---applicationIntake:-:goalsAndObjectivesTableId---"
-    Then I softly see value "2020" for title "Year Created" inside table "---applicationIntake:-:goalsAndObjectivesTableId---"
 
   @73753 @announcementInApprovedStatusWillNotBeAOppurtunity @deepika
   Scenario: Validate if the announcment is in Approved status and not published status then the record will not be available for SPI/SPA users under oppurtunity
@@ -979,7 +973,8 @@ Feature: Application Intake scenarios without background
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:reviewsTableId---" panel
-    Then I softly see "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    Then I softly see "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:reviewsTableId---"
     When I click on "Qualify" in the page details
     Then I softly see that "{SavedValue:Automation Runtime Announcement Application Review}" is in "Qualified" status
     And I softly can see top right button "Create Application" in page detail
@@ -1085,7 +1080,7 @@ Feature: Application Intake scenarios without background
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---applicationIntake:-:applicationContactsTableId---"
-    When I click "Add" after selection of "Automation EXE" in the table "---applicationIntake:-:applicationAssociateTableId---"
+    When I click "Add" after selection of "Automation Manager" in the table "---applicationIntake:-:applicationAssociateTableId---"
     When I close "Contacts" modal by clicking the top right x button
     And I refresh the page
     Then I see that "<Contact>" has been added in flextable with Id "---applicationIntake:-:ApplicationContactsTableId---"
