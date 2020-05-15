@@ -194,6 +194,9 @@ public class ProjectApis extends ProjectWebServices{
         award.addProperty("GrantAwardDescription","Award Created From Automation API");
         award.addProperty("BudgetPeriodEndDate", I.amPerforming()
         .actionToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        award.addProperty("PM",getIdOf("User","Automation PM"));
+        award.addProperty("FO",getIdOf("User","Automation FO"));
+        award.addProperty("EXE",getIdOf("User","Automation EXE"));
         awardArray.add(award);
         parent.add("Award",awardArray);
 
@@ -586,6 +589,9 @@ public class ProjectApis extends ProjectWebServices{
         award.addProperty("GrantAwardDescription","Award Created From Automation API");
         award.addProperty("BudgetPeriodEndDate", I.amPerforming()
                 .actionToGet().currentDateWithOffsetInDesiredFormat(600, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        award.addProperty("PM",getIdOf("User","Automation PM"));
+        award.addProperty("FO",getIdOf("User","Automation FO"));
+        award.addProperty("EXE",getIdOf("User","Automation EXE"));
         awardArray.add(award);
         parent.add("Award",awardArray);
 
