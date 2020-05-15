@@ -1,4 +1,4 @@
-@auditorPlanning @auditor
+@auditorPlanning @auditor @parallel-regression
 Feature: Validate all scenarios for Auditor Profile in Planning Module
 
   @67762 @auditorCannotCreateEditFocusArea @smoke

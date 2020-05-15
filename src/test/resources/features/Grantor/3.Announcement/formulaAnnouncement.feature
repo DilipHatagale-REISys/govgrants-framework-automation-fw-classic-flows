@@ -1,4 +1,4 @@
-@formulaAnnouncements @regression @announcement
+@formulaAnnouncements @regression @parallel-regression @announcement
 Feature: Validate all scenarios in the Formula Announcement tab
 
   Background: Create Announcement

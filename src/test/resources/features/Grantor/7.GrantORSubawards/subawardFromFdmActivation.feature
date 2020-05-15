@@ -1,4 +1,4 @@
-@awardFromFDMWithAPI @regression
+@awardFromFDMWithAPI @regression @parallel-regression
 Feature: Validate all scenarios of Subaward From FDM and activating an Award using API
 
   Background: Activating Subaward from FDM using API

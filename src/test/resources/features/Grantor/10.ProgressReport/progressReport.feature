@@ -1,4 +1,4 @@
-@progressReport @regression @progressReportWithBackground
+@progressReport @regression @parallel-regression @progressReportWithBackground
 Feature: Validate all scenarios in Progress Report
 
   Background: To create a progress report

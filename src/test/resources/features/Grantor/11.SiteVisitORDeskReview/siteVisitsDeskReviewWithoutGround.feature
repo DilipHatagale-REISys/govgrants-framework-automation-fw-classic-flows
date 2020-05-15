@@ -1,4 +1,4 @@
-@siteVisitDeskReviewWB @regression @siteVisit
+@siteVisitDeskReviewWB @regression @parallel-regression @siteVisit
 Feature: Validate all scenarios in the Site Visit and Desk Review without background
 
   @66713 @inProgressSiteVisitAmendedForSiteVisits @deepika @smoke
