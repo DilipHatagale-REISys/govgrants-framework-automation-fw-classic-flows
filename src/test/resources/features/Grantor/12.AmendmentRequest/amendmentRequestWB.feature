@@ -1076,9 +1076,9 @@ Feature: Amendment Request scenarios without background
     And I navigate to "Grants" tab
     And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    When I perform quick search for "Automation Award for Risk Assessment " in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "Automation Award for Risk Assessment " inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Automation Award for Risk Assessment" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     And I navigate to "Monitoring" tab
     Then I softly see value "In progress" for title "Status" against the value "Record Id" inside table "---subAwardStandAlone:-:riskAssessmentTableId---"

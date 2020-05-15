@@ -90,6 +90,11 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
+    And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I save the contact name as "Automation Runtime Contact"
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---"
     Examples:
       | User  |
@@ -101,6 +106,11 @@ Feature: Validate all scenarios in the home tab
   Scenario Outline: Verify that system allows user to see the detail page of Active SME Reviewer contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
+    And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I save the contact name as "Automation Runtime Contact"
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     Then I can see row level action button "View" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:reviewersTableId---"
@@ -468,6 +478,7 @@ Feature: Validate all scenarios in the home tab
 
   @73851 @73856 @73850 @57347 @57348 @viewActiveGrantsSubmittedApplicationsOnRelatedLog
   Scenario Outline: Verify all profiles users should be able to view the Submitted Applications and Active Grants.
+    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Application" and properties "default"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI" user
@@ -521,8 +532,8 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Related Log" sub tab
     When I perform quick search for "{SavedValue:Automation Runtime Announcement for Application}" in "RecipientAppReviewList" panel
     Then I softly can see row level action button "View" against "{SavedValue:Automation Runtime Announcement for Application}" in flex table with id "RecipientAppReviewList"
-    When I perform quick search for "Automation Award for Amendment Request" in "ActiveGrantsByOrganization" panel
-    Then I softly can see row level action button "View" against "Automation Award for Amendment Request" in flex table with id "ActiveGrantsByOrganization"
+    When I perform quick search for "{SavedValue:Automation Runtime Award Record}" in "ActiveGrantsByOrganization" panel
+    Then I softly can see row level action button "View" against "{SavedValue:Automation Runtime Award Record}" in flex table with id "ActiveGrantsByOrganization"
     Examples:
       | User  |
       | ADMIN |
@@ -649,16 +660,16 @@ Feature: Validate all scenarios in the home tab
 
   @62105 @externalUserhomePendingTask @deepika
   Scenario: The Pending Task on the left Navigation shows Pending Tasks that are created for Subrecipient Users
-    Given I activated standalone subaward "Automation Award Runtime Site Visit" with properties "default"
-    Given I activated standalone subaward "Automation Award Runtime Record" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I perform quick search for "{SavedValue:Automation Award Runtime Site Visit}" in "ActiveGrants" panel
-    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "ActiveGrants"
+    And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "ActiveGrants" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "ActiveGrants"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Award Runtime Site Visit}" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
     And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
@@ -675,7 +686,7 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
-    When I click "Associate" after selection of "{SavedValue:Automation Award Runtime Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
     Given I am on "SUBPORTAL" portal
@@ -737,6 +748,11 @@ Feature: Validate all scenarios in the home tab
   Scenario Outline: Validate once Contact has registered the status will be New , when the Invitation/Bulk Invitation is sent, the status changes from Invitation Sent
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
+    And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I save the contact name as "Automation Runtime Contact"
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---"
     And I click "Send" button in modal
