@@ -2,14 +2,13 @@
 Feature: Validate all scenarios in Closeout
 
   Background: Navigate to award
-    Given I delete the record "Automation Permanent Award" from the object "Closeout"
-    And I delete the record "Automation Permanent Award" from the object "Payment Request"
+    And I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Automation Permanent Award" in "---closeout:-:grantsTableId---" panel
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---closeout:-:grantsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
 
   @50971 @50973 @creationAndEditionOfAdhocCloseout
   Scenario: To create and Edit an Adhoc Closeout Request
@@ -148,7 +147,7 @@ Feature: Validate all scenarios in Closeout
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     Examples:
       | Award Name                 |
-      | Automation Permanent Award |
+      | {SavedValue:Automation Runtime Award for closeout} |
 
   @50980 @adhocCloseoutHappyPath @smoke @notFunctional @wip
   Scenario: Approval of Closeout
@@ -246,7 +245,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
-    And I click on "View" icon for "Automation Permanent Award" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"

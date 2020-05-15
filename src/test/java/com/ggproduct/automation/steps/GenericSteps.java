@@ -538,4 +538,10 @@ public class GenericSteps {
         By submit_button = By.xpath("//div[@class='panel-footer']//div[@id='footerButtonsPanel']//*[text()='Submit Review' or @title='Submit Review']");
         I.amPerforming().click().on(submit_button);
     }
+
+    @And("I save the contact name as {string}")
+    public void iSaveTheContactNameAs(String contactName) {
+        String newContactName = I.amPerforming().propertiesFileOperationsTo().getValue(contactName) + " Contact";
+        I.amPerforming().propertiesFileOperationsTo().saveValue(contactName,newContactName);
+    }
 }

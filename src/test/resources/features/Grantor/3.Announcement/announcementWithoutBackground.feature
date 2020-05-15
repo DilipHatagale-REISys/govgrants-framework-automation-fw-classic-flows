@@ -38,7 +38,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click on top right button "New" in flex table with id "---announcement:-:annoucementTableId---"
+    And I click on top right button "New" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
     And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
     When I enter "Creation Second Modal4" values from "Announcement_Field_Values.xlsx"
@@ -49,8 +49,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Published Competitive Announcements"
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement for FDM tests}" in "---announcement:-:announcemetTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for FDM tests}" inside flex table with id "---announcement:-:announcemetTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---announcement:-:announcemetTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---announcement:-:announcemetTableId---"
     And I navigate to "Related Log" sub tab
     And I click on "View" icon for "Funding Decision Memo" inside flex table with id "---announcement:-:announcemetTableId---"
     Then I softly can see "Funding Decision Memo" sub tab at view detail page
