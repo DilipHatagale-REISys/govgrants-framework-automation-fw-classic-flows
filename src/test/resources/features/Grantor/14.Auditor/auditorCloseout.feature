@@ -35,7 +35,7 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -100,7 +100,7 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
     When I click on "Override" in the page details
     Then I see status in Progress-bar is "Overridden" and is "green"
     And I click on "Submit for Approval" in the page details
-    When I login to "As a Grantor" app as "AUDITOR" user
+    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
     And I click toggle button to select "Project Period Closeouts - All"

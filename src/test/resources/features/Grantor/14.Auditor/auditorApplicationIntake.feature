@@ -23,7 +23,6 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - All"
     And I perform quick search for "Record Id" in "---preApplication:-:preApplicationsGrantorTableId---" panel
-    And I click on "View" icon for "Record Id" inside flex table with id "---preApplication:-:preApplicationsGrantorTableId---"
     Then I softly see "No records found" inside flex table with id "---preApplication:-:preApplicationsGrantorTableId---"
 
   @69163 @auditorCannotCreateNegotiation
@@ -148,13 +147,14 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
+    And I perform quick search for "<Application Name>" in "---applicationIntake:-:recipientApplications---" panel
     When I click on "View" icon for "<Application Name>" inside table
     And I navigate to "Attachments" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "Attachments"
     Then I softly cannot see top right button "Add" in flex table with id "Notes"
     Examples:
-      | Application Name                                        | User    |
-      | {SavedVale:Automation Runtime Announcement Application} | Auditor |
+      | Application Name                                         | User    |
+      | {SavedValue:Automation Runtime Announcement Application} | Auditor |
 
   @69941 @69940 @audiorPreApplicationToApplication
   Scenario Outline: Validate Auditor should have view / read  only access to submitted pre-application| Validate Auditor should not be  able to Review/Accept/Reject Preapplication
@@ -243,6 +243,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Application Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Application Name>" inside table
     And I navigate to "Related Log" tab
     Then I see values "Pre-Screen Review" and "Completed" inside table

@@ -16,8 +16,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Creation" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     Then I softly see status in Progress-bar is "Created" and is "green"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "green"
@@ -64,8 +62,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
@@ -83,8 +79,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -107,8 +101,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -151,8 +143,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -194,8 +184,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I get the "EGMS ID"
@@ -259,8 +247,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -351,8 +337,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -448,8 +432,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -514,8 +496,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -592,8 +572,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -674,8 +652,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Creation" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition1" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see the following messages in the page details :
@@ -687,8 +663,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Creation" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition1" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see the following messages in the page details :
@@ -700,8 +674,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -728,8 +700,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -762,8 +732,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -789,8 +757,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -847,8 +813,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     Given I navigate to "Overview" sub tab
@@ -863,8 +827,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -917,8 +879,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -976,8 +936,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Creation" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
@@ -998,8 +956,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -1061,8 +1017,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -1143,8 +1097,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Creation" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     Given I navigate to "Overview" sub tab
@@ -1165,8 +1117,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
@@ -1185,8 +1135,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -1230,8 +1178,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    When I click on "Cancel" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab

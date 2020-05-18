@@ -89,7 +89,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
 
   @69126 @auditorCanViewCreatedContact
   Scenario Outline: Validate Auditor should have view / read  only access to record.
-    Given I login to "As a Grantor" app as "<User>" user
+    Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
@@ -168,7 +168,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
 
   @69143 @auditorViewSubrecipientContacts
   Scenario Outline: Validate Auditor should have view / read  only access to subrecipient contacts
-    Given I login to "As a Grantor" app as "<User>" user
+    Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
