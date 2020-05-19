@@ -2,9 +2,10 @@
 Feature: Validate all scenarios in Negotiations
 
   Background: To setup data
-    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NEGOTIATION"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    And I delete the record "{SavedValue:Automation Runtime FDM Announcement}" from the object "FDM"
 
   @66071 @57031 @66448 @57032 @negotiationInitiatedAndSendToRecipient @deepika
   Scenario: Validate the the Negotiation option on the Approved FDM and Announcement Owner can send the Negotiation request to the Applicant
