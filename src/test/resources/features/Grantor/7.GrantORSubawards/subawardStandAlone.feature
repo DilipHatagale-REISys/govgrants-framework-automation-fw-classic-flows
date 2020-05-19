@@ -4226,8 +4226,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see value "Automation FO" for title "Reviewer Name" inside table "---subAwardStandAlone:-:peerReviewersTableId---"
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
     Then I softly see the following messages in the page details contains:
-      | Review initiated successfully! |
-    Then I softly see field "Status" as "Sent for Review"
+      | Review Successfully Initiated. |
+    Then I softly see field "Status" as "Submitted for Review"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
