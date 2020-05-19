@@ -335,6 +335,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario Outline: Verify that record owner can delete created state site visit from Award level
     Given I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "<Site Visit Name>" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "Delete" icon for "<Site Visit Name>" inside table
     Then I do not see values "{SavedValue:Automation Runtime Award Site Visit}" and "Title" inside table
     Examples:
