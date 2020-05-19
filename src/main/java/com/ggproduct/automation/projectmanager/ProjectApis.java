@@ -307,9 +307,20 @@ public class ProjectApis extends ProjectWebServices{
                 return updatePreApplicationAsYesForAnnouncement(json);
             case "FOCUS_AREA_NO":
                 return updateFocusAreaForAnnouncement(json,"No");
+            case "NEGOTIATION":
+                return negotiationYesForAnnouncement(json);
             default:
                 return json;
         }
+    }
+
+    private JsonObject negotiationYesForAnnouncement(JsonObject json) {
+        JsonObject negotiation = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        negotiation.addProperty("IsNegotiationsAllowed","Yes");
+        pre.add(negotiation);
+        json.add("Announcement",pre);
+        return json;
     }
 
     private JsonObject updateFocusAreaForAnnouncement(JsonObject json, String no) {
@@ -386,7 +397,7 @@ public class ProjectApis extends ProjectWebServices{
         ann.addProperty("RiskAssessment_Required","Yes");
         ann.addProperty("AreExpensesBuildIUpLevel","No");
         ann.addProperty("IsAdvancePermitted","No");
-        ann.addProperty("IsNegotiationsAllowed","No");
+        ann.addProperty("IsNegotiationsAllowed","Yes");
         ann.addProperty("EligibleApplicantTypes","04;05");
         ann.addProperty("AwardFloor",1000);
         ann.addProperty("AwardCeiling",10000);
