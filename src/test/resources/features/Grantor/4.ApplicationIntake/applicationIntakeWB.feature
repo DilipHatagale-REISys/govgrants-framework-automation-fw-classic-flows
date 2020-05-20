@@ -783,8 +783,8 @@ Feature: Application Intake scenarios without background
     When I click on "Save" in the page details
     And I save the field labeled "Application Due Date" as "ApplDueDate"
     Then I softly see that the saved value "{SavedValue:AppDueDate}" and "{SavedValue:ApplDueDate}" are equal
-    #This is a bug - @73498
-#    And I navigate to "Budget" sub tab
+    And I navigate to "Budget" sub tab
+      #This is a bug - @73498
 #    When I perform quick search for "Automation Permanent Focus Area2" in "---applicationIntake:-:focusAreaTableAppId---" panel
 #    Then I softly see that "Automation Permanent Focus Area2" has been added in flextable with Id "---applicationIntake:-:focusAreaTableAppId---"
     Given I expand nested table containing column value "BP01"
@@ -1022,7 +1022,7 @@ Feature: Application Intake scenarios without background
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:reviewsTableId---" panel
     Then I softly see "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:reviewsTableId---"
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:reviewsTableId---" without waiting for record
     When I click on "Qualify" in the page details
     Then I softly see that "{SavedValue:Automation Runtime Announcement Application Review}" is in "Qualified" status
     And I softly can see top right button "Create Application" in page detail
@@ -1038,7 +1038,7 @@ Feature: Application Intake scenarios without background
     And I softly can see top right button "Create Application" in page detail
 
   @34017 @34291 @focusAreaSettingAsNO @deepika
-  Scenario: Validate when the funding opportunity  has focus area setting as No then the  User will not be able to view the focus area section when creating the Pre Application
+  Scenario: Validate when the funding opportunity  has focus area setting as No then the  User will not be able to view the focus area section when creating the Application
   Validate whether the user is able to Edit the budget category while creating an Application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "FOCUS_AREA_NO"
     When I am on "SUBPORTAL" portal
@@ -1056,7 +1056,7 @@ Feature: Application Intake scenarios without background
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-    Then I softly can see page block "Focus Area"
+    Then I softly cannot see page block "Focus Area"
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
@@ -1192,7 +1192,7 @@ Feature: Application Intake scenarios without background
   Scenario: Validate the SPI cannot view the Goals and Objectives page block when it is set as No while Announcement creation| Validate the SPI cannot view the Work Plan required page block when it is set as No while Announcement creation
   Validate whether SPI user can submit the application without adding supporting documents when the required documents are optional |
   Validate when the Funding Opportunity Detailed budget Grid Setup as Yes then User will be able to view the Bulid up Line in the Budget Grid
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "PRE_APPLICATION_YES"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     When I am on "SUBPORTAL" portal
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
@@ -1245,6 +1245,7 @@ Feature: Application Intake scenarios without background
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - Expired"
     And I perform quick search for "Fromula Ann App 2" in "---applicationIntake:-:recipientApplications---" panel
+    When I click on "View" icon for "Fromula Ann App 2" inside flex table with id "---applicationIntake:-:recipientApplications---" without waiting for record
     Then I softly see the following messages in the page details contains:
       | This application cannot be submitted. The application due date has passed. |
 

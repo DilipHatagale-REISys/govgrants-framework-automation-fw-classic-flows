@@ -15,15 +15,6 @@ Feature: Validate all scenarios in the Pre-Application
     And I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @53151 @75961 @72622 @preApplicationCreationProgramIncomeValidation @smoke
-  Scenario: Validate the Creation of Pre Application | Validate the user  will be able to view the the Program Income field on the overview tab when the value set as No.
-  Validate the title entered while creating the pre-application reflects same under Oppurtunity Name
-    Then I softly see status in Progress-bar is "Created" and is "Green"
-    Then I softly see field "Opportunity Title" as "{SavedValue:Automation Runtime Announcement Application}"
-    When I navigate to "Overview" sub tab
-    When I save the field containing "Program Income Allowed?" as "No"
-    Then I softly cannot see field "Estimated Program Income For Project Period" inside page block
-
   @67063 @validateVariousRolesAppearsPreApplication @jitendra
   Scenario: To Validate that various roles appear in the project roles dropdown in contact tableon preapplication of  SPI profile
     When I navigate to "Overview" sub tab
@@ -125,6 +116,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I click toggle button to select "Pre-Applications - All"
     And I perform quick search for "<Announcement Name>" in "RecipientPreApplications" panel
     When I click on "View" icon for "<Announcement Name>" inside table
+    And I get the "EGMS ID"
     Then I softly cannot see top right button "Create Application" in page detail
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -191,10 +183,11 @@ Feature: Validate all scenarios in the Pre-Application
     Given I click on "Edit" in the page details
     And I enter "Edition1" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-      | Construction  | 5000   | 5000       | 50             | 100            |
+      | Construction  | 1000   | 100        | 100            | 100            |
     When I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details :
       | Overview Tab - Enter an Acknowledgement before submitting this Pre-Application. |

@@ -13,7 +13,7 @@ Feature: Pre-Application scenarios without background
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
     When I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-Application}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    Then I softly see value "{SavedValue:Automation Runtime Announcement for Pre-Application}" for title "Title" inside table "---applicationIntake:-:activeOpportunitiesTableId---"
+    Then I softly see value "{SavedValue:Automation Runtime Announcement for Pre-Application}" for title "Opportunity Name" inside table "---applicationIntake:-:activeOpportunitiesTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
@@ -109,7 +109,7 @@ Feature: Pre-Application scenarios without background
 
   @70663 @preApplRequiredIsNoAnnouncementCreation @deepika
   Scenario: Validate whether the User is able to create Pre Application when the Opportunity setting for Pre Application (No)
-    And I published "Competitive" type announcement having name "Automation Runtime Announcement for PreApp and App" and properties "PRE_APPLICATION_YES"
+    And I published "Competitive" type announcement having name "Automation Runtime Announcement for PreApp and App" and properties "default"
     And I login to "As a Grantor" app as "PM" user
     When I am on "SUBPORTAL" portal
     And I login as "SPI" user
@@ -150,7 +150,7 @@ Feature: Pre-Application scenarios without background
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Announcements - Published"
+    And I click toggle button to select "Published Competitive Announcements"
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "Record id" inside table
     And I click on "Unpublish" in the page details
@@ -218,6 +218,7 @@ Feature: Pre-Application scenarios without background
     And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
+    And I get the "EGMS ID"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -367,9 +368,10 @@ Feature: Pre-Application scenarios without background
     When I perform quick search for "{SavedValue:preappID}" in "---preApplication:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:preappID}" inside table
     When I click on "Accept" in the page details
-    And I pause execution for "150" seconds
-    Then I softly can see mail notification for "EXTERNAL" user with following subject:
-      | Pre-Application {SavedValue:Automation Runtime Announcement for Pre-Application} {SavedValue:AnnId} has been Accepted |
+    #bug
+#    And I pause execution for "150" seconds
+#    Then I softly can see mail notification for "EXTERNAL" user with following subject:
+#      | Pre-Application {SavedValue:Automation Runtime Announcement for Pre-Application} {SavedValue:AnnId} has been Accepted |
 
   @72523 @SPIUserCannotdeleteTheCreatedPreApplication
   Scenario Outline: Validate whether SPI/SPA user has the ability to delete the created pre-Application
@@ -392,8 +394,8 @@ Feature: Pre-Application scenarios without background
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - All"
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Application}" in "RecipientPreApplications" panel
-    Then I cannot see row level action button "Delete" against "{SavedValue:Automation Runtime Announcement for Application}" in flex table with id "RecipientPreApplications"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-Application}" in "RecipientPreApplications" panel
+    Then I cannot see row level action button "Delete" against "{SavedValue:Automation Runtime Announcement for Pre-Application}" in flex table with id "RecipientPreApplications"
     Examples:
       | User |
       | SPI  |
@@ -449,7 +451,7 @@ Feature: Pre-Application scenarios without background
     Then I softly see the following messages in the page details :
       | Pre-Application Due Date cannot be after Application Due Date |
 
-  @34290 @otherOrganizationUserCannotViewPreApplication @deepika
+  @34290 @otherOrganizationUserCannotViewPreApplication @deepika @bugged
   Scenario: Validate the Pre-applications are visible for other organizations
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Applicationn" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
@@ -553,7 +555,7 @@ Feature: Pre-Application scenarios without background
 
   @73518 @focusAreaSettingAsNoWhileAnnouncementCreation @deepika
   Scenario: Validate when the focus area setting from the funding opportunity is No, then SPI User should be able to view the focus area settings as No and cannot see the page block
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_YES"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APP_YES_FOCUS_AREA_NO"
     When I am on "SUBPORTAL" portal
     And I login as "SPI" user
     When I navigate to "Opportunities" tab
@@ -735,7 +737,7 @@ Feature: Pre-Application scenarios without background
   Validate whether the Applicant will be able to create a New pre-application from the republish announcement and oppurtunity |Validate whether the Applicant will be able to Submit the New Application to grantor from the republish announcement and oppurtunity
   Validate whether when the user click on unpublish button of announcement status of announcement changes to created and SPI user cannot see announcement at external side
   Validate User will not be able to Qualify the Funding Opportunity when the Funding Opportunity becomes unpublished
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_YES"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "default"
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -849,7 +851,7 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-Application}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-Application}" inside table
     Then I softly see field "Leverage Allowed?" as "Yes"
-    Then I softly see field "Pre-Application Required?" as "No"
+    Then I softly see field "Pre-Application Required?" as "Yes"
     Then I softly see field "Focus Area Required?" as "Yes"
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
@@ -858,7 +860,7 @@ Feature: Pre-Application scenarios without background
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I softly see field "Match Required?" as "Yes"
+    Then I softly see field "Match Required?" as "No"
     And I navigate to "Budget" sub tab
     Then I softly can see page block "Focus Area"
     When I navigate to "Budget" sub tab
@@ -889,3 +891,24 @@ Feature: Pre-Application scenarios without background
     And I click on hyperlink containing value "Snapshot on"
     When I download the file
     Then I see "Draft" on page "1" of "govgrants" pdf file
+
+  @53151 @75961 @72622 @preApplicationCreationProgramIncomeValidation @smoke
+  Scenario: Validate the Creation of Pre Application | Validate the user  will be able to view the the Program Income field on the overview tab when the value set as No.
+  Validate the title entered while creating the pre-application reflects same under Oppurtunity Name
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement PreApplication" and properties "PRE_APP_YES_PROGRAM_INCOME_NO"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement PreApplication}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement PreApplication}" inside table
+    When I click on "Qualify" in the page details
+    And I click on "Create Pre-Application" in the page details
+    When I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    Then I softly see status in Progress-bar is "Created" and is "Green"
+    Then I softly see field "Opportunity Title" as "{SavedValue:Automation Runtime Announcement PreApplication}"
+    When I navigate to "Overview" sub tab
+    When I save the field containing "Program Income Allowed?" as "No"
+    Then I softly cannot see field "Estimated Program Income For Project Period" inside page block
