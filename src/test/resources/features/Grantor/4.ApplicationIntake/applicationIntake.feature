@@ -287,8 +287,8 @@ Feature: Validate all scenarios in the Application Intake
   Scenario:Validate whether user is able to associate new contacts while creating an application
     And I navigate to "Overview" sub tab
     When I click on top right button "Associate" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    When I perform quick search for "automation spa" in "---applicationIntake:-:associateNewContactsTableId---" panel
-    When I click "Add" after selection of "automation spa" in the table "---applicationIntake:-:associateNewContactsTableId---"
+    When I perform quick search for "Automation Manager" in "---applicationIntake:-:associateNewContactsTableId---" panel
+    When I click "Add" after selection of "Automation Manager" in the table "---applicationIntake:-:associateNewContactsTableId---"
     Then I see "automation spa" has been added in "---applicationReview:-:flexGridAppContactTableId---" flex table
 
   @73944 @73945 @71409 @73947 @73950 @73948 @73949 @maxAppValidationError @deepika
@@ -331,9 +331,9 @@ Feature: Validate all scenarios in the Application Intake
     When I navigate to "Opportunities" tab
     When I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Opportunities Converted to Application - All"
-    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "cae"
+    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Opportunity Name" inside table "cae"
     And I click toggle button to select "Opportunities Converted to Application - Open"
-    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "cae"
+    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Opportunity Name" inside table "cae"
     When I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "cae" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside flex table with id "cae"
     When I click on "Create Application" in the page details
@@ -344,7 +344,7 @@ Feature: Validate all scenarios in the Application Intake
     When I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Opportunities Converted to Application - All"
     When I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---applicationIntake:-:convertedToApplicationTableID---" panel
-    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "---applicationIntake:-:convertedToApplicationTableID---"
+    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Opportunity Name" inside table "---applicationIntake:-:convertedToApplicationTableID---"
     And I save the value from row "1" for column name "Funding Opportunity Id" as "oppId" from flex table "---applicationIntake:-:convertedToApplicationTableID---"
     And I click on advance filter "#advfcae" of table id "---applicationIntake:-:convertedToApplicationTableID---"
     And I enter advance filter values inside id "---applicationIntake:-:convertedToApplicationTableID---"
