@@ -43,6 +43,6 @@ public class setup {
         if(projectWebServices == null) {
             projectWebServices = new ProjectWebServices();
         }
-//        projectWebServices.deleteRecordInHooks();
+        projectWebServices.deleteRecordInHooks();
     }
 }
