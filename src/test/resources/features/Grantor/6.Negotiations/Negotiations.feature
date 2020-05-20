@@ -11,21 +11,21 @@ Feature: Validate all scenarios in Negotiations
   Scenario: Validate the the Negotiation option on the Approved FDM and Announcement Owner can send the Negotiation request to the Applicant
   Validate the Status Field when the Negotiation Request is "Sent to Subrecipient"
     Given I login to "As a Grantor" app as "dynamicUser" user
-#    And I navigate to "Applications" tab
-#    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
-#    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
-#    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
-#    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-#    Then I softly see that "Initiate Negotiation" has been added in flextable with Id "---subAwardFromFDM:-:recommendedAppTableId---"
-#    When I click on "Initiate Negotiation" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
-#    Then I softly can see "Negotiations" sub tab at view detail page
-#    And I navigate to "Negotiations" sub tab
-#    When I clear the value from field "ApplicationSectionsForRevision__c"
-#    When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
-#    When I click on "Save" in the page details
-#    When I click on "Send to Subrecipient" in the page details
-#    Then I softly see field "Status" as "Sent to Subrecipient"
-#    Then I softly see that "{SavedValue:Automation Runtime FDM Announcement}" is in "Negotiation Initiated" status
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    Then I softly see that "Initiate Negotiation" has been added in flextable with Id "---subAwardFromFDM:-:recommendedAppTableId---"
+    When I click on "Initiate Negotiation" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    Then I softly can see "Negotiations" sub tab at view detail page
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "ApplicationSectionsForRevision__c"
+    When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent to Subrecipient"
+    Then I softly see that "{SavedValue:Automation Runtime FDM Announcement}" is in "Negotiation Initiated" status
 
   @65295 @57033 @65310 @57034 @65356 @submitToGrantorbySubrecipientCompleteNegotiation @deepika @smoke
   Scenario: Validate the Applicants able to submit the Application after edit and Internal Agency user decision on Completing the Negotiation | Validate task for SR user
