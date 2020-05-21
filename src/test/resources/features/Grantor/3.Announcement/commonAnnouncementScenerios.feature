@@ -21,14 +21,14 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Formula Announcements - All"
     And I perform quick search for "Record id" in "---announcement:-:formulaAnnouncementTableId---" panel
-    When  I click on "View" icon for "Record id" inside flex table with id "---announcement:-:formulaAnnouncementTableId---"
+    When  I click on "View" icon for "Record id" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     Then I softly see field "Subrecipient Match (%)" as "10.00%"
 
   @33936 @announcementCreatedDeleteAccessToOwnerFA
   Scenario: Validate that owner can able to delete created status announcement
     When I navigate to "Announcements" tab
     And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
-    When  I click on "Delete" icon for "Record id" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    When  I click on "Delete" icon for "Record id" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
     And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
     Then I do not see value "Record id" for title "Announcement Name" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
 
@@ -64,7 +64,7 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate that only owner can able to edit created status announcement | To verify user able to enter the description in the details field of overview tab while creating the Announcemennt
     When I navigate to "Announcements" tab
     And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
-    When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
     Then I softly can see top right button "Save" in page detail
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
@@ -100,7 +100,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I refresh the page
     And I perform quick search for "<Contact>" in "---announcement:-:annoucementContactTableId---" panel
     Then I softly see value "<Contact>" for title "Name" inside table "---announcement:-:annoucementContactTableId---"
-    When I click on "Remove" icon for "<Contact>" inside flex table with id "---announcement:-:contactTableId---"
+    When I click on "Remove" icon for "<Contact>" inside flex table with id "---announcement:-:contactTableId---" without waiting for record
     Then I softly do not see values "Record Id" and "<Contact>" inside table
     Examples:
       | Contact        |
@@ -139,7 +139,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "<EGMS Id>" in the table "---announcement:-:fundingAccTableId---"
     When I close "Associate" modal by clicking the top right x button
-    When I click on "Remove" icon for "<EGMS Id>" inside flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click on "Remove" icon for "<EGMS Id>" inside flex table with id "---announcement:-:fundingAccountsTableId---" without waiting for record
     Then I do not see value "<EGMS Id>" for title "EGMS ID" inside table "---announcement:-:fundingAccountsTableId---"
     Examples:
       | EGMS Id                     |
@@ -159,7 +159,7 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate the dissociation of Budget Period to the Announcement
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
-    When I click on "Remove" icon for "BP01" inside flex table with id "---announcement:-:budgetPeriodTableId---"
+    When I click on "Remove" icon for "BP01" inside flex table with id "---announcement:-:budgetPeriodTableId---" without waiting for record
     Then I do not see value "BP01" for title "Budget Period Name" inside table "---announcement:-:budgetPeriodTableId---"
 
   @52407 @announcementFocusAreaAssociationFA
@@ -181,7 +181,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
-    When I click on "Remove" icon for "Automation Permanent Objective2" inside flex table with id "---announcement:-:objectivesTableId---"
+    When I click on "Remove" icon for "Automation Permanent Objective2" inside flex table with id "---announcement:-:objectivesTableId---" without waiting for record
     Then I do not see value "Automation Permanent Objective2" for title "EGMS ID" inside table "---announcement:-:objectivesTableId---"
 
   @32410 @announcementAttachmentChecklistFA
@@ -190,7 +190,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I enter the following values into flex table with id "---announcement:-:annChecklist---" by clicking "Add" :
       | Description                 | Required  | Applies To | Status |
       | Automation test description | Mandatory | Award      | Active |
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---announcement:-:annChecklist---"
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---announcement:-:annChecklist---" without waiting for record
     And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
     When I close "Upload Template" modal by clicking the top right x button
     Then I see that "Active" has been added in flextable with Id "---announcement:-:annChecklist---"
@@ -235,10 +235,10 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record id" in "---announcement:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record id" inside flex table with id "---announcement:-:pendingTaskTableId---"
-    When I click on "Start" icon for "Record id" inside flex table with id "---announcement:-:pendingTaskTableId---"
+    And I click on "Start" icon for "Record id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
+    When I click on "Start" icon for "Record id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" tab
-    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---announcement:-:reviewersTableId---"
+    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---announcement:-:reviewersTableId---" without waiting for record
     And I enter values into fields
       | Value  | Field             |
       | Passed | Rating__c         |
@@ -264,7 +264,7 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate the Review steps of Announcement before submit for Approval
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
-    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Eligibility    | 50                 |
@@ -281,7 +281,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I close "Review Form" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
-    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Schedule       | 30                 |
@@ -303,7 +303,7 @@ Feature: Validate all common scenarios in the  Announcement tab
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Permits"
     When I close "Review Form" modal by clicking the top right x button
-    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Budget         | 30                 |
@@ -325,7 +325,7 @@ Feature: Validate all common scenarios in the  Announcement tab
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Program Income"
     When I close "Review Form" modal by clicking the top right x button
-    When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Capability     | 30                 |
@@ -349,7 +349,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I close "Review Form" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-    When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header             | Section Weight (%) |
       | Return on Investment (ROI) | 50                 |

@@ -50,9 +50,9 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Published Competitive Announcements"
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---announcement:-:announcemetTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---announcement:-:announcemetTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---announcement:-:announcemetTableId---" without waiting for record
     And I navigate to "Related Log" sub tab
-    And I click on "View" icon for "Funding Decision Memo" inside flex table with id "---announcement:-:announcemetTableId---"
+    And I click on "View" icon for "Funding Decision Memo" inside flex table with id "---announcement:-:announcemetTableId---" without waiting for record
     Then I softly can see "Funding Decision Memo" sub tab at view detail page
     Then I softly can see "Responsibilities" sub tab at view detail page
     Then I softly can see "History" sub tab at view detail page
@@ -66,7 +66,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click toggle button to select "Published Competitive Announcements"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for FDM tests}" in "---announcement:-:competitiveAnnouncementTableId---" panel
     Then I softly see value "{SavedValue:Automation Runtime Announcement for FDM tests}" for title "Announcement Name" inside table "---announcement:-:competitiveAnnouncementTableId---"
-    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for FDM tests}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for FDM tests}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Collab" sub tab
     And I click on advance filter "#advfCommunicationHistory" of table id "---announcement:-:collabMessages---"
     And I enter advance filter values inside id "advfCommunicationHistory"
@@ -84,12 +84,12 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I pause execution for "31" seconds
     Then I softly can see mail notification for "INTERNAL" user with following subject:
       | jitu |
-    And I click on "View" icon for "jitu" inside flex table with id "---announcement:-:collabMessages---"
+    And I click on "View" icon for "jitu" inside flex table with id "---announcement:-:collabMessages---" without waiting for record
     Then I softly see following details for email sent under collab:
       | abc@gmail.com |
       | jitu          |
     And I refresh the page
-    And I click on "Reply" icon for "jitu" inside flex table with id "---announcement:-:collabMessages---"
+    And I click on "Reply" icon for "jitu" inside flex table with id "---announcement:-:collabMessages---" without waiting for record
     And I send the email under collab tab with following details:
       | To                              | Subject      | Body             |
       | internal.user.product@gmail.com | changed jitu | this is bodyless |
@@ -185,7 +185,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "Save" in the page details
     And I click on "Edit" in the page details
     And I navigate to "Setup" sub tab
-    And I click on "Delete" icon for "Pre-Screen Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on "Delete" icon for "Pre-Screen Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     Then I softly do not see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:preScreenReviewFormTableId---"
     And I navigate to "Overview" sub tab
     And I enter value "30" into field "fieldApplicationDueDate__c"
@@ -232,7 +232,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on top right button "Save" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
-    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     Then I softly can see top right button "New" in flex table with id "---announcement:-:reviewPanelTableId---"
 
   @71150 @71578 @71303 @71051 @71054 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish @smoke
@@ -290,11 +290,11 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Form Weight (%) | Form Name           |
       | 70.00%          | Program Review Form |
     Then I softly see value "Program Review Form" for title "Form Name" inside table "---announcement:-:preScreenReviewFormTableId---"
-    And I click on "Delete" icon for "Program Review Form" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on "Delete" icon for "Program Review Form" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
     Then I softly do not see value "Program Review Form" for title "Form Name" inside table "---announcement:-:preScreenReviewFormTableId---"
-    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     Then I softly see value "75%" for title "Section Weight (%)" against the value "Budget" inside table "---announcement:-:reviewPanelTableId---"
     Then I softly see value "15%" for title "Section Weight (%)" against the value "Match" inside table "---announcement:-:reviewPanelTableId---"
     Then I softly see value "10%" for title "Section Weight (%)" against the value "Program Income" inside table "---announcement:-:reviewPanelTableId---"
@@ -316,7 +316,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     Then I softly see the following messages in the page details :
       | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%, it is currently 180%. |
-    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Budget         | 0                  |
@@ -329,7 +329,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Setup Tab - SME Review - Fiscal Review: A score cannot be associated to a question in the Match section because it does not have a weight.          |
       | Setup Tab - SME Review - Fiscal Review: A score cannot be associated to a question in the Budget section because it does not have a weight.         |
       | Setup Tab - SME Review - Fiscal Review: A weighted form must contain weighted sections.                                                             |
-    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Budget         | 25                 |
@@ -343,7 +343,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | There are no errors with the review step templates. |
     And I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-    And I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header             | Section Weight (%) |
       | Return on Investment (ROI) | 50                 |
@@ -356,7 +356,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%, it is currently 80%. |
     And I pause execution for "3" seconds
     And I expand nested table containing column value "SME Review"
-    And I click on "Review Form" icon for "Program Review Form" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on "Review Form" icon for "Program Review Form" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Weight (%) | Section Header   |
       | 15%                | Capability Forms |
@@ -374,7 +374,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see value "Review form question Edited" for title "Question" inside table "---announcement:-:reviewPanelQuestionsTableId---"
     Then I softly see value "Date" for title "Type" inside table "---announcement:-:reviewPanelQuestionsTableId---"
     Then I softly see value "40" for title "Max Score" inside table "---announcement:-:reviewPanelQuestionsTableId---"
-    And I click on "Delete" icon for "Review form question Edited" inside flex table with id "---announcement:-:reviewPanelQuestionsTableId---"
+    And I click on "Delete" icon for "Review form question Edited" inside flex table with id "---announcement:-:reviewPanelQuestionsTableId---" without waiting for record
     Then I softly do not see value "Review form question Edited" for title "Question" inside table "---announcement:-:reviewPanelQuestionsTableId---"
 
   @71293 @71295 @71440 @71416 @verifyUserCanAddReviewers @aashish
@@ -423,7 +423,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see value "David FO" for title "Reviewer" inside table "---announcement:-:preScreenReviewFormTableId---"
     Then I softly see value "david.fo@yopmail.com" for title "Email" inside table "---announcement:-:preScreenReviewFormTableId---"
     Then I softly see value "Department of Health" for title "Organization Name" inside table "---announcement:-:preScreenReviewFormTableId---"
-    And I click on "Remove from Form" icon for "David FO" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on "Remove from Form" icon for "David FO" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
 
@@ -495,7 +495,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for Application Intake}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Application Intake}" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Application Intake}" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---" without waiting for record
     When I click on "Qualify" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Opportunities" tab
@@ -504,7 +504,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for Application Intake}" in "---preApplication:-:qualifiedOpprtunitesTableId---" panel
     Then I softly see value "{SavedValue:Automation Runtime Announcement for Application Intake}" for title "Title" inside table "---preApplication:-:qualifiedOpprtunitesTableId---"
     And I save the value from row "1" for column name "EGMS ID" as "egms id" from flex table "---preApplication:-:qualifiedOpprtunitesTableId---"
-    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Application Intake}" inside flex table with id "---preApplication:-:qualifiedOpprtunitesTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Application Intake}" inside flex table with id "---preApplication:-:qualifiedOpprtunitesTableId---" without waiting for record
     Then I softly see field "EGMS ID" as "{SavedValue:egms id}"
 
   @73857 @75635 @75624 @publishingExtendDatedButtonDisplay
@@ -515,7 +515,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Published Competitive Announcements"
     And I perform quick search for "{SavedValue:Announcement Runtime for Announcement Extend}" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    And I click on "View" icon for "{SavedValue:Announcement Runtime for Announcement Extend}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "View" icon for "{SavedValue:Announcement Runtime for Announcement Extend}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     Then I softly can see top right button "Extend Dates" in page detail
     And I navigate to "Collab" sub tab
     And I enter value "test @Sarah PM" in my feed section and share the post
@@ -549,7 +549,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Published Competitive Announcements"
     And I perform quick search for "{SavedValue:Automation Announcement for pdf Tests}" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Announcement for pdf Tests}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Announcement for pdf Tests}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I click on "Menu" in the page details
     And I select "Download As PDF" from dropdown
     And I download the file
@@ -564,7 +564,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Published Competitive Announcements"
     And I perform quick search for "{SavedValue:Automation Runtime Competitive Announcement}" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Collab" sub tab
     And I enter value "Hi @Automation PM" in my feed section and share the post
     Then I softly see "Automation PM" inside flex table with id "---announcement:-:myFeedTableId---"
