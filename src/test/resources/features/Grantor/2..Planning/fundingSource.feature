@@ -177,7 +177,7 @@ Feature: Validate all scenarios in Funding Source
     And I click toggle button to select "Internal Funding Sources -Closed"
     When I perform quick search for "<Funding Source>" in "---fundingsource:-:fundingSourceTableId---" panel
     And I click on "View" icon for "<Funding Source>" inside table
-    When I click on "View" icon for "Closed" inside flex table with id "---fundingsource:-:fundingAccountTableId---"
+    When I click on "View" icon for "Closed" inside flex table with id "---fundingsource:-:fundingAccountTableId---" without waiting for record
     And I click on "Activate" in the page details
     And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click toggle button to select "Internal Funding Sources - Active"
