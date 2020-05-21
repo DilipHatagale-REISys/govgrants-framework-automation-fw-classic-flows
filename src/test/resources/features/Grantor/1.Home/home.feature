@@ -26,7 +26,7 @@ Feature: Validate all scenarios in the home tab
     Then I softly see that "Subrecipient Organization" is in "Active" status
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
-    And I click on "View" icon for "{user:fullName}" inside flex table with id "---home:-:indActiveAccountId---" without waiting for record without waiting for record
+    And I click on "View" icon for "{user:fullName}" inside flex table with id "---home:-:indActiveAccountId---" without waiting for record
     Then I softly see that "{user:fullName}" is in "Active" status
     Examples:
       | User  |
