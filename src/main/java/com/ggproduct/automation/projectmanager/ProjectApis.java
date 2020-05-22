@@ -309,9 +309,56 @@ public class ProjectApis extends ProjectWebServices{
                 return updateFocusAreaForAnnouncement(json,"No");
             case "NEGOTIATION":
                 return negotiationYesForAnnouncement(json);
+            case "PRE_APP_YES_FOCUS_AREA_NO":
+                return preAppYesFocusAreaNoAnnouncement(json);
+            case "GOALS_YES":
+                return goalsYesForAnnouncement(json);
+            case "PRE_APP_GOALS_YES":
+                return preAppYesGoalsYesForAnnouncement(json);
+            case "PRE_APP_YES_PROGRAM_INCOME_NO":
+                return preAppYesProgramIncomeNoForAnnouncement(json);
             default:
                 return json;
         }
+    }
+
+    private JsonObject preAppYesProgramIncomeNoForAnnouncement(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("PreApplicationNeeded","Yes");
+        jsonObject.addProperty("IsProgramIncomeAnticipated","No");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
+    }
+
+    private JsonObject preAppYesGoalsYesForAnnouncement(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("PreApplicationNeeded","Yes");
+        jsonObject.addProperty("IsGoalsRequired","Yes");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
+    }
+
+    private JsonObject preAppYesFocusAreaNoAnnouncement(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("PreApplicationNeeded","Yes");
+        jsonObject.addProperty("FocusAreaRequired","No");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
+    }
+
+    private JsonObject goalsYesForAnnouncement(JsonObject json) {
+        JsonObject goals = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        goals.addProperty("IsGoalsRequired","Yes");
+        pre.add(goals);
+        json.add("Announcement",pre);
+        return json;
     }
 
     private JsonObject negotiationYesForAnnouncement(JsonObject json) {
