@@ -346,7 +346,7 @@ public class ProjectApis extends ProjectWebServices{
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
         jsonObject.addProperty("PreApplicationNeeded","Yes");
-        goals.addProperty("FocusAreaRequired","No");
+        jsonObject.addProperty("FocusAreaRequired","No");
         pre.add(jsonObject);
         json.add("Announcement",pre);
         return json;
