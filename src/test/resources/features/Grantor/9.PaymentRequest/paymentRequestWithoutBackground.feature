@@ -71,7 +71,7 @@ Feature: Payment Request scenarios without background
 
   @53912 @validateProgramIncomeTrackingNotDisplayedOnAdvPaymentRequest @mahadev
   Scenario Outline: Validate user can not see page block Program Income tracking not displayed on Advance payment request when program Income Allowed is No at Grant
-    And I activated standalone subaward "Automation Runtime Award" with properties "NO_PROGRAM_INCOME_ANTICIPATE"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI" user
     And I navigate to "Grants" tab

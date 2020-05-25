@@ -1,4 +1,4 @@
-@paymentRequest @regression @parallel-regression
+@paymentRequest @regression @parallel-regression @paymentRequest-check
 Feature: Validate all scenarios in Payment Request
 
   Background: Navigate to award
