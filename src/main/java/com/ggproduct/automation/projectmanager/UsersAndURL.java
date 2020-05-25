@@ -89,7 +89,7 @@ public class UsersAndURL implements UsersController {
                 password = "GoProduct@12345";
                 break;
             default:
-                password = "SALESFORCE2020";
+                password = "SALESFORCE2021";
         }
         return password;
     }
