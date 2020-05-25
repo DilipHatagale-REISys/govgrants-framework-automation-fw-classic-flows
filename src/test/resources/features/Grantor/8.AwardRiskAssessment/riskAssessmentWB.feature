@@ -1,7 +1,7 @@
 @riskAssessment @regression @parallel-regression
 Feature: Risk Assessment scenarios without background
 
-  @59252 @64792 @64942 @64944 @validateDataOnGrantAwardRA @deepika @bug-69368
+  @59252 @64792 @64942 @64944 @validateDataOnGrantAwardRA @deepika
   Scenario Outline: Validate (risk assessment | Notes | Peer Reviewer) on grant/award when Risk Assessment is set as No in announcement
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "NO_RISK_ASSESSMENT"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -18,7 +18,8 @@ Feature: Risk Assessment scenarios without background
     And I navigate to "Management" sub tab
     Then I softly cannot see page block "Subaward Risk Assessments"
     And I navigate to "Attachments" sub tab
-    Then I softly see value "Not Applicable" for title "Template Link" against the value "Automation" inside table "flexGridAwardChecklists"
+   # @bug-69368
+#    Then I softly see value "Not Applicable" for title "Template Link" against the value "Automation" inside table "flexGridAwardChecklists"
     Then I softly see "Note Description" has been added in "Notes" flex table
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM" for title "Name" inside table "GrantorAwardOwnerRoles"

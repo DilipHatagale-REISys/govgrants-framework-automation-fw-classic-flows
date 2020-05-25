@@ -1,0 +1,4 @@
+[0408/094356.099:ERROR:file_io_win.cc(161)] CreateFile C:\Users\Deepika\AppData\Local\Temp\scoped_dir18688_228486969\Crashpad\settings.dat: The system cannot find the file specified. (0x2)
+[0415/163127.961:ERROR:file_io_win.cc(161)] CreateFile C:\Users\Deepika\AppData\Local\Temp\scoped_dir6496_1180029625\Crashpad\settings.dat: The system cannot find the path specified. (0x3)
+[0415/163127.969:ERROR:file_io_win.cc(170)] CreateFile C:\Users\Deepika\AppData\Local\Temp\scoped_dir6496_1180029625\Crashpad\reports\2ca6b50b-70eb-41a4-b1ba-a8851500378e.dmp: The system cannot find the path specified. (0x3)
+[0415/163127.969:ERROR:crash_report_exception_handler.cc(97)] PrepareNewCrashReport failed
