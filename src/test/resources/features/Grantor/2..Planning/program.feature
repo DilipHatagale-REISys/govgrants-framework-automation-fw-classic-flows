@@ -88,7 +88,7 @@ Feature: Validate all scenarios for program
     And I click on "Delete" icon for "Return on Investment (ROI) Test" inside flex table with id "---program:-:programReviewPanel---"
     Then I softly do not see value "Return on Investment (ROI) Test" for title "Section Header" inside table "---program:-:programReviewPanel---"
     And I refresh the page
-    And I click on parallel menu button in flex table titled "Review Steps"
+    And I click on parallel menu button in flex table title "Review Steps"
     And I select "Download as PDF" from parallel lines dropdown of "Review Steps"
     And I download the file
     Then I softly see following details in "govgrants" pdf file:
@@ -104,7 +104,7 @@ Feature: Validate all scenarios for program
       | Reviewer |
       | David FO |
     Then I softly see value "David FO" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
-    And I click on parallel menu button in flex table titled "Reviewers"
+    And I click on parallel menu button in flex table title "Reviewers"
     And I select "Download as PDF" from dropdown
     And I download the file
     Then I softly see following details in "govgrants" pdf file:
@@ -119,7 +119,7 @@ Feature: Validate all scenarios for program
       | Reviewer      |
       | Automation PM |
     Then I softly see value "Automation PM" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
-    And I click on parallel menu button in flex table titled "Reviewers"
+    And I click on parallel menu button in flex table title "Reviewers"
     And I select "Download as PDF" from dropdown
     And I download the file
     Then I softly see following details in "govgrants" pdf file:
@@ -130,7 +130,7 @@ Feature: Validate all scenarios for program
     Then I softly do not see value "Automation PM" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
     And I refresh the page
     And I expand nested table containing column value "Pre-Screen Review"
-    And I click on parallel menu button in flex table titled "Review Forms"
+    And I click on parallel menu button in flex table title "Review Forms"
     And I select "Download as PDF" from dropdown
     And I download the file
     Then I softly see following details in "govgrants" pdf file:
@@ -157,7 +157,7 @@ Feature: Validate all scenarios for program
       | Form Weight (%) | Form Name              |
       | 100.00%         | Management Review Test |
     Then I softly see value "Management Review Test" for title "Form Name" inside table "---program:-:reviewStepTableId---"
-    And I click on parallel menu button in flex table titled "Review Forms"
+    And I click on parallel menu button in flex table title "Review Forms"
     And I select "Download as PDF" from dropdown
     And I download the file
     Then I softly see following details in "govgrants" pdf file:
@@ -455,7 +455,7 @@ Feature: Validate all scenarios for program
     And I softly see value "5" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "Test 5" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
-    And I click on parallel menu button in flex table titled "Review Questions"
+    And I click on parallel menu button in flex table title "Review Questions"
     And I select "Download as PDF" from parallel lines dropdown of "Review Questions"
     And I download the file
       #76985 following 5 assertion belongs to this

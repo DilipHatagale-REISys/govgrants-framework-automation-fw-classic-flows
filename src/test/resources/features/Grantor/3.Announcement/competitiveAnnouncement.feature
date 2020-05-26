@@ -25,7 +25,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       And I click toggle button to select "Draft Competitive Announcements"
       And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
       And I navigate to "Overview" sub tab
-      And I click on parallel menu button in flex table titled "Contacts"
+      And I click on parallel menu button in flex table title "Contacts"
       And I select "Download as PDF" from parallel lines dropdown of "Contacts"
       And I download the file
       Then I see "Contacts" on page "1" of "govgrants" pdf file
@@ -42,7 +42,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Overview" sub tab
-    And I click on parallel menu button in flex table titled "Related Federal/NGO Program"
+    And I click on parallel menu button in flex table title "Related Federal/NGO Program"
     And I select "Download as PDF" from parallel lines dropdown of "Related Federal/NGO Program"
     And I download the file
     Then I see "Related Federal/NGO Program" on page "1" of "govgrants" pdf file
@@ -55,7 +55,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Financials" sub tab
-    And I click on parallel menu button in flex table titled "Budget Categories"
+    And I click on parallel menu button in flex table title "Budget Categories"
     And I select "Download as PDF" from parallel lines dropdown of "Budget Categories"
     And I download the file
     Then I see "Budget Categories" on page "1" of "govgrants" pdf file
@@ -68,7 +68,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I click on parallel menu button in flex table titled "Business Forms"
+    And I click on parallel menu button in flex table title "Business Forms"
     And I select "Download as PDF" from parallel lines dropdown of "Business Forms"
     And I download the file
     Then I see "Business Forms" on page "1" of "govgrants" pdf file
@@ -85,7 +85,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I click on parallel menu button in flex table titled "Supporting Documents Checklist"
+    And I click on parallel menu button in flex table title "Supporting Documents Checklist"
     And I select "Download as PDF" from parallel lines dropdown of "Supporting Documents Checklist"
     And I download the file
     Then I see "Supporting Documents Checklist" on page "1" of "govgrants" pdf file
@@ -105,7 +105,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I click on parallel menu button in flex table titled "Approvers"
+    And I click on parallel menu button in flex table title "Approvers"
     And I select "Download as PDF" from parallel lines dropdown of "Approvers"
     And I download the file
     Then I see "Approvers" on page "1" of "govgrants" pdf file
@@ -123,7 +123,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I click on parallel menu button in flex table titled "Peer Reviewers"
+    And I click on parallel menu button in flex table title "Peer Reviewers"
     And I select "Download as PDF" from parallel lines dropdown of "Peer Reviewers"
     And I download the file
     Then I see "Peer Reviewers" on page "1" of "govgrants" pdf file
@@ -139,7 +139,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I click on parallel menu button in flex table titled "Related Focus Areas"
+    And I click on parallel menu button in flex table title "Related Focus Areas"
     And I select "Download as PDF" from parallel lines dropdown of "Related Focus Areas"
     And I download the file
     Then I see "Related Focus Areas" on page "1" of "govgrants" pdf file
@@ -2338,6 +2338,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly do not see value "Personnel" for title "Name" inside table "---announcement:-:announcementBudgetCategory---"
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     And I refresh the page
+    And I click on parallel menu button in flex table title "Budget Period Details"
     And I select "Download as PDF" from parallel lines dropdown of "Budget Period Details"
     When I download the file
     Then I softly see "Budget Period Details" on page "1" of "govgrants" pdf file
@@ -2353,6 +2354,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
     When I close "Associate" modal by clicking the top right x button
     And I refresh the page
+    And I click on parallel menu button in flex table title "Funding Accounts"
     And I select "Download as PDF" from parallel lines dropdown of "Funding Accounts"
     When I download the file
     Then I see "Funding Accounts" on page "1" of "govgrants" pdf file
@@ -2370,6 +2372,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     And I refresh the page
+    And I click on parallel menu button in flex table title "Approvers"
     And I select "Download as PDF" from parallel lines dropdown of "Approvers"
     When I download the file
     Then I see "Approvers" on page "1" of "govgrants" pdf file
@@ -2381,6 +2384,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
+    And I click on parallel menu button in flex table title "Owner"
     And I select "Download as PDF" from parallel lines dropdown of "Owner"
     When I download the file
     Then I see "Owner" on page "1" of "govgrants" pdf file
@@ -2392,6 +2396,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     When I navigate to "Setup" sub tab
+    And I click on parallel menu button in flex table title "Objectives"
     And I select "Download as PDF" from parallel lines dropdown of "Objectives"
     When I download the file
     Then I see "Objectives" on page "1" of "govgrants" pdf file
@@ -2403,6 +2408,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     When I navigate to "Setup" sub tab
+    And I click on parallel menu button in flex table title "Key Performance Indicators (KPIs)"
     And I select "Download as PDF" from parallel lines dropdown of "Key Performance Indicators (KPIs)"
     When I download the file
     Then I see "Key Performance Indicators (KPIs)" on page "1" of "govgrants" pdf file
@@ -2414,6 +2420,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     When I navigate to "History" sub tab
+    And I click on parallel menu button in flex table title "Field History"
     And I select "Download as PDF" from parallel lines dropdown of "Field History"
     When I download the file
     Then I see "Field History" on page "1" of "govgrants" pdf file
