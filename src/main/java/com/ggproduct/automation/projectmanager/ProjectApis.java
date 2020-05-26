@@ -554,6 +554,7 @@ public class ProjectApis extends ProjectWebServices{
         grant.addProperty("IsAdvancePermitted","No");
         grant.addProperty("IsBuildUpFunctionality","Yes");
         grant.addProperty("WBSRequired","No");
+        grant.addProperty("IsProgramIncomeAnticipated","No");
         newA.add(grant);
         json.add("Grant",newA);
         return json;
