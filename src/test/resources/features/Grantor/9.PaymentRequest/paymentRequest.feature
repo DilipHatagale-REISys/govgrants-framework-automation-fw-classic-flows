@@ -646,7 +646,7 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I softly see field "Program Income This action" as "$1,000.00"
-    Then I softly see field "Available Program Income" as "$1,800.00"
+    Then I softly see field "Available Program Income" as "$1,000.00"
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
@@ -869,7 +869,7 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I save the field containing "Program Income This action" as "incomeProgramThis"
-    And I save the field containing "Program Income Spent This Action" as "totalSpent"
+    And I save the field containing "Program Income Spent To Date" as "totalSpent"
     And I get the "EGMS ID"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
@@ -902,7 +902,6 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    Then I see field "Program Income" as "$1,000.00"
     Then I see field "Program Income" as "{SavedValue:incomeProgramThis}"
     Then I see field "Program Income Spent" as "{SavedValue:totalSpent}"
     Examples:
@@ -1159,6 +1158,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
+    And I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
     And I click on "Delete" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
@@ -1315,7 +1315,7 @@ Feature: Validate all scenarios in Payment Request
       | Title        | Disallowed Amount | Disallowed Amount Reason    |
       | Extra Salary | 5                 | Automation Test Description |
     When I close "Disallow Amount" modal by clicking the top right x button
-    And I pause execution for "2" seconds
+    And I refresh the page
     Then I see that "$5.00" has been added in flextable with Id "---paymentRequest:-:paymentRequestBudgetTableId---"
 
   @55631 @PRSendBackToSubrecipientCheckMailNotification @jitendra
@@ -1916,6 +1916,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
+    And I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -2168,6 +2169,7 @@ Feature: Validate all scenarios in Payment Request
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
+    When I perform quick search for "<Award Name>" in "---paymentRequest:-:grantorAwardTableId---" panel
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:grantorAwardTableId---" without waiting for record
     And I navigate to "Actuals" sub tab
     And I click on "View" icon for "Submitted to Grantor" inside flex table with id "---paymentRequest:-:grantorPaymentRequestTableId---" without waiting for record

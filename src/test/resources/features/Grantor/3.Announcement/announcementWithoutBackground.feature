@@ -109,7 +109,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Announcement Name | Contains | Dont mess with jitu |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I refresh the page
-    And I click on parallel menu button in flex table titled "Published Competitive Announcements"
+    And I click on parallel menu button in flex table title "Published Competitive Announcements"
     And I select "Download as PDF" from dropdown
     And I download the file
     And I pause execution for "10" seconds

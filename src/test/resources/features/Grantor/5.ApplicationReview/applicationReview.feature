@@ -2445,7 +2445,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
-    And I click on parallel menu button in flex table titled "Review Steps"
+    And I click on parallel menu button in flex table title "Review Steps"
     And I select "Download as PDF" from parallel lines dropdown of "Review Steps"
     And I download the file
     Then I softly see "Pre-Screen Review" on page "1" of "govgrants" pdf file
