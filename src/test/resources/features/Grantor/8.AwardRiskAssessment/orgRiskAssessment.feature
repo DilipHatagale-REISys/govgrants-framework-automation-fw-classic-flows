@@ -910,8 +910,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I enter value "Checked" into field "Signature__c"
     When I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
-    Given I delete the record "Automation Execution Award" from the object "Award"
-    And I delete the record "Automation Execution Award" from the object "Grant"
+    Given I delete the record "{SavedValue:EXE Username}cution Award" from the object "Award"
+    And I delete the record "{SavedValue:EXE Username}cution Award" from the object "Grant"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -963,8 +963,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1050,7 +1050,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I see that "Subaward" is in "Activated" status
     Examples:
       | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | {SavedValue:EXE Username}cution Award | {SavedValue:EXE Username}cution Award |
 
   @62952 @orRiskAssessmentIsNotDisplayedForINDUser @deepika
   Scenario:  Validate Data related to organization risk assessment should not be displayed on the Individual Profile view .
@@ -1235,8 +1235,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
 
   @63233 @verifyRiskAssessmemtException @deepika @smoke
   Scenario Outline: Validate system generates generates an exception at award activation if Organizational Risk Assessment is Created and not Active
-    Given I delete the record "Automation Execution Award" from the object "Award"
-    And I delete the record "Automation Execution Award" from the object "Grant"
+    Given I delete the record "{SavedValue:EXE Username}cution Award" from the object "Award"
+    And I delete the record "{SavedValue:EXE Username}cution Award" from the object "Grant"
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
@@ -1295,9 +1295,9 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
-      | Program Approver   | Automation PM  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description |
-      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
+      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SA" user on "SUBPORTAL" portal
@@ -1354,7 +1354,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
       | Your Organization does not have an active Risk Assessment. Create and activate a Risk Assessment as the Subaward cannot be accepted without an active Risk Assessment. |
     Examples:
       | Award Name                 | Grant Name                 |
-      | Automation Execution Award | Automation Execution Award |
+      | {SavedValue:EXE Username}cution Award | {SavedValue:EXE Username}cution Award |
 
   @63979 @grantorCanViewOverallRisk @deepika
   Scenario: Validate Internal User can also View the OverallRisk field on Risk Assessment Tab

@@ -61,7 +61,7 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
     When I click on "Mark As Paid" in the page details
@@ -77,8 +77,8 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     Given I click on "Send To Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Closeout" tab

@@ -111,8 +111,8 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
-    Then I softly see that "Automation FO" has been added in flextable with Id "---paymentRequest:-:approversTableId---"
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    Then I softly see that "{SavedValue:FO Username}" has been added in flextable with Id "---paymentRequest:-:approversTableId---"
     And I refresh the page
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
@@ -153,7 +153,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
@@ -192,7 +192,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name           | Description                 |
-      | Fiscal Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver | {SavedValue:EXE Username} | Automation Test Description |
     And I navigate to "Financials" sub tab
     When I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
@@ -234,7 +234,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Send Back to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -281,7 +281,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
     Then I softly cannot see top right button "Edit" in page detail
     When I "Send to Owner" in the approval decision
@@ -449,7 +449,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     And I pause execution for "2" seconds
@@ -481,7 +481,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
@@ -513,10 +513,10 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    And I "Reassign" to user "Automation EXE" in the approval decision
+    And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
     Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
 
   @53983 @rejectAdvancePaymentRequest @mahadev
@@ -545,7 +545,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I "Disapprove" in the approval decision
@@ -624,10 +624,10 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    And I "Reassign" to user "Automation EXE" in the approval decision
+    And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -679,7 +679,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name           | Description                 |
-      | Fiscal Approver | Automation EXE | Automation Test Description |
+      | Fiscal Approver | {SavedValue:EXE Username} | Automation Test Description |
     And I navigate to "Financials" sub tab
     When I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
@@ -719,7 +719,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I "Disapprove" in the approval decision
@@ -753,7 +753,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     Then I cannot see top right button "Edit" in page detail
 
@@ -783,7 +783,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
@@ -890,7 +890,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
@@ -987,7 +987,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     Then I can see the message "Successfully Approved" in the approval decision
@@ -1020,9 +1020,9 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I "Reassign" to user "Automation EXE" in the approval decision
+    And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
     Then I can see the message "Successfully Re-Assigned" in the approval decision
 
   @54325 @validateRejectedMessageOnReimbursementPR @mahadev
@@ -1053,7 +1053,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Disapprove" in the approval decision
     Then I can see the message "Successfully disapproved" in the approval decision
@@ -1086,7 +1086,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
     Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
@@ -1212,7 +1212,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
@@ -1268,7 +1268,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1347,7 +1347,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Send Back to Subrecipient" in the page details
     And I pause execution for "120" seconds
     Then I can see mail notification for "EXTERNAL" user with following subject:
@@ -1445,7 +1445,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I pause execution for "120" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
@@ -1484,7 +1484,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1533,7 +1533,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I pause execution for "120" seconds
@@ -1570,9 +1570,9 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I "Reassign" to user "Automation EXE" in the approval decision
+    And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
     And I pause execution for "120" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Forwarded |
@@ -1604,7 +1604,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     And I pause execution for "120" seconds
@@ -1638,7 +1638,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
     And I pause execution for "120" seconds
@@ -1678,7 +1678,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
     And I pause execution for "120" seconds
@@ -1721,9 +1721,9 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I "Reassign" to user "Automation EXE" in the approval decision
+    And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
     And I pause execution for "120" seconds
     Then I can see mail notification for "INTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Forwarded |
@@ -1764,7 +1764,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Disapprove" in the approval decision
     And I pause execution for "120" seconds
@@ -1801,7 +1801,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Disapprove" in the approval decision
     Then I can see mail notification for "INTERNAL" user with following subject:
@@ -1835,7 +1835,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
@@ -1945,7 +1945,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     And I refresh the page
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
@@ -1995,9 +1995,9 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I "Reassign" to user "Automation EXE" in the approval decision
+    And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2037,7 +2037,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
     When I navigate to "Monitoring" tab
@@ -2081,7 +2081,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
@@ -2135,7 +2135,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I click on "Mark As Paid" in the page details
@@ -2181,7 +2181,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
@@ -2224,7 +2224,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Submit for Approval" in the page details

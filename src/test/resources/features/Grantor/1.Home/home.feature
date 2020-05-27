@@ -438,7 +438,7 @@ Feature: Validate all scenarios in the home tab
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---home:-:contactsTableId---"
-    When I click "Add" after selection of "Automation EXE" in the table "---home:-:associateContactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---home:-:associateContactsTableId---"
     When I close "Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
@@ -453,8 +453,8 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
-      | Program Approver   | Automation PM  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description |
+      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
+      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -506,7 +506,7 @@ Feature: Validate all scenarios in the home tab
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---" without waiting for record
+    When I click on "Edit" icon for "{SavedValue:SPI Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---" without waiting for record
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
@@ -525,7 +525,7 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name           | Project Role             | Is Key Contact |
-      | Automation SPI | Project Director/Manager | Checked        |
+      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Given I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     When I navigate to "Home" tab
@@ -572,7 +572,7 @@ Feature: Validate all scenarios in the home tab
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "Automation EXE" in the table "---program:-:associateContactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I close "Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
@@ -587,13 +587,13 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Responsibility     | Name           | Description                 |
-      | Program Approver   | Automation PM  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description |
+      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
+      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Home" tab
     And I navigate to "Reassign" content inside "My Tasks" subheader on left panel
-    When I reassign task to "Automation EXE"
+    When I reassign task to "{SavedValue:EXE Username}"
     When I perform quick search for "Record Id" in "TaskReassignment" panel
     And I click "Reassign Selected" after selection of "Approve Program" in the table "TaskReassignment"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -609,7 +609,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
-    When I enter value "Automation Execution Focus Area" into field "Title__c"
+    When I enter value "{SavedValue:EXE Username}cution Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
@@ -682,8 +682,8 @@ Feature: Validate all scenarios in the home tab
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Role             | Name           | Description                 |
-      | Program Approver | Automation EXE | Automation Test Description |
-      | Fiscal Approver  | Automation FO  | Automation Test Description |
+      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     And I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
