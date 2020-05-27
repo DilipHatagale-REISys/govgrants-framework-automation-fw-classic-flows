@@ -652,7 +652,7 @@ Feature: Pre-Application scenarios without background
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
     When I navigate to "History" sub tab
-    And I click on "Menu" in the page details
+    And I click on Menu icon present on top right corner of the page
     And I select "Take Snapshot" from dropdown
     Then I softly see snapshot with name containing "SnapShot on" as name
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -665,7 +665,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Accept" in the page details
     Then I softly see value "Accepted" for title "New Value" inside table "History"
     And I softly see value "Submitted to Grantor" for title "Old Value" inside table "History"
-    And I click on "Menu" in the page details
+    And I click on Menu icon present on top right corner of the page
     And I select "Take Snapshot" from dropdown
     And I click on hyperlink containing value "Submission"
     When I download the file
@@ -885,7 +885,7 @@ Feature: Pre-Application scenarios without background
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I click on "Menu" in the page details
+    And I click on Menu icon present on top right corner of the page
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
     And I click on hyperlink containing value "Snapshot on"

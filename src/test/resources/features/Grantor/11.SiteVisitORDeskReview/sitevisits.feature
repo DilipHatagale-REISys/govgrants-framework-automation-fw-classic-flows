@@ -1732,7 +1732,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Site Visit Name>" inside table
+    And I click on "View" icon for "<Site Visit Name>" inside table without waiting for record
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
     Examples:

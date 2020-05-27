@@ -443,15 +443,6 @@ public class GenericSteps {
         }
     }
 
-    @And("I click on parallel menu button in flex table titled {string}")
-    public void iClickOnParallelMenuButtonInFlexTableTitled(String flexTableTitle) {
-        By menuButton = By.xpath("//*[" + I.amPerforming().sanityOfXpathTo().equals("text()", flexTableTitle) + "]//ancestor::div[@id and contains(@class,'ng-scope') and @ng-controller]//div[contains(@class,'panel-heading')]//*[@title='Menu' or contains(@class,'fa-bars')]");
-        if(I.amPerforming().getElementReference().forListOfElements().of(menuButton).size() > 2){
-            menuButton = By.xpath("//*[" + I.amPerforming().sanityOfXpathTo().equals("text()", flexTableTitle) + "]//ancestor::div[contains(@class,'panel-heading')]//*[@title='Menu' or contains(@class,'fa-bars')]");
-        }
-        I.amPerforming().click().on(menuButton);
-    }
-
     @And("I send the email under collab tab with following details:")
     public void iSendTheEmailUnderCollabTabWithFollowingDetails(List<List<String>> emaiDetails) {
         for (int i = 1; i < emaiDetails.size(); i++) {
@@ -543,5 +534,11 @@ public class GenericSteps {
     public void iSaveTheContactNameAs(String contactName) {
         String newContactName = I.amPerforming().propertiesFileOperationsTo().getValue(contactName) + " Contact";
         I.amPerforming().propertiesFileOperationsTo().saveValue(contactName,newContactName);
+    }
+
+    @And("I click on Menu icon present on top right corner of the page")
+    public void iClickOnMenuIconPresentOnTopRightCornerOfThePage() {
+        By menu = By.xpath("//*[contains(@class,'overview-header')]//*[@title='Menu' or (contains(@class,'menu') and (@class='bars'))]");
+        I.amPerforming().click().on(menu);
     }
 }

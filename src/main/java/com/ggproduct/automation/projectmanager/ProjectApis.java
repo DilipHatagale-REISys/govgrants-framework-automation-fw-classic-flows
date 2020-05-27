@@ -317,9 +317,38 @@ public class ProjectApis extends ProjectWebServices{
                 return preAppYesGoalsYesForAnnouncement(json);
             case "PRE_APP_YES_PROGRAM_INCOME_NO":
                 return preAppYesProgramIncomeNoForAnnouncement(json);
+            case "TODAY_APP_DUE_DATE":
+                return todayAppDueDateAnnouncement(json);
+            case "APPLICATION_PAST_DUE_DATE":
+                return pastAppDueDateAnnouncement(json);
+
             default:
                 return json;
         }
+    }
+
+    private JsonObject pastAppDueDateAnnouncement(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("PreApplicationDueDate",I.amPerforming()
+                .actionToGet().currentDateWithOffsetInDesiredFormat(-1, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        jsonObject.addProperty("ApplicationDueDate",I.amPerforming()
+                .actionToGet().currentDateWithOffsetInDesiredFormat(-1, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
+    }
+
+    private JsonObject todayAppDueDateAnnouncement(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("PreApplicationDueDate",I.amPerforming()
+                .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        jsonObject.addProperty("ApplicationDueDate",I.amPerforming()
+                .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
     }
 
     private JsonObject preAppYesProgramIncomeNoForAnnouncement(JsonObject json) {
@@ -554,6 +583,7 @@ public class ProjectApis extends ProjectWebServices{
         grant.addProperty("IsAdvancePermitted","No");
         grant.addProperty("IsBuildUpFunctionality","Yes");
         grant.addProperty("WBSRequired","No");
+        grant.addProperty("IsProgramIncomeAnticipated","No");
         newA.add(grant);
         json.add("Grant",newA);
         return json;

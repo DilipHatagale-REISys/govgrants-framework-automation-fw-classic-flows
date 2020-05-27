@@ -175,8 +175,8 @@ Feature: Validate all scenarios in the Pre-Application
     Examples:
       | Announcement Name                                        | User |
       | {SavedValue:Automation Runtime Announcement Application} | PM   |
-      |                                                          | FO   |
-      |                                                          | EXE  |
+      | {SavedValue:Automation Runtime Announcement Application} | FO   |
+      | {SavedValue:Automation Runtime Announcement Application} | EXE  |
 
   @70468 @acknowledgeRequiredForPre-App @deepika
   Scenario: Validate the system should throw an validation message if the pre-application is submitted with Acknowledging it
@@ -205,7 +205,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
-    And I click on "Menu" in the page details
+    And I click on Menu icon present on top right corner of the page
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
     And I click on hyperlink containing value "Snapshot_Pre-Application_Submission.pdf"

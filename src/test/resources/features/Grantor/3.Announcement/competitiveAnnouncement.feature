@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Competitive Announcement tab
 
   Background: Create Announcement
-    When I login to "As a Grantor" app as "dynamicUser" user
+    When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
@@ -14,21 +14,21 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-    @73959 @pdfDownloadContacts @jitendra
-    Scenario: To verify system allow to download pdf for contact section in overview tab of announcement by PM user
-      And I navigate to "Overview" sub tab
-      When I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-      When I click "Add" after selection of "Automation PM" in the table "---announcement:-:annoucementContactTableId---"
-      And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-      And I navigate to "Announcements" tab
-      When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-      And I click toggle button to select "Draft Competitive Announcements"
-      And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
-      And I navigate to "Overview" sub tab
-      And I click on parallel menu button in flex table titled "Contacts"
-      And I select "Download as PDF" from parallel lines dropdown of "Contacts"
-      And I download the file
-      Then I see "Contacts" on page "1" of "govgrants" pdf file
+  @73959 @pdfDownloadContacts @jitendra
+  Scenario: To verify system allow to download pdf for contact section in overview tab of announcement by PM user
+    And I navigate to "Overview" sub tab
+    When I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+    When I click "Add" after selection of "Automation PM" in the table "---announcement:-:annoucementContactTableId---"
+    And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    And I click on parallel menu button in flex table title "Contacts"
+    And I select "Download as PDF" from parallel lines dropdown of "Contacts"
+    And I download the file
+    Then I see "Contacts" on page "1" of "govgrants" pdf file
 
   @73958 @pdfDownloadRelatedFederal @jitendra
   Scenario: To verify system allow to download PDF for Related Federal/NGO program in overview tab of announcement
@@ -42,7 +42,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Overview" sub tab
-    And I click on parallel menu button in flex table titled "Related Federal/NGO Program"
+    And I click on parallel menu button in flex table title "Related Federal/NGO Program"
     And I select "Download as PDF" from parallel lines dropdown of "Related Federal/NGO Program"
     And I download the file
     Then I see "Related Federal/NGO Program" on page "1" of "govgrants" pdf file
@@ -55,7 +55,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Financials" sub tab
-    And I click on parallel menu button in flex table titled "Budget Categories"
+    And I click on parallel menu button in flex table title "Budget Categories"
     And I select "Download as PDF" from parallel lines dropdown of "Budget Categories"
     And I download the file
     Then I see "Budget Categories" on page "1" of "govgrants" pdf file
@@ -68,7 +68,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I click on parallel menu button in flex table titled "Business Forms"
+    And I click on parallel menu button in flex table title "Business Forms"
     And I select "Download as PDF" from parallel lines dropdown of "Business Forms"
     And I download the file
     Then I see "Business Forms" on page "1" of "govgrants" pdf file
@@ -85,7 +85,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I click on parallel menu button in flex table titled "Supporting Documents Checklist"
+    And I click on parallel menu button in flex table title "Supporting Documents Checklist"
     And I select "Download as PDF" from parallel lines dropdown of "Supporting Documents Checklist"
     And I download the file
     Then I see "Supporting Documents Checklist" on page "1" of "govgrants" pdf file
@@ -105,7 +105,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I click on parallel menu button in flex table titled "Approvers"
+    And I click on parallel menu button in flex table title "Approvers"
     And I select "Download as PDF" from parallel lines dropdown of "Approvers"
     And I download the file
     Then I see "Approvers" on page "1" of "govgrants" pdf file
@@ -114,8 +114,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
   Scenario: To verify system allow to download pdf for Review Steps section in setup tab of announcement
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
-      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
-      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+      | Name          | Responsibility   | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer  | Review Financial details | 10       | No                   |
       | Automation PM | Program Reviewer | Review Financial details | 10       | No                   |
     And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -123,7 +123,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I click on parallel menu button in flex table titled "Peer Reviewers"
+    And I click on parallel menu button in flex table title "Peer Reviewers"
     And I select "Download as PDF" from parallel lines dropdown of "Peer Reviewers"
     And I download the file
     Then I see "Peer Reviewers" on page "1" of "govgrants" pdf file
@@ -139,7 +139,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click toggle button to select "Draft Competitive Announcements"
     And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I click on parallel menu button in flex table titled "Related Focus Areas"
+    And I click on parallel menu button in flex table title "Related Focus Areas"
     And I select "Download as PDF" from parallel lines dropdown of "Related Focus Areas"
     And I download the file
     Then I see "Related Focus Areas" on page "1" of "govgrants" pdf file
@@ -574,6 +574,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -609,7 +610,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Permits        | 40                 |
     And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type `   | Max Score |
+      | Question Order | Question  | Type `  | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
@@ -730,7 +731,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I refresh the page
     And I click on "Remove" icon for "{SavedValue:fundingAccount}" inside flex table with id "---announcement:-:fundingAccountsTableId---" with wait for record
     Then I softly see the following messages in the page details :
-      | Record removed successfully.|
+      | Record removed successfully. |
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
     When I close "Associate" modal by clicking the top right x button
@@ -775,6 +776,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     Then I softly see value "submitted" for title "Status" inside table "---announcement:-:flexGridApproverRolesTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -1004,6 +1006,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1220,6 +1223,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1398,6 +1402,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
     When I close "Associate" modal by clicking the top right x button
+    And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -1433,6 +1438,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1586,6 +1592,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
     When I close "Associate" modal by clicking the top right x button
+    And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -1621,6 +1628,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1770,6 +1778,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
     When I close "Associate" modal by clicking the top right x button
+    And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -1805,6 +1814,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1944,6 +1954,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
     When I close "Associate" modal by clicking the top right x button
+    And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
       | {SavedValue:fundingAccount} | 100             |
@@ -1979,6 +1990,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     Given I am on "INTERNAL" portal
@@ -2175,6 +2187,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -2338,6 +2351,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly do not see value "Personnel" for title "Name" inside table "---announcement:-:announcementBudgetCategory---"
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     And I refresh the page
+    And I click on parallel menu button in flex table title "Budget Period Details"
     And I select "Download as PDF" from parallel lines dropdown of "Budget Period Details"
     When I download the file
     Then I softly see "Budget Period Details" on page "1" of "govgrants" pdf file
@@ -2353,6 +2367,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
     When I close "Associate" modal by clicking the top right x button
     And I refresh the page
+    And I click on parallel menu button in flex table title "Funding Accounts"
     And I select "Download as PDF" from parallel lines dropdown of "Funding Accounts"
     When I download the file
     Then I see "Funding Accounts" on page "1" of "govgrants" pdf file
@@ -2370,6 +2385,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Executive Approver | Automation EXE | Automation Test Description |
       | Fiscal Approver    | Automation FO  | Automation Test Description |
     And I refresh the page
+    And I click on parallel menu button in flex table title "Approvers"
     And I select "Download as PDF" from parallel lines dropdown of "Approvers"
     When I download the file
     Then I see "Approvers" on page "1" of "govgrants" pdf file
@@ -2381,6 +2397,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
+    And I click on parallel menu button in flex table title "Owner"
     And I select "Download as PDF" from parallel lines dropdown of "Owner"
     When I download the file
     Then I see "Owner" on page "1" of "govgrants" pdf file
@@ -2392,6 +2409,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     When I navigate to "Setup" sub tab
+    And I click on parallel menu button in flex table title "Objectives"
     And I select "Download as PDF" from parallel lines dropdown of "Objectives"
     When I download the file
     Then I see "Objectives" on page "1" of "govgrants" pdf file
@@ -2403,6 +2421,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     When I navigate to "Setup" sub tab
+    And I click on parallel menu button in flex table title "Key Performance Indicators (KPIs)"
     And I select "Download as PDF" from parallel lines dropdown of "Key Performance Indicators (KPIs)"
     When I download the file
     Then I see "Key Performance Indicators (KPIs)" on page "1" of "govgrants" pdf file
@@ -2414,6 +2433,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     When I navigate to "History" sub tab
+    And I click on parallel menu button in flex table title "Field History"
     And I select "Download as PDF" from parallel lines dropdown of "Field History"
     When I download the file
     Then I see "Field History" on page "1" of "govgrants" pdf file
