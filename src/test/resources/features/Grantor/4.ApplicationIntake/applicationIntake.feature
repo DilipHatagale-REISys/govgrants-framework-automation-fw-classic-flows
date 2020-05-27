@@ -136,8 +136,8 @@ Feature: Validate all scenarios in the Application Intake
     Examples:
       | Application Name                                         | User |
       | {SavedValue:Automation Runtime Announcement Application} | PM   |
-      |                                                          | FO   |
-      |                                                          | EXE  |
+      | {SavedValue:Automation Runtime Announcement Application} | FO   |
+      | {SavedValue:Automation Runtime Announcement Application} | EXE  |
 
   @70458 @73514 @73515 @70456 @acknowledgeReqiredToSave @deepika @bugged-73498
   Scenario: Validate the system should throw an validation message if the application is submitted with Acknowledging it
@@ -230,7 +230,6 @@ Feature: Validate all scenarios in the Application Intake
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "General Assurances"
     Then I softly see "Active" has been added in "Attachments" flex table
     And I add notes records
-    When I enter notes with title "Title" and description "Description"
     And I close modal by clicking the top right x button
     Then I softly see value "Notes Record" for title "Title" inside table "toggleNotes"
 
@@ -272,8 +271,9 @@ Feature: Validate all scenarios in the Application Intake
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
+    And I perform quick search for "<Application Name>"
     When I click on "View" icon for "<Application Name>" inside table
-    And I click on "Menu" in the page details
+    And I click on Menu icon present on top right corner of the page
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
     And I click on hyperlink containing value "Snapshot_Application_Submission.pdf"
@@ -287,8 +287,8 @@ Feature: Validate all scenarios in the Application Intake
   Scenario:Validate whether user is able to associate new contacts while creating an application
     And I navigate to "Overview" sub tab
     When I click on top right button "Associate" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    When I perform quick search for "Automation Manager" in "---applicationIntake:-:associateNewContactsTableId---" panel
-    When I click "Add" after selection of "Automation Manager" in the table "---applicationIntake:-:associateNewContactsTableId---"
+    When I perform quick search for "automation spa" in "---applicationIntake:-:associateNewContactsTableId---" panel
+    When I click "Add" after selection of "automation spa" in the table "---applicationIntake:-:associateNewContactsTableId---"
     Then I see "automation spa" has been added in "---applicationReview:-:flexGridAppContactTableId---" flex table
 
   @73944 @73945 @71409 @73947 @73950 @73948 @73949 @maxAppValidationError @deepika

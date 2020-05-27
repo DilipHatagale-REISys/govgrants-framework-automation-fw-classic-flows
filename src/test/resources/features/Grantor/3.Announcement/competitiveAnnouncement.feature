@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Competitive Announcement tab
 
   Background: Create Announcement
-    When I login to "As a Grantor" app as "dynamicUser" user
+    When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"
@@ -14,21 +14,21 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-    @73959 @pdfDownloadContacts @jitendra
-    Scenario: To verify system allow to download pdf for contact section in overview tab of announcement by PM user
-      And I navigate to "Overview" sub tab
-      When I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-      When I click "Add" after selection of "Automation PM" in the table "---announcement:-:annoucementContactTableId---"
-      And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-      And I navigate to "Announcements" tab
-      When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-      And I click toggle button to select "Draft Competitive Announcements"
-      And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
-      And I navigate to "Overview" sub tab
-      And I click on parallel menu button in flex table title "Contacts"
-      And I select "Download as PDF" from parallel lines dropdown of "Contacts"
-      And I download the file
-      Then I see "Contacts" on page "1" of "govgrants" pdf file
+  @73959 @pdfDownloadContacts @jitendra
+  Scenario: To verify system allow to download pdf for contact section in overview tab of announcement by PM user
+    And I navigate to "Overview" sub tab
+    When I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+    When I click "Add" after selection of "Automation PM" in the table "---announcement:-:annoucementContactTableId---"
+    And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    And I click on parallel menu button in flex table title "Contacts"
+    And I select "Download as PDF" from parallel lines dropdown of "Contacts"
+    And I download the file
+    Then I see "Contacts" on page "1" of "govgrants" pdf file
 
   @73958 @pdfDownloadRelatedFederal @jitendra
   Scenario: To verify system allow to download PDF for Related Federal/NGO program in overview tab of announcement
@@ -114,8 +114,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
   Scenario: To verify system allow to download pdf for Review Steps section in setup tab of announcement
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
-      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
-      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
+      | Name          | Responsibility   | Description              | Due Date | Allow Record Editing |
+      | Automation FO | Fiscal Reviewer  | Review Financial details | 10       | No                   |
       | Automation PM | Program Reviewer | Review Financial details | 10       | No                   |
     And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -574,6 +574,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -609,7 +610,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Permits        | 40                 |
     And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type `   | Max Score |
+      | Question Order | Question  | Type `  | Max Score |
       | 1              | Question1 | Written | 100       |
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
@@ -730,7 +731,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I refresh the page
     And I click on "Remove" icon for "{SavedValue:fundingAccount}" inside flex table with id "---announcement:-:fundingAccountsTableId---" with wait for record
     Then I softly see the following messages in the page details :
-      | Record removed successfully.|
+      | Record removed successfully. |
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
     When I close "Associate" modal by clicking the top right x button
@@ -775,6 +776,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     Then I softly see value "submitted" for title "Status" inside table "---announcement:-:flexGridApproverRolesTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -1004,6 +1006,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1220,6 +1223,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1434,6 +1438,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1623,6 +1628,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1808,6 +1814,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1983,6 +1990,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     Given I am on "INTERNAL" portal
@@ -2179,6 +2187,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | Rating__c         |
       | Passed | ReviewComments__c |
     When I click modal button "Save"
+    And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
