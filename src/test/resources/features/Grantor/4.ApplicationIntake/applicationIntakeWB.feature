@@ -308,7 +308,7 @@ Feature: Application Intake scenarios without background
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name           | Project Role             | Is Key Contact |
-      | Automation SPI | Project Director/Manager | Checked        |
+      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
 
@@ -360,7 +360,7 @@ Feature: Application Intake scenarios without background
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name           | Project Role             | Is Key Contact |
-      | Automation SPI | Project Director/Manager | Checked        |
+      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "Green"
 
@@ -420,7 +420,7 @@ Feature: Application Intake scenarios without background
     When I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name           | Project Role             | Is Key Contact |
-      | Automation SPI | Project Director/Manager | Checked        |
+      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
 
@@ -563,7 +563,7 @@ Feature: Application Intake scenarios without background
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name           | Project Role             | Is Key Contact |
-      | Automation SPI | Project Director/Manager | Checked        |
+      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "Green"
 
@@ -609,7 +609,7 @@ Feature: Application Intake scenarios without background
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name           | Project Role             | Is Key Contact |
-      | Automation SPI | Project Director/Manager | Checked        |
+      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -808,7 +808,7 @@ Feature: Application Intake scenarios without background
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name           | Project Role             | Is Key Contact |
-      | Automation SPI | Project Director/Manager | Checked        |
+      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Then I softly see the following messages in the page details contains:
       | Attachments Tab - Each mandatory item listed in the checklist must be completed before submitting this Application. |
@@ -867,16 +867,16 @@ Feature: Application Intake scenarios without background
     When I navigate to "Overview" sub tab
     When I pause execution for "1" seconds
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
-      | Program Approver   | Automation PM  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description |
-      | Fiscal Approver    | Automation FO  | Automation Test Description |
+      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
+      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     And I click on "Edit" in the page details
     When I get the "EGMS ID"
     When I navigate to "Financials" sub tab
@@ -1102,7 +1102,7 @@ Feature: Application Intake scenarios without background
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name           | Project Role             | Is Key Contact |
-      | Automation SPI | Project Director/Manager | Checked        |
+      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Enter budget details before submitting an Application to the Grantor.              |
@@ -1184,7 +1184,7 @@ Feature: Application Intake scenarios without background
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name           | Project Role             | Is Key Contact |
-      | Automation SPI | Project Director/Manager | Checked        |
+      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Requested Amount should be less than or equal to the Subaward Cieling Amount. |

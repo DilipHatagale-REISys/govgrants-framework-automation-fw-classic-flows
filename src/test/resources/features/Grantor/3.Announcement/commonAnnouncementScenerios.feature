@@ -58,13 +58,13 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Overview" sub tab
     Then I softly see field "Description" as "Automation test description"
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "Automation EXE" in the table "---announcement:-:annoucementContactTableId---"
-    Then I softly see that "Automation EXE" has been added in flextable with Id "---announcement:-:contactTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    Then I softly see that "{SavedValue:EXE Username}" has been added in flextable with Id "---announcement:-:contactTableId---"
     And I refresh the page
-    And I perform quick search for "Automation EXE" in "---announcement:-:contactTableId---" panel
-    Then I softly see value "Automation EXE" for title "Name" inside table "---announcement:-:contactTableId---"
-    When I click on "Remove" icon for "Automation EXE" inside flex table with id "---announcement:-:contactTableId---" without waiting for record
-    Then I softly do not see values "Record Id" and "Automation EXE" inside table
+    And I perform quick search for "{SavedValue:EXE Username}" in "---announcement:-:contactTableId---" panel
+    Then I softly see value "{SavedValue:EXE Username}" for title "Name" inside table "---announcement:-:contactTableId---"
+    When I click on "Remove" icon for "{SavedValue:EXE Username}" inside flex table with id "---announcement:-:contactTableId---" without waiting for record
+    Then I softly do not see values "Record Id" and "{SavedValue:EXE Username}" inside table
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
@@ -141,26 +141,26 @@ Feature: Validate all common scenarios in the  Announcement tab
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
-      | Program Approver   | Automation PM  | Automation Test Description |
-      | Fiscal Approver    | Automation FO  | Automation Test Description |
-      | Executive Approver | Automation EXE | Automation Test Description |
-    Then I see that "Automation EXE" has been added in flextable with Id "---announcement:-:approversTableId---"
+      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
+      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    Then I see that "{SavedValue:EXE Username}" has been added in flextable with Id "---announcement:-:approversTableId---"
 
   @34232 @announcementReviewerAssignmentFA @aa
   Scenario: Validate the assignment of Reviewer for the Announcement
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
       | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
-      | Automation FO | Fiscal Reviewer | Review Financial details | 20       | No                   |
-    Then I see that "Automation FO" has been added in flextable with Id "---announcement:-:reviewersTableId---"
+      | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 20       | No                   |
+    Then I see that "{SavedValue:FO Username}" has been added in flextable with Id "---announcement:-:reviewersTableId---"
 
   @52412 @announcementReviewerInitiationFA @aa
   Scenario: Validate the Reviewer initiation for the Announcement
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
       | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
-      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
-    And I click on "Send for Review" icon for "Automation FO" inside table
+      | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
     Then I see that "Sent for Review" has been added in flextable with Id "---announcement:-:reviewersTableId---"
 
@@ -169,8 +169,8 @@ Feature: Validate all common scenarios in the  Announcement tab
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
       | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
-      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
-    And I click on "Send for Review" icon for "Automation FO" inside table
+      | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
@@ -179,7 +179,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I click on "Start" icon for "Record id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     When I click on "Start" icon for "Record id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" tab
-    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---announcement:-:reviewersTableId---" without waiting for record
+    When I click on "Enter Review" icon for "{SavedValue:FO Username}" inside flex table with id "---announcement:-:reviewersTableId---" without waiting for record
     And I enter values into fields
       | Value  | Field             |
       | Passed | Rating__c         |

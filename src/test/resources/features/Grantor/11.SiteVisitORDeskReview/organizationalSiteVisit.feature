@@ -33,7 +33,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I see that "<Subrecipient>" has been added in flextable with Id "---orgLevelSiteVisits:-:associateContactsId---"
     Examples:
       | Subrecipient   |
-      | Automation SPI |
+      | {SavedValue:SPI Username} |
 
   @54210 @monitoringTypeSiteVisitFiscal @deepika
   Scenario: Validate the Monitoring type 'Fiscal' for Organizational Site Visit
@@ -75,8 +75,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation EXE" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    Then I see that "Automation EXE" has been added in flextable with Id "---orgLevelSiteVisits:-:associateContactsId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    Then I see that "{SavedValue:EXE Username}" has been added in flextable with Id "---orgLevelSiteVisits:-:associateContactsId---"
 
   @54452 @approverSelectionSiteVisitOrglevel @deepika
   Scenario Outline: Approver selection of Site Visit
@@ -89,12 +89,12 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     Then I see that "<Program Approver Name>" has been added in flextable with Id "---orgLevelSiteVisits:-:approverSiteVisitTableId---"
     Examples:
       | Program Approver Name |
-      | Automation PM         |
+      | {SavedValue:PM Username}         |
 
   @54454 @54456 @75862 @conductAndnotifySubrecipientSiteVisitOrgLevel @smoke @deepika
   Scenario: Conduct Site Visit and Notify Subrecipient about the Site Visit Org Level | Validate the external user will receive an email notification when the org level site visit is in notified status
@@ -109,12 +109,12 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I save the field labeled "EGMS ID" as "SiteVisitId"
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
@@ -135,11 +135,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -162,11 +162,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -203,11 +203,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -251,11 +251,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation FO | Automation Test Description |
-      | Fiscal Approver  | Automation PM | Automation Test Description |
+      | Program Approver | {SavedValue:FO Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -321,11 +321,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation FO | Automation Test Description |
-      | Fiscal Approver  | Automation PM | Automation Test Description |
+      | Program Approver | {SavedValue:FO Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -385,17 +385,17 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     And I collapse nested table containing column value "Automation Finding"
     Then I softly see that "{SavedValue:Automation Runtime Site Visit Org level}" is in "Sent to Subrecipient" status
     When I click on "Submit to Grantor" in the page details
@@ -412,11 +412,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation FO | Automation Test Description |
-      | Fiscal Approver  | Automation PM | Automation Test Description |
+      | Program Approver | {SavedValue:FO Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -476,17 +476,17 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -514,11 +514,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation FO | Automation Test Description |
-      | Fiscal Approver  | Automation PM | Automation Test Description |
+      | Program Approver | {SavedValue:FO Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -577,11 +577,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation FO | Automation Test Description |
-      | Fiscal Approver  | Automation PM | Automation Test Description |
+      | Program Approver | {SavedValue:FO Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I refresh the page
@@ -653,11 +653,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation FO | Automation Test Description |
-      | Fiscal Approver  | Automation PM | Automation Test Description |
+      | Program Approver | {SavedValue:FO Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I refresh the page
@@ -699,7 +699,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
-    And I "Reassign" to user "Automation EXE" in the approval decision
+    And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -719,7 +719,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I see that "<Internal>" has been added in flextable with Id "---orgLevelSiteVisits:-:associateContactsId---"
     Examples:
       | Internal       |
-      | Automation EXE |
+      | {SavedValue:EXE Username} |
 
   @55799 @organizationalsiteVisitPurpose @deepika
   Scenario: Validate the Purpose of Site Visit Org level
@@ -754,11 +754,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
@@ -777,11 +777,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -804,11 +804,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation FO | Automation Test Description |
-      | Fiscal Approver  | Automation PM | Automation Test Description |
+      | Program Approver | {SavedValue:FO Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -835,11 +835,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation FO | Automation Test Description |
-      | Fiscal Approver  | Automation PM | Automation Test Description |
+      | Program Approver | {SavedValue:FO Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -891,11 +891,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation FO | Automation Test Description |
-      | Fiscal Approver  | Automation PM | Automation Test Description |
+      | Program Approver | {SavedValue:FO Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -953,11 +953,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation FO | Automation Test Description |
-      | Fiscal Approver  | Automation PM | Automation Test Description |
+      | Program Approver | {SavedValue:FO Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
@@ -987,7 +987,7 @@ Feature: Validate all scenarios in Organizational Site Visit
       | Automation Observation | Automation Description | Observation |
     When I click on "Submit for Approval" in the page details
     When I navigate to "Responsibilities" sub tab
-    Then I softly can see row level action button "Edit" against "Automation FO" in flex table with id "---sitevisits:-:approverSiteVisitTableId---"
+    Then I softly can see row level action button "Edit" against "{SavedValue:FO Username}" in flex table with id "---sitevisits:-:approverSiteVisitTableId---"
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
@@ -1005,11 +1005,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation FO | Automation Test Description |
-      | Fiscal Approver  | Automation PM | Automation Test Description |
+      | Program Approver | {SavedValue:FO Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
@@ -1017,8 +1017,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridSiteVisitReviewerRoles" by clicking "New" :
       | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
-      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
-    And I click on "Send for Review" icon for "Automation FO" inside table
+      | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
@@ -1026,7 +1026,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     When I navigate to "Responsibilities" tab
-    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridSiteVisitReviewerRoles"
+    When I click on "Enter Review" icon for "{SavedValue:FO Username}" inside flex table with id "flexGridSiteVisitReviewerRoles"
     And I enter values into fields
       | Value  | Field             |
       | Passed | Rating__c         |
@@ -1047,11 +1047,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation FO | Automation Test Description |
-      | Fiscal Approver  | Automation PM | Automation Test Description |
+      | Program Approver | {SavedValue:FO Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -1060,8 +1060,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridSiteVisitReviewerRoles" by clicking "New" :
       | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
-      | Automation FO | Fiscal Reviewer | Review Financial details | 10       | No                   |
-    And I click on "Send for Review" icon for "Automation FO" inside table
+      | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
@@ -1069,7 +1069,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     When I navigate to "Responsibilities" tab
-    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "flexGridSiteVisitReviewerRoles"
+    When I click on "Enter Review" icon for "{SavedValue:FO Username}" inside flex table with id "flexGridSiteVisitReviewerRoles"
     And I enter values into fields
       | Value  | Field             |
       | Passed | Rating__c         |
@@ -1091,7 +1091,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I perform quick search for "{SavedValue:Automation Runtime Site Visit Org level}" in "---orgLevelSiteVisits:-:latestSiteVisitReportsGridTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Site Visit Org level}" inside flex table with id "---orgLevelSiteVisits:-:latestSiteVisitReportsGridTableId---"
     When I navigate to "Responsibilities" sub tab
-    Then I softly cannot see row level action button "Enter Review" against "Automation FO" in flex table with id "flexGridRiskAssessmentApproverRoles"
+    Then I softly cannot see row level action button "Enter Review" against "{SavedValue:FO Username}" in flex table with id "flexGridRiskAssessmentApproverRoles"
 
   @61406 @61405 @66273 @CreatedDatedisplayedOnOverviewTabAddAttchments @keerti
   Scenario: Validate whether the PM user can add the attachments to Org Level Site Visits and view the Created Date on Overview Tab |Validate whether record owner has access to delete the asoociated Contact and Application- Org Site visits
@@ -1104,8 +1104,8 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I navigate to "Overview" sub tab
     Then I softly see field "Created Date" is getting updated with todays date
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
-    And I click on "Remove" icon for "Automation SPI" inside flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    And I click on "Remove" icon for "{SavedValue:SPI Username}" inside flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     Then I softly see "No Records Found" inside flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I navigate to "Attachments" sub tab
@@ -1125,11 +1125,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
@@ -1148,11 +1148,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     And I click on "Notify" in the page details
@@ -1187,11 +1187,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -1264,11 +1264,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation FO | Automation Test Description |
-      | Fiscal Approver  | Automation PM | Automation Test Description |
+      | Program Approver | {SavedValue:FO Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -1324,11 +1324,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation FO | Automation Test Description |
-      | Fiscal Approver  | Automation PM | Automation Test Description |
+      | Program Approver | {SavedValue:FO Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -1388,7 +1388,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | -10      | Automation SPI |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | -10      | {SavedValue:SPI Username} |
     When I collapse nested table containing column value "Automation Observation"
     Then I softly see the following messages in the page details contains:
       | Due date must be future date |
@@ -1422,11 +1422,11 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Responsibilities | Name          | Description                 |
-      | Program Approver | Automation FO | Automation Test Description |
-      | Fiscal Approver  | Automation PM | Automation Test Description |
+      | Program Approver | {SavedValue:FO Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
-    When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
     When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
@@ -1486,17 +1486,17 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                               | Description            | Status      | Due Date | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
       | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | Automation SPI |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal

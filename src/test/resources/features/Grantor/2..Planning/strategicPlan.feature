@@ -17,11 +17,11 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     Then I softly see that "Status" is in "Draft" status
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
-    When I enter value "Automation Execution Strategic Goal" into field "fieldStrategyTitle__c"
+    When I enter value "{SavedValue:EXE Username}cution Strategic Goal" into field "fieldStrategyTitle__c"
     When I click modal button "Save and Close"
     And I click on "Save" in the page details
     When I click on "Back To Strategic Plan" in the page details
-    Then I softly see that "Automation Execution Strategic Goal" has been added in flextable with Id "---strategicplan:-:strategicGoalObjectivesTableId---"
+    Then I softly see that "{SavedValue:EXE Username}cution Strategic Goal" has been added in flextable with Id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I navigate to "Attachments" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Plan"
     Then I softly see "Strategic Plan" has been added in "Attachments" flex table
@@ -31,7 +31,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
-    When I enter value "Automation Execution Strategic Goal" into field "fieldStrategyTitle__c"
+    When I enter value "{SavedValue:EXE Username}cution Strategic Goal" into field "fieldStrategyTitle__c"
     When I click modal button "Save and Close"
     When I click on "Save" in the page details
     And I click on "Edit" in the page details
@@ -44,7 +44,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
-    When I enter value "Automation Execution Strategic Goal" into field "fieldStrategyTitle__c"
+    When I enter value "{SavedValue:EXE Username}cution Strategic Goal" into field "fieldStrategyTitle__c"
     When I click modal button "Save and Close"
     When I click on "Save" in the page details
     And I click on "Edit" in the page details
@@ -59,14 +59,14 @@ Feature: Validate all scenarios in Strategic Plan
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
-    When I enter value "Automation Execution Strategic Goal" into field "fieldStrategyTitle__c"
+    When I enter value "{SavedValue:EXE Username}cution Strategic Goal" into field "fieldStrategyTitle__c"
     When I click modal button "Save and Close"
     When I click on "Save" in the page details
     And I click on "Edit" in the page details
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
-    When I enter value "Automation Execution Objective" into field "StrategyTitle__c"
+    When I enter value "{SavedValue:EXE Username}cution Objective" into field "StrategyTitle__c"
     When I click modal button "Save and Close"
     And I click on "Save" in the page details
 
@@ -75,18 +75,18 @@ Feature: Validate all scenarios in Strategic Plan
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
-    When I enter value "Automation Execution Strategic Goal" into field "fieldStrategyTitle__c"
+    When I enter value "{SavedValue:EXE Username}cution Strategic Goal" into field "fieldStrategyTitle__c"
     When I click modal button "Save and Close"
     When I click on "Save" in the page details
     And I click on "Edit" in the page details
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
-    When I enter value "Automation Execution Objective" into field "StrategyTitle__c"
+    When I enter value "{SavedValue:EXE Username}cution Objective" into field "StrategyTitle__c"
     When I click modal button "Save and Close"
     And I click on "Save" in the page details
     When I click on "Edit" in the page details
-    When I enter in modal value "Automation Execution Objective" into field "StrategyDescription__c"
+    When I enter in modal value "{SavedValue:EXE Username}cution Objective" into field "StrategyDescription__c"
     When I click on "Save" in the page details
 
   @51049 @additionOfAttachmentToObjective
@@ -94,11 +94,11 @@ Feature: Validate all scenarios in Strategic Plan
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
-    When I enter value "Automation Execution Strategic Goal" into field "fieldStrategyTitle__c"
+    When I enter value "{SavedValue:EXE Username}cution Strategic Goal" into field "fieldStrategyTitle__c"
     When I click modal button "Save and Close"
     When I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
-    When I enter value "Automation Execution Objective" into field "StrategyTitle__c"
+    When I enter value "{SavedValue:EXE Username}cution Objective" into field "StrategyTitle__c"
     When I click modal button "Save and Close"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
@@ -110,11 +110,11 @@ Feature: Validate all scenarios in Strategic Plan
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
-    When I enter value "Automation Execution Strategic Goal" into field "fieldStrategyTitle__c"
+    When I enter value "{SavedValue:EXE Username}cution Strategic Goal" into field "fieldStrategyTitle__c"
     When I click modal button "Save and Close"
     When I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
-    When I enter in modal value "Automation Execution Objective" into field "StrategyTitle__c"
+    When I enter in modal value "{SavedValue:EXE Username}cution Objective" into field "StrategyTitle__c"
     When I click modal button "Save and Close"
     And I click on "Save" in the page details
     When I navigate to "Related Logs" sub tab

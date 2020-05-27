@@ -205,8 +205,8 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
-      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -300,8 +300,8 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
       | Role             | Name          | Description                 |
-      | Program Approver | Automation PM | Automation Test Description |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
@@ -322,7 +322,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | Automation Observation | Automation Description | Observation |
     When I click on "Submit for Approval" in the page details
     And I select radio button "Forward" in the approval decision
-    Then I cannot see user "Automation AUDITOR" in the user lookup in the approval decision
+    Then I cannot see user "{SavedValue:AUDITOR Username}" in the user lookup in the approval decision
 
   @70324 @auditorCannotEdit/CompletePeerReviewProcess
   Scenario: Validate whether the complete Review Button is available for Auditor user to complete peer review process
@@ -377,8 +377,8 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
       | Responsibility   | Name          | Description                 |
-      | Fiscal Approver  | Automation FO | Automation Test Description |
-      | Program Approver | Automation PM | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -399,8 +399,8 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
       | Reviewer Name | Role            | Description                 | Due Date | Allow Record Editing |
-      | Automation FO | Fiscal Reviewer | Automation Test Description | 7        | No                   |
-    Then I softly see that "Automation FO" has been added in flextable with Id "---subAwardStandAlone:-:peerReviewersTableId---"
+      | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        | No                   |
+    Then I softly see that "{SavedValue:FO Username}" has been added in flextable with Id "---subAwardStandAlone:-:peerReviewersTableId---"
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
     Then I softly see that "Sent for Review" has been added in flextable with Id "---subAwardStandAlone:-:peerReviewersTableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -409,7 +409,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     When I navigate to "Responsibilities" sub tab
-    When I click on "Enter Review" icon for "Automation FO" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
+    When I click on "Enter Review" icon for "{SavedValue:FO Username}" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"
     And I enter a review as "Passed"
     When I click modal button "Save"
     And I click on submit review

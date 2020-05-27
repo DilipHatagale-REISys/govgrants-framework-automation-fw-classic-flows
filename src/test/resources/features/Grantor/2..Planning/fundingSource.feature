@@ -186,7 +186,7 @@ Feature: Validate all scenarios in Funding Source
     Then I see status in Progress-bar is "Active" and is "Green"
     Examples:
       | Funding Source                      |
-      | Automation Execution Funding Source |
+      | {SavedValue:EXE Username}cution Funding Source |
 
   @72337 @activationOFFundingSource @productBusinessFlowSanity
   Scenario: Validate the activation of Funding Source HappyPath and the status is Active
