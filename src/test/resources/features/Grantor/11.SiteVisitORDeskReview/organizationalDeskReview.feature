@@ -1189,7 +1189,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     When I click "Associate" after selection of "Automation SPI" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award}" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
