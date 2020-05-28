@@ -588,7 +588,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressreport:-:subawardsTableId---" without waiting for record
     When I navigate to "Performance" sub tab
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:recipientAwardProgressReportTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
@@ -635,15 +635,16 @@ Feature: Validate all scenarios in Progress Report
     And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "<subawardsTableId>" without waiting for record
+    When I get the "EGMS ID"
     And I navigate to "Terms" sub tab
-    When I click on "Edit" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "<progressReportsScheduleId>" without waiting for record
+    When I click on "Edit" icon for "Record Id" inside flex table with id "<progressReportsScheduleId>" without waiting for record
     And I enter value "Annually" into field "fieldFrequency__c"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     Then I see value "Annually" for title "Frequency" inside table "<progressReportsScheduleId>"
     Examples:
       | progressReportsScheduleId                        | progressReportSheet              | subawardsTableId                        | activeGrantsTableId                        |
-      | ---progressReport:-:progressReportsScheduleId--- | ProgressReport_Field_Values.xlsx | ---progressReport:-:subawardsTableId--- | ---progressReport:-:activeGrantsTableId--- |
+      | ---progressReport:-:progressReportsScheduleId--- | ProgressReport_Field_Values.xlsx | ---subAwardStandalone:-:subawardsTableId--- | ---progressReport:-:activeGrantsTableId--- |
 
   @59679 @58763 @45730 @ProgramApproverSenBackPRToOwner @jitendra
   Scenario: Validate  Progress Report send back to owner functionality by program approver. | Validate Performance Tab under Subaward view at Sub-recipient user is getting updated when Progress report status is Submitted to Grantor on active subaward
