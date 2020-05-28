@@ -276,50 +276,6 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-Application}" in "---preApplication:-:notYetQualifiedTable---" panel
     Then I softly do not see "{SavedValue:Automation Runtime Announcement for Pre-Application}" has been added in "---preApplication:-:notYetQualifiedTable---" flex table
 
-  @72344 @preApplicationSubmittedToGrantor @productBusinessFlowSanity
-  Scenario: Validate once the Grantor accepts the submitted pre-application then the changes status to Accepted
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES"
-    When I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Announcements" tab
-    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Published Competitive Announcements"
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-Application}" in "---announcement:-:competitiveTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-Application}" inside flex table with id "---announcement:-:competitiveTableId---"
-    And I get the "EGMS ID"
-    And I save the field labeled "EGMS ID" as "AnnId"
-    Given I am on "SUBPORTAL" portal
-    And I login as "SPI" user
-    When I navigate to "Opportunities" tab
-    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    When I click toggle button to select "Not Yet Qualified Opportunities - All"
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-Application}" in "---preApplication:-:notYetQualifiedTable---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-Application}" inside table
-    When I click on "Qualify" in the page details
-    And I click on "Create Pre-Application" in the page details
-    When I click modal button "Save and Continue"
-    And I click on "Save" in the page details
-    Given I click on "Edit" in the page details
-    And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    When  I navigate to "Overview" sub tab
-    When I navigate to "Budget" sub tab
-    Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
-      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-      | Construction  | 5000   | 5000       | 50             | 100            |
-    When I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
-    And I get the "EGMS ID"
-    And I save the field containing "EGMS ID" as "preappID"
-    When I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    When I navigate to "Applications" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:preappID}" in "---preApplication:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "{SavedValue:preappID}" inside table
-    When I click on "Accept" in the page details
-    Then I see status in Progress-bar is "Accepted" and is "Green"
-
   @72576 @75866 @75865 @preApplicationSubmittedToGrantorPendingTask
   Scenario: Validate whether user can change the pre-application due date while creating the pre-application
   Validate whether pre-application title field is editable while creating the pre-application | Validate whether the Announcement owner receives an email notification when the pre-application is submitted to grantor |
