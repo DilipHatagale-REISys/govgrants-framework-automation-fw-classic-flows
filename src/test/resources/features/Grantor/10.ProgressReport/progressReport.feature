@@ -635,9 +635,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "<subawardsTableId>" without waiting for record
-    When I get the "EGMS ID"
     And I navigate to "Terms" sub tab
-    When I click on "Edit" icon for "Record Id" inside flex table with id "<progressReportsScheduleId>" without waiting for record
+    When I click on "Edit" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "<progressReportsScheduleId>" without waiting for record
     And I enter value "Annually" into field "fieldFrequency__c"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
@@ -1278,7 +1277,7 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Forms and Attachments" sub tab
     Then I softly see "No Records Found" inside flex table with id "---progressreport:-:progressReportChecklistsTableId---"
     And I navigate to "Performance" sub tab
-    When I click on "Edit" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---progressReport:-:kpiTableId---"
+    When I click on "Edit" icon for "Automation Permanent KPI for Regression" inside flex table with id "---progressReport:-:kpiTableId---"
     Then I softly see field "PreviousActual__c" is not editable
     Then I softly see field "PreviousDate__c" is not editable
 
@@ -1746,7 +1745,7 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I navigate to "Performance" sub tab
-    Then I softly see value "95" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:kpiTableId---"
+    Then I softly see value "95" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:awardKeyOutcomes---"
 
   @59904 @validatePRStatusAfterApprovedOn @jitendra
   Scenario: Validate Progress Reports Table at Management tab on Grant overview is getting updated with Progress report whose status is Approved at SR User End
