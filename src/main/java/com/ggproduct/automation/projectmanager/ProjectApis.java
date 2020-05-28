@@ -757,7 +757,7 @@ public class ProjectApis extends ProjectWebServices{
         schdeuleArray.add(paymentRequestSchedule);
 
         JsonObject progressReportSchedule = new JsonObject();
-        progressReportSchedule.addProperty("SubmissionTitle","Grant Progress Report");
+        progressReportSchedule.addProperty("SubmissionTitle",grantName);
         progressReportSchedule.addProperty("CalReportingStartDate",
                 I.amPerforming()
                         .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
