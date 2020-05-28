@@ -13,7 +13,8 @@ Feature: Pre-Application scenarios without background
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
     When I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-Application}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    Then I softly see value "{SavedValue:Automation Runtime Announcement for Pre-Application}" for title "Opportunity Name" inside table "---applicationIntake:-:activeOpportunitiesTableId---"
+    And I wait for "1" seconds
+    Then I softly see value "{SavedValue:Automation Runtime Announcement for Pre-Application}" for title "Title" inside table "---applicationIntake:-:activeOpportunitiesTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
@@ -46,6 +47,7 @@ Feature: Pre-Application scenarios without background
     When I click modal button "Save and Continue"
     Then I softly see the following messages in the page details contains:
       | Pre-Application Title is Required to save. |
+    And I enter value "{SavedValue:Automation Runtime Announcement for Pre-Application}" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -124,7 +126,7 @@ Feature: Pre-Application scenarios without background
   @71115 @71114 @preappDueDateValidation @deepika
   Scenario: Validate whether User will be able to submit the pre- application on the last date for submission.
   Validate once the Announcement is published and Pre-Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit to Grantor on pre-application
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for PreApp and App" and properties "PRE_APPLICATION_YES"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for PreApp and App" and properties "TODAY_PREAPP_DUE_DATE"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -151,14 +153,16 @@ Feature: Pre-Application scenarios without background
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Published Competitive Announcements"
-    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    When I click on "View" icon for "Record id" inside table
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for PreApp and App}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for PreApp and App}" inside table without waiting for record
     And I click on "Unpublish" in the page details
     When I am on "SUBPORTAL" portal
     And I login as "SPI" user
+    And I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for PreApp and App}" in "---preApplication:-:recipientPreApplicationsTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for PreApp and App}" inside table
+    # this is bug... not working as expected
     Then I softly cannot see top right button "Submit to Grantor" in page detail
 
   @71413 @userCannotCreatePreAppWhenSettingIsNo @deepika
@@ -404,12 +408,12 @@ Feature: Pre-Application scenarios without background
     And I enter value "30" into field "fieldApplicationDueDate__c"
     And I enter value "40" into field "fieldPreApplicationDueDate__c"
     And I click on "Save" in the page details
-    Then I softly see the following messages in the page details :
+    Then I softly see the following messages in the page details contains:
       | Pre-Application Due Date cannot be after Application Due Date |
 
   @34290 @otherOrganizationUserCannotViewPreApplication @deepika @bugged
   Scenario: Validate the Pre-applications are visible for other organizations
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Applicationn" and properties "PRE_APPLICATION_YES"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
     And I login as "SA" user
     When I navigate to "Opportunities" tab
@@ -610,6 +614,7 @@ Feature: Pre-Application scenarios without background
     When I navigate to "History" sub tab
     And I click on Menu icon present on top right corner of the page
     And I select "Take Snapshot" from dropdown
+    And I wait for "7" seconds
     Then I softly see snapshot with name containing "SnapShot on" as name
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -798,7 +803,7 @@ Feature: Pre-Application scenarios without background
 
   @77583 @preApplicationMatchrequiredYes @deepika
   Scenario: Validate whether User will be able to view the Match column in the budget grid when the value set as Yes while announcement creation with pre-application is set as yes
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES_AND_NO_MATCH"
     When I am on "SUBPORTAL" portal
     And I login as "SPI" user
     When I navigate to "Opportunities" tab

@@ -78,7 +78,7 @@ Feature: Application Intake scenarios without background
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "Automation SPA" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
@@ -250,7 +250,8 @@ Feature: Application Intake scenarios without background
     And I navigate to "Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Qualified Opportunities - All"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" in "---applicationIntake:-:qualifiedTableId---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" inside table
+    And I wait for "1" seconds
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" inside table without waiting for record
     Then I softly cannot see top right button "Qualify" in page detail
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
@@ -351,7 +352,7 @@ Feature: Application Intake scenarios without background
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I save the field labeled "Application Due Date" as "ApplDueDate"
-    Then I softly see that the saved value "AppDueDate" and "ApplDueDate" are equal
+    Then I softly see that the saved value "{SavedValue:AppDueDate}" and "{SavedValue:ApplDueDate}" are equal
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -429,8 +430,8 @@ Feature: Application Intake scenarios without background
     When I navigate to "Overview" sub tab
     And I clear the value from field "Addressline1__c"
     And I enter "AddressValues" values from "Application_Field_Values.xlsx"
-    Then I softly see field "Addressline1__c" as "Sterling"
     When I click on "Save" in the page details
+    Then I softly see field "Address line 1" as "Sterling"
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name           | Project Role             | Is Key Contact |
       | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
@@ -484,7 +485,7 @@ Feature: Application Intake scenarios without background
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 100    | 100        | 100            | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "Automation SPA" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
@@ -704,7 +705,7 @@ Feature: Application Intake scenarios without background
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "Automation SPA" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
@@ -753,11 +754,9 @@ Feature: Application Intake scenarios without background
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I save the field labeled "Application Due Date" as "ApplDueDate"
-    Then I softly see that the saved value "{SavedValue:AppDueDate}" and "{SavedValue:ApplDueDate}" are equal
     And I navigate to "Budget" sub tab
       #This is a bug - @73498
-#    When I perform quick search for "Automation Permanent Focus Area2" in "---applicationIntake:-:focusAreaTableAppId---" panel
+#    When I perform quick search for "Automation Permanent Focus Area2" in "---applicationI ntake:-:focusAreaTableAppId---" panel
 #    Then I softly see that "Automation Permanent Focus Area2" has been added in flextable with Id "---applicationIntake:-:focusAreaTableAppId---"
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -1075,6 +1074,7 @@ Feature: Application Intake scenarios without background
       | Name           | Project Role             | Is Key Contact |
       | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
+    And I wait for "1" seconds
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Enter budget details before submitting an Application to the Grantor.              |
       | Overview Tab - Requested Amount should be greater than or equal to the Subaward Floor Amount.   |
@@ -1100,7 +1100,7 @@ Feature: Application Intake scenarios without background
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---applicationIntake:-:applicationContactsTableId---"
-    When I click "Add" after selection of "Automation Manager" in the table "---applicationIntake:-:applicationAssociateTableId---"
+    When I click "Add" after selection of "Automation SPA" in the table "---applicationIntake:-:applicationAssociateTableId---"
     When I close "Contacts" modal by clicking the top right x button
     And I refresh the page
     Then I see that "<Contact>" has been added in flextable with Id "---applicationIntake:-:ApplicationContactsTableId---"
@@ -1190,7 +1190,7 @@ Feature: Application Intake scenarios without background
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "Automation SPA" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
