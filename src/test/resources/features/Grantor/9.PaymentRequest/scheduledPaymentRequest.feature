@@ -87,7 +87,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
-      | Fiscal Approver | Automation FO | Automation Test Description |
+      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
     And I click on "Mark As Paid" in the page details

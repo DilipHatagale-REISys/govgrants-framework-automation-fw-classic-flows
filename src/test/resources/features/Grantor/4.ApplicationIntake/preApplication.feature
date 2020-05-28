@@ -18,7 +18,7 @@ Feature: Validate all scenarios in the Pre-Application
   @67063 @validateVariousRolesAppearsPreApplication @jitendra
   Scenario: To Validate that various roles appear in the project roles dropdown in contact tableon preapplication of  SPI profile
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "Automation SPI" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    When I click on "Edit" icon for "{SavedValue:SPI Username}" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
     Then I verify that All the following projects roles are available in picklist :
       | Principal Investigator   |
       | Fiscal Contact           |
@@ -36,7 +36,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I click "Add" after selection of "Automation SPA" in the table "---preApplication:-:associatePreAppContactsTableId---"
     And I close modal by clicking the top right x button
     Then I softly see value "Automation SPA" for title "Name" inside table "---preApplication:-:flexGridPreAppContactTableId---"
-    When I click on "View" icon for "Automation SPI" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    When I click on "View" icon for "{SavedValue:SPI Username}" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
     And I save the field labeled "Organization" as "orgName1"
     And I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
@@ -162,7 +162,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name           | Project Role             | Is Key Contact |
-      | Automation SPI | Project Director/Manager | Checked        |
+      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
     Given I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
@@ -175,8 +175,8 @@ Feature: Validate all scenarios in the Pre-Application
     Examples:
       | Announcement Name                                        | User |
       | {SavedValue:Automation Runtime Announcement Application} | PM   |
-      |                                                          | FO   |
-      |                                                          | EXE  |
+      | {SavedValue:Automation Runtime Announcement Application} | FO   |
+      | {SavedValue:Automation Runtime Announcement Application} | EXE  |
 
   @70468 @acknowledgeRequiredForPre-App @deepika
   Scenario: Validate the system should throw an validation message if the pre-application is submitted with Acknowledging it
@@ -205,7 +205,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
-    And I click on "Menu" in the page details
+    And I click on Menu icon present on top right corner of the page
     And I select "Take Snapshot" from dropdown
     When I navigate to "History" sub tab
     And I click on hyperlink containing value "Snapshot_Pre-Application_Submission.pdf"
@@ -315,7 +315,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name           | Project Role             | Is Key Contact |
-      | Automation SPI | Project Director/Manager | Checked        |
+      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Given I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
