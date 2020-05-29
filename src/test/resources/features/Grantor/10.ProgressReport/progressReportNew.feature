@@ -1,7 +1,7 @@
 @progressReportNew @regression @parallel-regression @progressReport
 Feature: Validate all scenarios in Progress Report with respect to Amendment Request
 
-  @60726 @60727 @6072 1 @60656 @60657 @validateReviewedPRAfterFundingChangeAmendmentIsCarryForwarded @mahadev
+  @60726 @60727 @6072 @60656 @60657 @validateReviewedPRAfterFundingChangeAmendmentIsCarryForwarded @mahadev
   Scenario Outline: Validate Progress report with Reviewed/Submitted for Review Status is carried forwarded on grant and  Subaward Overview at SR user end when Award owner performed Funding Change Amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -1870,7 +1870,8 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
-    And I get the "EGMS ID"
+    And I save the field containing "EGMS ID" as "amendedAwardId"
+    And I wait for "1" seconds
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1878,14 +1879,14 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:amendedAwardId}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Performance" sub tab
     Then I do not see value "Submitted for approval" for title "Status" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62146 @61940 @62147 @validateApprovedPRAfterScopeOfWorKIsCarryForwardedAonGrantAndSPIAndPMuSER @jitendra
+  @62146 @61940 @62147 @validateApprovedPRAfterScopeOfWorKIsCarryForwardedAonGrantAndSPIAndPMuSER @jitendra @fixed
   Scenario Outline: Validate Approved Progress reports is carried forward at Management Tab Grant Overview at Award Owner end when Award owner performed Scope of Work Change Amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "SUBPORTAL" portal
@@ -2007,7 +2008,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Performance" sub tab
-    Then I softly do not see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
+    Then I softly see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
