@@ -169,11 +169,6 @@ public class GenericSteps {
         }
     }
 
-    @When("^I save the value from row \"([^\"]*)\" for column name \"([^\"]*)\" as \"([^\"]*)\" from flex table \"([^\"]*)\"$")
-    public void iSaveTheValueFromRowForColumnNameAsFromFlexTable(String columnValueFromRow, String columnName, String key, String flexTableId) {
-        projectManager.iSavedSpecificValueFromFlexTableInsideGivenKey(columnValueFromRow, columnName, key, flexTableId);
-    }
-
     @Then("^I (see|do not see|softly see|softly do not see) that the fields in flex table title as \"([^\"]*)\" are editable$")
     public void iSeeThatTheFieldsInFlexTableTitleAsAreEditable(String editable, String tableTitle) {
         if (editable.equals("see")) {

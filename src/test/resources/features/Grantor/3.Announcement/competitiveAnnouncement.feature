@@ -93,7 +93,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
   @75616 @74118 @pdfDownloadApprover @jitendra
   Scenario: To verify system allow to download PDF for Peer Reviewers section in Responsibility tab of announcement
     When I navigate to "Responsibilities" sub tab
-    Then I softly see value "Owner" for title "Responsibility" against the value "{SavedValue:PM Username}" inside table "---announcement:-:announcementOwner---"
+    Then I softly see value "Owner" for title "Responsibility" against the value "{SavedValue:EXE Username}" inside table "---announcement:-:announcementOwner---"
     And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
       | Role               | Name           | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
