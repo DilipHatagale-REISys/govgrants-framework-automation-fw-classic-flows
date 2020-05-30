@@ -11,7 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UsersAndURL implements UsersController {
-    static {
+
+    public UsersAndURL(){
         I.amPerforming().propertiesFileOperationsTo().saveValue("EXE Username", "Automation EXE");
         I.amPerforming().propertiesFileOperationsTo().saveValue("FO Username", "Automation FO");
         I.amPerforming().propertiesFileOperationsTo().saveValue("PM Username", "Automation PM");
