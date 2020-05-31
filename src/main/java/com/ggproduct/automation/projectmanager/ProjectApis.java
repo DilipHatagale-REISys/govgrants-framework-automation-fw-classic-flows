@@ -583,10 +583,50 @@ public class ProjectApis extends ProjectWebServices{
                 return createAwardWtithNoProgramIncomeAnticipate(json);
             case "AMENDMENT_REQUEST":
                 return createAwarForAmendmentRequest(json);
+            case "PROGRESS_REPORT_NOT_APPLICABLE":
+                return notapplicableProgressReportAward(json);
+            case "PROGRESS_REPORT_MONTHLY":
+                return monthyProgressReportAward(json);
+            case "PROGRESS_REPORT_QUARTERLY":
+                return quarterlyProgressReportAward(json);
+            case "PROGRESS_REPORT_SEMI_ANNUALLY":
+                return semiAnnuallyProgressReportAward(json);
 
             default:
                 return json;
         }
+    }
+
+    private JsonObject semiAnnuallyProgressReportAward(JsonObject json) {
+        JsonObject paymentRequestSchedule = json.getAsJsonArray("PaymentRequestSchedule").get(1).getAsJsonObject();
+        JsonArray array = json.getAsJsonArray("PaymentRequestSchedule");
+        paymentRequestSchedule.addProperty("Frequency", "Semi-Annually");
+        json.add("PaymentRequestSchedule",array);
+        return json;
+    }
+
+    private JsonObject quarterlyProgressReportAward(JsonObject json) {
+        JsonObject paymentRequestSchedule = json.getAsJsonArray("PaymentRequestSchedule").get(1).getAsJsonObject();
+        JsonArray array = json.getAsJsonArray("PaymentRequestSchedule");
+        paymentRequestSchedule.addProperty("Frequency", "Quarterly");
+        json.add("PaymentRequestSchedule",array);
+        return json;
+    }
+
+    private JsonObject monthyProgressReportAward(JsonObject json) {
+        JsonObject paymentRequestSchedule = json.getAsJsonArray("PaymentRequestSchedule").get(1).getAsJsonObject();
+        JsonArray array = json.getAsJsonArray("PaymentRequestSchedule");
+        paymentRequestSchedule.addProperty("Frequency", "Monthly");
+        json.add("PaymentRequestSchedule",array);
+        return json;
+    }
+
+    private JsonObject notapplicableProgressReportAward(JsonObject json) {
+        JsonObject paymentRequestSchedule = json.getAsJsonArray("PaymentRequestSchedule").get(1).getAsJsonObject();
+        JsonArray array = json.getAsJsonArray("PaymentRequestSchedule");
+        paymentRequestSchedule.addProperty("Frequency", "Not-Applicable");
+        json.add("PaymentRequestSchedule",array);
+        return json;
     }
 
     private JsonObject createAwarForAmendmentRequest(JsonObject json) {

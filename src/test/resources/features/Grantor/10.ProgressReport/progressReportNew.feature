@@ -318,6 +318,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -596,11 +597,17 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62925 @62926 @62927 @BudgerPeriodFieldUpdateAfterFundingChangeAmendment @PercentageRemainSameAfterFundingChangeAmmendment @jitendra @bugged
+  @62925 @62926 @62927 @BudgerPeriodFieldUpdateAfterFundingChangeAmendment @PercentageRemainSameAfterFundingChangeAmmendment @jitendra
   Scenario Outline: Verify Budget Period field value at Overview Tab on progress report get updated when award owner performed Periodic renewal amendment on subaward at SR user end.
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
-    When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -635,11 +642,11 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I enter Revised Encumbrance for award "<Award Name>"
     And I click on top right button "Save" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
     And I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+#    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+#    And I navigate to "Grants" tab
+#    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+#    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+#    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -668,7 +675,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I navigate to "Performance" sub tab
     And I save the field labeled "Awarded Budget" as "awardedBudget"
     And I save the field labeled "Remaining Budget" as "remainingBudget"
-    And I save the field labeled "Perentage of Budget Remaining" as "remaningBudgetPercentage"
     Then I softly see field "Perentage of Budget Remaining" as "100.00%"
     Then I softly see field "YTD Expenditures" as "$0.00"
     Then I softly see value "{SavedValue:awardedBudget}" is "Equals to" the value "{SavedValue:remainingBudget}"
@@ -676,7 +682,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                  | Grant Name                  |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @61888 @validateSubmittedToGrantorPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev @bugged
+  @61888 @validateSubmittedToGrantorPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev
   Scenario Outline: Validate Progress reports with Submitted to Grantor Status is not displayed at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "SUBPORTAL" portal
@@ -771,7 +777,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @61889 @validateSubmittedforReviewPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev @bugged
+  @61889 @validateSubmittedforReviewPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev
   Scenario Outline: Validate Progress reports with Submitted for Review Status is not displayed at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "SUBPORTAL" portal
@@ -875,7 +881,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @61891 @validateSubmittedForApprovalPRAfterPeriodicAmendmentIsCarryForwardedAonAward @jitendra @bugged
+  @61891 @validateSubmittedForApprovalPRAfterPeriodicAmendmentIsCarryForwardedAonAward @jitendra
   Scenario Outline: Validate Submitted for approval Progress reports is not carried forward at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment.
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "SUBPORTAL" portal
@@ -980,7 +986,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @61892 @validateSentBackToSubrecipientPRAfterPeriodicAmendmentIsCarryForwardedAonAward @jitendra @bugged
+  @61892 @validateSentBackToSubrecipientPRAfterPeriodicAmendmentIsCarryForwardedAonAward @jitendra
   Scenario Outline: Validate Submitted for approval Progress reports is not carried forward at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment.
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "SUBPORTAL" portal
@@ -1080,7 +1086,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @61893 @validateAPPROVEDPRAfterPeriodicAmendmentIsCarryForwardedAonAward @jitendra @bugged
+  @61893 @validateAPPROVEDPRAfterPeriodicAmendmentIsCarryForwardedAonAward @jitendra
   Scenario Outline: Validate Progress reports with Approved Status is not carried forward at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment.
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "SUBPORTAL" portal
@@ -1204,7 +1210,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @61890 @validateReviewedPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev @bugged
+  @61890 @validateReviewedPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev
   Scenario Outline: Validate Progress reports with Reviewed Status is not displayed at Performance Tab Subaward Overview at Award Owner end after periodic renewal Amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "SUBPORTAL" portal
@@ -1328,7 +1334,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @60390 @NoCarryForwardSentBackToSubRecipient @jitendra @bugged
+  @60390 @NoCarryForwardSentBackToSubRecipient @jitendra
   Scenario Outline: Validate Progress reports with Sent Back to SR user Status is not displayed at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "SUBPORTAL" portal
@@ -1422,6 +1428,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
+    And I save the field containing "EGMS ID" as "amendedSubawardId"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1429,14 +1436,14 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:amendedSubawardId}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Performance" sub tab
     Then I do not see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62268 @62266 @62269 @62267 @reportingPeriodStartDateSameAfterPeriodicRenewal @reportingPeriodEndDateSameAfterPeriodicRenewal @jitendra @bugged
+  @62268 @62266 @62269 @62267 @reportingPeriodStartDateSameAfterPeriodicRenewal @reportingPeriodEndDateSameAfterPeriodicRenewal @jitendra
   Scenario Outline: Validate Progress reports with Approved Status is not carried forward at Performance Tab Subaward Overview at SR user end when Award owner performed periodic renewal Amendment.
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "INTERNAL" portal
@@ -1454,6 +1461,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click modal button "Save and Continue"
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I wait for "1" seconds
     And I save the field labeled "Proposed Budget Period Start Date" as "ScheduleStartDate"
     And I save the field labeled "Proposed Budget Period End Date" as "ScheduleEndDate"
     And I get the "EGMS ID"
@@ -1506,58 +1514,56 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
+    And I save the field containing "EGMS ID" as "amendedSubawardId"
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:amendedSubawardId}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Terms" sub tab
     And I expand nested table containing column value "Progress Report"
+    And I get the value from row "1" for column name "Reporting Period Start Date" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
     Then I softly verify that the Schedule start date is matching with Reporting Period start Date
+    And I get the value from row "last row" for column name "Reporting Period End Date" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
     Then I softly verify that the Schedule end date is matching with Reporting Period End Date
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
-    When I perform quick search for "<Grant Name>" in "---progressReport:-:recipientActiveGrantId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientActiveGrantId---" without waiting for record
+    When I perform quick search for "<Grant Name>" in "---progressReport:-:recipientAwardsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientAwardsTableId---" without waiting for record
     When I navigate to "Terms" sub tab
     And I expand nested table containing column value "Progress Report"
+    And I get the value from row "1" for column name "Reporting Period Start Date" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
     Then I softly verify that the Schedule start date is matching with Reporting Period start Date
+    And I get the value from row "last row" for column name "Reporting Period End Date" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
     Then I softly verify that the Schedule end date is matching with Reporting Period End Date
     Examples:
       | Award Name                  | Grant Name                  |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62923 @BudgerPeriodFieldUpdateAfterPeriodicRenewalAmendment @jitendra @bugged
+  @62923 @BudgerPeriodFieldUpdateAfterPeriodicRenewalAmendment @jitendra
   Scenario Outline: Verify Budget Period field value at Overview Tab on progress report get updated when award owner performed Periodic renewal amendment on subaward at Award Owner end.
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    And I save the field labeled "Budget Period" as "previousBudgetPeriod"
-    And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I save the field labeled "Budget Period" as "previousBudgetPeriod"
     And I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I save the field labeled "Budget Period" as "updatedBudgetPeriod"
+    And I save the field labeled "Project Period" as "updatedBudgetPeriod"
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -1608,8 +1614,10 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
-    And I save the field labeled "EGMS ID" as "ProgressReportId"
+    And I save the field labeled "EGMS ID" as "amendedSubawardId"
     When I delete the record "{SavedValue:Automation Runtime Award}" from the object "Progress Report"
+    When I delete the record "{SavedValue:Automation Runtime Award}" from the object "Progress Report"
+    And I wait for "1" seconds
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -1754,7 +1762,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
-    And I get the "EGMS ID"
+    And I save the field containing "EGMS ID" as "amendedSubAwardId"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1762,14 +1770,14 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:amendedSubAwardId}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Performance" sub tab
     Then I do not see value "Approved" for title "Status" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @60389 @NoCarryForwardSubmittedForApproval @jitendra @bugged
+  @60389 @NoCarryForwardSubmittedForApproval @jitendra
   Scenario Outline: Validate Progress reports with Submitted for approval Status is not carried forward at Performance Tab Subaward Overview at SR user end when Award owner performed periodic renewal Amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "SUBPORTAL" portal
@@ -1985,19 +1993,20 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
+    And I save the field containing "EGMS ID" as "amendedSubawardId"
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     When I navigate to "Management" sub tab
-    Then I softly see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressreport:-:recipientGrantProgressReportTableId---"
+    Then I softly see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressreport:-:grantorGrantProgressReportTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
     When I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:amendedSubawardId}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Performance" sub tab
     Then I softly do not see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -2009,7 +2018,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Performance" sub tab
-    Then I softly see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
+    Then I softly see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:grantorProgressReportsTableId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
@@ -2207,6 +2216,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
+    And I save the field containing "EGMS ID" as "amendedSubawardId"
     When I navigate to "Performance" sub tab
     Then I softly see value "Sent Back to Subrecipient" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:grantorProgressReportsTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -2216,9 +2226,9 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I perform quick search for "<Grant Name>" in "---progressReport:-:recipientActiveGrantId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientActiveGrantId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Activated" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:amendedSubawardId}" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---" without waiting for record
     When I navigate to "Performance" sub tab
-    Then I softly see value "Sent back to sub-recipient" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
+    Then I softly see value "Sent Back to sub-recipient" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
@@ -2417,6 +2427,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     And I navigate to "Performance" sub tab
+    # this test case is failing and same is informed to tester.
     Then I softly do not see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:grantorProgressReportsTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -2427,7 +2438,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---" without waiting for record
     When I navigate to "Performance" sub tab
-    Then I softly do not see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
+    Then I softly do not see value "Approved" for title "Status" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
@@ -2604,7 +2615,6 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -2916,6 +2926,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
+    And I save the field containing "EGMS ID" as "awardId"
     When I navigate to "Performance" sub tab
     Then I softly see value "Submitted for Approval" for title "Status" against the value "{SavedValue:ProgressReport1}" inside table "---progressreport:-:grantorProgressReportsTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -2923,7 +2934,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
     When I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:awardId}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Performance" sub tab
     Then I softly see value "Submitted for Approval" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
@@ -3087,22 +3098,23 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I perform quick search for "Record Id" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
+    And I save the field containing "EGMS ID" as "awardId"
     When I click on "Activate" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:awardId}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Management" sub tab
     Then I see value "Submitted to Grantor" for title "Status" against the value "{SavedValue:ProgressReport1}" inside table "---progressreport:-:recipientGrantProgressReportTableId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62373 @validateFrequencyAfterPeriodicAmendmentIsSameAsMonthlyOnAward @mahadev @bugged @smoke
+  @62373 @validateFrequencyAfterPeriodicAmendmentIsSameAsMonthlyOnAward @mahadev  @smoke
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Monthly at Award Owner end
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "PROGRESS_REPORT_MONTHLY"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3179,9 +3191,9 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62376 @validateFrequencyAfterPeriodicAmendmentIsSameAsSemiAnnuallyOnAward @jitendra @bugged
+  @62376 @validateFrequencyAfterPeriodicAmendmentIsSameAsSemiAnnuallyOnAward @jitendra
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Semi-annual at Award Owner end.
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "PROGRESS_REPORT_SEMI_ANNUALLY"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3258,7 +3270,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62374 @validateFrequencyAfterPeriodicAmendmentIsSameAsBiMonthlyOnAward @mahadev @bugged
+  @62374 @validateFrequencyAfterPeriodicAmendmentIsSameAsBiMonthlyOnAward @mahadev
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Bi-Monthly at Award Owner end
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "INTERNAL" portal
@@ -3337,7 +3349,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62377 @validateFrequencyAfterPeriodicAmendmentIsSameAsAnnuallyOnAwardAtInternalPortal @mahadev @bugged
+  @62377 @validateFrequencyAfterPeriodicAmendmentIsSameAsAnnuallyOnAwardAtInternalPortal @mahadev
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Annually at award Owner end
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "INTERNAL" portal
@@ -3416,7 +3428,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62381 @validateFrequencyAfterPeriodicAmendmentIsSameAsAnnuallyOnAwardAtExternalPortal @mahadev @bugged
+  @62381 @validateFrequencyAfterPeriodicAmendmentIsSameAsAnnuallyOnAwardAtExternalPortal @mahadev
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Annually at SPI end
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "INTERNAL" portal
@@ -3501,7 +3513,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @60387 @validateReviewedPRAfterPeriodicAmendmentIsNotCarryForwardedAonAwardAtSubportal @mahadev @bugged
+  @60387 @validateReviewedPRAfterPeriodicAmendmentIsNotCarryForwardedAonAwardAtSubportal @mahadev
   Scenario Outline: Validate Progress reports with Reviewed Status is not displayed at Performance Tab Subaward Overview at subportal when Award owner performed periodic renewal Amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "SUBPORTAL" portal
@@ -3619,6 +3631,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
+    And I save the field containing "EGMS ID" as "amendedSubawardId"
     And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3626,7 +3639,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I perform quick search for "<Grant Name>" in "---amendment:-:recipientActiveGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Activated" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:amendedSubawardId}" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---" without waiting for record
     When I navigate to "Performance" sub tab
     Then I do not see value "{SavedValue:ProgressReport1}" for title "EGMS ID" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
@@ -3695,6 +3708,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
+    And I save the field containing "EGMS ID" as "amendedSubawardID"
     When I navigate to "Performance" sub tab
     Then I softly do not see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:grantorProgressReportsTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -3706,10 +3720,10 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I navigate to "Performance" sub tab
     Then I softly see value "Created" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Subawards  - Active"
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:amendedSubawardID}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Management" sub tab
     Then I softly see value "Created" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientGrantProgressReportTableId---"
     Examples:
@@ -3803,6 +3817,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
+    And I save the field containing "EGMS ID" as "amendedSubawardId"
     When I navigate to "Performance" sub tab
     Then I softly see value "Submitted for approval" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:grantorProgressReportsTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -3810,7 +3825,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
     When I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:amendedSubawardId}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Performance" sub tab
     Then I softly see value "Submitted for approval" for title "Status" against the value "{SavedValue:ProgresReportID}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
@@ -4020,9 +4035,9 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62375 @62380 @validateFrequencyAfterPeriodicAmendmentIsSameAsQuartelyOnAwardAtInternalPortal @mahadev @bugged
+  @62375 @62380 @validateFrequencyAfterPeriodicAmendmentIsSameAsQuartelyOnAwardAtInternalPortal @mahadev
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Quarterly at Award Owner end
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "PROGRESS_REPORT_QUARTERLY"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4107,9 +4122,9 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62379 @validateFrequencyAfterPeriodicAmendmentIsSameAsMonthlyOnAwardAtSubPortal @mahadev @bugged
+  @62379 @validateFrequencyAfterPeriodicAmendmentIsSameAsMonthlyOnAwardAtSubPortal @mahadev
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Monthly at SPI end
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "PROGRESS_REPORT_MONTHLY"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4192,9 +4207,9 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62382 @62378 @validateFrequencyAfterPeriodicAmendmentIsSameAsNotApplicableOnAward @mahadev @bugged
+  @62382 @62378 @validateFrequencyAfterPeriodicAmendmentIsSameAsNotApplicableOnAward @mahadev
   Scenario Outline: Validate frequency remains the same for Progress report schedules after Periodic renewal amendment when frequency type is Not-applicable at both portals
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "PROGRESS_REPORT_NOT_APPLICABLE"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4266,7 +4281,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     When I navigate to "Terms" sub tab
-    Then I softly see value "Not Applicable" for title "Frequency" inside table "---progressreport:-:progressReportsScheduleId---"
+    Then I softly see value "Not-Applicable" for title "Frequency" inside table "---progressreport:-:progressReportsScheduleId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -4274,7 +4289,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Terms" sub tab
-    Then I softly see value "Not Applicable" for title "Frequency" inside table "---progressreport:-:progressReportsScheduleId---"
+    Then I softly see value "Not-Applicable" for title "Frequency" inside table "---progressreport:-:progressReportsScheduleId---"
     Examples:
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
@@ -4365,18 +4380,21 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    When I click on "View" icon for "Record Id" inside flex table with id "---progressReport:-:grantorGrantProgressReportTableId---" without waiting for record
     And I navigate to "Performance" sub tab
     Then I see field "Awarded Budget" as "$1,100.00"
     Examples:
       | Award Name              | Grant Name              |
-      | Automation award for PR | Automation award for PR |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62924 @validateFrequencyAfterPeriodicAmendmentIsSameOnPR @mahadev @bugged
+  @62924 @validateFrequencyAfterPeriodicAmendmentIsSameOnPR @mahadev
   Scenario Outline: Verify Report Frequency field value at Overview Tab on progress report get updated when award owner performed Periodic renewal amendment on subaward and Frequency is updated
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "INTERNAL" portal
@@ -4449,11 +4467,14 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
+    And I save the field containing "EGMS ID" as "awardId"
     When I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
     When I enter in modal "Progress Report Monthly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
+    And I delete the record "<Award Name>" from the object "Progress Report"
+    And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -5027,7 +5048,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                 | Grant Name                 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62922 @BudgerPeriodFieldUpdateAfterPeriodicRenewalAmendment @jitendra @bugged
+  @62922 @BudgerPeriodFieldUpdateAfterPeriodicRenewalAmendment @jitendra
   Scenario Outline: Verify Budget Period field value at Overview Tab on progress report get updated when award owner performed Periodic renewal amendment on subaward at SR user end.
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "INTERNAL" portal
@@ -5113,7 +5134,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                  | Grant Name                  |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @61887 @60384 @61894 @validateCreatedPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev @jitendra @bugged
+  @61887 @60384 @61894 @validateCreatedPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev @jitendra
   Scenario Outline: Validate Progress reports with Created Status is not displayed at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "INTERNAL" portal
@@ -5184,6 +5205,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
+    And I save the field containing "EGMS ID" as "awardId"
     When I navigate to "Performance" sub tab
     Then I softly do not see value "{SavedValue:ProgressReport1}" for title "EGMS ID" inside table "---progressreport:-:grantorProgressReportsTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -5197,7 +5219,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
     When I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:awardId}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Performance" sub tab
     Then I softly do not see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
@@ -5303,7 +5325,11 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
-    When I navigate to "Performance" sub tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Management" sub tab
     Then I softly see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:grantorProgressReportsTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -5595,7 +5621,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     Then I see field "Awarded Budget" as "$1,100.00"
     Examples:
       | Award Name              | Grant Name              |
-      | Automation award for PR | Automation award for PR |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @62921 @validateAwardedBudgetDecreasedAfterFCAmendment @mahadev @smoke
   Scenario Outline: Verify Awarded Budget field values at performance tab on progress report decrease when award owner performed Funding change amendment on subaward
@@ -5676,7 +5702,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     Then I see field "Awarded Budget" as "$900.00"
     Examples:
       | Award Name              | Grant Name              |
-      | Automation award for PR | Automation award for PR |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
   @60646 @60647 @validatePRAfterFundingChangeAmendmentIsCarryForwardedOnExternalPortal @mahadev
   Scenario Outline: Validate Progress reports with Created/Submitted to Grantor Status is carried forward at Performance Tab Subaward Overview at SR user end when Award owner performed Funding Change Amendment
@@ -5955,6 +5981,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
+    And I save the field containing "EGMS ID" as "awardID"
     And I navigate to "Performance" sub tab
     Then I softly see value "Submitted for Approval" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:grantorProgressReportsTableId---"
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -5964,7 +5991,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I perform quick search for "<Grant Name>" in "---progressReport:-:recipientActiveGrantId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientActiveGrantId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Activated" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:awardID}" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---" without waiting for record
     When I navigate to "Performance" sub tab
     Then I softly see value "Submitted for approval" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
