@@ -1,7 +1,8 @@
-package com.ggproduct.automation.steps;
+package com.ggproduct.automation.steps.grantor;
 
 import com.automation.rei.handlers.govgrants;
-import com.ggproduct.automation.projectmanager.ProjectManager;
+import com.ggproduct.automation.projectmanager.GrantorProjectManager;
+import com.ggproduct.automation.webservices.GrantorWebServices;
 import com.testingblaze.objects.Elements;
 import com.testingblaze.register.I;
 import io.cucumber.java.Before;
@@ -22,27 +23,24 @@ import java.util.List;
 import java.util.Map;
 
 public class GenericSteps {
-    ProjectManager projectManager;
+    private GrantorProjectManager grantorProjectManager;
+    private GrantorWebServices  grantorWebServices;
 
-    public GenericSteps() {
-        projectManager = new ProjectManager();
-    }
-
-    @Given("^I delete the record \"([^\"]*)\" from the object \"([^\"]*)\"$")
-    public void deleteTestData(String recordName, String objectType) {
-        projectManager.deletionApi(recordName, objectType);
+    public GenericSteps(GrantorProjectManager grantorProjectManager, GrantorWebServices grantorWebServices) {
+        this.grantorProjectManager = grantorProjectManager;
+        this.grantorWebServices = grantorWebServices;
     }
 
     @Description("API call used to create a post award records i.e. Payment Request, Progress Report and Closout and will fetch the record ID for that record")
     @When("^I create a post award record \"([^\"]*)\" for the Award \"([^\"]*)\" having object api name as \"([^\"]*)\"$")
     public void iCreateAPostAwardRecordForTheAwardHavingObjectApiNameAs(String objectType, String recordName, String objectApiName) {
-        projectManager.getRecordIdFromResponse(objectType, recordName, objectApiName);
+        grantorWebServices.getRecordIdFromResponse(objectType, recordName, objectApiName);
     }
 
     @Description("To verify field value is blank in flex table")
     @Then("^I (softly see|see) field name \"([^\"]*)\" is blank in flex table$")
     public void iSeeFieldNameIsBlank(String usage, String fieldname) {
-        projectManager.assertColumnValuIsBlank(fieldname,
+        grantorProjectManager.assertColumnValuIsBlank(fieldname,
                 usage.contains("softly")
         );
     }
@@ -50,7 +48,7 @@ public class GenericSteps {
     @Description("To verify total records available under flex table")
     @Then("^I (softly see|see) total records count \"([^\"]*)\" in flex table \"([^\"]*)\"$")
     public void iSeeTotalRecordsCountInFlexTable(String usage, String totalRecords, String tableId) {
-        projectManager.AssertTotalRecordsCountInFlexTable(totalRecords,
+        grantorProjectManager.AssertTotalRecordsCountInFlexTable(totalRecords,
                 tableId,
                 usage.contains("softly")
         );
@@ -58,7 +56,7 @@ public class GenericSteps {
 
     @Then("^I (softly can see|can see|cannot see|softly cannot see) page block \"([^\"]*)\"$")
     public void iCanSeeCannotSeePageBlock(String usage, String pageblockName) {
-        projectManager.AssertPageBlockDisplayed(pageblockName,
+        grantorProjectManager.AssertPageBlockDisplayed(pageblockName,
                 "can see".equalsIgnoreCase(usage) || "softly can see".equalsIgnoreCase(usage),
                 usage.contains("softly")
         );
@@ -67,13 +65,13 @@ public class GenericSteps {
     @Description("To get the field value from page block")
     @And("^I get the field value \"([^\"]*)\" from sub tab \"([^\"]*)\"$")
     public void iGetTheFieldValueFromSubTab(String fieldName, String subTabName) {
-        projectManager.getFieldValue(fieldName, subTabName);
+        grantorProjectManager.getFieldValue(fieldName, subTabName);
     }
 
     @Description("To compare two different field values")
     @Then("^I (compare|softly compare) field \"([^\"]*)\" from sub tab \"([^\"]*)\" with expected field$")
     public void iCompareFieldFromSubTabWithExpectedField(String usage, String fieldName, String subTabName) {
-        projectManager.assertTwoFieldValues(fieldName,
+        grantorProjectManager.assertTwoFieldValues(fieldName,
                 subTabName,
                 usage.contains("softly")
         );
@@ -83,30 +81,30 @@ public class GenericSteps {
     @Then("^I (softly see|see|do not see|softly do not see) \"([^\"]*)\" has been added in \"([^\"]*)\" flex table$")
     public void iSeeHasBeenAddedInFlexTable(String usage, String valueToBeSearch, String flexTableHeader) {
         if (usage.equals("see")) {
-            Assert.assertTrue(projectManager.isValueInsideFlexTable(valueToBeSearch, flexTableHeader));
+            Assert.assertTrue(grantorProjectManager.isValueInsideFlexTable(valueToBeSearch, flexTableHeader));
         } else if (usage.equals("do not see")) {
-            Assert.assertFalse(projectManager.isValueInsideFlexTable(valueToBeSearch, flexTableHeader));
+            Assert.assertFalse(grantorProjectManager.isValueInsideFlexTable(valueToBeSearch, flexTableHeader));
         } else if (usage.equals("softly see")) {
-            I.amPerforming().assertionsTo().assertThat(projectManager.isValueInsideFlexTable(valueToBeSearch, flexTableHeader)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(grantorProjectManager.isValueInsideFlexTable(valueToBeSearch, flexTableHeader)).isTrue();
         } else {
-            I.amPerforming().assertionsTo().assertThat(projectManager.isValueInsideFlexTable(valueToBeSearch, flexTableHeader)).isFalse();
+            I.amPerforming().assertionsTo().assertThat(grantorProjectManager.isValueInsideFlexTable(valueToBeSearch, flexTableHeader)).isFalse();
         }
     }
 
     @Description("To upload attachment from default workspace")
     @And("^I upload attachment \"([^\"]*)\" from workspace$")
     public void iUploadAttachmentFromWorkspace(String fileNameToBeUpload) {
-        projectManager.uploadAttachmentFromWorkspace(fileNameToBeUpload);
+        grantorProjectManager.uploadAttachmentFromWorkspace(fileNameToBeUpload);
     }
 
     @When("^I click on top right parallel lines bar for \"([^\"]*)\"$")
     public void clickTopRightParallelLinesBar(String title) {
-        projectManager.clickRightHeaderBars(title);
+        grantorProjectManager.clickRightHeaderBars(title);
     }
 
     @Then("^I (verify|softly verify) that \"([^\"]*)\" file is downloaded$")
     public void iVerifyThatPdfFileIsDownloaded(String usage, String fileType) {
-        projectManager.assertThatFileIsDownloaded(fileType,
+        grantorProjectManager.assertThatFileIsDownloaded(fileType,
                 usage.contains("softly")
         );
     }
@@ -114,7 +112,7 @@ public class GenericSteps {
     @Description("To verify no of rows checked for field name")
     @Then("^I can (softly see|see) \"([^\"]*)\" record value is checked for field name \"([^\"]*)\"$")
     public void iCanSeeRecordValueIsCheckedForFieldName(String usage, String count, String fieldName) {
-        projectManager.AssertFieldValueIsChecked(fieldName,
+        grantorProjectManager.AssertFieldValueIsChecked(fieldName,
                 count,
                 usage.contains("softly")
         );
@@ -124,9 +122,9 @@ public class GenericSteps {
     public void iSeeMailSubject(String usage, String userType, List<String> subjectList) throws MessagingException {
         String subject = subjectList.get(0);
         if (usage.contains("softly")) {
-            I.amPerforming().assertionsTo().assertThat(projectManager.validateMailSubject(userType, subject)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(grantorProjectManager.validateMailSubject(userType, subject)).isTrue();
         } else {
-            Assert.assertTrue(projectManager.validateMailSubject(userType, subject));
+            Assert.assertTrue(grantorProjectManager.validateMailSubject(userType, subject));
         }
     }
 
@@ -143,7 +141,7 @@ public class GenericSteps {
     @Description("Get last value for specified column name in the flex table")
     @And("I get the value from row {string} for column name {string} in flex table {string}")
     public void iGetTheSpecifiedValueForColumnNameInFlexTable(String columnValueFromRow, String columnName, String flexTableId) {
-        projectManager.iSavedSpecificValueFromFlexTable(columnValueFromRow, columnName, flexTableId);
+        grantorProjectManager.iSavedSpecificValueFromFlexTable(columnValueFromRow, columnName, flexTableId);
     }
 
     @Description("Validation of equality for values of Schedule end date AND Reporting Period End Date")
@@ -172,19 +170,19 @@ public class GenericSteps {
     @Then("^I (see|do not see|softly see|softly do not see) that the fields in flex table title as \"([^\"]*)\" are editable$")
     public void iSeeThatTheFieldsInFlexTableTitleAsAreEditable(String editable, String tableTitle) {
         if (editable.equals("see")) {
-            Assert.assertTrue(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle));
+            Assert.assertTrue(grantorProjectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle));
         } else if (editable.equals("do not see")) {
-            Assert.assertFalse(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle));
+            Assert.assertFalse(grantorProjectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle));
         } else if (editable.equals("softly see")) {
-            I.amPerforming().assertionsTo().assertThat(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(grantorProjectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle)).isTrue();
         } else {
-            I.amPerforming().assertionsTo().assertThat(projectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle)).isFalse();
+            I.amPerforming().assertionsTo().assertThat(grantorProjectManager.verifyIfFieldsAreEditableInFlexTable(tableTitle)).isFalse();
         }
     }
 
     @When("I add the Notes for progress report")
     public void iAddTheNotesForProgressupdatingOfReportWith() {
-        projectManager.addNotesToPR();
+        grantorProjectManager.addNotesToPR();
     }
 
     @Then("^I (softly verify|verify) that the file \"([^\"]*)\" is downloaded$")
@@ -267,39 +265,39 @@ public class GenericSteps {
 
     @When("I create a risk assessment record for organization {string}")
     public void iCreateARiskAssessmentRecordForOrganization(String organizationName) {
-        projectManager.riskAssessmentApi(organizationName);
+        grantorWebServices.riskAssessmentApi(organizationName);
     }
 
     @Then("^I (softly see|see) \"([^\"]*)\" image as \"([^\"]*)\"$")
     public void compareImages(String usage, String fieldLabel, String imageName) throws IOException {
         if (usage.contains("softly")) {
-            I.amPerforming().assertionsTo().assertThat(projectManager.assertRiskLevelImage(fieldLabel, imageName)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(grantorProjectManager.assertRiskLevelImage(fieldLabel, imageName)).isTrue();
         } else {
-            Assert.assertTrue(projectManager.assertRiskLevelImage(fieldLabel, imageName));
+            Assert.assertTrue(grantorProjectManager.assertRiskLevelImage(fieldLabel, imageName));
         }
     }
 
     @Then("^I (softly see|see) selected element \"([^\"]*)\"$")
     public void saveCurrentSelectedElementValue(String usage, String elementText) {
         if (usage.contains("softly")) {
-            I.amPerforming().assertionsTo().assertThat(projectManager.getSelectedSubTab(elementText)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(grantorProjectManager.getSelectedSubTab(elementText)).isTrue();
         } else {
-            Assert.assertTrue(projectManager.getSelectedSubTab(elementText));
+            Assert.assertTrue(grantorProjectManager.getSelectedSubTab(elementText));
         }
     }
 
     @Then("^I can (softly see|see) modal button \"([^\"]*)\"$")
     public void iCanSeeModalButton(String usage, String buttonName) {
         if (usage.contains("softly")) {
-            I.amPerforming().assertionsTo().assertThat(projectManager.isButtonDisplayedOnModal(buttonName)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(grantorProjectManager.isButtonDisplayedOnModal(buttonName)).isTrue();
         } else {
-            Assert.assertTrue(projectManager.isButtonDisplayedOnModal(buttonName));
+            Assert.assertTrue(grantorProjectManager.isButtonDisplayedOnModal(buttonName));
         }
     }
 
     @And("I upload document {string} of type {string}")
     public void iUploadDocumentOfType(String fileName, String fileType) {
-        projectManager.uploadDocument(fileName, fileType);
+        grantorProjectManager.uploadDocument(fileName, fileType);
     }
 
     @Then("^I (see|softly see) that Budget Period field contains the updated Budget Period End Date$")
@@ -314,7 +312,7 @@ public class GenericSteps {
     @Description("handles to click on table Top right button which will not accept any alert if any")
     @When("I click table top right button {string} in flex table with id {string}")
     public void iClickTableTopRightButtonInFlexTableWithId(String buttonName, String flexTableId) {
-        projectManager.clickTableTopRightButton(buttonName, flexTableId);
+        grantorProjectManager.clickTableTopRightButton(buttonName, flexTableId);
     }
 
     @And("I click {string} button in modal")
@@ -338,47 +336,47 @@ public class GenericSteps {
 
     @Then("^I (softly verify|verify) that All the following projects roles are available in picklist :$")
     public void iVerifyThatAllProjectsRolesAreAvailableInPicklist(String usage, List<String> projectRoles) {
-        projectManager.compareContactListEquality(usage, projectRoles);
+        grantorProjectManager.compareContactListEquality(usage, projectRoles);
     }
 
     @Then("^I (softly see|see|softly cannot see) that the saved value \"([^\"]*)\" and \"([^\"]*)\" are equal$")
     public void iSeeThatTheSavedValueAndAreEqual(String usage, String savedValue1, String savedValue2) {
-        projectManager.compareTwoSavedStringValueEquality(usage, savedValue1, savedValue2);
+        grantorProjectManager.compareTwoSavedStringValueEquality(usage, savedValue1, savedValue2);
     }
 
     @Then("^I (softly see|see) initial budget balance \"([^\"]*)\" is decreased by \"([^\"]*)\" and is matched with current budget balance \"([^\"]*)\"$")
     public void iSeeInitialBudgetBalanceIsDecreasedByAndIsMatchedWithCurrentBudgetBalance(String usage, String iniBudgetBalance, String decreasedBy, String currentBalance) {
-        projectManager.verifyBalanceBudget(usage, iniBudgetBalance, decreasedBy, currentBalance);
+        grantorProjectManager.verifyBalanceBudget(usage, iniBudgetBalance, decreasedBy, currentBalance);
     }
 
     @Then("^I (softly see|see) grant details on modal and it gets enlarge$")
     public void iSeeGrantDetailsOnModalAndItGetsEnlarge(String usage) {
-        projectManager.validateModalEnlargeAndGrantDetails(usage);
+        grantorProjectManager.validateModalEnlargeAndGrantDetails(usage);
     }
 
     @And("^I (softly see|see) all the fields are present for site visit while initializing it$")
     public void iSeeAllTheFieldsArePresentForSiteVisit(String usage) {
-        projectManager.allFieldsCheckSiteVisit(usage);
+        grantorProjectManager.allFieldsCheckSiteVisit(usage);
     }
 
     @Then("^I (softly cannot see|cannot see|softly see|see) field label \"([^\"]*)\" present on page under \"([^\"]*)\" table$")
     public void iDoNotSeeFieldLabelPresentOnPageUnderTable(String usage, String fieldLabel, String tableHeaderTitle) {
         if (usage.contains("softly")) {
             if (usage.contains("not")) {
-                I.amPerforming().assertionsTo().assertThat(projectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle))
+                I.amPerforming().assertionsTo().assertThat(grantorProjectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle))
                         .isFalse().as("Field " + fieldLabel + " is still present on the page under table " + tableHeaderTitle);
             } else {
-                I.amPerforming().assertionsTo().assertThat(projectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle))
+                I.amPerforming().assertionsTo().assertThat(grantorProjectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle))
                         .isTrue().as("Field " + fieldLabel + " is not present on the page under table " + tableHeaderTitle);
             }
         } else {
             if (usage.contains("not")) {
                 Assert.assertFalse(
-                        projectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle)
+                        grantorProjectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle)
                 );
             } else {
                 Assert.assertTrue(
-                        projectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle)
+                        grantorProjectManager.assertToCheckFieldPresentOnPageUnderSpecificTable(fieldLabel, tableHeaderTitle)
                 );
             }
         }
@@ -419,9 +417,9 @@ public class GenericSteps {
     @Then("^I (softly see|see) field \"([^\"]*)\" contains date (less|greater) than todays date$")
     public void isFieldDateGreaterThanOrLessThanTodaysDate(String usage, String fieldLabel, String lessORgreater) throws ParseException {
         if (usage.contains("softly")) {
-            I.amPerforming().assertionsTo().assertThat(projectManager.isFieldDateGreaterThanOrLessThanTodaysDate(fieldLabel, lessORgreater)).isTrue();
+            I.amPerforming().assertionsTo().assertThat(grantorProjectManager.isFieldDateGreaterThanOrLessThanTodaysDate(fieldLabel, lessORgreater)).isTrue();
         } else {
-            Assert.assertTrue(projectManager.isFieldDateGreaterThanOrLessThanTodaysDate(fieldLabel, lessORgreater));
+            Assert.assertTrue(grantorProjectManager.isFieldDateGreaterThanOrLessThanTodaysDate(fieldLabel, lessORgreater));
         }
     }
 
@@ -461,11 +459,11 @@ public class GenericSteps {
 
     @Before(order = 5)
     public void initializeData() {
-        projectManager.initData();
+        grantorProjectManager.initData();
     }
     @And("I delete all rows inside flex table with id {string}")
     public void performDeleteActionForAllRows(String flexTableId) {
-        projectManager.clickAllDeleteButtonsInsideFlexTable(flexTableId);
+        grantorProjectManager.clickAllDeleteButtonsInsideFlexTable(flexTableId);
     }
 
     @And("I clear all the filter from the table id {string}")
@@ -485,22 +483,22 @@ public class GenericSteps {
 
     @Given("I initiated an application review for application {string} on announcement {string} with properties {string}")
     public void iInitiatedAnApplicationReviewOnAnnouncement(String applicationTitle, String announcmentTitle, String filter) {
-        projectManager.initateApplicationReviewOnAnnouncement(applicationTitle, announcmentTitle, filter);
+        grantorWebServices.initateApplicationReviewOnAnnouncement(applicationTitle, announcmentTitle, filter);
     }
 
     @Given("I created approved FDM on application {string}")
     public void iCreatedApprovedFDMWithProperties(String applicationName) {
-        projectManager.approveDFM(applicationName);
+        grantorWebServices.approveDFM(applicationName);
     }
 
     @Given("I activate award from FDM having application name {string}")
     public void iActivateAwardFromDFMWith(String applicationName) {
-        projectManager.activateFMD(applicationName);
+        grantorWebServices.activateFMD(applicationName);
     }
 
     @Given("I created award from approved FDM with announcement {string}")
     public void iCreatedAwardFromApprovedFDMWithAnnouncement(String announcementName) {
-        projectManager.createAwardFromFDM(announcementName);
+        grantorWebServices.createAwardFromFDM(announcementName);
     }
 
     @And("I published {string} type announcement having name {string} and properties {string}")
@@ -508,7 +506,7 @@ public class GenericSteps {
         String newAnnName = annName+I.amPerforming().addOnsTo().getRandomNumber();
         I.amPerforming().propertiesFileOperationsTo().saveValue(annName,newAnnName);
         annName = newAnnName;
-        projectManager.publishAnnouncment(annType,annName,filter);
+        grantorWebServices.publishAnnouncment(annType,annName,filter);
     }
 
     @And("I activated standalone subaward {string} with properties {string}")
@@ -516,7 +514,7 @@ public class GenericSteps {
         String newGrantName = grantName+I.amPerforming().addOnsTo().getRandomNumber();
         I.amPerforming().propertiesFileOperationsTo().saveValue(grantName,newGrantName);
         grantName = newGrantName;
-        projectManager.activateSubaward(grantName,filter);
+        grantorWebServices.activateSubaward(grantName,filter);
     }
 
     @And("I click on submit review")
@@ -525,11 +523,12 @@ public class GenericSteps {
         I.amPerforming().click().on(submit_button);
     }
 
+    /*
     @And("I save the contact name as {string}")
     public void iSaveTheContactNameAs(String contactName) {
         String newContactName = I.amPerforming().propertiesFileOperationsTo().getValue(contactName) + " Contact";
         I.amPerforming().propertiesFileOperationsTo().saveValue(contactName,newContactName);
-    }
+    }*/
 
     @And("I click on Menu icon present on top right corner of the page")
     public void iClickOnMenuIconPresentOnTopRightCornerOfThePage() {

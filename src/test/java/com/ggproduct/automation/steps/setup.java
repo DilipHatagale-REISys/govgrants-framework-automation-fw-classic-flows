@@ -1,12 +1,14 @@
 package com.ggproduct.automation.steps;
 
-import com.ggproduct.automation.projectmanager.ProjectWebServices;
-import com.ggproduct.automation.projectmanager.UsersAndURL;
+import com.ggproduct.automation.usersUrl.UsersAndURL;
+import com.ggproduct.automation.webservices.GranteeWebServices;
+import com.ggproduct.automation.webservices.GrantorWebServices;
 import com.testingblaze.controller.TestSetupController;
 import com.testingblaze.register.EnvironmentFactory;
 import com.testingblaze.report.CSS;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import org.apache.commons.lang.StringUtils;
 
 import java.awt.*;
 import java.io.IOException;
@@ -18,14 +20,17 @@ import java.io.IOException;
  */
 
 public class setup {
-    private TestSetupController userController;
+    private final TestSetupController userController;
     private static CSS report;
-    ProjectWebServices projectWebServices;
+    GrantorWebServices grantorWebServices;
+    GranteeWebServices granteeWebServices;
 
-    public setup(TestSetupController userController) {
+    public setup(TestSetupController userController,GrantorWebServices grantorWebServices,GranteeWebServices granteeWebServices) {
         this.userController = userController;
-        if(report == null) {
-            this.report = new CSS();
+        this.grantorWebServices = grantorWebServices;
+        this.granteeWebServices = granteeWebServices;
+        if (report == null) {
+            report = new CSS();
             EnvironmentFactory.setProjectName("GovGrants Product Test Automation");
             EnvironmentFactory.setOrgName("REI Systems [Saas Business Unit]");
             EnvironmentFactory.setProjectPath(System.getProperty("user.dir"));
@@ -39,10 +44,8 @@ public class setup {
     }
 
     @After(order = 1)
-    public void deleteMe(){
-        if(projectWebServices == null) {
-            projectWebServices = new ProjectWebServices();
-        }
-        projectWebServices.deleteRecordInHooks();
+    public void deleteMe() {
+        if (StringUtils.containsIgnoreCase(EnvironmentFactory.getEnvironmentName(),"GRANTOR")) grantorWebServices.deleteRecordInHooks();
+        else if (StringUtils.containsIgnoreCase(EnvironmentFactory.getEnvironmentName(),"GRANTEE")) granteeWebServices.deleteRecordInHooks();
     }
 }

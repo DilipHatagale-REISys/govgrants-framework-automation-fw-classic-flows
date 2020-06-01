@@ -1,4 +1,4 @@
-@negotiations @regression @parallel-regression
+@negotiations @grantor-regression @grantor-parallel-regression
 Feature: Validate all scenarios in Negotiations
 
   Background: To setup data

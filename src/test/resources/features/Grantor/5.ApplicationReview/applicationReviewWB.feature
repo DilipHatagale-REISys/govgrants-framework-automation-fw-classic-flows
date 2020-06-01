@@ -1,4 +1,4 @@
-@applicationReviewWB @regression @parallel-regression @applicationReview
+@applicationReviewWB @grantor-regression @grantor-parallel-regression @applicationReview
 Feature: Validate all scenarios in the Application Review without background
 
   @78088 @InitiateReviewProcessIcon @keerti

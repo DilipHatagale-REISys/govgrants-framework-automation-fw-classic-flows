@@ -1,6 +1,6 @@
-package com.ggproduct.automation.steps;
+package com.ggproduct.automation.steps.grantor;
 
-import com.ggproduct.automation.pageobjects.AmendmentRequestPage;
+import com.ggproduct.automation.pageobjects.grantor.AmendmentRequestPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import org.springframework.context.annotation.Description;

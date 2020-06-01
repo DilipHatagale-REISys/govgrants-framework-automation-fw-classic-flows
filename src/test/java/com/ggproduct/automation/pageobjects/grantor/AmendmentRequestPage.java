@@ -1,12 +1,12 @@
-package com.ggproduct.automation.pageobjects;
+package com.ggproduct.automation.pageobjects.grantor;
 
-import com.ggproduct.automation.projectmanager.ProjectManager;
+import com.ggproduct.automation.projectmanager.GrantorProjectManager;
 import com.testingblaze.register.I;
 import org.openqa.selenium.By;
 
 import java.time.format.DateTimeFormatter;
 
-public class AmendmentRequestPage extends ProjectManager {
+public class AmendmentRequestPage extends GrantorProjectManager {
 
     /**
      * Used to calculate revised encumbrance balance

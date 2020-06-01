@@ -1,7 +1,7 @@
-package com.ggproduct.automation.pageobjects;
+package com.ggproduct.automation.pageobjects.grantor;
 
 import com.automation.rei.handlers.govgrants;
-import com.ggproduct.automation.projectmanager.ProjectManager;
+import com.ggproduct.automation.projectmanager.GrantorProjectManager;
 import com.testingblaze.objects.Elements;
 import com.testingblaze.register.I;
 import org.junit.Assert;
@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-public class ProgressReportPage extends ProjectManager {
+public class ProgressReportPage extends GrantorProjectManager {
 
     public void verifyProgressReportSchedulesUpdated(String totalRecords, String tableID, boolean isSoftly) {
         if (isSoftly) {

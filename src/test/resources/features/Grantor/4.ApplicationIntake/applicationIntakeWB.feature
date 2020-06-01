@@ -1,4 +1,4 @@
-@applicationIntakeWB @regression @parallel-regression @app
+@applicationIntakeWB @grantor-regression @grantor-parallel-regression @app
 Feature: Application Intake scenarios without background
 
   @76373 @69366 @65078 @VerifyCreateApplicationButton @keerti @smoke

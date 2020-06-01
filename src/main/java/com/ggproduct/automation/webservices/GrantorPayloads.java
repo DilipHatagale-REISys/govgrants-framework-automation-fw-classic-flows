@@ -1,18 +1,17 @@
-package com.ggproduct.automation.projectmanager;
+package com.ggproduct.automation.webservices;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.testingblaze.register.I;
+
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 
-public class ProjectApis extends ProjectWebServices{
-
-    ProjectApis(){}
+public class GrantorPayloads {
 
     public JsonObject applicationReview(String applicationName, String announcementName, String filter){
         JsonObject defaultJson = defaultPayloadApplicationReview(applicationName, announcementName);
@@ -51,10 +50,10 @@ public class ProjectApis extends ProjectWebServices{
         application.addProperty("ZipCode", "02908");
         application.addProperty("ProjectAbstract", "Test");
         application.addProperty("Justification", "this is Justification");
-        application.addProperty("Announcement", getIdOf("Announcement__c",announcementName));
+        application.addProperty("Announcement", ProjectWebServices.getIdOf("Announcement__c",announcementName));
         application.add("PreApplication", JsonNull.INSTANCE);
-        application.addProperty("RecordTypeId", getRecordTypeId("Application__c","Grantor"));
-        application.addProperty("OwnerId", getIdOf("User",ownerName));
+        application.addProperty("RecordTypeId", ProjectWebServices.getRecordTypeId("Application__c","Grantor"));
+        application.addProperty("OwnerId", ProjectWebServices.getIdOf("User",ownerName));
         applicationArray.add(application);
         parent.add("Application",applicationArray);
 
@@ -71,14 +70,14 @@ public class ProjectApis extends ProjectWebServices{
         JsonObject keyContacts = new JsonObject();
         JsonArray keyContactsArray = new JsonArray();
         keyContacts.addProperty("ProjectRole","Project Director/Manager");
-        keyContacts.addProperty("Contact",getIdOf("Contact",contactName)); // Automation SPI id
+        keyContacts.addProperty("Contact",ProjectWebServices.getIdOf("Contact",contactName)); // Automation SPI id
         keyContacts.addProperty("IsKeyContact",true);
         keyContactsArray.add(keyContacts);
         parent.add("KeyContact",keyContactsArray);
 
         JsonObject keyOutcome = new JsonObject();
         JsonArray keyOutcomeArray = new JsonArray();
-        keyOutcome.addProperty("MasterKPI",getIdOf("MasterKPI__c",kpiName)); // KPI id
+        keyOutcome.addProperty("MasterKPI",ProjectWebServices.getIdOf("MasterKPI__c",kpiName)); // KPI id
         keyOutcome.addProperty("Target","10");
         keyOutcomeArray.add(keyOutcome);
         parent.add("KeyOutcome",keyOutcomeArray);
@@ -97,7 +96,7 @@ public class ProjectApis extends ProjectWebServices{
     }
 
     public JsonObject defaultRequestPayroleForApprovedDFM(){
-        Map<String, String> map = getMultipleIds(getIdsOfUsers(Arrays.asList("Automation EXE","Automation FO","Automation PM")));
+        Map<String, String> map = ProjectWebServices.getMultipleIds(getIdsOfUsers(Arrays.asList("Automation EXE","Automation FO","Automation PM")));
         JsonObject parent = new JsonObject();
 
         JsonArray reviewStepsArray = new JsonArray();
@@ -179,12 +178,12 @@ public class ProjectApis extends ProjectWebServices{
 
     public JsonObject defaultPayloadCreateAwardFromFDM(String announcementName){
         JsonObject parent = new JsonObject();
-        Map<String, String> map = getMultipleIds(getIdsForCreateAwardFromFDM(announcementName));
+        Map<String, String> map = ProjectWebServices.getMultipleIds(getIdsForCreateAwardFromFDM(announcementName));
 
         JsonObject grant = new JsonObject();
         JsonArray grantArray = new JsonArray();
         grant.addProperty("FDM",map.get(announcementName));
-        grant.addProperty("RecordTypeId",getRecordTypeId("Grant__c","Grantor"));
+        grant.addProperty("RecordTypeId",ProjectWebServices.getRecordTypeId("Grant__c","Grantor"));
         grant.addProperty("OwnerId",map.get("Automation PM"));
         grantArray.add(grant);
         parent.add("Grant",grantArray);
@@ -194,9 +193,9 @@ public class ProjectApis extends ProjectWebServices{
         award.addProperty("GrantAwardDescription","Award Created From Automation API");
         award.addProperty("BudgetPeriodEndDate", I.amPerforming()
         .actionToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        award.addProperty("PM",getIdOf("User","Automation PM"));
-        award.addProperty("FO",getIdOf("User","Automation FO"));
-        award.addProperty("EXE",getIdOf("User","Automation EXE"));
+        award.addProperty("PM",ProjectWebServices.getIdOf("User","Automation PM"));
+        award.addProperty("FO",ProjectWebServices.getIdOf("User","Automation FO"));
+        award.addProperty("EXE",ProjectWebServices.getIdOf("User","Automation EXE"));
         awardArray.add(award);
         parent.add("Award",awardArray);
 
@@ -481,7 +480,7 @@ public class ProjectApis extends ProjectWebServices{
 
         ann.addProperty("name",annName);
         ann.addProperty("AnnouncementType",annType);
-        ann.addProperty("Program",getIdOf("Program__c",program));
+        ann.addProperty("Program",ProjectWebServices.getIdOf("Program__c",program));
         ann.addProperty("BudgetType","Non-Construction");
         ann.addProperty("MaxApplicationsAllowed",500);
         ann.addProperty("IsMatchRequired","Yes");
@@ -505,8 +504,8 @@ public class ProjectApis extends ProjectWebServices{
         ann.addProperty("AwardFloor",1000);
         ann.addProperty("AwardCeiling",10000);
         ann.addProperty("EstimatedFundingAmount",10000);
-        ann.addProperty("OwnerId",getIdOf("User","Automation PM"));
-        ann.addProperty("RecordTypeId",getRecordTypeId("Announcement__c","Grantor"));
+        ann.addProperty("OwnerId",ProjectWebServices.getIdOf("User","Automation PM"));
+        ann.addProperty("RecordTypeId",ProjectWebServices.getRecordTypeId("Announcement__c","Grantor"));
 
         annA.add(ann);
         parent.add("Announcement",annA);
@@ -519,7 +518,7 @@ public class ProjectApis extends ProjectWebServices{
 
         JsonObject awardFundingAccount = new JsonObject();
         JsonArray awardFundingAccountArray = new JsonArray();
-        awardFundingAccount.addProperty("FundingAccount",getIdOf("FundingAccount__c",I.amPerforming().propertiesFileOperationsTo()
+        awardFundingAccount.addProperty("FundingAccount",ProjectWebServices.getIdOf("FundingAccount__c",I.amPerforming().propertiesFileOperationsTo()
         .getValue("fundingAccount")));
         awardFundingAccount.addProperty("PreEncumbranceAmount","1000");
         awardFundingAccountArray.add(awardFundingAccount);
@@ -549,7 +548,7 @@ public class ProjectApis extends ProjectWebServices{
 
         JsonObject invApp = new JsonObject();
         JsonArray invAppA = new JsonArray();
-        invApp.addProperty("Organization",getIdOf("Account","SAN DIEGO ELECTRICAL TRAINING TRUST"));
+        invApp.addProperty("Organization",ProjectWebServices.getIdOf("Account","SAN DIEGO ELECTRICAL TRAINING TRUST"));
         invApp.addProperty("AllocatedAmount",2000);
         invAppA.add(invApp);
         parent.add("InvitedApplicant",invAppA);
@@ -706,8 +705,8 @@ public class ProjectApis extends ProjectWebServices{
     /**
      * @param grantName
      * @return this method will return json object of detault request payload for creating the standalone award...
-     * @see ProjectWebServices#getIdOf(String, String)
-     * @see ProjectWebServices#getRecordTypeId(String, String)
+     * @see GrantorWebServices#getIdOf(String, String)
+     * @see GrantorWebServices#getRecordTypeId(String, String)
      */
     public JsonObject defaultPayloadCreateStandaloneAward(String grantName){
         JsonObject parent = new JsonObject();
@@ -727,9 +726,9 @@ public class ProjectApis extends ProjectWebServices{
         grant.addProperty("BudgetCategoryPackage","Construction");
         grant.addProperty("GrantType","Formula Grant");
         grant.addProperty("GrantDescription","API Testing For Award Activation From Direct Grant");
-        grant.addProperty("ExternalOrganization",getIdOf("Account","Test Automation Organization"));
-        grant.addProperty("InternalOrganization",getIdOf("Account","SAN DIEGO ELECTRICAL TRAINING TRUST"));
-        grant.addProperty("Program",getIdOf("Program__c","Automation Permanent Internal Program"));
+        grant.addProperty("ExternalOrganization",ProjectWebServices.getIdOf("Account","Test Automation Organization"));
+        grant.addProperty("InternalOrganization",ProjectWebServices.getIdOf("Account","SAN DIEGO ELECTRICAL TRAINING TRUST"));
+        grant.addProperty("Program",ProjectWebServices.getIdOf("Program__c","Automation Permanent Internal Program"));
         grant.addProperty("DoesGrantAllowIndirect","Yes");
         grant.addProperty("IsMatchRequired","Yes");
         grant.addProperty("MaintenanceOfEffort","Yes");
@@ -746,8 +745,8 @@ public class ProjectApis extends ProjectWebServices{
         grant.addProperty("GranteeMatch",10);
         grant.addProperty("BudgetCloseoutrequestRequired","Yes");
         grant.addProperty("CostSharing","Cash Match");
-        grant.addProperty("RecordTypeId",getRecordTypeId("Grant__c","Grantor"));
-        grant.addProperty("OwnerId",getIdOf("User","Automation PM"));
+        grant.addProperty("RecordTypeId",ProjectWebServices.getRecordTypeId("Grant__c","Grantor"));
+        grant.addProperty("OwnerId",ProjectWebServices.getIdOf("User","Automation PM"));
         grantA.add(grant);
         parent.add("Grant",grantA);
 
@@ -756,15 +755,15 @@ public class ProjectApis extends ProjectWebServices{
         award.addProperty("GrantAwardDescription","Award Created From Automation API");
         award.addProperty("BudgetPeriodEndDate", I.amPerforming()
                 .actionToGet().currentDateWithOffsetInDesiredFormat(600, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        award.addProperty("PM",getIdOf("User","Automation PM"));
-        award.addProperty("FO",getIdOf("User","Automation FO"));
-        award.addProperty("EXE",getIdOf("User","Automation EXE"));
+        award.addProperty("PM",ProjectWebServices.getIdOf("User","Automation PM"));
+        award.addProperty("FO",ProjectWebServices.getIdOf("User","Automation FO"));
+        award.addProperty("EXE",ProjectWebServices.getIdOf("User","Automation EXE"));
         awardArray.add(award);
         parent.add("Award",awardArray);
 
         JsonObject awardFundingAccount = new JsonObject();
         JsonArray awardFundingAccountArray = new JsonArray();
-        awardFundingAccount.addProperty("FundingAccount",getIdOf("FundingAccount__c",I.amPerforming().propertiesFileOperationsTo()
+        awardFundingAccount.addProperty("FundingAccount",ProjectWebServices.getIdOf("FundingAccount__c",I.amPerforming().propertiesFileOperationsTo()
                 .getValue("fundingAccount")));
         awardFundingAccount.addProperty("PreEncumbranceAmount","1000");
         awardFundingAccountArray.add(awardFundingAccount);
@@ -813,7 +812,7 @@ public class ProjectApis extends ProjectWebServices{
 
         JsonObject awardServiceArea = new JsonObject();
         JsonArray awardServiceAreaArray = new JsonArray();
-        awardServiceArea.addProperty("ServiceArea",getIdOf("ServiceArea__c","Automation Permanent Focus Area"));
+        awardServiceArea.addProperty("ServiceArea",ProjectWebServices.getIdOf("ServiceArea__c","Automation Permanent Focus Area"));
         awardServiceArea.addProperty("GATStartDate",
                 I.amPerforming()
                         .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
@@ -825,13 +824,13 @@ public class ProjectApis extends ProjectWebServices{
 
         JsonObject kpiGoalsObjectives = new JsonObject();
         JsonArray kpiGoalsObjectivesArrays = new JsonArray();
-        kpiGoalsObjectives.addProperty("StrategicPlan",getIdOf("StrategicPlan__c","Automation Permanent Strategic Plan"));
+        kpiGoalsObjectives.addProperty("StrategicPlan",ProjectWebServices.getIdOf("StrategicPlan__c","Automation Permanent Strategic Plan"));
         kpiGoalsObjectivesArrays.add(kpiGoalsObjectives);
         parent.add("KPIGoalsObjectives",kpiGoalsObjectivesArrays);
 
         JsonObject keyOutcome = new JsonObject();
         JsonArray keyOutcomeArray = new JsonArray();
-        keyOutcome.addProperty("MasterKPI",getIdOf("MasterKPI__c","Automation Permanent KPI for Regression")); // KPI id
+        keyOutcome.addProperty("MasterKPI",ProjectWebServices.getIdOf("MasterKPI__c","Automation Permanent KPI for Regression")); // KPI id
         keyOutcome.addProperty("Target","10");
         keyOutcomeArray.add(keyOutcome);
         parent.add("KeyOutcome",keyOutcomeArray);
@@ -840,7 +839,7 @@ public class ProjectApis extends ProjectWebServices{
         JsonObject keyContacts = new JsonObject();
         JsonArray keyContactsArray = new JsonArray();
         keyContacts.addProperty("ProjectRole","Project Director/Manager");
-        keyContacts.addProperty("Contact",getIdOf("Contact","Automation SPI")); // Automation SPI id
+        keyContacts.addProperty("Contact",ProjectWebServices.getIdOf("Contact","Automation SPI")); // Automation SPI id
         keyContacts.addProperty("IsKeyContact",true);
         keyContactsArray.add(keyContacts);
         parent.add("KeyContacts",keyContactsArray);

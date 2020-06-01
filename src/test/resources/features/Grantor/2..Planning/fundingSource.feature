@@ -1,4 +1,4 @@
-@fundingSource @regression @parallel-regression @planning
+@fundingSource @grantor-regression @grantor-parallel-regression @planning
 Feature: Validate all scenarios in Funding Source
 
   @51034 @creationOfFundingSource

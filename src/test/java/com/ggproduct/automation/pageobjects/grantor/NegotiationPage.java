@@ -1,13 +1,13 @@
-package com.ggproduct.automation.pageobjects;
+package com.ggproduct.automation.pageobjects.grantor;
 
-import com.ggproduct.automation.projectmanager.ProjectManager;
+import com.ggproduct.automation.projectmanager.GrantorProjectManager;
 import com.testingblaze.objects.Elements;
 import com.testingblaze.register.I;
 import org.openqa.selenium.By;
 
 import java.util.List;
 
-public class NegotiationPage extends ProjectManager {
+public class NegotiationPage extends GrantorProjectManager {
 
     /**
      * To verify multipicklist contains value

@@ -1,4 +1,4 @@
-@riskAssessment @regression @parallel-regression
+@riskAssessment @grantor-regression @grantor-parallel-regression
 Feature: Risk Assessment scenarios without background
 
   @59252 @64792 @64942 @64944 @validateDataOnGrantAwardRA @deepika
