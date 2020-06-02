@@ -1,4 +1,4 @@
-@directedAnnouncements @regression @parallel-regression @announcement
+@directedAnnouncements @grantor-regression @grantor-parallel-regression @announcement
 Feature: Validate all scenarios in the directed Announcement tab
 
   Background: Create Announcement

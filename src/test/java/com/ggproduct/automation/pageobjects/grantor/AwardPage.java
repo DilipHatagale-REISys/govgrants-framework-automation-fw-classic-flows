@@ -1,7 +1,7 @@
-package com.ggproduct.automation.pageobjects;
+package com.ggproduct.automation.pageobjects.grantor;
 
 import com.automation.rei.handlers.govgrants;
-import com.ggproduct.automation.projectmanager.ProjectManager;
+import com.ggproduct.automation.projectmanager.GrantorProjectManager;
 import com.testingblaze.register.I;
 import com.testingblaze.report.LogLevel;
 import org.junit.Assert;
@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 
 import java.util.List;
 
-public class AwardPage extends ProjectManager {
+public class AwardPage extends GrantorProjectManager {
 
     /**
      * To verify text area is editable

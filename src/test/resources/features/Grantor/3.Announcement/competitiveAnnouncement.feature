@@ -1,4 +1,4 @@
-@competitiveAnnouncements @regression @parallel-regression @announcement
+@competitiveAnnouncements @grantor-regression @grantor-parallel-regression @announcement
 Feature: Validate all scenarios in the Competitive Announcement tab
 
   Background: Create Announcement

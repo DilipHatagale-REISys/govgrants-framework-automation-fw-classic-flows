@@ -1,4 +1,4 @@
-@preApplication @regression @parallel-regression @app
+@preApplication @grantor-regression @grantor-parallel-regression @app
 Feature: Validate all scenarios in the Pre-Application
 
   Background: Qualify Announcement and Create PreApplication

@@ -1,4 +1,4 @@
-@announcement @commonAnnouncements @regression @parallel-regression
+@announcement @commonAnnouncements @grantor-regression @grantor-parallel-regression
 Feature: Validate all common scenarios in the  Announcement tab (Announcement without background)
 
   @70878 @70373 @70821 @70978 @validationOverrideProgramSetting @aashish

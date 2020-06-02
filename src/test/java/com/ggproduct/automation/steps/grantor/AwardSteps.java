@@ -1,7 +1,7 @@
-package com.ggproduct.automation.steps;
+package com.ggproduct.automation.steps.grantor;
 
 import com.automation.rei.handlers.govgrants;
-import com.ggproduct.automation.pageobjects.AwardPage;
+import com.ggproduct.automation.pageobjects.grantor.AwardPage;
 import com.testingblaze.objects.Elements;
 import com.testingblaze.register.I;
 import io.cucumber.java.en.And;

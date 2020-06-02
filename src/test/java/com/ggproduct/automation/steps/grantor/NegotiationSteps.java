@@ -1,6 +1,6 @@
-package com.ggproduct.automation.steps;
+package com.ggproduct.automation.steps.grantor;
 
-import com.ggproduct.automation.pageobjects.NegotiationPage;
+import com.ggproduct.automation.pageobjects.grantor.NegotiationPage;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.springframework.context.annotation.Description;

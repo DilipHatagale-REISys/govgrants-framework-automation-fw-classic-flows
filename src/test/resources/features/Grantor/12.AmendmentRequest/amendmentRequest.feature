@@ -1,4 +1,4 @@
-@amendmentRequests @regression @parallel-regression @parallel-regression
+@amendmentRequests @grantor-regression @grantor-parallel-regression @parallel-regression
 Feature: Validate all scenarios in the Amendment Request
 
   Background: Setup data

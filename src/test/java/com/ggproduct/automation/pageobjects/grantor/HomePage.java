@@ -1,7 +1,7 @@
-package com.ggproduct.automation.pageobjects;
+package com.ggproduct.automation.pageobjects.grantor;
 
 import com.automation.rei.handlers.govgrants;
-import com.ggproduct.automation.projectmanager.ProjectManager;
+import com.ggproduct.automation.projectmanager.GrantorProjectManager;
 import com.testingblaze.objects.Elements;
 import com.testingblaze.register.I;
 import org.junit.Assert;
@@ -14,7 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class HomePage extends ProjectManager {
+public class HomePage extends GrantorProjectManager {
 
     /**
      * handles to reassign the record to particular user
