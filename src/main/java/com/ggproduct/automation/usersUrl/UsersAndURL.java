@@ -12,12 +12,15 @@ import java.util.Map;
 
 public class UsersAndURL implements UsersController {
 
-    public UsersAndURL(){
+    public UsersAndURL() {
         I.amPerforming().propertiesFileOperationsTo().saveValue("EXE Username", "Automation EXE");
         I.amPerforming().propertiesFileOperationsTo().saveValue("FO Username", "Automation FO");
         I.amPerforming().propertiesFileOperationsTo().saveValue("PM Username", "Automation PM");
         I.amPerforming().propertiesFileOperationsTo().saveValue("AUDITOR Username", "Automation AUDITOR");
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPI Username", "Automation SPI");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("ADMIN Username", "Mahananda Nyamagouda");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("PO Username", "Automation PO");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("FD Username", "Automation FD");
     }
 
     /**
@@ -97,6 +100,12 @@ public class UsersAndURL implements UsersController {
             case "ADMIN":
                 password = "GoProduct@12345";
                 break;
+            case "FD":
+                password = "GoProduct@12";
+                break;
+            case "PO":
+                password = "GoProduct@12";
+                break;
             default:
                 password = "SALESFORCE2021";
         }
@@ -133,6 +142,8 @@ public class UsersAndURL implements UsersController {
         username.put("EXE", "test@gmaildemo.com.atm.automation");
         username.put("PM", "donald_pm@ggp.test7.atm.automation");
         username.put("FO", "auto.fm@auto.com.atm.automation");
+        username.put("FD", "automationfd@yopmail.com");
+        username.put("PO", "automationpo@yopmail.com");
         username.put("SPI", "spiauto@yopmail.com");
         username.put("SPA", "spaauto@yopmail.com");
         username.put("IND", "ind.automation@yopmail.com");
