@@ -3,7 +3,44 @@ Feature: Validate all scenarios in Organizational Site Visit
 
   Background: Creation of Organizational Site Visit
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Site Visit" and properties "default"
-    Given I login to "As a Grantor" app as "dynamicUser" user
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Site Visit}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Site Visit}" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 1000   | 100        | 100            | 100            |
+    When I navigate to "Proposal" sub tab
+    When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Attachments" sub tab
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
+    Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Given I click on "Back" in the page details
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
+    Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    Given I click on "Back" in the page details
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
+      | Name                      | Project Role             | Is Key Contact |
+      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
+    When I click on "Submit Application" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
@@ -32,7 +69,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click "Associate" after selection of "<Subrecipient>" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     Then I see that "<Subrecipient>" has been added in flextable with Id "---orgLevelSiteVisits:-:associateContactsId---"
     Examples:
-      | Subrecipient   |
+      | Subrecipient              |
       | {SavedValue:SPI Username} |
 
   @54210 @monitoringTypeSiteVisitFiscal @deepika
@@ -88,13 +125,13 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     Then I see that "<Program Approver Name>" has been added in flextable with Id "---orgLevelSiteVisits:-:approverSiteVisitTableId---"
     Examples:
-      | Program Approver Name |
-      | {SavedValue:PM Username}         |
+      | Program Approver Name    |
+      | {SavedValue:PM Username} |
 
   @54454 @54456 @75862 @conductAndnotifySubrecipientSiteVisitOrgLevel @smoke @deepika
   Scenario: Conduct Site Visit and Notify Subrecipient about the Site Visit Org Level | Validate the external user will receive an email notification when the org level site visit is in notified status
@@ -108,7 +145,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I save the field labeled "EGMS ID" as "SiteVisitId"
@@ -134,7 +171,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -161,7 +198,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -202,7 +239,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -250,7 +287,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:FO Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -320,7 +357,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:FO Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -384,17 +421,17 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
-      | Title                               | Description            | Status      | Due Date | Assigned To    |
+      | Title                               | Description            | Status      | Due Date | Assigned To               |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To    |
+      | Title                           | Description            | Status      | Due Date | Assigned To               |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To    |
+      | Title                           | Description            | Status      | Due Date | Assigned To               |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     And I collapse nested table containing column value "Automation Finding"
     Then I softly see that "{SavedValue:Automation Runtime Site Visit Org level}" is in "Sent to Subrecipient" status
@@ -411,7 +448,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:FO Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -475,17 +512,17 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
-      | Title                               | Description            | Status      | Due Date | Assigned To    |
+      | Title                               | Description            | Status      | Due Date | Assigned To               |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To    |
+      | Title                           | Description            | Status      | Due Date | Assigned To               |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To    |
+      | Title                           | Description            | Status      | Due Date | Assigned To               |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
@@ -513,7 +550,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:FO Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -576,7 +613,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:FO Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -652,7 +689,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:FO Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -718,7 +755,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click "Associate" after selection of "<Internal>" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     Then I see that "<Internal>" has been added in flextable with Id "---orgLevelSiteVisits:-:associateContactsId---"
     Examples:
-      | Internal       |
+      | Internal                  |
       | {SavedValue:EXE Username} |
 
   @55799 @organizationalsiteVisitPurpose @deepika
@@ -753,7 +790,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -776,7 +813,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -803,7 +840,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:FO Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -834,7 +871,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:FO Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -890,7 +927,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:FO Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -952,7 +989,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:FO Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -1004,7 +1041,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:FO Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -1016,7 +1053,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridSiteVisitReviewerRoles" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Reviewer Name            | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
@@ -1046,7 +1083,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:FO Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -1059,7 +1096,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridSiteVisitReviewerRoles" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Reviewer Name            | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
@@ -1124,7 +1161,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     Then I softly see field "StartDate__c" is not editable
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -1147,7 +1184,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -1186,7 +1223,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -1263,7 +1300,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:FO Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -1323,7 +1360,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Responsibilities | Name          | Description                 |
+      | Responsibilities | Name                     | Description                 |
       | Program Approver | {SavedValue:FO Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:PM Username} | Automation Test Description |
     When I navigate to "Overview" sub tab
@@ -1387,7 +1424,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---orgLevelSiteVisits:-:receipientTableId---" by clicking "New" :
-      | Title                               | Description            | Status      | Due Date | Assigned To    |
+      | Title                               | Description            | Status      | Due Date | Assigned To               |
       | Automation Observation Subrecipient | Automation Description | In-Progress | -10      | {SavedValue:SPI Username} |
     When I collapse nested table containing column value "Automation Observation"
     Then I softly see the following messages in the page details contains:
