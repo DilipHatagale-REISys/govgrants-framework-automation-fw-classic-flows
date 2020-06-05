@@ -91,17 +91,6 @@ Feature: Programs External related scenarios
     Then I see the header is "Federal Organization" in the page details
     Then I see the sub-header is "Animal And Plant Health Inspection Service" in the page details
 
-  @61855 @ProgramsInternal @verifyAllFieldsToBeInRead-OnlyModeInInternalPrograms @wip @smoke @positive
-  Scenario: Verify User can not edit in read-only mode
-     Given I login to "As a Grantee" app as "Admin" user
-    And I navigate to "Planning" tab
-    When I navigate to "{grantee_sidebar:InternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
-    When I perform quick search for "Automation Internal Program" in "{grantee_tableId:InternalProgramsListPage}" panel
-    When I click on "View" icon for "Automation Internal Program" inside flex table with id "{grantee_tableId:InternalProgramsListPage}"
-    Then I see the header is "Internal Program" in the page details
-    Then I see the sub-header is "Automation Internal Program" in the page details
-    Then I softly see field "Name" as "Automation Internal Program"
-
   @61997 @CreatingNon-FederalProgram @ValidateOrganizationInsideLookupFieldForNonFederalProgram @positive
   Scenario: validate organization is getting selected inside lookup modal for non federal program
     Given I login to "As a Grantee" app as "PM" user
@@ -134,43 +123,6 @@ Feature: Programs External related scenarios
       | userType |
       | PM       |
       | PO       |
-
-  @62124 @InternalProgram @ViewInternalPrograms @smoke @wip  @positive
-  Scenario Outline: validate all profiles can view all internal programs
-    Given I login to "As a Grantee" app as "PM" user
-    And I navigate to "Planning" tab
-    When I navigate to "{grantee_sidebar:InternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:InternalProgramsListPage}"
-    When I enter "ProgramsInternalProgram" values from "Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I re-login as "<user type>" user on "default" portal
-    And I perform quick search for "{SavedValue:Automation Runtime Internal Program}" in "{grantee_tableId:InternalProgramsListPage}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Internal Program}" inside flex table with id "{grantee_tableId:InternalProgramsListPage}"
-    Then I see the header is "Internal Program" in the page details
-    Then I see the sub-header is "{SavedValue:Automation Runtime Internal Program}" in the page details
-    Examples:
-      | user type |
-      | Admin     |
-      | PM        |
-      | PO        |
-      | FD        |
-      | EXE       |
-      | FO        |
-      | PM1       |
-
-  @62124 @InternalProgram @ViewInternalProgramsTableColumns @smoke @wip @positive
-  Scenario Outline: validate Internal profile user can see all table columns for internal program table
-     Given I login to "As a Grantee" app as "Admin" user
-    And I navigate to "Planning" tab
-    When I navigate to "{grantee_sidebar:InternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
-    Then I see "<fieldDisplayNames>" in flex table header "{grantee_tableId:InternalProgramsListPage}"
-    Examples:
-      | fieldDisplayNames      |
-      | EGMS ID                |
-      | Program Name           |
-      | Internal Organization  |
-      | Primary Funding Source |
-      | Program Subtype        |
 
   @62108 @ProgramsExternal @EditNonFederalProgram   @positive
   Scenario Outline: validate PM user can edit non-federal program
@@ -236,30 +188,6 @@ Feature: Programs External related scenarios
     When I perform quick search for "{SavedValue:Automation Runtime NF Program}" in "{grantee_tableId:NonFederalPrograms}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime NF Program}" inside flex table with id "{grantee_tableId:NonFederalPrograms}"
     Then I softly see field "Program Number" as "NF-11"
-
-  @62114 @ProgramsInternal @ValidateOrganizationInsideLookupFieldsAtInternalProgram @wip @positive
-  Scenario: validate PM user can create internal program
-    Given I login to "As a Grantee" app as "PM" user
-    And I navigate to "Planning" tab
-    When I navigate to "{grantee_sidebar:InternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:InternalProgramsListPage}"
-    When I enter "ProgramsInternalProgram" values from "Field_Values.xlsx"
-    Then I see value "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" inside lookup field "fieldIntermediateAccount__c"
-
-  @62114 @ProgramsInternal @CreateInternalProgram @smoke @wip @positive
-  Scenario Outline: validate PM  and PO users can create internal program
-    Given I login to "As a Grantee" app as "<userType>" user
-    And I navigate to "Planning" tab
-    When I navigate to "{grantee_sidebar:InternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:InternalProgramsListPage}"
-    When I enter "ProgramsInternalProgram" values from "Field_Values.xlsx"
-    And I click on "Save" in the page details
-    Then I see the header is "Internal Program" in the page details
-    Then I see the sub-header is "{SavedValue:Automation Runtime Internal Program}" in the page details
-    Examples:
-      | userType |
-      | PO       |
-      | PM       |
 
   @62006 @ProgramsExternal @EnterNon-FederalProgramFields   @positive
   Scenario Outline: validate PM user can enter all the fields

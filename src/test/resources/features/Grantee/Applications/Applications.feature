@@ -1235,7 +1235,6 @@ Feature: Applications related scenarios
       | Fiscal Approver    | Automation FO  | prdoh       |
       | Executive Approver | Automation EXE | prdoh       |
     When I navigate to "Overview" sub tab
-    And I save the field labeled "Opportunity" as "OpportunityTitle"
     And I save the field labeled "Funding Opportunity Number" as "FundingOppNumber"
     And I save the field labeled "Funding Organization" as "FundingOrganization"
     And I click on "Submit for Approval" in the page details
@@ -1318,7 +1317,7 @@ Feature: Applications related scenarios
     And I click modal button "Save"
     When I click on "Create Application" in the page details
     And I click on "Save and Continue" in the page details
-    Then I softly see field "Opportunity Title" as "{SavedValue:OpportunityTitle}"
+    Then I softly see field "Opportunity Title" as "{SavedValue:Automation Runtime Lead}"
     Then I softly see field "Opportunity Number" as "{SavedValue:FundingOppNumber}"
     Then I softly see field "Funding Organization" as "{SavedValue:FundingOrganization}"
     Then I softly see field "Application Title" as "{SavedValue:PreApplicationTitle}"
