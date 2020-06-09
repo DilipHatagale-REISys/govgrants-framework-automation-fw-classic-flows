@@ -4,7 +4,7 @@ Feature: Sanity scenarios
 
   @61948 @validateStrategicPlan @validateStrategicPlanEditAndDelete @smoke @positive
   Scenario: Verify Only owner can edit and delete strategic plan
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -18,7 +18,7 @@ Feature: Sanity scenarios
 
   @61987 @validateStrategicPlan @validateStrategicPlanGridView   @positive
   Scenario Outline: Verify Embedded strategic goals should have all the required columns
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -37,7 +37,7 @@ Feature: Sanity scenarios
 
   @61987 @validateStrategicPlan @validateStrategicPlanGridView @smoke   @positive
   Scenario: Verify User can view strategic plans, goals and objectives.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -65,7 +65,7 @@ Feature: Sanity scenarios
 
   @62329 @validateStrategicPlan @validateStrategicPlanNotActivateSPforSameOrg  @positive
   Scenario: Verify user can not activate SP with same organization which is activated
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -100,7 +100,7 @@ Feature: Sanity scenarios
 
   @62150 @Projects @verifyProjectSortColumns  @positive
   Scenario Outline: Verify sorting column for projects
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     When I click on "<ColumnName>" column header inside table with id "{grantee_tableId:Projects}"
@@ -116,7 +116,7 @@ Feature: Sanity scenarios
 
   @62258 @Projects @verifyProjectsHistorySubTabSort  @positive
   Scenario Outline: Verify user can Sort to history table by column
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:OpportunityConvertedToApplication}"
@@ -148,7 +148,7 @@ Feature: Sanity scenarios
 
   @62585 @Projects @verifyProjectsDeactiveButtonInvalidUser
   Scenario Outline: Verify user <user> cannot see Deactivate button for Activated project
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:OpportunityConvertedToApplication}"
@@ -176,7 +176,7 @@ Feature: Sanity scenarios
 
   @61817 @ProgramsExternal @verifyProgramsExternalQuickSearchValid @smoke  @positive
   Scenario Outline: Verify User can perform quick search with valid data for Federal Programs
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ExternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
     And I perform quick search for "<value>" in "FederalProgramsFlexToggle" panel
@@ -199,8 +199,8 @@ Feature: Sanity scenarios
     Then I softly see "Agency Abbreviation" in flex table header "EnhanceExternalProgramEnhancedGridgrid"
     Examples:
       | userType |
-      | Admin    |
-      | PM       |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
       | PO       |
       | FD       |
       | EXE      |
@@ -209,7 +209,7 @@ Feature: Sanity scenarios
 
   @62120 @ProgramsInternal @EditInternalProgram   @positive
   Scenario: validate internal users like PM/PO can edit internal program
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:InternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "EnhanceGranteeStateProgramsgrid"
@@ -222,7 +222,7 @@ Feature: Sanity scenarios
 
   @62116 @KPI @validateAllOrgUserCanViewKPI  @positive
   Scenario: Verify all Organizational user can view created KPI.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -254,7 +254,7 @@ Feature: Sanity scenarios
 
   @62123 @KPI @validateDeactivateKPI @smoke    @positive
   Scenario: Verify user can Deactivate KPI.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -278,7 +278,7 @@ Feature: Sanity scenarios
 
   @62200 @KPI @validateKPITitleField   @positive
   Scenario Outline: Verify Title field accept 255 characters only
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -298,7 +298,7 @@ Feature: Sanity scenarios
 
   @62191 @KPI @validateKPIAddAssociateForInactive @wip
   Scenario: Verify user click on associate without selecting objective.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -320,7 +320,7 @@ Feature: Sanity scenarios
 
   @62192 @KPI @validateKPIDeleteInActivate
   Scenario: Verify other user can not delete InActivated KPI.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -346,7 +346,7 @@ Feature: Sanity scenarios
 
   @62225 @KPI @validateKPIDeactivateActivateBTN  @positive
   Scenario: Verify user can see Activate button for Deactivated KPI.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -373,7 +373,7 @@ Feature: Sanity scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -414,7 +414,7 @@ Feature: Sanity scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -448,7 +448,7 @@ Feature: Sanity scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -480,7 +480,7 @@ Feature: Sanity scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -515,7 +515,7 @@ Feature: Sanity scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -567,7 +567,7 @@ Feature: Sanity scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -614,7 +614,7 @@ Feature: Sanity scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -658,7 +658,7 @@ Feature: Sanity scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -703,7 +703,7 @@ Feature: Sanity scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -751,7 +751,7 @@ Feature: Sanity scenarios
 
   @63186 @validateRequiredFieldsAtLeadCreationPage-NotYetQualifiedLeads
   Scenario:  Validate error messge for required fields while creating leads
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -770,7 +770,7 @@ Feature: Sanity scenarios
 
   @62815 @validateFederalLeadsDetailsPage-All @smoke   @positive
   Scenario: Validate source field value on federal leads detail page
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -798,14 +798,14 @@ Feature: Sanity scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM1" user
+    Given I login to "As a Grantee" app as "GRANTEE PM1" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     And I click on "Qualify Lead" in the page details
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -816,7 +816,7 @@ Feature: Sanity scenarios
 
   @62830 @validateQuickSearchAtRelatedProgram  @positive
   Scenario: Validate quick search is working properly for valid and invalid input at related program detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -847,7 +847,7 @@ Feature: Sanity scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM1" user
+    Given I login to "As a Grantee" app as "GRANTEE PM1" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -859,7 +859,7 @@ Feature: Sanity scenarios
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
     When I click on "Save and Continue" in the page details
     When I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -871,7 +871,7 @@ Feature: Sanity scenarios
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
     When I click on "Save and Continue" in the page details
     When I pause execution for "3" seconds
-    When I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -885,7 +885,7 @@ Feature: Sanity scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM1" user
+    Given I login to "As a Grantee" app as "GRANTEE PM1" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -897,7 +897,7 @@ Feature: Sanity scenarios
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
     When I click on "Save and Continue" in the page details
     When I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -909,7 +909,7 @@ Feature: Sanity scenarios
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
     When I click on "Save and Continue" in the page details
     When I pause execution for "3" seconds
-    When I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -930,28 +930,28 @@ Feature: Sanity scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     And I click on "Qualify Lead" in the page details
-    And I re-login as "PO" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     Then I softly cannot see row level action button "Edit" against "{SavedValue:Automation Runtime Lead}" in flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     Then I softly cannot see top right button "Edit" in page detail
-    And I re-login as "FO" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     Then I softly cannot see row level action button "Edit" against "{SavedValue:Automation Runtime Lead}" in flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     Then I softly cannot see top right button "Edit" in page detail
-    And I re-login as "FD" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE DD" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
@@ -964,7 +964,7 @@ Feature: Sanity scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -983,7 +983,7 @@ Feature: Sanity scenarios
 
   @61681 @validateOverviewTabForInternalOrganizations   @positive
   Scenario: Validate Overview sub tab for internal organizations detail page
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" in "{grantee_tableId:InternalOrganizations}" panel
@@ -1001,7 +1001,7 @@ Feature: Sanity scenarios
     When I click on "Edit" in the page details
     And I see the text :
       | You dont have permission to access this record. Please contact administrator. |
-    When I re-login as "Admin" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" in "{grantee_tableId:InternalOrganizations}" panel
@@ -1013,7 +1013,7 @@ Feature: Sanity scenarios
 
   @61683 @validateAttachmentTabTabForInternalOrganizations  @positive
   Scenario: Validate Attachment addition and take snap shot functionality at overview sub tab for internal organizations detail page
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" in "{grantee_tableId:InternalOrganizations}" panel
@@ -1074,7 +1074,7 @@ Feature: Sanity scenarios
 
   @61706 @validateAddingOfDUNSNumberWithValidDataAtInternalUser  @positive
   Scenario: Validate addition of DUNS Number with valid inputs at internal organizations
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" in "{grantee_tableId:InternalOrganizations}" panel
@@ -1086,7 +1086,7 @@ Feature: Sanity scenarios
 
   @61950 @validateAddingOfContactForNonFederalOrganization    @positive
   Scenario: Validate addition of contact for non federal organization at external non federal organization table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "AIDS Funding Collaborative A" in "{grantee_tableId:NonFederalOrganizations}" panel
@@ -1110,7 +1110,7 @@ Feature: Sanity scenarios
 
   @61424 @validateSortingOfColumnAtExternalContactstable   @positive
   Scenario: Validate columns of external contacts table is getting sorted in ascending/descending order on column click
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I click on "Last Name" column header inside table with id "{grantee_tableId:ExternalFederalContacts}"
@@ -1172,7 +1172,7 @@ Feature: Sanity scenarios
 
   @61909 @validateAddingOfContactWithOrWithoutMandatoryFieldsAtFederalContacts @smoke
   Scenario: Validate adding of contacts with or without mandatory fields at External federal contact
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalFederalContacts}"
@@ -1229,15 +1229,15 @@ Feature: Sanity scenarios
 
     Examples:
       | userType |
-      | ADMIN    |
-      | PM       |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
       | PO       |
       | FO       |
       | EXE      |
 
   @62129 @validateSortingOfColumnAtInternalContactTable-myOrganizationContact  @positive
   Scenario: Validate columns of myOrganizationContact Table of internal contact is getting sorted in ascending/descending order on column click
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I click on "Last Name" column header inside table with id "{grantee_tableId:InternalContacts}"
@@ -1262,7 +1262,7 @@ Feature: Sanity scenarios
 
   @62031 @validateAddingOfInternalContactWithOrWithoutMandatoryFields-myOrganizationContact @smoke
   Scenario: Validate Internal contact creation with valid Invalid data.
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:InternalContacts}"
@@ -1299,7 +1299,7 @@ Feature: Sanity scenarios
 
   @62033 @validateAdminRecordShouldNotEditedByOthersUsersAtInternalContacts
   Scenario Outline: Validate contact record should not be edited by others users using created by field at Internal contact
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:InternalContacts}"

@@ -4,7 +4,7 @@ Feature: Projects related scenarios
 
   @62150 @Projects @verifyProjectAllActive   @positive
   Scenario: Verify User can see active project in Project All
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click toggle button to select "Focus Areas - All"
@@ -13,7 +13,7 @@ Feature: Projects related scenarios
 
   @62150 @Projects @verifyProjectAllInactive   @positive
   Scenario: Verify User can see Inactive project in Project All
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -34,7 +34,7 @@ Feature: Projects related scenarios
 
   @62150 @Projects @verifyProjectAllDraft  @positive
   Scenario: Verify User can see draft project in Project All
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click toggle button to select "Focus Areas - All"
@@ -43,7 +43,7 @@ Feature: Projects related scenarios
 
   @62150 @Projects @verifyProjectToggleOptions @smoke   @positive
   Scenario Outline: Verify User can use toggle with different options
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -58,7 +58,7 @@ Feature: Projects related scenarios
 
   @62150 @Projects @verifyProjectRecordCountAll @wip  @positive
   Scenario Outline: Verify User can correct total count of record as per All statuse
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click toggle button to select "<options>"
@@ -73,7 +73,7 @@ Feature: Projects related scenarios
 
   @62150 @Projects @verifyProjectPagination   @positive
   Scenario: Verify pagination for projects
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click toggle button to select "Focus Areas - All"
@@ -82,7 +82,7 @@ Feature: Projects related scenarios
 
   @62150 @Projects @verifyProjectQuickSearchValid @smoke   @positive
   Scenario Outline: Verify User can perform quick search with valid data
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -106,7 +106,7 @@ Feature: Projects related scenarios
 
   @62150 @Projects @verifyProjectQuickSearchInValid
   Scenario Outline: Verify User can perform quick search with invalid data
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -131,7 +131,7 @@ Feature: Projects related scenarios
 
   @62150 @Projects @verifyProjectAdvancedSearchValid   @positive
   Scenario Outline: Verify User can perform advance search with valid data
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -156,7 +156,7 @@ Feature: Projects related scenarios
 
   @62150 @Projects @verifyProjectAdvancedSearchInValid
   Scenario Outline: Verify User can perform advance search with Invalid data
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -180,7 +180,7 @@ Feature: Projects related scenarios
 
   @62150 @Projects @verifyProjectRefreshViewPage   @positive
   Scenario: Verify User can refresh view page
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     When I click on parallel lines menu bar with data target value "#GranteeServiceAreasFlexToggle"
@@ -208,14 +208,14 @@ Feature: Projects related scenarios
     Then I can see top right button "New" in flex table with id "{grantee_tableId:OpportunityConvertedToApplication}"
     Examples:
       | userType |
-      | ADMIN    |
-      | PM       |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
       | EXE      |
 
 
   @62182 @Projects @verifyProjectsUserClickNewButton @wip  @positive
   Scenario: Verify User can navigate to modal by clicking on New button
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -224,7 +224,7 @@ Feature: Projects related scenarios
 
   @62182 @Projects @verifyProjectsCancelModal
   Scenario: Verify User can navigate view page of projects
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -235,7 +235,7 @@ Feature: Projects related scenarios
 
   @62182 @Projects @verifyProjectsEnterInfoForProject  @positive
   Scenario: Verify User can enter information in required field
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -251,7 +251,7 @@ Feature: Projects related scenarios
   @62182 @Projects @verifyProjectsAccept255InTitle   @positive
   Scenario Outline: Verify User can enter only 255 character in title field
     When I delete the record "<requiredValue>" from the object "FOCUS AREA"
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -269,7 +269,7 @@ Feature: Projects related scenarios
 
   @62258 @Projects @verifyProjectsViewPage   @positive
   Scenario: Verify user can click and navigate to view page by clicking view
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -286,7 +286,7 @@ Feature: Projects related scenarios
 
   @62258 @Projects @verifyProjectsOverviewTab @smoke   @positive
   Scenario: Verify user can see project details on Overview Tab
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -304,7 +304,7 @@ Feature: Projects related scenarios
 
   @62258 @Projects @verifyProjectsOverviewSystemInformation @positive
   Scenario: Verify user can see System Information on Overview Tab
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -321,7 +321,7 @@ Feature: Projects related scenarios
 
   @62258 @Projects @verifyProjectsOverviewSystemInformationCDate   @positive
   Scenario: Verify user can see Created date
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -338,7 +338,7 @@ Feature: Projects related scenarios
 
   @62258 @Projects @verifyProjectsOverviewSystemInformationMDate   @positive
   Scenario: Verify user can see Modified date
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -355,7 +355,7 @@ Feature: Projects related scenarios
 
   @62258 @Projects @verifyProjectsInternalOrgLink @smoke   @positive
   Scenario: Verify user can navigate to other page by clicking on Internal Org Link
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -373,7 +373,7 @@ Feature: Projects related scenarios
 
   @62258 @Projects @verifyProjectsCreatedByLink @smoke   @positive
   Scenario: Verify user can navigate to user page By created by link
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -390,7 +390,7 @@ Feature: Projects related scenarios
 
   @62258 @Projects @verifyProjectsHistorySubTab @smoke  @positive
   Scenario: Verify user can navigate to history sub tab
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -409,7 +409,7 @@ Feature: Projects related scenarios
 
   @62183 @Projects @verifyProjectsNewStatusDraft  @positive
   Scenario: Verify User can see status as Drafts
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -424,7 +424,7 @@ Feature: Projects related scenarios
 
   @62183 @Projects @verifyProjectsDescriptionValidate
   Scenario Outline: Verify Description field validation
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -448,7 +448,7 @@ Feature: Projects related scenarios
 
   @62258 @Projects @verifyProjectsHistoryHelpText  @positive
   Scenario Outline: Verify user can see help text for history tab
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -469,7 +469,7 @@ Feature: Projects related scenarios
 
   @62258 @Projects @verifyProjectsHistorySearch   @positive
   Scenario: Verify user can search in history table
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -497,7 +497,7 @@ Feature: Projects related scenarios
 
   @62258 @Projects @verifyProjectsHistorySearchInvalid
   Scenario: Verify user can see message for invalid search in history table
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -517,7 +517,7 @@ Feature: Projects related scenarios
 
   @62228 @Projects @verifyProjectsUserLogin @smoke   @positive
   Scenario Outline: Verify different user can navigate to view page
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -564,7 +564,7 @@ Feature: Projects related scenarios
 
   @62262 @Projects @verifyProjectsRowLevelEditButton02
   Scenario Outline: Verify other than Owner can not see row level edit button
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -586,7 +586,7 @@ Feature: Projects related scenarios
 
   @62262 @Projects @verifyProjectsActivatedNotEdit
   Scenario: Verify user cannot see edit button for activated project
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -605,7 +605,7 @@ Feature: Projects related scenarios
 
   @62262 @Projects @verifyProjectsInActivatedNotEdit
   Scenario: Verify user cannot see edit button for InActivated project
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -626,7 +626,7 @@ Feature: Projects related scenarios
 
   @62262 @Projects @verifyProjectsDraftedEditAndSave  @positive
   Scenario: Verify user can edit and save drafted project
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -644,7 +644,7 @@ Feature: Projects related scenarios
 
   @62399 @Projects @verifyProjectsRowLevelDeleteButton  @positive
   Scenario: Verify Owner can see row level Delete button
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -658,7 +658,7 @@ Feature: Projects related scenarios
 
   @62399 @Projects @verifyProjectsRowLevelDeleteButton02
   Scenario Outline: Verify other Owner cannot see row level Delete button
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -679,7 +679,7 @@ Feature: Projects related scenarios
 
   @62399 @Projects @verifyProjectsActivatedNotDelete
   Scenario: Verify user cannot see Delete button for activated project
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -697,7 +697,7 @@ Feature: Projects related scenarios
 
   @62399 @Projects @verifyProjectsInActivatedNotDelete
   Scenario: Verify user cannot see Delete button for InActivated project
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -718,7 +718,7 @@ Feature: Projects related scenarios
 
   @62399 @Projects @verifyProjectsDelete @smoke  @positive
   Scenario: Verify user can Delete project
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -734,7 +734,7 @@ Feature: Projects related scenarios
 
   @62412 @Projects @verifyProjectsActivateButtonSee @smoke  @positive
   Scenario: Verify user can see activate button
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -749,7 +749,7 @@ Feature: Projects related scenarios
 
   @62412 @Projects @verifyProjectsActivatedButtonNotSee
   Scenario: Verify user can not see activate button on activated project
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -768,7 +768,7 @@ Feature: Projects related scenarios
 
   @62412 @Projects @verifyProjectsActivatedButtonSeeInacivated  @positive
   Scenario: Verify user can see Activate button for InActivated project
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -786,7 +786,7 @@ Feature: Projects related scenarios
 
   @62412 @Projects @verifyProjectsActivatedProjectStatus  @positive
   Scenario: Verify user can see status as Active after activate project
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -802,7 +802,7 @@ Feature: Projects related scenarios
 
   @62412 @Projects @verifyProjectsActivatedProjectApplication  @positive
   Scenario: Verify user can see activate projects to associate in Application
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -847,14 +847,14 @@ Feature: Projects related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "5" seconds
@@ -862,7 +862,7 @@ Feature: Projects related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "2" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -881,7 +881,7 @@ Feature: Projects related scenarios
 
   @62412 @Projects @verifyProjectsDeactivatedProjectApplication
   Scenario: Verify user can not see Deactivate projects to associate in Application
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -928,14 +928,14 @@ Feature: Projects related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "5" seconds
@@ -943,7 +943,7 @@ Feature: Projects related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "2" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -962,7 +962,7 @@ Feature: Projects related scenarios
 
   @62412 @Projects @verifyProjectsDraftProjectApplication
   Scenario: Verify user can not see draft projects to associate in Application
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -1002,14 +1002,14 @@ Feature: Projects related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "5" seconds
@@ -1017,7 +1017,7 @@ Feature: Projects related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "2" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -1061,7 +1061,7 @@ Feature: Projects related scenarios
 
   @62585 @Projects @verifyProjectsDraftDeactiveButton @smoke
   Scenario: Verify user cannot see Deactivate button for Draft project
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -1076,7 +1076,7 @@ Feature: Projects related scenarios
 
   @62585 @Projects @verifyProjectsInactiveDeactiveButton
   Scenario: Verify user cannot see Deactivate button for Inactivated project
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"
@@ -1097,7 +1097,7 @@ Feature: Projects related scenarios
 
   @62585 @Projects @verifyProjectsDeactiveProject  @positive
   Scenario: Verify user can see status of project as Inactive after Deactivate
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:GranteeProjectTableId}"

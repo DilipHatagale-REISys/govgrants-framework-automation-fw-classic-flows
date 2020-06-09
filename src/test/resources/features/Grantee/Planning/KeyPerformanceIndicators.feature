@@ -4,7 +4,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62116 @KPI @validateKPIQuickSearch @smoke  @positive
   Scenario Outline: Verify User can do quick search using <ColumnName>
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "<value>" in "{grantee_tableId:KPITable}" panel
@@ -17,7 +17,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62116 @KPI @validateKPIAdvanceSearch @positive
   Scenario Outline: Verify User can advance search using <ColumnName>
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     When I click on advance filter "#advfEnhanceMasterKPIs" of table id "{grantee_tableId:KPITable}"
@@ -31,7 +31,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62116 @KPI @validateKPSortAllColumns @positive
   Scenario Outline: Verify User can column sort of <ColumnName>
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     When I click on "<ColumnName>" column header inside table with id "{grantee_tableId:KPITable}"
@@ -49,7 +49,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62116 @KPI @validateTotalNumberOfRecords @smoke  @positive
   Scenario: Verify Total number of records as per different status
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I select value inside table "{grantee_tableId:KPITable}" is "All"
@@ -57,7 +57,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62116 @KPI @validateKPIGridView @smoke
   Scenario: Verify user can view created KPI.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -77,7 +77,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62123 @KPI @validateKPIstatusBar @positive
   Scenario: Verify status bar on KPI view page.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -96,7 +96,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62123 @KPI @validateKPIinternalOrgHyperLink @smoke @positive
   Scenario: Verify internal organization is hyperlink on KPI view page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -117,7 +117,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62123 @KPI @validateActivateKPI @smoke @positive
   Scenario: Verify user can activate KPI.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -156,12 +156,12 @@ Feature: Key Performance Indicators related scenarios
     Then I cannot see top right button "Edit" in page detail
     Examples:
       | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      | GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @62123 @KPI @validateKPIAddAssociateForDraft @positive
   Scenario Outline: Verify user can add associate objective to KPI in draft status.
@@ -204,13 +204,13 @@ Feature: Key Performance Indicators related scenarios
     And I close modal by clicking the top right x button
     Then I see value "Automation Objective" for title "Title" inside table "{grantee_tableId:PlanningAssociateObjectiveTableId}"
       | userType |
-      | ADMIN    |
-      | PM       |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
       | EXE      |
 
   @62123 @KPI @validateKPISystemInformationCreatedBy  @positive
   Scenario: Verify user can see correct system information(Created By) on KPI view page.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -226,7 +226,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62123 @KPI @validateKPISystemInformationCreatedDate  @positive
   Scenario: Verify user can see correct system information(Created Date) on KPI view page.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -243,7 +243,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62123 @KPI @validateKPISystemInformationModifiedBy @positive
   Scenario: Verify user can see correct system information(Modified By) on KPI view page.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -264,7 +264,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62123 @KPI @validateKPISystemInformationModifiedDate   @positive
   Scenario: Verify user can see correct system information(Modified Date) on KPI view page.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -310,7 +310,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62200 @KPI @validateKPIMeasureField  @positive
   Scenario Outline: Verify Measure field accept 255 characters only
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -329,7 +329,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62200 @KPI @validateKPIValidationMessage
   Scenario: Verify validation message on Save and Continue button
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -344,7 +344,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62200 @KPI @validateKPICreated @smoke   @positive
   Scenario: Verify user can Create new KPI and move on view page.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -361,7 +361,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62122 @KPI @validateKPIOwnerCanSeeEditButton @smoke
   Scenario: Verify Other user(Not Owner) can not see edit button.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -373,7 +373,7 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:{SavedValue:Automation Runtime KPI}}" in "{grantee_tableId:KPITable}" panel
@@ -381,7 +381,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62122 @KPI @validateKPIOwnerCanSeeEditButton  @positive
   Scenario: Verify Only Owner can see edit button.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -401,7 +401,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62122 @KPI @validateKPIFieldValidationInEditMode
   Scenario: Verify warning messages on view page when edit fields are clear.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -433,7 +433,7 @@ Feature: Key Performance Indicators related scenarios
   @62122 @KPI @validateKPITitleFieldInEditMode  @positive
   Scenario Outline: Verify Title field accept 255 characters only in edit mode
     When I delete the record "<requiredValue>" from the object "KPI"
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -504,13 +504,13 @@ Feature: Key Performance Indicators related scenarios
     Then I see value "Automation Objective" for title "Title" inside table "{grantee_tableId:PlanningAssociateObjectiveTableId}"
     Examples:
       | userType |
-      | ADMIN    |
-      | PM       |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
       | EXE      |
 
   @62191 @KPI @ValidateAssociateObjectiveForInactiveKPI
   Scenario: Verify user can not see associate button for inactive KPI.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -532,7 +532,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62192 @KPI @validateKPIDelete @smoke  @positive
   Scenario: Verify user can delete KPI.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -552,7 +552,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62192 @KPI @validateKPIOwnerCanDelete
   Scenario: Verify only owner can delete KPI.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -571,7 +571,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62192 @KPI @validateKPIOtherCanNotDelete
   Scenario: Verify other user can not delete KPI.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -583,7 +583,7 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime KPI}" in "{grantee_tableId:KPITable}" panel
@@ -591,7 +591,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62192 @KPI @validateKPIDeleteActivate @smoke
   Scenario: Verify other user cannot delete Activated KPI.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -610,7 +610,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62225 @KPI @validateKPIActivateButton @smoke   @positive
   Scenario: Verify user can see activate button KPI.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -629,7 +629,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62225 @KPI @validateKPIActivateButtonOnlyRecordOwner
   Scenario: Verify Other user can not see activate button KPI.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -641,7 +641,7 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime KPI}" in "{grantee_tableId:KPITable}" panel
@@ -650,7 +650,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62225 @KPI @validateKPIActivateDeleteBTN @smoke
   Scenario: Verify user can not see Delete button for activated KPI.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -669,7 +669,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62225 @KPI @validateKPIActivateEditBTN
   Scenario: Verify user can not see Edit button for activated KPI.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -705,6 +705,6 @@ Feature: Key Performance Indicators related scenarios
     Then I can see top right button "Deactivate" in page detail
     Examples:
       | userType |
-      | ADMIN    |
-      | PM       |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
       | EXE      |

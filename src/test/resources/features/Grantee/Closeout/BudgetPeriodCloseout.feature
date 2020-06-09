@@ -40,7 +40,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -48,7 +48,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -112,7 +112,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -120,7 +120,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -178,7 +178,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -186,7 +186,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -273,7 +273,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -281,7 +281,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -350,7 +350,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -358,7 +358,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -481,7 +481,7 @@ Feature: Budget Period Closeout related scenarios
       | Automation PM             | Automation PM            |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -492,7 +492,7 @@ Feature: Budget Period Closeout related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -588,7 +588,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -596,7 +596,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -684,7 +684,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -692,7 +692,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -809,7 +809,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -817,7 +817,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -865,7 +865,7 @@ Feature: Budget Period Closeout related scenarios
       | Executive Approver | Automation Exe | Automation Approval required |
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
-    And I re-login as "PO" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     Then I softly see value "Approve Budget Period Closeout Request" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -877,7 +877,7 @@ Feature: Budget Period Closeout related scenarios
     Then I can see the comment box in the approval decision
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
-    And I re-login as "FD" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE DD" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     Then I softly see value "Approve Budget Period Closeout Request" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -890,7 +890,7 @@ Feature: Budget Period Closeout related scenarios
     Then I can see the comment box in the approval decision
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
-    And I re-login as "FO" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     Then I softly see value "Approve Budget Period Closeout Request" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -941,7 +941,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -949,7 +949,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -997,7 +997,7 @@ Feature: Budget Period Closeout related scenarios
       | Executive Approver | Automation Exe | Automation Approval required |
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
-    And I re-login as "PO" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     Then I softly see value "Approve Budget Period Closeout Request" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -1048,7 +1048,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1056,7 +1056,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1104,7 +1104,7 @@ Feature: Budget Period Closeout related scenarios
       | Executive Approver | Automation Exe | Automation Approval required |
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
-    And I re-login as "PO" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     Then I softly see value "Approve Budget Period Closeout Request" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -1116,7 +1116,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Submitted for Approval"
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     Then I softly see value "Approve Budget Period Closeout Request" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -1125,7 +1125,7 @@ Feature: Budget Period Closeout related scenarios
     When I select radio button "Reassign" in the approval decision
     And I select user "Automation FO" in the approval decision
     And I submit the approval in the approval decision without processing
-    And I re-login as "FO" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:BPCloseoutEgmsId}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1133,7 +1133,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Approved"
-    And I re-login as "Exe" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     Then I softly see value "Approve Budget Period Closeout Request" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -1207,7 +1207,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1215,7 +1215,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1268,7 +1268,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Submitted for Approval"
-    And I re-login as "Exe" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     Then I softly see value "Approve Budget Period Closeout Request" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -1280,7 +1280,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Submitted for Approval"
-    And I re-login as "FD" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE DD" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     Then I softly see value "Approve Budget Period Closeout Request" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -1292,7 +1292,7 @@ Feature: Budget Period Closeout related scenarios
     Then I can see the comment box in the approval decision
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
-    And I re-login as "FO" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     Then I softly see value "Approve Budget Period Closeout Request" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -1343,7 +1343,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1351,7 +1351,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1404,7 +1404,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Submitted for Approval"
-    And I re-login as "Exe" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     Then I softly see value "Approve Budget Period Closeout Request" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -1415,7 +1415,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Approved"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     Then I softly see value "Submit Budget Period Closeout Request" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -1462,7 +1462,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1470,7 +1470,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1521,7 +1521,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Submitted for Approval"
-    And I re-login as "Exe" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     Then I softly see value "Approve Budget Period Closeout Request" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -1532,7 +1532,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Approved"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
     When I navigate to "{sidebar:BudgetPeriodCloseoutLinkName}" content inside "{sidebar:CloseoutSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1599,7 +1599,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1607,7 +1607,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1660,7 +1660,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Submitted for Approval"
-    And I re-login as "Exe" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     Then I softly see value "Approve Budget Period Closeout Request" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -1671,7 +1671,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Approved"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
     When I navigate to "{sidebar:BudgetPeriodCloseoutLinkName}" content inside "{sidebar:CloseoutSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1835,7 +1835,7 @@ Feature: Budget Period Closeout related scenarios
     When I select radio button "Approve" in the approval decision
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
-    And I re-login as "Exe" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:BPCloseoutEgmsId}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1844,7 +1844,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Approved"
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
     When I navigate to "{sidebar:BudgetPeriodCloseoutLinkName}" content inside "{sidebar:CloseoutSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "{prdoh_tableId:BudgetPeriodCloseoutListTableId}" panel
@@ -1954,7 +1954,7 @@ Feature: Budget Period Closeout related scenarios
     When I select radio button "Approve" in the approval decision
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
-    And I re-login as "Exe" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:BPCloseoutEgmsId}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:BPCloseoutEgmsId}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1963,7 +1963,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     Then I softly see field "Status" as "Approved"
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
     When I navigate to "{sidebar:BudgetPeriodCloseoutLinkName}" content inside "{sidebar:CloseoutSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2043,7 +2043,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2051,7 +2051,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2099,7 +2099,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2107,7 +2107,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2155,7 +2155,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2163,7 +2163,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2215,7 +2215,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2223,7 +2223,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2290,7 +2290,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2298,7 +2298,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2354,7 +2354,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2362,7 +2362,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2419,7 +2419,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2427,7 +2427,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2497,7 +2497,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AWARDID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AWARDID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AWARDID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2505,7 +2505,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2518,7 +2518,7 @@ Feature: Budget Period Closeout related scenarios
     When I enter value "Reason for the Budget Period Closeout Request" into field "fieldReason__c"
     And I click on "Save and Continue" in the page details
     And I save the field containing "Closeout EGMS ID" as "BPCloseoutEgmsId"
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2570,7 +2570,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2578,7 +2578,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2644,7 +2644,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2652,7 +2652,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2756,7 +2756,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2764,7 +2764,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2838,7 +2838,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2846,7 +2846,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2927,7 +2927,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2935,7 +2935,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -3034,7 +3034,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3042,7 +3042,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -3081,12 +3081,12 @@ Feature: Budget Period Closeout related scenarios
     Then I see total records count is same as total row of table id "{prdoh_tableId:BudgetPeriodCloseoutListTableId}" and table name "flextable"
     Examples:
       | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      | GRANTEE FO       |
+      | GRANTEE EXE      |
       | PM1      |
 
   @81201 @ValidateTotalRecordCountAtListViewBudgetPeriodCloseoutDraft  @positive
@@ -3100,12 +3100,12 @@ Feature: Budget Period Closeout related scenarios
     Then I see total records count is same as total row of table id "{prdoh_tableId:BudgetPeriodCloseoutListTableId}" and table name "flextable"
     Examples:
       | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      | GRANTEE FO       |
+      | GRANTEE EXE      |
       | PM1      |
 
   @81201 @ValidateTotalRecordCountAtListViewBudgetPeriodCloseout-Submitted  @positive
@@ -3118,12 +3118,12 @@ Feature: Budget Period Closeout related scenarios
     Then I see total records count is same as total row of table id "{prdoh_tableId:BudgetPeriodCloseoutListTableId}" and table name "flextable"
     Examples:
       | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      | GRANTEE FO       |
+      | GRANTEE EXE      |
       | PM1      |
 
   @ValidateTotalRecordCountAtListViewBudgetPeriodCloseout-Completed  @positive
@@ -3136,12 +3136,12 @@ Feature: Budget Period Closeout related scenarios
     Then I see total records count is same as total row of table id "{prdoh_tableId:BudgetPeriodCloseoutListTableId}" and table name "flextable"
     Examples:
       | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      | GRANTEE FO       |
+      | GRANTEE EXE      |
       | PM1      |
 
   @71134 @ValidateBudgetPeriodCloseoutRequestShouldBeCreated  @smoke  @positive
@@ -3183,7 +3183,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3194,7 +3194,7 @@ Feature: Budget Period Closeout related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | AwardClose | null       |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
     And I navigate to "{sidebar:BudgetPeriodCloseoutLinkName}" content inside "{sidebar:CloseoutSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:BudgetPeriodCloseoutListTableId}" panel
@@ -3253,7 +3253,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3264,7 +3264,7 @@ Feature: Budget Period Closeout related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | AwardClose | null       |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
     When I navigate to "{sidebar:BudgetPeriodCloseoutLinkName}" content inside "{sidebar:CloseoutSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:BudgetPeriodCloseoutListTableId}" panel
@@ -3314,7 +3314,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "Awardid"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:Awardid}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:Awardid}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3325,7 +3325,7 @@ Feature: Budget Period Closeout related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | AwardClose | null       |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
     When I navigate to "{sidebar:BudgetPeriodCloseoutLinkName}" content inside "{sidebar:CloseoutSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:BudgetPeriodCloseoutListTableId}" panel
@@ -3397,7 +3397,7 @@ Feature: Budget Period Closeout related scenarios
     And I close modal by clicking the top right x button
     And I click on "Submit For Approval" in the page details
     And I save the field containing "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3408,7 +3408,7 @@ Feature: Budget Period Closeout related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:AwardsTable}" panel
@@ -3503,7 +3503,7 @@ Feature: Budget Period Closeout related scenarios
     And I close modal by clicking the top right x button
     And I click on "Submit For Approval" in the page details
     And I save the field containing "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3514,7 +3514,7 @@ Feature: Budget Period Closeout related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -3622,7 +3622,7 @@ Feature: Budget Period Closeout related scenarios
     And I close modal by clicking the top right x button
     And I click on "Submit For Approval" in the page details
     And I save the field containing "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3633,7 +3633,7 @@ Feature: Budget Period Closeout related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -3766,7 +3766,7 @@ Feature: Budget Period Closeout related scenarios
     And I close modal by clicking the top right x button
     And I click on "Submit For Approval" in the page details
     And I save the field containing "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3777,7 +3777,7 @@ Feature: Budget Period Closeout related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -3932,7 +3932,7 @@ Feature: Budget Period Closeout related scenarios
     And I close modal by clicking the top right x button
     And I click on "Submit For Approval" in the page details
     And I save the field containing "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3943,7 +3943,7 @@ Feature: Budget Period Closeout related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -4009,7 +4009,7 @@ Feature: Budget Period Closeout related scenarios
     And I close modal by clicking the top right x button
     And I click on "Submit For Approval" in the page details
     And I save the field containing "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4097,7 +4097,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4105,7 +4105,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -4171,7 +4171,7 @@ Feature: Budget Period Closeout related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When  I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4179,7 +4179,7 @@ Feature: Budget Period Closeout related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds

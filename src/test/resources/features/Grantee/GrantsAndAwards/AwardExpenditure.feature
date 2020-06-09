@@ -36,7 +36,7 @@ Feature: Award expenditure related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -44,7 +44,7 @@ Feature: Award expenditure related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -92,7 +92,7 @@ Feature: Award expenditure related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -100,7 +100,7 @@ Feature: Award expenditure related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -154,7 +154,7 @@ Feature: Award expenditure related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -162,7 +162,7 @@ Feature: Award expenditure related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -210,7 +210,7 @@ Feature: Award expenditure related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -218,7 +218,7 @@ Feature: Award expenditure related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -268,7 +268,7 @@ Feature: Award expenditure related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -276,7 +276,7 @@ Feature: Award expenditure related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -329,7 +329,7 @@ Feature: Award expenditure related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -344,7 +344,7 @@ Feature: Award expenditure related scenarios
       | operationType | batchName   | recordName |
       | Batch         | Expenditure | null       |
     And I pause execution for "5" seconds
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -398,7 +398,7 @@ Feature: Award expenditure related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -413,7 +413,7 @@ Feature: Award expenditure related scenarios
       | operationType | batchName   | recordName |
       | Batch         | Expenditure | null       |
     And I pause execution for "5" seconds
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -463,7 +463,7 @@ Feature: Award expenditure related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -481,7 +481,7 @@ Feature: Award expenditure related scenarios
       | operationType | batchName   | recordName |
       | Batch         | Expenditure | null       |
     And I pause execution for "6" seconds
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"

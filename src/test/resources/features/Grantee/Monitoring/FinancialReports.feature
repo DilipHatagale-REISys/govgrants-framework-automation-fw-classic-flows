@@ -37,7 +37,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -45,7 +45,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -114,7 +114,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -122,7 +122,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -192,7 +192,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -200,7 +200,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -261,7 +261,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -269,7 +269,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -350,7 +350,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -358,7 +358,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -416,7 +416,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -424,7 +424,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -487,7 +487,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -495,7 +495,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -559,7 +559,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -567,7 +567,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -634,7 +634,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -642,7 +642,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -707,7 +707,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -715,7 +715,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -776,7 +776,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -784,7 +784,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -801,7 +801,7 @@ Feature: Financial Reports related scenarios
     And I click on top right button "New" in flex table with id "{prdoh_tableId:FinancialReportsOnAwards}"
     When I enter value "370" into field "fieldReportDueDate__c"
     And I click on "Save" in the page details
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Financial Reports" content inside "Monitoring" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:FinancialReportsOnMonitoring}" panel
@@ -852,7 +852,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -860,7 +860,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -926,7 +926,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -934,7 +934,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -999,7 +999,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1007,7 +1007,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1074,7 +1074,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1082,7 +1082,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1149,7 +1149,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1157,7 +1157,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1223,7 +1223,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1231,7 +1231,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1297,7 +1297,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1305,7 +1305,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1375,7 +1375,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1383,7 +1383,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1450,7 +1450,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1458,7 +1458,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1493,7 +1493,7 @@ Feature: Financial Reports related scenarios
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Submitted for Approval"
-    When I re-login as "FD" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE DD" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     Then I softly see value "Approve Financial Report" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -1501,7 +1501,7 @@ Feature: Financial Reports related scenarios
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Submitted for Approval"
-    When I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     Then I softly see value "Approve Financial Report" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -1545,7 +1545,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1553,7 +1553,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1582,17 +1582,17 @@ Feature: Financial Reports related scenarios
       | Executive Approver | Automation Exe | Automation Approval required |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
-    When I re-login as "FD" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE DD" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
-    When I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Financial Reports" content inside "Monitoring" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:FinancialReportsOnMonitoring}" panel
@@ -1644,7 +1644,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1652,7 +1652,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1728,7 +1728,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1736,7 +1736,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1769,7 +1769,7 @@ Feature: Financial Reports related scenarios
     When I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     And I pause execution for "3" seconds
-    When I re-login as "FO" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     Then I softly see value "Approve Financial Report" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -1813,7 +1813,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1821,7 +1821,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1850,17 +1850,17 @@ Feature: Financial Reports related scenarios
       | Executive Approver | Automation Exe | Automation Approval required |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
-    When I re-login as "FD" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE DD" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
-    When I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Financial Reports" content inside "Monitoring" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:FinancialReportsOnMonitoring}" panel
@@ -1917,7 +1917,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1925,7 +1925,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1954,17 +1954,17 @@ Feature: Financial Reports related scenarios
       | Executive Approver | Automation Exe | Automation Approval required |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
-    When I re-login as "FD" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE DD" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
-    When I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Financial Reports" content inside "Monitoring" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:FinancialReportsOnMonitoring}" panel
@@ -2021,7 +2021,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2029,7 +2029,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2058,17 +2058,17 @@ Feature: Financial Reports related scenarios
       | Executive Approver | Automation Exe | Automation Approval required |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
-    When I re-login as "FD" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE DD" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
-    When I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Financial Reports" content inside "Monitoring" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:FinancialReportsOnMonitoring}" panel
@@ -2125,7 +2125,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2133,7 +2133,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2162,17 +2162,17 @@ Feature: Financial Reports related scenarios
       | Executive Approver | Automation Exe | Automation Approval required |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
-    When I re-login as "FD" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE DD" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
-    When I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Financial Reports" content inside "Monitoring" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:FinancialReportsOnMonitoring}" panel
@@ -2227,7 +2227,7 @@ Feature: Financial Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2235,7 +2235,7 @@ Feature: Financial Reports related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2264,17 +2264,17 @@ Feature: Financial Reports related scenarios
       | Executive Approver | Automation Exe | Automation Approval required |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
-    When I re-login as "FD" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE DD" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
-    When I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Financial Reports" content inside "Monitoring" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:FinancialReportsOnMonitoring}" panel
@@ -2286,17 +2286,17 @@ Feature: Financial Reports related scenarios
     And I click on "Revise Financial Report" in the page details
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
-    When I re-login as "FD" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE DD" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Approve Financial Report" in "{prdoh_tableId:PendingTask}" panel
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
-    When I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Approve Financial Report" in "{prdoh_tableId:PendingTask}" panel
     When I click on "Start" icon for "Approve Financial Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     And I "Approve" in the approval decision
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Financial Reports" content inside "Monitoring" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:FinancialReportsOnMonitoring}" panel

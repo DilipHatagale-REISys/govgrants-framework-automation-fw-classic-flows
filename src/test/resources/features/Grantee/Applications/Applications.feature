@@ -7,7 +7,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -30,14 +30,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "5" seconds
@@ -45,7 +45,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "2" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -64,7 +64,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -91,21 +91,21 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -129,7 +129,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -156,21 +156,21 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -192,7 +192,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -219,21 +219,21 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -260,7 +260,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -288,14 +288,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -331,7 +331,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -358,21 +358,21 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -397,7 +397,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -424,21 +424,21 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -460,7 +460,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -487,21 +487,21 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -523,7 +523,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -550,21 +550,21 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -586,7 +586,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -613,21 +613,21 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -651,7 +651,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -678,14 +678,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -693,7 +693,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -724,7 +724,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -751,14 +751,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -766,7 +766,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -795,7 +795,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -822,14 +822,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -837,7 +837,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -860,7 +860,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -889,14 +889,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -904,7 +904,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -952,13 +952,13 @@ Feature: Applications related scenarios
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
@@ -999,7 +999,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -1026,14 +1026,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1041,7 +1041,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -1076,7 +1076,7 @@ Feature: Applications related scenarios
 
   @64885 @TejalApril2020 @ValidateAllTheValuesAvailableShouldBeCopiedOverFromTheOpportunityRecord  @positive
   Scenario: verify All the values available should be copied over from the opportunity record
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1121,7 +1121,7 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I pause execution for "2" seconds
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1129,7 +1129,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -1178,13 +1178,13 @@ Feature: Applications related scenarios
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
@@ -1205,7 +1205,7 @@ Feature: Applications related scenarios
 
   @64885 @TejalApril2020 @ValidateDefaultFilterForListAndSortingFunctionalityForAnApplication   @positive
   Scenario: verify  default filter for list and sorting functionality for an Application
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:ApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     Then I softly see the text containing :
@@ -1239,7 +1239,7 @@ Feature: Applications related scenarios
 
   @64818 @TejalApril2020 @ValidatePermissionForAllInternalOrganizationusersForViewApplication   @positive
   Scenario Outline: verify Permission for all users for view Application
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1277,14 +1277,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1292,7 +1292,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "2" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -1306,7 +1306,7 @@ Feature: Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:Application}"
     Then I softly see field "Application Title" as "{SavedValue:Automation Runtime Lead}"
     Then I softly can see top right button "Edit" in page detail
-    When I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:ApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I click toggle button to select "Applications - All"
@@ -1314,19 +1314,19 @@ Feature: Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:Application}"
     Then I softly see field "Application Title" as "{SavedValue:Automation Runtime Lead}"
     Examples:
-      | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @64818 @TejalApril2020 @ValidateApplicationDetailsPage    @positive
   Scenario: verify Application Details page
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -1354,14 +1354,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1369,7 +1369,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -1402,7 +1402,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -1429,7 +1429,7 @@ Feature: Applications related scenarios
       | Executive Approver | Automation EXE | prdoh       |
     And I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1437,7 +1437,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -1486,7 +1486,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -1514,7 +1514,7 @@ Feature: Applications related scenarios
       | Executive Approver | Automation EXE | prdoh       |
     And I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1522,7 +1522,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -1572,7 +1572,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -1599,14 +1599,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1614,7 +1614,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -1654,7 +1654,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -1681,14 +1681,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1696,7 +1696,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -1733,7 +1733,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -1760,14 +1760,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1775,7 +1775,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -1811,7 +1811,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -1838,14 +1838,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1853,7 +1853,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -1877,19 +1877,19 @@ Feature: Applications related scenarios
     And I navigate to "Attachments" sub tab
     Then I softly see table with header "Attachments" contains records "AttachmentTesting.pdf"
     Examples:
-      | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @64818 @TejalApril2020 @ValidatePermissionToViewNotessAddedToApplication   @positive
   Scenario Outline: verify permission to view notes added to Application
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -1916,14 +1916,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1931,7 +1931,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -1955,19 +1955,19 @@ Feature: Applications related scenarios
     And I navigate to "Attachments" sub tab
     Then I softly see table with header "Notes" contains records "Automation Notes"
     Examples:
-      | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @64818 @TejalApril2020 @ValidateToViewSubmitToGrantorAndReviseOption @wip @BugLoggedWith77923   @positive
   Scenario: verify to View Submit To Grantor and revise Option
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -1994,14 +1994,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2009,7 +2009,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -2067,7 +2067,7 @@ Feature: Applications related scenarios
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
@@ -2087,7 +2087,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -2114,14 +2114,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2129,7 +2129,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -2162,7 +2162,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -2189,14 +2189,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2204,7 +2204,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -2237,7 +2237,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -2264,14 +2264,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2279,7 +2279,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -2335,7 +2335,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -2362,14 +2362,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2377,7 +2377,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -2434,7 +2434,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -2461,14 +2461,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2476,7 +2476,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -2544,7 +2544,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -2571,14 +2571,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2586,7 +2586,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -2622,7 +2622,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -2646,7 +2646,7 @@ Feature: Applications related scenarios
       | Executive Approver | Automation EXE | prdoh       |
     And I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2654,7 +2654,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -2701,7 +2701,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -2728,14 +2728,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2743,7 +2743,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -2794,7 +2794,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -2821,14 +2821,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2836,7 +2836,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -2889,7 +2889,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -2916,14 +2916,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2931,7 +2931,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -2968,7 +2968,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -2995,14 +2995,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3010,7 +3010,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -3043,7 +3043,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -3070,14 +3070,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3085,7 +3085,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -3124,7 +3124,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -3151,14 +3151,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3166,7 +3166,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -3204,7 +3204,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -3231,14 +3231,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3246,7 +3246,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -3270,7 +3270,7 @@ Feature: Applications related scenarios
     Then I softly can see top right button "Complete Review" in page detail
     Then I softly see field "Status" as "Submitted for Review"
     Then I softly cannot see row level action button "Enter Review" against "Sent for Review" in flex table with id "{grantee_tableId:ApplicationPeerReview}"
-    When I re-login as "PM1" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM1" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" inside table "{grantee_tableId:PendingTask}"
@@ -3280,7 +3280,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -3307,14 +3307,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3322,7 +3322,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -3391,7 +3391,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -3418,14 +3418,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3433,7 +3433,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -3484,7 +3484,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -3511,14 +3511,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3526,7 +3526,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -3572,7 +3572,7 @@ Feature: Applications related scenarios
 
   @66535 @TejalApril2020 @ValidateEnterReviewFunctionalityForAnApplication  @positive
   Scenario: verify Enter review functionality for an application
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -3610,14 +3610,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3625,7 +3625,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -3681,7 +3681,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -3708,14 +3708,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3723,7 +3723,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -3761,7 +3761,7 @@ Feature: Applications related scenarios
 
   @66535 @TejalApril2020 @ValidateCompleteReviewFunctionalityWhenTheRecordLevelStatusForAssignedReviewerIsSentForReview  @positive
   Scenario: verify complete review functionality when the record level status for assigned reviewer(s) is Sent for Review
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -3796,7 +3796,7 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I pause execution for "2" seconds
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3804,7 +3804,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -3832,7 +3832,7 @@ Feature: Applications related scenarios
 
   @65395 @TejalApril2020 @ValidateAddApproversToApplicationFunctionality  @positive
   Scenario: verify Add Approvers to Application functionality
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -3870,14 +3870,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3885,7 +3885,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -3916,7 +3916,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -3943,14 +3943,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3958,7 +3958,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -4007,7 +4007,7 @@ Feature: Applications related scenarios
     Then I softly see field "Status" as "Submitted for Approval"
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
@@ -4020,7 +4020,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -4047,14 +4047,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -4062,7 +4062,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -4110,7 +4110,7 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
@@ -4142,7 +4142,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -4169,14 +4169,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -4184,7 +4184,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -4231,7 +4231,7 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
@@ -4267,7 +4267,7 @@ Feature: Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -4294,14 +4294,14 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -4309,7 +4309,7 @@ Feature: Applications related scenarios
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -4357,7 +4357,7 @@ Feature: Applications related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
