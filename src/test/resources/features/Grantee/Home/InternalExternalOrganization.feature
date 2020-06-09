@@ -256,8 +256,8 @@ Feature:Internal organization related scenarios
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
     When I click on "View" icon for "Test Automation Organization" inside table
-    When I perform quick search for "FO Username" in "{grantee_tableId:RelatedContacts}" panel
-    When I click on "View" icon for "FO Username" inside table
+    When I perform quick search for "GRANTEE FO Username" in "{grantee_tableId:RelatedContacts}" panel
+    When I click on "View" icon for "GRANTEE FO Username" inside table
     When I click "Test Automation Organization" lookup link
     Then I see the header is "Internal Organization" in the page details
     Then I see the sub-header is "Test Automation Organization" in the page details
@@ -288,8 +288,8 @@ Feature:Internal organization related scenarios
     When I click on "View" icon for "Test Automation Organization" inside table
     When I perform quick search for "AutomationUser" in "{grantee_tableId:RelatedContacts}" panel
     Then I softly can see row level action button "Remove" against "AutomationUser" in flex table with id "{grantee_tableId:RelatedContacts}"
-    When I perform quick search for "{SavedValue:PO Username}" in "{grantee_tableId:RelatedContacts}" panel
-    Then I softly can see row level action button "Remove" against "{SavedValue:PO Username}" in flex table with id "{grantee_tableId:RelatedContacts}"
+    When I perform quick search for "{SavedValue:GRANTEE PO Username}" in "{grantee_tableId:RelatedContacts}" panel
+    Then I softly can see row level action button "Remove" against "{SavedValue:GRANTEE PO Username}" in flex table with id "{grantee_tableId:RelatedContacts}"
 
   @61752 @validateDeletionOfActiveAndNonActiveContactFromReletedContactsAtInternalOrganizations @positive
   Scenario: Validate contact deletion from related contacts for Active nonActive contacts at internal organizations
@@ -305,8 +305,8 @@ Feature:Internal organization related scenarios
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
     When I click on "View" icon for "Test Automation Organization" inside table
-    When I perform quick search for "{SavedValue:PM Username}" in "{grantee_tableId:RelatedContacts}" panel
-    When I click on "Remove" icon for "{SavedValue:PM Username}" inside flex table with id "{grantee_tableId:RelatedContacts}"
+    When I perform quick search for "{SavedValue:GRANTEE PM Username}" in "{grantee_tableId:RelatedContacts}" panel
+    When I click on "Remove" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:RelatedContacts}"
     Then I softly see the following messages in the page details contains:
       | You cannot delete a contact who is an active EGMS user. Please contact your system administrator to deactivate the user. After deactivation, the contact can be deleted. |
     When I perform quick search for "AutomationUser" in "{grantee_tableId:RelatedContacts}" panel
@@ -338,9 +338,9 @@ Feature:Internal organization related scenarios
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
     When I click on "View" icon for "Test Automation Organization" inside table
-    When I perform quick search for "{SavedValue:EXE Username}" in "{grantee_tableId:RelatedContacts}" panel
-    Then I softly see value "{SavedValue:EXE Username}" for title "Full Name" inside table "{grantee_tableId:RelatedContacts}"
-    When I perform quick search for "Invalid {SavedValue:EXE Username}" in "{grantee_tableId:RelatedContacts}" panel
+    When I perform quick search for "{SavedValue:GRANTEE EXE Username}" in "{grantee_tableId:RelatedContacts}" panel
+    Then I softly see value "{SavedValue:GRANTEE EXE Username}" for title "Full Name" inside table "{grantee_tableId:RelatedContacts}"
+    When I perform quick search for "Invalid {SavedValue:GRANTEE EXE Username}" in "{grantee_tableId:RelatedContacts}" panel
     Then I softly see "No Records Found" inside flex table with id "{grantee_tableId:RelatedContacts}"
 
   @61741 @validateAdvanceFilterSearchIsWorkingForAtRelatedContactTable @positive
@@ -352,14 +352,14 @@ Feature:Internal organization related scenarios
     When I click on "View" icon for "Test Automation Organization" inside table
     When I click on advance filter "#advfGranteeContactsByInternalAccount" of table id "{grantee_tableId:RelatedContacts}"
     When I enter advance filter values inside id "advfGranteeContactsByInternalAccount"
-      | Full Name | contains | {SavedValue:EXE Username} |
-    Then I softly see value "{SavedValue:EXE Username}" for title "Full Name" inside table "{grantee_tableId:RelatedContacts}"
+      | Full Name | contains | {SavedValue:GRANTEE EXE Username} |
+    Then I softly see value "{SavedValue:GRANTEE EXE Username}" for title "Full Name" inside table "{grantee_tableId:RelatedContacts}"
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
     When I click on "View" icon for "Test Automation Organization" inside table
     When I click on advance filter "#advfGranteeContactsByInternalAccount" of table id "{grantee_tableId:RelatedContacts}"
     When I enter advance filter values inside id "advfGranteeContactsByInternalAccount"
-      | Full Name | contains | Invalid {SavedValue:EXE Username} |
+      | Full Name | contains | Invalid {SavedValue:GRANTEE EXE Username} |
     Then I softly see "No Records Found" inside flex table with id "{grantee_tableId:RelatedContacts}"
 
   @61741 @validatePaginationFunctionalityIsWorkingOrNotAtRealtedContactsTable @positive

@@ -103,8 +103,8 @@ Feature: Contacts related scenarios
     When I enter value "Automation Federal Contact" into field "fieldTitle"
     And I click on "Save" in the page details
     Then I softly see field "Title" as "Automation Federal Contact"
-    Then I softly see field "Created By" as "{SavedValue:ADMIN Username}"
-    Then I softly see field "Last Modified By" as "{SavedValue:ADMIN Username}"
+    Then I softly see field "Created By" as "{SavedValue:GRANTEE ADMIN Username}"
+    Then I softly see field "Last Modified By" as "{SavedValue:GRANTEE ADMIN Username}"
     And I save the field labeled "Last Modified Date" as "ModifiedDate"
     Then I softly see field "{SavedValue:ModifiedDate}" contains todays date withTime
 
@@ -126,12 +126,12 @@ Feature: Contacts related scenarios
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:ExternalFederalContacts}" panel
     When I click on "View" icon for "Automation Federal Contact" inside table
     And I pause execution for "2" seconds
-    When I hover mouse on lookup link "{SavedValue:ADMIN Username}"
+    When I hover mouse on lookup link "{SavedValue:GRANTEE ADMIN Username}"
     Then I see "<miniPageLayout_Text>" shown inside mini page layout on hover
 
     Examples:
       | miniPageLayout_Text         |
-      | {SavedValue:ADMIN Username} |
+      | {SavedValue:GRANTEE ADMIN Username} |
 
   @61905 @validateAddingOfContactForFederalOrganizationUnderExternalContact  @needToCheckWithParallelExecution  @positive
   Scenario Outline: Validate addition of contact for federal organization to check maximum length at external federal contact table
@@ -288,11 +288,11 @@ Feature: Contacts related scenarios
 
     Examples:
       | userType      | userName                    |
-      | GRANTEE ADMIN | {SavedValue:ADMIN Username} |
-      | GRANTEE PM    | {SavedValue:PM Username}    |
-      | GRANTEE PO    | {SavedValue:PO Username}    |
-      | GRANTEE FO    | {SavedValue:FO Username}    |
-      | GRANTEE EXE   | {SavedValue:EXE Username}   |
+      | GRANTEE ADMIN | {SavedValue:GRANTEE ADMIN Username} |
+      | GRANTEE PM    | {SavedValue:GRANTEE PM Username}    |
+      | GRANTEE PO    | {SavedValue:GRANTEE PO Username}    |
+      | GRANTEE FO    | {SavedValue:GRANTEE FO Username}    |
+      | GRANTEE EXE   | {SavedValue:GRANTEE EXE Username}   |
 
   @61926 @validateDeletionOfContactUnderExternalFederalContact @smoke  @positive
   Scenario: Validate  deletion of contact from external federal contact table
@@ -330,10 +330,10 @@ Feature: Contacts related scenarios
 
     Examples:
       | userType      | userName                    |
-      | GRANTEE ADMIN | {SavedValue:ADMIN Username} |
-      | GRANTEE EXE   | {SavedValue:EXE Username}   |
-      | GRANTEE PM    | {SavedValue:PM Username}    |
-      | GRANTEE FO    | {SavedValue:FO Username}    |
+      | GRANTEE ADMIN | {SavedValue:GRANTEE ADMIN Username} |
+      | GRANTEE EXE   | {SavedValue:GRANTEE EXE Username}   |
+      | GRANTEE PM    | {SavedValue:GRANTEE PM Username}    |
+      | GRANTEE FO    | {SavedValue:GRANTEE FO Username}    |
 
   @61926 @validateRecordEditedByAdminForAllUsers   @positive @wip @needToCheckFRD
   Scenario Outline: Validate contact record edited by admin for all profiles using created by field at external federal contact
@@ -358,8 +358,8 @@ Feature: Contacts related scenarios
 
     Examples:
       | userType    | userName                  |
-      | GRANTEE EXE | {SavedValue:EXE Username} |
-      | GRANTEE PM  | {SavedValue:PM Username}  |
+      | GRANTEE EXE | {SavedValue:GRANTEE EXE Username} |
+      | GRANTEE PM  | {SavedValue:GRANTEE PM Username}  |
 
   @61926 @validateAdminRecordShouldNotEditedByOthersUsers @wip @needToCheckFRD
   Scenario Outline: Validate contact record should not be edited by others users using created by field at external federal contact
@@ -376,7 +376,7 @@ Feature: Contacts related scenarios
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:ExternalFederalContacts}" panel
     When I click on "view" icon for "Automation External Federal Contact" inside flex table with id "{grantee_tableId:ExternalFederalContacts}"
-    When I click "{SavedValue:ADMIN Username}" lookup link
+    When I click "{SavedValue:GRANTEE ADMIN Username}" lookup link
     When I click on "Edit" in the page details
     And I see the text :
       | You dont have permission to access this record. Please contact administrator. |
@@ -405,8 +405,8 @@ Feature: Contacts related scenarios
     When I enter value "Department of Health" into field "fieldAccountId"
     When I enter value "Automation Address Test" into field "fieldMailingStreet"
     And I click on "Save" in the page details
-    Then I softly see field "Last Modified By" as "{SavedValue:ADMIN Username}"
-    Then I softly see field "Created By" as "{SavedValue:PM Username}"
+    Then I softly see field "Last Modified By" as "{SavedValue:GRANTEE ADMIN Username}"
+    Then I softly see field "Created By" as "{SavedValue:GRANTEE PM Username}"
     And I save the field labeled "Last Modified Date" as "ModifiedDate"
     Then I softly see field "{SavedValue:ModifiedDate}" contains todays date withTime
 
@@ -425,7 +425,7 @@ Feature: Contacts related scenarios
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:ExternalNonFederalContacts}" panel
     When I click on "view" icon for "Automation External Non Federal Contact" inside flex table with id "{grantee_tableId:ExternalNonFederalContacts}"
-    When I click "{SavedValue:ADMIN Username}" lookup link
+    When I click "{SavedValue:GRANTEE ADMIN Username}" lookup link
     When I click on "Edit" in the page details
     When I enter value "Admin Address" into field "fieldAboutMe__c"
     Then I softly see field "About Me" as "Admin Address"
@@ -433,7 +433,7 @@ Feature: Contacts related scenarios
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:ExternalNonFederalContacts}" panel
     When I click on "view" icon for "Automation External Non Federal Contact" inside flex table with id "{grantee_tableId:ExternalNonFederalContacts}"
-    When I click "{SavedValue:ADMIN Username}" lookup link
+    When I click "{SavedValue:GRANTEE ADMIN Username}" lookup link
     When I click on "Edit" in the page details
     And I see the text :
       | You dont have permission to access this record. Please contact administrator. |
@@ -462,9 +462,9 @@ Feature: Contacts related scenarios
 
     Examples:
       | userType      | userName                    |
-      | GRANTEE ADMIN | {SavedValue:ADMIN Username} |
-      | GRANTEE EXE   | {SavedValue:EXE Username}   |
-      | GRANTEE PM    | {SavedValue:PM Username}    |
+      | GRANTEE ADMIN | {SavedValue:GRANTEE ADMIN Username} |
+      | GRANTEE EXE   | {SavedValue:GRANTEE EXE Username}   |
+      | GRANTEE PM    | {SavedValue:GRANTEE PM Username}    |
 
   @61932 @validateRecordEditedByAdminOwnerForNonFederalContact   @positive
   Scenario Outline: Validate Admin User can edit other user profile using created by field
@@ -488,8 +488,8 @@ Feature: Contacts related scenarios
     Then I softly see field "About Me" as "Admin Address"
     Examples:
       | userType    | userName                  |
-      | GRANTEE EXE | {SavedValue:EXE Username} |
-      | GRANTEE PM  | {SavedValue:PM Username}  |
+      | GRANTEE EXE | {SavedValue:GRANTEE EXE Username} |
+      | GRANTEE PM  | {SavedValue:GRANTEE PM Username}  |
 
   @62011 @validateDeletionOfContactUnderExternalFederalContactUsingMultipleUser @smoke  @positive
   Scenario Outline: Validate  deletion of contact from external federal contact table using multiple user
@@ -760,8 +760,8 @@ Feature: Contacts related scenarios
     Then I softly see field "State" as "DC"
     Then I softly see field "Zip Code" as "41102"
     Then I softly see field "City" as "Washington"
-    Then I softly see field "Last Modified By" as "{SavedValue:ADMIN Username}"
-    Then I softly see field "Created By" as "{SavedValue:ADMIN Username}"
+    Then I softly see field "Last Modified By" as "{SavedValue:GRANTEE ADMIN Username}"
+    Then I softly see field "Created By" as "{SavedValue:GRANTEE ADMIN Username}"
     When I click "Test Automation Organization" lookup link
     Then I see the header is "Internal Organization" in the page details
     Then I see the sub-header is "Test Automation Organization" in the page details
@@ -781,12 +781,12 @@ Feature: Contacts related scenarios
     And I click toggle button to select "All Contacts"
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:InternalContacts}" panel
     When I click on "View" icon for "AutomationUser" inside flex table with id "{grantee_tableId:InternalContacts}"
-    When I hover mouse on lookup link "{SavedValue:ADMIN Username}"
+    When I hover mouse on lookup link "{SavedValue:GRANTEE ADMIN Username}"
     Then I see "<miniPageLayout_Text>" shown inside mini page layout on hover
 
     Examples:
       | miniPageLayout_Text         |
-      | {SavedValue:ADMIN Username} |
+      | {SavedValue:GRANTEE ADMIN Username} |
 
   @62019 @validateInternalContactsFunctionalityUsingMultipleUsers-myOrganizationContact @smoke    @positive @wip @waitingForchange
   Scenario Outline: Validate different users can access Internal contact detail page
@@ -895,11 +895,11 @@ Feature: Contacts related scenarios
 
     Examples:
       | userType      | userName                    |
-      | GRANTEE ADMIN | {SavedValue:ADMIN Username} |
-      | GRANTEE PM    | {SavedValue:PM Username}    |
-      | GRANTEE PO    | {SavedValue:PO Username}    |
-      | GRANTEE FO    | {SavedValue:FD Username}    |
-      | GRANTEE EXE   | {SavedValue:EXE Username}   |
+      | GRANTEE ADMIN | {SavedValue:GRANTEE ADMIN Username} |
+      | GRANTEE PM    | {SavedValue:GRANTEE PM Username}    |
+      | GRANTEE PO    | {SavedValue:GRANTEE PO Username}    |
+      | GRANTEE FO    | {SavedValue:GRANTEE FD Username}    |
+      | GRANTEE EXE   | {SavedValue:GRANTEE EXE Username}   |
 
   @62033 @validateDeletionOfContactUnderInternalContact @smoke  @positive
   Scenario: Validate  deletion of contact from internal contact table
@@ -946,9 +946,9 @@ Feature: Contacts related scenarios
 
     Examples:
       | userType      | userName                    |
-      | GRANTEE ADMIN | {SavedValue:ADMIN Username} |
-      | GRANTEE EXE   | {SavedValue:EXE Username}   |
-      | GRANTEE PM    | {SavedValue:PM Username}    |
+      | GRANTEE ADMIN | {SavedValue:GRANTEE ADMIN Username} |
+      | GRANTEE EXE   | {SavedValue:GRANTEE EXE Username}   |
+      | GRANTEE PM    | {SavedValue:GRANTEE PM Username}    |
 
   @62033 @validateRecordEditedByAdminForAllUsersAtInternalContacts  @positive
   Scenario Outline: Validate contact record edited by admin for all profiles using created by field at Internal contact
@@ -974,5 +974,5 @@ Feature: Contacts related scenarios
 
     Examples:
       | userType    | userName                  |
-      | GRANTEE EXE | {SavedValue:EXE Username} |
-      | GRANTEE PM  | {SavedValue:PM Username}  |
+      | GRANTEE EXE | {SavedValue:GRANTEE EXE Username} |
+      | GRANTEE PM  | {SavedValue:GRANTEE PM Username}  |
