@@ -637,7 +637,7 @@ Feature: Strategic Plan related scenarios
     And I perform quick search for "{SavedValue:Automation Runtime Strategic}" in "{grantee_tableId:StrategicPlans}" panel
     And I expand nested table containing column value "{SavedValue:Automation Runtime Strategic}"
     And I click on "View" icon for "{SavedValue:EGID}" inside table
-    Then I see field "Last Modified by" as "Automation PM"
+    Then I see field "Last Modified by" as "{SavedValue:GRANTEE PM Username}"
 
   @62324 @validateStrategicPlan @validateStrategicGoalEditButtonMiss
   Scenario: Verify edit button not available on view page if login user is not owner

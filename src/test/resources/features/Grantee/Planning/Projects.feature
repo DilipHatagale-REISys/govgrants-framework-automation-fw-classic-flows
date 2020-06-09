@@ -316,8 +316,8 @@ Feature: Projects related scenarios
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Focus Area}" in "{grantee_tableId:Projects}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Focus Area}" inside table
-    Then I softly see field "Created by" as "Automation PM"
-    Then I softly see field "Last Modified by" as "Automation PM"
+    Then I softly see field "Created by" as "{SavedValue:GRANTEE PM Username}"
+    Then I softly see field "Last Modified by" as "{SavedValue:GRANTEE PM Username}"
 
   @62258 @Projects @verifyProjectsOverviewSystemInformationCDate   @positive
   Scenario: Verify user can see Created date
@@ -385,7 +385,7 @@ Feature: Projects related scenarios
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Focus Area}" in "{grantee_tableId:Projects}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Focus Area}" inside table
-    And I click "Automation PM" lookup link
+    And I click "{SavedValue:GRANTEE PM Username}" lookup link
     Then I see field "First Name" as "Automation"
 
   @62258 @Projects @verifyProjectsHistorySubTab @smoke  @positive
@@ -491,7 +491,7 @@ Feature: Projects related scenarios
     And I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:ProjectsFieldHistory}" panel
     Then I softly see value "{SavedValue:egmsid}" for title "EGMS ID" inside table "History"
     Then I softly see value "Title" for title "Changed Field" inside table "History"
-    Then I softly see value "Automation PM" for title "Changed By" inside table "History"
+    Then I softly see value "{SavedValue:GRANTEE PM Username}" for title "Changed By" inside table "History"
     Then I softly see value "{SavedValue:AutomationRuntimeFocusArea}" for title "Old Value" inside table "History"
     Then I softly see value "{SavedValue:AutomationRuntimeFocusAreaEdit}" for title "New Value" inside table "History"
 
@@ -841,8 +841,8 @@ Feature: Projects related scenarios
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
       | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
       | Fiscal Approver    | Automation FO  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
@@ -922,8 +922,8 @@ Feature: Projects related scenarios
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
       | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
       | Fiscal Approver    | Automation FO  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
@@ -996,8 +996,8 @@ Feature: Projects related scenarios
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
       | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
       | Fiscal Approver    | Automation FO  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
