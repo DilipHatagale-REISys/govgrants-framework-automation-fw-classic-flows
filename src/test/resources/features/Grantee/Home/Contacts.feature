@@ -1,4 +1,4 @@
-@InternalExternalContacts @grantee-regression @grantee-parallel-regression
+@Grantee-InternalExternalContacts @grantee-regression @grantee-parallel-regression
 Feature: Contacts related scenarios
   Test all scenarios related to Internal External contacts
 
