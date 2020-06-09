@@ -1,4 +1,4 @@
-@Planning @ProgramsExternalPlanning @grantee-regression @grantee-parallel-regression
+@Grantee-Planning @ProgramsExternalPlanning @grantee-regression @grantee-parallel-regression
 Feature: Programs External related scenarios
   Test all scenarios related to Programs External
 

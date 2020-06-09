@@ -1,4 +1,4 @@
-@pdfRelatedScenariosForAllModule @onlyLocalExecution @skipOnJenkins
+@Grantee-pdfRelatedScenariosForAllModule @onlyLocalExecution @skipOnJenkins
 Feature: PDF download and validate scenarios from all modules
   Test all scenarios related to pdf validation
 
