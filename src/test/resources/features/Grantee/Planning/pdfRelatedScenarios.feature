@@ -12,13 +12,13 @@ Feature: PDF download and validate scenarios from all modules
     And I download the file
     Then I see "Key Performance Indicators (KPI) - All" on page "1" of "govgrants" pdf file
     Examples:
-      | userType |
-      | GRANTEE ADMIN    |
-      | GRANTEE PM       |
-      | GRANTEE PO       |
-      | GRANTEE DD       |
-      | GRANTEE FO       |
-      | GRANTEE EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @61948 @validateStrategicPlan @strategiplandownload @positive
   Scenario Outline: Verify User can download correct pdf
@@ -30,12 +30,12 @@ Feature: PDF download and validate scenarios from all modules
     And I download the file
     Then I see "Strategic Plans - All" on page "1" of "govgrants" pdf file
     Examples:
-      | userType |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType    |
+      | GRANTE PM   |
+      | GRANTEE PO  |
+      | GRANTEE FD  |
+      | GRANTEE FO  |
+      | GRANTEE EXE |
 
   @61424 @validateDownloadAsPDFAtExternalContactstable  @positive
   Scenario: Validate external contacts lists are visisble to users in downloaded pfd file
@@ -190,13 +190,13 @@ Feature: PDF download and validate scenarios from all modules
     Then I see "Federal Organizations" on page "1" of "govgrants" pdf file
 
     Examples:
-      | userType |
-      | GRANTEE ADMIN    |
-      | GRANTEE PM       |
-      | GRANTEE PO       |
-      | GRANTEE DD       |
-      | GRANTEE FO       |
-      | GRANTEE EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @62555 @validateListsOfNonFederalOrganizationAndPDFFileDownloadAtNonFederalOrganization @wip
   Scenario: Validate organization lists are visisble to users inside downloaded pdf file at External organizations
@@ -334,7 +334,7 @@ Feature: PDF download and validate scenarios from all modules
     And I navigate to "Roles" sub tab
     And I edit the following rows inline in flex table with id "---grantee_tableId:-:ApproverTableId---" by clicking "Edit" :
       | Responsibility   | Name             | Description                  |
-      | Program Approver | Automation Admin | Automation Approval required |
+      | Program Approver | {SavedValue:GRANTEE ADMIN Username} | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
     And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
@@ -415,7 +415,7 @@ Feature: PDF download and validate scenarios from all modules
     And I navigate to "Roles" sub tab
     And I edit the following rows inline in flex table with id "---grantee_tableId:-:ApproverTableId---" by clicking "Edit" :
       | Responsibility   | Name             | Description                  |
-      | Program Approver | Automation Admin | Automation Approval required |
+      | Program Approver | {SavedValue:GRANTEE ADMIN Username} | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field containing "EGMS ID" as "AwardID"
     And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
@@ -452,13 +452,13 @@ Feature: PDF download and validate scenarios from all modules
     And I download the file
     Then I see "Opportunities - Converted to Application" on page "1" of "govgrants" pdf file
     Examples:
-      | userType |
-      | GRANTEE ADMIN    |
-      | GRANTEE PM       |
-      | PO       |
-      | FD       |
-      | EXE      |
-      | FO       |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE FD    |
+      | GRANTEE EXE   |
+      | GRANTEE FO    |
 
   @63909 @TejalApril2020 @ValidateDownloadPDFFunctionalityForBudgetPeriodDetails  @positive
   Scenario: verify download pdf functionality for budget period details
@@ -493,8 +493,8 @@ Feature: PDF download and validate scenarios from all modules
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
       | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation Exe | prdoh       |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I click on "Save and Continue" in the page details
     And I click on "Submit for Approval" in the page details
     And I refresh the page
@@ -513,7 +513,7 @@ Feature: PDF download and validate scenarios from all modules
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
     When I click on "Create Pre-Application" in the page details
-    And I enter value "Automation PM" into field "ProjectDirectorContact__c"
+    And I enter value "{SavedValue:GRANTEE PM Username}" into field "ProjectDirectorContact__c"
     When I click on "Save and Continue" in the page details
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
@@ -558,8 +558,8 @@ Feature: PDF download and validate scenarios from all modules
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
       | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation Exe | prdoh       |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I click on "Save and Continue" in the page details
     And I click on "Submit for Approval" in the page details
     And I refresh the page
@@ -578,7 +578,7 @@ Feature: PDF download and validate scenarios from all modules
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
     When I click on "Create Pre-Application" in the page details
-    And I enter value "Automation PM" into field "ProjectDirectorContact__c"
+    And I enter value "{SavedValue:GRANTEE PM Username}" into field "ProjectDirectorContact__c"
     When I click on "Save and Continue" in the page details
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
@@ -624,8 +624,8 @@ Feature: PDF download and validate scenarios from all modules
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
       | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation Exe | prdoh       |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I click on "Save and Continue" in the page details
     And I click on "Submit for Approval" in the page details
     And I refresh the page
@@ -644,7 +644,7 @@ Feature: PDF download and validate scenarios from all modules
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
     When I click on "Create Pre-Application" in the page details
-    And I enter value "Automation PM" into field "ProjectDirectorContact__c"
+    And I enter value "{SavedValue:GRANTEE PM Username}" into field "ProjectDirectorContact__c"
     When I click on "Save and Continue" in the page details
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
@@ -720,8 +720,8 @@ Feature: PDF download and validate scenarios from all modules
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
       | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation Exe | prdoh       |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I click on "Save and Continue" in the page details
     And I click on "Submit for Approval" in the page details
     And I refresh the page
@@ -740,7 +740,7 @@ Feature: PDF download and validate scenarios from all modules
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
     When I click on "Create Pre-Application" in the page details
-    And I enter value "Automation PM" into field "ProjectDirectorContact__c"
+    And I enter value "{SavedValue:GRANTEE PM Username}" into field "ProjectDirectorContact__c"
     When I click on "Save and Continue" in the page details
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
@@ -749,7 +749,7 @@ Feature: PDF download and validate scenarios from all modules
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
       | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation PM | Program Reviewer | automation review | 1        | Yes                  |
+      | {SavedValue:GRANTEE PM Username} | Program Reviewer | automation review | 1        | Yes                  |
     When I click on parallel lines menu bar with data target value "#GranteePreApplicationReviewersTempFlexToggle"
     And I select "Download as PDF" from parallel lines dropdown of "Peer Reviewers"
     And I download the file
