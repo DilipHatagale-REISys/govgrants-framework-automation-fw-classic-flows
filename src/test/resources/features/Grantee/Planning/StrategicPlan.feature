@@ -1,4 +1,4 @@
-@Planning @StrategicPlan @grantee-regression @grantee-parallel-regression
+@Grantee-Planning @StrategicPlan @grantee-regression @grantee-parallel-regression
 Feature: Strategic Plan related scenarios
   Test all scenarios related to Strategic Plan
 

@@ -1,4 +1,4 @@
-@InternalExternalOrganization @grantee-regression @grantee-parallel-regression
+@Grantee-InternalExternalOrganization @grantee-regression @grantee-parallel-regression
 Feature:Internal organization related scenarios
   Test all scenarios related to Internal organization
 

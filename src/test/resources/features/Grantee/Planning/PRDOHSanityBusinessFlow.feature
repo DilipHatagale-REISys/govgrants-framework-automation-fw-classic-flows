@@ -1,4 +1,4 @@
-@PRDOHSanityBusinessFlow @grantee-regression @grantee-parallel-regression
+@Grantee-PRDOHSanityBusinessFlow @grantee-regression @grantee-parallel-regression
 Feature: Sanity scenarios
   Test all scenarios for Sanity
 
