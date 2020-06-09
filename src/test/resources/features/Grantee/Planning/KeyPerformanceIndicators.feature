@@ -203,6 +203,7 @@ Feature: Key Performance Indicators related scenarios
     And I click "Associate" after selection of "Automation Objective" in the table "{grantee_tableId:PlanningObjectiveModalTableId}"
     And I close modal by clicking the top right x button
     Then I see value "Automation Objective" for title "Title" inside table "{grantee_tableId:PlanningAssociateObjectiveTableId}"
+    Examples:
       | userType |
       | GRANTEE ADMIN    |
       | GRANTEE PM       |
