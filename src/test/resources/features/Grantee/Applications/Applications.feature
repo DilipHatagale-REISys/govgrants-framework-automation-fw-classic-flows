@@ -3,23 +3,16 @@ Feature: Applications related scenarios
   Test all scenarios related to Applications
 
   @63216 @TejalMarch2020 @ValidateButtonsShouldNotBeDisplayedWhenOpportunityIsInConvertedToApplicationState
-  Scenario: verify Buttons should not be displayed on details page when Opportunity is in Converted to Application State
+  Scenario: verify Buttons should not be displayed on details page when Opportunity is in Converted to Application Stateq
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -68,23 +61,15 @@ Feature: Applications related scenarios
 
   @63216 @TejalMarch2020 @ValidateHeaderSection   @positive
   Scenario: Verify Header section
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -141,23 +126,15 @@ Feature: Applications related scenarios
 
   @63216 @TejalMarch2020 @ValidateSubTabsOnOpportunitiesConvertedToApplicationDetailPage  @positive
   Scenario: Verify opportunities converted to application detail page
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -212,23 +189,15 @@ Feature: Applications related scenarios
 
   @63216 @TejalMarch2020 @ValidateOverviewTabPageLayout   @positive
   Scenario: Verify overview tab page layout
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -288,23 +257,15 @@ Feature: Applications related scenarios
 
   @63216 @TejalMarch2020 @ValidateOverviewTabInformationSection   @positive
   Scenario: Verify overview tab Information section
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -367,23 +328,15 @@ Feature: Applications related scenarios
 
   @63216 @TejalMarch2020 @ValidateEvaluationTabPageLayout   @positive
   Scenario: Verify evaluation tab page layout
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -441,23 +394,15 @@ Feature: Applications related scenarios
 
   @63216 @TejalMarch2020 @ValidateViewEvaluationSection   @positive
   Scenario: Verify view Evaluation section
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -512,23 +457,15 @@ Feature: Applications related scenarios
 
   @63216 @TejalMarch2020 @ValidateResponsibilitiesSubTabPageLayout  @positive
   Scenario: Verify responsibilities Sub tab page layout
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -583,23 +520,15 @@ Feature: Applications related scenarios
 
   @63216 @TejalMarch2020 @ValidateAttachmentsSubTabPageLayout  @positive
   Scenario: Verify Attachments Sub tab page layout
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -654,23 +583,15 @@ Feature: Applications related scenarios
 
   @63216 @TejalMarch2020 @ValidateHistorySubTabPageLayout    @positive
   Scenario: Verify History Sub tab page layout
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -727,23 +648,15 @@ Feature: Applications related scenarios
 
   @64818 @TejalApril2020 @ValidateButtonsForApplicationWhichIsInDraftState  @positive
   Scenario: verify buttons for application which is in draft state
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -808,23 +721,15 @@ Feature: Applications related scenarios
 
   @64818 @TejalApril2020 @ValidateStatusAndActionFieldOnPeerReviewerTable   @positive
   Scenario: verify status and Action field on peer review table
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -887,23 +792,15 @@ Feature: Applications related scenarios
 
   @65051 @TejalApril2020 @ValidateDeleteApplicationFunctionality   @positive
   Scenario: verify delete application functionaliy
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -960,23 +857,15 @@ Feature: Applications related scenarios
 
   @65126 @TejalApril2020 @ValidateCreateFunctinalityForAnApplicationFromAPre-Application  @positive
   Scenario: verify Create an Application from a Pre-Application
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -1107,23 +996,15 @@ Feature: Applications related scenarios
 
   @65331 @TejalApril2020 @ValidateEditableFieldsAndEditFunctionalityForAnApplication  @positive
   Scenario: verify editable fields and edit functionality for an application
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -1442,23 +1323,15 @@ Feature: Applications related scenarios
 
   @64818 @TejalApril2020 @ValidateApplicationDetailsPage    @positive
   Scenario: verify Application Details page
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     And I pause execution for "2" seconds
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
@@ -1526,23 +1399,15 @@ Feature: Applications related scenarios
 
   @64818 @TejalApril2020 @ValidateOverviewSubTab   @positive
   Scenario: verify Overview sub tab
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -1618,23 +1483,15 @@ Feature: Applications related scenarios
 
   @64818 @TejalApril2020 @ValidateSetupSubTab    @positive
   Scenario: verify setup and Budget sub tab
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -1712,23 +1569,15 @@ Feature: Applications related scenarios
 
   @64818 @TejalApril2020 @ValidateTemplateForBudgetPeriodDetails   @positive
   Scenario: verify template for Budget Period Details
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -1802,23 +1651,15 @@ Feature: Applications related scenarios
 
   @64818 @TejalApril2020 @ValidateChecklistAndResponsibilitiesSubTab    @positive
   Scenario: verify checklist and responsibilities sub tab
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -1889,23 +1730,15 @@ Feature: Applications related scenarios
 
   @64818 @TejalApril2020 @ValidateAttachmentsAndHistorySubTab   @positive
   Scenario: verify Attachments and History sub tab
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -1975,23 +1808,15 @@ Feature: Applications related scenarios
 
   @64818 @TejalApril2020 @ValidatePermissionToViewAttachmentsAddedToApplication  @positive
   Scenario Outline: verify permission to view attachments added to Application
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -2061,23 +1886,15 @@ Feature: Applications related scenarios
 
   @64818 @TejalApril2020 @ValidatePermissionToViewNotessAddedToApplication   @positive
   Scenario Outline: verify permission to view notes added to Application
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -2147,23 +1964,15 @@ Feature: Applications related scenarios
 
   @64818 @TejalApril2020 @ValidateToViewSubmitToGrantorAndReviseOption @wip @BugLoggedWith77923   @positive
   Scenario: verify to View Submit To Grantor and revise Option
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -2275,23 +2084,15 @@ Feature: Applications related scenarios
 
   @64913 @TejalApril2020 @ValidateCreateAndDeleteNewBudgetPeriodFunctionality   @positive
   Scenario: verify create new budget period functionality
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -2358,23 +2159,15 @@ Feature: Applications related scenarios
 
   @64913 @TejalApril2020 @ValidateCreatingeMultipleBudgetPeriodsInBudgetPeriodDetailsSection  @positive
   Scenario: verify Creating multiple Budget Periods in Budget Period Details section
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -2441,23 +2234,15 @@ Feature: Applications related scenarios
 
   @65288 @TejalApril2020 @ValidateSelectingMultipleBudgetPeriodsForSingleProject  @positive
   Scenario: verify selecting multiple budget periods for single project
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -2547,23 +2332,15 @@ Feature: Applications related scenarios
 
   @65288 @TejalApril2020 @ValidateSelectingMultipleProjectsForSingleBudgetPeriod
   Scenario: verify selecting multiple projects for single Budget Period
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -2654,23 +2431,15 @@ Feature: Applications related scenarios
 
   @65288 @TejalApril2020 @ValidateSelectingMultipleProjectsForMultipleBudgetPeriods
   Scenario: verify selecting multiple projects for multiple Budget Periods
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -2772,23 +2541,15 @@ Feature: Applications related scenarios
 
   @65413 @TejalApril2020 @ValidateIndirectRateField  @positive
   Scenario: verify indirect rate field
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -2858,23 +2619,15 @@ Feature: Applications related scenarios
 
   @66253 @TejalApril2020 @ValidateEnterFunctionalityForSummaryBudgetForAnApplication  @positive
   Scenario: verify Enter Summary Budget for an Application
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -2945,23 +2698,15 @@ Feature: Applications related scenarios
 
   @66260 @TejalApril2020 @ValidateEnterFunctionalityForLineItemBudgetForAnApplication  @positive
   Scenario: verify Enter Line Item Budget for an Application
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -3046,23 +2791,15 @@ Feature: Applications related scenarios
 
   @66260 @TejalApril2020 @ValidateEnterFunctionalityForDetailedLineItemBudgetForAnApplication @wip @BugLoggedWith78048  @positive
   Scenario: verify Enter Detailed Line Item Budget for an Application
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -3149,23 +2886,15 @@ Feature: Applications related scenarios
 
   @65321 @TejalApril2020 @ValidateRequiredFieldsOnSaveAndEditableFieldsForPeerReview
   Scenario: verify required fields on save and editable fields for peer review
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -3236,23 +2965,15 @@ Feature: Applications related scenarios
 
   @65321 @TejalApril2020 @ValidateEditAndDeleteFunctionalityForPeerReviewers  @positive
   Scenario: verify edit and delete functionality for peer reviewers
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -3319,23 +3040,15 @@ Feature: Applications related scenarios
 
   @65321 @TejalApril2020 @ValidateAddFunctionalityForMultipleProgramAndFiscalReviewers
   Scenario: verify add functionality for multiple program and fiscal reviewers
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -3408,23 +3121,15 @@ Feature: Applications related scenarios
 
   @66531 @TejalApril2020 @ValidateActionsAfterClickOnSendForReviewIconForProgramReviewerWhoIsNotTheRecordOwner  @positive
   Scenario: verify actions after Click on send for review icon for program reviewer who is not the record owner
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -3496,23 +3201,15 @@ Feature: Applications related scenarios
 
   @66531 @TejalApril2020 @ValidateActionsAfterClickOnSendForReviewButtonForReviewerWhoIsFromADifferentOrganization  @positive
   Scenario: verify actions after Click on send for review button for program/fiscal reviewer who is from a different organization.
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -3580,23 +3277,15 @@ Feature: Applications related scenarios
 
   @66531 @TejalApril2020 @ValidateClickFunctionalityForSendForReviewIconForMultipleProgramAndFiscalReviewers
   Scenario: verify Click functionality for send for review icon for multiple Program and Fiscal reviewer(s)
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -3699,23 +3388,15 @@ Feature: Applications related scenarios
 
   @66531 @TejalApril2020 @ValidateResendForReviewFunctionalityForReviewerWhoIsNotARecordOwner  @positive
   Scenario: verify resend for review functionality for reviewer who is not a record owner
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -3800,23 +3481,15 @@ Feature: Applications related scenarios
 
   @66531 @TejalApril2020 @ValidateResendForReviewFunctionalityForReviewerWhoIsARecordOwner  @positive
   Scenario: verify resend for review functionality for reviewer who is a record owner
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -4005,23 +3678,15 @@ Feature: Applications related scenarios
 
   @66535 @TejalApril2020 @ValidateAvailabilityOfButtonsOnTheRecordIfAllowEditingForReviewerIsSetToYes  @positive
   Scenario: verify availability of buttons on the record if allow editing for reviewer is set to yes
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -4248,23 +3913,15 @@ Feature: Applications related scenarios
 
   @65781 @TejalApril2020 @ValidateSubmitAndApproveFunctionalityForAnApplication   @positive
   Scenario: verify Submit and approve functionality for an Application
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -4360,23 +4017,15 @@ Feature: Applications related scenarios
 
   @65399 @TejalApril2020 @ValidateActionsAfterClickOnSubmitToGrantorButton @wip @BugLoggedWith78727   @positive
   Scenario: verify actions after click on Submit To Grantor Button
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -4490,23 +4139,15 @@ Feature: Applications related scenarios
 
   @65424 @TejalApril2020 @ValidateActionsOnRecordDecisionButtonForAnApplication @wip @BugLoggedWith78923   @positive
   Scenario: verify actions on record decision button for an application
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
@@ -4623,23 +4264,15 @@ Feature: Applications related scenarios
 
   @65476 @TejalApril2020 @ValidateActionsOnReviseButtonForAnApplication @BugLoggedWith79114   @positive
   Scenario: verify actions on revise button for an application
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     When I login to "As a Grantee" app as "PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    And I click modal button "Save and Continue"
-    When I enter value "Other" into field "fieldOpportunityCategory__c"
-    When I enter value "Other" into field "fieldFundingInstrumentType__c"
-    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
-    And I click on "Save" in the page details
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "3" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Qualified Leads - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
