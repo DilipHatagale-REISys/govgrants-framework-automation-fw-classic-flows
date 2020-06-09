@@ -4,7 +4,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @62116 @KPI @verifyDownloadCorrectPdf @positive
   Scenario Outline: Verify User can download correct pdf
-    When I login to "As a Grantee" app as "<userType>" user
+    Given I login to "As a Grantee" app as "<userType>" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     When I click on parallel lines menu bar with data target value "#EnhanceMasterKPIsFlexToggle"
@@ -13,16 +13,16 @@ Feature: PDF download and validate scenarios from all modules
     Then I see "Key Performance Indicators (KPI) - All" on page "1" of "govgrants" pdf file
     Examples:
       | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      | GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @61948 @validateStrategicPlan @strategiplandownload @positive
   Scenario Outline: Verify User can download correct pdf
-    When I login to "As a Grantee" app as "<userType>" user
+    Given I login to "As a Grantee" app as "<userType>" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     When I click on parallel lines menu bar with data target value "#StrategicPlansParentFlexToggle"
@@ -39,7 +39,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @61424 @validateDownloadAsPDFAtExternalContactstable  @positive
   Scenario: Validate external contacts lists are visisble to users in downloaded pfd file
-     Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I click on parallel lines menu bar with data target value "#FederalContactsFlexToggle"
@@ -49,7 +49,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @61682 @validateDownloadPDFAtInternalProgramsUnderRelatedLogForInternalOrganizations @wip @positive
   Scenario: Validate download as pdf option at Internal Programs is getting downloaded properly with expected content
-    When I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" in "{grantee_tableId:InternalOrganizations}" panel
@@ -62,7 +62,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @67968 @ValidateDownloadAsPDFOptionAtKPITable    @positive
   Scenario: verify user should be able to download pdf file at KPI table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -96,7 +96,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @62815 @validateDownloadPDFAtLeadsTable-NotYetQualified  @positive
   Scenario: Validate download as pdf option at Leads table is getting downloaded properly with expected content
-    When I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I click on parallel lines menu bar with data target value "#LeadsFlexToggle"
@@ -106,7 +106,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @61817 @ProgramsExternal @verifyProgramsExternalFederalProgaram   @positive
   Scenario: Verify User can download correct pdf for federal program
-     Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ExternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
     When I click on parallel lines menu bar with data target value "#FederalProgramsFlexToggle"
@@ -116,7 +116,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @61748 @validateDownloadPDFAtRelatedContactForInternalOrganizations @positive
   Scenario: Validate download as pdf option at related contact is getting downloaded properly with expected content
-    When I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" in "{grantee_tableId:InternalOrganizations}" panel
@@ -128,7 +128,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @68048 @ValidateDownloadPDFFunctionalityAtReportPreparerPageBlock  @positive
   Scenario: verify user is able to download and see the content inside downloaded pdf file at Report preparer page block
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{grantee_sidebar:AwardsBudgetPeriodLinkName}" content inside "{grantee_sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I perform quick search for "Automation Testing Grants 1" in "{grantee_tableId:AwardsTable}" panel
@@ -141,7 +141,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @63052 @NotConverted @validateDownloasAsPDFForOpportunitiesListView @positive
   Scenario: verify download as pdf option at opportubities -not converted to application list view is working fine or not
-     Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Opportunities" tab
     And I click toggle button to select "Opportunities - Not Converted to Application"
     When I click on parallel lines menu bar with data target value "#toggleFlexTableOpportunitysGrantee"
@@ -151,7 +151,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @62830 @validateDownloadAsPDFAtProgramsTable   @positive
   Scenario: Validate download as pdf option is working properly at Programs table on modal
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -168,7 +168,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @63498 @TejalMarch2020 @validateDownloasAsPDFForPre-ApplicationListView   @positive
   Scenario: verify download as pdf option at Pre-Application list view is working fine or not
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     When I click on parallel lines menu bar with data target value "#OpenGranteePreApplicationsFlexToggle"
@@ -178,7 +178,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @61725 @validateListsOfFederalOrganizationAndPDFFileDownloadAtFederalOrganization @positive
   Scenario Outline: Validate organization lists are visisble to users at External organizations
-    When I login to "As a Grantee" app as "<userType>" user
+    Given I login to "As a Grantee" app as "<userType>" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     And I softly see the text containing :
@@ -191,16 +191,16 @@ Feature: PDF download and validate scenarios from all modules
 
     Examples:
       | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      | GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @62555 @validateListsOfNonFederalOrganizationAndPDFFileDownloadAtNonFederalOrganization @wip
   Scenario: Validate organization lists are visisble to users inside downloaded pdf file at External organizations
-    When I login to "As a Grantee" app as "<userType>" user
+    Given I login to "As a Grantee" app as "<userType>" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     And I softly see the text containing :
@@ -213,7 +213,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @62129 @validateDownloadPDFAtInternalContacts-myOrganizationContact  @positive
   Scenario: Validate download as pdf option at Internal contacts is getting downloaded properly with expected content
-    When I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click toggle button to select "My Organization’s Contacts"
@@ -224,7 +224,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @66577 @validateDownloadAsPDFAtGrantsTable  @positive
   Scenario: Validate download as pdf option at Grant - All list view and downloaded file should contains text Grants - All
-     Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Grants" tab
     When I navigate to "{grantee_sidebar:GrantsLinkName}" content inside "{grantee_sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -235,7 +235,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @62020 @validateDownloadAsPDFAtInternalContact-myOrganizationContact  @positive
   Scenario: Validate My Organization’s Contacts lists are visisble to users in downloaded pfd file
-     Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click toggle button to select "My Organization’s Contacts"
@@ -246,7 +246,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @62123 @KPI @validateKPIDownloadPDF @positive
   Scenario: Verify user can download PDF from KPI view page.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -267,7 +267,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @62830 @validateDownloadAsPDFAtRelatedProgramTable @positive
   Scenario: Validate download as pdf option is working or not at related program table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -283,7 +283,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @62955 @verifyDownloadAsPDFOptionAtQualifiedLeadDetail  @positive
   Scenario: Validate content inside downloaded pdf file at Qualified lead detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -317,7 +317,7 @@ Feature: PDF download and validate scenarios from all modules
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{grantee_sidebar:AwardsBudgetPeriodLinkName}" content inside "{grantee_sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -337,7 +337,7 @@ Feature: PDF download and validate scenarios from all modules
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---grantee_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---grantee_tableId:-:PendingTask---"
@@ -357,7 +357,7 @@ Feature: PDF download and validate scenarios from all modules
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{grantee_sidebar:GrantsLinkName}" content inside "{grantee_sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -373,7 +373,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @68039 @ValidateDownloadPDFFunctionalityAtSpecialConditionPageBlock-Draft @smoke  @positive
   Scenario: verify user is able to download and see the content inside downloaded pdf file at special condition page block
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{grantee_sidebar:AwardsBudgetPeriodLinkName}" content inside "{grantee_sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I perform quick search for "Automation Testing Grants 1" in "{grantee_tableId:AwardsTable}" panel
@@ -398,7 +398,7 @@ Feature: PDF download and validate scenarios from all modules
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{grantee_sidebar:AwardsBudgetPeriodLinkName}" content inside "{grantee_sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -418,14 +418,14 @@ Feature: PDF download and validate scenarios from all modules
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field containing "EGMS ID" as "AwardID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AwardID}" in "---grantee_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:AwardID}" inside flex table with id "---grantee_tableId:-:PendingTask---"
     When I select radio button "Approve" in the approval decision
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{grantee_sidebar:GrantsLinkName}" content inside "{grantee_sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -452,9 +452,9 @@ Feature: PDF download and validate scenarios from all modules
     And I download the file
     Then I see "Opportunities - Converted to Application" on page "1" of "govgrants" pdf file
     Examples:
-      | UserType |
-      | Admin    |
-      | PM       |
+      | userType |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
       | PO       |
       | FD       |
       | EXE      |
@@ -465,7 +465,7 @@ Feature: PDF download and validate scenarios from all modules
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -499,7 +499,7 @@ Feature: PDF download and validate scenarios from all modules
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -507,7 +507,7 @@ Feature: PDF download and validate scenarios from all modules
     And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -530,7 +530,7 @@ Feature: PDF download and validate scenarios from all modules
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -564,7 +564,7 @@ Feature: PDF download and validate scenarios from all modules
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -572,7 +572,7 @@ Feature: PDF download and validate scenarios from all modules
     And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -596,7 +596,7 @@ Feature: PDF download and validate scenarios from all modules
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -630,7 +630,7 @@ Feature: PDF download and validate scenarios from all modules
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -638,7 +638,7 @@ Feature: PDF download and validate scenarios from all modules
     And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -668,7 +668,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @81201 @ValidateDownloadAsPDFFunctionalityForBudgetPeriodCloseout  @positive
   Scenario: verify download as pdf functionality for budget period closeout
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Closeout" tab
     When I navigate to "{grantee_sidebar:BudgetPeriodCloseoutLinkName}" content inside "{grantee_sidebar:CloseoutSubheaderName}" subheader on left panel
     When I click on parallel lines menu bar with data target value "#BudgetPeriodCloseOutRequestFlexToggle"
@@ -678,7 +678,7 @@ Feature: PDF download and validate scenarios from all modules
 
   @68278 @validateDownloadAsPDFAtAmendmentRequestTable @smoke   @positive
   Scenario: Validate download as pdf option at Amendment Request - All list view and downloaded file should contains text Amendment Request - All
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{grantee_sidebar:AmendmentRequestLinkName}" content inside "{grantee_sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -692,7 +692,7 @@ Feature: PDF download and validate scenarios from all modules
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -726,7 +726,7 @@ Feature: PDF download and validate scenarios from all modules
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -734,7 +734,7 @@ Feature: PDF download and validate scenarios from all modules
     And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel

@@ -18,9 +18,13 @@ public class UsersAndURL implements UsersController {
         I.amPerforming().propertiesFileOperationsTo().saveValue("PM Username", "Automation PM");
         I.amPerforming().propertiesFileOperationsTo().saveValue("AUDITOR Username", "Automation AUDITOR");
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPI Username", "Automation SPI");
-        I.amPerforming().propertiesFileOperationsTo().saveValue("ADMIN Username", "Mahananda Nyamagouda");
-        I.amPerforming().propertiesFileOperationsTo().saveValue("PO Username", "Automation PO");
-        I.amPerforming().propertiesFileOperationsTo().saveValue("FD Username", "Automation FD");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("ADMIN Username", "Automation Admin Grantee");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("PO Username", "Automation PO Grantee");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("FD Username", "Automation FD Grantee");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("PM Username", "Automation PM Grantee");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("PM1 Username", "Automation PM1 Grantee");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("FO Username", "Automation FO Grantee");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("EXE Username", "Automation EXE Grantee");
     }
 
     /**
@@ -98,7 +102,7 @@ public class UsersAndURL implements UsersController {
                 password = "test72018";
                 break;
             case "ADMIN":
-                password = "GoProduct@12345";
+                password = "GoProduct@123";
                 break;
             case "FD":
                 password = "GoProduct@12";
@@ -157,6 +161,14 @@ public class UsersAndURL implements UsersController {
         username.put("CATHY PM", "cathy_pm@ggp.test7.automation");
         username.put("OSCAR PM", "oscar_pm@ggp.test7.automation");
         username.put("Bill PM", "bill_pm@ggp.test7.automation");
+
+        username.put("GRANTEE PM", "autopmgrantee@yopmail.com");
+        username.put("GRANTEE PM1", "autopm1grantee@yopmail.com");
+        username.put("GRANTEE FO", "automationfograntee@yopmail.com");
+        username.put("GRANTEE FD", "autofdgrantee@yopmail.com");
+        username.put("GRANTEE EXE", "automationexegrantee@yopmail.com");
+        username.put("GRANTEE ADMIN", "autoadmingrantee@yopmail.com");
+        username.put("GRANTEE PO", "autopograntee@yopmail.com");
 
         if (userLevel.toUpperCase() != null) {
             return username.get(userLevel.toUpperCase());

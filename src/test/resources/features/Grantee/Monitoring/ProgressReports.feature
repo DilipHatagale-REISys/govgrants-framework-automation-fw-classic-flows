@@ -71,7 +71,7 @@ Feature: Progress Reports related scenarios
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
     And I save the field containing "Grant Award Number" as "GrantAwardNumber"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -82,7 +82,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -140,7 +140,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -211,7 +211,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -222,7 +222,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     When I click on advance filter "#advfGranteeProgressReports" of table id "{prdoh_tableId:ProgressReports}"
@@ -280,7 +280,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -291,7 +291,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -359,7 +359,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -370,7 +370,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -432,7 +432,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -507,7 +507,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -518,7 +518,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -591,7 +591,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -602,7 +602,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -665,7 +665,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -676,7 +676,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -735,7 +735,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -746,7 +746,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -811,7 +811,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -822,7 +822,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -883,7 +883,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -894,7 +894,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -957,7 +957,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -968,7 +968,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -1034,7 +1034,7 @@ Feature: Progress Reports related scenarios
     And I navigate to "Overview" sub tab
     And I save the field labeled "Funding Organization" as "fundingOrganization"
     And I save the field labeled "Internal Organization" as "internalOrganization"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1045,7 +1045,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -1101,7 +1101,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1112,7 +1112,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -1177,7 +1177,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1189,7 +1189,7 @@ Feature: Progress Reports related scenarios
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
     And I pause execution for "4" seconds
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -1255,7 +1255,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1266,7 +1266,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -1339,7 +1339,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1350,7 +1350,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -1367,7 +1367,7 @@ Feature: Progress Reports related scenarios
     When I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
     And I pause execution for "2" seconds
-    When I re-login as "FO" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:egmsid}" in "{prdoh_tableId:PendingTask}" panel
     Then I softly see value "Approve Progress Report" for title "Task Type" inside table "{prdoh_tableId:PendingTask}"
@@ -1420,7 +1420,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1431,7 +1431,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -1443,13 +1443,13 @@ Feature: Progress Reports related scenarios
       | Executive Approver | Automation Exe | Automation Approval required |
     And I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Approve Progress Report" in "{prdoh_tableId:PendingTask}" panel
     And I click on "Start" icon for "Approve Progress Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -1512,7 +1512,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1524,7 +1524,7 @@ Feature: Progress Reports related scenarios
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
     And I pause execution for "4" seconds
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -1536,13 +1536,13 @@ Feature: Progress Reports related scenarios
       | Executive Approver | Automation Exe | Automation Approval required |
     And I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Approve Progress Report" in "{prdoh_tableId:PendingTask}" panel
     And I click on "Start" icon for "Approve Progress Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -1610,7 +1610,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1621,7 +1621,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -1633,13 +1633,13 @@ Feature: Progress Reports related scenarios
       | Executive Approver | Automation Exe | Automation Approval required |
     And I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Approve Progress Report" in "{prdoh_tableId:PendingTask}" panel
     And I click on "Start" icon for "Approve Progress Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1704,7 +1704,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1715,7 +1715,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -1727,13 +1727,13 @@ Feature: Progress Reports related scenarios
       | Executive Approver | Automation Exe | Automation Approval required |
     And I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Approve Progress Report" in "{prdoh_tableId:PendingTask}" panel
     And I click on "Start" icon for "Approve Progress Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1801,7 +1801,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1812,7 +1812,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -1824,13 +1824,13 @@ Feature: Progress Reports related scenarios
       | Executive Approver | Automation Exe | Automation Approval required |
     And I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Approve Progress Report" in "{prdoh_tableId:PendingTask}" panel
     And I click on "Start" icon for "Approve Progress Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1845,13 +1845,13 @@ Feature: Progress Reports related scenarios
     And I click on "Revise Progress Report" in the page details
     And I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Approve Progress Report" in "{prdoh_tableId:PendingTask}" panel
     And I click on "Start" icon for "Approve Progress Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -1916,7 +1916,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1927,7 +1927,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -1939,13 +1939,13 @@ Feature: Progress Reports related scenarios
       | Executive Approver | Automation Exe | Automation Approval required |
     And I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Approve Progress Report" in "{prdoh_tableId:PendingTask}" panel
     And I click on "Start" icon for "Approve Progress Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -2002,12 +2002,12 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
     When I "Approve" in the approval decision
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2102,12 +2102,12 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
     When I "Approve" in the approval decision
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2298,7 +2298,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2307,7 +2307,7 @@ Feature: Progress Reports related scenarios
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2334,7 +2334,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2343,7 +2343,7 @@ Feature: Progress Reports related scenarios
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2453,7 +2453,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2462,7 +2462,7 @@ Feature: Progress Reports related scenarios
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2489,7 +2489,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2498,7 +2498,7 @@ Feature: Progress Reports related scenarios
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2572,7 +2572,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2593,7 +2593,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2689,7 +2689,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2710,7 +2710,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2823,7 +2823,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2834,7 +2834,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -2949,7 +2949,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2960,7 +2960,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -2979,13 +2979,13 @@ Feature: Progress Reports related scenarios
     And I pause execution for "2" seconds
     And I "Approve" in the approval decision
     And I pause execution for "4" seconds
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Approve Progress Report" in "{prdoh_tableId:PendingTask}" panel
     And I click on "Start" icon for "Approve Progress Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -3081,7 +3081,7 @@ Feature: Progress Reports related scenarios
     And I pause execution for "2" seconds
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3092,7 +3092,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -3205,7 +3205,7 @@ Feature: Progress Reports related scenarios
     And I pause execution for "2" seconds
     And I click on "Submit For Approval" in the page details
     When I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3216,7 +3216,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "{sidebar:ProgressReportsLinkName}" content inside "{sidebar:MonitoringSubHeaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Grant Award}" in "{prdoh_tableId:ProgressReports}" panel
@@ -3235,13 +3235,13 @@ Feature: Progress Reports related scenarios
     And I pause execution for "2" seconds
     And I "Approve" in the approval decision
     And I pause execution for "4" seconds
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Approve Progress Report" in "{prdoh_tableId:PendingTask}" panel
     And I click on "Start" icon for "Approve Progress Report" inside flex table with id "{prdoh_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -3310,7 +3310,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3321,7 +3321,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -3380,7 +3380,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3389,7 +3389,7 @@ Feature: Progress Reports related scenarios
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
     Then I softly see field "Status" as "Active"
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -3470,7 +3470,7 @@ Feature: Progress Reports related scenarios
       |                          | Automation PM            |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3482,7 +3482,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName      | recordName                                  |
       | Batch         | ProgressReport | {SavedValue:Automation Runtime Grant Award} |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -3682,7 +3682,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3691,7 +3691,7 @@ Feature: Progress Reports related scenarios
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -3718,7 +3718,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3727,7 +3727,7 @@ Feature: Progress Reports related scenarios
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -3822,7 +3822,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3831,7 +3831,7 @@ Feature: Progress Reports related scenarios
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -3858,7 +3858,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3867,7 +3867,7 @@ Feature: Progress Reports related scenarios
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -3938,7 +3938,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3947,7 +3947,7 @@ Feature: Progress Reports related scenarios
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -3974,7 +3974,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    When I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3983,7 +3983,7 @@ Feature: Progress Reports related scenarios
     And I submit the approval in the approval decision
     And I pause execution for "3" seconds
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -4062,7 +4062,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4083,7 +4083,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -4163,7 +4163,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4184,7 +4184,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -4249,7 +4249,7 @@ Feature: Progress Reports related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4270,7 +4270,7 @@ Feature: Progress Reports related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds

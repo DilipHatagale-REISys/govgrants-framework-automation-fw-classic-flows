@@ -4,7 +4,7 @@ Feature: Programs External related scenarios
 
   @61817 @ProgramsExternal @verifyProgramsExternalColumnSortFederal @positive
   Scenario Outline: Verify User can sort all columns of Federal Programs
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ExternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
     When I click on "<ColumnName>" column header inside table with id "{grantee_tableId:ExternalFederalPrograms}"
@@ -19,7 +19,7 @@ Feature: Programs External related scenarios
 
   @61817 @ProgramsExternal @verifyProgramsExternalTotalRecord @wip9001 @positive
   Scenario: Verify User can see total record of Federal Programs
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ExternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
     And I select value inside table "{grantee_tableId:ExternalFederalPrograms}" is "100"
@@ -29,7 +29,7 @@ Feature: Programs External related scenarios
 
   @61817 @ProgramsExternal @verifyProgramsExternalQuickSearchInValid
   Scenario Outline: Verify User can perform quick search with Invalid data for Federal Programs
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ExternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
     And I perform quick search for "<value>" in "{grantee_tableId:ExternalFederalPrograms}" panel
@@ -42,7 +42,7 @@ Feature: Programs External related scenarios
 
   @61817 @ProgramsExternal @verifyProgramsExternalAdvancedSearchValid @positive
   Scenario Outline: Verify User can do advanced search with valid data for Federal Programs
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ExternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
     When I click on advance filter "#advfFederalPrograms" of table id "{grantee_tableId:ExternalFederalPrograms}"
@@ -57,7 +57,7 @@ Feature: Programs External related scenarios
 
   @61817 @ProgramsExternal @verifyProgramsExternalAdvancedSearchInValid
   Scenario Outline: Verify User can do advanced search with Invalid data for Federal Programs
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ExternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
     When I click on advance filter "#advfFederalPrograms" of table id "{grantee_tableId:ExternalFederalPrograms}"
@@ -72,7 +72,7 @@ Feature: Programs External related scenarios
 
   @61817 @ProgramsExternal @verifyProgramsExternalFederalView @smoke  @positive
   Scenario: Verify User can navigate to view page by clicking on view button for perticular record
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ExternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
     And I perform quick search for "Wildlife Services" in "{grantee_tableId:ExternalFederalPrograms}" panel
@@ -82,7 +82,7 @@ Feature: Programs External related scenarios
 
   @61855 @ProgramsExternal @verifyProgramsExternalFederalAgencyHyperLink @smoke @positive
   Scenario: Verify User can navigate web page by clicking on hyperlink of federal agency
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ExternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
     And I perform quick search for "Wildlife Services" in "{grantee_tableId:ExternalFederalPrograms}" panel
@@ -93,7 +93,7 @@ Feature: Programs External related scenarios
 
   @61997 @CreatingNon-FederalProgram @ValidateOrganizationInsideLookupFieldForNonFederalProgram @positive
   Scenario: validate organization is getting selected inside lookup modal for non federal program
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ExternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:NonFederalPrograms}"
@@ -148,7 +148,7 @@ Feature: Programs External related scenarios
 
   @62097 @ProgramsExternal @ViewNon-FederalPrograms  @positive
   Scenario: validate any user can can view non-federal programs and navigates to the external website in a new tab while clicking on Funding Organization field
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ExternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:NonFederalPrograms}"
@@ -168,7 +168,7 @@ Feature: Programs External related scenarios
 
   @62097 @ProgramsExternal @verifyAllFieldsToBeInRead-OnlyModeInProgramsExternal @smoke  @positive
   Scenario: Verify User can not edit in read-only mode in programs external
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ExternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:NonFederalPrograms}"
@@ -182,7 +182,7 @@ Feature: Programs External related scenarios
     When I click on "Edit" in the page details
     And I enter value "NF-11" into field "fieldFederalProgramCFDA__c"
     Then I click on "Save" in the page details
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ExternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime NF Program}" in "{grantee_tableId:NonFederalPrograms}" panel

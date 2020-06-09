@@ -4,7 +4,7 @@ Feature: Contacts related scenarios
 
   @61424 @validateQuickSearchIsWorkingOrNotAtExternalContactsTable   @positive
   Scenario: Validate Quick search is working properly for valid and invalid input value at External contacts table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "Automation External Federal Contact" in "{grantee_tableId:ExternalFederalContacts}" panel
@@ -14,7 +14,7 @@ Feature: Contacts related scenarios
 
   @61424 @validatePaginationFunctionalityIsWorkingOrNotAtExternalContactsTable  @positive
   Scenario: Validate pagination arrow is working fine at external federal contact table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on page navigation arrow "{grantee_tableId:ExternalFederalContacts}" for table id "Next"
@@ -22,7 +22,7 @@ Feature: Contacts related scenarios
 
   @61424 @validateDefaultEntriesAtExternalContactsTable  @positive
   Scenario: Validate default count of records at {grantee_tableId:ExternalFederalContacts} table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I pause execution for "3" seconds
@@ -30,7 +30,7 @@ Feature: Contacts related scenarios
 
   @61424 @validateTotalRecordCountAtExternalContactstable  @positive
   Scenario: Validate total records count is displayed as number of records in external contacts table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I select value inside table "{grantee_tableId:ExternalFederalContacts}" is "10"
@@ -38,7 +38,7 @@ Feature: Contacts related scenarios
 
   @61761 @validateReadOnlyModeOfFieldsAtExternalContactDetailPage @smoke  @positive
   Scenario: Validate fields at External Contacts detail Page is in view mode
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "Automation External Federal Contact" in "{grantee_tableId:ExternalFederalContacts}" panel
@@ -47,7 +47,7 @@ Feature: Contacts related scenarios
 
   @61761 @validateExternalFederalContactscolumn @smoke  @positive
   Scenario Outline: Validate external federalcontacts detail like column inside the table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     Then I see "<fieldDisplayNames>" in flex table header "{grantee_tableId:ExternalFederalContacts}"
@@ -62,7 +62,7 @@ Feature: Contacts related scenarios
 
   @61761 @validateLookUplinkAtExternalFederalContactDetailPage @smoke   @positive
   Scenario: Validate look up link at external federal contact detail page is navigating users to ogranizational page
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "Automation External Federal Contact" in "{grantee_tableId:ExternalFederalContacts}" panel
@@ -73,7 +73,7 @@ Feature: Contacts related scenarios
 
   @61761 @validateAddressDetailAtExternalFederalContactsDetailPage   @positive
   Scenario: Validate Address detail of Federal Contacts at External Federal contacts detail page
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "Automation External Federal Contact" in "{grantee_tableId:ExternalFederalContacts}" panel
@@ -91,7 +91,7 @@ Feature: Contacts related scenarios
 
   @61761 @validateSystemDetailsAtExternalFederalContactsDetailPage  @positive
   Scenario: Validate last modified date and last modified by and created by field value at system information page block under external federal contacts detail page
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalFederalContacts}"
@@ -110,7 +110,7 @@ Feature: Contacts related scenarios
 
   @61761 @validateMiniPageLayoutContentOnMouseHoverAtLookupLink  @positive
   Scenario Outline: Validate content of mini page layout on mouse hovering at created by look up link under Extenal federal contact detail page
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalFederalContacts}"
@@ -158,12 +158,12 @@ Feature: Contacts related scenarios
     Then I softly see value "USDA-NRCS-NHO" for title "Organization" inside table "{grantee_tableId:ExternalFederalContacts}"
 
     Examples:
-      | userType | contactName                                                                                                               |
-      | ADMIN    | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
-      | PM       | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
-      | PO       | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
-      | FO       | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
-      | EXE      | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
+      | userType      | contactName                                                                                                               |
+      | GRANTEE ADMIN | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
+      | GRANTEE PM    | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
+      | GRANTEE PO    | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
+      | GRANTEE FO    | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
+      | GRANTEE EXE   | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
 
   @61917 @validateAddingOfContactForNonFederalOrganizationUnderExternalContact @needToCheckWithParallelExecution  @positive
   Scenario Outline: Validate addition of contact for non federal organization to check maximum length at external non federal contact table
@@ -190,16 +190,16 @@ Feature: Contacts related scenarios
     Then I softly see value "Department of Health" for title "Organization" inside table "{grantee_tableId:ExternalNonFederalContacts}"
 
     Examples:
-      | userType | contactName                                                                                                               |
-      | ADMIN    | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
-      | PM       | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
-      | PO       | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
-      | FO       | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
-      | EXE      | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
+      | userType      | contactName                                                                                                               |
+      | GRANTEE ADMIN | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
+      | GRANTEE PM    | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
+      | GRANTEE PO    | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
+      | GRANTEE FO    | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
+      | GRANTEE EXE   | AutomationExernalContactToCheckMaximum01 AutomationExernalContactToCheckMaximum0123AutomationExernalContactToCheckMaximum |
 
   @61918 @validateAddingOfContactWithOrWithoutMandatoryFieldsAtNonFederalContacts @smoke
   Scenario: Validate adding of contacts with or without mandatory fields at External Non federal contact
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalNonFederalContacts}"
@@ -258,12 +258,12 @@ Feature: Contacts related scenarios
     Then I softly see field "Mobile Phone" as "(987) 654-3210"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @61926 @validateModifiedByAndModifiedDateGettingUpdatedAfterEditingContacts  @positive
   Scenario Outline: Validate modified by and modified date getting updated after editing fields or creating new contacts at external federal contact table
@@ -287,16 +287,16 @@ Feature: Contacts related scenarios
     Then I softly see field "{SavedValue:ModifiedDate}" contains todays date withTime
 
     Examples:
-      | userType | userName                    |
-      | ADMIN    | {SavedValue:ADMIN Username} |
-      | PM       | {SavedValue:PM Username}    |
-      | PO       | {SavedValue:PO Username}    |
-      | FO       | {SavedValue:FO Username}    |
-      | EXE      | {SavedValue:EXE Username}   |
+      | userType      | userName                    |
+      | GRANTEE ADMIN | {SavedValue:ADMIN Username} |
+      | GRANTEE PM    | {SavedValue:PM Username}    |
+      | GRANTEE PO    | {SavedValue:PO Username}    |
+      | GRANTEE FO    | {SavedValue:FO Username}    |
+      | GRANTEE EXE   | {SavedValue:EXE Username}   |
 
   @61926 @validateDeletionOfContactUnderExternalFederalContact @smoke  @positive
   Scenario: Validate  deletion of contact from external federal contact table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalFederalContacts}"
@@ -329,11 +329,11 @@ Feature: Contacts related scenarios
     Then I softly see field "About Me" as "Admin Address"
 
     Examples:
-      | userType | userName                    |
-      | ADMIN    | {SavedValue:ADMIN Username} |
-      | EXE      | {SavedValue:EXE Username}   |
-      | PM       | {SavedValue:PM Username}    |
-      | FO       | {SavedValue:FO Username}    |
+      | userType      | userName                    |
+      | GRANTEE ADMIN | {SavedValue:ADMIN Username} |
+      | GRANTEE EXE   | {SavedValue:EXE Username}   |
+      | GRANTEE PM    | {SavedValue:PM Username}    |
+      | GRANTEE FO    | {SavedValue:FO Username}    |
 
   @61926 @validateRecordEditedByAdminForAllUsers   @positive @wip @needToCheckFRD
   Scenario Outline: Validate contact record edited by admin for all profiles using created by field at external federal contact
@@ -346,7 +346,7 @@ Feature: Contacts related scenarios
     When I click on "Save" in the page details
     And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
-    When I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:ExternalFederalContacts}" panel
     When I click on "view" icon for "Automation External Federal Contact" inside flex table with id "{grantee_tableId:ExternalFederalContacts}"
@@ -357,13 +357,13 @@ Feature: Contacts related scenarios
     Then I softly see field "About Me" as "Admin Address"
 
     Examples:
-      | userType | userName                  |
-      | EXE      | {SavedValue:EXE Username} |
-      | PM       | {SavedValue:PM Username}  |
+      | userType    | userName                  |
+      | GRANTEE EXE | {SavedValue:EXE Username} |
+      | GRANTEE PM  | {SavedValue:PM Username}  |
 
   @61926 @validateAdminRecordShouldNotEditedByOthersUsers @wip @needToCheckFRD
   Scenario Outline: Validate contact record should not be edited by others users using created by field at external federal contact
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalFederalContacts}"
@@ -382,13 +382,13 @@ Feature: Contacts related scenarios
       | You dont have permission to access this record. Please contact administrator. |
 
     Examples:
-      | userType |
-      | EXE      |
-      | PM       |
+      | userType    |
+      | GRANTEE EXE |
+      | GRANTEE PM  |
 
   @61932 @validateModifiedByAndModifiedDateGettingUpdatedAfterEditingUnderExternalNonFederalContact  @positive
   Scenario: Validate modified by and modified date getting updated after editing fields or creating new contacts at external federal contact table
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalNonFederalContacts}"
@@ -398,7 +398,7 @@ Feature: Contacts related scenarios
     When I click on "Save" in the page details
     And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
-    When I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:ExternalNonFederalContacts}" panel
     When I click on "Edit" icon for "Automation External Non Federal Contact" inside flex table with id "{grantee_tableId:ExternalNonFederalContacts}"
@@ -412,7 +412,7 @@ Feature: Contacts related scenarios
 
   @61932 @validateRecordOwnerAbleToEditProfilesUsingCreatedByForNonFederalContact
   Scenario: Validate contact record owner able to modify or edit their profiles using created by field at external federal contact detail page
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalNonFederalContacts}"
@@ -429,7 +429,7 @@ Feature: Contacts related scenarios
     When I click on "Edit" in the page details
     When I enter value "Admin Address" into field "fieldAboutMe__c"
     Then I softly see field "About Me" as "Admin Address"
-    When I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:ExternalNonFederalContacts}" panel
     When I click on "view" icon for "Automation External Non Federal Contact" inside flex table with id "{grantee_tableId:ExternalNonFederalContacts}"
@@ -461,10 +461,10 @@ Feature: Contacts related scenarios
     Then I softly see field "About Me" as "Admin Address"
 
     Examples:
-      | userType | userName                    |
-      | ADMIN    | {SavedValue:ADMIN Username} |
-      | EXE      | {SavedValue:EXE Username}   |
-      | PM       | {SavedValue:PM Username}    |
+      | userType      | userName                    |
+      | GRANTEE ADMIN | {SavedValue:ADMIN Username} |
+      | GRANTEE EXE   | {SavedValue:EXE Username}   |
+      | GRANTEE PM    | {SavedValue:PM Username}    |
 
   @61932 @validateRecordEditedByAdminOwnerForNonFederalContact   @positive
   Scenario Outline: Validate Admin User can edit other user profile using created by field
@@ -477,7 +477,7 @@ Feature: Contacts related scenarios
     When I enter value "automationtest@yopmail.com" into field "fieldEmail"
     When I click on "Save" in the page details
     And I save the contact name as "Automation Runtime Contact"
-    When I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:ExternalNonFederalContacts}" panel
     When I click on "view" icon for "Automation External Non Federal Contact" inside flex table with id "{grantee_tableId:ExternalNonFederalContacts}"
@@ -487,9 +487,9 @@ Feature: Contacts related scenarios
     When I click on "Save" in the page details
     Then I softly see field "About Me" as "Admin Address"
     Examples:
-      | userType | userName                  |
-      | EXE      | {SavedValue:EXE Username} |
-      | PM       | {SavedValue:PM Username}  |
+      | userType    | userName                  |
+      | GRANTEE EXE | {SavedValue:EXE Username} |
+      | GRANTEE PM  | {SavedValue:PM Username}  |
 
   @62011 @validateDeletionOfContactUnderExternalFederalContactUsingMultipleUser @smoke  @positive
   Scenario Outline: Validate  deletion of contact from external federal contact table using multiple user
@@ -513,13 +513,13 @@ Feature: Contacts related scenarios
     Then I do not see value "{SavedValue:firstName}" for title "Full Name" inside table "{grantee_tableId:ExternalFederalContacts}"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @62011 @validateDeletionOfContactUsingLoggedInUser @smoke  @positive
   Scenario: Validate deletion of contact from external federal contact table using logged in user but not with record owner
@@ -532,7 +532,7 @@ Feature: Contacts related scenarios
     When I click on "Save" in the page details
     And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:ExternalFederalContacts}" panel
     When I click on "Delete" icon for "Automation External Federal Contact" inside flex table with id "{grantee_tableId:ExternalFederalContacts}"
@@ -552,7 +552,7 @@ Feature: Contacts related scenarios
     When I click on "Save" in the page details
     And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:ExternalFederalContacts}" panel
     When I click on "Delete" icon for "Automation External Federal Contact" inside flex table with id "{grantee_tableId:ExternalFederalContacts}"
@@ -583,13 +583,13 @@ Feature: Contacts related scenarios
     Then I do not see value "Automation External Federal Contact" for title "Title" inside table "{grantee_tableId:ExternalNonFederalContacts}"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @62010 @validateDeletionOfContactUsingLoggedInUserForNonFederalContact @smoke
   Scenario: Validate deletion of contact from external non federal contact table using logged in user but not with record owner
@@ -603,7 +603,7 @@ Feature: Contacts related scenarios
     When I click on "Save" in the page details
     And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:ExternalNonFederalContacts}" panel
     When I click on "Delete" icon for "Automation External Non Federal Contact" inside flex table with id "{grantee_tableId:ExternalNonFederalContacts}"
@@ -622,7 +622,7 @@ Feature: Contacts related scenarios
     When I click on "Save" in the page details
     And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:ExternalNonFederalContacts}" panel
     When I click on "Delete" icon for "Automation External Non Federal Contact" inside flex table with id "{grantee_tableId:ExternalNonFederalContacts}"
@@ -634,7 +634,7 @@ Feature: Contacts related scenarios
 
   @62129 @validateDefaultEntriesAtInternalContactsTable-myOrganizationContact  @positive
   Scenario: Validate default count of records at internal my organization contacts table Under Internal Contact
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I pause execution for "3" seconds
@@ -642,7 +642,7 @@ Feature: Contacts related scenarios
 
   @62129 @validateTotalRecordCountAtInternalContactstable-myOrganizationContact  @positive
   Scenario: Validate total records count is displayed as number of records in internal contacts table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I select value inside table "{grantee_tableId:InternalContacts}" is "10"
@@ -650,7 +650,7 @@ Feature: Contacts related scenarios
 
   @62129 @validateTotalRecordCountAtInternalContactstable-allInternalContacts  @positive
   Scenario: Validate total records count is displayed as number of records in internal contacts table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click toggle button to select "All Contacts"
@@ -659,7 +659,7 @@ Feature: Contacts related scenarios
 
   @62129 @validateQuickSearchIsWorkingOrNotAtInternalContacts-myOrganizationContact  @positive
   Scenario: Validate search is working properly for valid and invalid input value at Internal contacts table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "Automation Internal Contacts" in "{grantee_tableId:InternalContacts}" panel
@@ -669,7 +669,7 @@ Feature: Contacts related scenarios
 
   @62129 @validateAdvanceSearchIsWorkingOrNotAtInternalContacts-myOrganizationContact  @positive
   Scenario: Validate advance search is working or not for correct and incorrect value at Internal contacts table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I click on advance filter "#advfStateContacts" of table id "{grantee_tableId:InternalContacts}"
@@ -685,7 +685,7 @@ Feature: Contacts related scenarios
 
   @62129 @validateRefreshAtInternalContacts-myOrganizationContact  @positive
   Scenario: Validate Refresh option at Internal Contacts is working properly as expected
-    When I login as "Admin" user
+    Given I login as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click toggle button to select "My Organization’s Contact"
@@ -695,7 +695,7 @@ Feature: Contacts related scenarios
 
   @62129 @validateDefaultListViewForInternalContacts-myOrganizationContact  @positive
   Scenario: Validate default list view is displayed or not at {grantee_tableId:InternalContacts} table Under Internal Contact
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     Then I see "My Organization’s Contact" shown as inside "{grantee_tableId:InternalContacts}"
@@ -707,16 +707,16 @@ Feature: Contacts related scenarios
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     Then I see column "AccountName__c" contains values only "<organizationName>"
     Examples:
-      | userType | organizationName             |
-      | ADMIN    | SYSTEM                       |
-      | PM       | Test Automation Organization |
-      | PO       | Test Automation Organization |
-      | FO       | Test Automation Organization |
-      | EXE      | Test Automation Organization |
+      | userType      | organizationName             |
+      | GRANTEE ADMIN | Test Automation Organization |
+      | GRANTEE PM    | Test Automation Organization |
+      | GRANTEE PO    | Test Automation Organization |
+      | GRANTEE FO    | Test Automation Organization |
+      | GRANTEE EXE   | Test Automation Organization |
 
   @62129 @validateListViewOrganization-allInternalContacts    @positive
   Scenario: Validate contact should contain all Listed organization
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click toggle button to select "All Contacts"
@@ -729,7 +729,7 @@ Feature: Contacts related scenarios
 
   @62020 @validateFieldsInReadOrViewModeAtInternalContacts-myOrganizationContact @smoke   @positive
   Scenario: Validate fields is in read mode only at internal contacts
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "Automation Internal Contacts" in "{grantee_tableId:InternalContacts}" panel
@@ -738,7 +738,7 @@ Feature: Contacts related scenarios
 
   @62020 @validateContactInformation-myOrganizationContact @smoke   @positive
   Scenario: Validate contact information at Internal contact page details
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click toggle button to select "My Organization’s Contact"
@@ -768,7 +768,7 @@ Feature: Contacts related scenarios
 
   @62020 @validateContentOnMouseHoverAtInternalContactLookupLink-myOrganizationContact  @positive
   Scenario Outline: Validate content of mini page layout on mouse hovering at created by look up link under Internal contact detail page
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click toggle button to select "My Organization’s Contact"
@@ -808,12 +808,12 @@ Feature: Contacts related scenarios
     Then I see the sub-header is "{SavedValue:firstName} Contact" in the page details
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @62029 @validateAddingOfInternalContact-myOrganizationContact @smoke  @positive
   Scenario Outline: Validate addition of contact for Internal Contact
@@ -836,12 +836,12 @@ Feature: Contacts related scenarios
     Then I softly see field "Street" as "1000 Defense Pentagon"
 
     Examples:
-      | userType | organizationName             |
-      | ADMIN    | SYSTEM                       |
-      | PM       | Test Automation Organization |
-      | PO       | Test Automation Organization |
-      | FO       | Test Automation Organization |
-      | EXE      | Test Automation Organization |
+      | userType      | organizationName             |
+      | GRANTEE ADMIN | Test Automation Organization |
+      | GRANTEE PM    | Test Automation Organization |
+      | GRANTEE PO    | Test Automation Organization |
+      | GRANTEE FO    | Test Automation Organization |
+      | GRANTEE EXE   | Test Automation Organization |
 
   @62033 @validateContactAndAddressFieldsEditableForInternalContacts   @positive
   Scenario Outline: Validate different users can edit Internal contacts and address fields at Internal contact detail page
@@ -865,12 +865,12 @@ Feature: Contacts related scenarios
     Then I softly see field "Mobile Phone" as "(987) 654-3210"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @62033 @validateModifiedByAndModifiedDateGettingUpdatedAfterEditingInternalContacts  @positive
   Scenario Outline: Validate modified by and modified date getting updated after editing fields or creating new contacts at Internal federal contact table
@@ -894,16 +894,16 @@ Feature: Contacts related scenarios
     Then I softly see field "{SavedValue:ModifiedDate}" contains todays date withTime
 
     Examples:
-      | userType | userName                    |
-      | ADMIN    | {SavedValue:ADMIN Username} |
-      | PM       | {SavedValue:PM Username}    |
-      | PO       | {SavedValue:PO Username}    |
-      | FO       | {SavedValue:FD Username}    |
-      | EXE      | {SavedValue:EXE Username}   |
+      | userType      | userName                    |
+      | GRANTEE ADMIN | {SavedValue:ADMIN Username} |
+      | GRANTEE PM    | {SavedValue:PM Username}    |
+      | GRANTEE PO    | {SavedValue:PO Username}    |
+      | GRANTEE FO    | {SavedValue:FD Username}    |
+      | GRANTEE EXE   | {SavedValue:EXE Username}   |
 
   @62033 @validateDeletionOfContactUnderInternalContact @smoke  @positive
   Scenario: Validate  deletion of contact from internal contact table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:InternalContacts}"
@@ -945,10 +945,10 @@ Feature: Contacts related scenarios
     Then I softly see field "About Me" as "Admin Address"
 
     Examples:
-      | userType | userName                    |
-      | ADMIN    | {SavedValue:ADMIN Username} |
-      | EXE      | {SavedValue:EXE Username}   |
-      | PM       | {SavedValue:PM Username}    |
+      | userType      | userName                    |
+      | GRANTEE ADMIN | {SavedValue:ADMIN Username} |
+      | GRANTEE EXE   | {SavedValue:EXE Username}   |
+      | GRANTEE PM    | {SavedValue:PM Username}    |
 
   @62033 @validateRecordEditedByAdminForAllUsersAtInternalContacts  @positive
   Scenario Outline: Validate contact record edited by admin for all profiles using created by field at Internal contact
@@ -961,7 +961,7 @@ Feature: Contacts related scenarios
     When I click on "Save" in the page details
     And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
-    When I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click toggle button to select "All Contacts"
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:InternalContacts}" panel
@@ -973,6 +973,6 @@ Feature: Contacts related scenarios
     Then I softly see field "About Me" as "Admin Address"
 
     Examples:
-      | userType | userName                  |
-      | EXE      | {SavedValue:EXE Username} |
-      | PM       | {SavedValue:PM Username}  |
+      | userType    | userName                  |
+      | GRANTEE EXE | {SavedValue:EXE Username} |
+      | GRANTEE PM  | {SavedValue:PM Username}  |
