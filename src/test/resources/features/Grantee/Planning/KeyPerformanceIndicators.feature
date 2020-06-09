@@ -155,13 +155,13 @@ Feature: Key Performance Indicators related scenarios
     And I click on "Activate" in the page details
     Then I cannot see top right button "Edit" in page detail
     Examples:
-      | userType |
-      | GRANTEE ADMIN    |
-      | GRANTEE PM       |
-      | GRANTEE PO       |
-      | GRANTEE DD       |
-      | GRANTEE FO       |
-      | GRANTEE EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @62123 @KPI @validateKPIAddAssociateForDraft @positive
   Scenario Outline: Verify user can add associate objective to KPI in draft status.
@@ -203,10 +203,11 @@ Feature: Key Performance Indicators related scenarios
     And I click "Associate" after selection of "Automation Objective" in the table "{grantee_tableId:PlanningObjectiveModalTableId}"
     And I close modal by clicking the top right x button
     Then I see value "Automation Objective" for title "Title" inside table "{grantee_tableId:PlanningAssociateObjectiveTableId}"
-      | userType |
-      | GRANTEE ADMIN    |
-      | GRANTEE PM       |
-      | EXE      |
+    Examples:
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE EXE   |
 
   @62123 @KPI @validateKPISystemInformationCreatedBy  @positive
   Scenario: Verify user can see correct system information(Created By) on KPI view page.
@@ -222,7 +223,7 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
-    Then I see field "Created by" as "Automation PM"
+    Then I see field "Created by" as "{SavedValue:GRANTEE PM Username}"
 
   @62123 @KPI @validateKPISystemInformationCreatedDate  @positive
   Scenario: Verify user can see correct system information(Created Date) on KPI view page.
@@ -260,7 +261,7 @@ Feature: Key Performance Indicators related scenarios
     And I click on "Edit" icon for "{SavedValue:Automation Runtime KPI}" inside table
     And I enter value "Automation KPI Description Edit" into field "fieldDescription__c"
     And I click on "Save" in the page details
-    Then I see field "Last Modified by" as "Automation PM"
+    Then I see field "Last Modified by" as "{SavedValue:GRANTEE PM Username}"
 
   @62123 @KPI @validateKPISystemInformationModifiedDate   @positive
   Scenario: Verify user can see correct system information(Modified Date) on KPI view page.
@@ -291,10 +292,10 @@ Feature: Key Performance Indicators related scenarios
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     Then I can see top right button "New" in flex table with id "{grantee_tableId:KPITable}"
     Examples:
-      | user  |
-      | PM    |
-      | EXE   |
-      | ADMIN |
+      | user          |
+      | GRANTEE PM    |
+      | GRANTEE EXE   |
+      | GRANTEE ADMIN |
 
   @62200 @KPI @validateUserCanNotSeeNewButton @smoke
   Scenario Outline: Verify user can not see New button
@@ -303,10 +304,10 @@ Feature: Key Performance Indicators related scenarios
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     Then I cannot see top right button "New" in flex table with id "{grantee_tableId:KPITable}"
     Examples:
-      | user |
-      | PO   |
-      | FD   |
-      | FO   |
+      | user       |
+      | GRANTEE PO |
+      | GRANTEE FD |
+      | GRANTEE FO |
 
   @62200 @KPI @validateKPIMeasureField  @positive
   Scenario Outline: Verify Measure field accept 255 characters only
@@ -503,10 +504,10 @@ Feature: Key Performance Indicators related scenarios
     And I close modal by clicking the top right x button
     Then I see value "Automation Objective" for title "Title" inside table "{grantee_tableId:PlanningAssociateObjectiveTableId}"
     Examples:
-      | userType |
-      | GRANTEE ADMIN    |
-      | GRANTEE PM       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE EXE   |
 
   @62191 @KPI @ValidateAssociateObjectiveForInactiveKPI
   Scenario: Verify user can not see associate button for inactive KPI.
@@ -704,7 +705,7 @@ Feature: Key Performance Indicators related scenarios
     And I click on "Activate" in the page details
     Then I can see top right button "Deactivate" in page detail
     Examples:
-      | userType |
-      | GRANTEE ADMIN    |
-      | GRANTEE PM       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE EXE   |
