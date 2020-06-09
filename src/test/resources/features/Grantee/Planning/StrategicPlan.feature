@@ -4,7 +4,7 @@ Feature: Strategic Plan related scenarios
 
   @61948 @validateStrategicPlan @validateStrategicPlanQuickSearch @smoke @positive
   Scenario Outline: Verify User can do quick search using <ColumnName>
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "<value>" in "{grantee_tableId:StrategicPlans}" panel
@@ -17,7 +17,7 @@ Feature: Strategic Plan related scenarios
 
   @61948 @validateStrategicPlan @validateStrategicPlanAdvanceSearch @positive
   Scenario Outline: Verify User can advance search using <ColumnName>
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     When I click on advance filter "#advfStrategicPlansParent" of table id "{grantee_tableId:StrategicPlans}"
@@ -31,7 +31,7 @@ Feature: Strategic Plan related scenarios
 
   @61948 @validateStrategicPlan @validateStrategicPlanSortAllColumns @positive
   Scenario Outline: Verify User can see sort as per column
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     When I click on "<ColumnName>" column header inside table with id "{grantee_tableId:StrategicPlans}"
@@ -49,7 +49,7 @@ Feature: Strategic Plan related scenarios
 
   @61948 @validateStrategicPlan @validateStrategicPlanValidation @smoke
   Scenario: Verify validation while create new Strategic Plan
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -69,13 +69,13 @@ Feature: Strategic Plan related scenarios
     Then I see status in Progress-bar is "Draft" and is "green"
     Examples:
       | userType |
-      | ADMIN    |
-      | PM       |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
       | EXE      |
 
   @61948 @validateStrategicPlan @validateStrategicPlanEditAndDelete1
   Scenario Outline: Verify except owner no one can edit and delete strategic plan
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -94,7 +94,7 @@ Feature: Strategic Plan related scenarios
 
   @61987 @validateStrategicPlan @validateAllColumnsOfStrategicPlan @smoke @positive
   Scenario Outline: Verify Strategic Plan should have all columns
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     Then I see "<ColumnName>" in flex table header "{grantee_tableId:StrategicPlans}"
@@ -109,7 +109,7 @@ Feature: Strategic Plan related scenarios
 
   @61987 @validateStrategicPlan @ValidateEmbeddedTableObjectivesShouldHaveAllTheRequiredColumns @positive
   Scenario Outline: Verify Embedded table objectives should have all the required columns
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -135,7 +135,7 @@ Feature: Strategic Plan related scenarios
 
   @61987 @validateStrategicPlan @validateRecordOwnerCanViewEditAndDeleteActionIcons
   Scenario Outline: Verify Record owner can only edit and delete.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -170,7 +170,7 @@ Feature: Strategic Plan related scenarios
 
   @61987 @validateStrategicPlan @validateTotalNumberOfRecords
   Scenario: Verify Total number of records as per different status @positive
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I select value inside table "{grantee_tableId:StrategicPlans}" is "All"
@@ -178,7 +178,7 @@ Feature: Strategic Plan related scenarios
 
   @62001 @validateStrategicPlan @validateHeaderOverview @positive
   Scenario: Verify Header overview have all required fields in ReadOnly / View mode
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -197,7 +197,7 @@ Feature: Strategic Plan related scenarios
 
   @62001 @validateStrategicPlan @validateInternalOrganizationShouldBeAHyperlink @positive
   Scenario: Verify Internal organization should be a hyperlink
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -213,7 +213,7 @@ Feature: Strategic Plan related scenarios
 
   @62001 @validateStrategicPlan @validateAttachmentsAddDocument @smoke @positive
   Scenario: Verify Attachments add document
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -227,7 +227,7 @@ Feature: Strategic Plan related scenarios
 
   @62001 @validateStrategicPlan @validateUserCanDeleteAttachedDocument @smoke @positive
   Scenario: Verify User can delete Attached document
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -242,7 +242,7 @@ Feature: Strategic Plan related scenarios
 
   @62001 @validateStrategicPlan @validateUserCanEditAttachedDocument @positive
   Scenario: Verify User can edit Attached document
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -286,7 +286,7 @@ Feature: Strategic Plan related scenarios
 
   @62190 @validateStrategicPlan @PreInternalOrganization @positive
   Scenario: Verify User can see field Internal Organization preset
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -297,7 +297,7 @@ Feature: Strategic Plan related scenarios
 
   @62190 @validateStrategicPlan @goalsOpenNewWindow @smoke @positive
   Scenario: Verify new goal window open
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -309,7 +309,7 @@ Feature: Strategic Plan related scenarios
 
   @62196 @validateStrategicPlan @EditNewStrategicPlan @positive
   Scenario: Verify User edit and save Strategic Plan
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -343,7 +343,7 @@ Feature: Strategic Plan related scenarios
 
   @62318 @validateStrategicPlan @ViewStrategicPlan @smoke @positive
   Scenario: Verify User should navigate to view page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -359,7 +359,7 @@ Feature: Strategic Plan related scenarios
 
   @62318 @validateStrategicPlan @validateGoalTitle
   Scenario: Verify Goal title field
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -373,7 +373,7 @@ Feature: Strategic Plan related scenarios
 
   @62318 @validateStrategicPlan @validateEGMSID @positive
   Scenario: Verify strategic plan id on goal page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -386,7 +386,7 @@ Feature: Strategic Plan related scenarios
 
   @62318 @validateStrategicPlan @validatecreatGoal @smoke @positive
   Scenario: Verify user can create new goal
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -402,7 +402,7 @@ Feature: Strategic Plan related scenarios
 
   @62318 @validateStrategicPlan @validateCratedYearAndMonthRO @positive
   Scenario: Verify Created Month and Year always Read Only in edit mode
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -413,7 +413,7 @@ Feature: Strategic Plan related scenarios
 
   @62318 @validateStrategicPlan @validatecancleButton @smoke @positive
   Scenario: Verify user can navigate to stratigic plan detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -427,7 +427,7 @@ Feature: Strategic Plan related scenarios
 
   @62318 @validateStrategicPlan @validateGoalTitleCharacter @positive
   Scenario Outline: Verify Goal title not accept more than 255 character
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -464,13 +464,13 @@ Feature: Strategic Plan related scenarios
     Then I can see row level action button "Edit" against "{SavedValue:EGID}" in flex table with id "{grantee_tableId:StrategicGoalsChild}"
     Examples:
       | userType |
-      | ADMIN    |
-      | PM       |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
       | EXE      |
 
   @62324 @validateStrategicPlan @validateStrategicGoalEditButtonNotVisible
   Scenario: Verify user cannot see edit button for created goal by another user
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -482,7 +482,7 @@ Feature: Strategic Plan related scenarios
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "EGID"
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "3" seconds
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
@@ -492,7 +492,7 @@ Feature: Strategic Plan related scenarios
 
   @62324 @validateStrategicPlan @validateStrategicGoalEditandCancleButton @smoke @positive
   Scenario: Verify user navigate to goal view if click on cancel button
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -514,7 +514,7 @@ Feature: Strategic Plan related scenarios
 
   @62324 @validateStrategicPlan @validateStrategicGoalEditandSaveAndContinueButton @smoke @positive
   Scenario: Verify user navigate to goal view if click on Save And Continue button
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -537,7 +537,7 @@ Feature: Strategic Plan related scenarios
 
   @62324 @validateStrategicPlan @validateStrategicGoalTitleInEditMode
   Scenario: Verify system should display warning message if title is blank
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -560,7 +560,7 @@ Feature: Strategic Plan related scenarios
 
   @62324 @validateStrategicPlan @validateStrategicGoalEditDescriptionandSave @positive
   Scenario: Verify user can edit and save goal description
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -582,7 +582,7 @@ Feature: Strategic Plan related scenarios
 
   @62324 @validateStrategicPlan @validateStrategicGoalEditAddAttachment @smoke @positive
   Scenario: Verify user can add attachments
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -600,7 +600,7 @@ Feature: Strategic Plan related scenarios
 
   @62324 @validateStrategicPlan @validateStrategicGoalEditAddNote @smoke @positive
   Scenario: Verify user can add Note
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -618,7 +618,7 @@ Feature: Strategic Plan related scenarios
 
   @62324 @validateStrategicPlan @validateStrategicGoalEditModifiedBy @positive
   Scenario: Verify last modify field showing correct name
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -630,7 +630,7 @@ Feature: Strategic Plan related scenarios
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "EGID"
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "3" seconds
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
@@ -641,7 +641,7 @@ Feature: Strategic Plan related scenarios
 
   @62324 @validateStrategicPlan @validateStrategicGoalEditButtonMiss
   Scenario: Verify edit button not available on view page if login user is not owner
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -653,7 +653,7 @@ Feature: Strategic Plan related scenarios
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "EGID"
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Strategic}" in "{grantee_tableId:StrategicPlans}" panel
@@ -663,7 +663,7 @@ Feature: Strategic Plan related scenarios
 
   @62324 @validateStrategicPlan @validateStrategicPlanGoalEditObjective @positive
   Scenario: Verify create objective in edit mode of goal and lost unsaved data
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -694,7 +694,7 @@ Feature: Strategic Plan related scenarios
 
   @62327 @validateStrategicPlan @validateStrategicGoalDelete @smoke @positive
   Scenario: Verify record owner can see delete button for created goal in list view
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -713,7 +713,7 @@ Feature: Strategic Plan related scenarios
 
   @62327 @validateStrategicPlan @validateStrategicGoalDeleteByNonOwner
   Scenario: Verify record non-owner can not see delete button for created goal in list view
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -734,7 +734,7 @@ Feature: Strategic Plan related scenarios
 
   @62327 @validateStrategicPlan @validateStrategicGoalDeleteOnViewPage @smoke @positive
   Scenario: Verify record owner can delete created goal from Strategic plan view page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -755,7 +755,7 @@ Feature: Strategic Plan related scenarios
 
   @62327 @validateStrategicPlan @validateStrategicGoalDeleteOnViewPageOfActivatedSP @smoke @positive
   Scenario: Verify record owner can see delete button created goal of Activated Strategic plan
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -778,7 +778,7 @@ Feature: Strategic Plan related scenarios
 
   @62327 @validateStrategicPlan @validateStrategicGoalDeleteOnViewPageofActivatedSP @positive
   Scenario: Verify record owner can delete created goal of Activated Strategic plan
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -830,7 +830,7 @@ Feature: Strategic Plan related scenarios
 
   @62854 @validateStrategicPlan @validateObjectiveDisplayInGoal @positive
   Scenario: Verify created objective display in specific goal
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -855,7 +855,7 @@ Feature: Strategic Plan related scenarios
 
   @62854 @validateStrategicPlan @validateOwnerCanCreateObject
   Scenario: Verify created objective not display in specific goal
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
@@ -867,7 +867,7 @@ Feature: Strategic Plan related scenarios
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "EGID"
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Strategic}" in "{grantee_tableId:StrategicPlans}" panel
@@ -877,7 +877,7 @@ Feature: Strategic Plan related scenarios
 
   @62854 @validateStrategicPlan @validateObjectiveTitleRequired
   Scenario: Verify Title required for objective
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"

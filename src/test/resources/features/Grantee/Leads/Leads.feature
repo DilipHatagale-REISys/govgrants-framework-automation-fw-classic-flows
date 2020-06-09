@@ -4,7 +4,7 @@ Feature: Leads related scenarios
 
   @62815 @validateLeadsListView-AllHelpText   @positive
   Scenario Outline: Validate help text message at Leads page block inside enhancedLeadtable for Leads Not Yet Qualified -All
-    Given I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -18,7 +18,7 @@ Feature: Leads related scenarios
 
   @62815 @validateLeadsListView-ClosedHelpText @wip   @positive
   Scenario Outline: Validate help text message at Leads page block inside enhancedLeadtable for Leads Not Yet Qualified -Closed
-    Given I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -32,7 +32,7 @@ Feature: Leads related scenarios
 
   @62815 @validateLeadsListView-OpenHelpText   @positive
   Scenario Outline: Validate help text message at Leads page block inside enhancedLeadtable for Leads Not Yet Qualified -Open
-    Given I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -46,7 +46,7 @@ Feature: Leads related scenarios
 
   @62815 @validateLeadsListViewQuickSearchHelpText @wip  @positive
   Scenario Outline: Validate help text message at Leads inside enhancedLeadtable for Quick search
-    Given I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -60,14 +60,14 @@ Feature: Leads related scenarios
 
   @62815 @validateDefaultCountOfRecordAtLeadsTableAsExpected  @positive
   Scenario: Validate default records count of records for Leads not yet qualified table is same as displayed in entries
-    Given I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     Then I see "10" records inside flex table id "{grantee_tableId:LeadsNotYetQualified}"
 
   @62815 @validateQuickSearchIsWorkingForCorrectIncorrectValueAtLeadsTable @smoke  @positive
   Scenario: Validate quick search is working or not for correct incorrect search value with case sensitive at Leads table
-    Given I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "Automation Demo Lead" in "{grantee_tableId:LeadsNotYetQualified}" panel
@@ -77,7 +77,7 @@ Feature: Leads related scenarios
 
   @62815 @validateAdvanceSearchIsWorkingForCorrectIncorrectValueAtLeadsTable  @positive
   Scenario: Validate advance search is working or not for incorrect search value at at Leads table
-    Given I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I click on advance filter "#advfLeads" of table id "{grantee_tableId:LeadsNotYetQualified}"
@@ -97,7 +97,7 @@ Feature: Leads related scenarios
 
   @62815 @validateOrganizationLinkIsWorkingOrNot @smoke  @positive
   Scenario: Validate organization link is redirecting to proper organization page on click insideLeads table
-    Given I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -110,7 +110,7 @@ Feature: Leads related scenarios
 
   @62815 @validateTotalRecordCountForLead-Closed  @positive
   Scenario: Validate total record count for Leads Not Yet Qualified-All list view at leads table for lead-closed
-    Given I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -122,7 +122,7 @@ Feature: Leads related scenarios
 
   @62815 @validateTotalRecordCountForLead-Open   @positive
   Scenario: Validate total record count for Leads Not Yet Qualified-All list view at leads table
-    Given I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -145,13 +145,13 @@ Feature: Leads related scenarios
     Then I see total records count in flex table "{grantee_tableId:LeadsNotYetQualified}"
 
     Examples:
-      | userType |
-      | EXE      |
-      | PM       |
+      | userType    |
+      | GRANTEE EXE |
+      | GRANTEE PM  |
 
   @62815 @validatePaginationFunctionalityIsWorkingOrNotAtLeadsTable-NotYetQualified   @positive
   Scenario: Validate pagination arrow is working fine at leads not yet qualified table
-    Given I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on page navigation arrow "{grantee_tableId:LeadsNotYetQualified}" for table id "Next"
@@ -159,7 +159,7 @@ Feature: Leads related scenarios
 
   @62815 @validateShowEntriesDropdownFunctionalityIsWorkingOrNotAtLeadsTable  @positive
   Scenario: Validate show entries dropdown is working fine at Leads not yet qualified table
-    Given I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I select value inside table "{grantee_tableId:LeadsNotYetQualified}" is "5"
@@ -167,7 +167,7 @@ Feature: Leads related scenarios
 
   @62815 @validateRefreshOptionsAtLeadsTable  @positive
   Scenario: Validate Refresh option at Leads not yet qualified table is working or not
-    When I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I click on parallel lines menu bar with data target value "#LeadsFlexToggle"
@@ -176,7 +176,7 @@ Feature: Leads related scenarios
 
   @62815 @validateApplicationDueDateForLeads-ClosedListView  @positive
   Scenario: Validate Application due date is passed date for closed Leads
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -198,7 +198,7 @@ Feature: Leads related scenarios
 
   @62815 @validateApplicationDueDateForLeads-OpenListView   @positive
   Scenario: Validate Application due date is current date for open Leads
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -221,7 +221,7 @@ Feature: Leads related scenarios
 
   @62815 @validateApplicationDueDateForLeads-AllListView   @positive
   Scenario: Validate Application due date is current date for All Leads list view
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -244,7 +244,7 @@ Feature: Leads related scenarios
 
   @62815 @validateTotalRecordCountAsPerRow-AllListView   @positive
   Scenario: Validate total records count is equal to number of rows atLeads Not Yet Qualified Yet- AllListView table
-    When I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -258,7 +258,7 @@ Feature: Leads related scenarios
 
   @62815 @validateTotalRecordCountAsPerRow-OpenListView   @positive
   Scenario: Validate total records count is equal to number of rows atLeads Not Yet Qualified Yet- OpenListView table
-    When I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -272,7 +272,7 @@ Feature: Leads related scenarios
 
   @62815 @validateTotalRecordCountAsPerRow-ClosedListView  @positive
   Scenario: Validate total records count is equal to number of rows atLeads Not Yet Qualified Yet- ClosedListView table
-    When I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -306,14 +306,14 @@ Feature: Leads related scenarios
     Then I can see top right button "Edit" in page detail
 
     Examples:
-      | userType |
-      | PM       |
-      | PO       |
-      | EXE      |
+      | userType    |
+      | GRANTEE PM  |
+      | GRANTEE PO  |
+      | GRANTEE EXE |
 
   @62830 @validateVisibilityOfEditButtonToDifferentUsersForLeads-NotYetQualified
   Scenario: Validate Edit button should not be displayed to other users who didnot created the record on page details for Leads Not Yet Qualified
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -355,13 +355,13 @@ Feature: Leads related scenarios
     Then I can see top right button "Qualify Lead" in page detail
 
     Examples:
-      | userType |
-      | PM       |
-      | EXE      |
+      | userType    |
+      | GRANTEE PM  |
+      | GRANTEE EXE |
 
   @62830 @validateVisibilityOfQualifyLeadButtonForExpiredLeads-NotYetQualified
   Scenario: Validate Qualify Leads button should displayed only to any user for which application due date is expired on page details for Leads Not Yet Qualified
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -382,7 +382,7 @@ Feature: Leads related scenarios
 
   @62830 @validateHeaderOverview-NotYetQualified @smoke  @positive
   Scenario: Validate header overview non editable field at page details of Leads Not Yet Qualified
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -408,7 +408,7 @@ Feature: Leads related scenarios
 
   @62830 @validateHeaderOverviewDaysLeftField-NotYetQualified  @positive
   Scenario: Validate header overview days left field with respect to Application due date at page details of Leads Not Yet Qualified
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -429,7 +429,7 @@ Feature: Leads related scenarios
 
   @62830 @validateHeaderOverviewStatusFieldAsExpired-NotYetQualified  @positive
   Scenario: Validate header overview Status field value should be expired for passed application due date at page details of Leads Not Yet Qualified
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -450,7 +450,7 @@ Feature: Leads related scenarios
 
   @62830 @validateHeaderOverviewStatusFieldAsActive-NotYetQualified  @positive
   Scenario: Validate header overview status field value is Active with respect to Application due date is future date at page details of Leads Not Yet Qualified
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -471,7 +471,7 @@ Feature: Leads related scenarios
 
   @62830 @validateGeneralInformationSection-NotYetQualified  @positive
   Scenario: Validate General information of Overview sub tab at page details of Leads Not Yet Qualified
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -498,7 +498,7 @@ Feature: Leads related scenarios
 
   @62830 @validateGeneralInformationLookUpLink @smoke  @positive
   Scenario: Validate look up link inside General information of Overview sub tab at page details of Leads Not Yet Qualified
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -521,7 +521,7 @@ Feature: Leads related scenarios
 
   @62830 @validateGeneralInformationGrantsGovLinks @NotworkInProduct @smoke  @positive
   Scenario: Validate grants gov url is working fine and it opening new tab on click at page details of Leads Not Yet Qualified
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -545,7 +545,7 @@ Feature: Leads related scenarios
 
   @62830 @validateRelatedProgramsForLead  @positive
   Scenario: Validate related program section page block contains record that users added
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -565,7 +565,7 @@ Feature: Leads related scenarios
 
   @62830 @validateColumnsOfRelatedProgram @smoke
   Scenario Outline: Validate expected column is present at related program section page block
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -585,7 +585,7 @@ Feature: Leads related scenarios
 
   @62830 @validateRelatedProgramDetailPage @smoke  @positive
   Scenario: Validate user is able to navigated to related program detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -608,7 +608,7 @@ Feature: Leads related scenarios
 
   @62830 @validateQuickSearchForProgramsTable  @positive
   Scenario: Validate quick search is working properly for valid and invalid input at Programs table on modal
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -631,7 +631,7 @@ Feature: Leads related scenarios
 
   @62830 @validateRefreshAtListOfCFDATable  @positive
   Scenario: Validate Refresh option is working properly at List of CFDA table on modal
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -649,7 +649,7 @@ Feature: Leads related scenarios
 
   @62830 @validateAddingOfRelatedProgramWithSameUsedRecord
   Scenario: Validate already used/added related programs is not displayed under Programs table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -672,7 +672,7 @@ Feature: Leads related scenarios
 
   @62830 @validateRefreshAtRelatedProgramTable  @positive
   Scenario: Validate Refresh option is working properly at related program table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -695,7 +695,7 @@ Feature: Leads related scenarios
 
   @62830 @validateEligibiltySectionPageBlockDetails  @positive
   Scenario: Validate values of fields inside Eligibility page block at leads detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -711,7 +711,7 @@ Feature: Leads related scenarios
 
   @62830 @validateAdditionalInformationPageBlockDetails  @positive
   Scenario: Validate values of fields inside additional information page block at leads detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -727,7 +727,7 @@ Feature: Leads related scenarios
 
   @62830 @validateColumnsOfAllQualificationTable @smoke  @positive
   Scenario Outline: Validate expected column are present for All qualifications table at leads detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -750,7 +750,7 @@ Feature: Leads related scenarios
 
   @62830 @validateNoOfOrganizationAsZeroForAllQualificationTable  @positive
   Scenario: Validate All Qualifications table should not contain record
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -773,7 +773,7 @@ Feature: Leads related scenarios
 
   @62830 @validateColumnsValuesForAllQualificationsTable  @positive
   Scenario: Validate All Qualifications table columns should contain any values - at qualified lead detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -801,7 +801,7 @@ Feature: Leads related scenarios
 
   @62830 @validateQualifiedLeadAgenciesDetailPageForAllQualificationsTable  @positive
   Scenario: Validate qualifying organization should have same as internal organization value for qualified leads records
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -824,7 +824,7 @@ Feature: Leads related scenarios
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
     When I click on "Save" in the page details
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -840,7 +840,7 @@ Feature: Leads related scenarios
 
   @62830 @validateQualifyByLinkForQualifiedLeadAgencyAtAllQualificationTable  @positive
   Scenario: Validate qualify by link opens and navigated to users profile page on click for qualified lead agency record.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -863,7 +863,7 @@ Feature: Leads related scenarios
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
     When I click on "Save" in the page details
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -880,7 +880,7 @@ Feature: Leads related scenarios
 
   @62830 @validateAdvanceSearchOptionIsWorkingAtAllQualificationTable @wip  @positive
   Scenario: Validate advance search is working or not for incorrect search value at at All Qualification table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -940,7 +940,7 @@ Feature: Leads related scenarios
 
   @62830 @validateSystemInformationForQualifiedLeadRecordAtAllQualificationTable  @positive
   Scenario: Validate system information of qualified lead record at all qualification table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -990,7 +990,7 @@ Feature: Leads related scenarios
 
   @62830 @validateSystemInformationLookUpLinkForQualifiedLeadRecordAtAllQualificationTable  @positive
   Scenario: Validate created by look up link redirected to profile page of qualified lead record at all qualification table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1042,7 +1042,7 @@ Feature: Leads related scenarios
 
   @62830 @validateEditingOfProfileFromSystemInformationLookUpLinkForQualifiedLeadRecordAtAllQualificationTable @byAdminUserOnly  @positive
   Scenario: Validate admin user is able to edit the profile by clicking on created by lookup link of qualified lead record at all qualification table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1095,7 +1095,7 @@ Feature: Leads related scenarios
 
   @62830 @validateEditingOfProfileFromSystemInformationLookUpLinkForQualifiedLeadRecordAtAllQualificationTable @byPMUserOnly  @positive
   Scenario: Validate record owner or PM user is able to edit the profile by clicking on created by lookup link of qualified lead record at all qualification table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1139,7 +1139,7 @@ Feature: Leads related scenarios
 
   @62830 @validateFinancialTabDetailsForQualifiedLeadRecordAtAllQualificationTable @wip @decimalIssue  @positive
   Scenario: Validate financial tab details  of qualified lead record at all qualification table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1184,7 +1184,7 @@ Feature: Leads related scenarios
 
   @62830 @validateHelpTextInsideFinancialTabForQualifiedLeadRecordAtAllQualificationTable  @positive
   Scenario Outline: Validate help text message coming inside financial tab fields of qualified lead record at all qualification table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1230,7 +1230,7 @@ Feature: Leads related scenarios
 
   @62830 @validateTopLevelAddButtonAtAttachmentPageBlock  @positive
   Scenario Outline: Validate Attachment page block top level action button of qualified lead record at all qualification table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1255,17 +1255,17 @@ Feature: Leads related scenarios
       | Add |
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @62830 @validateAttachmentAndNotesPageBlock @smoke   @positive
   Scenario Outline: Validate Attachment page block at all qualification table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1290,17 +1290,17 @@ Feature: Leads related scenarios
       | Notes       |
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @63123 @validateAccessOfQualifyingLeadOfUserAtLeadNotYetQualified-All
   Scenario: Validate access permission of qualifying leads to admin, PO users is not allowed.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1311,7 +1311,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
-    And I re-login to "As a Grantee" app as "ADMIN" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1320,7 +1320,7 @@ Feature: Leads related scenarios
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     When I navigate to "Overview" sub tab
     Then I cannot see top right button "Qualify Lead" in page detail
-    And I re-login to "As a Grantee" app as "PO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1332,7 +1332,7 @@ Feature: Leads related scenarios
 
   @63123 @validateQualifyLeadButtonVisibilityToUsersAtLeadNotYetQualified-All-futureapplicationduedate  @positive
   Scenario Outline: Validate qualify lead button is visible to EXE,PM user with lead having future application due date.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1355,13 +1355,13 @@ Feature: Leads related scenarios
     Then I softly see field "Status" as "Qualified Lead"
 
     Examples:
-      | userType |
-      | EXE      |
-      | PM       |
+      | userType    |
+      | GRANTEE EXE |
+      | GRANTEE PM  |
 
   @63123 @validateQualifyLeadButtonVisibilityToUsersAtLeadNotYetQualified-All-passedapplicationduedate  @positive
   Scenario Outline: Validate qualify lead button is visible to EXE,PM user with lead having passed application due date.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1383,13 +1383,13 @@ Feature: Leads related scenarios
     Then I cannot see top right button "Qualify Lead" in page detail
 
     Examples:
-      | userType |
-      | EXE      |
-      | PM       |
+      | userType    |
+      | GRANTEE EXE |
+      | GRANTEE PM  |
 
   @63123 @validateEditModeOfFieldsAtQualifyingLeadDetailPage @smoke  @positive
   Scenario: Validate fields is in edit mode at detail page of qualifying leads.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1400,7 +1400,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1416,7 +1416,7 @@ Feature: Leads related scenarios
 
   @63123 @validateRequiredFieldMessageAtQualifyingLeadDetailPage
   Scenario: Validate mandatory fields required message on qualified lead detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1427,7 +1427,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1444,7 +1444,7 @@ Feature: Leads related scenarios
 
   @63123 @validateFieldsIsInViewModeAtQualifyingLeadDetailPage  @positive
   Scenario: Validate fields is in view mode after clicking on cancel button on qualified lead detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1455,7 +1455,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1471,7 +1471,7 @@ Feature: Leads related scenarios
 
   @63123 @validateFieldsValuesAreSameAsUsersEnteredAtQualifyingLeadDetailPage  @positive
   Scenario: Validate fields values are same as user enter after qualifying the lead on qualified lead detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1487,7 +1487,7 @@ Feature: Leads related scenarios
     When I enter value "20000" into field "fieldAwardFloor__c"
     And I click on "Save" in the page details
     And I save the field labeled "Opportunity Number" as "OpportunityNumber"
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1509,7 +1509,7 @@ Feature: Leads related scenarios
 
   @63123 @validateQualificationDetailsAtQualifyingLeadDetailPage   @positive
   Scenario: Validate user is able to enter qualification details fields values while qualifying the lead on qualified lead detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1520,7 +1520,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1542,7 +1542,7 @@ Feature: Leads related scenarios
 
   @63123 @validateErrorMsgForQualificationDetailsAtQualifyingLeadDetailPage
   Scenario: Validate user is getting error message while qualifying lead without entering Qualification details
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1553,7 +1553,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1572,7 +1572,7 @@ Feature: Leads related scenarios
 
   @63123 @validateQualifyLeadWithDifferentUser  @positive
   Scenario: Validate user is able to qualify the lead which is already qualified by another user at qualified lead detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1611,7 +1611,7 @@ Feature: Leads related scenarios
 
   @63123 @validateQualifyingLeadAfterLeadConvertedToOpportunity  @positive
   Scenario: Validate user is getting error message while qualifying lead which is already converted to opportunity by another user at qualified lead detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1641,7 +1641,7 @@ Feature: Leads related scenarios
 
   @63123 @validateQualifyingFederalLead @checkwithLookupField @wip  @positive
   Scenario: Validate user is able to qualify federal leads at qualified lead detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1666,7 +1666,7 @@ Feature: Leads related scenarios
   Scenario: Validate user is able to qualify federal leads at qualified lead detail page
     When I delete the record "AutomationDemoLead" from the object "FOA LEAD"
     When I delete the record "AutomationDemoLead" from the object "QUALIFIED LEAD"
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1685,7 +1685,7 @@ Feature: Leads related scenarios
 
   @63123 @validateQualifyingNGOLead @checkwithLookupField @wip  @positive
   Scenario: Validate user is able to qualify federal leads at qualified lead detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1704,7 +1704,7 @@ Feature: Leads related scenarios
 
   @63123 @validateQualifyingLeadForOtherOrganization @smoke  @positive
   Scenario: Validate user of one organization is able to qualify the lead of other organization
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1727,7 +1727,7 @@ Feature: Leads related scenarios
 
   @63123 @validateQualifyingLeadOfSameOrgaization  @positive
   Scenario: Validate user is able to qualify lead of own organization after qaulification of lead of other organization
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1759,7 +1759,7 @@ Feature: Leads related scenarios
 
   @63123 @validateQualifiedLeadShouldNotPresentAtLeadsTable  @positive
   Scenario: Validate already qualified lead should not be displayed at Not yet qualified leads table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1812,9 +1812,9 @@ Feature: Leads related scenarios
     Then I softly can see top right button "Edit" in page detail
 
     Examples:
-      | userType |
-      | PM       |
-      | EXE      |
+      | userType    |
+      | GRANTEE PM  |
+      | GRANTEE EXE |
 
   @63041 @validateEditOfQualifiedLeadWithOwnerUser  @positive
   Scenario Outline: Validate owner of qualified lead record is able to edit qualified lead
@@ -1852,13 +1852,13 @@ Feature: Leads related scenarios
     Then I softly see field "Justification" as "Test Justification For Automation"
 
     Examples:
-      | userType |
-      | PM       |
-      | EXE      |
+      | userType    |
+      | GRANTEE PM  |
+      | GRANTEE EXE |
 
   @63041 @validateEditOfQualifiedLeadWithOtherUser @BugLoggedWith84758
   Scenario: Validate other user of qualified lead record is able to edit qualified lead
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1877,17 +1877,17 @@ Feature: Leads related scenarios
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     And I click on "Qualify Lead" in the page details
-    And I re-login to "As a Grantee" app as "PO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     Then I softly cannot see row level action button "Edit" against "Qualified Lead" in flex table with id "{grantee_tableId:QualifiedLeads}"
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     Then I softly cannot see row level action button "Edit" against "Qualified Lead" in flex table with id "{grantee_tableId:QualifiedLeads}"
-    And I re-login to "As a Grantee" app as "FD" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE DD" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
@@ -1895,7 +1895,7 @@ Feature: Leads related scenarios
 
   @63041 @validateEditFunctionalityAtfQualifiedLead @smoke  @positive
   Scenario: Validate qualified record should opened in edit mode after editing the record with row level action
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1924,7 +1924,7 @@ Feature: Leads related scenarios
 
   @63041 @validateCancelButtonFunctionalityAtfQualifiedLead @smoke  @positive
   Scenario: Validate Cancel button functionality at qualified lead
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1954,7 +1954,7 @@ Feature: Leads related scenarios
 
   @63041 @validateSaveAndContinueFunctionalityAtQualifyingLeadDetailPage @smoke
   Scenario: Validate record owner is getting error message while qualifying lead with clicking on save and continue button without entering Qualification details
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -1983,7 +1983,7 @@ Feature: Leads related scenarios
 
   @63041 @validateLookupFieldDetailsWithBlankData  @positive
   Scenario: Validate lookup modal with header is getting displayed on click of lookup search icon
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2011,7 +2011,7 @@ Feature: Leads related scenarios
 
   @63041 @validateTableColumnOnLookupModalWithBlankData  @positive
   Scenario: Validate lookup modal column is getting displayed on click of lookup search icon
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2040,7 +2040,7 @@ Feature: Leads related scenarios
 
   @63041 @validateBottomFieldsOfLookupModalWithBlankData  @positive
   Scenario: Validate lookup modal bottom fields
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2070,7 +2070,7 @@ Feature: Leads related scenarios
 
   @63041 @validateOrganizationSelectionWithBlankData  @positive
   Scenario: Validate lookup field contains selected value after selection from lookup modal
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2098,7 +2098,7 @@ Feature: Leads related scenarios
 
   @63041 @validateOrganizationSelectionWithValidData  @positive
   Scenario: Validate lookup field contains expected organization after selecting it from look up modal
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2127,7 +2127,7 @@ Feature: Leads related scenarios
 
   @63041 @validateBottomFieldsOfLookupModalWithValidData  @positive
   Scenario: Validate lookup modal contains total record field after entering valid data inside lookup search box and clicking on search icon
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2155,7 +2155,7 @@ Feature: Leads related scenarios
 
   @63041 @validateOrganizationOnLookupModalWithValidData  @positive
   Scenario: Validate lookup modal contains expected organization inside table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2183,7 +2183,7 @@ Feature: Leads related scenarios
 
   @63041 @validateOrganizationOnLookupModalWithPartialData  @positive
   Scenario: Validate lookup modal contains expected organization inside table after entering partial data inside lookup search box
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2212,7 +2212,7 @@ Feature: Leads related scenarios
 
   @63041 @validateBottomFieldsOfLookupModalWithPartialData  @positive
   Scenario:  Validate lookup modal contains total record field after entering partial data inside lookup search box and clicking on search icon
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2243,7 +2243,7 @@ Feature: Leads related scenarios
 
   @63041 @validateLookupModalWithInvalidData
   Scenario:  Validate lookup modal contains no records agter entering invalid data to search
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2272,7 +2272,7 @@ Feature: Leads related scenarios
 
   @63041 @validateRelevancePicklistField  @positive
   Scenario:  Validate Relevence pick list field having options inside it as expected
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2299,7 +2299,7 @@ Feature: Leads related scenarios
 
   @63041 @validateImpactPicklistFieldValues  @positive
   Scenario:  Validate Impact pick list field having options inside it as expected
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2326,7 +2326,7 @@ Feature: Leads related scenarios
 
   @63041 @validateImpactPicklistFieldWithBlankData
   Scenario:  Validate error message after submission with blank data as none inside Impact pick list field
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2384,13 +2384,13 @@ Feature: Leads related scenarios
     Then I can see top right button "Validate" in page detail
 
     Examples:
-      | userType |
-      | EXE      |
-      | PM       |
+      | userType    |
+      | GRANTEE EXE |
+      | GRANTEE PM  |
 
   @63084 @VerifyFunctionalityOfValidateButtonWithCorrectData  @positive
   Scenario: Validate user is able validate the Qualified record with success message
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2436,13 +2436,13 @@ Feature: Leads related scenarios
     Then I can see top right button "Submit for Approval" in page detail
 
     Examples:
-      | userType |
-      | EXE      |
-      | PM       |
+      | userType    |
+      | GRANTEE EXE |
+      | GRANTEE PM  |
 
   @63227 @validateConvertOpportunityToLeadBySameOrganizationUsers  @positive
   Scenario: Validate one user of organizaion1 is qualifying lead and the same qualified lead can be converted by another user of organization1
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2458,7 +2458,7 @@ Feature: Leads related scenarios
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
     When I click on "Save" in the page details
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2470,7 +2470,7 @@ Feature: Leads related scenarios
 
   @63227 @validateConvertOpportunityToLeadByDifferentOrganizationUsers  @positive
   Scenario: Validate one user of organizaion1 is qualifying lead and the same qualified lead can be converted by another user of organization2
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2486,7 +2486,7 @@ Feature: Leads related scenarios
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
     When I click on "Save" in the page details
-    And I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2503,7 +2503,7 @@ Feature: Leads related scenarios
 
   @63227 @verifyValidationMessageComingWhileConvertingQualifiedLeadwithSameOrganizationUser @positive
   Scenario: Validate message coming while converting already qualified lead to opportunity with same organization user
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2521,7 +2521,7 @@ Feature: Leads related scenarios
     When I click on "Save" in the page details
     And I click on "Convert to Opportunity" in the page details
     Then I softly see field "Status" as "Converted to Opportunity"
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
@@ -2532,7 +2532,7 @@ Feature: Leads related scenarios
 
   @62955 @verifyTakeSnapShotOptionAtQualifiedLeadDetail @wip  @positive
   Scenario: Validate take snapshot option at Qualified lead detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2556,7 +2556,7 @@ Feature: Leads related scenarios
 
   @62955 @verifyQualifiedLeadDetailsPage @smoke  @positive
   Scenario: Validate page layout details at qualified leads detail page
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2587,10 +2587,10 @@ Feature: Leads related scenarios
     Then  I can see top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
 
     Examples:
-      | userType |
-      | EXE      |
-      | PM       |
-      | PO       |
+      | userType    |
+      | GRANTEE EXE |
+      | GRANTEE PM  |
+      | GRANTEE PO  |
 
   @63186 @validateNewButtonNotDisplayedForSpecificUser-NotYetQualifiedLeads @smoke
   Scenario Outline: Validate New top level button is not displayed at NotYetQualified table
@@ -2600,13 +2600,13 @@ Feature: Leads related scenarios
     Then  I cannot see top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
 
     Examples:
-      | userType |
-      | FD       |
-      | FO       |
+      | userType   |
+      | GRANTEE DD |
+      | GRANTEE FO |
 
   @63186 @validateNewButtonIsDisplayedForSpecificUser-NotYetQualifiedLeads @BugLogged71173  @positive
   Scenario: Validate New top level button is displayed at Not Yet Qualified table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2616,7 +2616,7 @@ Feature: Leads related scenarios
 
   @63186 @validatePicklistFieldsValues-NotYetQualifiedLeads  @positive
   Scenario:  Validate picklist fields should have values as expected on edit page while creating leads and also checking page navigated to edit mode
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2624,7 +2624,7 @@ Feature: Leads related scenarios
 
   @63186 @validateCategoryOfFundingOrganizationField @buglogged71538
   Scenario: Verify validation message coming for description fields for opportunity category
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2639,7 +2639,7 @@ Feature: Leads related scenarios
   Scenario Outline: Verify fields should accept only maximum limits of character as 255 while creating opportunity
     When I delete the record "<requiredValue>" from the object "FOA LEAD"
     When I delete the record "<requiredValue>" from the object "QUALIFIED LEAD"
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2655,7 +2655,7 @@ Feature: Leads related scenarios
 
   @63186 @validateFieldsForNegativeValuesAcceptance  @positive
   Scenario: Verify fields should not accept negative valued
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2676,7 +2676,7 @@ Feature: Leads related scenarios
 
   @63186 @validateFormatOfEnteredValueAtFields @positive
   Scenario: Verify entered numeric values should get formatted with comma after saving record
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2698,7 +2698,7 @@ Feature: Leads related scenarios
 
   @63186 @validateExpectedNoOfAwardFieldsWithCharacterValuesAcceptance
   Scenario: Verify system should display error message while entering character value inside Expected no of Award fields
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2716,7 +2716,7 @@ Feature: Leads related scenarios
   @63186 @validateCreationOfLeadWithNonFederalOrganizationWithSourceAsState @wip  @positive
   Scenario: Verify user is able to create lead with Non federal organization with source as state
     When I delete the record "Automation Non Federal Organization" from the object "Account"
-    When I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:NonFederalOrganizations}"
@@ -2737,7 +2737,7 @@ Feature: Leads related scenarios
   @63186 @validateCreationOfLeadWithNonFederalOrganizationWithSourceAsNGO @wip  @positive
   Scenario: Verify user is able to create lead with Non federal organization with source as NGO
     When I delete the record "Automation Non Federal Organization" from the object "Account"
-    When I login to "As a Grantee" app as "ADMIN" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "HOME" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:NonFederalOrganizations}"
@@ -2757,7 +2757,7 @@ Feature: Leads related scenarios
 
   @63186 @validateCreationOfLeadWithNonFederalOrganizationWithSourceAsFederal  @positive
   Scenario: Verify user is able to create lead with Non federal organization with source as Federal
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2772,7 +2772,7 @@ Feature: Leads related scenarios
 
   @63186 @validateCreationOfLeadWithSameOpportunityNumber @wip  @positive
   Scenario: Verify user is not able to create lead with same opportunity number for same organization
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2784,7 +2784,7 @@ Feature: Leads related scenarios
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
     Then I see field "Source" as "Federal"
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2800,7 +2800,7 @@ Feature: Leads related scenarios
 
   @63186 @validateCreationOfLeadWithSameOpportunityNumberForDifferentOrganization @wip  @positive
   Scenario: Verify user is able to create lead with same opportunity number for different organization
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2812,7 +2812,7 @@ Feature: Leads related scenarios
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
     Then I see field "Source" as "Federal"
-    And I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2828,7 +2828,7 @@ Feature: Leads related scenarios
 
   @63186 @validateAllFieldsValidationErrorMessage
   Scenario: Verify all validation error message for fields while lead creation
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2847,7 +2847,7 @@ Feature: Leads related scenarios
 
   @63186 @validateFundingOrganizationLookupSearchField  @positive
   Scenario: Verify user is able to search with federal organization create lead with Non federal organization with source as Federal
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2875,14 +2875,14 @@ Feature: Leads related scenarios
     Then I softly can see row level action button "Edit" against "{SavedValue:Automation Runtime Lead}" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
 
     Examples:
-      | userType |
-      | PM       |
-      | PO       |
-      | EXE      |
+      | userType    |
+      | GRANTEE PM  |
+      | GRANTEE PO  |
+      | GRANTEE EXE |
 
   @63201 @validateEditIconVisibilityForSpecificUsers-ADMIN-FD-FO @smoke
   Scenario Outline: Verify row level edit action is not visible for expected user
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2893,7 +2893,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
-    When I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2902,14 +2902,14 @@ Feature: Leads related scenarios
     Then I softly cannot see row level action button "Edit" against "{SavedValue:Automation Runtime Lead}" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | FO       |
-      | FD       |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE FO    |
+      | GRANTEE DD    |
 
   @63201 @verifyEditActionVisibilityWithDifferentUserOfSameProfile
   Scenario: Validate row level edit action should not displayed to different user of same profile
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2920,7 +2920,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
-    And I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2930,7 +2930,7 @@ Feature: Leads related scenarios
 
   @63201 @validateFieldsIsInEditMode  @positive
   Scenario: Verify page details fields is in edit mode after editing already created lead.
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2960,7 +2960,7 @@ Feature: Leads related scenarios
 
   @63201 @validateFieldsIsInViewMode  @positive
   Scenario: Verify page details fields is in view mode after editing already created lead_EGMS Lead
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2973,7 +2973,7 @@ Feature: Leads related scenarios
 
   @63201 @validateAdditionOfAttachment  @positive
   Scenario: Verify user is able to add attchment while creating leads
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -2996,7 +2996,7 @@ Feature: Leads related scenarios
 
   @63201 @validateErrorMessageWhileAdditionOfAttachment
   Scenario: Verify user is able to get validation message while adding attchment
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -3022,7 +3022,7 @@ Feature: Leads related scenarios
 
   @63201 @validateAttachmentTypeValues  @positive
   Scenario: Verify user is able to see expected values inside Type fields on attchment modal
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -3043,7 +3043,7 @@ Feature: Leads related scenarios
 
   @63201 @validateAdditionOfNotes  @positive
   Scenario: Verify user is able to add notes while creating leads
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -3065,7 +3065,7 @@ Feature: Leads related scenarios
 
   @63201 @validateErrorMessageWhileAdditionOfNotes
   Scenario: Verify user is able to get validation message while adding attchment
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -3089,7 +3089,7 @@ Feature: Leads related scenarios
 
   @63201 @validateDeletionOfAttachmentRecord  @positive
   Scenario: Verify user is able to delete added record attchment
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -3113,7 +3113,7 @@ Feature: Leads related scenarios
 
   @63201 @validateDeletionOfAddedNotes  @positive
   Scenario: Verify user is able to delete already created notes record
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -3136,7 +3136,7 @@ Feature: Leads related scenarios
 
   @63201 @validateErrorMessageForAwardCeilingAndAwardFloorFields @positive
   Scenario: Verify user is getting validation message while entering award ceiling value is less than award floor value on lead creation
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -3155,7 +3155,7 @@ Feature: Leads related scenarios
 
   @63172 @validateDeleteIconDisplayedToRecordOwner  @positive
   Scenario: Verify row level delete button is displayed to record owner of created lead
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -3183,17 +3183,17 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
-    And I re-login to "As a Grantee" app as "ADMIN" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     Then I can see row level action button "Delete" against "{SavedValue:Automation Runtime Lead}" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
 
     Examples:
-      | userType |
-      | EXE      |
-      | PM       |
-      | PO       |
+      | userType    |
+      | GRANTEE EXE |
+      | GRANTEE PM  |
+      | GRANTEE PO  |
 
   @63172 @validateDeletionOfLeadRecordWithPM_EXE_PO_ADMIN  @positive
   Scenario Outline: Verify manually created lead can be deleted by specific users
@@ -3217,14 +3217,14 @@ Feature: Leads related scenarios
       | Record deleted successfully. |
 
     Examples:
-      | userType |
-      | EXE      |
-      | PM       |
-      | PO       |
+      | userType    |
+      | GRANTEE EXE |
+      | GRANTEE PM  |
+      | GRANTEE PO  |
 
   @63172 @validateDeleteIconNotDisplayedToFD_FOUser
   Scenario Outline: Verify row level delete button should not be displayed to FD FO user for record created bt EXE PM PO
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -3242,13 +3242,13 @@ Feature: Leads related scenarios
     Then I cannot see row level action button "Delete" against "{SavedValue:Automation Runtime Lead}" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
 
     Examples:
-      | userType |
-      | FO       |
-      | FD       |
+      | userType   |
+      | GRANTEE FO |
+      | GRANTEE DD |
 
   @63172 @validateDeleteIconNotDisplayedToRecordOwner_Admin   @positive
   Scenario Outline: Verify row level delete button should not be displayed to record owner and Admin user after lead has been qualified
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -3270,12 +3270,12 @@ Feature: Leads related scenarios
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     Then I see "No Records Found" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     Examples:
-      | userType |
-      | ADMIN    |
+      | userType      |
+      | GRANTEE ADMIN |
 
   @63172 @validateConfirmationMessageOnRecordDeletion  @positive
   Scenario: Verify confirmation message on deletion of manually created lead
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -3294,7 +3294,7 @@ Feature: Leads related scenarios
 
   @63172 @validateRecordDeletionOfCreatedLead @positive
   Scenario: Verify record has been deleted while clicking on delete icon from table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"

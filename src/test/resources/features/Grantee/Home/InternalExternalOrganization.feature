@@ -7,17 +7,17 @@ Feature:Internal organization related scenarios
     When I login as "<userType>" user
     Then I am logged in
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @61682 @validateRelatedLogsSubTabDetailsForInternalOrganizations @smoke @positive
   Scenario: Validate Related Logs sub tab details for internal organizations detail page
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -31,7 +31,7 @@ Feature:Internal organization related scenarios
 
   @61682 @validateQuickSearchIsWorkingOrNotAtRelatedLogsSubTab @smoke @positive
   Scenario: Validate search is working properly for valid and invalid input value at Internal organization table
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -60,7 +60,7 @@ Feature:Internal organization related scenarios
 
   @61682 @validateAdvanceSearchIsWorkingOrNotAtRelatedLogSubTab @positive
   Scenario: Validate advance search is working or not for correct and incorrect value at Internal Programm table
-    Given I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -78,7 +78,7 @@ Feature:Internal organization related scenarios
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     And I click on "Qualify Lead" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "Internal" portal
+    And I re-login as "GRANTEE ADMIN" user on "Internal" portal
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -99,7 +99,7 @@ Feature:Internal organization related scenarios
 
   @61682 @validateViewOfAllPageBlocksForRelatedLogsSubTab @positive
   Scenario: Validate page detail view for all page blocks at related logs sub tab at Internal Program table
-    When I login to "As a Grantee" app as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -132,21 +132,21 @@ Feature:Internal organization related scenarios
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "5" seconds
     When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
-    And I re-login as "Admin" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -154,13 +154,13 @@ Feature:Internal organization related scenarios
     When I navigate to "Related Log" sub tab
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpenQualifiedTable}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpenQualifiedTable}"
-    And I pause execution for "20" seconds
+    And I pause execution for "3" seconds
     Then I see the header is "Opportunity" in the page details
     Then I see the sub-header is "{SavedValue:Automation Runtime Lead}" in the page details
 
   @61682 @validateRefreshAtInternalProgramsUnderRelatedLogForInternalOrganizations @positive
   Scenario: Validate Refresh option at Internal Program page block is working properly as expected
-    When I login as "Admin" user
+    Given I login as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -172,7 +172,7 @@ Feature:Internal organization related scenarios
 
   @61676 @validateEditSaveFunctionalityAtViewDetailPageForInternalOrganizations @positive
   Scenario: Validate at view detail page for internal organizations edit and save functionality is working correctly with admin user.
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -201,16 +201,16 @@ Feature:Internal organization related scenarios
     When I click on "View" icon for "Test Automation Organization" inside table
     Then I softly cannot see top right button "Edit" in page detail
     Examples:
-      | userType |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType    |
+      | GRANTEE PM  |
+      | GRANTEE PO  |
+      | GRANTEE DD  |
+      | GRANTEE FO  |
+      | GRANTEE EXE |
 
   @61659 @validateQuickSearchIsWorkingForCorrectValueAtViewOfInternalOrganizationTable @positive
   Scenario: Validate quick search is working or not for correct search value with case sensitive at internal organizations table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -220,7 +220,7 @@ Feature:Internal organization related scenarios
 
   @61659 @validateAdvanceSearchIsWorkingForIncorrectValueAtViewOfInternalOrganizationTable
   Scenario: Validate advance search is working or not for incorrect search value at internal organizations table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I click on advance filter "#advfInternalOrganizationHierarchy1" of table id "{grantee_tableId:InternalOrganizations}"
@@ -235,7 +235,7 @@ Feature:Internal organization related scenarios
 
   @61659 @validateRefreshOptionIsWorkingOrNotAtInternalOrganizationTable @positive
   Scenario: Validate internal organization table is getting refresh with Refresh dropdown option click at internal organizations table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I click on parallel lines menu bar with data target value "#InternalOrganizationHierarchy1FlexToggle"
@@ -244,7 +244,7 @@ Feature:Internal organization related scenarios
 
   @61659 @validateTotalRecordCountAtInternalOrganizationTable @positive
   Scenario: Validate total records count is displayed as number of records in internal organization table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     Then I see total records count is same as total row of table id "{grantee_tableId:InternalOrganizations}" on click "Next"
@@ -256,24 +256,24 @@ Feature:Internal organization related scenarios
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
     When I click on "View" icon for "Test Automation Organization" inside table
-    When I perform quick search for "FO Username" in "{grantee_tableId:RelatedContacts}" panel
-    When I click on "View" icon for "FO Username" inside table
+    When I perform quick search for "GRANTEE FO Username" in "{grantee_tableId:RelatedContacts}" panel
+    When I click on "View" icon for "GRANTEE FO Username" inside table
     When I click "Test Automation Organization" lookup link
     Then I see the header is "Internal Organization" in the page details
     Then I see the sub-header is "Test Automation Organization" in the page details
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @61752 @validateVisibilityOfDeleteIconforActiveAndNonActiveEgmsUserAtInternalOrganizations @smoke @positive
   Scenario: Validate delete icon is visible for active non avtive contacts at intenal organizations
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click toggle button to select "My Organization’s Contact"
@@ -288,12 +288,12 @@ Feature:Internal organization related scenarios
     When I click on "View" icon for "Test Automation Organization" inside table
     When I perform quick search for "AutomationUser" in "{grantee_tableId:RelatedContacts}" panel
     Then I softly can see row level action button "Remove" against "AutomationUser" in flex table with id "{grantee_tableId:RelatedContacts}"
-    When I perform quick search for "{SavedValue:PO Username}" in "{grantee_tableId:RelatedContacts}" panel
-    Then I softly can see row level action button "Remove" against "{SavedValue:PO Username}" in flex table with id "{grantee_tableId:RelatedContacts}"
+    When I perform quick search for "{SavedValue:GRANTEE PO Username}" in "{grantee_tableId:RelatedContacts}" panel
+    Then I softly can see row level action button "Remove" against "{SavedValue:GRANTEE PO Username}" in flex table with id "{grantee_tableId:RelatedContacts}"
 
   @61752 @validateDeletionOfActiveAndNonActiveContactFromReletedContactsAtInternalOrganizations @positive
   Scenario: Validate contact deletion from related contacts for Active nonActive contacts at internal organizations
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click toggle button to select "My Organization’s Contact"
@@ -305,8 +305,8 @@ Feature:Internal organization related scenarios
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
     When I click on "View" icon for "Test Automation Organization" inside table
-    When I perform quick search for "{SavedValue:PM Username}" in "{grantee_tableId:RelatedContacts}" panel
-    When I click on "Remove" icon for "{SavedValue:PM Username}" inside flex table with id "{grantee_tableId:RelatedContacts}"
+    When I perform quick search for "{SavedValue:GRANTEE PM Username}" in "{grantee_tableId:RelatedContacts}" panel
+    When I click on "Remove" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:RelatedContacts}"
     Then I softly see the following messages in the page details contains:
       | You cannot delete a contact who is an active EGMS user. Please contact your system administrator to deactivate the user. After deactivation, the contact can be deleted. |
     When I perform quick search for "AutomationUser" in "{grantee_tableId:RelatedContacts}" panel
@@ -316,7 +316,7 @@ Feature:Internal organization related scenarios
 
   @61741 @validateRelatedContactsListViewAtInternalOrganizations @smoke @positive
   Scenario Outline: Validate related contacts list view for internal organizations detail page
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -333,38 +333,38 @@ Feature:Internal organization related scenarios
 
   @61741 @validateSearchIsWorkingOrNotAtRealtedContactsTable @positive
   Scenario: Validate related contacts search is working or not  with case sensitive at related contacts table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
     When I click on "View" icon for "Test Automation Organization" inside table
-    When I perform quick search for "{SavedValue:EXE Username}" in "{grantee_tableId:RelatedContacts}" panel
-    Then I softly see value "{SavedValue:EXE Username}" for title "Full Name" inside table "{grantee_tableId:RelatedContacts}"
-    When I perform quick search for "Invalid {SavedValue:EXE Username}" in "{grantee_tableId:RelatedContacts}" panel
+    When I perform quick search for "{SavedValue:GRANTEE EXE Username}" in "{grantee_tableId:RelatedContacts}" panel
+    Then I softly see value "{SavedValue:GRANTEE EXE Username}" for title "Full Name" inside table "{grantee_tableId:RelatedContacts}"
+    When I perform quick search for "Invalid {SavedValue:GRANTEE EXE Username}" in "{grantee_tableId:RelatedContacts}" panel
     Then I softly see "No Records Found" inside flex table with id "{grantee_tableId:RelatedContacts}"
 
   @61741 @validateAdvanceFilterSearchIsWorkingForAtRelatedContactTable @positive
   Scenario: Validate advance search is working or not for correct incorrect search value at Related contacts table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
     When I click on "View" icon for "Test Automation Organization" inside table
     When I click on advance filter "#advfGranteeContactsByInternalAccount" of table id "{grantee_tableId:RelatedContacts}"
     When I enter advance filter values inside id "advfGranteeContactsByInternalAccount"
-      | Full Name | contains | {SavedValue:EXE Username} |
-    Then I softly see value "{SavedValue:EXE Username}" for title "Full Name" inside table "{grantee_tableId:RelatedContacts}"
+      | Full Name | contains | {SavedValue:GRANTEE EXE Username} |
+    Then I softly see value "{SavedValue:GRANTEE EXE Username}" for title "Full Name" inside table "{grantee_tableId:RelatedContacts}"
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
     When I click on "View" icon for "Test Automation Organization" inside table
     When I click on advance filter "#advfGranteeContactsByInternalAccount" of table id "{grantee_tableId:RelatedContacts}"
     When I enter advance filter values inside id "advfGranteeContactsByInternalAccount"
-      | Full Name | contains | Invalid {SavedValue:EXE Username} |
+      | Full Name | contains | Invalid {SavedValue:GRANTEE EXE Username} |
     Then I softly see "No Records Found" inside flex table with id "{grantee_tableId:RelatedContacts}"
 
   @61741 @validatePaginationFunctionalityIsWorkingOrNotAtRealtedContactsTable @positive
   Scenario: Validate pagination arrow is working fine at Related contacts table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -374,7 +374,7 @@ Feature:Internal organization related scenarios
 
   @61741 @validateShowEntriesDropdownFunctionalityIsWorkingOrNotAtRealtedContactsTable @positive
   Scenario: Validate show entries dropdown is working fine at Related contacts table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -384,7 +384,7 @@ Feature:Internal organization related scenarios
 
   @61741 @validateDefaultEntriesAtRelatedContactsTable @positive
   Scenario: Validate default count of records at Related contacts table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -393,7 +393,7 @@ Feature:Internal organization related scenarios
 
   @61741 @validateTotalRecordsAtRelatedContactsTable @positive
   Scenario: Validate total records inside table is equal to total number of records present inside Related contacts table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -403,7 +403,7 @@ Feature:Internal organization related scenarios
 
   @61741 @validateSortingOfColumnAtRelatedContactTableOfInternalOrganization @positive
   Scenario: Validate columns of federal organization table is getting sorted in ascending order on column click
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -425,7 +425,7 @@ Feature:Internal organization related scenarios
 
   @61746 @validateAddingOfContactWithOrWithoutMandatoryFieldsAtInternalOrganizations @smoke
   Scenario: Validate contact related contacts for Active nonActive contacts at internal organizations
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -477,17 +477,17 @@ Feature:Internal organization related scenarios
       | Record deleted successfully. |
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @61885 @validateAddingOfIndirectRateAtInternalUser @positive
   Scenario: Validate addition of Indirect Rate with valid or invalid inputs at internal organizations
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -508,7 +508,7 @@ Feature:Internal organization related scenarios
 
   @61885 @validateRelatedColumnsOfIndirectRateAtInternalOrganizations @positive
   Scenario Outline: Validate Indirect Rate columns are displayed properly for internal organizations detail page
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -526,7 +526,7 @@ Feature:Internal organization related scenarios
 
   @61725 @validateQuickSearchIsWorkingOrNotAtFederalOrganization @positive
   Scenario: Validate search is working properly at Federal Organization table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "ACC-APG-Belvoir" in "{grantee_tableId:FederalOrganizations}" panel
@@ -534,7 +534,7 @@ Feature:Internal organization related scenarios
 
   @61725 @validateAdvanceSearchIsWorkingOrNotAtFederalOrganization @positive
   Scenario: Validate advance search is working or not at Federal organization table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I click on advance filter "#advfExternalOrganizationHierarchy" of table id "{grantee_tableId:FederalOrganizations}"
@@ -544,7 +544,7 @@ Feature:Internal organization related scenarios
 
   @61725 @validateTotalRecordCountAtFederalOrganizationTable @positive
   Scenario: Validate total records count is displayed as number of records in federal organization table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     And I select value inside table "{grantee_tableId:FederalOrganizations}" is "100"
@@ -552,7 +552,7 @@ Feature:Internal organization related scenarios
 
   @61725 @validateNativePageAccessToAdminUsersAtFederalOrganization @smoke @positive
   Scenario: Validate govgrant set up option is visible only to admin user
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "ACC-APG-Belvoir" in "{grantee_tableId:FederalOrganizations}" panel
@@ -562,7 +562,7 @@ Feature:Internal organization related scenarios
 
   @61725 @validateSortingOfColumnAtExternalFederalOrganization @positive
   Scenario: Validate columns of External federal organization table is getting sorted in ascending/descending order on column click
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I click on "Organization Name" column header inside table with id "{grantee_tableId:FederalOrganizations}"
@@ -591,17 +591,17 @@ Feature:Internal organization related scenarios
     Then I see the sub-header is "ACC-APG-Belvoir" in the page details
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @61808 @validateFederalOrganizationAddress
   Scenario: Validate Address detail of Federal organization
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "ACC-APG-Belvoir" in "{grantee_tableId:FederalOrganizations}" panel
@@ -617,7 +617,7 @@ Feature:Internal organization related scenarios
 
   @61596 @validateTotalRecordCountAtFederalOrganizationTableAsExpected @wip
   Scenario: Validate records count of federal organization table is same as displayed in entries
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I pause execution for "5" seconds
@@ -625,7 +625,7 @@ Feature:Internal organization related scenarios
 
   @62555 @validateQuickSearchIsWorkingOrNotAtNonFederalOrganization
   Scenario: Validate search is working properly at Federal Organization table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:NonFederalOrganizations}"
@@ -641,7 +641,7 @@ Feature:Internal organization related scenarios
 
   @62555 @validateAdvanceSearchIsWorkingOrNotAtNonFederalOrganization
   Scenario: Validate advance search is working or not at Federal organization table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I click on advance filter "#advfNGOOrganizationHierarchy2" of table id "{grantee_tableId:NonFederalOrganizations}"
@@ -656,7 +656,7 @@ Feature:Internal organization related scenarios
 
   @62555 @validatePaginationFunctionalityIsWorkingOrNotAtNonFederalOrganizationTable @wip
   Scenario: Validate pagination arrow is working fine at non federal organization table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     And I click on page navigation arrow "{grantee_tableId:NonFederalOrganizations}" for table id "Next"
@@ -664,7 +664,7 @@ Feature:Internal organization related scenarios
 
   @62555 @validateRecordsAsPerShowEntriesDropdownAtNonFederalOrganizationTable @wip
   Scenario: Validate show entries dropdown is working fine and its showing same as records present in Non federal organization table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     And I select value inside table "{grantee_tableId:NonFederalOrganizations}" is "5"
@@ -672,7 +672,7 @@ Feature:Internal organization related scenarios
 
   @62555 @validateSortingOfNonFederalOrganizationTableColumns
   Scenario: Validate columns of Non federal organization table is getting sorted in ascending/descending order on column click
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I click on "Organization Name" column header inside table with id "{grantee_tableId:NonFederalOrganizations}"
@@ -701,17 +701,17 @@ Feature:Internal organization related scenarios
 
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @62555 @validateNativePageAccessToAdminUsersAtNonFederalOrganization
   Scenario: Validate gov-grant set up option is visible only to admin user
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:NonFederalOrganizations}"
@@ -727,7 +727,7 @@ Feature:Internal organization related scenarios
 
   @62555 @validateRefreshOptionsAtAtNonFederalOrganizationTable
   Scenario: Validate Refresh option at External non federal organization is working or not
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I click on parallel lines menu bar with data target value "#NGOOrganizationHierarchy2FlexToggle"
@@ -753,13 +753,13 @@ Feature:Internal organization related scenarios
     Then I softly see field "City" as "virginia"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
 
   @61986 @validateExternalNonFederalOrganizationDetailsWithContactSection @smoke
   Scenario: Validate all details with website link and contact section is proper at External Non-Federal Organization table
-    Given I login to "As a Grantee" app as "Admin" user
+    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Automation Non Federal Organization" in "{grantee_tableId:NonFederalOrganizations}" panel

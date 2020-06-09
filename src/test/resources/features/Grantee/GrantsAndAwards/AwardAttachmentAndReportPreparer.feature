@@ -139,7 +139,7 @@ Feature: Award Attachment and Report preparer related scenarios
       | Automation PM             | Automation Admin         |
     Then I softly see value "Automation PM" for title "Financial Report Preparer" inside table "---prdoh_tableId:-:AwardReportPreparerTableId---"
     Then I softly see value "Automation Admin" for title "Progress Report Preparer" inside table "---prdoh_tableId:-:AwardReportPreparerTableId---"
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -150,11 +150,11 @@ Feature: Award Attachment and Report preparer related scenarios
 
     Examples:
       | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      |GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @68048 @verifyQuickSearchFunctionalityWithValidInValidDataAtReportPreparerPageBlock   @positive
   Scenario: Verify quick search behaviour with valid invalid data at Assign ReportPreparer page block

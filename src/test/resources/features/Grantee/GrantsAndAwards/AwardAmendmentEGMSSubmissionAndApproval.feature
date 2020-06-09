@@ -36,7 +36,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -86,7 +86,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -94,7 +94,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -143,7 +143,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -151,7 +151,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -199,7 +199,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -207,7 +207,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -252,7 +252,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -260,7 +260,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -308,7 +308,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -316,7 +316,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -372,7 +372,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -380,7 +380,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -437,7 +437,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -445,7 +445,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -501,7 +501,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -509,7 +509,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -564,7 +564,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -572,7 +572,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -631,7 +631,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -639,7 +639,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -724,7 +724,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -732,7 +732,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -805,7 +805,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -813,7 +813,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -897,7 +897,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -905,7 +905,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -966,7 +966,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -974,7 +974,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -1034,7 +1034,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1042,7 +1042,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -1108,7 +1108,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1116,7 +1116,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -1178,7 +1178,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1186,7 +1186,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -1201,7 +1201,7 @@ Feature: Award amendment through EGMS related scenarios
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "AwardEID"
     Then I softly see field "Status" as "Created"
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - Draft"
@@ -1210,11 +1210,11 @@ Feature: Award amendment through EGMS related scenarios
 
     Examples:
       | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      |GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @68278 @validateConfirmationMessageOnRecordDeletionAtAmendmentListViewPage-Draft   @positive
   Scenario: Verify confirmation message on deletion of manually created amendment request inside Amendment request list page
@@ -1250,7 +1250,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1258,7 +1258,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -1273,7 +1273,7 @@ Feature: Award amendment through EGMS related scenarios
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "AwardEID"
     Then I softly see field "Status" as "Created"
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - Draft"
@@ -1315,7 +1315,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1323,7 +1323,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -1338,7 +1338,7 @@ Feature: Award amendment through EGMS related scenarios
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "AwardEID"
     Then I softly see field "Status" as "Created"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - Draft"
@@ -1383,7 +1383,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1391,7 +1391,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -1406,7 +1406,7 @@ Feature: Award amendment through EGMS related scenarios
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "AwardEID"
     Then I softly see field "Status" as "Created"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - Draft"
@@ -1434,12 +1434,12 @@ Feature: Award amendment through EGMS related scenarios
 
     Examples:
       | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      | GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @68278 @validateColumnsValuesAtAmendmentListViewPage-Draft @smoke   @positive
   Scenario: Verify user is able to see values for each colums at amendment list view page
@@ -1475,7 +1475,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1483,7 +1483,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -1501,7 +1501,7 @@ Feature: Award amendment through EGMS related scenarios
     And I save the field labeled "Amendment Types" as "AMENDMENTTYPES"
     And I save the field labeled "Initiated By" as "INITIATEDBY"
     Then I softly see field "Status" as "Created"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - Draft"
@@ -1526,12 +1526,12 @@ Feature: Award amendment through EGMS related scenarios
 
     Examples:
       | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PM       |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      | GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @68278 @verifyDefaultListViewAtAmendmentRequest @smoke   @positive
   Scenario: Verify default list view at Amendment Request-All is selected
@@ -1594,7 +1594,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1602,7 +1602,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -1620,7 +1620,7 @@ Feature: Award amendment through EGMS related scenarios
     And I save the field labeled "Amendment Types" as "AMENDMENTTYPES"
     And I save the field labeled "Initiated By" as "INITIATEDBY"
     Then I softly see field "Status" as "Created"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:AwardEID}" in "{prdoh_tableId:AmendmentRequestTableId}" panel
@@ -1669,7 +1669,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1677,7 +1677,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -1695,7 +1695,7 @@ Feature: Award amendment through EGMS related scenarios
     And I save the field labeled "Amendment Types" as "AMENDMENTTYPES"
     And I save the field labeled "Initiated By" as "INITIATEDBY"
     Then I softly see field "Status" as "Created"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     When I click on advance filter "#advfGranteeAmendmentRequests" of table id "{prdoh_tableId:AmendmentRequestTableId}"
@@ -1752,7 +1752,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1760,7 +1760,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -1821,7 +1821,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1829,7 +1829,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -1886,7 +1886,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1894,7 +1894,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -1955,7 +1955,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1963,7 +1963,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -2023,7 +2023,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2031,7 +2031,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -2090,7 +2090,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2098,7 +2098,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -2160,7 +2160,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2168,7 +2168,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -2227,7 +2227,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2235,7 +2235,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -2299,7 +2299,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2307,7 +2307,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -2371,7 +2371,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2379,7 +2379,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -2437,7 +2437,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2445,7 +2445,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -2465,7 +2465,7 @@ Feature: Award amendment through EGMS related scenarios
     And I perform quick search for "{SavedValue:AwardEID}" in "{prdoh_tableId:AmendmentRequestTableId}" panel
     And I click on "View" icon for "{SavedValue:AwardEID}" inside flex table with id "{prdoh_tableId:AmendmentRequestTableId}"
     Then I softly can see top right button "Submit For Approval" in page detail
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -2477,11 +2477,11 @@ Feature: Award amendment through EGMS related scenarios
 
     Examples:
       | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      |GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @68202 @verifyRequiredFieldErrorMessageOnAmendedRequestSubmitForApproval
   Scenario: Verify user is able to see error message for required fields on submission of amendment request for approval
@@ -2517,7 +2517,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2525,7 +2525,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -2582,7 +2582,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2590,7 +2590,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -2650,7 +2650,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2658,7 +2658,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -2723,7 +2723,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2731,7 +2731,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -2756,7 +2756,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2797,7 +2797,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2805,7 +2805,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -2830,7 +2830,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2873,7 +2873,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2881,7 +2881,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -2906,7 +2906,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2949,7 +2949,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2957,7 +2957,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -2982,7 +2982,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2991,7 +2991,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -3033,7 +3033,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3041,7 +3041,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -3066,7 +3066,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3075,7 +3075,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -3118,7 +3118,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3126,7 +3126,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -3151,7 +3151,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3160,7 +3160,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -3204,7 +3204,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3212,7 +3212,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -3237,7 +3237,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3246,7 +3246,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -3293,7 +3293,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3301,7 +3301,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -3326,7 +3326,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3335,7 +3335,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -3383,7 +3383,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3391,7 +3391,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -3416,7 +3416,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3425,7 +3425,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -3471,7 +3471,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3479,7 +3479,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -3504,7 +3504,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3513,7 +3513,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -3560,7 +3560,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3568,7 +3568,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -3593,7 +3593,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3602,7 +3602,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -3652,7 +3652,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3660,7 +3660,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -3685,7 +3685,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3694,7 +3694,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -3740,7 +3740,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3748,7 +3748,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -3773,7 +3773,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3782,7 +3782,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -3828,7 +3828,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3836,7 +3836,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -3861,7 +3861,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3870,7 +3870,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -3922,7 +3922,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3930,7 +3930,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -3955,7 +3955,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -3964,7 +3964,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -4013,7 +4013,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4021,7 +4021,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -4046,7 +4046,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4055,7 +4055,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -4124,7 +4124,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4132,7 +4132,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -4157,7 +4157,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4166,7 +4166,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -4230,7 +4230,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4238,7 +4238,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -4263,7 +4263,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4272,7 +4272,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -4349,7 +4349,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4357,7 +4357,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -4382,7 +4382,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4391,7 +4391,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -4443,7 +4443,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4451,7 +4451,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -4476,7 +4476,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4485,7 +4485,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -4536,7 +4536,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4544,7 +4544,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -4569,7 +4569,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4578,7 +4578,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -4635,7 +4635,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4643,7 +4643,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -4668,7 +4668,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4677,7 +4677,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -4730,7 +4730,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4738,7 +4738,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -4763,7 +4763,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4772,7 +4772,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -4824,7 +4824,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4832,7 +4832,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -4857,7 +4857,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4866,7 +4866,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -4916,7 +4916,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4924,7 +4924,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -4949,7 +4949,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -4958,7 +4958,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -5005,7 +5005,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5013,7 +5013,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -5038,7 +5038,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5047,7 +5047,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -5060,7 +5060,7 @@ Feature: Award amendment through EGMS related scenarios
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "AMENDMENTREVISESUBMISSION"
     Then I softly see field "Status" as "Submitted for Approval"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     And I navigate to "HOME" tab
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AMENDMENTREVISESUBMISSION}" in "---prdoh_tableId:-:PendingTask---" panel
@@ -5068,7 +5068,7 @@ Feature: Award amendment through EGMS related scenarios
     When I select radio button "Approve" in the approval decision
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -5111,7 +5111,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5119,7 +5119,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -5144,7 +5144,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5153,7 +5153,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -5209,7 +5209,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5217,7 +5217,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -5242,7 +5242,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5251,7 +5251,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -5307,7 +5307,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5315,7 +5315,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -5340,7 +5340,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5349,7 +5349,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -5406,7 +5406,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5414,7 +5414,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -5439,7 +5439,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5448,7 +5448,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -5507,7 +5507,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5515,7 +5515,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -5540,7 +5540,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5549,7 +5549,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -5608,7 +5608,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5616,7 +5616,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -5641,7 +5641,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5650,7 +5650,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -5708,7 +5708,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5716,7 +5716,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -5741,7 +5741,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5750,7 +5750,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -5810,7 +5810,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5818,7 +5818,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -5843,7 +5843,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5852,7 +5852,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -5919,7 +5919,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5927,7 +5927,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -5966,7 +5966,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -5975,7 +5975,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -6062,7 +6062,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -6070,7 +6070,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -6099,7 +6099,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -6108,7 +6108,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -6175,7 +6175,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -6183,7 +6183,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -6213,7 +6213,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -6222,7 +6222,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -6307,7 +6307,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -6315,7 +6315,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -6348,7 +6348,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -6357,7 +6357,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -6445,7 +6445,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -6453,7 +6453,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -6482,7 +6482,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -6491,7 +6491,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
@@ -6558,7 +6558,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -6566,7 +6566,7 @@ Feature: Award amendment through EGMS related scenarios
     And I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Active"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -6598,7 +6598,7 @@ Feature: Award amendment through EGMS related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field labeled "EGMS ID" as "EAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -6607,7 +6607,7 @@ Feature: Award amendment through EGMS related scenarios
     And I submit the approval in the approval decision
     Then I softly see field "Status" as "Approved"
     And I save the field labeled "EGMS ID" as "APPROVEDAMENDMENTREQUESTID"
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AmendmentRequestLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Amendment Requests - All"
