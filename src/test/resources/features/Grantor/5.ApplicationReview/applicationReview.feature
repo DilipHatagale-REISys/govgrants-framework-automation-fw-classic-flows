@@ -303,7 +303,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @65079 @73778 @73791 @@75228 @VerifyAwardOwnerCanInitiateReviewProcess @keerti
+  @65079 @73778 @73791 @@75228 @VerifyAwardOwnerCanInitiateReviewProcess @keerti @skipOnJenkins
   Scenario Outline: Verify Award owner can Initiate the Review Process.
   | To Verify that under related log tab , corresponding data is display about related submitted applications for announcement
     And I login to "As a Grantor" app as "dynamicUser" user
@@ -367,7 +367,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @75230 @VerifyDownloadPDFforApplicaiton @aashish
+  @75230 @VerifyDownloadPDFforApplicaiton @aashish @skipOnJenkins
   Scenario Outline: To verify system allow to download PDF for Application section in Related log tab of announcement.
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -391,7 +391,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @75449 @75451 @75450 @75448 @75454 @VerifyAbleToViewApplication @aashish
+  @75449 @75451 @75450 @75448 @75454 @VerifyAbleToViewApplication @aashish @skipOnJenkins
   Scenario Outline: To verify user is able to view Applications in Applications section in Related log tab of announcement
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -698,7 +698,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @79206 @pdfForReviewSteps @keerti
+  @79206 @pdfForReviewSteps @keerti @skipOnJenkins
   Scenario Outline: To verify user able to download pdf for Review Steps section in related log tab of Apllication phase.
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
