@@ -57,7 +57,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly can see "Responsibilities" sub tab at view detail page
     Then I softly can see "History" sub tab at view detail page
 
-  @75546 @75639 @75633 @75645 @75646 @75544 @75545 @75543 @jitendra @downloadPDF
+  @75546 @75639 @75633 @75645 @75646 @75544 @75545 @75543 @jitendra @downloadPDF @skipOnJenkins
   Scenario: To verify system allow to download PDF for Announcement-published table for announcement tab
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for FDM tests" and properties "default"
     When I login to "As a Grantor" app as "PM" user
@@ -541,7 +541,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Subject | Contains | jitu |
     Then I softly see "jitu" inside flex table with id "---announcement:-:collabMessages---"
 
-  @75524 @publishedAllowToDownloadPDF
+  @75524 @publishedAllowToDownloadPDF @skipOnJenkins
   Scenario: To verify system allow to download PDF for Announcement after publishing it
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for pdf Tests" and properties "default"
     And I login to "As a Grantor" app as "PM" user
