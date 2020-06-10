@@ -14,7 +14,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @73959 @pdfDownloadContacts @jitendra
+  @73959 @pdfDownloadContacts @jitendra @skipOnJenkins
   Scenario: To verify system allow to download pdf for contact section in overview tab of announcement by PM user
     And I navigate to "Overview" sub tab
     When I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
@@ -30,7 +30,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I download the file
     Then I see "Contacts" on page "1" of "govgrants" pdf file
 
-  @73958 @pdfDownloadRelatedFederal @jitendra
+  @73958 @pdfDownloadRelatedFederal @jitendra @skipOnJenkins
   Scenario: To verify system allow to download PDF for Related Federal/NGO program in overview tab of announcement
     And I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:relatedAnnouncementTableId---"
@@ -47,7 +47,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I download the file
     Then I see "Related Federal/NGO Program" on page "1" of "govgrants" pdf file
 
-  @74105 @pdfDownloadBudgetCategory @jitendra
+  @74105 @pdfDownloadBudgetCategory @jitendra @skipOnJenkins
   Scenario: To verify system allow to download PDF for Budget Categories section in financial tab of announcement
     And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -60,7 +60,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I download the file
     Then I see "Budget Categories" on page "1" of "govgrants" pdf file
 
-  @74107 @pdfDownloadBusinessForm @jitendra
+  @74107 @pdfDownloadBusinessForm @jitendra @skipOnJenkins
   Scenario: To verify system allow to download PDF for Business Forms section in setup tab of announcement
     And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -73,7 +73,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I download the file
     Then I see "Business Forms" on page "1" of "govgrants" pdf file
 
-  @74108 @pdfDownloadSuppDocChekLst @jitendra
+  @74108 @pdfDownloadSuppDocChekLst @jitendra @skipOnJenkins
   Scenario: To verify system allow to download PDF for Supporting Documents Checklist section in setup tab of announcement
     And I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "---announcement:-:annChecklist---" by clicking "Add" :
@@ -90,7 +90,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I download the file
     Then I see "Supporting Documents Checklist" on page "1" of "govgrants" pdf file
 
-  @75616 @74118 @pdfDownloadApprover @jitendra
+  @75616 @74118 @pdfDownloadApprover @jitendra @skipOnJenkins
   Scenario: To verify system allow to download PDF for Peer Reviewers section in Responsibility tab of announcement
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Owner" for title "Responsibility" against the value "{SavedValue:EXE Username}" inside table "---announcement:-:announcementOwner---"
@@ -110,7 +110,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I download the file
     Then I see "Approvers" on page "1" of "govgrants" pdf file
 
-  @74117 @pdfDownloadReviewSteps @jitendra
+  @74117 @pdfDownloadReviewSteps @jitendra @skipOnJenkins
   Scenario: To verify system allow to download pdf for Review Steps section in setup tab of announcement
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
@@ -128,7 +128,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I download the file
     Then I see "Peer Reviewers" on page "1" of "govgrants" pdf file
 
-  @74124 @pdfDownloadFocusArea @jitendra
+  @74124 @pdfDownloadFocusArea @jitendra @skipOnJenkins
   Scenario: To verify system allow to download PDF for Related Focus Area section in setup tab of announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
@@ -719,7 +719,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type |
       | Competitive       |
 
-  @75618 @74799 @74801 @74368 @74369 @70894 @71722 @72471 @72324 @72548 @73858 @verifyReviseUnderRevision @aashish @smoke
+  @75618 @74799 @74801 @74368 @74369 @70894 @71722 @72471 @72324 @72548 @73858 @verifyReviseUnderRevision @aashish @smoke @skipOnJenkins
   Scenario Outline: To Verify that after clicking on revise button, status changes to created.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -2143,7 +2143,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Type | Active Funding Opportunities id                     |
       | Competitive       | ---announcement:-:competitiveAnnouncementTableId--- |
 
-  @73616 @73962 @userAllowToEnterDataInQualityAndAvailibility @aashish
+  @73616 @73962 @userAllowToEnterDataInQualityAndAvailibility @aashish @skipOnJenkins
   Scenario: To verify user allow to remove budget category when Budget type is Non functional in financial tab for announcement
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -2162,7 +2162,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I download the file
     Then I softly see "Budget Period Details" on page "1" of "govgrants" pdf file
 
-  @73960 @userAllowToDownloadPDFFundingAccount @aashish
+  @73960 @userAllowToDownloadPDFFundingAccount @aashish @skipOnJenkins
   Scenario: To verify user allow to download PDF for Funding Accounts section in financial tab of announcement
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -2178,7 +2178,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I download the file
     Then I see "Funding Accounts" on page "1" of "govgrants" pdf file
 
-  @74120 @userAllowToDownloadPDFResponsibility @aashish
+  @74120 @userAllowToDownloadPDFResponsibility @aashish @skipOnJenkins
   Scenario: To verify system allow to download PDF for Approvers section in Responsibility tab of announcement
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -2196,7 +2196,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I download the file
     Then I see "Approvers" on page "1" of "govgrants" pdf file
 
-  @74121 @userAllowToDownloadPDFOwner @aashish
+  @74121 @userAllowToDownloadPDFOwner @aashish @skipOnJenkins
   Scenario: To verify system allow to download PDF for Owner section in Responsibility tab of announcement
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -2208,7 +2208,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I download the file
     Then I see "Owner" on page "1" of "govgrants" pdf file
 
-  @74126 @userAllowToDownloadPDFObjective @aashish
+  @74126 @userAllowToDownloadPDFObjective @aashish @skipOnJenkins
   Scenario: To verify system allow to download PDF for objectives section in setup tab of announcement.
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -2220,7 +2220,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I download the file
     Then I see "Objectives" on page "1" of "govgrants" pdf file
 
-  @74129 @userAllowToDownloadPDFKPI @aashish
+  @74129 @userAllowToDownloadPDFKPI @aashish @skipOnJenkins
   Scenario: To verify system allow to download PDF for Key performance Indicator(KPIs) section in setup tab of announcement
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -2232,7 +2232,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I download the file
     Then I see "Key Performance Indicators (KPIs)" on page "1" of "govgrants" pdf file
 
-  @74131 @userAllowToDownloadPDFHistory @aashish
+  @74131 @userAllowToDownloadPDFHistory @aashish @skipOnJenkins
   Scenario: To verify system allow to download PDF for Field history section in history tab of announcement
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
