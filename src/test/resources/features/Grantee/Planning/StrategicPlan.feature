@@ -12,7 +12,7 @@ Feature: Strategic Plan related scenarios
     Examples:
       | ColumnName            | value                               |
       | EGMS ID               | SPN-0030                            |
-      | Internal Organization | Test Automation Organization        |
+      | Internal Organization | Department of Health                |
       | Title                 | Automation Permanent Strategic Plan |
 
   @61948 @validateStrategicPlan @validateStrategicPlanAdvanceSearch @positive
@@ -66,12 +66,12 @@ Feature: Strategic Plan related scenarios
     And I enter value "Automation Runtime Strategic" into field "fieldStrategyTitle__c"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    Then I see status in Progress-bar is "Draft" and is "green"
+    Then I see status in Progress-bar is "Created" and is "green"
     Examples:
-      | userType |
-      | GRANTEE ADMIN    |
-      | GRANTEE PM       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE EXE   |
 
   @61948 @validateStrategicPlan @validateStrategicPlanEditAndDelete1
   Scenario Outline: Verify except owner no one can edit and delete strategic plan
@@ -89,8 +89,8 @@ Feature: Strategic Plan related scenarios
     Then I softly cannot see row level action button "Edit" against "{SavedValue:Automation Runtime Strategic}" in flex table with id "{grantee_tableId:StrategicPlans}"
     Then I softly cannot see row level action button "Delete" against "{SavedValue:Automation Runtime Strategic}" in flex table with id "{grantee_tableId:StrategicPlans}"
     Examples:
-      | user |
-      | FO   |
+      | user       |
+      | GRANTEE FO |
 
   @61987 @validateStrategicPlan @validateAllColumnsOfStrategicPlan @smoke @positive
   Scenario Outline: Verify Strategic Plan should have all columns
@@ -130,7 +130,6 @@ Feature: Strategic Plan related scenarios
       | ColumnName         |
       | EGMS ID            |
       | Objective          |
-      | Activities         |
       | Month-Year Created |
 
   @61987 @validateStrategicPlan @validateRecordOwnerCanViewEditAndDeleteActionIcons
@@ -163,17 +162,16 @@ Feature: Strategic Plan related scenarios
     Then I softly cannot see row level action button "Edit" against "Automation Objective" in flex table with id "{grantee_tableId:StrategicObjectivesChild}"
     Then I softly cannot see row level action button "Delete" against "Automation Objective" in flex table with id "{grantee_tableId:StrategicObjectivesChild}"
     Examples:
-      | user |
-      | FO   |
-      | FD   |
-      | PO   |
+      | user       |
+      | GRANTEE FO |
+      | GRANTEE FD |
+      | GRANTEE PO |
 
-  @61987 @validateStrategicPlan @validateTotalNumberOfRecords
-  Scenario: Verify Total number of records as per different status @positive
+  @61987 @validateStrategicPlan @validateTotalNumberOfRecords @positive
+  Scenario: Verify Total number of records as per different status
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
-    And I select value inside table "{grantee_tableId:StrategicPlans}" is "All"
     Then I see total records count in flex table "{grantee_tableId:StrategicPlans}"
 
   @62001 @validateStrategicPlan @validateHeaderOverview @positive
@@ -193,7 +191,7 @@ Feature: Strategic Plan related scenarios
     Then I see the sub-header is "{SavedValue:Automation Runtime Strategic}" in the page details
     Then I softly see field "EGMS ID" as "{SavedValue:EID}"
     Then I softly see field "Status" as "Draft"
-    Then I softly see field "Internal Organization" as "Test Automation Organization"
+    Then I softly see field "Internal Organization" as "Department of Health"
 
   @62001 @validateStrategicPlan @validateInternalOrganizationShouldBeAHyperlink @positive
   Scenario: Verify Internal organization should be a hyperlink
@@ -207,9 +205,9 @@ Feature: Strategic Plan related scenarios
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Strategic}" in "{grantee_tableId:StrategicPlans}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Strategic}" inside table
-    When I click "Test Automation Organization" lookup link
+    When I click "Department of Health" lookup link
     Then I see the header is "Internal Organization" in the page details
-    Then I see the sub-header is "Test Automation Organization" in the page details
+    Then I see the sub-header is "Department of Health" in the page details
 
   @62001 @validateStrategicPlan @validateAttachmentsAddDocument @smoke @positive
   Scenario: Verify Attachments add document
@@ -236,8 +234,8 @@ Feature: Strategic Plan related scenarios
     And I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
     And I upload attachment "AttachmentTesting.pdf" of type "Strategic Plan"
-    And I refresh the page
-    And I click on "Delete" icon for "AttachmentTesting.pdf" inside table
+    And I pause execution for "2" seconds
+    And I click on "Delete" icon for "GRANTEE PM Username" inside table
     Then I see confirmation box with body "Record deleted successfully." is displayed
 
   @62001 @validateStrategicPlan @validateUserCanEditAttachedDocument @positive
@@ -252,25 +250,9 @@ Feature: Strategic Plan related scenarios
     And I navigate to "Attachments" sub tab
     And I upload attachment "AttachmentTesting.pdf" of type "Strategic Plan"
     And I refresh the page
-    And I click on "Edit" icon for "AttachmentTesting.pdf" inside table
+    And I click on "Edit" icon for "Automation PM Grantee" inside table
     And I close modal by clicking the top right x button
     Then I softly see table with header "Attachments" contains records "AttachmentTesting.pdf"
-
-  @62190 @validateStrategicPlan @CreateNewStrategicPlanUsingDiffUser @smoke @positive
-  Scenario Outline: Verify User <user> can create new Strategic Plan
-    When I login to "As a Grantee" app as "<user>" user
-    And I navigate to "Planning" tab
-    When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
-    And I enter value "Automation Runtime Strategic" into field "fieldStrategyTitle__c"
-    And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
-    Then I see status in Progress-bar is "Draft" and is "green"
-    Examples:
-      | user  |
-      | PM    |
-      | Admin |
-      | EXE   |
 
   @62190 @validateStrategicPlan @CanNotCreateNewStrategicPlanUsingInvalidUser
   Scenario Outline: Verify User <user> can not create new Strategic Plan OR Verify URL Tampering is blocked
@@ -279,10 +261,10 @@ Feature: Strategic Plan related scenarios
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     Then I cannot see top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
     Examples:
-      | user |
-      | PO   |
-      | FD   |
-      | FO   |
+      | user       |
+      | GRANTEE PO |
+      | GRANTEE FD |
+      | GRANTEE FO |
 
   @62190 @validateStrategicPlan @PreInternalOrganization @positive
   Scenario: Verify User can see field Internal Organization preset
@@ -293,7 +275,7 @@ Feature: Strategic Plan related scenarios
     And I enter value "Automation Runtime Strategic" into field "fieldStrategyTitle__c"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    Then I see field "Internal Organization" as "Direccion General"
+    Then I see field "Internal Organization" as "Department of Health"
 
   @62190 @validateStrategicPlan @goalsOpenNewWindow @smoke @positive
   Scenario: Verify new goal window open
@@ -318,7 +300,7 @@ Feature: Strategic Plan related scenarios
     And I click on "Save" in the page details
     And I click on "Edit" in the page details
     And I enter value "Edit Description" into field "fieldStrategyDescription__c"
-    And I click on "Save and Continue" in the page details
+    And I click on "Save" in the page details
     Then I see field "Description" as "Edit Description"
 
   @62199 @validateStrategicPlan @DeleteCreatedStrategicPlan @positive
@@ -336,10 +318,10 @@ Feature: Strategic Plan related scenarios
     Then I see the following messages in the page details :
       | Record deleted successfully. |
     Examples:
-      | user  |
-      | PM    |
-      | Admin |
-      | EXE   |
+      | user          |
+      | GRANTEE PM    |
+      | GRANTEE Admin |
+      | GRANTEE EXE   |
 
   @62318 @validateStrategicPlan @ViewStrategicPlan @smoke @positive
   Scenario: Verify User should navigate to view page
@@ -382,7 +364,7 @@ Feature: Strategic Plan related scenarios
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "EID"
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicGoalsandObjective}"
-    Then I see field "Strategic Plan" as "{SavedValue:EID}"
+    Then I see field "EGMS ID" as "{SavedValue:EID}"
 
   @62318 @validateStrategicPlan @validatecreatGoal @smoke @positive
   Scenario: Verify user can create new goal
@@ -436,10 +418,9 @@ Feature: Strategic Plan related scenarios
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicGoalsandObjective}"
     And I enter value "<enterValue>" into field "StrategyTitle__c"
-    And I enter value "Automation Goal Description" into field "fieldStrategyDescription__c"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    Then I see field "Title" as "<requiredValue>"
+    Then I see the sub-header is "<requiredValue>" in the page details
     Examples:
       | enterValue                                                                                                                                                                                                                                                           | requiredValue                                                                                                                                                                                                                                                   |
       | titletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitleti255title | titletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitleti255 |
@@ -463,10 +444,10 @@ Feature: Strategic Plan related scenarios
     And I expand nested table containing column value "{SavedValue:Automation Runtime Strategic}"
     Then I can see row level action button "Edit" against "{SavedValue:EGID}" in flex table with id "{grantee_tableId:StrategicGoalsChild}"
     Examples:
-      | userType |
-      | GRANTEE ADMIN    |
-      | GRANTEE PM       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE EXE   |
 
   @62324 @validateStrategicPlan @validateStrategicGoalEditButtonNotVisible
   Scenario: Verify user cannot see edit button for created goal by another user
@@ -823,10 +804,10 @@ Feature: Strategic Plan related scenarios
     Then I see the header is "Objective" in the page details
     Then I see the sub-header is "Automation Objective" in the page details
     Examples:
-      | user  |
-      | PM    |
-      | EXE   |
-      | Admin |
+      | user          |
+      | GRANTEE PM    |
+      | GRANTEE EXE   |
+      | GRANTEE Admin |
 
   @62854 @validateStrategicPlan @validateObjectiveDisplayInGoal @positive
   Scenario: Verify created objective display in specific goal

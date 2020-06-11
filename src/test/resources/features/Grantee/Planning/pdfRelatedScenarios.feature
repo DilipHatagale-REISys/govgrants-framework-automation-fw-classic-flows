@@ -333,8 +333,8 @@ Feature: PDF download and validate scenarios from all modules
     And I click modal button "Save"
     And I navigate to "Roles" sub tab
     And I edit the following rows inline in flex table with id "---grantee_tableId:-:ApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name             | Description                  |
-      | Program Approver | {SavedValue:GRANTEE ADMIN Username} | Automation Approval required |
+      | Responsibility   | Name                   | Description                  |
+      | Program Approver | GRANTEE ADMIN Username | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
     And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
@@ -414,8 +414,8 @@ Feature: PDF download and validate scenarios from all modules
     And I click modal button "Save"
     And I navigate to "Roles" sub tab
     And I edit the following rows inline in flex table with id "---grantee_tableId:-:ApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name             | Description                  |
-      | Program Approver | {SavedValue:GRANTEE ADMIN Username} | Automation Approval required |
+      | Responsibility   | Name                   | Description                  |
+      | Program Approver | GRANTEE ADMIN Username | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     And I save the field containing "EGMS ID" as "AwardID"
     And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
@@ -492,9 +492,9 @@ Feature: PDF download and validate scenarios from all modules
     And I pause execution for "5" seconds
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Responsibility     | Name                 | Description |
+      | Program Approver   | GRANTEE PM Username  | prdoh       |
+      | Executive Approver | GRANTEE EXE Username | prdoh       |
     And I click on "Save and Continue" in the page details
     And I click on "Submit for Approval" in the page details
     And I refresh the page
@@ -557,9 +557,9 @@ Feature: PDF download and validate scenarios from all modules
     And I pause execution for "5" seconds
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Responsibility     | Name                 | Description |
+      | Program Approver   | GRANTEE PM Username  | prdoh       |
+      | Executive Approver | GRANTEE EXE Username | prdoh       |
     And I click on "Save and Continue" in the page details
     And I click on "Submit for Approval" in the page details
     And I refresh the page
@@ -623,9 +623,9 @@ Feature: PDF download and validate scenarios from all modules
     And I pause execution for "5" seconds
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Responsibility     | Name                 | Description |
+      | Program Approver   | GRANTEE PM Username  | prdoh       |
+      | Executive Approver | GRANTEE EXE Username | prdoh       |
     And I click on "Save and Continue" in the page details
     And I click on "Submit for Approval" in the page details
     And I refresh the page
@@ -719,9 +719,9 @@ Feature: PDF download and validate scenarios from all modules
     And I pause execution for "5" seconds
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Responsibility     | Name                 | Description |
+      | Program Approver   | GRANTEE PM Username  | prdoh       |
+      | Executive Approver | GRANTEE EXE Username | prdoh       |
     And I click on "Save and Continue" in the page details
     And I click on "Submit for Approval" in the page details
     And I refresh the page
@@ -748,8 +748,8 @@ Feature: PDF download and validate scenarios from all modules
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | {SavedValue:GRANTEE PM Username} | Program Reviewer | automation review | 1        | Yes                  |
+      | Reviewer Name       | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | GRANTEE PM Username | Program Reviewer | automation review | 1        | Yes                  |
     When I click on parallel lines menu bar with data target value "#GranteePreApplicationReviewersTempFlexToggle"
     And I select "Download as PDF" from parallel lines dropdown of "Peer Reviewers"
     And I download the file

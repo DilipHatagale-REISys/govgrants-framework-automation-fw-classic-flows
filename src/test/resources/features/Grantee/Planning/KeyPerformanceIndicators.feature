@@ -10,10 +10,10 @@ Feature: Key Performance Indicators related scenarios
     And I perform quick search for "<value>" in "{grantee_tableId:KPITable}" panel
     Then I softly see value "<value>" for title "<ColumnName>" inside table "{grantee_tableId:KPITable}"
     Examples:
-      | ColumnName            | value                        |
-      | EGMS ID               | KPI-0045                     |
-      | Internal Organization | Test Automation Organization |
-      | Title                 | Automation Permanent KPI     |
+      | ColumnName            | value                    |
+      | EGMS ID               | KPI-0045                 |
+      | Internal Organization | Department of Health     |
+      | Title                 | Automation Permanent KPI |
 
   @62116 @KPI @validateKPIAdvanceSearch @positive
   Scenario Outline: Verify User can advance search using <ColumnName>
@@ -52,8 +52,7 @@ Feature: Key Performance Indicators related scenarios
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
-    And I select value inside table "{grantee_tableId:KPITable}" is "All"
-    Then I see total records count in flex table "{grantee_tableId:KPITable}"
+    Then I see total records count is same as total row of table id "{grantee_tableId:KPITable}" and table name "flextable"
 
   @62116 @KPI @validateKPIGridView @smoke
   Scenario: Verify user can view created KPI.
@@ -92,7 +91,7 @@ Feature: Key Performance Indicators related scenarios
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime KPI}" in "{grantee_tableId:KPITable}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime KPI}" inside table
-    Then I see status in Progress-bar is "Draft" and is "green"
+    Then I see status in Progress-bar is "Created" and is "green"
 
   @62123 @KPI @validateKPIinternalOrgHyperLink @smoke @positive
   Scenario: Verify internal organization is hyperlink on KPI view page
@@ -111,9 +110,9 @@ Feature: Key Performance Indicators related scenarios
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime KPI}" in "{grantee_tableId:KPITable}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime KPI}" inside table
-    When I click "Direccion General" lookup link
-    Then I see the header is "Key Performance Indicator" in the page details
-    Then I see the sub-header is "{SavedValue:Automation Runtime KPI}" in the page details
+    When I click "Department of Health" lookup link
+    Then I see the header is "Internal Organization" in the page details
+    Then I see the sub-header is "Department of Health" in the page details
 
   @62123 @KPI @validateActivateKPI @smoke @positive
   Scenario: Verify user can activate KPI.
@@ -137,7 +136,7 @@ Feature: Key Performance Indicators related scenarios
 
   @62123 @KPI @validateActivateKPInotEdit
   Scenario Outline: Verify user can not edit KPI which is activated.
-    When I login to "As a Grantee" app as "<userType>" user
+    When I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
@@ -149,17 +148,19 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime KPI}" in "{grantee_tableId:KPITable}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime KPI}" inside table
-    And I click on "Activate" in the page details
     Then I cannot see top right button "Edit" in page detail
     Examples:
       | userType      |
       | GRANTEE ADMIN |
       | GRANTEE PM    |
       | GRANTEE PO    |
-      | GRANTEE DD    |
+      | GRANTEE FD    |
       | GRANTEE FO    |
       | GRANTEE EXE   |
 
@@ -176,13 +177,13 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation St Goal" into field "StrategyTitle__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
-    And I click on top right button "New" in flex table with id "{prdoh_tableId:Objectives}"
+    And I click on top right button "New" in flex table with id "{grantee_tableId:Objectives}"
     And I enter value "Automation Objective" into field "fieldStrategyTitle__c"
     And I click on "Save and Continue" in the page details
     And I enter value "Automation Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
-    When I navigate to "{sidebar:StrategicPlanLinkName}" content inside "{sidebar:SetUpSubheaderName}" subheader on left panel
-    And I perform quick search for "{SavedValue:Automation Runtime Strategic}" in "StrategicPlansParentFlexToggle" panel
+    When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Strategic}" in "{grantee_tableId:StrategicPlans}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Strategic}" inside table
     And I click on "Activate" in the page details
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
@@ -198,7 +199,8 @@ Feature: Key Performance Indicators related scenarios
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime KPI}" in "{grantee_tableId:KPITable}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime KPI}" inside table
-    Then I softly see field "Status" as "Draft"
+    Then I softly see field "Status" as "Created"
+    And I navigate to "Related Log" sub tab
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:PlanningAssociateObjectiveTableId}"
     And I click "Associate" after selection of "Automation Objective" in the table "{grantee_tableId:PlanningObjectiveModalTableId}"
     And I close modal by clicking the top right x button
@@ -335,10 +337,9 @@ Feature: Key Performance Indicators related scenarios
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
     And I click on "Save and Continue" in the page details
-    And I click on "Save" in the page details
     Then I see the following messages in the page details :
-      | Domain is Required to save.              |
       | Title is Required to save.               |
+      | Domain is Required to save.              |
       | Measure is Required to save.             |
       | Unit of Measurement is Required to save. |
       | Indicator is Required to save.           |
@@ -377,8 +378,8 @@ Feature: Key Performance Indicators related scenarios
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
-    And I perform quick search for "{SavedValue:{SavedValue:Automation Runtime KPI}}" in "{grantee_tableId:KPITable}" panel
-    Then I cannot see row level action button "Edit" against "{SavedValue:{SavedValue:Automation Runtime KPI}}" in flex table with id "{grantee_tableId:KPITable}"
+    And I perform quick search for "{SavedValue:Automation Runtime KPI}" in "{grantee_tableId:KPITable}" panel
+    Then I cannot see row level action button "Edit" against "{SavedValue:Automation Runtime KPI}" in flex table with id "{grantee_tableId:KPITable}"
 
   @62122 @KPI @validateKPIOwnerCanSeeEditButton  @positive
   Scenario: Verify Only Owner can see edit button.
@@ -450,7 +451,6 @@ Feature: Key Performance Indicators related scenarios
     And I perform quick search for "{SavedValue:Automation Runtime KPI}" in "{grantee_tableId:KPITable}" panel
     And I click on "Edit" icon for "{SavedValue:Automation Runtime KPI}" inside table
     And I enter value "<enterValue>" into field "fieldTitle__c"
-    And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     Then I see the sub-header is "<requiredValue>" in the page details
     Examples:
@@ -499,6 +499,7 @@ Feature: Key Performance Indicators related scenarios
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime KPI}" in "{grantee_tableId:KPITable}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime KPI}" inside table
+    And I navigate to "Related Log" sub tab
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:PlanningAssociateObjectiveTableId}"
     And I click "Associate" after selection of "Automation Objective" in the table "{grantee_tableId:PlanningObjectiveModalTableId}"
     And I close modal by clicking the top right x button

@@ -207,19 +207,6 @@ Feature: Sanity scenarios
       | GRANTEE FO    |
       | GRANTEE PM1   |
 
-  @62120 @ProgramsInternal @EditInternalProgram   @positive
-  Scenario: validate internal users like PM/PO can edit internal program
-    Given I login to "As a Grantee" app as "GRANTEE PM" user
-    And I navigate to "Planning" tab
-    When I navigate to "{grantee_sidebar:InternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "EnhanceGranteeStateProgramsgrid"
-    When I enter "ProgramsInternalProgram" values from "Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Edit" in the page details
-    And I enter value "Automation Description" into field "fieldObjectives__c"
-    And I click on "Save" in the page details
-    Then I see field "Description" as "Automation Description"
-
   @62116 @KPI @validateAllOrgUserCanViewKPI  @positive
   Scenario: Verify all Organizational user can view created KPI.
     Given I login to "As a Grantee" app as "GRANTEE PM" user
@@ -811,8 +798,8 @@ Feature: Sanity scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    Then I softly see value "Secretaria Auxiliar de Promocion de la Salud" for title "Qualifying Organization" against the value "PRDOH PMUser" inside table "RelatedQualifiedLeadsgrid"
-    Then I softly see value "PRDOH PMUser" for title "Qualified By" against the value "Secretaria Auxiliar de Promocion de la Salud" inside table "RelatedQualifiedLeadsgrid"
+    Then I softly see value "Secretaria Auxiliar de Promocion de la Salud" for title "Qualifying Organization" against the value "GRANTEE PM1 Username" inside table "RelatedQualifiedLeadsgrid"
+    Then I softly see value "GRANTEE PM1 Username" for title "Qualified By" against the value "Secretaria Auxiliar de Promocion de la Salud" inside table "RelatedQualifiedLeadsgrid"
 
   @62830 @validateQuickSearchAtRelatedProgram  @positive
   Scenario: Validate quick search is working properly for valid and invalid input at related program detail page
@@ -1064,13 +1051,13 @@ Feature: Sanity scenarios
     Then I softly see field "{SavedValue:ModifiedDate}" contains todays date withTime
 
     Examples:
-      | userType      | userName                            |
-      | GRANTEE ADMIN | {SavedValue:GRANTEE ADMIN Username} |
-      | GRANTEE PM    | {SavedValue:GRANTEE PM Username}    |
-      | GRANTEE PO    | {SavedValue:GRANTEE PO Username}    |
-      | GRANTEE FD    | Automation FD                       |
-      | GRANTEE FO    | Automation FO                       |
-      | GRANTEE EXE   | {SavedValue:GRANTEE EXE Username}   |
+      | userType      | userName               |
+      | GRANTEE ADMIN | GRANTEE ADMIN Username |
+      | GRANTEE PM    | GRANTEE PM Username    |
+      | GRANTEE PO    | GRANTEE PO Username    |
+      | GRANTEE FD    | GRANTEE FD Username    |
+      | GRANTEE FO    | GRANTEE FO Username    |
+      | GRANTEE EXE   | GRANTEE EXE Username   |
 
   @61706 @validateAddingOfDUNSNumberWithValidDataAtInternalUser  @positive
   Scenario: Validate addition of DUNS Number with valid inputs at internal organizations

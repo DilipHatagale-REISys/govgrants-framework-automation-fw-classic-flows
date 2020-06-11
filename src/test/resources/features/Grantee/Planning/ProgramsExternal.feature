@@ -120,9 +120,9 @@ Feature: Programs External related scenarios
     Then I see the header is "Non-Federal Program" in the page details
     Then I see the sub-header is "{SavedValue:Automation Runtime NF Program}" in the page details
     Examples:
-      | userType |
-      | PM       |
-      | PO       |
+      | userType   |
+      | GRANTEE PM |
+      | GRANTEE PO |
 
   @62108 @ProgramsExternal @EditNonFederalProgram   @positive
   Scenario Outline: validate PM user can edit non-federal program
@@ -142,9 +142,9 @@ Feature: Programs External related scenarios
     Then I click on "Save" in the page details
     Then I see field "Program Number" as "NF-11"
     Examples:
-      | userType |
-      | PM       |
-      | PO       |
+      | userType   |
+      | GRANTEE PM |
+      | GRANTEE PO |
 
   @62097 @ProgramsExternal @ViewNon-FederalPrograms  @positive
   Scenario: validate any user can can view non-federal programs and navigates to the external website in a new tab while clicking on Funding Organization field
@@ -163,7 +163,7 @@ Feature: Programs External related scenarios
     And I perform quick search for "{SavedValue:Automation Runtime NF Program}" in "{grantee_tableId:NonFederalPrograms}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime NF Program}" inside flex table with id "{grantee_tableId:NonFederalPrograms}"
     And I click "Automation Internal Org" lookup link
-    Then I see the header is "Non-Federal Organization" in the page details
+    Then I see the header is "Internal Organization" in the page details
     Then I see the sub-header is "Automation Internal Org" in the page details
 
   @62097 @ProgramsExternal @verifyAllFieldsToBeInRead-OnlyModeInProgramsExternal @smoke  @positive
@@ -207,6 +207,6 @@ Feature: Programs External related scenarios
     Then I click on "Save" in the page details
     Then I softly see field "Program Number" as "NF-11"
     Examples:
-      | userType |
-      | PM       |
-      | PO       |
+      | userType   |
+      | GRANTEE PM |
+      | GRANTEE PO |
