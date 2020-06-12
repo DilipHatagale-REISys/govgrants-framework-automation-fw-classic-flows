@@ -161,7 +161,7 @@ public class GrantorProjectManager extends ProjectManager{
     }
 
     public void assertThatFileIsDownloaded(String fileType, boolean isSoftly) {
-        File file = new File(System.getProperty("user.dir") + "\\target");
+        File file = new File(System.getProperty("user.dir") +File.separatorChar+ "target");
         File[] directory = I.amPerforming().fileHandling().toGetCompleteFilesListOnLocalDirectory(file.getAbsolutePath());
         for (File files : directory) {
             if (files.getName().endsWith(".tmp")) {

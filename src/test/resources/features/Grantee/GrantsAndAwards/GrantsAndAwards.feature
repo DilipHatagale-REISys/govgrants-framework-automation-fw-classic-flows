@@ -18,13 +18,13 @@ Feature: Grants related scenarios
     Then I softly see "Status" in flex table header "{prdoh_tableId:GrantsTable}"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @66577 @verifyColumnValueAtGrants-AllTable   @positive
   Scenario Outline: Verify user can see all expected columns values at Grants - All table
@@ -43,14 +43,14 @@ Feature: Grants related scenarios
 
   @66577 @verifyRowLevelActionForGrants   @positive
   Scenario: Verify User can see row level actions icon for grants of status Draft with PI user and user can not see row level edit action for NON PI user
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     And I perform quick search for "Automation Testing Grants 1" in "{prdoh_tableId:GrantsTable}" panel
     Then I softly can see row level action button "View" against "Automation Testing Grants 1" in flex table with id "{prdoh_tableId:GrantsTable}"
     Then I softly can see row level action button "Edit" against "Automation Testing Grants 1" in flex table with id "{prdoh_tableId:GrantsTable}"
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -60,7 +60,7 @@ Feature: Grants related scenarios
 
   @66577 @verifyEditRowLevelActionForPIUserAtGrants-Active_Grants-Closed
   Scenario: Verify User can not see row level actions edit icon for grants of status Active and closed
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -130,13 +130,13 @@ Feature: Grants related scenarios
     Then I see total records count is same as total row of table id "{prdoh_tableId:GrantsTable}" and table name "flextable"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @66577 @verifyTotalRecordCountAtListViewGrant-Active   @positive
   Scenario Outline: Verify user can see total records count as per the selected list view as - Grants Active
@@ -149,10 +149,10 @@ Feature: Grants related scenarios
     Then I see total records count is same as total row of table id "{prdoh_tableId:GrantsTable}" and table name "flextable"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PM1      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PM1   |
 
   @66577 @verifyTotalRecordCountAtListViewGrant-closed   @positive
   Scenario: Verify user can see total records count as per the selected list view as - Grants closed
@@ -220,14 +220,14 @@ Feature: Grants related scenarios
 
   @68174 @verifyRowLevelActionForAward @buglogged73546   @positive
   Scenario: Verify User can see row level actions icon for Award of status Draft with PI user and user can not see row level edit action for NON PI user
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Draft"
     And I perform quick search for "Automation Testing Grants 1" in "{prdoh_tableId:AwardsTable}" panel
     Then I softly can see row level action button "View" against "Automation Testing Grants 1" in flex table with id "{prdoh_tableId:AwardsTable}"
     Then I softly can see row level action button "Edit" against "Automation Testing Grants 1" in flex table with id "{prdoh_tableId:AwardsTable}"
-    And I re-login as "EXE" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Draft"
@@ -236,7 +236,7 @@ Feature: Grants related scenarios
 
   @68174 @verifyEditRowLevelActionForPIUserAtAwards-Active_Awards-Closed_Award-Amended @wip
   Scenario: Verify User can not see row level actions edit icon for grants of status Active and closed
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - Active"
@@ -264,13 +264,13 @@ Feature: Grants related scenarios
     Then I softly see "Status" in flex table header "{prdoh_tableId:AwardsTable}"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @68174 @verifyColumnValueAtAward-AllTable   @positive
   Scenario Outline: Verify user can all expected columns values at Awards - All table
@@ -353,13 +353,13 @@ Feature: Grants related scenarios
     Then I see total records count is same as total row of table id "{prdoh_tableId:AwardsTable}" and table name "flextable"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @68174 @verifyTotalRecordCountAtListViewAwards-Active   @positive
   Scenario Outline: Verify user can see total records count as per the selected list view as - Awards Active
@@ -372,10 +372,10 @@ Feature: Grants related scenarios
     Then I see total records count is same as total row of table id "{prdoh_tableId:AwardsTable}" and table name "flextable"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
 
   @68174 @verifyTotalRecordCountAtListViewAwards-Amended   @positive
   Scenario Outline: Verify user can see total records count as per the selected list view as - Awards Amended
@@ -388,10 +388,10 @@ Feature: Grants related scenarios
     Then I see total records count is same as total row of table id "{prdoh_tableId:AwardsTable}" and table name "flextable"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
 
   @68174 @verifyTotalRecordCountAtListViewAwards-Closed   @positive
   Scenario Outline: Verify user can see total records count as per the selected list view as - Awards Closed
@@ -404,10 +404,10 @@ Feature: Grants related scenarios
     Then I see total records count is same as total row of table id "{prdoh_tableId:AwardsTable}" and table name "flextable"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
 
   @68174 @verifyTotalRecordCountAtListViewAward-ActiveForDifferentOrganization   @positive
   Scenario Outline: Verify user of different organization can see same total records count as per the selected list view as - Grants Active
@@ -421,10 +421,10 @@ Feature: Grants related scenarios
     Then I see total records count is same as total row of table id "{prdoh_tableId:AwardsTable}" and table name "flextable"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PM1      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PM1   |
 
   @68174 @verifyQuickSearchFunctioanalityAtAwardsTable    @positive
   Scenario: Verify user is able to perform quick search according to available column content at Awards Table
@@ -460,7 +460,7 @@ Feature: Grants related scenarios
 
   @66935 @verifyPageLayoutEditActionButtonAtAwardDetailPageForPIUser @smoke   @positive
   Scenario: Verify PI user can see Edit button on detail Page
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -479,16 +479,16 @@ Feature: Grants related scenarios
     Then I cannot see top right button "Edit" in page detail
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @66935 @verifyFieldsAtPageDetailsIsInReadAndEditModeForAwards    @positive
   Scenario: Verify expected fields is in read mode only and in edit mode only at awards detail page
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -511,7 +511,7 @@ Feature: Grants related scenarios
 
   @66935 @verifyAwardNotEditableWithStatus-SubmittedForApproval-Active @verifyAwardEditWithStatus-Draft @smoke
   Scenario: Verify User can not see row level actions edit icon or not able to edit award which is in submitted for approval and Active status
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -535,7 +535,7 @@ Feature: Grants related scenarios
 
   @66935 @verifyAssociationAndDeletionOfContactAtAward-Created
   Scenario: Verify User can not see row level actions edit icon or not able to edit award which is in submitted for approval and Active status
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -553,7 +553,7 @@ Feature: Grants related scenarios
     Then I softly do not see value "Project Officer" for title "Role" inside table "---prdoh_tableId:-:OtherKeyContactsTableId---"
     And I navigate to "Management" sub tab
     Then I softly can see row level action button "Edit" against "Automation Testing Grants 1" in flex table with id "---prdoh_tableId:-:AwardProgressReportSchedule---"
-    And I re-login as "Admin" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -564,7 +564,7 @@ Feature: Grants related scenarios
 
   @66935 @verifyApplicationAdditionForAward-Created @smoke   @positive
   Scenario: Verify user is able relate application to an award inside related application page block
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -593,14 +593,14 @@ Feature: Grants related scenarios
 
   @66935 @verifyCashMatchedPercentageWithAllUsersForAward-Created @smoke   @positive
   Scenario Outline: Verify Required match value of Awarded application will be same for all user inside Awards detail page
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Applications" tab
     And I click toggle button to select "Applications - All"
     And I perform quick search for "Alaska Sea Grant State Fellowship Program" in "{prdoh_tableId:ApplicationTableId}" panel
     And I click on "View" icon for "Alaska Sea Grant State Fellowship Program" inside flex table with id "{prdoh_tableId:ApplicationTableId}"
     And I navigate to "Budget" sub tab
     And I save the field labeled "Required Match(%)" as "MatchPercentage"
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -610,16 +610,16 @@ Feature: Grants related scenarios
     Then I softly see field "Cash Match Required (%)" as "{SavedValue:MatchPercentage}"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @66935 @verifyCashMatchedPercentageFieldEditableForAward-Created @smoke  @positive
   Scenario: Verify Required match value(cash match) of Awarded application will be editable for PI user inside Awards detail page
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -631,7 +631,7 @@ Feature: Grants related scenarios
 
   @66935 @verifyGrantsDetailsEditForAward-Created @smoke   @positive
   Scenario: Verify user is able relate application to an award inside related application page block
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -650,7 +650,7 @@ Feature: Grants related scenarios
 
   @66935 @verifyAssociateAndDeleteOfContactAtAward-Created @smoke  @positive
   Scenario: Verify User can not see row level actions edit icon or not able to edit award which is in submitted for approval and Active status
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -662,14 +662,14 @@ Feature: Grants related scenarios
 
   @66222 @verifyUserPermissionForActionsIconAtAward-allStateOfAward
   Scenario Outline: Verify Users(PI and Non PI) can see cannot see row level actions icon of all state of Award
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
     And I perform quick search for "Automation Testing Grants 1" in "{prdoh_tableId:AwardsTable}" panel
     Then I softly can see row level action button "Edit" against "Automation Testing Grants 1" in flex table with id "{prdoh_tableId:AwardsTable}"
     Then I softly can see row level action button "View" against "Automation Testing Grants 1" in flex table with id "{prdoh_tableId:AwardsTable}"
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -693,16 +693,16 @@ Feature: Grants related scenarios
     Then I softly cannot see row level action button "Edit" against "Automation Testing Grants 8" in flex table with id "{prdoh_tableId:AwardsTable}"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @66222 @verifyTopLevelButtonsAtPageLayoutForAward-Created @smoke   @positive
   Scenario: Verify User can see top level actions Submit for Approval button for Award in created status and Status as Active for Approved Award.
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -717,7 +717,7 @@ Feature: Grants related scenarios
 
   @66222 @verifyAwardsPageDetails @smoke  @positive
   Scenario Outline: Verify all sub tabs at detail page of Award
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -761,7 +761,7 @@ Feature: Grants related scenarios
 
   @66222 @verifyAwardsPageBlocksUnderOverviewSubTab @smoke    @positive
   Scenario: Verify all Expected page block under Overview sub tab of an Award
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -781,7 +781,7 @@ Feature: Grants related scenarios
 
   @66222 @verifyListViewOptionsAtAwards-AllTable @smoke    @positive
   Scenario: Verify all options of list at Award-all table is displayed
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -794,7 +794,7 @@ Feature: Grants related scenarios
 
   @66222 @verifyHelpTextIconAtAwardsPageDetails    @positive
   Scenario Outline: Verify Help text icon vith message inside award page detail on hovering
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -808,7 +808,7 @@ Feature: Grants related scenarios
 
   @66222 @verifyColumnOfKeyContactTableForAward    @positive
   Scenario Outline: Verify all expected columns of key contacts section is displayed
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -827,7 +827,7 @@ Feature: Grants related scenarios
 
   @66222 @verifyColumnOfRelatedApplicationTableForAward    @positive
   Scenario Outline: Verify all expected columns of Related Application section is displayed
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -843,7 +843,7 @@ Feature: Grants related scenarios
 
   @66222 @verifyAwardsPageBlocksUnderBudgetSubTab @smoke    @positive
   Scenario: Verify all Expected page block under On budget sub tab of an Award is displayed
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -868,7 +868,7 @@ Feature: Grants related scenarios
 
   @66222 @verifyColumnOfProjectSectionForAward @smoke   @positive
   Scenario Outline: Verify all expected columns of Project is displayed under budget sub tab
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -884,7 +884,7 @@ Feature: Grants related scenarios
 
   @66222 @verifyAwardsPageBlocksUnderActualsSubTab @smoke    @positive
   Scenario: Verify all Expected page block under Actuals sub tab of an Award
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -905,7 +905,7 @@ Feature: Grants related scenarios
 
   @66222 @verifyColumnOfExpenditureTableAndActualsTabDetailsForAward @smoke    @positive
   Scenario: Verify all expected columns of key contacts section is displayed
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I perform quick search for "Automation Testing Grants 4" in "{prdoh_tableId:AwardsTable}" panel
@@ -963,7 +963,7 @@ Feature: Grants related scenarios
 
   @66222 @verifyApproverPageBlocksUnderRolesSubTab  @smoke     @positive
   Scenario: Verify all Expected page block under Roles sub tab of an Award-created
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -990,13 +990,13 @@ Feature: Grants related scenarios
     Then I see the sub-header is "Automation Testing Grants 1" in the page details
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @66102 @ValidatePageBlockForInternalUsersAtGrants @smoke    @positive
   Scenario Outline: verify all internal user able to view grants in Grants-All table
@@ -1017,13 +1017,13 @@ Feature: Grants related scenarios
       | History     |
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @66102 @ValidatePageLayoutHeaderSectionWithInternalUsersAtGrants @smoke    @positive
   Scenario Outline: verify all internal user able to view page layout header section at grants detail page
@@ -1045,13 +1045,13 @@ Feature: Grants related scenarios
     Then I softly see field "Status" as "Active"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @66102 @ValidateOverviewSubTabDeatailsWithInternalUsersAtGrants  @BugID82258 @smoke    @positive
   Scenario Outline: verify all internal user able to see page blocks inside overview subtab
@@ -1089,13 +1089,13 @@ Feature: Grants related scenarios
     Then I see "Key Contact" in flex table header "---prdoh_tableId:-:GrantsKeyContactTableId---"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @66102 @ValidateAwardSubTabDetailsWithInternalUsersAtGrants @smoke    @positive
   Scenario Outline: verify all internal user able to see details under Awards sub tab for grants
@@ -1118,17 +1118,17 @@ Feature: Grants related scenarios
     Then I see "Status" in flex table header "---prdoh_tableId:-:GrantsAwardsRevisionTableId---"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @66102 @ValidateRowLevelActionIconAtAwardSubTabDetailsWithORWithoutPIUser  @positive
   Scenario Outline: verify expected row level action icons displayed to Pi and Non PI user for grants under Award sub tab
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -1137,7 +1137,7 @@ Feature: Grants related scenarios
     And I navigate to "Awards" sub tab
     Then I softly can see row level action button "View" against "19ANTU198201" in flex table with id "---prdoh_tableId:-:GrantsAwardsRevisionTableId---"
     Then I softly can see row level action button "Edit" against "19ANTU198201" in flex table with id "---prdoh_tableId:-:GrantsAwardsRevisionTableId---"
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -1149,16 +1149,16 @@ Feature: Grants related scenarios
     Then I softly cannot see row level action button "Edit" against "19ANTU198201" in flex table with id "---prdoh_tableId:-:GrantsAwardsRevisionTableId---"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @66222 @verifyHelpTextIconAtGrantPageDetails  @positive
   Scenario Outline: Verify Help text icon vith message inside grant page detail on hovering at Award/Revision page block under Award sub tab
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -1193,13 +1193,13 @@ Feature: Grants related scenarios
     Then I softly see field "Total Drawdowns" as "$0.00"
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @66102 @verifyHelpTextIconAtFundingInformationPageBlockDetailsUndeFinancialSubTab  @positive
   Scenario Outline: Verify Help text icon with message inside funding information page block detail on hovering at Total Anticipated Amount field
@@ -1213,17 +1213,17 @@ Feature: Grants related scenarios
     When I hovering mouse on help text icon inside page block detail "Total Anticipated Amount"
     Then I softly see "<new_helpText>" shown as help text
     Examples:
-      | userType | new_helpText                                                |
-      | ADMIN    | Total funding anticipated across the entire project period. |
-      | PM       | Total funding anticipated across the entire project period. |
-      | PO       | Total funding anticipated across the entire project period. |
-      | FD       | Total funding anticipated across the entire project period. |
-      | FO       | Total funding anticipated across the entire project period. |
-      | EXE      | Total funding anticipated across the entire project period. |
+      | userType      | new_helpText                                                |
+      | GRANTEE ADMIN | Total funding anticipated across the entire project period. |
+      | GRANTEE PM    | Total funding anticipated across the entire project period. |
+      | GRANTEE PO    | Total funding anticipated across the entire project period. |
+      | GRANTEE DD    | Total funding anticipated across the entire project period. |
+      | GRANTEE FO    | Total funding anticipated across the entire project period. |
+      | GRANTEE EXE   | Total funding anticipated across the entire project period. |
 
   @66102 @verifyFinancialPageBlockDetailsFieldsInEditModeUndeFinancialSubTab @buglogged75647 @smoke   @positive
   Scenario: Verify Total Anticipated Amount page detail field is in edit mode for PI user on edit detail page of grant
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -1234,7 +1234,7 @@ Feature: Grants related scenarios
 
   @66102 @ValidateGrantsBudgetDetailsUnderFinancialSubTabAtGrantDetailPage @smoke   @positive
   Scenario: verify all expected details are getting displayed at grants budget page block under financials sub tab At grants detail page
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -1257,7 +1257,7 @@ Feature: Grants related scenarios
 
   @66102 @ValidateManagementSubTabDetailsAtGrants @smoke   @positive
   Scenario: verify User able to see details under Management sub tab for grants
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -1287,7 +1287,7 @@ Feature: Grants related scenarios
 
   @66102 @ValidateRowLevelActionIconAtManagementSubTabDetails @smoke   @positive
   Scenario: verify expected row level action icons displayed inside Amendment Request Page block and financial report page block under management sub tab at grant detail page
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1299,7 +1299,7 @@ Feature: Grants related scenarios
 
   @66102 @ValidateMonitoringSubTabDetailsAtGrants @smoke   @positive
   Scenario: verify User able to see details under Monitoring sub tab for grants
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -1322,7 +1322,7 @@ Feature: Grants related scenarios
 
   @66102 @ValidateCloseOutSubTabDetailsAtGrants   @positive
   Scenario: verify User able to see details under Closeout sub tab for grants
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1340,7 +1340,7 @@ Feature: Grants related scenarios
 
   @66102 @ValidateInitiateButtonAtCloseOutSubTabDetailsAtGrants @smoke @wip
   Scenario: verify User able to see Initiate closeout button at Project Period Closeout Requests page block
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1352,7 +1352,7 @@ Feature: Grants related scenarios
 
   @66102 @ValidateAttachmentAndHistorySubTabDetailsAtGrants @smoke   @positive
   Scenario: verify User able to see details under Attachments and History sub tab for grants
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -1370,7 +1370,7 @@ Feature: Grants related scenarios
 
   @66284 @ValidateGrantsDetailPageInEditMode-Grants-Draft
   Scenario Outline: verify User is navigated to grants edit page after clicking on edit icon of grant in draft state
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -1394,12 +1394,12 @@ Feature: Grants related scenarios
     Then I cannot see top right button "Edit" in page detail
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @66284 @ValidateGrantsDetailPageInEditMode-Grants-Active
   Scenario Outline: verify User is not able to see edit button on page detail for Active grants detail page
@@ -1412,16 +1412,16 @@ Feature: Grants related scenarios
     Then I cannot see top right button "Edit" in page detail
 
     Examples:
-      | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PO    |
+      | GRANTEE DD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @66284 @verifyFieldsAtPageDetailsIsInReadAndEditModeForGrants @wip  @positive
   Scenario: Verify expected fields is in read mode only and in edit mode only at Grants detail page
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -1444,7 +1444,7 @@ Feature: Grants related scenarios
 
   @66284 @ValidateTotalRecordsOfInternalProgramInsideGrantDetailPage   @positive
   Scenario: verify total record count of internal program is same as inside of internal program lookup modal field at grants detail page
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Planning" tab
     When I navigate to "{sidebar:InternalPrograms}" content inside "{sidebar:ProgramsSubheaderName}" subheader on left panel
     And I save the total record value as "EnhanceGranteeStateProgramsgridTotalRecordId" from "Total Records" of table "EnhanceGranteeStateProgramsgrid"
@@ -1461,7 +1461,7 @@ Feature: Grants related scenarios
 
   @66284 @ValidateSelectionInternalProgramAtGrantEditDetailPage-Grants-Draft  @positive
   Scenario: verify User is able to associate internal program to grants records
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -1474,7 +1474,7 @@ Feature: Grants related scenarios
 
   @66284 @ValidateEditingOfGrantDetailPageAtOverviewSubTab-Grants-Draft @smoke  @positive
   Scenario: verify User is able to edit grants details page
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -1492,7 +1492,7 @@ Feature: Grants related scenarios
 
   @66284 @ValidateEditingOfGrantDetailPageAtFinancialSubTab-Grants-Draft   @positive
   Scenario: verify User is able to edit grants details page
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -1523,7 +1523,7 @@ Feature: Grants related scenarios
 
   @66284 @verifyAttachmentSubTabFunctionalDetailsForGrant-Draft   @positive
   Scenario: Verify Attachment type and other details inside attachment sub tab at grants detail page
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -1540,7 +1540,7 @@ Feature: Grants related scenarios
 
   @66284 @verifyAdditionOfAttachmentUnderAttachmentSubTabForGrant-Draft @smoke   @positive
   Scenario: Verify user is able to add Attachment with type and other details inside attachment sub tab at grants detail page
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -1554,7 +1554,7 @@ Feature: Grants related scenarios
 
   @66284 @verifyAdditionOfNotesAtGrantDetailPageForGrant-Draft @smoke  @positive
   Scenario: Verify user is able to add Notes inside attachment sub tab at grants detail page
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"
@@ -1569,7 +1569,7 @@ Feature: Grants related scenarios
 
   @66284 @verifyErrorMessageWhileAddingNotesForGrant-Draft
   Scenario: Verify Attachment type and other details inside attachment sub tab at grants detail page
-    Given I login as "PM" user
+    Given I login as "GRANTEE PM" user
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - Draft"

@@ -12,12 +12,19 @@ import java.util.Map;
 
 public class UsersAndURL implements UsersController {
 
-    public UsersAndURL(){
+    public UsersAndURL() {
         I.amPerforming().propertiesFileOperationsTo().saveValue("EXE Username", "Automation EXE");
         I.amPerforming().propertiesFileOperationsTo().saveValue("FO Username", "Automation FO");
         I.amPerforming().propertiesFileOperationsTo().saveValue("PM Username", "Automation PM");
         I.amPerforming().propertiesFileOperationsTo().saveValue("AUDITOR Username", "Automation AUDITOR");
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPI Username", "Automation SPI");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE ADMIN Username", "Automation Admin Grantee");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE PO Username", "Automation PO Grantee");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE FD Username", "Automation FD Grantee");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE PM Username", "Automation PM Grantee");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE PM1 Username", "Automation PM1 Grantee");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE FO Username", "Automation FO Grantee");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE EXE Username", "Automation EXE Grantee");
     }
 
     /**
@@ -95,7 +102,13 @@ public class UsersAndURL implements UsersController {
                 password = "test72018";
                 break;
             case "ADMIN":
-                password = "GoProduct@12345";
+                password = "GoProduct@123";
+                break;
+            case "FD":
+                password = "GoProduct@12";
+                break;
+            case "PO":
+                password = "GoProduct@12";
                 break;
             default:
                 password = "SALESFORCE2021";
@@ -133,6 +146,8 @@ public class UsersAndURL implements UsersController {
         username.put("EXE", "test@gmaildemo.com.atm.automation");
         username.put("PM", "donald_pm@ggp.test7.atm.automation");
         username.put("FO", "auto.fm@auto.com.atm.automation");
+        username.put("FD", "automationfd@yopmail.com");
+        username.put("PO", "automationpo@yopmail.com");
         username.put("SPI", "spiauto@yopmail.com");
         username.put("SPA", "spaauto@yopmail.com");
         username.put("IND", "ind.automation@yopmail.com");
@@ -146,6 +161,14 @@ public class UsersAndURL implements UsersController {
         username.put("CATHY PM", "cathy_pm@ggp.test7.automation");
         username.put("OSCAR PM", "oscar_pm@ggp.test7.automation");
         username.put("Bill PM", "bill_pm@ggp.test7.automation");
+
+        username.put("GRANTEE PM", "autopmgrantee@yopmail.com");
+        username.put("GRANTEE PM1", "autopm1grantee@yopmail.com");
+        username.put("GRANTEE FO", "automationfograntee@yopmail.com");
+        username.put("GRANTEE FD", "autofdgrantee@yopmail.com");
+        username.put("GRANTEE EXE", "automationexegrantee@yopmail.com");
+        username.put("GRANTEE ADMIN", "autoadmingrantee@yopmail.com");
+        username.put("GRANTEE PO", "autopograntee@yopmail.com");
 
         if (userLevel.toUpperCase() != null) {
             return username.get(userLevel.toUpperCase());

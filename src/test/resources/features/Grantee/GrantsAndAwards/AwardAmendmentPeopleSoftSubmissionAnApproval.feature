@@ -36,7 +36,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -56,7 +56,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -98,7 +98,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -118,7 +118,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -163,7 +163,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -183,7 +183,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -240,7 +240,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -260,7 +260,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -308,7 +308,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -328,7 +328,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -377,7 +377,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -397,7 +397,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -454,7 +454,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -474,7 +474,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -532,7 +532,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -552,7 +552,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -606,7 +606,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -626,7 +626,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -678,7 +678,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -698,7 +698,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -754,7 +754,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -774,7 +774,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -791,7 +791,7 @@ Feature: Award amendment through People soft related scenarios
       | Automation PM             | Automation Admin         |
     Then I softly see value "Automation PM" for title "Financial Report Preparer" inside table "---prdoh_tableId:-:AwardReportPreparerTableId---"
     Then I softly see value "Automation Admin" for title "Progress Report Preparer" inside table "---prdoh_tableId:-:AwardReportPreparerTableId---"
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Awards - All"
@@ -802,11 +802,11 @@ Feature: Award amendment through People soft related scenarios
 
     Examples:
       | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      |GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @68998 @ValidateRefreshBehaviourFunctionalityAtReportPreparerPageBlockAtAmendedAward-PeopleSoft  @positive
   Scenario: verify user is able to refresh the content inside Report preparer page block- AmendedAward-PeopleSoft
@@ -842,7 +842,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -862,7 +862,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -909,7 +909,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -929,7 +929,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -980,7 +980,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1000,7 +1000,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1050,7 +1050,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1070,7 +1070,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1116,7 +1116,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1136,7 +1136,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1185,7 +1185,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1205,7 +1205,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1254,7 +1254,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1274,7 +1274,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1322,7 +1322,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1342,7 +1342,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1393,7 +1393,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1413,7 +1413,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1461,7 +1461,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1481,7 +1481,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1534,7 +1534,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1554,7 +1554,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1607,7 +1607,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1627,7 +1627,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1674,7 +1674,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1694,7 +1694,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1703,7 +1703,7 @@ Feature: Award amendment through People soft related scenarios
     And I navigate to "Awards" sub tab
     And I click on "View" icon for "Created" inside flex table with id "{prdoh_tableId:GrantsAwardsRevisionTableId}"
     Then I softly can see top right button "Submit For Approval" in page detail
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
@@ -1716,11 +1716,11 @@ Feature: Award amendment through People soft related scenarios
 
     Examples:
       | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      |GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @80158 @verifyRequiredFieldErrorMessageOnSubmitForApprovalAtAmendedAward-PeopleSoft
   Scenario: Verify user is able to see error message for required fields on submit for approval AmendedAward-PeopleSoft
@@ -1756,7 +1756,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1776,7 +1776,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1833,7 +1833,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1853,7 +1853,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1907,7 +1907,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -1927,7 +1927,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -1987,7 +1987,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2007,7 +2007,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -2026,7 +2026,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "PEOPLESOFTAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:PEOPLESOFTAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:PEOPLESOFTAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2067,7 +2067,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2087,7 +2087,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -2106,7 +2106,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "PEOPLESOFTAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:PEOPLESOFTAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:PEOPLESOFTAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2149,7 +2149,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2169,7 +2169,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -2188,7 +2188,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "PEOPLESOFTAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:PEOPLESOFTAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:PEOPLESOFTAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2231,7 +2231,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2251,7 +2251,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -2270,7 +2270,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "PEOPLESOFTAMENDMENTREQUESTID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:PEOPLESOFTAMENDMENTREQUESTID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:PEOPLESOFTAMENDMENTREQUESTID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2313,7 +2313,7 @@ Feature: Award amendment through People soft related scenarios
       | Program Approver | Automation Admin | Automation Approval required |
     And I click on "Submit For Approval" in the page details
     Then I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "ADMIN" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EID}" in "---prdoh_tableId:-:PendingTask---" panel
     When I click on "Start" icon for "{SavedValue:EID}" inside flex table with id "---prdoh_tableId:-:PendingTask---"
@@ -2333,7 +2333,7 @@ Feature: Award amendment through People soft related scenarios
     And I execute batch file:
       | operationType | batchName  | recordName |
       | Batch         | PeopleSoft | null       |
-    And I re-login as "PM" user on "default" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     When I navigate to "{sidebar:GrantsLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I click toggle button to select "Grants - All"

@@ -21,7 +21,7 @@ Feature: Award KPI and Objective and special condition related scenarios
     Then I see "Current Value Date" in flex table header "---prdoh_tableId:-:KeyPerformanceIndicatorTableId---"
     Then I see "Target Value" in flex table header "---prdoh_tableId:-:KeyPerformanceIndicatorTableId---"
     Then I softly can see top right button "Associate" in flex table with id "---prdoh_tableId:-:KeyPerformanceIndicatorTableId---"
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I perform quick search for "Automation Testing Grants 1" in "{prdoh_tableId:AwardsTable}" panel
@@ -31,11 +31,11 @@ Feature: Award KPI and Objective and special condition related scenarios
 
     Examples:
       | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      |GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @67968 @ValidateKPIModalDetailsAtAwards-withActiveKPI   @positive
   Scenario: verify details on KPI modal table coming while clicking on Associate button under monitoring sub tab
@@ -384,7 +384,7 @@ Feature: Award KPI and Objective and special condition related scenarios
     And I click on top right button "Associate" in flex table with id "---prdoh_tableId:-:PlanningAssociateObjectiveTableId---"
     And I click "Associate" after selection of "Increase the proportion of cancer survivors who are living 5 years or longer after diagnosis." in the table "---prdoh_tableId:-:PlanningObjectiveModalTableId---"
     And I close modal by clicking the top right x button
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I perform quick search for "Automation Testing Grants 1" in "{prdoh_tableId:AwardsTable}" panel
@@ -408,11 +408,11 @@ Feature: Award KPI and Objective and special condition related scenarios
 
     Examples:
       | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      |GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @67968 @ValidatePositiveNegativeValuesOfAssociatedKPIEdit  @positive
   Scenario: verify user is able to enter positive/negative values in expected fields while inline editing of Associated KPI
@@ -572,7 +572,7 @@ Feature: Award KPI and Objective and special condition related scenarios
     And I click on "View" icon for "Automation Testing Grants 1" inside flex table with id "{prdoh_tableId:AwardsTable}"
     And I navigate to "Monitoring" sub tab
     Then I softly can see top right button "Associate" in flex table with id "---prdoh_tableId:-:ObjectiveTableId---"
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I perform quick search for "Automation Testing Grants 1" in "{prdoh_tableId:AwardsTable}" panel
@@ -582,11 +582,11 @@ Feature: Award KPI and Objective and special condition related scenarios
 
     Examples:
       | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      |GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @67968 @ValidateAdditionOfObjectiveAtAwards @smoke  @positive
   Scenario: verify user is able to add KPI while clicking on Associate button under monitoring sub tab
@@ -1080,7 +1080,7 @@ Feature: Award KPI and Objective and special condition related scenarios
     And I refresh the page
     Then I softly can see row level action button "Delete" against "Automation Objective" in flex table with id "---prdoh_tableId:-:ObjectiveTableId---"
     Then I softly can see row level action button "Edit" against "Automation Objective" in flex table with id "---prdoh_tableId:-:ObjectiveTableId---"
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I perform quick search for "Automation Testing Grants 1" in "{prdoh_tableId:AwardsTable}" panel
@@ -1091,11 +1091,11 @@ Feature: Award KPI and Objective and special condition related scenarios
 
     Examples:
       | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      |GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @67968 @ValidateAssociationAndDeletionOfObjectiveAtActiveAward @wip @needtoaddObjectiveAtActiveAward
   Scenario: verify user should not be able see top level Assciate button and row level delete icon At KPI table for Active Award
@@ -1190,7 +1190,7 @@ Feature: Award KPI and Objective and special condition related scenarios
     Then I see "Date Special Condition Effective Date" in flex table header "---prdoh_tableId:-:SpecialConditionTableId---"
     Then I see "Date Special Condition Removed" in flex table header "---prdoh_tableId:-:SpecialConditionTableId---"
     Then I softly can see top right button "New" in flex table with id "---prdoh_tableId:-:SpecialConditionTableId---"
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I perform quick search for "Automation Testing Grants 1" in "{prdoh_tableId:AwardsTable}" panel
@@ -1200,11 +1200,11 @@ Feature: Award KPI and Objective and special condition related scenarios
 
     Examples:
       | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      |GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @68039 @ValidateSpecialConditionsPageBlockDetailsAtAwards-SubmitForApproval-Active
   Scenario: verify user is not able to see top level action button at special conditions page block under monitoring sub tab for submit for approval status Awards
@@ -1274,7 +1274,7 @@ Feature: Award KPI and Objective and special condition related scenarios
     And I refresh the page
     Then I softly can see row level action button "Delete" against "Automation Special Conditions" in flex table with id "---prdoh_tableId:-:SpecialConditionTableId---"
     Then I softly can see row level action button "Edit" against "Automation Special Conditions" in flex table with id "---prdoh_tableId:-:SpecialConditionTableId---"
-    And I re-login as "<userType>" user on "default" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "{sidebar:AwardsBudgetPeriodLinkName}" content inside "{sidebar:GrantsAwardsAmendmentSubheaderName}" subheader on left panel
     And I perform quick search for "Automation Testing Grants 1" in "{prdoh_tableId:AwardsTable}" panel
@@ -1285,11 +1285,11 @@ Feature: Award KPI and Objective and special condition related scenarios
 
     Examples:
       | userType |
-      | ADMIN    |
-      | PO       |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | GRANTEE ADMIN    |
+      | GRANTEE PO       |
+      | GRANTEE DD       |
+      |GRANTEE FO       |
+      | GRANTEE EXE      |
 
   @68039 @ValidateEditFunctionalityOfAddedSpecialConditionsRecordAtAwards-Draft   @positive
   Scenario: verify user is able to edit the added special conditions records

@@ -23,7 +23,7 @@ Feature: Validate all scenarios for program
       | Program flextable Header  | Program                               |
       | Internal Programs - Draft | {SavedValue:EXE Username}cution Internal Program |
 
-  @34503 @66389 @35985 @75815 @38247 @75816 @75817 @75812 @75813 @75910 @75911 @75814 @updateFieldsValidationCheck @jitendra
+  @34503 @66389 @35985 @75815 @38247 @75816 @75817 @75812 @75813 @75910 @75911 @75814 @updateFieldsValidationCheck @jitendra @skipOnJenkins
   Scenario: To verify that the user is able to modified created internal program settings and view the added setting by the creating a direct grant.
     Then I softly see status in Progress-bar is "Created" and is "Green"
     And I click on "Edit" in the page details
@@ -96,7 +96,7 @@ Feature: Validate all scenarios for program
       | SME Review        | 1           |
       | Management Review | 1           |
 
-  @75918 @75925 @75923 @75919 @75926 @75924 @75983 @75980 @75979 @75975 @75978 @75984 @75982 @75977 @jitendra @addReviewerInPre-ScreenAndManagementReview
+  @75918 @skipOnJenkins @75925 @75923 @75919 @75926 @75924 @75983 @75980 @75979 @75975 @75978 @75984 @75982 @75977 @jitendra @addReviewerInPre-ScreenAndManagementReview
   Scenario: To verify user able to add reviewers in reviewers section for pre-screening review step in setup tab of planning
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -404,7 +404,7 @@ Feature: Validate all scenarios for program
       | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated with at least one question in the Completeness section because it is weighted. |
       | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated with at least one question in the Eligibility section because it is weighted.  |
 
-  @76943 @76944 @76948 @76947 @76984 @76985 @77098 @jitendra
+  @76943 @76944 @76948 @76947 @76984 @76985 @77098 @jitendra @skipOnJenkins
   Scenario: To verify user able to modify review question in Strategic Alignment of Review Panel Categories in management review form for management review step in planning phase
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Management Review"
@@ -504,7 +504,7 @@ Feature: Validate all scenarios for program
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
     Then I see that "{SavedValue:EXE Username}" has been added in flextable with Id "---program:-:approverTableId---"
 
-  @34616 @76118 @75992 @75821 @75830 @75831 @75836 @75832 @75840 @75841 @programFocusAreaAssociation
+  @34616 @76118 @75992 @75821 @75830 @75831 @75836 @75832 @75840 @75841 @programFocusAreaAssociation @skipOnJenkins
   Scenario Outline: Validate the association of Focus Area for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
@@ -558,7 +558,7 @@ Feature: Validate all scenarios for program
       | Title                           |
       | Automation Permanent Focus Area |
 
-  @34737 @76116 @76117 @76113 @76115 @75894 @75888 @75891 @programObjectiveAssociation
+  @34737 @76116 @76117 @76113 @76115 @75894 @75888 @75891 @programObjectiveAssociation @skipOnJenkins
   Scenario Outline: Validate the Association of Objective to the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
@@ -1300,7 +1300,7 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @76922 @76921 @76937 @76936 @ValidatingReturnOnInvestmentQuestionValidatingStrategicAlignment @keerti
+  @76922 @76921 @76937 @76936 @ValidatingReturnOnInvestmentQuestionValidatingStrategicAlignment @keerti @skipOnJenkins
   Scenario Outline: To verify user allow to download PDF for review question in Return on Investment (ROI) of Review Panel Categories in management review form for management review step in planning phase
   | To verify user able to add new review question with success message in Return on Investment (ROI) of Review Panel Categories in management review form for management review step in planning phase
   | To verify user allow to download PDF for review question in Strategic Alignment of Review Panel Categories in management review form for management review step in plnning phase
@@ -1493,7 +1493,7 @@ Feature: Validate all scenarios for program
       | Record deleted successfully. |
     Then I softly do not see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
 
-  @77118 @77116 @77122 @77120 @ValidatingAdditionModificationDeletionOfPermitsReview @keerti
+  @77118 @77116 @77122 @77120 @ValidatingAdditionModificationDeletionOfPermitsReview @keerti @skipOnJenkins
   Scenario Outline: To verify user allow to download PDF for review question in Permits of Review Panel Categories in compliance review form for SME review step in planning phase
   | To verify user able to add new review question with success message in Permits of Review Panel Categories in compliance review form for SME review step in planning phase
   | To verify user able to modify review question in Permits of Review Panel Categories in compliance review form for SME review step in planning phase
@@ -1557,7 +1557,7 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @77124 @77123 @77170 @77171 @ValidatingPDFAdditionDeletionModificationInBudgetFiscalReviewForm @keerti
+  @77124 @77123 @77170 @77171 @ValidatingPDFAdditionDeletionModificationInBudgetFiscalReviewForm @keerti @skipOnJenkins
   Scenario Outline: To verify user allow to download PDF for review question in Budget of Review Panel Categories in Fiscal review form for SME review step in planning phase
   | To verify user able to add new review question with success message in Budget of Review Panel Categories in Fiscal review form for SME review step in planning phase
   | To verify user able to delete review question with success message in Budget of Review Panel Categories in Fiscal review form for SME review step in planning phase
@@ -1658,7 +1658,7 @@ Feature: Validate all scenarios for program
     Then I softly can see row level action button "Edit" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly can see row level action button "Delete" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
 
-  @77173 @77176 @77174 @ValidatingPDFModificationDeletionInMatchFiscalReviewForm @keerti
+  @77173 @77176 @77174 @ValidatingPDFModificationDeletionInMatchFiscalReviewForm @keerti @skipOnJenkins
   Scenario Outline:  To verify user allow to download PDF for review question in match of Review Panel Categories in Fiscal review form for SME review step in planning phase
   | To verify user able to modify review question in Match of Review Panel Categories in fiscal review form for SME review step in planning phase
   | To verify user able to delete review question with success message in Match of Review Panel Categories in fiscal review form for SME review step in planning phase
@@ -1921,7 +1921,7 @@ Feature: Validate all scenarios for program
       | Setup Tab - Management Review - Management Review: A weighted form must contain weighted sections.                                                                         |
 
 
-  @77290 @77289 @77292 @77291  @PDFAdditionModificationDeletionInApproach @keerti
+  @77290 @77289 @77292 @77291  @PDFAdditionModificationDeletionInApproach @keerti @skipOnJenkins
   Scenario Outline: To verify user allow to download PDF for review question in Approach of Review Panel Categories in Program review form for SME review step in planning phase
   | To verify user able to add new review question with success message in Approach of Review Panel Categories in Program review form for SME review step in planning phase
   | To verify user able to modify review question in Approach of Review Panel Categories in Program review form for SME review step in planning phase
@@ -1986,7 +1986,7 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @77293 @77294 @77343 @AdditionPDFModificationInImpact @keerti
+  @77293 @77294 @77343 @AdditionPDFModificationInImpact @keerti @skipOnJenkins
   Scenario Outline: To verify user able to add new review question with success message in Impact of Review Panel Categories in Program review form for SME review step in planning phase
   | To verify user allow to download PDF for review question in Impact of Review Panel Categories in Program review form for SME review step in planning phase
   | To verify user able to modify review question in Impact of Review Panel Categories in Program review form for SME review step in planning phase
