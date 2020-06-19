@@ -20,8 +20,8 @@ Feature: Validate all scenarios for program
     And I perform quick search for "<Program>"
     Then I see that "<Program>" has been added in flextable with Id "---program:-:programsTableId---"
     Examples:
-      | Program flextable Header  | Program                               |
-      | Internal Programs - Draft | {SavedValue:EXE Username}cution Internal Program |
+      | Program flextable Header  | Program                                          |
+      | Internal Programs - Draft | {SavedValue:Automation Runtime Internal Program} |
 
   @34503 @66389 @35985 @75815 @38247 @75816 @75817 @75812 @75813 @75910 @75911 @75814 @updateFieldsValidationCheck @jitendra @skipOnJenkins
   Scenario: To verify that the user is able to modified created internal program settings and view the added setting by the creating a direct grant.
