@@ -754,7 +754,7 @@ public class GrantorPayloads {
         JsonArray awardArray = new JsonArray();
         award.addProperty("GrantAwardDescription","Award Created From Automation API");
         award.addProperty("BudgetPeriodEndDate", I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(600, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .actionToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         award.addProperty("PM",ProjectWebServices.getIdOf("User","Automation PM"));
         award.addProperty("FO",ProjectWebServices.getIdOf("User","Automation FO"));
         award.addProperty("EXE",ProjectWebServices.getIdOf("User","Automation EXE"));
@@ -818,7 +818,7 @@ public class GrantorPayloads {
                         .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         awardServiceArea.addProperty("GATEndDate",
                 I.amPerforming()
-                        .actionToGet().currentDateWithOffsetInDesiredFormat(600, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                        .actionToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         awardServiceAreaArray.add(awardServiceArea);
         parent.add("AwardServiceArea",awardServiceAreaArray);
 
