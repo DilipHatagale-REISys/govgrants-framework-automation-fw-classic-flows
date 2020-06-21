@@ -115,7 +115,6 @@ Feature: Projects related scenarios
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I save the field labeled "Project Name" as "PROJECTNAME"
     And I save the field labeled "Internal Organization" as "INTERNALORGANIZATION"
     And I pause execution for "3" seconds
     And I navigate to "Planning" tab
@@ -140,7 +139,7 @@ Feature: Projects related scenarios
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "EID"
-    And I save the field labeled "Project Name" as "PROJECTNAME"
+    And I save the field labeled "Title" as "PROJECTNAME"
     And I save the field labeled "Internal Organization" as "INTERNALORGANIZATION"
     And I pause execution for "3" seconds
     And I navigate to "Planning" tab
@@ -194,10 +193,10 @@ Feature: Projects related scenarios
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     Then I cannot see top right button "New" in flex table with id "{grantee_tableId:OpportunityConvertedToApplication}"
     Examples:
-      | user |
-      | PO   |
-      | FO   |
-      | FD   |
+      | user       |
+      | GRANTEE PO |
+      | GRANTEE FO |
+      | GRANTEE FD |
 
   @62182 @Projects @verifyProjectsUserSeeNewButton @smoke   @positive
   Scenario Outline: Verify User can see NEW button on view page
@@ -207,11 +206,10 @@ Feature: Projects related scenarios
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     Then I can see top right button "New" in flex table with id "{grantee_tableId:OpportunityConvertedToApplication}"
     Examples:
-      | userType |
-      | GRANTEE ADMIN    |
-      | GRANTEE PM       |
-      | EXE      |
-
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE EXE   |
 
   @62182 @Projects @verifyProjectsUserClickNewButton @wip  @positive
   Scenario: Verify User can navigate to modal by clicking on New button
@@ -300,7 +298,7 @@ Feature: Projects related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Focus Area}" inside table
     Then I softly see field "Title" as "{SavedValue:Automation Runtime Focus Area}"
     Then I softly see field "Description" as "Automation Description"
-    Then I softly see field "Internal Organization" as "Test Automation Organization"
+    Then I softly see field "Internal Organization" as "Department of Health"
 
   @62258 @Projects @verifyProjectsOverviewSystemInformation @positive
   Scenario: Verify user can see System Information on Overview Tab
@@ -367,9 +365,9 @@ Feature: Projects related scenarios
     When I navigate to "{grantee_sidebar:ProjectsLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Focus Area}" in "{grantee_tableId:Projects}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Focus Area}" inside table
-    And I click "Test Automation Organization" lookup link
+    And I click "Department of Health" lookup link
     Then I see the header is "Internal Organization" in the page details
-    Then I see the sub-header is "Test Automation Organization" in the page details
+    Then I see the sub-header is "Department of Health" in the page details
 
   @62258 @Projects @verifyProjectsCreatedByLink @smoke   @positive
   Scenario: Verify user can navigate to user page By created by link
@@ -386,7 +384,7 @@ Feature: Projects related scenarios
     And I perform quick search for "{SavedValue:Automation Runtime Focus Area}" in "{grantee_tableId:Projects}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Focus Area}" inside table
     And I click "{SavedValue:GRANTEE PM Username}" lookup link
-    Then I see field "First Name" as "Automation"
+    Then I see field "First Name" as "GRANTEE PM Username"
 
   @62258 @Projects @verifyProjectsHistorySubTab @smoke  @positive
   Scenario: Verify user can navigate to history sub tab
@@ -533,14 +531,13 @@ Feature: Projects related scenarios
     Then I see the header is "Focus Area" in the page details
     Then I see the sub-header is "{SavedValue:Automation Runtime Focus Area}" in the page details
     Examples:
-      | user  |
-      | ADMIN |
-      | FO    |
-      | FD    |
-      | PO    |
-      | PM    |
-      | EXE   |
-
+      | user          |
+      | GRANTEE ADMIN |
+      | GRANTEE FO    |
+      | GRANTEE FD    |
+      | GRANTEE PO    |
+      | GRANTEE PM    |
+      | GRANTEE EXE   |
 
   @62262 @Projects @verifyProjectsRowLevelEditButton @smoke   @positive
   Scenario Outline: Verify Owner can see row level edit button
@@ -557,10 +554,10 @@ Feature: Projects related scenarios
     And I perform quick search for "{SavedValue:Automation Runtime Focus Area}" in "{grantee_tableId:Projects}" panel
     Then I can see row level action button "Edit" against "Draft" in flex table with id "{grantee_tableId:Projects}"
     Examples:
-      | user  |
-      | ADMIN |
-      | PM    |
-      | EXE   |
+      | user          |
+      | GRANTEE ADMIN |
+      | GRANTEE PM    |
+      | GRANTEE EXE   |
 
   @62262 @Projects @verifyProjectsRowLevelEditButton02
   Scenario Outline: Verify other than Owner can not see row level edit button
@@ -579,10 +576,10 @@ Feature: Projects related scenarios
     And I perform quick search for "{SavedValue:Automation Runtime Focus Area}" in "{grantee_tableId:Projects}" panel
     Then I cannot see row level action button "Edit" against "Draft" in flex table with id "{grantee_tableId:Projects}"
     Examples:
-      | user |
-      | FO   |
-      | FD   |
-      | PO   |
+      | user       |
+      | GRANTEE FO |
+      | GRANTEE FD |
+      | GRANTEE PO |
 
   @62262 @Projects @verifyProjectsActivatedNotEdit
   Scenario: Verify user cannot see edit button for activated project
@@ -672,10 +669,10 @@ Feature: Projects related scenarios
     And I perform quick search for "{SavedValue:Automation Runtime Focus Area}" in "{grantee_tableId:Projects}" panel
     Then I cannot see row level action button "Delete" against "{SavedValue:Automation Runtime Focus Area}" in flex table with id "{grantee_tableId:Projects}"
     Examples:
-      | user |
-      | FO   |
-      | FD   |
-      | PO   |
+      | user       |
+      | GRANTEE FO |
+      | GRANTEE FD |
+      | GRANTEE PO |
 
   @62399 @Projects @verifyProjectsActivatedNotDelete
   Scenario: Verify user cannot see Delete button for activated project
@@ -840,10 +837,10 @@ Feature: Projects related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                 | Description |
+      | Program Approver   | GRANTEE PM Username  | prdoh       |
+      | Executive Approver | GRANTEE EXE Username | prdoh       |
+      | Fiscal Approver    | GRANTEE FO Username  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -851,15 +848,15 @@ Feature: Projects related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "5" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -921,10 +918,10 @@ Feature: Projects related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                 | Description |
+      | Program Approver   | GRANTEE PM Username  | prdoh       |
+      | Executive Approver | GRANTEE EXE Username | prdoh       |
+      | Fiscal Approver    | GRANTEE FO Username  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -932,15 +929,15 @@ Feature: Projects related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "5" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -995,10 +992,10 @@ Feature: Projects related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                 | Description |
+      | Program Approver   | GRANTEE PM Username  | prdoh       |
+      | Executive Approver | GRANTEE EXE Username | prdoh       |
+      | Fiscal Approver    | GRANTEE FO Username  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -1006,15 +1003,15 @@ Feature: Projects related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "5" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -1054,10 +1051,10 @@ Feature: Projects related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Focus Area}" inside table
     Then I can see top right button "Deactivate" in page detail
     Examples:
-      | user  |
-      | PM    |
-      | ADMIN |
-      | EXE   |
+      | user          |
+      | GRANTEE PM    |
+      | GRANTEE ADMIN |
+      | GRANTEE EXE   |
 
   @62585 @Projects @verifyProjectsDraftDeactiveButton @smoke
   Scenario: Verify user cannot see Deactivate button for Draft project

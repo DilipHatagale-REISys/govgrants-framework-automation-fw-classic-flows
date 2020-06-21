@@ -4,7 +4,7 @@ Feature: Pre-Applications related scenarios
 
   @63498 @TejalMarch2020 @ValidateColumnsOfPre-ApplicationListPage  @positive
   Scenario: verify columns of pre-application list page
-    Given I login as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     Then I softly see "EGMS ID" in flex table header "{grantee_tableId:PreApplication}"
@@ -20,7 +20,7 @@ Feature: Pre-Applications related scenarios
 
   @63498 @TejalMarch2020 @ValidateSortingForPre-ApplicationListPage   @positive
   Scenario: verify Sorting for pre-application list page
-    When I login as "PM" user
+    When I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     When I click on "EGMS ID" column header inside table with id "{grantee_tableId:PreApplication}"
@@ -52,7 +52,7 @@ Feature: Pre-Applications related scenarios
 
   @63498 @TejalMarch2020 @ValidateAllFilterListRecordForPre-Application @needToExecute @wip   @positive
   Scenario: verify all filter list record for Pre-Application
-    When I login as "PM" user
+    When I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -66,7 +66,7 @@ Feature: Pre-Applications related scenarios
 
   @63498 @TejalMarch2020 @ValidateConvertedToApplicationFilterListRecordForPre-Application  @positive
   Scenario: verify Converted to Application filter list record for Pre-Application
-    When I login as "PM" user
+    When I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -75,7 +75,7 @@ Feature: Pre-Applications related scenarios
 
   @63498 @TejalMarch2020 @ValidateDraftFilterListRecordForPre-Application @wip   @positive
   Scenario: verify draft filter list record for Pre-Application
-    When I login as "PM" user
+    When I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -89,7 +89,7 @@ Feature: Pre-Applications related scenarios
 
   @63498 @TejalMarch2020 @ValidateSubmittedFilterListRecordForPre-Application @needtoexecute @wip   @positive
   Scenario: verify Submitted filter list record for Pre-Application
-    When I login as "PM" user
+    When I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -100,7 +100,7 @@ Feature: Pre-Applications related scenarios
 
   @63498 @TejalMarch2020 @ValidateTotalCountOfRecordsForAllFilterOnPre-ApplicationListPage  @positive
   Scenario: verify total count of records for All filter on Pre-Application list page
-    When I login as "PM" user
+    When I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -111,7 +111,7 @@ Feature: Pre-Applications related scenarios
 
   @63498 @TejalMarch2020 @ValidateTotalCountOfRecordsForConvertedToApplicationFilterOnPre-ApplicationListPage  @positive
   Scenario: verify total count of records for Converted to application filter on Pre-Application list page
-    When I login as "PM" user
+    When I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -122,7 +122,7 @@ Feature: Pre-Applications related scenarios
 
   @63498 @TejalMarch2020 @ValidateTotalCountOfRecordsForSubmittedFilterOnPre-ApplicationListPage  @positive
   Scenario: verify total count of records for Submitted filter on Pre-Application list page
-    When I login as "PM" user
+    When I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -132,7 +132,7 @@ Feature: Pre-Applications related scenarios
 
   @63498 @TejalMarch2020 @ValidateTotalCountOfRecordsForExpiredFilterOnPre-ApplicationListPage  @positive
   Scenario: verify total count of records for Expired filter on Pre-Application list page
-    When I login as "PM" user
+    When I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -143,7 +143,7 @@ Feature: Pre-Applications related scenarios
 
   @63498 @TejalMarch2020 @ValidateTotalCountOfRecordsForDraftFilterOnPre-ApplicationListPage  @positive
   Scenario: verify total count of records for Draft filter on Pre-Application list page
-    When I login as "PM" user
+    When I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -158,11 +158,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -176,10 +181,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -187,15 +192,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -219,11 +224,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -237,10 +247,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -248,15 +258,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -280,7 +290,7 @@ Feature: Pre-Applications related scenarios
 
   @63498 @TejalMarch2020 @validateRefreshFunctionalityForPre-Application  @positive
   Scenario: verify refresh functionality for Pre-Application
-    Given I login as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I refresh the page
@@ -293,11 +303,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -311,10 +326,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -322,15 +337,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -348,7 +363,7 @@ Feature: Pre-Applications related scenarios
 
   @63498 @TejalMarch2020 @validateTotalRecordCountForUsersHavingSameOrganizationForPre-ApllicationListPage   @positive
   Scenario Outline: Validate total record count for Pre-Application list view with users having same organization
-    Given I login as "<userType>" user
+    Given I login to "As a Grantee" app as "<userType>" user
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -356,12 +371,12 @@ Feature: Pre-Applications related scenarios
     When I pause execution for "2" seconds
     Then I see total records count in flex table "{grantee_tableId:PreApplication}"
     Examples:
-      | userType |
-      | EXE      |
-      | PM       |
-      | PO       |
-      | FD       |
-      | FO       |
+      | userType    |
+      | GRANTEE EXE |
+      | GRANTEE PM  |
+      | GRANTEE PO  |
+      | GRANTEE FD  |
+      | GRANTEE FO  |
 
   @63674 @TejalMarch2020 @ValidatePre-ApplicationDetailsPageAndButtonsWhenPre-ApplicationIsInDraftState   @positive
   Scenario: verify Edit, Validate and Submit For Appoval buttons should be displayed to the record owner when Pre-Application is in Draft state
@@ -370,11 +385,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -388,10 +408,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -399,15 +419,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -433,11 +453,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -451,10 +476,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -462,15 +487,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -486,9 +511,9 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description | Due Date | Allow Record Editing |
-      | Automation PM | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
-    And I click on "Send for Review" icon for "Automation PM" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
+      | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
+    And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see field "Status" as "Submitted for Review"
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Complete Review" in page detail
@@ -500,11 +525,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -518,10 +548,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -529,15 +559,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -553,9 +583,9 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description | Due Date | Allow Record Editing |
-      | Automation PO | Fiscal Reviewer | aaaaaaa     | 1        | Yes                  |
-    And I click on "Send for Review" icon for "Automation PO" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
+      | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PO Username} | Fiscal Reviewer | aaaaaaa     | 1        | Yes                  |
+    And I click on "Send for Review" icon for "{SavedValue:GRANTEE PO Username}" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
@@ -570,11 +600,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -589,10 +624,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -600,15 +635,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -648,9 +683,9 @@ Feature: Pre-Applications related scenarios
       | Sample        | 25000          |
     And  I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:PreApplicationApprovers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I click on "Save and Continue" in the page details
     And I pause execution for "2" seconds
     And I click on "Submit For Approval" in the page details
@@ -665,11 +700,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -684,10 +724,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -695,15 +735,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -721,11 +761,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -740,10 +785,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -751,15 +796,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -785,11 +830,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -804,10 +854,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -815,15 +865,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -849,11 +899,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -868,10 +923,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -879,15 +934,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -906,9 +961,9 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description | Due Date | Allow Record Editing |
-      | Automation PO | Fiscal Reviewer | aaaaaaa     | 1        | Yes                  |
-    And I click on "Send for Review" icon for "Automation PO" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
+      | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PO Username} | Fiscal Reviewer | aaaaaaa     | 1        | Yes                  |
+    And I click on "Send for Review" icon for "{SavedValue:GRANTEE PO Username}" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "2" seconds
     And I click on "Complete Review" in the page details
     And I pause execution for "2" seconds
@@ -926,11 +981,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -945,10 +1005,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -956,15 +1016,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -994,11 +1054,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1013,10 +1078,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -1024,15 +1089,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -1062,11 +1127,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1081,10 +1151,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -1092,15 +1162,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -1155,11 +1225,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1174,10 +1249,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -1185,15 +1260,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -1223,11 +1298,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1242,10 +1322,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -1253,15 +1333,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -1296,11 +1376,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1315,10 +1400,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -1326,15 +1411,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -1355,7 +1440,7 @@ Feature: Pre-Applications related scenarios
     Then I softly can see top right button "Associate Projects" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
     Then I softly can see row level action button "Edit" against "BP01" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
     Then I softly can see row level action button "Delete" against "BP01" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
-    And I re-login to "As a Grantee" app as "userType" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1366,12 +1451,12 @@ Feature: Pre-Applications related scenarios
     Then I softly cannot see top right button "Create New Budget Period" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
     Then I softly cannot see top right button "Associate Projects" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
     Examples:
-      | userType |
-      | ADMIN    |
-      | FD       |
-      | FO       |
-      | EXE      |
-      | PO       |
+      | userType      |
+      | Grantee ADMIN |
+      | Grantee FD    |
+      | Grantee FO    |
+      | Grantee EXE   |
+      | Grantee PO    |
 
   @63674 @TejalMarch2020 @ValidateEditableFieldsOnSubTab  @positive
   Scenario: verify Editable fields on sub Tab for pre-application
@@ -1380,11 +1465,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1399,10 +1489,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -1410,15 +1500,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -1455,11 +1545,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1474,10 +1569,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -1485,15 +1580,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -1546,11 +1641,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1565,10 +1665,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -1576,15 +1676,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -1637,11 +1737,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1656,10 +1761,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -1667,15 +1772,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -1728,11 +1833,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1747,10 +1857,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -1758,15 +1868,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -1820,7 +1930,7 @@ Feature: Pre-Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login as "PM" user
+    When I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "3" seconds
@@ -1849,10 +1959,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -1860,15 +1970,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -1898,11 +2008,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1917,10 +2032,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -1928,15 +2043,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -1965,11 +2080,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1984,10 +2104,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -1995,15 +2115,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2013,7 +2133,7 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
     When I click on "Create Pre-Application" in the page details
     And I click modal button "Save and Continue"
-    When I re-login to "As a Grantee" app as "userType" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2025,12 +2145,12 @@ Feature: Pre-Applications related scenarios
     And I navigate to "Responsibilities" sub tab
     Then I softly cannot see top right button "New" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Examples:
-      | userType |
-      | GRANTEE ADMIN    |
-      | GRANTEE PO       |
-      | GRANTEE DD       |
-      |GRANTEE FO       |
-      | GRANTEE EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PO    |
+      | GRANTEE FD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @63674 @TejalMarch2020 @ValidateStatusAndActionFieldAfterReviewersDetailsAreAddedInPeerReviewSectionByRecordOwner  @positive
   Scenario: verify status and Action field after Reviewers details are added in Peer review section by record owner
@@ -2039,11 +2159,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2058,10 +2183,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -2069,15 +2194,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2096,9 +2221,9 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description | Due Date | Allow Record Editing |
-      | Automation PM | Program Reviewer | aaaaaaa     | 1        | No                   |
-    Then I softly see value "Automation PM" for title "Reviewer Name" against the value "Program Reviewer" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
+      | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
+    Then I softly see value "{SavedValue:GRANTEE PM Username}" for title "Reviewer Name" against the value "Program Reviewer" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see value "Created" for title "Status" against the value "Program Reviewer" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I can see row level action button "Edit" against "Created" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I can see row level action button "Delete" against "Created" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
@@ -2111,11 +2236,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2130,10 +2260,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -2141,15 +2271,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2168,9 +2298,9 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description | Due Date | Allow Record Editing |
-      | Automation PM | Program Reviewer | aaaaaaa     | 1        | No                   |
-    And I click on "Send for Review" icon for "Automation PM" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
+      | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
+    And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "2" seconds
     Then I see value "Sent for Review" for title "Status" against the value "Program Reviewer" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
 
@@ -2181,11 +2311,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2200,10 +2335,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -2211,15 +2346,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2239,9 +2374,9 @@ Feature: Pre-Applications related scenarios
     And I save the field labeled "EGMS ID" as "egmsid"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description | Due Date | Allow Record Editing |
-      | Automation PO | Program Reviewer | aaaaaaa     | 1        | No                   |
-    And I click on "Send for Review" icon for "Automation PO" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
+      | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PO Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
+    And I click on "Send for Review" icon for "{SavedValue:GRANTEE PO Username}" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
@@ -2256,11 +2391,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2275,10 +2415,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -2286,15 +2426,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2313,9 +2453,9 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description | Due Date | Allow Record Editing |
-      | Automation PM | Program Reviewer | aaaaaaa     | 1        | No                   |
-    And I click on "Send for Review" icon for "Automation PM" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
+      | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
+    And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I click on "Complete Review" in the page details
     And I pause execution for "2" seconds
     Then I softly cannot see top right button "New" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
@@ -2329,11 +2469,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2348,10 +2493,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -2359,15 +2504,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2387,8 +2532,8 @@ Feature: Pre-Applications related scenarios
     And I save the field labeled "EGMS ID" as "egmsid"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description | Due Date | Allow Record Editing |
-      | Automation PM | Program Reviewer | aaaaaaa     | 1        | No                   |
+      | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
@@ -2402,7 +2547,7 @@ Feature: Pre-Applications related scenarios
     And I save the field labeled "Comments" as "comment"
     And I save the field labeled "Review Date" as "ReviewDate"
     And I close modal by clicking the top right x button
-    And I expand nested table containing column value "Automation PM"
+    And I expand nested table containing column value "{SavedValue:GRANTEE PM Username}"
     Then I softly see value "Passed" for title "Rating" against the value "enterreviewcmnt" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see value "enterreviewcmnt" for title "Comments" against the value "Passed" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see field "{SavedValue:ReviewDate}" contains todays date withTime
@@ -2415,11 +2560,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2434,10 +2584,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -2445,15 +2595,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2472,10 +2622,10 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description | Due Date | Allow Record Editing |
-      | Automation PM | Program Reviewer | aaaaaaa     | 1        | No                   |
+      | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
     Then I softly can see top right button "Submit For Approval" in page detail
-    And I click on "Send for Review" icon for "Automation PM" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
+    And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see the text "Review Successfully Initiated."
     Then I softly cannot see top right button "Submit For Approval" in page detail
     Then I softly can see top right button "Complete Review" in page detail
@@ -2487,11 +2637,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2506,10 +2661,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -2517,15 +2672,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2555,11 +2710,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2574,10 +2734,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -2585,15 +2745,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2614,7 +2774,7 @@ Feature: Pre-Applications related scenarios
     And I add notes records
     And I close modal by clicking the top right x button
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "userType" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2626,12 +2786,12 @@ Feature: Pre-Applications related scenarios
     Then I softly do not see row level action icon "Edit" against "Automation Notes" in Attachment and Notes Table
     Then I softly do not see row level action icon "Delete" against "Automation Notes" in Attachment and Notes Table
     Examples:
-      | userType |
-      | GRANTEE ADMIN    |
-      | GRANTEE PO       |
-      | GRANTEE DD       |
-      |GRANTEE FO       |
-      | GRANTEE EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PO    |
+      | GRANTEE FD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @63674 @TejalMarch2020 @ValidateCheckPermissionToViewNotesAddedToPre-Application  @positive
   Scenario Outline: verify to check permission to view added notes to pre-application
@@ -2640,11 +2800,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2659,10 +2824,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -2670,15 +2835,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2698,7 +2863,7 @@ Feature: Pre-Applications related scenarios
     And I navigate to "Attachments" sub tab
     And I add notes records
     And I close modal by clicking the top right x button
-    When I re-login to "As a Grantee" app as "userType" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2710,12 +2875,12 @@ Feature: Pre-Applications related scenarios
     When I click on "View" icon for "Automation Notes" inside table
     Then I see table with header "Notes" contains records "Notes Record"
     Examples:
-      | userType |
-      | GRANTEE ADMIN    |
-      | GRANTEE PO       |
-      | GRANTEE DD       |
-      |GRANTEE FO       |
-      | GRANTEE EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PO    |
+      | GRANTEE FD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @63674 @TejalMarch2020 @ValidateToCheckPermissionForViewEditButtonOfAddedAttachmentForRecordOwner  @positive
   Scenario: verify to Check permission for View Edit button of added Attachment(Record Owner)
@@ -2724,11 +2889,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2743,10 +2913,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -2754,15 +2924,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2792,11 +2962,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2811,10 +2986,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -2822,15 +2997,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2849,7 +3024,7 @@ Feature: Pre-Applications related scenarios
     And I navigate to "Attachments" sub tab
     When I upload attachment "AttachmentTesting.pdf" of type "Other"
     When I pause execution for "3" seconds
-    When I re-login to "As a Grantee" app as "userType" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -2860,12 +3035,12 @@ Feature: Pre-Applications related scenarios
     Then I softly do not see row level action icon "Edit" against "Other" in Attachment and Notes Table
     Then I softly do not see row level action icon "Delete" against "Other" in Attachment and Notes Table
     Examples:
-      | userType |
-      | GRANTEE ADMIN    |
-      | GRANTEE PO       |
-      | GRANTEE DD       |
-      |GRANTEE FO       |
-      | GRANTEE EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE PO    |
+      | GRANTEE FD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @63555 @TejalMarch2020 @ValidateToCheckTheDeleteButtonIsDisplayedOnTheListPageForOtherThanRecordOwner
   Scenario Outline: validate to check the delete button is displayed on the list page for other than record owner
@@ -2874,11 +3049,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2893,10 +3073,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -2904,15 +3084,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2922,17 +3102,17 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
     When I click on "Create Pre-Application" in the page details
     And I click modal button "Save and Continue"
-    And I re-login to "As a Grantee" app as "userType" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
     Then I cannot see row level action button "Delete" against "Draft" in flex table with id "{grantee_tableId:PreApplication}"
     Examples:
-      | userType |
-      | ADMIN    |
-      | FD       |
-      | FO       |
-      | EXE      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE FD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
 
   @63555 @TejalMarch2020 @ValidateConfirmationMessageOnDeleteButton  @positive
   Scenario: validate confirmation message on delete button
@@ -2941,11 +3121,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2960,10 +3145,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -2971,15 +3156,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -3013,11 +3198,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -3032,10 +3222,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -3043,15 +3233,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -3066,7 +3256,7 @@ Feature: Pre-Applications related scenarios
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
     Then I softly see value "Draft" for title "Status" against the value "{SavedValue:Automation Runtime Lead}" inside table "{grantee_tableId:PreApplication}"
     Then I softly can see row level action button "Edit" against "Draft" in flex table with id "{grantee_tableId:PreApplication}"
-    And I re-login to "As a Grantee" app as "userType" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
@@ -3075,12 +3265,12 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     Then I softly cannot see top right button "Edit" in page detail
     Examples:
-      | userType |
-      | ADMIN    |
-      | FD       |
-      | FO       |
-      | EXE      |
-      | PM1      |
+      | userType      |
+      | GRANTEE ADMIN |
+      | GRANTEE FD    |
+      | GRANTEE FO    |
+      | GRANTEE EXE   |
+      | GRANTEE PM1   |
 
   @63507 @TejalMarch2020 @ValidateEditFunctionalityForPre-Application    @positive
   Scenario: verify validate edit functionality for pre-application
@@ -3089,11 +3279,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -3108,10 +3303,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -3119,15 +3314,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -3156,11 +3351,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -3175,10 +3375,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -3186,15 +3386,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -3246,11 +3446,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -3265,10 +3470,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I navigate to "Overview" sub tab
     And I save the field labeled "Pre-Application Due Date" as "Pre-ApplicationDueDate"
     And I save the field labeled "Created Date" as "CreatedDate"
@@ -3281,8 +3486,8 @@ Feature: Pre-Applications related scenarios
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -3318,11 +3523,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -3337,10 +3547,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I navigate to "Overview" sub tab
     And I save the field labeled "Pre-Application Due Date" as "Pre-ApplicationDueDate"
     And I save the field labeled "Created Date" as "CreatedDate"
@@ -3353,8 +3563,8 @@ Feature: Pre-Applications related scenarios
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -3379,9 +3589,9 @@ Feature: Pre-Applications related scenarios
     Then I softly see field "Application Due Date" as "{SavedValue:ApplicationDueDate}"
     Then I softly see field "Total Budget Request" as "$0.00"
     Then I softly see field "Applying Internal Organization" as "Secretaria Auxiliar de Salud Familiar y Servicios Integrados"
-    Then I softly see field "Created By" as "Automation PM"
+    Then I softly see field "Created By" as "{SavedValue:GRANTEE PM Username}"
     Then I softly see field "{SavedValue:CreatedDate}" contains todays date withTime
-    Then I softly see field "Last Modified By" as "Automation PM"
+    Then I softly see field "Last Modified By" as "{SavedValue:GRANTEE PM Username}"
     Then I softly see field "{SavedValue:LastModifiedDate}" contains todays date withTime
 
   @63507 @TejalMarch2020 @ValidateActionsOnBudgetSubTab @wip     @positive
@@ -3391,11 +3601,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -3410,10 +3625,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -3421,15 +3636,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -3475,11 +3690,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -3494,10 +3714,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -3505,15 +3725,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -3538,11 +3758,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -3557,10 +3782,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -3568,15 +3793,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -3609,11 +3834,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -3628,10 +3858,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -3639,15 +3869,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -3674,11 +3904,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -3693,10 +3928,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -3704,15 +3939,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -3743,7 +3978,7 @@ Feature: Pre-Applications related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    When I login as "PM" user
+    When I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -3776,20 +4011,19 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
     And I edit the following rows inline in flex table with id "#AnnouncementRolesandResponsibilitiesFlexToggle" by clicking "Edit" :
-      | Responsibility     | Name                  | Description |
-      | Program Approver   | David Program Manager | prdoh       |
-      | Executive Approver | Automation EXE        | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | David Program Manager             | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I click on "Save and Continue" in the page details
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
-    When I login as "EXE" user
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -3844,11 +4078,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -3863,10 +4102,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -3874,15 +4113,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -3920,11 +4159,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -3939,10 +4183,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -3950,15 +4194,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -3997,11 +4241,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -4016,10 +4265,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -4027,8 +4276,8 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
@@ -4069,11 +4318,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -4088,10 +4342,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -4099,15 +4353,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -4140,11 +4394,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -4159,10 +4418,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -4170,15 +4429,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -4215,11 +4474,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -4234,10 +4498,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -4245,15 +4509,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -4296,11 +4560,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -4315,10 +4584,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -4326,15 +4595,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -4373,11 +4642,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -4392,10 +4666,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -4403,15 +4677,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -4434,7 +4708,7 @@ Feature: Pre-Applications related scenarios
     And I close modal by clicking the top right x button
     Then I softly can see row level action button "Edit" against "BP01" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
     Then I softly can see row level action button "Delete" against "BP01" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
-    When I re-login to "As a Grantee" app as "userType" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
@@ -4443,12 +4717,12 @@ Feature: Pre-Applications related scenarios
     Then I softly cannot see row level action button "Edit" against "BP01" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
     Then I softly cannot see row level action button "Delete" against "BP01" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
     Examples:
-      | userType |
-      | PO       |
-      | EXE      |
-      | FD       |
-      | FO       |
-      | ADMIN    |
+      | userType      |
+      | GRANTEE PO    |
+      | GRANTEE EXE   |
+      | GRANTEE FD    |
+      | GRANTEE FO    |
+      | GRANTEE ADMIN |
 
   @63909 @TejalApril2020 @ValidateDeleteFunctionalityForBudgetPeriod  @positive
   Scenario: verify delete functionality for budget period
@@ -4457,11 +4731,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -4476,10 +4755,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -4487,15 +4766,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -4531,11 +4810,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -4550,10 +4834,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -4561,15 +4845,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -4609,11 +4893,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -4628,10 +4917,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -4639,15 +4928,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -4690,11 +4979,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -4709,10 +5003,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -4720,15 +5014,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -4763,11 +5057,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -4782,10 +5081,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -4793,15 +5092,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -4836,11 +5135,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -4855,10 +5159,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -4866,15 +5170,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -4900,11 +5204,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -4919,10 +5228,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -4930,15 +5239,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -4971,11 +5280,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -4990,10 +5304,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -5001,15 +5315,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -5042,11 +5356,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -5061,10 +5380,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -5072,15 +5391,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -5107,11 +5426,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -5126,10 +5450,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -5137,15 +5461,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -5197,11 +5521,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -5216,10 +5545,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -5227,15 +5556,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -5270,11 +5599,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -5289,10 +5623,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -5300,15 +5634,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -5351,11 +5685,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -5370,10 +5709,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -5381,15 +5720,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -5425,11 +5764,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -5444,10 +5788,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -5455,15 +5799,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -5509,11 +5853,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -5528,10 +5877,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -5539,15 +5888,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -5592,11 +5941,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -5611,10 +5965,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -5622,15 +5976,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -5677,11 +6031,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -5696,10 +6055,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -5707,15 +6066,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -5751,11 +6110,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -5770,10 +6134,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -5781,15 +6145,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -5835,11 +6199,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -5854,10 +6223,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -5865,15 +6234,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -5911,11 +6280,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -5930,10 +6304,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -5941,15 +6315,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -5994,11 +6368,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -6013,10 +6392,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -6024,15 +6403,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -6095,11 +6474,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -6114,10 +6498,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -6125,15 +6509,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -6209,11 +6593,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -6228,10 +6617,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -6239,15 +6628,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -6286,7 +6675,7 @@ Feature: Pre-Applications related scenarios
     And I close modal by clicking the top right x button
     And I expand nested table containing column value "BP01"
     Then I softly can see row level action button "Remove" against "DC" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
-    When I re-login to "As a Grantee" app as "userType" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
@@ -6295,12 +6684,12 @@ Feature: Pre-Applications related scenarios
     And I expand nested table containing column value "BP01"
     Then I softly cannot see row level action button "Remove" against "DC" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
     Examples:
-      | userType |
-      | PO       |
-      | EXE      |
-      | FD       |
-      | FO       |
-      | ADMIN    |
+      | userType      |
+      | GRANTEE PO    |
+      | GRANTEE EXE   |
+      | GRANTEE FD    |
+      | GRANTEE FO    |
+      | GRANTEE ADMIN |
 
   @63841 @TejalApril2020 @ValidateDeleteFunctionalityForProjectsOnTheDetailPage  @positive
   Scenario: verify delete functionality for projects on the detail page
@@ -6309,11 +6698,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -6328,10 +6722,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -6339,15 +6733,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -6396,11 +6790,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -6415,10 +6814,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -6426,15 +6825,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -6460,11 +6859,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -6479,10 +6883,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -6490,15 +6894,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -6527,11 +6931,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -6546,10 +6955,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -6557,15 +6966,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -6599,11 +7008,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -6618,10 +7032,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -6629,15 +7043,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -6664,11 +7078,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -6683,10 +7102,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -6694,15 +7113,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -6718,7 +7137,7 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     Then I can see top right button "New" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
-    When I re-login to "As a Grantee" app as "userType" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
@@ -6726,12 +7145,12 @@ Feature: Pre-Applications related scenarios
     And I navigate to "Responsibilities" sub tab
     Then I cannot see top right button "New" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Examples:
-      | userType |
-      | PO       |
-      | EXE      |
-      | FD       |
-      | FO       |
-      | ADMIN    |
+      | userType      |
+      | GRANTEE PO    |
+      | GRANTEE EXE   |
+      | GRANTEE FD    |
+      | GRANTEE FO    |
+      | GRANTEE ADMIN |
 
   @63693 @TejalApril2020 @ValidateAssignReviewersToPre-Application   @positive
   Scenario: verify Assign Reviewers to Pre-Application
@@ -6740,11 +7159,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -6759,10 +7183,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -6770,15 +7194,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -6794,9 +7218,9 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description | Due Date | Allow Record Editing |
-      | Automation PM | Program Reviewer | aaaaaaa     | 1        | No                   |
-    Then I softly see value "Automation PM" for title "Reviewer Name" against the value "Program Reviewer" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
+      | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
+    Then I softly see value "{SavedValue:GRANTEE PM Username}" for title "Reviewer Name" against the value "Program Reviewer" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
 
   @63693 @TejalApril2020 @ValidateCheckPermissionToAssignProgramReviewerAndFiscalReviewer  @positive
   Scenario: verify Check permission to assign Program Reviewer
@@ -6805,11 +7229,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -6824,10 +7253,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -6835,15 +7264,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -6859,13 +7288,13 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description | Due Date | Allow Record Editing |
-      | Automation PO | Program Reviewer | aaaaaaa     | 1        | No                   |
-    Then I softly see value "Automation PO" for title "Reviewer Name" against the value "Program Reviewer" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
+      | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PO Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
+    Then I softly see value "{SavedValue:GRANTEE PO Username}" for title "Reviewer Name" against the value "Program Reviewer" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description | Due Date | Allow Record Editing |
-      | PRDOH PMUser  | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
-    Then I softly see value "PRDOH PMUser" for title "Reviewer Name" against the value "Fiscal Reviewer" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
+      | Reviewer Name                     | Responsibility  | Description | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM1 Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
+    Then I softly see value "{SavedValue:GRANTEE PM1 Username}" for title "Reviewer Name" against the value "Fiscal Reviewer" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
 
   @63693 @TejalApril2020 @ValidateDueDateWithInvalidDate
   Scenario: verify Enter Due Date with Invalid date for Assigning Reviewers to Pre-Application
@@ -6874,11 +7303,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -6893,10 +7327,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -6904,15 +7338,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -6928,8 +7362,8 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation PM | Program Reviewer | automation review | -1       | No                   |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Program Reviewer | automation review | -1       | No                   |
     Then I softly see "Due Date should be greater than Today's Date" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
 
   @63693 @TejalApril2020 @ValidateAllowRecordEditingOptionWithYes
@@ -6939,11 +7373,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -6958,10 +7397,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -6969,15 +7408,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -6993,9 +7432,9 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name  | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation EXE | Program Reviewer | automation review | 1        | Yes                  |
-    When I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+      | Reviewer Name                     | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE EXE Username} | Program Reviewer | automation review | 1        | Yes                  |
+    When I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
@@ -7009,11 +7448,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -7028,10 +7472,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -7039,15 +7483,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -7063,14 +7507,14 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name  | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation EXE | Program Reviewer | automation review | 1        | Yes                  |
-    And I click on "Send for Review" icon for "Automation EXE" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
+      | Reviewer Name                     | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE EXE Username} | Program Reviewer | automation review | 1        | Yes                  |
+    And I click on "Send for Review" icon for "{SavedValue:GRANTEE EXE Username}" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "5" seconds
-    When I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "Sent for Review" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -7094,11 +7538,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -7113,10 +7562,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -7124,15 +7573,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -7148,12 +7597,12 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation FD | Program Reviewer | automation review | 1        | Yes                  |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE FD Username} | Program Reviewer | automation review | 1        | Yes                  |
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "5" seconds
     Then I softly see value "Sent for Review" for title "Status" against the value "Yes" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
-    When I re-login to "As a Grantee" app as "FD" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE FD" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
@@ -7167,11 +7616,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -7186,10 +7640,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -7197,15 +7651,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -7221,10 +7675,10 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description       | Due Date | Allow Record Editing |
-      | Automation FD | Fiscal Reviewer | automation review | 1        | No                   |
+      | Reviewer Name                    | Responsibility  | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE FD Username} | Fiscal Reviewer | automation review | 1        | No                   |
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "FD" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE FD" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
@@ -7240,11 +7694,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -7259,10 +7718,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -7270,15 +7729,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -7294,10 +7753,10 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description       | Due Date | Allow Record Editing |
-      | Automation PM | Fiscal Reviewer | automation review | 1        | No                   |
+      | Reviewer Name                    | Responsibility  | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | automation review | 1        | No                   |
     And I pause execution for "2" seconds
-    Then I softly see value "Created" for title "Status" against the value "Automation PM" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
+    Then I softly see value "Created" for title "Status" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly can see row level action button "Edit" against "Created" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly can see row level action button "Send for Review" against "Created" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly can see row level action button "Delete" against "Created" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
@@ -7309,11 +7768,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -7328,10 +7792,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -7339,15 +7803,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -7363,25 +7827,25 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description       | Due Date | Allow Record Editing |
-      | Automation FO | Fiscal Reviewer | automation review | 1        | No                   |
+      | Reviewer Name                    | Responsibility  | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE FO Username} | Fiscal Reviewer | automation review | 1        | No                   |
     And I pause execution for "2" seconds
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation FO | Program Reviewer | automation review | 1        | No                   |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE FO Username} | Program Reviewer | automation review | 1        | No                   |
     And I pause execution for "2" seconds
-    Then I softly see value "Program Reviewer" for title "Responsibility" against the value "Automation FO" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
-    Then I softly see value "Fiscal Reviewer" for title "Responsibility" against the value "Automation FO" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
+    Then I softly see value "Program Reviewer" for title "Responsibility" against the value "{SavedValue:GRANTEE FO Username}" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
+    Then I softly see value "Fiscal Reviewer" for title "Responsibility" against the value "{SavedValue:GRANTEE FO Username}" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description       | Due Date | Allow Record Editing |
-      | Automation FD | Fiscal Reviewer | automation review | 1        | No                   |
+      | Reviewer Name                     | Responsibility  | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE EXE Username} | Fiscal Reviewer | automation review | 1        | No                   |
     And I pause execution for "2" seconds
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation FD | Program Reviewer | automation review | 1        | No                   |
+      | Reviewer Name                     | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE EXE Username} | Program Reviewer | automation review | 1        | No                   |
     And I pause execution for "2" seconds
-    Then I softly see value "Program Reviewer" for title "Responsibility" against the value "Automation FD" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
-    Then I softly see value "Fiscal Reviewer" for title "Responsibility" against the value "Automation FD" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
+    Then I softly see value "Program Reviewer" for title "Responsibility" against the value "{SavedValue:GRANTEE EXE Username}" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
+    Then I softly see value "Fiscal Reviewer" for title "Responsibility" against the value "{SavedValue:GRANTEE EXE Username}" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
 
   @63693 @TejalApril2020 @ValidateDeleteFunctionalityForAssignedReviwerBeforeSendingForReview  @positive
   Scenario: verify delete functionality for assigned reviwer before sending for review
@@ -7390,11 +7854,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -7409,10 +7878,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -7420,15 +7889,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -7444,10 +7913,10 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description       | Due Date | Allow Record Editing |
-      | Automation PM | Fiscal Reviewer | automation review | 1        | No                   |
-    Then I softly see value "Created" for title "Status" against the value "Automation PM" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
-    And I click on "Delete" icon for "Automation PM" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
+      | Reviewer Name                    | Responsibility  | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | automation review | 1        | No                   |
+    Then I softly see value "Created" for title "Status" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
+    And I click on "Delete" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see "Record deleted successfully." inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
 
   @63693 @TejalApril2020 @ValidateAddedReviewAfterClickOnExpandButton  @positive
@@ -7457,11 +7926,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -7476,10 +7950,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -7487,15 +7961,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -7511,14 +7985,14 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description       | Due Date | Allow Record Editing |
-      | Automation FD | Fiscal Reviewer | automation review | 1        | Yes                  |
-    And I click on "Send for Review" icon for "Automation FD" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
+      | Reviewer Name                    | Responsibility  | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE FD Username} | Fiscal Reviewer | automation review | 1        | Yes                  |
+    And I click on "Send for Review" icon for "{SavedValue:GRANTEE FD Username}" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "5" seconds
-    When I re-login to "As a Grantee" app as "FD" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE FD" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "Sent for Review" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -7527,7 +8001,7 @@ Feature: Pre-Applications related scenarios
     And I pause execution for "2" seconds
     And I save the field labeled "Review Date" as "reviewdate"
     And I close modal by clicking the top right x button
-    When I expand nested table containing column value "Automation FD"
+    When I expand nested table containing column value "{SavedValue:GRANTEE FD Username}"
     Then I softly see value "Passed" for title "Rating" against the value "enterreviewcmnt" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see value "enterreviewcmnt" for title "Review Comments" against the value "Passed" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see value "{SavedValue:reviewdate}" for title "Review Date" against the value "Passed" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
@@ -7540,11 +8014,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -7559,10 +8038,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -7570,15 +8049,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -7594,15 +8073,15 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description       | Due Date | Allow Record Editing |
-      | Automation PM | Fiscal Reviewer | automation review | 1        | No                   |
+      | Reviewer Name                    | Responsibility  | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | automation review | 1        | No                   |
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "2" seconds
     Then I softly can see top right button "Edit" in page detail
     And I pause execution for "5" seconds
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation PM | Program Reviewer | automation review | 1        | Yes                  |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Program Reviewer | automation review | 1        | Yes                  |
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "2" seconds
     Then I softly can see top right button "Edit" in page detail
@@ -7614,11 +8093,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -7633,10 +8117,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -7644,15 +8128,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -7677,11 +8161,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -7696,10 +8185,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -7707,15 +8196,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -7731,11 +8220,11 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation PM | Program Reviewer | automation review | 1        | Yes                  |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Program Reviewer | automation review | 1        | Yes                  |
     And I pause execution for "2" seconds
-    And I perform quick search for "Automation PM" in "{grantee_tableId:PreApplicationPeerReviewers}" panel
-    Then I softly see value "Automation PM" for title "Reviewer Name" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
+    And I perform quick search for "{SavedValue:GRANTEE PM Username}" in "{grantee_tableId:PreApplicationPeerReviewers}" panel
+    Then I softly see value "{SavedValue:GRANTEE PM Username}" for title "Reviewer Name" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     And I perform quick search for "test" in "{grantee_tableId:PreApplicationPeerReviewers}" panel
     Then I see "No Records Found" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
 
@@ -7746,11 +8235,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -7765,10 +8259,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -7776,15 +8270,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -7810,11 +8304,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -7829,10 +8328,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -7840,15 +8339,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -7864,8 +8363,8 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation PM | Program Reviewer | automation review | 1        | Yes                  |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Program Reviewer | automation review | 1        | Yes                  |
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "5" seconds
     And I click on "Complete Review" in the page details
@@ -7879,11 +8378,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -7898,10 +8402,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -7909,15 +8413,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -7933,8 +8437,8 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation PM | Program Reviewer | automation review | 1        | Yes                  |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Program Reviewer | automation review | 1        | Yes                  |
     Then I can see row level action button "Send for Review" against "Created" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see "Review Successfully Initiated." inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
@@ -7953,11 +8457,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -7972,10 +8481,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -7983,15 +8492,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -8007,8 +8516,8 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description       | Due Date | Allow Record Editing |
-      | Automation PM | Fiscal Reviewer | automation review | 1        | Yes                  |
+      | Reviewer Name                    | Responsibility  | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | automation review | 1        | Yes                  |
     Then I can see row level action button "Send for Review" against "Created" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see "Review Successfully Initiated." inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
@@ -8027,11 +8536,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -8046,10 +8560,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -8057,15 +8571,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -8081,15 +8595,15 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description       | Due Date | Allow Record Editing |
-      | Automation FO | Fiscal Reviewer | automation review | 1        | Yes                  |
+      | Reviewer Name                    | Responsibility  | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE FO Username} | Fiscal Reviewer | automation review | 1        | Yes                  |
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see "Review Successfully Initiated." inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see field "Status" as "Submitted for Review"
     Then I softly can see top right button "Complete Review" in page detail
     Then I softly see value "Sent for Review" for title "Status" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I cannot see row level action button "Enter Review" against "Sent for Review" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
-    When I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
@@ -8102,11 +8616,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -8121,10 +8640,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -8132,15 +8651,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -8156,15 +8675,15 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation FO | Program Reviewer | automation review | 1        | Yes                  |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE FO Username} | Program Reviewer | automation review | 1        | Yes                  |
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see "Review Successfully Initiated." inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see field "Status" as "Submitted for Review"
     Then I softly can see top right button "Complete Review" in page detail
     Then I softly see value "Sent for Review" for title "Status" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I cannot see row level action button "Enter Review" against "Sent for Review" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
-    When I re-login to "As a Grantee" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
@@ -8177,11 +8696,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -8196,10 +8720,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -8207,15 +8731,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -8231,8 +8755,8 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | PRDOH PMUser  | Program Reviewer | automation review | 1        | Yes                  |
+      | Reviewer Name                     | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM1 Username} | Program Reviewer | automation review | 1        | Yes                  |
     And I pause execution for "5" seconds
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see "Review Successfully Initiated." inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
@@ -8253,11 +8777,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -8272,10 +8801,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -8283,15 +8812,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -8307,8 +8836,8 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation FD | Program Reviewer | automation review | 1        | Yes                  |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE FD Username} | Program Reviewer | automation review | 1        | Yes                  |
     And I pause execution for "2" seconds
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see "Review Successfully Initiated." inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
@@ -8317,8 +8846,8 @@ Feature: Pre-Applications related scenarios
     Then I softly see value "Sent for Review" for title "Status" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I cannot see row level action button "Enter Review" against "Sent for Review" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name  | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation EXE | Program Reviewer | automation review | 1        | Yes                  |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE FD Username} | Program Reviewer | automation review | 1        | Yes                  |
     And I pause execution for "2" seconds
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "2" seconds
@@ -8327,12 +8856,12 @@ Feature: Pre-Applications related scenarios
     Then I softly can see top right button "Complete Review" in page detail
     Then I softly see value "Sent for Review" for title "Status" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I cannot see row level action button "Enter Review" against "Sent for Review" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
-    When I re-login to "As a Grantee" app as "FD" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE FD" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" inside table "{grantee_tableId:PendingTask}"
-    When I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
@@ -8345,11 +8874,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -8364,10 +8898,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -8375,15 +8909,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -8399,8 +8933,8 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description       | Due Date | Allow Record Editing |
-      | Automation FD | Fiscal Reviewer | automation review | 1        | Yes                  |
+      | Reviewer Name                    | Responsibility  | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE FD Username} | Fiscal Reviewer | automation review | 1        | Yes                  |
     And I pause execution for "2" seconds
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "2" seconds
@@ -8410,8 +8944,8 @@ Feature: Pre-Applications related scenarios
     Then I softly see value "Sent for Review" for title "Status" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I cannot see row level action button "Enter Review" against "Sent for Review" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name  | Responsibility  | Description       | Due Date | Allow Record Editing |
-      | Automation EXE | Fiscal Reviewer | automation review | 1        | Yes                  |
+      | Reviewer Name                     | Responsibility  | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE EXE Username} | Fiscal Reviewer | automation review | 1        | Yes                  |
     And I pause execution for "2" seconds
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "2" seconds
@@ -8420,12 +8954,12 @@ Feature: Pre-Applications related scenarios
     Then I softly can see top right button "Complete Review" in page detail
     Then I softly see value "Sent for Review" for title "Status" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I cannot see row level action button "Enter Review" against "Sent for Review" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
-    When I re-login to "As a Grantee" app as "FD" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE FD" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" inside table "{grantee_tableId:PendingTask}"
-    When I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
@@ -8433,7 +8967,7 @@ Feature: Pre-Applications related scenarios
 
   @66525 @TejalApril2020 @ValidateColumnsAvailableInThePendingTaskList  @positive
   Scenario: verify columns available in the pending task list
-    Given I login as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "5" seconds
@@ -8451,11 +8985,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -8470,10 +9009,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -8481,15 +9020,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -8505,8 +9044,8 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation PM | Program Reviewer | automation review | 0        | Yes                  |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Program Reviewer | automation review | 0        | Yes                  |
     And I pause execution for "2" seconds
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "2" seconds
@@ -8516,7 +9055,7 @@ Feature: Pre-Applications related scenarios
     Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" inside table "{grantee_tableId:PendingTask}"
     Then I softly see value "{SavedValue:egmsid}" for title "EGMS ID" inside table "{grantee_tableId:PendingTask}"
     Then I softly see value "Review Pre-Application (Grantee)" for title "Task Type" inside table "{grantee_tableId:PendingTask}"
-    Then I softly see value "Automation PM" for title "Assigned By" inside table "{grantee_tableId:PendingTask}"
+    Then I softly see value "{SavedValue:GRANTEE PM Username}" for title "Assigned By" inside table "{grantee_tableId:PendingTask}"
     Then I softly see field "Created Date" contains todays date withTime
     Then I softly see field "Due Date" contains todays date withTime
 
@@ -8527,11 +9066,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -8546,10 +9090,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -8557,15 +9101,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -8617,11 +9161,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -8636,10 +9185,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -8647,15 +9196,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -8735,11 +9284,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -8754,10 +9308,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -8765,15 +9319,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -8832,11 +9386,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -8851,10 +9410,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -8862,15 +9421,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -8933,11 +9492,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -8952,10 +9516,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -8963,15 +9527,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -8987,14 +9551,14 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation PM | Program Reviewer | automation review | 0        | Yes                  |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Program Reviewer | automation review | 0        | Yes                  |
     And I pause execution for "2" seconds
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "2" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     Then I can see row level action button "Enter Review" against "Sent for Review" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see value "Sent for Review" for title "Status" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
@@ -9006,11 +9570,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -9025,10 +9594,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -9036,15 +9605,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -9060,14 +9629,14 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description       | Due Date | Allow Record Editing |
-      | Automation PM | Fiscal Reviewer | automation review | 0        | Yes                  |
+      | Reviewer Name                    | Responsibility  | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | automation review | 0        | Yes                  |
     And I pause execution for "2" seconds
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "2" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "Sent for Review" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -9077,7 +9646,7 @@ Feature: Pre-Applications related scenarios
     And I save the field labeled "Comments" as "comment"
     And I save the field labeled "Review Date" as "ReviewDate"
     And I close modal by clicking the top right x button
-    And I expand nested table containing column value "Automation PM"
+    And I expand nested table containing column value "{SavedValue:GRANTEE PM Username}"
     Then I softly see value "Passed" for title "Rating" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see value "enterreviewcmnt" for title "Review Comments" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see value "{SavedValue:ReviewDate}" for title "Review Date" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
@@ -9090,11 +9659,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -9109,10 +9683,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -9120,15 +9694,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -9144,15 +9718,15 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation FD | Program Reviewer | automation review | 0        | Yes                  |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE FD Username} | Program Reviewer | automation review | 0        | Yes                  |
     And I pause execution for "2" seconds
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
-    When I re-login to "As a Grantee" app as "FD" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE FD" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "Sent for Review" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -9164,7 +9738,7 @@ Feature: Pre-Applications related scenarios
     And I close modal by clicking the top right x button
     Then I softly see value "In Progress" for title "Status" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly cannot see row level action button "Resend for Review" against "In Progress" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
-    And I expand nested table containing column value "Automation FD"
+    And I expand nested table containing column value "{SavedValue:GRANTEE FD Username}"
     Then I softly see value "Passed" for title "Rating" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see value "enterreviewcmnt" for title "Review Comments" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see value "{SavedValue:ReviewDate}" for title "Review Date" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
@@ -9180,11 +9754,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -9199,10 +9778,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -9210,15 +9789,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -9234,16 +9813,16 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description       | Due Date | Allow Record Editing |
-      | Automation PO | Fiscal Reviewer | automation review | 0        | Yes                  |
+      | Reviewer Name                    | Responsibility  | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PO Username} | Fiscal Reviewer | automation review | 0        | Yes                  |
     And I pause execution for "2" seconds
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "Sent for Review" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -9260,7 +9839,7 @@ Feature: Pre-Applications related scenarios
     And I close modal by clicking the top right x button
     Then I softly see value "Review Completed" for title "Status" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly can see row level action button "Resend for Review" against "Review Completed" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
-    When I expand nested table containing column value "Automation PO"
+    When I expand nested table containing column value "{SavedValue:GRANTEE PO Username}"
     Then I softly see value "enterreviewcmnt11" for title "Review Comments" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
 
   @66574 @TejalApril2020 @ValidatePageLevelEditFunctionalityWithallowEditingOptionIsSetToYes  @positive
@@ -9296,10 +9875,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -9307,15 +9886,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -9331,11 +9910,11 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name  | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation EXE | Program Reviewer | automation review | 1        | Yes                  |
+      | Reviewer Name                     | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE EXE Username} | Program Reviewer | automation review | 1        | Yes                  |
     And I pause execution for "2" seconds
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
-    When I re-login to "As a Grantee" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
@@ -9358,11 +9937,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -9377,10 +9961,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -9388,15 +9972,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -9412,14 +9996,14 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation PM | Program Reviewer | automation review | 0        | Yes                  |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Program Reviewer | automation review | 0        | Yes                  |
     And I pause execution for "2" seconds
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "2" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "Sent for Review" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -9450,11 +10034,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -9469,10 +10058,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -9480,15 +10069,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -9504,15 +10093,15 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description       | Due Date | Allow Record Editing |
-      | Automation FD | Fiscal Reviewer | automation review | 0        | Yes                  |
+      | Reviewer Name                    | Responsibility  | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE FD Username} | Fiscal Reviewer | automation review | 0        | Yes                  |
     And I pause execution for "2" seconds
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "FD" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE FD" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "Sent for Review" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -9521,7 +10110,7 @@ Feature: Pre-Applications related scenarios
     And I pause execution for "5" seconds
     And I click modal button "Submit Review"
     And I close modal by clicking the top right x button
-    When I re-login to "As a Grantee" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
@@ -9529,10 +10118,10 @@ Feature: Pre-Applications related scenarios
     And I navigate to "Responsibilities" sub tab
     And I click on "Resend for Review" icon for "Review Completed" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "FD" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE FD" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "Sent for Review" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -9554,11 +10143,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -9573,10 +10167,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -9584,15 +10178,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -9608,8 +10202,8 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation FD | Program Reviewer | automation review | 2        | Yes                  |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE FD Username} | Program Reviewer | automation review | 2        | Yes                  |
     And I pause execution for "2" seconds
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly see value "Sent for Review" for title "Status" inside table "{grantee_tableId:PreApplicationPeerReviewers}"
@@ -9617,7 +10211,7 @@ Feature: Pre-Applications related scenarios
     Then I softly see field "Status" as "Reviewed"
     Then I softly cannot see top right button "New" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     Then I softly cannot see row level action button "Enter Review" against "Sent for Review" in flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
-    When I re-login to "As a Grantee" app as "FD" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE FD" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     Then I softly do not see value "{SavedValue:Automation Runtime Lead}" for title "Subject" inside table "{grantee_tableId:PendingTask}"
@@ -9629,11 +10223,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -9648,10 +10247,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -9659,15 +10258,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -9691,8 +10290,8 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:PreApplicationPeerReviewers}" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description       | Due Date | Allow Record Editing |
-      | Automation PO | Program Reviewer | automation review | 2        | Yes                  |
+      | Reviewer Name                    | Responsibility   | Description       | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PO Username} | Program Reviewer | automation review | 2        | Yes                  |
     And I pause execution for "2" seconds
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:PreApplicationPeerReviewers}"
     And I pause execution for "2" seconds
@@ -9732,11 +10331,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -9751,10 +10355,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -9762,15 +10366,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -9786,9 +10390,9 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:PreApplicationApprovers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | PRDOH PMUser   | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM1 Username} | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
 
@@ -9799,11 +10403,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -9818,10 +10427,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -9829,15 +10438,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -9863,11 +10472,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -9882,10 +10496,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -9893,15 +10507,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -9917,13 +10531,13 @@ Feature: Pre-Applications related scenarios
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:PreApplicationApprovers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | PRDOH PMUser   | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM1 Username} | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I edit the following rows inline in flex table with id "{grantee_tableId:PreApplicationApprovers}" by clicking "Edit" :
-      | Responsibility   | Name          | Description |
-      | Program Approver | Automation PM | prdoh       |
-    Then I softly see value "Automation PM" for title "Name" inside table "{grantee_tableId:PreApplicationApprovers}"
+      | Responsibility   | Name                             | Description |
+      | Program Approver | {SavedValue:GRANTEE PM Username} | prdoh       |
+    Then I softly see value "{SavedValue:GRANTEE PM Username}" for title "Name" inside table "{grantee_tableId:PreApplicationApprovers}"
 
   @63901 @TejalApril2020 @ValidateApproveFunctionalityForPre-Application  @positive
   Scenario: verify approve functionality for pre application
@@ -9932,11 +10546,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -9951,10 +10570,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -9962,15 +10581,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -10012,13 +10631,13 @@ Feature: Pre-Applications related scenarios
     And I refresh the page
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:PreApplicationApprovers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I click on "Submit for Approval" in the page details
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     Then I can see the approval decision
     When I select radio button "Approve" in the approval decision
     Then I can see the comment box in the approval decision
@@ -10033,11 +10652,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -10052,10 +10676,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -10063,15 +10687,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -10113,17 +10737,17 @@ Feature: Pre-Applications related scenarios
     And I refresh the page
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:PreApplicationApprovers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I pause execution for "2" seconds
     And I refresh the page
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     Then I softly see field "Status" as "Approved"
@@ -10135,11 +10759,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -10154,10 +10783,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -10165,15 +10794,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -10216,14 +10845,14 @@ Feature: Pre-Applications related scenarios
     And I refresh the page
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:PreApplicationApprovers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I pause execution for "2" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     Then I can see the approval decision
     When I select radio button "Send to Owner" in the approval decision
     Then I can see the comment box in the approval decision
@@ -10238,11 +10867,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -10257,10 +10891,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -10268,15 +10902,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -10319,18 +10953,18 @@ Feature: Pre-Applications related scenarios
     And I refresh the page
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:PreApplicationApprovers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I click on "Submit for Approval" in the page details
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I select radio button "Forward" in the approval decision
-    And I select user "Automation FD" in the approval decision
+    And I select user "{SavedValue:GRANTEE FD Username}" in the approval decision
     When I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
-    When I re-login to "As a Grantee" app as "FD" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE FD" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
@@ -10346,11 +10980,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -10365,10 +11004,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -10376,15 +11015,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -10426,13 +11065,13 @@ Feature: Pre-Applications related scenarios
     And I refresh the page
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:PreApplicationApprovers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I click on "Submit for Approval" in the page details
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     And I "Reject" in the approval decision
     Then I softly see field "Status" as "Rejected"
 
@@ -10443,11 +11082,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -10462,10 +11106,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -10473,15 +11117,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -10506,11 +11150,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -10525,10 +11174,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -10536,15 +11185,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -10573,11 +11222,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -10592,10 +11246,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -10603,15 +11257,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -10653,9 +11307,9 @@ Feature: Pre-Applications related scenarios
     And I refresh the page
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:PreApplicationApprovers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
 
@@ -10666,11 +11320,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -10685,10 +11344,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -10696,15 +11355,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -10746,18 +11405,18 @@ Feature: Pre-Applications related scenarios
     And I refresh the page
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:PreApplicationApprovers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I click on "Submit for Approval" in the page details
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -10787,11 +11446,16 @@ Feature: Pre-Applications related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I pause execution for "2" seconds
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     And I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -10806,10 +11470,10 @@ Feature: Pre-Applications related scenarios
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -10817,15 +11481,15 @@ Feature: Pre-Applications related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I pause execution for "5" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -10867,18 +11531,18 @@ Feature: Pre-Applications related scenarios
     And I refresh the page
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:PreApplicationApprovers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I click on "Submit for Approval" in the page details
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve the Opportunity" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
