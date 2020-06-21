@@ -1259,7 +1259,7 @@ Feature: Leads related scenarios
       | GRANTEE ADMIN |
       | GRANTEE PM    |
       | GRANTEE PO    |
-      | GRANTEE DD    |
+      | GRANTEE FD    |
       | GRANTEE FO    |
       | GRANTEE EXE   |
 
@@ -1294,7 +1294,7 @@ Feature: Leads related scenarios
       | GRANTEE ADMIN |
       | GRANTEE PM    |
       | GRANTEE PO    |
-      | GRANTEE DD    |
+      | GRANTEE FD    |
       | GRANTEE FO    |
       | GRANTEE EXE   |
 
@@ -1887,7 +1887,7 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     Then I softly cannot see row level action button "Edit" against "Qualified Lead" in flex table with id "{grantee_tableId:QualifiedLeads}"
-    And I re-login to "As a Grantee" app as "GRANTEE DD" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FD" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
@@ -2601,7 +2601,7 @@ Feature: Leads related scenarios
 
     Examples:
       | userType   |
-      | GRANTEE DD |
+      | GRANTEE FD |
       | GRANTEE FO |
 
   @63186 @validateNewButtonIsDisplayedForSpecificUser-NotYetQualifiedLeads @BugLogged71173  @positive
@@ -2905,7 +2905,7 @@ Feature: Leads related scenarios
       | userType      |
       | GRANTEE ADMIN |
       | GRANTEE FO    |
-      | GRANTEE DD    |
+      | GRANTEE FD    |
 
   @63201 @verifyEditActionVisibilityWithDifferentUserOfSameProfile
   Scenario: Validate row level edit action should not displayed to different user of same profile
@@ -3244,7 +3244,7 @@ Feature: Leads related scenarios
     Examples:
       | userType   |
       | GRANTEE FO |
-      | GRANTEE DD |
+      | GRANTEE FD |
 
   @63172 @validateDeleteIconNotDisplayedToRecordOwner_Admin   @positive
   Scenario Outline: Verify row level delete button should not be displayed to record owner and Admin user after lead has been qualified
