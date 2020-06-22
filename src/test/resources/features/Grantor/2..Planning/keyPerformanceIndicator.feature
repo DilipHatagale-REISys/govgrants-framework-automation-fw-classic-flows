@@ -45,8 +45,9 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
-    Then I see "Supporting Documents" has been added in "Attachments" flex table
+    And I click on top right button "Add Files" in flex table with id "---keyperformanceindicator:-:GrantorKPIFilesTableId---"
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Other"
+    Then I see "Other" has been added in "Attachments" flex table
     Examples:
       | User  |
       | ADMIN |
@@ -64,7 +65,8 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I enter "Edition" values from "KPI_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
+    And I click on top right button "Add Files" in flex table with id "---keyperformanceindicator:-:GrantorKPIFilesTableId---"
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Other"
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
     Examples:

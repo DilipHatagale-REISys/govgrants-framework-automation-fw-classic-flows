@@ -535,4 +535,14 @@ public class GenericSteps {
         By menu = By.xpath("//*[contains(@class,'overview-header')]//*[@title='Menu' or (contains(@class,'menu') and (@class='bars'))]");
         I.amPerforming().click().on(menu);
     }
+
+    @And("I upload the attachment {string} of type {string} from computer")
+    public void uploadAttachmentFromComputer(String fileName, String fileClassificationType){
+        By classificationType = By.xpath("//select[@title='Classification' or @name='Classification']");
+        By filePath = By.xpath("//label[contains(@id,'file')]/../input");
+        String defaultFilePath = System.getProperty("user.dir") + "/src/main/resources/";
+        I.amPerforming().dropDownSelection().from(classificationType).selectByValue(fileClassificationType);
+        I.amPerforming().textInput().in(filePath, defaultFilePath + fileName);
+        I.amPerforming().click().on(By.xpath("//button[text()='Upload']"));
+    }
 }

@@ -1,6 +1,7 @@
 package com.ggproduct.automation.steps;
 
 import com.ggproduct.automation.projectmanager.ProjectManager;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 
 public class CommonSteps {

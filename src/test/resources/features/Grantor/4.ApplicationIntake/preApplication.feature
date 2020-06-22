@@ -74,7 +74,8 @@ Feature: Validate all scenarios in the Pre-Application
   @53155 @PreApplicationAttachmentChecklistCA
   Scenario: Validate the attachment checklist of the PreApplication
     When I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
+    And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
+    And I upload attachment "data.xlsx" of type "Other"
     Then I see "Other" has been added in "Attachments" flex table
 
   @70466 @53160 @70467 @submitPreApplication @smoke @deepika
@@ -89,7 +90,8 @@ Feature: Validate all scenarios in the Pre-Application
       | Construction  | 5000   | 5000       | 50             | 100            |
     Then I softly see value "$10,150.00" for title "Total Project Cost" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
     When I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
+    And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
+    And I upload attachment "data.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "green"
     Then I softly cannot see top right button "Edit" in page detail
@@ -107,7 +109,8 @@ Feature: Validate all scenarios in the Pre-Application
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
+    And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
+    And I upload attachment "data.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
     Given I am on "SUBPORTAL" portal
     And I login as "SPI" user
@@ -203,7 +206,8 @@ Feature: Validate all scenarios in the Pre-Application
       | Construction  | 5000   | 5000       | 50             | 100            |
     Then I softly see value "$10,150.00" for title "Total Project Cost" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
     When I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
+    And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
+    And I upload attachment "data.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
     And I click on Menu icon present on top right corner of the page
     And I select "Take Snapshot" from dropdown
@@ -223,7 +227,8 @@ Feature: Validate all scenarios in the Pre-Application
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
+    And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
+    And I upload attachment "data.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -262,7 +267,8 @@ Feature: Validate all scenarios in the Pre-Application
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
+    And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
+    And I upload attachment "data.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
     Given I am on "SUBPORTAL" portal
     And I login as "SPI" user
