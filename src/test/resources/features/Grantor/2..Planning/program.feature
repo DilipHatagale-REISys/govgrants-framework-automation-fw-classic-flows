@@ -760,7 +760,7 @@ Feature: Validate all scenarios for program
     When I close "Upload Template" modal by clicking the top right x button
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
-    And I upload the attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts" from computer
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts"
     And I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
 
@@ -798,7 +798,7 @@ Feature: Validate all scenarios for program
     When I close "Upload Template" modal by clicking the top right x button
     And I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
-    And I upload the attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts" from computer
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts"
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab

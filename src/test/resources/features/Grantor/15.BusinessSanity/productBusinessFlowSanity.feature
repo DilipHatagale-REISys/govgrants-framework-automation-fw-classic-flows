@@ -13,7 +13,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---focusarea:-:FocusAreaFilesTableId---"
-    And I upload the attachment "Announcement_Field_Values.xlsx" of type "Other" from computer
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Other"
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
@@ -92,7 +92,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I close "Upload Template" modal by clicking the top right x button
     And I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
-    And I upload the attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts" from computer
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts"
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -775,7 +775,7 @@ Feature: Validate sanity testing of Complete Business Flow
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload the attachment "data.xlsx" of type "Other" from computer
+    And I upload attachment "data.xlsx" of type "Other"
     And I get the "EGMS ID"
     And I save the field containing "EGMS ID" as "preappID"
     When I click on "Submit to Grantor" in the page details

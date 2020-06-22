@@ -1,6 +1,7 @@
 package com.ggproduct.automation.webservices;
 
 import com.automation.rei.handlers.govgrants;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.testingblaze.register.I;
 import io.restassured.response.Response;
@@ -76,7 +77,16 @@ public class GrantorWebServices extends ProjectWebServices {
         return response;
     }
 
-
+    public static void deleteAttachmentsForRecord(String recordName, String objectAPIName){
+        String recordId = getIdOf(objectAPIName, recordName);
+        JsonObject parent = new JsonObject();
+        JsonArray array = new JsonArray();
+        array.add(recordId);
+        parent.add("recordid",array);
+        String finalEndPoint = endPoint + "/services/apexrest/deleteFiles";
+        Response response = I.amPerforming().restHttp().postCall(parent,null, finalEndPoint, "Authorization", "Bearer " + tokenString, null);
+        assertStatusCode(response);
+    }
 
     public void deleteRecordInHooks() {
         List<String> recordNameList = I.amPerforming().propertiesFileOperationsTo().getAllSavedKeys().stream()
@@ -122,6 +132,7 @@ public class GrantorWebServices extends ProjectWebServices {
                 deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record), "DUNS");
             }
             if (StringUtils.containsIgnoreCase(record, "application")) {
+                deleteAttachmentsForRecord(I.amPerforming().propertiesFileOperationsTo().getValue(record),"PreApplication__c");
                 deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record), "APPLICATION REVIEWS");
                 deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record), "PreApplication");
                 deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record), "Application");

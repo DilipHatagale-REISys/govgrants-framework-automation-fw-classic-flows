@@ -34,7 +34,7 @@ Feature: Validate all scenarios in Focus Area
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---focusarea:-:FocusAreaFilesTableId---"
-    And I upload the attachment "Announcement_Field_Values.xlsx" of type "Other" from computer
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Other"
     Then I see "Other" has been added in "Attachments" flex table
     Examples:
       | User  |

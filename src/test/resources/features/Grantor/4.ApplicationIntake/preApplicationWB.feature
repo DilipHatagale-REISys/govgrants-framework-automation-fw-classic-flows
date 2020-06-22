@@ -206,7 +206,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload the attachment "data.xlsx" of type "Other" from computer
+    And I upload attachment "data.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Enter an Acknowledgement before submitting this Pre-Application. |
@@ -317,7 +317,7 @@ Feature: Pre-Application scenarios without background
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload the attachment "data.xlsx" of type "Other" from computer
+    And I upload attachment "data.xlsx" of type "Other"
     And I get the "EGMS ID"
     And I save the field containing "EGMS ID" as "preappID"
     When I click on "Submit to Grantor" in the page details
@@ -466,7 +466,7 @@ Feature: Pre-Application scenarios without background
       | Construction  | 100    | 1000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload the attachment "data.xlsx" of type "Other" from computer
+    And I upload attachment "data.xlsx" of type "Other"
     And I refresh the page
     When I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details contains:
@@ -571,7 +571,7 @@ Feature: Pre-Application scenarios without background
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload the attachment "data.xlsx" of type "Other" from computer
+    And I upload attachment "data.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
     Then I softly cannot see top right button "Edit" in page detail
     When I navigate to "Opportunities" tab
@@ -614,7 +614,7 @@ Feature: Pre-Application scenarios without background
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload the attachment "data.xlsx" of type "Other" from computer
+    And I upload attachment "data.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
     When I navigate to "History" sub tab
     And I click on Menu icon present on top right corner of the page
@@ -664,7 +664,7 @@ Feature: Pre-Application scenarios without background
       | Construction  | 0      | 0          | 0              | 0              |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload the attachment "data.xlsx" of type "Other" from computer
+    And I upload attachment "data.xlsx" of type "Other"
     And I refresh the page
     When I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details contains:
@@ -804,7 +804,7 @@ Feature: Pre-Application scenarios without background
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload the attachment "data.xlsx" of type "Other" from computer
+    And I upload attachment "data.xlsx" of type "Other"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "green"
 

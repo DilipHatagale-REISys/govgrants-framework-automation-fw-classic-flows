@@ -24,7 +24,7 @@ Feature: Validate all scenarios in Strategic Plan
     Then I softly see that "{SavedValue:EXE Username}cution Strategic Goal" has been added in flextable with Id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---strategicplan:-:StrategicPlanFilesTableId---"
-    And I upload the attachment "Announcement_Field_Values.xlsx" of type "Strategic Plan" from computer
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Plan"
     Then I softly see "Strategic Plan" has been added in "Attachments" flex table
 
   @51045 @editionOfStrategicGoal
@@ -52,7 +52,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---strategicplan:-:flexGridGrantorStrategicGoalFiles---"
-    And I upload the attachment "Announcement_Field_Values.xlsx" of type "Strategic Goal" from computer
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Goal"
     And I click on "Save" in the page details
     Then I see "Strategic Goal" has been added in "Attachments" flex table
 
@@ -105,7 +105,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---strategicplan:-:flexGridGrantorObjectiveFiles---"
-    And I upload the attachment "Announcement_Field_Values.xlsx" of type "Strategic Objective" from computer
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Objective"
     Then I see "Strategic Objective" has been added in "Attachments" flex table
 
   @34724 @associatingKPIToObjective @smoke
