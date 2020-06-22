@@ -35,8 +35,9 @@ Feature: Validate all scenarios in Funding Source
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
-    Then I see "Supporting Documents" has been added in "Attachments" flex table
+    And I click on top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I upload the attachment "Announcement_Field_Values.xlsx" of type "Other" from computer
+    Then I see "Other" has been added in "Attachments" flex table
 
   @51037 @creationOfFundingAccount @smoke
   Scenario: Creation of Funding Account
