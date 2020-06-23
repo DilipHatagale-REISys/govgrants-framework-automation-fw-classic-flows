@@ -23,7 +23,8 @@ Feature: Validate all scenarios in Strategic Plan
     When I click on "Back To Strategic Plan" in the page details
     Then I softly see that "{SavedValue:EXE Username}cution Strategic Goal" has been added in flextable with Id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Plan"
+    And I click on top right button "Add Files" in flex table with id "---strategicplan:-:StrategicPlanFilesTableId---"
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Plan"
     Then I softly see "Strategic Plan" has been added in "Attachments" flex table
 
   @51045 @editionOfStrategicGoal
@@ -50,7 +51,8 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Edit" in the page details
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Goal"
+    And I click on top right button "Add Files" in flex table with id "---strategicplan:-:flexGridGrantorStrategicGoalFiles---"
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Goal"
     And I click on "Save" in the page details
     Then I see "Strategic Goal" has been added in "Attachments" flex table
 
@@ -102,7 +104,8 @@ Feature: Validate all scenarios in Strategic Plan
     When I click modal button "Save and Close"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Objective"
+    And I click on top right button "Add Files" in flex table with id "---strategicplan:-:flexGridGrantorObjectiveFiles---"
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Strategic Objective"
     Then I see "Strategic Objective" has been added in "Attachments" flex table
 
   @34724 @associatingKPIToObjective @smoke
