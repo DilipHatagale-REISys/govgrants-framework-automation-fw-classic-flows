@@ -3623,3 +3623,76 @@ Feature: Validate all scenarios for program
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
+
+
+  @77420 @77479 @ValidatingWeightErrorMessageProgramReviewForm @meenakshi
+  Scenario Outline:To validate system generated error message, if Form Weight (%) :40% ,Minimum Number of Reviews per Application : 0 , Required? : Unchecked ,for Program Review form in SME Review step in planning phase
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0              |
+    And I expand nested table containing column value "SME Review"
+    And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
+      |  Form Name             | Required?  | Form Weight (%)|Minimum Number of Reviews per Application|
+      | Program Review      |  Unchecked   | 40              |0                                     |
+    Then I softly see the following messages in the page details :
+      |You cannot associate a weight to an optional panel|
+    And I refresh the page
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 50              |
+      | Pre-Screen Review | 25              |
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
+      |  Form Name             | Required?  | Form Weight (%)|Minimum Number of Reviews per Application|
+      | Pre-Screen      |  Checked   | 100              |0                                     |
+    Then I softly see the following messages in the page details :
+      |For required panel the Minimum Number of Reviews should be greater than zero.|
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
+
+  @77606 @77607 @77608 @ValidatingTotalReviewFormWeightErrorMessageProgramReviewForm @meenakshi
+  Scenario Outline: To validate system generated error message, if Form Weight (%) : 0% ,Minimum Number of Reviews per Application : 0 , Required? : Unchecked ,for Program Review Review form in SME Review step in planning phase
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 50              |
+      | Pre-Screen Review | 25              |
+    And I expand nested table containing column value "SME Review"
+    And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
+      |  Form Name          | Form Weight (%) | Required? |Minimum Number of Reviews per Application|
+      | Program Review      |   0              | Unchecked   |0                                     |
+      | Fiscal Review      |   0              | Unchecked   |0                                     |
+      | Compliance Review     |   0              | Unchecked   |0                                     |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details :
+      |Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%.|
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
+
