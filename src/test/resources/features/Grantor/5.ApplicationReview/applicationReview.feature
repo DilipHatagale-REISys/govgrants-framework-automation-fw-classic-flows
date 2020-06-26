@@ -1241,3 +1241,35 @@ Feature: Validate all scenarios in the Application Review
     Examples:
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+
+  @78324 @ValidatingProgramReviewStepForm @meenakshi
+  Scenario Outline: To verify user able to setup the Due Days  for the review & set field "Required" :Checked in program review form in SME review step in related log table in Application phase
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "<Announcement Name>"
+    When I click on "View" icon for "<Announcement Name>" inside table
+    And I get the "EGMS ID"
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "SME Review" inside flex table with id "---announcement:-:reviewStepTableId---"
+    And I click on "Edit" icon for "Program Review" inside flex table with id "---applicationReview:-:reviewStepFormId---"
+    When I enter value "Program Review" into field "PanelName__c"
+    When I enter value "7" into field "DueInDays__c"
+    When I enter value "Checked" into field "Required__c"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:reviewStepFormId---"
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    Then I softly see value "7" for title "Due in Days" inside table "---applicationReview:-:reviewStepFormId---"
+    Examples:
+      | Announcement Name                                               |
+      | {SavedValue:Automation Runtime Announcement Application Review} |
+
+
