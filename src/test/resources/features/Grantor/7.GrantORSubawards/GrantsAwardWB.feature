@@ -2683,3 +2683,45 @@ Feature: Validate all scenarios of grants and award without background
     Examples:
       | Award Name                                           | Grant Name                                           |
       | {SavedValue:Automation Runtime Announcement for FDM} | {SavedValue:Automation Runtime Announcement for FDM} |
+
+  @40066 @meenakshi @closeOutGrantOverview
+  Scenario: verify PM user able to Navigating to the Closeout Request section.
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    And I perform quick search for "{SavedValue:Automation Runtime Award}"
+    Then I softly see value "{SavedValue:Automation Runtime Award}" for title "Grant Title" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    And I navigate to "Requests" sub tab
+    Then I softly see field "Closeout Requests" inside page block
+
+
+  @40071 @40605 @meenakshi @closeOutGrantOverview
+  Scenario: Verify , whether the fields are carried forward from the Grant Overview tab to Closeout Grant Overview Tab and whether the Acknowledgement section has Default Null Value before sent to sub-recipient.
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    And I perform quick search for "{SavedValue:Automation Runtime Award}"
+    Then I softly see value "{SavedValue:Automation Runtime Award}" for title "Grant Title" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    And I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I navigate to "Overview" sub tab
+    And I save the field value having link labeled "Subrecipient Organization" as "CloseoutSubrecipientOrganization"
+    And I save the field value having link labeled "Funding Organization" as "CloseoutFundingOrganization"
+    Then I softly see field "Grant Title" as "{SavedValue:Automation Runtime Award}"
+    Then I softly see field "Subrecipient Organization" as "{SavedValue:CloseoutSubrecipientOrganization}"
+    Then I softly see field "Funding Organization" as "{SavedValue:CloseoutFundingOrganization}"
+    And I save the field labeled "Acknowledgement" as "AcknowledgementCheck"
+    And I save the field labeled "Acknowledgement Date" as "AcknowledgementDate"
+    And I save the field labeled "Acknowledgement By" as "AcknowledgementBy"
+    Then I softly see field "Acknowledgement" as "{SavedValue:AcknowledgementCheck}"
+    Then I softly see field "Acknowledgement Date" as "{SavedValue:AcknowledgementDate}"
+    Then I softly see field "Acknowledgement By" as "{SavedValue:AcknowledgementBy}"
+

@@ -116,14 +116,14 @@ Feature: Validate all scenarios for program
     And I refresh the page
     And I expand nested table containing column value "Management Review"
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
-      | Reviewer      |
+      | Reviewer                 |
       | {SavedValue:PM Username} |
     Then I softly see value "{SavedValue:PM Username}" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
     And I click on parallel menu button in flex table title "Reviewers"
     And I select "Download as PDF" from dropdown
     And I download the file
     Then I softly see following details in "govgrants" pdf file:
-      | Detail        | Page Number |
+      | Detail                   | Page Number |
       | {SavedValue:PM Username} | 1           |
     And I switch to parent tab
     And I click on "Delete" icon for "{SavedValue:PM Username}" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
@@ -492,14 +492,14 @@ Feature: Validate all scenarios for program
     And I refresh the page
     Then I see that "<Contact>" has been added in flextable with Id "---program:-:contactsTableId---"
     Examples:
-      | Contact        |
+      | Contact                   |
       | {SavedValue:EXE Username} |
 
   @34740 @programApproverSelection
   Scenario: Validate the assignment of Approvers for the Internal Program
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
     Then I see that "{SavedValue:EXE Username}" has been added in flextable with Id "---program:-:approverTableId---"
@@ -748,7 +748,7 @@ Feature: Validate all scenarios for program
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
     When I navigate to "Setup" sub tab
@@ -786,7 +786,7 @@ Feature: Validate all scenarios for program
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
     When I navigate to "Setup" sub tab
@@ -835,7 +835,7 @@ Feature: Validate all scenarios for program
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
     And I click on "Submit For Approval" in the page details
@@ -867,7 +867,7 @@ Feature: Validate all scenarios for program
     When I perform quick search for "<Program Name>" in "---focusarea:-:relatedProgramsTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---focusarea:-:relatedProgramsTableId---"
     Examples:
-      | Focus Area                      | Program Name                          |
+      | Focus Area                      | Program Name                                     |
       | Automation Permanent Focus Area | {SavedValue:EXE Username}cution Internal Program |
 
   @53690 @Verify_Relatedlogs_table_for_focusArea_for_Draft_Program @mahadev @smoke
@@ -892,7 +892,7 @@ Feature: Validate all scenarios for program
     When I perform quick search for "<Program Name>" in "---focusarea:-:relatedProgramsTableId---" panel
     Then I do not see value "Record Id" for title "EGMS ID" inside table "---focusarea:-:relatedProgramsTableId---"
     Examples:
-      | Focus Area                      | Program Name                          |
+      | Focus Area                      | Program Name                                     |
       | Automation Permanent Focus Area | {SavedValue:EXE Username}cution Internal Program |
 
   @53692 @Verify_Relatedlogs_table_for_focusArea_for_Active_Program_ViewAction @mahadev
@@ -916,7 +916,7 @@ Feature: Validate all scenarios for program
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
     And I click on "Submit For Approval" in the page details
@@ -949,7 +949,7 @@ Feature: Validate all scenarios for program
     And I click on "View" icon for "<Program Name>" inside flex table with id "---focusarea:-:relatedProgramsTableId---" without waiting for record
     Then I see status in Progress-bar is "Active" and is "Green"
     Examples:
-      | Focus Area                      | Program Name                          |
+      | Focus Area                      | Program Name                                     |
       | Automation Permanent Focus Area | {SavedValue:EXE Username}cution Internal Program |
 
   @76333 @76334 @76332 @SMEProgramReviewFormAndFiscalReviewForm @keerti
@@ -2467,8 +2467,8 @@ Feature: Validate all scenarios for program
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -2505,8 +2505,8 @@ Feature: Validate all scenarios for program
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
@@ -2550,8 +2550,8 @@ Feature: Validate all scenarios for program
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 100       |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 100       |
     And I close "Review Form" modal by clicking the top right x button
     And I click on "Edit" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
     When I enter value "100" into field "Weight__c"
@@ -2618,8 +2618,8 @@ Feature: Validate all scenarios for program
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -2636,8 +2636,8 @@ Feature: Validate all scenarios for program
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -2654,8 +2654,8 @@ Feature: Validate all scenarios for program
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -2694,8 +2694,8 @@ Feature: Validate all scenarios for program
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -2712,8 +2712,8 @@ Feature: Validate all scenarios for program
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -2730,8 +2730,8 @@ Feature: Validate all scenarios for program
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -2770,8 +2770,8 @@ Feature: Validate all scenarios for program
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -2788,8 +2788,8 @@ Feature: Validate all scenarios for program
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -2806,8 +2806,8 @@ Feature: Validate all scenarios for program
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -2847,8 +2847,8 @@ Feature: Validate all scenarios for program
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -2865,8 +2865,8 @@ Feature: Validate all scenarios for program
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -2903,8 +2903,8 @@ Feature: Validate all scenarios for program
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 100       |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 100       |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -2947,14 +2947,14 @@ Feature: Validate all scenarios for program
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 100       |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 100       |
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 2              | Test 2    | Yes/No    | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 2              | Test 2   | Yes/No | 0         |
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 3              | Test 3    | Yes/No    | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 3              | Test 3   | Yes/No | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -2975,8 +2975,8 @@ Feature: Validate all scenarios for program
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score |
-      | 1              | Test 1    | Yes/No    | 100       |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 100       |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -3001,14 +3001,14 @@ Feature: Validate all scenarios for program
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score   |
-      | 1              | Test 1    | Yes/No    | 100         |
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 100       |
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score   |
-      | 2              | Test 2    | Yes/No    | 0           |
+      | Question Order | Question | Type   | Max Score |
+      | 2              | Test 2   | Yes/No | 0         |
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type      | Max Score   |
-      | 3              | Test 3    | Yes/No    | 0           |
+      | Question Order | Question | Type   | Max Score |
+      | 3              | Test 3   | Yes/No | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -3018,7 +3018,7 @@ Feature: Validate all scenarios for program
       | Automation Permanent Objective |
 
   @78087 @validateSuccessMessageForReviewStepSection @keerti
-    Scenario Outline: To validate success message,when user click on validate button in review step section of setup tab in planning phase
+  Scenario Outline: To validate success message,when user click on validate button in review step section of setup tab in planning phase
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -3040,3 +3040,308 @@ Feature: Validate all scenarios for program
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
+
+  @81230 @validatingPreScreenReviewFormQuestions @meenakshi
+  Scenario: To verify,review question displayed by default for all review panel categories for Prescreen review form in prescreen review step of planning phase
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - All"
+    And I click on "Edit" icon for "<Program Name>" inside flex table with id "---program:-:programsTableId---" without waiting for record
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I perform quick search for "Eligibility" in "---program:-:programReviewPanel---" panel
+    And I expand nested table containing column value "Eligibility"
+    Then I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Does the applicant meet the eligibility criteria laid out in the funding opportunity announcement?	" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Is applicant a legal entity registered in State of California?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I perform quick search for "Completeness" in "---program:-:programReviewPanel---" panel
+    And I expand nested table containing column value "Completeness"
+    Then I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Have all required elements outlined in the funding opportunity been submitted?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Provide explanation for missing elements" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "If applicable, were the required public comment processes observed and documented?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "If applicable, were the required public comment processes observed and documented?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "Question Order" in flex table header "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "Question" in flex table header "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "Type" in flex table header "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "Max Score" in flex table header "---program:-:programReviewPanelQuestionsTableId---"
+
+  @81231 @validatingSMEReviewFormQuestions @meenakshi
+  Scenario: To verify,review question displayed by default for all review panel categories for Compliance Review review form in SME review step of planning phase
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - All"
+    And I click on "Edit" icon for "<Program Name>" inside flex table with id "---program:-:programsTableId---" without waiting for record
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I perform quick search for "Schedule" in "---program:-:programReviewPanel---" panel
+    And I expand nested table containing column value "Schedule"
+    Then I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Does the schedule account for all applicable regulatory/permit reviews?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Is the schedule realistic?	" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Are state resources available to support proposed schedule?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I perform quick search for "Environment" in "---program:-:programReviewPanel---" panel
+    And I expand nested table containing column value "Environment"
+    Then I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "If the Environment Impact Statement is required, has it been submitted and approved?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Is the applicant EPA certified?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Does the application include leverage funds? Is documentation of the leverage included in the application?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I perform quick search for "Permits" in "---program:-:programReviewPanel---" panel
+    And I expand nested table containing column value "Permits"
+    Then I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Have all required permits been identified?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Which permits have not yet been received?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "When will the first applicable permit expire?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Date" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "Question Order" in flex table header "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "Question" in flex table header "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "Type" in flex table header "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "Max Score" in flex table header "---program:-:programReviewPanelQuestionsTableId---"
+
+  @77347 @77349 @77348 @validatingSMEReviewFormQuestions @meenakshi
+  Scenario: To validate system generated validation message, When Max score:0, for all review questions under the Capability review panel categories and  Weight is present, in program review form of SME review steps in planning phase
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Edit" icon for "Program Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
+    When I enter value "30" into field "Weight__c"
+    When I enter value "1" into field "MinimumNumberOfReviewers__c"
+    When I enter value "Checked" into field "Required__c"
+    And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Review Form" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+     #77347
+    And I perform quick search for "Capability" in "---program:-:programReviewPanel---" panel
+    And I expand nested table containing column value "Capability"
+    And I click on "Edit" icon for "Capability" inside flex table with id "---program:-:programReviewPanel---" without waiting for record
+    When I enter value "30" into field "Weight__c"
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    #77348
+    And I perform quick search for "Approach" in "---program:-:programReviewPanel---" panel
+    And I expand nested table containing column value "Approach"
+    And I click on "Edit" icon for "Approach" inside flex table with id "---program:-:programReviewPanel---" without waiting for record
+    When I enter value "30" into field "Weight__c"
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    #77349
+    And I perform quick search for "Impact" in "---program:-:programReviewPanel---" panel
+    And I expand nested table containing column value "Impact"
+    And I click on "Edit" icon for "Impact" inside flex table with id "---program:-:programReviewPanel---" without waiting for record
+    When I enter value "30" into field "Weight__c"
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Capability section because it is weighted.|
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Approach section because it is weighted.|
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Impact section because it is weighted.|
+
+  @77403 @validatingSMEReviewFormQuestions @meenakshi
+  Scenario: To validate system generated validation message, When Max score:0, for all review questions under the Capability review panel categories and  Weight is present, in program review form of SME review steps in planning phase
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Edit" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
+    When I enter value "30" into field "Weight__c"
+    When I enter value "1" into field "MinimumNumberOfReviewers__c"
+    When I enter value "Checked" into field "Required__c"
+    And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I perform quick search for "Match" in "---program:-:programReviewPanel---" panel
+    And I expand nested table containing column value "Match"
+    And I click on "Edit" icon for "Match" inside flex table with id "---program:-:programReviewPanel---" without waiting for record
+    When I enter value "30" into field "Weight__c"
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      |Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Match section because it is weighted. |
+
+
+
+  @77405 @77406 @validatingSMEReviewFormQuestions @meenakshi
+  Scenario: To validate system generated validation message, When Max score:0, for all review questions under the Schedule review panel categories and  Weight is present, in Compliance Review form of SME review steps in planning phase
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Edit" icon for "Compliance Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
+    When I enter value "30" into field "Weight__c"
+    When I enter value "1" into field "MinimumNumberOfReviewers__c"
+    When I enter value "Checked" into field "Required__c"
+    And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    #77405
+    And I perform quick search for "Schedule" in "---program:-:programReviewPanel---" panel
+    And I expand nested table containing column value "Schedule"
+    And I click on "Edit" icon for "Schedule" inside flex table with id "---program:-:programReviewPanel---" without waiting for record
+    When I enter value "30" into field "Weight__c"
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    #77406
+    And I perform quick search for "Environment" in "---program:-:programReviewPanel---" panel
+    And I expand nested table containing column value "Environment"
+    And I click on "Edit" icon for "Environment" inside flex table with id "---program:-:programReviewPanel---" without waiting for record
+    When I enter value "30" into field "Weight__c"
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      |Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Schedule section because it is weighted. |
+      |Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Environment section because it is weighted.|
+
+
+  @77408 @validatingPreScreenReviewFormQuestions @meenakshi
+  Scenario: To validate system generated validation message, When Max score:0, for all review questions under the Eligibility review panel categories and  Weight is present, in prescreening Review form of prescreening review steps in planning phase
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 40              |
+      | SME Review        | 30              |
+      | Pre-Screen Review | 40               |
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Edit" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
+    When I enter value "30" into field "Weight__c"
+    When I enter value "1" into field "MinimumNumberOfReviewers__c"
+    When I enter value "Checked" into field "Required__c"
+    And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I perform quick search for "Eligibility" in "---program:-:programReviewPanel---" panel
+    And I expand nested table containing column value "Eligibility"
+    And I click on "Edit" icon for "Eligibility" inside flex table with id "---program:-:programReviewPanel---" without waiting for record
+    When I enter value "30" into field "Weight__c"
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question | Type   | Max Score |
+      | 1              | Test 1   | Yes/No | 0         |
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      |Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Eligibility section because it is weighted.|
