@@ -1272,4 +1272,44 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
 
+  @80060 @verifyErrorMessageForSubAwardAbbreviation @monu
+  Scenario Outline: validate user should be able to get error message while clicking on submit for approval button if sub award abbreviation fiels is empty
+    And I reviewed the application "<Application Name>"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Funding Decision Memo" inside flex table with id "---grantor_tableId:-:FDMTableId---"
+    And I pause execution for "3" seconds
+    Then I softly see field "Status" as "Created"
+    And I click on "Edit" in the page details
+    When I enter value "" into field "fieldGrantCode__c"
+    And I click on "Save" in the page details
+    Then I see the following messages in the page details :
+      | Subaward Abbreviation is Required to save under Funding Decision Memo. |
 
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+
+  @81589 @verifyCreateSubAwardThroughRecommenedApplication @monu
+  Scenario Outline: validate user is able to create sub award through recommended Application
+    And I reviewed the application "<Application Name>"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Funding Decision Memo" inside flex table with id "---grantor_tableId:-:FDMTableId---"
+    And I navigate to "Funding Decision Memo" sub tab
+    And I click on "Create Subaward" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    Then I see that "Subaward" is in "Created" status
+
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
