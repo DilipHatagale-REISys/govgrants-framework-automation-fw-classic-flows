@@ -43,7 +43,7 @@ Feature: Contacts related scenarios
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "Automation External Federal Contact" in "{grantee_tableId:ExternalFederalContacts}" panel
     When I click on "View" icon for "Automation External Federal Contact" inside table
-    Then I softly see field "First Name" as "Automation"
+    Then I softly see field "First Name" as "Automation Federal"
 
   @61761 @validateExternalFederalContactscolumn @smoke  @positive
   Scenario Outline: Validate external federalcontacts detail like column inside the table
@@ -67,9 +67,9 @@ Feature: Contacts related scenarios
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "Automation External Federal Contact" in "{grantee_tableId:ExternalFederalContacts}" panel
     When I click on "View" icon for "Automation External Federal Contact" inside table
-    When I click "Department of Labor" lookup link
+    When I click "USDA-NRCS-NHO" lookup link
     Then I see the header is "Federal Organization" in the page details
-    Then I see the sub-header is "Department of Labor" in the page details
+    Then I see the sub-header is "USDA-NRCS-NHO" in the page details
 
   @61761 @validateAddressDetailAtExternalFederalContactsDetailPage   @positive
   Scenario: Validate Address detail of Federal Contacts at External Federal contacts detail page
@@ -83,11 +83,10 @@ Feature: Contacts related scenarios
     Then I softly see field "State" as "DC"
     Then I softly see field "Zip Code" as "20210"
     Then I softly see field "Abbreviation" as "DOL"
-    Then I softly see field "Website" as "www.dol.gov"
     Then I softly see field "City" as "Washington"
-    When I click "Ajinath Ghule" lookup link
-    Then I softly see field "First Name" as "Ajinath"
-    Then I softly see field "Last Name" as "Ghule"
+    When I click "Grantee PM" lookup link
+    Then I softly see field "First Name" as "Grantee"
+    Then I softly see field "Last Name" as "PM"
 
   @61761 @validateSystemDetailsAtExternalFederalContactsDetailPage  @positive
   Scenario: Validate last modified date and last modified by and created by field value at system information page block under external federal contacts detail page
@@ -130,7 +129,7 @@ Feature: Contacts related scenarios
     Then I see "<miniPageLayout_Text>" shown inside mini page layout on hover
 
     Examples:
-      | miniPageLayout_Text         |
+      | miniPageLayout_Text                 |
       | {SavedValue:GRANTEE ADMIN Username} |
 
   @61905 @validateAddingOfContactForFederalOrganizationUnderExternalContact  @needToCheckWithParallelExecution  @positive
@@ -287,7 +286,7 @@ Feature: Contacts related scenarios
     Then I softly see field "{SavedValue:ModifiedDate}" contains todays date withTime
 
     Examples:
-      | userType      | userName                    |
+      | userType      | userName                            |
       | GRANTEE ADMIN | {SavedValue:GRANTEE ADMIN Username} |
       | GRANTEE PM    | {SavedValue:GRANTEE PM Username}    |
       | GRANTEE PO    | {SavedValue:GRANTEE PO Username}    |
@@ -329,7 +328,7 @@ Feature: Contacts related scenarios
     Then I softly see field "About Me" as "Admin Address"
 
     Examples:
-      | userType      | userName                    |
+      | userType      | userName                            |
       | GRANTEE ADMIN | {SavedValue:GRANTEE ADMIN Username} |
       | GRANTEE EXE   | {SavedValue:GRANTEE EXE Username}   |
       | GRANTEE PM    | {SavedValue:GRANTEE PM Username}    |
@@ -357,7 +356,7 @@ Feature: Contacts related scenarios
     Then I softly see field "About Me" as "Admin Address"
 
     Examples:
-      | userType    | userName                  |
+      | userType    | userName                          |
       | GRANTEE EXE | {SavedValue:GRANTEE EXE Username} |
       | GRANTEE PM  | {SavedValue:GRANTEE PM Username}  |
 
@@ -461,7 +460,7 @@ Feature: Contacts related scenarios
     Then I softly see field "About Me" as "Admin Address"
 
     Examples:
-      | userType      | userName                    |
+      | userType      | userName                            |
       | GRANTEE ADMIN | {SavedValue:GRANTEE ADMIN Username} |
       | GRANTEE EXE   | {SavedValue:GRANTEE EXE Username}   |
       | GRANTEE PM    | {SavedValue:GRANTEE PM Username}    |
@@ -487,7 +486,7 @@ Feature: Contacts related scenarios
     When I click on "Save" in the page details
     Then I softly see field "About Me" as "Admin Address"
     Examples:
-      | userType    | userName                  |
+      | userType    | userName                          |
       | GRANTEE EXE | {SavedValue:GRANTEE EXE Username} |
       | GRANTEE PM  | {SavedValue:GRANTEE PM Username}  |
 
@@ -785,7 +784,7 @@ Feature: Contacts related scenarios
     Then I see "<miniPageLayout_Text>" shown inside mini page layout on hover
 
     Examples:
-      | miniPageLayout_Text         |
+      | miniPageLayout_Text                 |
       | {SavedValue:GRANTEE ADMIN Username} |
 
   @62019 @validateInternalContactsFunctionalityUsingMultipleUsers-myOrganizationContact @smoke    @positive @wip @waitingForchange
@@ -894,7 +893,7 @@ Feature: Contacts related scenarios
     Then I softly see field "{SavedValue:ModifiedDate}" contains todays date withTime
 
     Examples:
-      | userType      | userName                    |
+      | userType      | userName                            |
       | GRANTEE ADMIN | {SavedValue:GRANTEE ADMIN Username} |
       | GRANTEE PM    | {SavedValue:GRANTEE PM Username}    |
       | GRANTEE PO    | {SavedValue:GRANTEE PO Username}    |
@@ -945,7 +944,7 @@ Feature: Contacts related scenarios
     Then I softly see field "About Me" as "Admin Address"
 
     Examples:
-      | userType      | userName                    |
+      | userType      | userName                            |
       | GRANTEE ADMIN | {SavedValue:GRANTEE ADMIN Username} |
       | GRANTEE EXE   | {SavedValue:GRANTEE EXE Username}   |
       | GRANTEE PM    | {SavedValue:GRANTEE PM Username}    |
@@ -973,6 +972,6 @@ Feature: Contacts related scenarios
     Then I softly see field "About Me" as "Admin Address"
 
     Examples:
-      | userType    | userName                  |
+      | userType    | userName                          |
       | GRANTEE EXE | {SavedValue:GRANTEE EXE Username} |
       | GRANTEE PM  | {SavedValue:GRANTEE PM Username}  |
