@@ -171,6 +171,9 @@ public class GrantorWebServices extends ProjectWebServices {
         approveDFMPostCall(projectApis.defaultRequestPayroleForApprovedDFM(),applicationName);
     }
 
+    public void reviewedApplication(String applicationName){
+        reviewApplicationPostCall(projectApis.defaultPayloadReviewApplication(), applicationName);
+    }
 
     /**
      * @param announcementName name of announcement on which application is created with same name as announcement
@@ -244,6 +247,13 @@ public class GrantorWebServices extends ProjectWebServices {
         Response response = I.amPerforming().restHttp().postCall(jsonObject, null,
                 finalEndPoint, "Authorization", "Bearer " + tokenString, null);
         response.prettyPrint();
+        assertStatusCode(response);
+    }
+
+    private void reviewApplicationPostCall(JsonObject jsonObject, String applicationName) {
+        String finalEndPoint = endPoint + "/services/apexrest/reviewApplication/v3?AppId=" + getIdOf("Application__c", applicationName);
+        Response response = I.amPerforming().restHttp().postCall(jsonObject, null,
+                finalEndPoint, "Authorization", "Bearer " + tokenString, null);
         assertStatusCode(response);
     }
 
@@ -340,6 +350,4 @@ public class GrantorWebServices extends ProjectWebServices {
     private void deleteSiteVisit(String recordName) {
         deletionApi(recordName, "Site Visit");
     }
-
-
 }

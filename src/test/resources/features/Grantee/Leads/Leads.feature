@@ -188,6 +188,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I save the field labeled "Application Due Date" as "PreviousDate"
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -209,6 +210,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I save the field labeled "Application Due Date" as "currentDate"
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -232,7 +234,9 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I save the field labeled "Application Due Date" as "currentDate"
+    And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -297,6 +301,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -324,6 +330,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantee" app as "ADMIN" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -347,6 +355,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -372,6 +382,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
     And I click toggle button to select "Leads Not Yet Qualified - Closed"
@@ -393,6 +405,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I save the field labeled "Opportunity Number" as "OpportunityNumber"
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -419,6 +433,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -440,6 +456,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -461,6 +479,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -482,6 +502,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I save the field labeled "Opportunity Number" as "OpportunityNumber"
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -509,6 +531,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -534,6 +558,8 @@ Feature: Leads related scenarios
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     When I enter value "www.google.com" into field "fieldManualLeadURL__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -556,6 +582,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:RelatedPrograms}"
     When I perform quick search for "Agricultural Research Basic and Applied Research" in "{grantee_tableId:AssociateProjects}" panel
     When I click "Associate" after selection of "Agricultural Research Basic and Applied Research" in the table "{grantee_tableId:PlanningObjectiveModalTableId}"
@@ -576,6 +604,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     Then I see "<fieldDisplayNames>" in flex table header "{grantee_tableId:RelatedPrograms}"
 
     Examples:
@@ -596,6 +625,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:RelatedPrograms}"
     When I perform quick search for "Agricultural Research Basic and Applied Research" in "{grantee_tableId:AssociateProjects}" panel
     When I click "Associate" after selection of "Agricultural Research Basic and Applied Research" in the table "{grantee_tableId:PlanningObjectiveModalTableId}"
@@ -619,6 +650,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:RelatedPrograms}"
     When I perform quick search for "Direct and Counter-cyclical Payments Program" in "{grantee_tableId:AssociateProjects}" panel
     Then I softly see value "Direct and Counter-cyclical Payments Program" for title "Program Title" inside table "{grantee_tableId:AssociateProjects}"
@@ -642,6 +675,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:RelatedPrograms}"
     When I click on parallel lines menu bar with data target value "#toggleFlexTableSelectFOALeadCFDA"
     And I select "Refresh" from parallel lines dropdown of "Programs"
@@ -660,6 +695,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:RelatedPrograms}"
     When I perform quick search for "Agricultural Research Basic and Applied Research" in "{grantee_tableId:AssociateProjects}" panel
     When I click "Associate" after selection of "Agricultural Research Basic and Applied Research" in the table "{grantee_tableId:PlanningObjectiveModalTableId}"
@@ -683,6 +720,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:RelatedPrograms}"
     When I perform quick search for "Agricultural Research Basic and Applied Research" in "{grantee_tableId:AssociateProjects}" panel
     When I click "Associate" after selection of "Agricultural Research Basic and Applied Research" in the table "{grantee_tableId:PlanningObjectiveModalTableId}"
@@ -706,6 +745,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     Then I softly see field "Eligible Applicants" as "State governments"
     Then I softly see field "Additional Eligibility Information" as "Dummy eligibility information for Automation"
 
@@ -722,6 +763,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     Then I softly see field "Lead Description" as "Demo Leads creation for Automation"
     Then I softly see field "Grantor Contact Information" as "Demo Leads creation for Automation"
 
@@ -738,6 +781,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     Then I see "<fieldDisplayNames>" in flex table header "{grantee_tableId:AllQualificationsTable}"
 
     Examples:
@@ -761,6 +806,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -784,6 +831,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -812,6 +861,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -851,6 +902,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -891,6 +944,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -951,6 +1006,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1001,6 +1058,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1053,6 +1112,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1106,6 +1167,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1150,6 +1213,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1195,6 +1260,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1241,6 +1308,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1276,6 +1345,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1311,6 +1382,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1343,6 +1416,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1372,6 +1447,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1400,6 +1477,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1427,6 +1506,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1455,6 +1536,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1486,6 +1569,8 @@ Feature: Leads related scenarios
     When I enter value "30000" into field "fieldAwardCeiling__c"
     When I enter value "20000" into field "fieldAwardFloor__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I save the field labeled "Opportunity Number" as "OpportunityNumber"
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
@@ -1520,6 +1605,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1553,6 +1640,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1583,6 +1672,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1622,6 +1713,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on "Qualify Lead" in the page details
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
@@ -1654,6 +1747,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I save the field labeled "Opportunity Number" as "OpportunityNumber"
     And I click on "Qualify Lead" in the page details
     When I pause execution for "2" seconds
@@ -1715,6 +1810,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1738,6 +1835,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1770,6 +1869,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1798,6 +1899,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1829,6 +1932,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1869,6 +1973,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1906,6 +2011,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1935,6 +2041,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -1965,6 +2072,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1994,6 +2103,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2022,6 +2132,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2051,6 +2162,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2081,6 +2193,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2109,6 +2222,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2138,6 +2252,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2166,6 +2281,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2194,6 +2310,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2223,6 +2340,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2254,6 +2372,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2283,6 +2402,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2310,6 +2430,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2337,6 +2458,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2369,6 +2491,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     And I pause execution for "3" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2401,6 +2524,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on "Qualify Lead" in the page details
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
@@ -2423,6 +2548,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on "Qualify Lead" in the page details
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
@@ -2453,6 +2580,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on "Qualify Lead" in the page details
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
@@ -2481,6 +2610,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on "Qualify Lead" in the page details
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
@@ -2514,6 +2645,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on "Qualify Lead" in the page details
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
@@ -2543,6 +2676,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on "Qualify Lead" in the page details
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
@@ -2567,6 +2702,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on "Qualify Lead" in the page details
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
@@ -2768,6 +2905,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     Then I see field "Source" as "Federal"
 
   @63186 @validateCreationOfLeadWithSameOpportunityNumber @wip  @positive
@@ -2783,6 +2922,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     Then I see field "Source" as "Federal"
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
@@ -2795,6 +2936,7 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
     Then  I see the following messages in the page details :
       | A lead(LD-10799) already exists with the Opportunity Number AL-01 for the Agency USDA-NRCS-NHO |
 
@@ -2811,6 +2953,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     Then I see field "Source" as "Federal"
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
@@ -2868,6 +3012,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -2893,6 +3039,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2920,6 +3068,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2941,6 +3091,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -2984,6 +3136,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
@@ -3007,6 +3161,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
@@ -3033,6 +3189,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
@@ -3054,6 +3212,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
@@ -3076,6 +3236,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
@@ -3100,6 +3262,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
@@ -3124,6 +3288,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
@@ -3166,6 +3332,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     Then I can see row level action button "Delete" against "{SavedValue:Automation Runtime Lead}" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
@@ -3183,6 +3351,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -3208,6 +3378,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -3235,6 +3407,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -3259,6 +3433,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on "Qualify Lead" in the page details
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
@@ -3286,6 +3462,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
@@ -3305,6 +3483,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel

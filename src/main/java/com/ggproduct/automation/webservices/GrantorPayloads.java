@@ -846,4 +846,54 @@ public class GrantorPayloads {
 
         return parent;
     }
+
+    public JsonObject defaultPayloadReviewApplication() {
+        Map<String, String> map = ProjectWebServices.getMultipleIds(getIdsOfUsers(Arrays.asList("Automation EXE","Automation FO","Automation PM")));
+        JsonObject parent = new JsonObject();
+
+        JsonArray reviewStepsArray = new JsonArray();
+        JsonObject complianceReview = new JsonObject();
+        complianceReview.addProperty("Reviewer",map.get("Automation EXE"));
+        complianceReview.addProperty("FormName","Compliance Review");
+        complianceReview.addProperty("DueInDays",7);
+
+        JsonObject programReview = new JsonObject();
+        programReview.addProperty("Reviewer",map.get("Automation PM"));
+        programReview.addProperty("FormName","Program Review");
+        programReview.addProperty("DueInDays",7);
+
+        JsonObject fiscalReview = new JsonObject();
+        fiscalReview.addProperty("Reviewer",map.get("Automation FO"));
+        fiscalReview.addProperty("FormName","Fiscal Review");
+        fiscalReview.addProperty("DueInDays",7);
+
+        JsonObject managementReview = new JsonObject();
+        managementReview.addProperty("Reviewer",map.get("Automation FO"));
+        managementReview.addProperty("FormName","Management Review");
+        managementReview.addProperty("DueInDays",7);
+
+        JsonObject preScreen = new JsonObject();
+        preScreen.addProperty("Reviewer",map.get("Automation FO"));
+        preScreen.addProperty("FormName","Pre-Screen");
+        preScreen.addProperty("DueInDays",7);
+
+        reviewStepsArray.add(complianceReview);
+        reviewStepsArray.add(programReview);
+        reviewStepsArray.add(fiscalReview);
+        reviewStepsArray.add(managementReview);
+        reviewStepsArray.add(preScreen);
+
+        parent.add("ReviewSteps",reviewStepsArray);
+
+        JsonObject FDM = new JsonObject();
+        JsonArray FDMArray = new JsonArray();
+        FDM.addProperty("SubawardAbbreviation","AWD");
+        FDM.addProperty("RecommendedForAward","Yes");
+        FDM.addProperty("RecommendedAmount",1000);
+        FDMArray.add(FDM);
+
+        parent.add("FDM",FDMArray);
+
+        return parent;
+    }
 }

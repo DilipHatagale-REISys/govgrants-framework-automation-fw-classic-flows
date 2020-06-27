@@ -2,6 +2,7 @@ package com.ggproduct.automation.pageobjects.grantor;
 
 import com.automation.rei.handlers.govgrants;
 import com.ggproduct.automation.projectmanager.GrantorProjectManager;
+import com.testingblaze.controller.TestSetupController;
 import com.testingblaze.objects.Elements;
 import com.testingblaze.register.I;
 import org.junit.Assert;
@@ -29,6 +30,17 @@ public class HomePage extends GrantorProjectManager {
             I.amPerforming().click().on(By.xpath("//div[contains(@class,'select2-search')]/following-sibling::ul//li//span[text()='" + userName + "']"));
         } catch (Exception e) {
         }
+    }
+
+    /**
+     * handles yopmail portal emails notification
+     */
+    public void performOperationOnYopmail(String emailId) {
+        I.amPerforming().actionToGet().newURL("http://www.yopmail.com/");
+        I.amPerforming().textInput().in(By.xpath("//input[@id='login' and @type='text']"), emailId);
+        I.amPerforming().click().on(By.xpath("//input[@value='Check Inbox' and @type='submit']"));
+        I.amPerforming().click().on(By.xpath("//div[@id='m1']//a[@class='lm']/span[2]"));
+        I.amPerforming().click().on(By.xpath("//span/a[text()='here']"));
     }
 
     /**
