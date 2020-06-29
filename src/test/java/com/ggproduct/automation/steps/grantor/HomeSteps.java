@@ -51,4 +51,9 @@ public  class HomeSteps {
     public void iReassignTo(String usage, String userName) {
         homePage.assertReassignedTo(userName, usage.contains("softly"), usage.contains("cannot"));
     }
+
+    @And("^I navigate to yopmail portal for \"([^\"]*)\"$")
+    public void completeProcessOnYopmailPortal(String emailId) {
+        homePage.performOperationOnYopmail(emailId);
+    }
 }

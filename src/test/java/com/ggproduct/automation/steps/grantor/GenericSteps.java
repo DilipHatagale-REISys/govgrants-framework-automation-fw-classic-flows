@@ -491,6 +491,11 @@ public class GenericSteps {
         grantorWebServices.approveDFM(applicationName);
     }
 
+    @Given("I reviewed the application {string}")
+    public void reviewedApplication(String applicationName){
+        grantorWebServices.reviewedApplication(applicationName);
+    }
+
     @Given("I activate award from FDM having application name {string}")
     public void iActivateAwardFromDFMWith(String applicationName) {
         grantorWebServices.activateFMD(applicationName);
