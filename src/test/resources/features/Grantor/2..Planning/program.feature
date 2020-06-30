@@ -3799,4 +3799,167 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
+  @77813 @77814 @validatingSuccessMessageSMEReviewForm @meenakshi
+  Scenario Outline: To validate system generated success message, Max score set as 100 for any 1 questions and weight as 60% on Review Panel Categories of "Capability" under program review form of the SME reviews steps of setup tab of planning phase
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 50              |
+      | SME Review        | 50              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
+      |  Form Name             | Form Weight (%)|Minimum Number of Reviews per Application|Required?|
+      | Program Review      |  100              |1                                     |Checked         |
+      | Fiscal Review       |  0              |1                                     |Checked         |
+      | Compliance Review   |  0              |1                                     |Checked         |
+    And I click on "Review Form" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability   | 60    |
+      | Approach   | 20  |
+      | Impact   | 20  |
+    And I softly see value "60%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
+    And I expand nested table containing column value "Capability"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      |  Question Order  | Max Score|
+      | 1                | 100      |
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | There are no errors with the review step templates. |
+    And I refresh the page
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Capability   | 20    |
+      | Approach   | 60  |
+      | Impact   | 20  |
+    And I softly see value "60%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
+    And I expand nested table containing column value "Approach"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      |  Question Order  | Max Score|
+      | 1                | 100      |
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | There are no errors with the review step templates. |
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
 
+  @78045 @78046 @validatingSuccessMessageComplianceReviewForm @meenakshi
+  Scenario Outline: To validate system generated success message, Max score set as 100 for any 1 questions and weight as 60% on Review Panel Categories of "Environment" under compliance review form of the SME reviews steps of setup tab of planning phase.
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 50              |
+      | SME Review        | 50              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
+      |  Form Name             | Form Weight (%)|Minimum Number of Reviews per Application|Required?|
+      | Program Review      |  0              |1                                     |Checked         |
+      | Fiscal Review       |  0              |1                                     |Checked         |
+      | Compliance Review   |  100              |1                                     |Checked         |
+    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule   | 0    |
+      | Environment| 60  |
+      | Permits   | 40  |
+    And I softly see value "60%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
+    And I expand nested table containing column value "Environment"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      |  Question Order  | Max Score|
+      | 1                | 100      |
+    And I collapse nested table containing column value "Environment"
+    And I expand nested table containing column value "Permits"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      |  Question Order  | Max Score|
+      | 1                | 15      |
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | There are no errors with the review step templates. |
+    And I refresh the page
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule   | 0    |
+      | Environment| 40  |
+      | Permits   | 60  |
+    And I softly see value "60%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
+    And I expand nested table containing column value "Permits"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      |  Question Order  | Max Score|
+      | 1                | 100      |
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | There are no errors with the review step templates. |
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
+
+  @77816 @validatingSuccessMessageFiscaleReviewForm @meenakshi
+  Scenario Outline: To validate system generated success message, Max score set as 100 for any 1 questions and weight as 60% on Review Panel Categories of "Budget" under Fiscal review form of the SME reviews steps of setup tab of planning phase.
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 50              |
+      | SME Review        | 50              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
+      |  Form Name             | Form Weight (%)|Minimum Number of Reviews per Application|Required?|
+      | Program Review      |  0              |1                                     |Checked         |
+      | Fiscal Review       |  100              |1                                     |Checked         |
+      | Compliance Review   |  0              |1                                     |Checked         |
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Budget   | 60    |
+      | Match| 20  |
+      | Program Income   | 20  |
+    And I softly see value "60%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
+    And I expand nested table containing column value "Budget"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      |  Question Order  | Max Score|
+      | 1                | 100      |
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | There are no errors with the review step templates. |
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
