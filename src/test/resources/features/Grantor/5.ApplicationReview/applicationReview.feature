@@ -1402,3 +1402,22 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
+  @80257 @verifyRemovalOfFundingAccountFromApplicationPhase @monu
+  Scenario Outline: validate user is able to remove funding account from funding Account section
+    And I reviewed the application "<Application Name>"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Funding Decision Memo" inside flex table with id "---grantor_tableId:-:FDMTableId---"
+    And I navigate to "Funding Decision Memo" sub tab
+    When I click on "Remove" icon for "FA-ST-05" inside flex table with id "---grantor_tableId:-:FundingAccountTableId---"
+    And I perform quick search for "FA-ST-05" in "---grantor_tableId:-:FundingAccountTableId---" panel
+    Then I softly see "No Records Found" inside flex table with id "---grantor_tableId:-:FundingAccountTableId---"
+
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
