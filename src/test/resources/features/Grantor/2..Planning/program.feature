@@ -3858,6 +3858,7 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
+
   @78045 @78046 @validatingSuccessMessageComplianceReviewForm @meenakshi
   Scenario Outline: To validate system generated success message, Max score set as 100 for any 1 questions and weight as 60% on Review Panel Categories of "Environment" under compliance review form of the SME reviews steps of setup tab of planning phase.
     And I click on "Edit" in the page details
@@ -3960,6 +3961,84 @@ Feature: Validate all scenarios for program
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | There are no errors with the review step templates. |
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
+
+  @77331 @77344 @validatingErrorMessageManagementReviewFormQuestions @meenakshi
+  Scenario Outline:To validate system generated error message, Max score set as 0 on all questions and weight as 40% on Review Panel Categories of "Return on Investment (ROI)" under management review of the reviews steps section of setup tab of planning phase.
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "Management Review"
+    And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
+      |  Form Name             | Required?  | Minimum Number of Reviews per Application|Form Weight (%)|
+      | Management Review        |  Checked   | 1                                     | 100              |
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Return on Investment (ROI)   | 60    |
+      | Strategic Alignment| 40  |
+    And I softly see value "40%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
+    And I expand nested table containing column value "Return on Investment (ROI)"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      |  Question Order  | Max Score|
+      | 1                | 0      |
+      | 2                | 0      |
+      | 3                | 0      |
+    And I collapse nested table containing column value "Return on Investment (ROI)"
+    And I expand nested table containing column value "Strategic Alignment"
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      |  Question Order  | Max Score|
+      | 1                | 0      |
+      | 2                | 0      |
+    And I close "Review Form" modal by clicking the top right x button
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      |Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Return on Investment (ROI) section because it is weighted.|
+      |Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Strategic Alignment section because it is weighted. |
+
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
+
+  @77342 @validatingDeleteReviewQuestionSMEReviewFormQuestions @meenakshi
+  Scenario Outline:To verify user able to delete review question with success message in Impact of Review Panel Categories in Program review form for SME review step in planning phase
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I expand nested table containing column value "Impact"
+    And I click on "Delete" icon for "2" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---" without waiting for record
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
