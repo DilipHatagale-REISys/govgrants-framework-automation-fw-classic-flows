@@ -249,6 +249,17 @@ public class InternalOrganizationPage extends GranteeProjectManager {
     }
 
     /**
+     * assert true/false if fields displayed/not displayed
+     */
+    public void assertVisibilityOfPageDetailsFields(String usage, String fieldApiName) {
+        if (usage.equalsIgnoreCase("see")) {
+            Assert.assertTrue(isFieldsVisibleAtPAgeDetails(fieldApiName));
+        } else if (usage.equalsIgnoreCase("softly see")) {
+            I.amPerforming().assertionsTo().assertThat(isFieldsVisibleAtPAgeDetails(fieldApiName)).isTrue();
+        }
+    }
+
+    /**
      * return true if particular column contains only expected value
      */
     public void assertColumnValuesOfTable(String fieldApiName, String text) {
@@ -524,8 +535,12 @@ public class InternalOrganizationPage extends GranteeProjectManager {
     /**
      * assert if new tab is opened or not on button/link/icon click
      */
-    public void assertNewTabOpenedOnActionsClick() {
-        Assert.assertTrue(isNewTabOpened());
+    public void assertNewTabOpenedOnActionsClick(String usage) {
+        if (usage.equalsIgnoreCase("softly")) {
+            I.amPerforming().assertionsTo().assertThat(isNewTabOpened()).isTrue();
+        } else {
+            Assert.assertTrue(isNewTabOpened());
+        }
     }
 
     /**
@@ -919,6 +934,22 @@ public class InternalOrganizationPage extends GranteeProjectManager {
         boolean flag = false;
         try {
             if (I.amPerforming().actionToGet().attribute(fieldsAtPageDetails, "id").toLowerCase().contains("j_id0") | I.amPerforming().checkToSee().isDisplayed(fieldsAtPageDetails)) {
+                flag = true;
+            }
+        } catch (Exception e) {
+            flag = false;
+        }
+        return flag;
+    }
+
+    /**
+     * validate if fields is not visible at page details
+     */
+    private boolean isFieldsVisibleAtPAgeDetails(String fieldApiName) {
+        By fieldsAtPage = By.xpath("//div[@id='" + fieldApiName + "']/ancestor::div[contains(@class,'textFieldWrapFlex')]/div[contains(@class,'textFieldWrap') and contains(@style,'none')]");
+        boolean flag = false;
+        try {
+            if (I.amPerforming().checkToSee().isDisplayed(fieldsAtPage)) {
                 flag = true;
             }
         } catch (Exception e) {

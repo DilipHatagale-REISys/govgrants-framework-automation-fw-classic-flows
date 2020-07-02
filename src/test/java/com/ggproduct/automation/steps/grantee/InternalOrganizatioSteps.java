@@ -100,11 +100,6 @@ public class InternalOrganizatioSteps {
         internalOrganizationPage.assertFlexTabelNumberOfRecordsPresent(Integer.parseInt(rowCount), tableId);
     }
 
-    @Then("^I (see|do not see|softly see|softly do not see) table with header \"([^\"]*)\" contains records \"([^\"]*)\"$")
-    public void assertMultipleRecordsInsideTable(String usage, String flexTableHeader, String recordsName) {
-        internalOrganizationPage.assertExpectedRecordsInsideTable(usage, flexTableHeader, recordsName);
-    }
-
     @Then("^I see take snap shot getting saved with \"([^\"]*)\"$")
     public void assertTakeSnapshotGettingSaved(String text) {
         internalOrganizationPage.assertTakeSnapshotFunctionalityWorkingCorrectly(text);
@@ -140,9 +135,9 @@ public class InternalOrganizatioSteps {
         internalOrganizationPage.AssertTotalRecordsCountInFlexTable(tableId);
     }
 
-    @Then("^I see new tab is opened$")
-    public void assertNewTabOpenOnEditClick() {
-        internalOrganizationPage.assertNewTabOpenedOnActionsClick();
+    @Then("^I (see|softly see) new tab is opened$")
+    public void assertNewTabOpenOnEditClick(String usage) {
+        internalOrganizationPage.assertNewTabOpenedOnActionsClick(usage);
     }
 
     @Then("^I (see|do not see|softly see|softly do not see) content of expected column \"([^\"]*)\" is in \"([^\"]*)\" order of table id \"([^\"]*)\"$")
@@ -178,6 +173,11 @@ public class InternalOrganizatioSteps {
     @Then("^I (see|do not see|softly see|softly do not see) fields \"([^\"]*)\" is in edit mode$")
     public void assertEditModeOfFields(String usage, String text) {
         internalOrganizationPage.assertEditModeOfPageDetailsFields(usage, text);
+    }
+
+    @Then("^I (see|softly see) fields \"([^\"]*)\" is not visible$")
+    public void assertVisibilityOfFields(String usage, String text) {
+        internalOrganizationPage.assertVisibilityOfPageDetailsFields(usage, text);
     }
 
     @Then("^I (see|do not see|softly see|softly do not see) \"([^\"]*)\" in table header on lookup Modal$")

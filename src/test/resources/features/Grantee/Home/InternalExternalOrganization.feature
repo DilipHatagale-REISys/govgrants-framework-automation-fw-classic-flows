@@ -2,7 +2,7 @@
 Feature:Internal organization related scenarios
   Test all scenarios related to Internal organization
 
-  @61962 @validateInternalLoginForPuertorico @smoke @positive
+  @61962 @validateInternalLoginForProductGrantee @smoke @positive
   Scenario Outline: User enters correct username and password to login and reaches homepage
     When I login as "<userType>" user
     Then I am logged in
@@ -11,7 +11,7 @@ Feature:Internal organization related scenarios
       | GRANTEE ADMIN |
       | GRANTEE PM    |
       | GRANTEE PO    |
-      | GRANTEE DD    |
+      | GRANTEE FD    |
       | GRANTEE FO    |
       | GRANTEE EXE   |
 
@@ -42,6 +42,8 @@ Feature:Internal organization related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -59,7 +61,7 @@ Feature:Internal organization related scenarios
     Then I softly see "No Records Found" inside flex table with id "{grantee_tableId:RelatedLogsQualifiedLeadsTableId}"
 
   @61682 @validateAdvanceSearchIsWorkingOrNotAtRelatedLogSubTab @positive
-  Scenario: Validate advance search is working or not for correct and incorrect value at Internal Programm table
+  Scenario: Validate advance search is working or not for correct and incorrect value at qualified lead table
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -71,23 +73,22 @@ Feature:Internal organization related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
-    When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Leads Not Yet Qualified - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Activate" in the page details
     And I click on "Qualify Lead" in the page details
+    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     And I save the field labeled "EGMS ID" as "EID"
-    And I re-login as "GRANTEE ADMIN" user on "Internal" portal
+    When I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
     When I click on "View" icon for "Test Automation Organization" inside table
     When I navigate to "Related Log" sub tab
     When I click on advance filter "#advfAgencyQualifiedLeadsRelated" of table id "{grantee_tableId:RelatedLogsQualifiedLeadsTableId}"
-    When I enter advance filter values inside id "advfAgencyPrograms"
+    When I enter advance filter values inside id "advfAgencyQualifiedLeadsRelated"
       | EGMS ID | contains | {SavedValue:EID} |
-    Then I softly see value "{SavedValue:Automation Runtime Internal Program}" for title "Title" inside table "{grantee_tableId:RelatedLogsQualifiedLeadsTableId}"
+    Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Title" inside table "{grantee_tableId:RelatedLogsQualifiedLeadsTableId}"
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
     When I click on "View" icon for "Test Automation Organization" inside table
@@ -110,6 +111,9 @@ Feature:Internal organization related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "EID"
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
     And I click on "Qualify Lead" in the page details
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
@@ -120,15 +124,15 @@ Feature:Internal organization related scenarios
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
     And I click on "Edit" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
-    When I enter "OpportunityDetails" values from "Field_Values.xlsx"
+    When I enter "OpportunityDetailsWithPreApp" values from "Field_Values.xlsx"
     When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name           | Description |
-      | Program Approver   | Automation PM  | prdoh       |
-      | Executive Approver | Automation EXE | prdoh       |
-      | Fiscal Approver    | Automation FO  | prdoh       |
+      | Responsibility     | Name                              | Description |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I refresh the page
     When I "Approve" in the approval decision
@@ -136,15 +140,17 @@ Feature:Internal organization related scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "2" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:EID}" in "{grantee_tableId:PendingTask}" panel
+    And I save the value from row "1" for column name "EGMS ID" as "PendingEGMSID" from flex table "{grantee_tableId:PendingTask}"
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:PendingEGMSID} Created for Lead # {SavedValue:EID}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "5" seconds
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:EID}" in "{grantee_tableId:PendingTask}" panel
+    And I save the value from row "1" for column name "EGMS ID" as "PendingEGMSID" from flex table "{grantee_tableId:PendingTask}"
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:PendingEGMSID} Created for Lead # {SavedValue:EID}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Home" tab
@@ -188,7 +194,7 @@ Feature:Internal organization related scenarios
       | Collab      |
     When I click on "Edit" in the page details
     When I enter value "121 Nelson Drive" into field "fieldBillingStreet"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     Then I softly can see top right button "Edit" in page detail
     Then I softly see field "Street" as "121 Nelson Drive"
 
@@ -204,17 +210,17 @@ Feature:Internal organization related scenarios
       | userType    |
       | GRANTEE PM  |
       | GRANTEE PO  |
-      | GRANTEE DD  |
+      | GRANTEE FD  |
       | GRANTEE FO  |
       | GRANTEE EXE |
 
   @61659 @validateQuickSearchIsWorkingForCorrectValueAtViewOfInternalOrganizationTable @positive
-  Scenario: Validate quick search is working or not for correct search value with case sensitive at internal organizations table
+  Scenario: Validate quick search is working or not for correct search value at internal organizations table
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
-    Then I softly see value "Test Automation Organization" for title "Organization Name" inside table "{grantee_tableId:InternalOrganizations}"
+    Then I softly see value "Test Automation Organization" for title "Operational Unit" inside table "{grantee_tableId:InternalOrganizations}"
     When I perform quick search for "Test Record" in "{grantee_tableId:InternalOrganizations}" panel
     Then I see "No Records Found" inside flex table with id "{grantee_tableId:InternalOrganizations}"
 
@@ -242,7 +248,7 @@ Feature:Internal organization related scenarios
     And I select "Refresh" from parallel lines dropdown of "Internal Organization Hierarchy"
     Then I see table is refreshing
 
-  @61659 @validateTotalRecordCountAtInternalOrganizationTable @positive
+  @61659 @validateTotalRecordCountAtInternalOrganizationTable @positive @wip
   Scenario: Validate total records count is displayed as number of records in internal organization table
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
@@ -256,8 +262,9 @@ Feature:Internal organization related scenarios
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
     When I click on "View" icon for "Test Automation Organization" inside table
-    When I perform quick search for "GRANTEE FO Username" in "{grantee_tableId:RelatedContacts}" panel
-    When I click on "View" icon for "GRANTEE FO Username" inside table
+    And I navigate to "Overview" sub tab
+    When I perform quick search for "{SavedValue:GRANTEE FO Username}" in "{grantee_tableId:RelatedContacts}" panel
+    When I click on "View" icon for "{SavedValue:GRANTEE FO Username}" inside table
     When I click "Test Automation Organization" lookup link
     Then I see the header is "Internal Organization" in the page details
     Then I see the sub-header is "Test Automation Organization" in the page details
@@ -267,7 +274,7 @@ Feature:Internal organization related scenarios
       | GRANTEE ADMIN |
       | GRANTEE PM    |
       | GRANTEE PO    |
-      | GRANTEE DD    |
+      | GRANTEE FD    |
       | GRANTEE FO    |
       | GRANTEE EXE   |
 
@@ -277,6 +284,7 @@ Feature:Internal organization related scenarios
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click toggle button to select "My Organization’s Contact"
+    And I pause execution for "2" seconds
     And I click on top right button "New" in flex table with id "{grantee_tableId:InternalContacts}"
     When I enter "InternalContactCorrectData" values from "Field_Values.xlsx"
     When I enter value "Test Automation Organization" into field "fieldAccountId"
@@ -286,25 +294,29 @@ Feature:Internal organization related scenarios
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
     When I click on "View" icon for "Test Automation Organization" inside table
+    And I navigate to "Overview" sub tab
     When I perform quick search for "AutomationUser" in "{grantee_tableId:RelatedContacts}" panel
-    Then I softly can see row level action button "Remove" against "AutomationUser" in flex table with id "{grantee_tableId:RelatedContacts}"
+    Then I softly can see row level action button "Delete" against "AutomationUser" in flex table with id "{grantee_tableId:RelatedContacts}"
     When I perform quick search for "{SavedValue:GRANTEE PO Username}" in "{grantee_tableId:RelatedContacts}" panel
-    Then I softly can see row level action button "Remove" against "{SavedValue:GRANTEE PO Username}" in flex table with id "{grantee_tableId:RelatedContacts}"
+    Then I softly can see row level action button "Delete" against "{SavedValue:GRANTEE PO Username}" in flex table with id "{grantee_tableId:RelatedContacts}"
 
-  @61752 @validateDeletionOfActiveAndNonActiveContactFromReletedContactsAtInternalOrganizations @positive
+  @61752 @validateDeletionOfActiveAndNonActiveContactFromRelatedContactsAtInternalOrganizations @positive
   Scenario: Validate contact deletion from related contacts for Active nonActive contacts at internal organizations
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click toggle button to select "My Organization’s Contact"
+    And I pause execution for "2" seconds
     And I click on top right button "New" in flex table with id "{grantee_tableId:InternalContacts}"
     When I enter "InternalContactCorrectData" values from "Field_Values.xlsx"
     When I enter value "Test Automation Organization" into field "fieldAccountId"
     When I click on "Save" in the page details
     And I save the contact name as "Automation Runtime Contact"
+    And I close modal by clicking the top right x button
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
     When I click on "View" icon for "Test Automation Organization" inside table
+    And I navigate to "Overview" sub tab
     When I perform quick search for "{SavedValue:GRANTEE PM Username}" in "{grantee_tableId:RelatedContacts}" panel
     When I click on "Remove" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:RelatedContacts}"
     Then I softly see the following messages in the page details contains:
@@ -481,7 +493,7 @@ Feature:Internal organization related scenarios
       | GRANTEE ADMIN |
       | GRANTEE PM    |
       | GRANTEE PO    |
-      | GRANTEE DD    |
+      | GRANTEE FD    |
       | GRANTEE FO    |
       | GRANTEE EXE   |
 
@@ -595,7 +607,7 @@ Feature:Internal organization related scenarios
       | GRANTEE ADMIN |
       | GRANTEE PM    |
       | GRANTEE PO    |
-      | GRANTEE DD    |
+      | GRANTEE FD    |
       | GRANTEE FO    |
       | GRANTEE EXE   |
 
@@ -705,7 +717,7 @@ Feature:Internal organization related scenarios
       | GRANTEE ADMIN |
       | GRANTEE PM    |
       | GRANTEE PO    |
-      | GRANTEE DD    |
+      | GRANTEE FD    |
       | GRANTEE FO    |
       | GRANTEE EXE   |
 

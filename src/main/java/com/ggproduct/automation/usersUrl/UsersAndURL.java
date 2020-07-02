@@ -18,13 +18,13 @@ public class UsersAndURL implements UsersController {
         I.amPerforming().propertiesFileOperationsTo().saveValue("PM Username", "Automation PM");
         I.amPerforming().propertiesFileOperationsTo().saveValue("AUDITOR Username", "Automation AUDITOR");
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPI Username", "Automation SPI");
-        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE ADMIN Username", "Automation Admin Grantee");
-        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE PO Username", "Automation PO Grantee");
-        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE FD Username", "Automation FD Grantee");
-        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE PM Username", "Automation PM Grantee");
-        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE PM1 Username", "Automation PM1 Grantee");
-        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE FO Username", "Automation FO Grantee");
-        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE EXE Username", "Automation EXE Grantee");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE ADMIN Username", "Grantee ADMIN");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE PO Username", "Grantee PO");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE FD Username", "Grantee FD");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE PM Username", "Grantee PM");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE PM1 Username", "Grantee PM1");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE FO Username", "Grantee FO");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE EXE Username", "Grantee EXE");
     }
 
     /**
