@@ -296,7 +296,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---applicationReview:-:pendingTaskTableId---" panel
-    #38862
+    #38862 #monu
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---applicationReview:-:pendingTaskTableId---"
     And I click on "Start" icon for "Record Id" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
     When I "Approve" in the approval decision
@@ -1270,7 +1270,7 @@ Feature: Validate all scenarios in the Application Review
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     Then I softly see value "7" for title "Due in Days" inside table "---applicationReview:-:reviewStepFormId---"
-      Examples:
+    Examples:
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
 
@@ -1293,8 +1293,8 @@ Feature: Validate all scenarios in the Application Review
     And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     When I click on "View" icon for "SME Review" inside flex table with id "---announcement:-:reviewStepTableId---"
     And I edit the following rows inline in flex table with id "---applicationReview:-:reviewStepFormId---" by clicking "Edit" :
-      |  Form Name          | Due in Days|Required? |
-      | Fiscal Review       |  7          |Checked   |
+      | Form Name     | Due in Days | Required? |
+      | Fiscal Review | 7           | Checked   |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     Then I softly see value "7" for title "Due in Days" inside table "---applicationReview:-:reviewStepFormId---"
@@ -1322,15 +1322,14 @@ Feature: Validate all scenarios in the Application Review
     And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     When I click on "View" icon for "Management Review" inside flex table with id "---announcement:-:reviewStepTableId---"
     And I edit the following rows inline in flex table with id "---applicationReview:-:reviewStepFormId---" by clicking "Edit" :
-      |  Form Name          | Due in Days|Required? |
-      | Management Review    |  7         |Checked   |
+      | Form Name         | Due in Days | Required? |
+      | Management Review | 7           | Checked   |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     Then I softly see value "7" for title "Due in Days" inside table "---applicationReview:-:reviewStepFormId---"
     Examples:
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
-
 
   @79666 @ValidatingErrorMessageSameReviewerPreScreenReviewStepForm @meenakshi
   Scenario Outline: To validate system generated error message, When user adding same reviewer multiple times in Reviewers section of related log tab in prescreen review step of Application phase
@@ -1387,7 +1386,6 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
 
-
   @80151 @ValidatingErrorMessagePreScreenReviewStepForm @meenakshi
   Scenario Outline: To validate system generated error message, When Announcement Owner assigning application to the reviewer who has submitted the application in application phase of prescreening review step
     And I login to "As a Grantor" app as "dynamicUser" user
@@ -1407,14 +1405,14 @@ Feature: Validate all scenarios in the Application Review
     And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---announcement:-:reviewStepTableId---"
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer                 |
+      | Reviewer                  |
       | {SavedValue:SPI Username} |
     And I click on "Assign" icon for "{SavedValue:SPI Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     Then I softly see the following messages in the page details contains:
-      | You cannot assign a user to review their own application.|
+      | You cannot assign a user to review their own application. |
     Examples:
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
@@ -1468,17 +1466,16 @@ Feature: Validate all scenarios in the Application Review
     And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     When I click on "View" icon for "Management Review" inside flex table with id "---announcement:-:reviewStepTableId---"
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer                 |
+      | Reviewer                  |
       | {SavedValue:EXE Username} |
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer                 |
+      | Reviewer                  |
       | {SavedValue:EXE Username} |
     Then I softly see the following messages in the page details contains:
       | This user has already been added to this review step. |
     Examples:
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
-
 
   @79199 @79200 @ValidatingPreScreenReviewStepForm @meenakshi
   Scenario Outline: To verify user able to click "Review Form" Icon in forms section of related log tab in prescreening review step of Application phase
@@ -1530,8 +1527,8 @@ Feature: Validate all scenarios in the Application Review
     And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     When I click on "View" icon for "SME Review" inside flex table with id "---announcement:-:reviewStepTableId---"
     And I edit the following rows inline in flex table with id "---applicationReview:-:reviewStepFormId---" by clicking "Edit" :
-      |  Form Name          | Due in Days|Required? |Minimum # of Reviews Required|
-      | Compliance Review    |  7         |Unchecked   |0                         |
+      | Form Name         | Due in Days | Required? | Minimum # of Reviews Required |
+      | Compliance Review | 7           | Unchecked | 0                             |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     Then I softly see value "7" for title "Due in Days" inside table "---applicationReview:-:reviewStepFormId---"
@@ -1570,7 +1567,6 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
 
-
   @79978 @ValidatingSuccessMessagePromoteNextButtonPreScreenReviewStepForm @meenakshi
   Scenario Outline: To validate system generated error message ,for user will not be able to Promote to Next step for application when the reviewer decision is still pending for the steps which are Mandatory of prescreen review review step in Application phase
     And I login to "As a Grantor" app as "dynamicUser" user
@@ -1590,15 +1586,15 @@ Feature: Validate all scenarios in the Application Review
     And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---announcement:-:reviewStepTableId---"
     And I edit the following rows inline in flex table with id "---applicationReview:-:reviewStepFormId---" by clicking "Edit" :
-      |  Form Name    |Required? |Minimum # of Reviews Required|
-      | Pre-Screen    | Checked   |1                         |
+      | Form Name  | Required? | Minimum # of Reviews Required |
+      | Pre-Screen | Checked   | 1                             |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     Then I softly see the following messages in the page details contains:
       | Cannot promote <Announcement Name> because it does not meet the minimum review requirements: |
-      |  Pre-Screen has 0 out of 1 complete reviews                                                                                                                                |
+      | Pre-Screen has 0 out of 1 complete reviews                                                   |
     Examples:
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
@@ -1627,7 +1623,6 @@ Feature: Validate all scenarios in the Application Review
     Examples:
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
-
 
   @79752 @ValidatingErrorMessagePromoteNextButtonPreScreenReviewStepForm @meenakshi
   Scenario Outline: To validate system generated error message , when user clicking Promote to Next step button without selecting Application in Application section of Application phase of prescreening review step
@@ -1791,7 +1786,6 @@ Feature: Validate all scenarios in the Application Review
     Examples:
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
-
 
   @79960 @verifingCompletedTaskForPrescreenManagementReview @meenakshi
   Scenario Outline: To verify the tasks will be displayed on completed tasks for the reviewer, when reviewer submit Reviews form successfully,for prescreen review step in  Application phase
@@ -1991,7 +1985,6 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-
   @80060 @verifyErrorMessageForSubAwardAbbreviation @monu
   Scenario Outline: validate user should be able to get error message while clicking on submit for approval button if sub award abbreviation fiels is empty
     And I reviewed the application "<Application Name>"
@@ -2015,25 +2008,6 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @81589 @verifyCreateSubAwardThroughRecommenedApplication @monu
-  Scenario Outline: validate user is able to create sub award through recommended Application
-    And I reviewed the application "<Application Name>"
-    And I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
-    When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
-    And I navigate to "Related Log" sub tab
-    When I click on "View" icon for "Funding Decision Memo" inside flex table with id "---grantor_tableId:-:FDMTableId---"
-    And I navigate to "Funding Decision Memo" sub tab
-    And I click on "Create Subaward" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
-    Then I see that "Subaward" is in "Created" status
-
-    Examples:
-      | Announcement Name                                               | Application Name                                                |
-      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
-
   @80257 @verifyRemovalOfFundingAccountFromApplicationPhase @monu
   Scenario Outline: validate user is able to remove funding account from funding Account section
     And I reviewed the application "<Application Name>"
@@ -2049,6 +2023,105 @@ Feature: Validate all scenarios in the Application Review
     When I click on "Remove" icon for "FA-ST-05" inside flex table with id "---grantor_tableId:-:FundingAccountTableId---"
     And I perform quick search for "FA-ST-05" in "---grantor_tableId:-:FundingAccountTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---grantor_tableId:-:FundingAccountTableId---"
+
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+
+  @81346 @verifyInformationDetailsAndEditButtonAtFDMPage @monu
+  Scenario Outline: validate user is able to see all expected details and Edit button at FDM page
+    And I reviewed the application "<Application Name>"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "Management Review" inside flex table with id "---announcement:-:reviewStepTableId---"
+    Then I softly see field "Status" as "Completed"
+    When I click on "Funding Decision Memo" in the page details
+    Then I softly can see top right button "Edit" in page detail
+
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+
+  @38850 @verifyModificationOfPre-EncumbranceAFDM @monu
+  Scenario Outline: validate user is able to modify pre-encumbrance at FDM page
+    And I reviewed the application "<Application Name>"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "Management Review" inside flex table with id "---announcement:-:reviewStepTableId---"
+    Then I softly see field "Status" as "Completed"
+    When I click on "Funding Decision Memo" in the page details
+    Then I softly can see "Funding Decision Memo" sub tab at view detail page
+    Then I softly can see "Responsibilities" sub tab at view detail page
+    Then I softly can see "History" sub tab at view detail page
+    Then I softly can see "Collab" sub tab at view detail page
+    When I click on "Edit" icon for "FA-ST-05" inside flex table with id "---grantor_tableId:-:FundingAccountTableId---"
+    And I enter value "500" into field "PreEncumbranceAmount__c"
+    And I click on top right button "Save" in flex table with id "---grantor_tableId:-:FundingAccountTableId---"
+    Then I softly see "Saved Successfully!" inside flex table with id "---grantor_tableId:-:FundingAccountTableId---"
+    Then I softly see value "$500.00" for title "FDM Pre-Encumbrance" inside table "---grantor_tableId:-:FundingAccountTableId---"
+
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+
+  @38853 @verifyEnteringOfRecommendedBudgetInRecommendedApplication @monu
+  Scenario Outline: validate user is able to enter recommended budget in recommended application section
+    And I reviewed the application "<Application Name>"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "Management Review" inside flex table with id "---announcement:-:reviewStepTableId---"
+    Then I softly see field "Status" as "Completed"
+    When I click on "Funding Decision Memo" in the page details
+    When I click on "Edit" icon for "<Announcement Name>" inside flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---"
+    And I enter value "3000" into field "RecommendedAmount__c"
+    And I click on top right button "Save" in flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---"
+    Then I softly see "Saved Successfully!" inside flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---"
+    Then I softly see value "$3,000.00" for title "FDM Pre-Encumbrance" inside table "---prdoh_tableId:-:RecommendedApplicationTableId---"
+
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+
+  @80049 @verifyEnteringOfJustificationForFDM @monu
+  Scenario Outline: validate user is able to enter justification for FDM
+    And I reviewed the application "<Application Name>"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "Management Review" inside flex table with id "---announcement:-:reviewStepTableId---"
+    When I click on "Funding Decision Memo" in the page details
+    Then I softly can see "Funding Decision Memo" sub tab at view detail page
+    Then I softly can see "Responsibilities" sub tab at view detail page
+    Then I softly can see "History" sub tab at view detail page
+    Then I softly can see "Collab" sub tab at view detail page
+    When I click on "Edit" in the page details
+    When I enter value "12345" into field "fieldGrantCode__c"
+    When I enter value "Test Automation Justification For FDM" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    Then I softly see field "Justification" as "Test Automation Justification For FDM"
 
     Examples:
       | Announcement Name                                               | Application Name                                                |
