@@ -708,6 +708,19 @@ public class InternalOrganizationPage extends GranteeProjectManager {
         Assert.assertTrue(assertDateAccordingProvidedDate(columnName, savedDate, tableId));
     }
 
+    /**
+     * assert if correct title is displayed in overlay iframe window
+     *
+     * @param titleName
+     */
+    public void asserTextInOverLayIframe(String usage, String titleName) {
+        if (usage.equalsIgnoreCase("see")) {
+            Assert.assertTrue(isSpecificOverlayDisplayed(titleName));
+        } else if (usage.equalsIgnoreCase("softly see")) {
+            I.amPerforming().assertionsTo().assertThat(isSpecificOverlayDisplayed(titleName)).isTrue();
+        }
+    }
+
     /*********
      * "Local Methods with complete functionality - private"
      *****************/
@@ -1336,5 +1349,37 @@ public class InternalOrganizationPage extends GranteeProjectManager {
         } catch (Exception e) {
         }
         return flag;
+    }
+
+    /**
+     * return true if overlay open up with the required title
+     *
+     * @param titleName
+     * @return
+     */
+    private boolean isSpecificOverlayDisplayed(String titleName) {
+        I.amPerforming().switchTo().parentFrame();
+        govgrants.perform().mainPage().waitForNavigationLogoToDisappear();
+        boolean flag = false;
+        if (I.amPerforming().checkToSee().isDisplayed(getOverLayTitle(titleName))) {
+            flag = true;
+        }
+        return flag;
+    }
+
+    /**
+     * get webelemnt with title inside overlay iframe
+     *
+     * @param titleName
+     * @return
+     */
+    private WebElement getOverLayTitle(String titleName) {
+        return I.amPerforming().getElementReference().of(By.xpath(
+                "//iframe[contains(@ng-src,'apex') or contains(@src,'apex')]//ancestor::div[contains(@class,'modal-content')][1]//p[text()='"
+                        + titleName
+                        + "']|//iframe[contains(@ng-src,'apex') or contains(@src,'apex')]//ancestor::div[contains(@class,'modal-content')][1]//p[text()='"
+                        + titleName
+                        + "']| //iframe[contains(@ng-src,'apex') or contains(@src,'apex')]//ancestor::div[contains(@class,'modal-content')][1]//div[contains(text(),'"
+                        + titleName + "')]"));
     }
 }

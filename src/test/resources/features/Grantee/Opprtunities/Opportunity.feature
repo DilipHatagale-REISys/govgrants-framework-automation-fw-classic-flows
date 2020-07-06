@@ -257,7 +257,7 @@ Feature: Opportunities related scenarios
     Then I softly see value "Created" for title "Status" against the value "No" inside table "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly see value "Program Reviewer" for title "Responsibility" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:OpportunityPeerReviewers}"
 
-  @63246 @NotConverted @ValidateAdvanceSearchfuctionality @positive
+  @63246 @NotConverted @ValidateAdvanceSearchFunctionality @positive
   Scenario: verify advance search functionality work properly
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
@@ -455,6 +455,7 @@ Feature: Opportunities related scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "EID"
     And I click on "Activate" in the page details
     And I click on "Qualify Lead" in the page details
     When I enter value "2 - Low" into field "fieldRelevance__c"
@@ -482,11 +483,12 @@ Feature: Opportunities related scenarios
       | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
-    And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "BHDDHO - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "BHDDHO - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    And I pause execution for "5" seconds
+    When I perform quick search for "{SavedValue:EID}" in "{grantee_tableId:PendingTask}" panel
+    And I save the value from row "1" for column name "EGMS ID" as "PendingEGMSID" from flex table "{grantee_tableId:PendingTask}"
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:PendingEGMSID} Created for Lead # {SavedValue:EID}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal

@@ -547,7 +547,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:applicationAssignTableId---"
     When I click on top right button "Reject" in flex table with id "---applicationReview:-:applicationAssignTableId---"
     And I pause execution for "3" seconds
-    And I login to "As a Grantor" app as "dynamicUser" user
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
@@ -1092,7 +1092,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @81223 @verifyDetailsOfResubmittedApplication @monu @wip
+  @81223 @verifyDetailsOfResubmittedApplication @monu
   Scenario Outline: validate user is able to see details of resubmitted application
     And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
@@ -1153,7 +1153,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @81225 @verifyReviewsStepInProgressStateAfterApplicationSentBackToApplicant @monu @wip
+  @81225 @verifyReviewsStepInProgressStateAfterApplicationSentBackToApplicant @monu
   Scenario Outline: validate status of all Reviews is in progress inside related log sub tab after application is sent back to applicatnt at management review
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Application" and properties "default"
     When I am on "SUBPORTAL" portal
@@ -1350,7 +1350,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @81226 @verifyDecisionStatusAfterApplicationSentBackToApplicant @monu @wip
+  @81226 @verifyDecisionStatusAfterApplicationSentBackToApplicant @monu
   Scenario Outline: validate decision status of application after application is sent back to applicatnt at management review
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Application" and properties "default"
     When I am on "SUBPORTAL" portal
@@ -1565,6 +1565,27 @@ Feature: Validate all scenarios in the Application Review without background
     Examples:
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
+
+  @81589 @verifyCreateSubAwardThroughRecommendedApplication @monu
+  Scenario Outline: validate user is able to create sub award through recommended Application
+    Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
+    When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Funding Decision Memo" inside flex table with id "---grantor_tableId:-:FDMTableId---"
+    And I navigate to "Funding Decision Memo" sub tab
+    And I click on "Create Subaward" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    Then I see that "Subaward" is in "Created" status
+
+    Examples:
+      | Announcement Name                                |
+      | {SavedValue:Automation Runtime FDM Announcement} |
 
   @80258 @ValidateFDMShouldNotGetEditedAfterSubmissionByOwner @monu
   Scenario Outline: Validate user is not able to edit the FDM once it is submitted for approval
@@ -1948,7 +1969,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Reject" in flex table with id "---applicationReview:-:appTableId---"
     Then I softly can see top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
-    #80510
+    #80510 #monu
     When I click on "Funding Decision Memo" in the page details
     And I edit the following rows inline in flex table with id "---applicationReview:-:rejectedApplicationTableId---" by clicking "Edit" :
       | Application Title  | Comments           |
@@ -1980,13 +2001,42 @@ Feature: Validate all scenarios in the Application Review without background
     Then I softly can see "Overview" sub tab at view detail page
     And I softly can see "Budget" sub tab at view detail page
     Then I softly can see "Management" sub tab at view detail page
-    And I softly can see "Terma" sub tab at view detail page
+    And I softly can see "Terms" sub tab at view detail page
     Then I softly can see "Performance" sub tab at view detail page
-    And I softly can see "Responsibility" sub tab at view detail page
-    Then I softly can see "Attachment" sub tab at view detail page
+    And I softly can see "Responsibilities" sub tab at view detail page
+    Then I softly can see "Attachments" sub tab at view detail page
     And I softly can see "History" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
 
     Examples:
-      | Announcement Name                                               |
-      | {SavedValue:Automation Runtime Announcement Application Review} |
+      | Announcement Name                                |
+      | {SavedValue:Automation Runtime FDM Announcement} |
+
+  @81573 @VerifyEnteringOfNegotiationRequestInformation @monu
+  Scenario Outline: Validate  user is able to enter information of negotiation request under negotiation sub tab
+    Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
+    When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "Management Review" inside flex table with id "---announcement:-:reviewStepTableId---"
+    When I click on "Funding Decision Memo" in the page details
+    When I click on "View" icon for "Initiate Negotiation" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
+    When I enter value "-1" into field "fieldNegotiationDueDate__c"
+    When I enter value "Attachments: Attachments" into field "fieldApplicationSectionsForRevision__c"
+    When I enter value "Negotiation Initiated" into field "fieldExplanationOfRevisionsNeeded__c"
+    When I click on "Save" in the page details
+    And I save the field labeled "Due Date" as "NegotiationDate"
+    Then I softly see field "Application Sections for Revision" as "[Attachments]: Attachments"
+    Then I softly see field "Details" as "Negotiation Initiated"
+    Then I see field "{SavedValue:NegotiationDate}" contains previous date
+
+    Examples:
+      | Announcement Name                                |
+      | {SavedValue:Automation Runtime FDM Announcement} |

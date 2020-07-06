@@ -289,4 +289,9 @@ public class InternalOrganizatioSteps {
     public void iSoftlySeeColumnAsWithValueInsideFlexTableWithId(String columnName, String savedDate, String tableId) {
         internalOrganizationPage.assertDateAccortingToNumberOfDaysPassed(columnName, savedDate, tableId);
     }
+
+    @Then("^I (see|softly see) \"([^\"]*)\" opens in overLay window$")
+    public void assertEditOpensInOverLayWindow(String usage, String titleName) {
+        internalOrganizationPage.asserTextInOverLayIframe(usage, titleName);
+    }
 }

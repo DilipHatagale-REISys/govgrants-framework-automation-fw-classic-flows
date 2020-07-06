@@ -59,7 +59,7 @@ Feature: Validate all scenarios in the award created from FDM
   Scenario: Validate the assignment of Approvers for the award
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -77,7 +77,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
-      | Title          | Project Role   | Is Key Personnel |
+      | Title                     | Project Role   | Is Key Personnel |
       | {SavedValue:SPI Username} | Fiscal Contact | Checked          |
     When I navigate to "Budget" sub tab
     Given I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountsTableId---" by clicking "Edit" :
@@ -108,7 +108,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -131,7 +131,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -172,7 +172,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
+      | Name                      | Project Role             | Is Key Personnel |
       | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
@@ -196,7 +196,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -218,7 +218,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -239,7 +239,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role            | Description            | Due Date | Allow Record Editing |
+      | Reviewer Name            | Role            | Description            | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Description | 5        | No                   |
     Then I softly see that "{SavedValue:FO Username}" has been added in flextable with Id "---subAwardFromFDM:-:peerReviewersTableId---"
     And I click on "Send for Review" icon for "Created" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
@@ -283,7 +283,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
+      | Name                      | Project Role             | Is Key Personnel |
       | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
@@ -307,7 +307,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -329,7 +329,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -350,7 +350,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role            | Description            | Due Date | Allow Record Editing |
+      | Reviewer Name            | Role            | Description            | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Description | 5        | No                   |
     And I click on "Send for Review" icon for "Created" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -413,7 +413,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
+      | Name                      | Project Role             | Is Key Personnel |
       | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
@@ -437,7 +437,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -459,7 +459,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -480,7 +480,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role            | Description            | Due Date | Allow Record Editing |
+      | Reviewer Name            | Role            | Description            | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Description | 5        | No                   |
     And I click on "Send for Review" icon for "Created" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -527,7 +527,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
+      | Name                      | Project Role             | Is Key Personnel |
       | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
@@ -551,7 +551,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -573,7 +573,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -594,7 +594,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role            | Description            | Due Date | Allow Record Editing |
+      | Reviewer Name            | Role            | Description            | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Description | 5        | No                   |
     And I click on "Send for Review" icon for "Created" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -660,7 +660,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
+      | Name                      | Project Role             | Is Key Personnel |
       | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     Then I softly see that "Automation Permanent Objective2" has been added in flextable with Id "---subAwardStandAlone:-:objectivesTableId---"
@@ -685,7 +685,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -714,7 +714,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -735,7 +735,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role            | Description            | Due Date | Allow Record Editing |
+      | Reviewer Name            | Role            | Description            | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Description | 5        | No                   |
     And I click on "Send for Review" icon for "Created" inside flex table with id "---subAwardFromFDM:-:peerReviewersTableId---" without waiting for record
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -801,7 +801,7 @@ Feature: Validate all scenarios in the award created from FDM
       | {SavedValue:fundingAccount} | 1000        |
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -811,7 +811,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
+      | Name                      | Project Role             | Is Key Personnel |
       | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
@@ -835,7 +835,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -920,7 +920,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
+      | Name                      | Project Role             | Is Key Personnel |
       | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
@@ -945,7 +945,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -967,7 +967,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -1126,7 +1126,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -1148,7 +1148,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -1362,7 +1362,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
+      | Name                      | Project Role             | Is Key Personnel |
       | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
@@ -1386,7 +1386,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -1458,7 +1458,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -1480,7 +1480,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -1559,7 +1559,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
+      | Name                      | Project Role             | Is Key Personnel |
       | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
@@ -1583,7 +1583,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -1605,7 +1605,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -1659,7 +1659,7 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see value "$200.00" for title "Total Project Cost" against the value "Supplies" inside table "---subAwardFromFDM:-:subAwardBudgetTableId---"
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
+      | Name                      | Project Role             | Is Key Personnel |
       | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
@@ -1683,7 +1683,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I get the "EGMS ID"
     And I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -1705,7 +1705,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -1736,7 +1736,7 @@ Feature: Validate all scenarios in the award created from FDM
 
   @81590 @verifyInitiateNegotiationIconISNotVisible @monu
   Scenario Outline: validate Initiate Negotiation icon should not be visible to Announcement owner
-    And I login to "As a Grantor" app as "dynamicUser" user
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
@@ -1748,5 +1748,5 @@ Feature: Validate all scenarios in the award created from FDM
     Then I cannot see row level action button "Initiate Negotiation" against "{SavedValue:Automation Runtime FDM Announcement}" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
 
     Examples:
-      | Announcement Name                                               |
-      | {SavedValue:Automation Runtime Announcement Application Review} |
+      | Announcement Name                                |
+      | {SavedValue:Automation Runtime FDM Announcement} |
