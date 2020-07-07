@@ -105,4 +105,9 @@ public class AwardSteps {
     public void assertMultipleRecordsInsideTable(String usage, String flexTableHeader, String recordsName) {
         awardPage.assertExpectedRecordsInsideTable(usage.contains("softly"), flexTableHeader, recordsName);
     }
+
+    @Then("I (softly see|softly do not see) \"([^\"]*)\" field is editable inside enhanced grid$")
+    public void assertFieldIsNotEditableInsideTable(String usage, String fieldApiName) {
+        awardPage.assertFieldIsNotEditableAtEnhancedTable(usage , fieldApiName);
+    }
 }

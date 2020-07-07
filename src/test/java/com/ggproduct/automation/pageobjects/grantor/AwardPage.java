@@ -12,6 +12,17 @@ import java.util.List;
 public class AwardPage extends GrantorProjectManager {
 
     /**
+     * return if field is ediatble/not editable inside enhanced table
+     */
+    public void assertFieldIsNotEditableAtEnhancedTable(String usage, String fieldApiName) {
+        if (usage.equalsIgnoreCase("softly see")) {
+            I.amPerforming().assertionsTo().assertThat(isFieldIsEditableAtEnhancedTable(fieldApiName)).isTrue();
+        } else if (usage.equalsIgnoreCase("softly do not see")) {
+            I.amPerforming().assertionsTo().assertThat(isFieldIsEditableAtEnhancedTable(fieldApiName)).isFalse();
+        }
+    }
+
+    /**
      * To verify text area is editable
      *
      * @param fieldApiName
@@ -152,5 +163,18 @@ public class AwardPage extends GrantorProjectManager {
         return isRecordsDisplayed;
     }
 
-
+    /**
+     * @param fieldApiName
+     * @return true if field is not editable for enhanced table
+     */
+    private Boolean isFieldIsEditableAtEnhancedTable(String fieldApiName) {
+        boolean flag = false;
+        try {
+            if (I.amPerforming().checkToSee().isDisplayed(By.xpath("//field[@field-name='" + fieldApiName + "']//input[@type='text']"))) {
+                flag = true;
+            }
+        } catch (Exception e) {
+        }
+        return flag;
+    }
 }

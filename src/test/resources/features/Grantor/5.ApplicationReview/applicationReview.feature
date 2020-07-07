@@ -1870,9 +1870,9 @@ Feature: Validate all scenarios in the Application Review
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     Then I softly see the following messages in the page details contains:
       | Cannot promote <Announcement Name> because it does not meet the minimum review requirements: |
-      |  Program Review has 0 out of 1 complete reviews|
-      |  Fiscal Review has 0 out of 1 complete reviews|
-      |  Compliance Review has 0 out of 1 complete reviews|
+      | Program Review has 0 out of 1 complete reviews                                               |
+      | Fiscal Review has 0 out of 1 complete reviews                                                |
+      | Compliance Review has 0 out of 1 complete reviews                                            |
     Examples:
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
@@ -1907,10 +1907,10 @@ Feature: Validate all scenarios in the Application Review
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
-      | Form Name  | Due in Days |
-      | Program Review	 | 5      |
-      | Fiscal Review	 | 5      |
-      | Compliance Review | 5      |
+      | Form Name         | Due in Days |
+      | Program Review    | 5           |
+      | Fiscal Review     | 5           |
+      | Compliance Review | 5           |
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
       | Reviewer                 |
       | {SavedValue:FO Username} |
@@ -2048,7 +2048,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @38850 @verifyModificationOfPre-EncumbranceAFDM @monu
+  @38850 @80052 @verifyModificationOfPre-EncumbranceAFDM @monu
   Scenario Outline: validate user is able to modify pre-encumbrance at FDM page
     And I reviewed the application "<Application Name>"
     And I login to "As a Grantor" app as "dynamicUser" user
@@ -2071,12 +2071,15 @@ Feature: Validate all scenarios in the Application Review
     And I click on top right button "Save" in flex table with id "---grantor_tableId:-:FundingAccountTableId---"
     Then I softly see "Saved Successfully!" inside flex table with id "---grantor_tableId:-:FundingAccountTableId---"
     Then I softly see value "$500.00" for title "FDM Pre-Encumbrance" inside table "---grantor_tableId:-:FundingAccountTableId---"
+    #80052 #monu
+    When I click on "Edit" icon for "FA-ST-05" inside flex table with id "---grantor_tableId:-:FundingAccountTableId---"
+    Then I softly do not see "ReimbursementRollUpAnnouncement__c" field is editable inside enhanced grid
 
     Examples:
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @38853 @verifyEnteringOfRecommendedBudgetInRecommendedApplication @monu
+  @38853 @80054 @80055 @80056 @verifyEnteringOfRecommendedBudgetInRecommendedApplication @monu
   Scenario Outline: validate user is able to enter recommended budget in recommended application section
     And I reviewed the application "<Application Name>"
     And I login to "As a Grantor" app as "dynamicUser" user
@@ -2095,6 +2098,27 @@ Feature: Validate all scenarios in the Application Review
     And I click on top right button "Save" in flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---"
     Then I softly see "Saved Successfully!" inside flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---"
     Then I softly see value "$3,000.00" for title "FDM Pre-Encumbrance" inside table "---prdoh_tableId:-:RecommendedApplicationTableId---"
+    #80054 #monu
+    And I refresh the page
+    When I click on "Edit" icon for "<Announcement Name>" inside flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---"
+    And I enter value "Yes" into field "RecommendedForAward__c"
+    And I click on top right button "Save" in flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---"
+    Then I softly see "Saved Successfully!" inside flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---"
+    Then I softly see value "Yes" for title "Recommend for Funding" inside table "---prdoh_tableId:-:RecommendedApplicationTableId---"
+    #80055 #monu
+    And I refresh the page
+    When I click on "Edit" icon for "<Announcement Name>" inside flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---"
+    And I enter value "Automation Testing" into field "Comments__c"
+    And I click on top right button "Save" in flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---"
+    Then I softly see "Saved Successfully!" inside flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---"
+    Then I softly see value "Automation Testing" for title "Comments" inside table "---prdoh_tableId:-:RecommendedApplicationTableId---"
+    #80056 #monu
+    And I refresh the page
+    When I click on "Edit" icon for "<Announcement Name>" inside flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---"
+    And I enter value "30000" into field "RecommendedAmount__c"
+    And I click on top right button "Save" in flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---"
+    Then I softly see the following messages in the page details :
+      | You cannot recommend a budget greater than the subaward ceiling |
 
     Examples:
       | Announcement Name                                               | Application Name                                                |
@@ -2122,6 +2146,52 @@ Feature: Validate all scenarios in the Application Review
     When I enter value "Test Automation Justification For FDM" into field "fieldJustification__c"
     When I click on "Save" in the page details
     Then I softly see field "Justification" as "Test Automation Justification For FDM"
+
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+
+  @80050 @verifyDownloadAsPDFOptionAtFundingAccount @skipOnJenkins @monu
+  Scenario Outline: validate user is able to see expected contents inside downloaded file at Funding account section
+    And I reviewed the application "<Application Name>"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "Management Review" inside flex table with id "---announcement:-:reviewStepTableId---"
+    When I click on "Funding Decision Memo" in the page details
+    And I click on parallel menu button in flex table title "Funding Accounts"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Steps"
+    And I download the file
+    Then I softly see "Funding Accounts" on page "1" of "govgrants" pdf file
+    Then I softly see "Available Balance" on page "1" of "govgrants" pdf file
+
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+
+  @80057 @verifyDownloadAsPDFOptionAtRecommendedApplicationSection @skipOnJenkins @monu
+  Scenario Outline: validate user is able to see expected contents inside downloaded file at recommended application page block
+    And I reviewed the application "<Application Name>"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "Management Review" inside flex table with id "---announcement:-:reviewStepTableId---"
+    When I click on "Funding Decision Memo" in the page details
+    And I click on parallel menu button in flex table title "Recommended Applications"
+    And I select "Download as PDF" from parallel lines dropdown of "Recommended Applications"
+    And I download the file
+    Then I softly see "Application Title" on page "1" of "govgrants" pdf file
+    Then I softly see "<Application Name>" on page "1" of "govgrants" pdf file
 
     Examples:
       | Announcement Name                                               | Application Name                                                |

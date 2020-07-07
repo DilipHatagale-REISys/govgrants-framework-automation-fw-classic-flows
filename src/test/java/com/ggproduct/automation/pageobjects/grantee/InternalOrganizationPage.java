@@ -458,8 +458,8 @@ public class InternalOrganizationPage extends GranteeProjectManager {
      *
      * @param lookUpLink
      */
-    public void getLookUpLinkToHover(String lookUpLink) {
-        I.amPerforming().scroll().toMoveToElement(By.xpath("//dl//dd//a[contains(text(),'" + lookUpLink + "') or @class='tooltipstered']"), false);
+    public void getLookUpLinkToHover(String labelName, String lookUpLink) {
+        I.amPerforming().scroll().toMoveToElement(By.xpath("//dl//span[text()='" + labelName + "']/../following-sibling::dd//a[contains(text(),'" + lookUpLink + "') or @class='tooltipstered']"), false);
     }
 
     /**

@@ -18,9 +18,9 @@ public class InternalOrganizatioSteps {
         internalOrganizationPage.getHelpTextAtChildTable(tableId);
     }
 
-    @When("^I hover mouse on lookup link \"([^\"]*)\"$")
-    public void hoverOnLookUpLinkAtPageBlockDetail(String lookUpLink) {
-        internalOrganizationPage.getLookUpLinkToHover(lookUpLink);
+    @When("^I hover mouse on \"([^\"]*)\" lookup link \"([^\"]*)\"$")
+    public void hoverOnLookUpLinkAtPageBlockDetail(String labelName, String lookUpLink) {
+        internalOrganizationPage.getLookUpLinkToHover(labelName, lookUpLink);
     }
 
     @When("^I hovering mouse on page block help text icon inside table \"([^\"]*)\" with tooltip id \"([^\"]*)\"$")

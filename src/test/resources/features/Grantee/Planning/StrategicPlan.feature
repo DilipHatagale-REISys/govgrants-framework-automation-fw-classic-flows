@@ -45,7 +45,6 @@ Feature: Strategic Plan related scenarios
       | Status                |
       | Month-Year Created    |
       | EGMS ID               |
-      | Created By            |
 
   @61948 @validateStrategicPlan @validateStrategicPlanValidation @smoke
   Scenario: Verify validation while create new Strategic Plan
@@ -105,7 +104,6 @@ Feature: Strategic Plan related scenarios
       | Status                |
       | Month-Year Created    |
       | EGMS ID               |
-      | Created By            |
 
   @61987 @validateStrategicPlan @ValidateEmbeddedTableObjectivesShouldHaveAllTheRequiredColumns @positive
   Scenario Outline: Verify Embedded table objectives should have all the required columns
@@ -172,7 +170,8 @@ Feature: Strategic Plan related scenarios
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
-    Then I see total records count in flex table "{grantee_tableId:StrategicPlans}"
+    And I select value inside table "{grantee_tableId:StrategicPlans}" is "100"
+    Then I see total records count is same as total row of table id "{grantee_tableId:StrategicPlans}" on click "Next"
 
   @62001 @validateStrategicPlan @validateHeaderOverview @positive
   Scenario: Verify Header overview have all required fields in ReadOnly / View mode
