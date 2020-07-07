@@ -2073,7 +2073,7 @@ Feature: Validate all scenarios in the Application Review
     Then I softly see value "$500.00" for title "FDM Pre-Encumbrance" inside table "---grantor_tableId:-:FundingAccountTableId---"
     #80052 #monu
     When I click on "Edit" icon for "FA-ST-05" inside flex table with id "---grantor_tableId:-:FundingAccountTableId---"
-    Then I do not see "ReimbursementRollUpAnnouncement__c" field is editable inside enhanced grid
+    Then I softly do not see "ReimbursementRollUpAnnouncement__c" field is editable inside enhanced grid
 
     Examples:
       | Announcement Name                                               | Application Name                                                |
@@ -2117,7 +2117,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "Edit" icon for "<Announcement Name>" inside flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---"
     And I enter value "30000" into field "RecommendedAmount__c"
     And I click on top right button "Save" in flex table with id "---grantor_tableId:-:RecommendedApplicationTableId---"
-    Then I see the following messages in the page details :
+    Then I softly see the following messages in the page details :
       | You cannot recommend a budget greater than the subaward ceiling |
 
     Examples:
@@ -2146,6 +2146,52 @@ Feature: Validate all scenarios in the Application Review
     When I enter value "Test Automation Justification For FDM" into field "fieldJustification__c"
     When I click on "Save" in the page details
     Then I softly see field "Justification" as "Test Automation Justification For FDM"
+
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+
+  @80050 @verifyDownloadAsPDFOptionAtFundingAccount @skipOnJenkins @monu
+  Scenario Outline: validate user is able to see expected contents inside downloaded file at Funding account section
+    And I reviewed the application "<Application Name>"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "Management Review" inside flex table with id "---announcement:-:reviewStepTableId---"
+    When I click on "Funding Decision Memo" in the page details
+    And I click on parallel menu button in flex table title "Funding Accounts"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Steps"
+    And I download the file
+    Then I softly see "Funding Accounts" on page "1" of "govgrants" pdf file
+    Then I softly see "Available Balance" on page "1" of "govgrants" pdf file
+
+    Examples:
+      | Announcement Name                                               | Application Name                                                |
+      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+
+  @80057 @verifyDownloadAsPDFOptionAtRecommendedApplicationSection @skipOnJenkins @monu
+  Scenario Outline: validate user is able to see expected contents inside downloaded file at recommended application page block
+    And I reviewed the application "<Application Name>"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
+    When I click on "View" icon for "Management Review" inside flex table with id "---announcement:-:reviewStepTableId---"
+    When I click on "Funding Decision Memo" in the page details
+    And I click on parallel menu button in flex table title "Recommended Applications"
+    And I select "Download as PDF" from parallel lines dropdown of "Recommended Applications"
+    And I download the file
+    Then I softly see "Application Title" on page "1" of "govgrants" pdf file
+    Then I softly see "<Application Name>" on page "1" of "govgrants" pdf file
 
     Examples:
       | Announcement Name                                               | Application Name                                                |
@@ -2207,7 +2253,6 @@ Feature: Validate all scenarios in the Application Review
     And I wait for "6" seconds
     And I click on "Submit" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
->>>>>>> b03f019575d655b73608731a073f03a4b0f41532
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"

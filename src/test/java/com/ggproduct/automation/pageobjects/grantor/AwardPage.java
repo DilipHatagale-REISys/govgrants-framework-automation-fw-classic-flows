@@ -15,10 +15,10 @@ public class AwardPage extends GrantorProjectManager {
      * return if field is ediatble/not editable inside enhanced table
      */
     public void assertFieldIsNotEditableAtEnhancedTable(String usage, String fieldApiName) {
-        if (usage.equalsIgnoreCase("see")) {
-            Assert.assertTrue(isFieldIsEditableAtEnhancedTable(fieldApiName));
-        } else if (usage.equalsIgnoreCase("do not see")) {
-            Assert.assertFalse(isFieldIsEditableAtEnhancedTable(fieldApiName));
+        if (usage.equalsIgnoreCase("softly see")) {
+            I.amPerforming().assertionsTo().assertThat(isFieldIsEditableAtEnhancedTable(fieldApiName)).isTrue();
+        } else if (usage.equalsIgnoreCase("softly do not see")) {
+            I.amPerforming().assertionsTo().assertThat(isFieldIsEditableAtEnhancedTable(fieldApiName)).isFalse();
         }
     }
 
