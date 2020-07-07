@@ -44,7 +44,6 @@ Feature: Key Performance Indicators related scenarios
       | Title                 |
       | Status                |
       | Domain                |
-      | Created By            |
       | EGMS ID               |
 
   @62116 @KPI @validateTotalNumberOfRecords @smoke  @positive
@@ -52,7 +51,10 @@ Feature: Key Performance Indicators related scenarios
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
-    Then I see total records count is same as total row of table id "{grantee_tableId:KPITable}" and table name "flextable"
+    And I select value inside table "{grantee_sidebar:SetUpSubheaderName}" is "10"
+    And I pause execution for "3" seconds
+    Then I see total records count is same as total row of table id "{grantee_sidebar:SetUpSubheaderName}" on click "Next"
+
 
   @62116 @KPI @validateKPIGridView @smoke
   Scenario: Verify user can view created KPI.
@@ -217,6 +219,7 @@ Feature: Key Performance Indicators related scenarios
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
+    And I pause execution for "3" seconds
     And I enter value "Education" into field "fieldDomain__c"
     And I enter value "Automation Runtime KPI" into field "fieldTitle__c"
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
@@ -250,6 +253,7 @@ Feature: Key Performance Indicators related scenarios
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
+    And I pause execution for "3" seconds
     And I enter value "Education" into field "fieldDomain__c"
     And I enter value "Automation Runtime KPI" into field "fieldTitle__c"
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
@@ -407,6 +411,7 @@ Feature: Key Performance Indicators related scenarios
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:KPITable}"
+    And I pause execution for "3" seconds
     And I enter value "Education" into field "fieldDomain__c"
     And I enter value "Automation Runtime KPI" into field "fieldTitle__c"
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
@@ -418,7 +423,7 @@ Feature: Key Performance Indicators related scenarios
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime KPI}" in "{grantee_tableId:KPITable}" panel
     And I click on "Edit" icon for "{SavedValue:Automation Runtime KPI}" inside table
-    And I clear the value from field "fieldDomain__c"
+    And I enter value "--None--" into field "fieldDomain__c"
     And I clear the value from field "fieldDescription__c"
     And I clear the value from field "fieldTitle__c"
     And I clear the value from field "fieldUnit__c"
