@@ -13,8 +13,8 @@ Feature: Leads related scenarios
     When I hovering mouse on page block help text icon inside table "{grantee_tableId:LeadsNotYetQualified}" with tooltip id "LeadsFlexGridtooltip"
     Then I softly see "<new_helpText>" shown as help text
     Examples:
-      | new_helpText                                                                                                                                                      |
-      | · Leads Not Yet Qualified - All: Shows all leads that are posted on grants.gov or created within the system, and that have not been qualified by my organization. |
+      | new_helpText                                                                                                                                                                                                                                                                                                                |
+      | Displays leads posted on grants.gov or created within the system, and not been qualified by the organization.Note: “Leads Not Yet Qualified – All” and “Leads Not Yet Qualified – Closed” filters also show the leads archived within the last 90 days. To view all ‘Archived’ leads, please create a report in the system. |
 
   @62815 @validateLeadsListView-ClosedHelpText @wip   @positive
   Scenario Outline: Validate help text message at Leads page block inside enhancedLeadtable for Leads Not Yet Qualified -Closed
@@ -30,7 +30,7 @@ Feature: Leads related scenarios
       | new_helpText                                                                                                                                                                   |
       | · Leads Not Yet Qualified - Open: Shows leads that are not yet qualified by my organization and that have an application due date that is either in the future or not defined. |
 
-  @62815 @validateLeadsListView-OpenHelpText   @positive
+  @62815 @validateLeadsListView-OpenHelpText @wip  @positive
   Scenario Outline: Validate help text message at Leads page block inside enhancedLeadtable for Leads Not Yet Qualified -Open
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
@@ -72,8 +72,8 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "Automation Demo Lead" in "{grantee_tableId:LeadsNotYetQualified}" panel
     Then I softly see value "Automation Demo Lead" for title "Opportunity Title" inside table "{grantee_tableId:LeadsNotYetQualified}"
-    When I perform quick search for "Manual Lead 235" in "{grantee_tableId:LeadsNotYetQualified}" panel
-    Then I softly do not see value "Manual Lead 2" for title "Opportunity Title" inside table "{grantee_tableId:LeadsNotYetQualified}"
+    When I perform quick search for "InvalidAutomation Demo Lead" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    Then I softly see "No Records Found" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
 
   @62815 @validateAdvanceSearchIsWorkingForCorrectIncorrectValueAtLeadsTable  @positive
   Scenario: Validate advance search is working or not for incorrect search value at at Leads table
@@ -108,7 +108,7 @@ Feature: Leads related scenarios
     Then I see the header is "Federal Organization" in the page details
     Then I see the sub-header is "USDA-NRCS-NHO" in the page details
 
-  @62815 @validateTotalRecordCountForLead-Closed  @positive
+  @62815 @validateTotalRecordCountForLead-Closed @wip @positive
   Scenario: Validate total record count for Leads Not Yet Qualified-All list view at leads table for lead-closed
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
@@ -120,7 +120,7 @@ Feature: Leads related scenarios
     When I pause execution for "5" seconds
     Then I see total records count in flex table "{grantee_tableId:LeadsNotYetQualified}"
 
-  @62815 @validateTotalRecordCountForLead-Open   @positive
+  @62815 @validateTotalRecordCountForLead-Open  @wip @positive
   Scenario: Validate total record count for Leads Not Yet Qualified-All list view at leads table
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
@@ -133,7 +133,7 @@ Feature: Leads related scenarios
     And I pause execution for "3" seconds
     Then I see total records count is same as total row of table id "{grantee_tableId:LeadsNotYetQualified}" on click "Next"
 
-  @62815 @validateTotalRecordCountForUsersHavingSameOrganization  @positive
+  @62815 @validateTotalRecordCountForUsersHavingSameOrganization @wip @positive
   Scenario Outline: Validate total record count for Leads Not Yet Qualified-All list view with users having same organization at leads table
     Given I login to "As a Grantee" app as "<userType>" user
     When I navigate to "Opportunities" tab
@@ -247,14 +247,14 @@ Feature: Leads related scenarios
     Then I see field "{SavedValue:currentDate}" contains current date
 
   @62815 @validateTotalRecordCountAsPerRow-AllListView   @positive
-  Scenario: Validate total records count is equal to number of rows atLeads Not Yet Qualified Yet- AllListView table
+  Scenario: Validate total records count is equal to number of rows at Leads Not Yet Qualified- All List View table
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I pause execution for "4" seconds
-    When I perform quick search for "Secretaria Auxiliar de Salud Familiar" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I perform quick search for "National Science Foundation" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I pause execution for "4" seconds
     And I select value inside table "{grantee_tableId:LeadsNotYetQualified}" is "100"
     And I pause execution for "3" seconds
@@ -268,7 +268,7 @@ Feature: Leads related scenarios
     And I pause execution for "2" seconds
     And I click toggle button to select "Leads Not Yet Qualified - Open"
     When I pause execution for "4" seconds
-    When I perform quick search for "Federal" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I perform quick search for "National Science Foundation" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I pause execution for "4" seconds
     And I select value inside table "{grantee_tableId:LeadsNotYetQualified}" is "100"
     And I pause execution for "3" seconds
@@ -282,14 +282,14 @@ Feature: Leads related scenarios
     And I pause execution for "2" seconds
     And I click toggle button to select "Leads Not Yet Qualified - Closed"
     When I pause execution for "4" seconds
-    When I perform quick search for "State" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I perform quick search for "USDA-NRCS-NHO" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I pause execution for "4" seconds
     And I select value inside table "{grantee_tableId:LeadsNotYetQualified}" is "100"
     And I pause execution for "3" seconds
     Then I see total records count is same as total row of table id "{grantee_tableId:LeadsNotYetQualified}" on click "Next"
 
   @62830 @validateVisibilityOfEditButtonToRecordOwnerForLeads-NotYetQualified @smoke
-  Scenario Outline: Validate Edit should displayed only to record owner on page details for Leads Not Yet Qualified
+  Scenario Outline: Validate Edit button should be displayed only to record owner on page details for Leads Not Yet Qualified
     When I login to "As a Grantee" app as "<userType>" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -332,7 +332,7 @@ Feature: Leads related scenarios
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "ADMIN" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee ADMIN" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -370,13 +370,14 @@ Feature: Leads related scenarios
       | GRANTEE EXE |
 
   @62830 @validateVisibilityOfQualifyLeadButtonForExpiredLeads-NotYetQualified
-  Scenario: Validate Qualify Leads button should displayed only to any user for which application due date is expired on page details for Leads Not Yet Qualified
+  Scenario: Validate Qualify Leads button should not displayed to any user for which application due date is expired
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     When I enter "LeadsCreation" values from "Field_Values.xlsx"
     And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
+    And I enter value "-1" into field "fieldCloseDate__c"
     And I click modal button "Save and Continue"
     When I enter value "Other" into field "fieldOpportunityCategory__c"
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
@@ -400,6 +401,7 @@ Feature: Leads related scenarios
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     When I enter "LeadsCreation" values from "Field_Values.xlsx"
     And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
+    And I enter value "-1" into field "fieldCloseDate__c"
     And I click modal button "Save and Continue"
     When I enter value "Other" into field "fieldOpportunityCategory__c"
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
@@ -451,6 +453,7 @@ Feature: Leads related scenarios
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     When I enter "LeadsCreation" values from "Field_Values.xlsx"
     And I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
+    And I enter value "-1" into field "fieldCloseDate__c"
     And I click modal button "Save and Continue"
     When I enter value "Other" into field "fieldOpportunityCategory__c"
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
@@ -487,7 +490,7 @@ Feature: Leads related scenarios
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     When I navigate to "Overview" sub tab
-    Then I softly see field "State" as "Posted"
+    Then I softly see field "State" as "Active"
 
   @62830 @validateGeneralInformationSection-NotYetQualified  @positive
   Scenario: Validate General information of Overview sub tab at page details of Leads Not Yet Qualified
@@ -543,7 +546,7 @@ Feature: Leads related scenarios
     Then I see the header is "Federal Organization" in the page details
     Then I see the sub-header is "USDA-NRCS-NHO" in the page details
 
-  @62830 @validateGeneralInformationGrantsGovLinks @NotworkInProduct @smoke  @positive
+  @62830 @validateGeneralInformationGrantsGovLinks @NotworkInProduct @wip @smoke  @positive
   Scenario: Validate grants gov url is working fine and it opening new tab on click at page details of Leads Not Yet Qualified
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
@@ -585,8 +588,8 @@ Feature: Leads related scenarios
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:RelatedPrograms}"
-    When I perform quick search for "Agricultural Research Basic and Applied Research" in "{grantee_tableId:AssociateProjects}" panel
-    When I click "Associate" after selection of "Agricultural Research Basic and Applied Research" in the table "{grantee_tableId:PlanningObjectiveModalTableId}"
+    When I perform quick search for "Agricultural Research Basic and Applied Research" in "{grantee_tableId:AssociateExternalProgram}" panel
+    When I click "Associate" after selection of "Agricultural Research Basic and Applied Research" in the table "{grantee_tableId:AssociateExternalProgram}"
     When I pause execution for "3" seconds
     And I close "Associate" modal by clicking the top right x button
     Then I softly see value "Agricultural Research Basic and Applied Research" for title "Program Title" inside table "{grantee_tableId:RelatedPrograms}"
@@ -605,12 +608,13 @@ Feature: Leads related scenarios
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
+    And I navigate to "Overview" sub tab
     Then I see "<fieldDisplayNames>" in flex table header "{grantee_tableId:RelatedPrograms}"
 
     Examples:
       | fieldDisplayNames |
       | Program Number    |
-      | Program Title     |
+      | Title             |
 
   @62830 @validateRelatedProgramDetailPage @smoke  @positive
   Scenario: Validate user is able to navigated to related program detail page
@@ -625,14 +629,15 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
-    And I click on "Activate" in the page details
-    And I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:RelatedPrograms}"
-    When I perform quick search for "Agricultural Research Basic and Applied Research" in "{grantee_tableId:AssociateProjects}" panel
-    When I click "Associate" after selection of "Agricultural Research Basic and Applied Research" in the table "{grantee_tableId:PlanningObjectiveModalTableId}"
+    When I perform quick search for "Agricultural Research Basic and Applied Research" in "{grantee_tableId:AssociateExternalProgram}" panel
+    When I click "Associate" after selection of "Agricultural Research Basic and Applied Research" in the table "{grantee_tableId:AssociateExternalProgram}"
     When I pause execution for "3" seconds
     And I close "Associate" modal by clicking the top right x button
     And I refresh the page
+    And I click on "Activate" in the page details
+    And I pause execution for "2" seconds
+    And I navigate to "Overview" sub tab
     When I click on "View" icon for "Agricultural Research Basic and Applied Research" inside flex table with id "{grantee_tableId:RelatedPrograms}"
     Then I see the header is "Federal Program" in the page details
     Then I see the sub-header is "Agricultural Research Basic and Applied Research" in the page details
@@ -650,17 +655,16 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
-    And I click on "Activate" in the page details
     And I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:RelatedPrograms}"
-    When I perform quick search for "Direct and Counter-cyclical Payments Program" in "{grantee_tableId:AssociateProjects}" panel
-    Then I softly see value "Direct and Counter-cyclical Payments Program" for title "Program Title" inside table "{grantee_tableId:AssociateProjects}"
-    When I perform quick search for "2 Direct and Counter-cyclical Payments Program" in "{grantee_tableId:AssociateProjects}" panel
-    Then I softly do not see value "2 Direct and Counter-cyclical Payments Program" for title "Program Title" inside table "{grantee_tableId:AssociateProjects}"
-    When I perform quick search for "10.004" in "{grantee_tableId:AssociateProjects}" panel
-    Then I softly see value "10.004" for title "Program Number" inside table "{grantee_tableId:AssociateProjects}"
-    When I perform quick search for "2 10.004" in "{grantee_tableId:AssociateProjects}" panel
-    Then I softly do not see value "2 10.004" for title "Program Number" inside table "{grantee_tableId:AssociateProjects}"
+    When I perform quick search for "Direct and Counter-cyclical Payments Program" in "{grantee_tableId:AssociateExternalProgram}" panel
+    Then I softly see value "Direct and Counter-cyclical Payments Program" for title "Program Title" inside table "{grantee_tableId:AssociateExternalProgram}"
+    When I perform quick search for "2 Direct and Counter-cyclical Payments Program" in "{grantee_tableId:AssociateExternalProgram}" panel
+    Then I softly do not see value "2 Direct and Counter-cyclical Payments Program" for title "Program Title" inside table "{grantee_tableId:AssociateExternalProgram}"
+    When I perform quick search for "10.004" in "{grantee_tableId:AssociateExternalProgram}" panel
+    Then I softly see value "10.004" for title "Program Number" inside table "{grantee_tableId:AssociateExternalProgram}"
+    When I perform quick search for "2 10.004" in "{grantee_tableId:AssociateExternalProgram}" panel
+    Then I softly do not see value "2 10.004" for title "Program Number" inside table "{grantee_tableId:AssociateExternalProgram}"
 
   @62830 @validateRefreshAtListOfCFDATable  @positive
   Scenario: Validate Refresh option is working properly at List of CFDA table on modal
@@ -675,7 +679,6 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
-    And I click on "Activate" in the page details
     And I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:RelatedPrograms}"
     When I click on parallel lines menu bar with data target value "#toggleFlexTableSelectFOALeadCFDA"
@@ -695,20 +698,19 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
-    And I click on "Activate" in the page details
     And I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:RelatedPrograms}"
-    When I perform quick search for "Agricultural Research Basic and Applied Research" in "{grantee_tableId:AssociateProjects}" panel
-    When I click "Associate" after selection of "Agricultural Research Basic and Applied Research" in the table "{grantee_tableId:PlanningObjectiveModalTableId}"
+    When I perform quick search for "Agricultural Research Basic and Applied Research" in "{grantee_tableId:AssociateExternalProgram}" panel
+    When I click "Associate" after selection of "Agricultural Research Basic and Applied Research" in the table "{grantee_tableId:AssociateExternalProgram}"
     When I pause execution for "3" seconds
     And I close "Associate" modal by clicking the top right x button
     And I refresh the page
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:RelatedPrograms}"
-    When I perform quick search for "Agricultural Research Basic and Applied Research" in "{grantee_tableId:AssociateProjects}" panel
-    Then I softly do not see value "Agricultural Research Basic and Applied Research" for title "Program Title" inside table "{grantee_tableId:AssociateProjects}"
+    When I perform quick search for "Agricultural Research Basic and Applied Research" in "{grantee_tableId:AssociateExternalProgram}" panel
+    Then I softly do not see value "Agricultural Research Basic and Applied Research" for title "Program Title" inside table "{grantee_tableId:AssociateExternalProgram}"
 
   @62830 @validateRefreshAtRelatedProgramTable  @positive
-  Scenario: Validate Refresh option is working properly at related program table
+  Scenario: Validate Refresh option is working properly at External program table
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -720,19 +722,18 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
     And I click on "Save" in the page details
-    And I click on "Activate" in the page details
     And I pause execution for "2" seconds
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:RelatedPrograms}"
-    When I perform quick search for "Agricultural Research Basic and Applied Research" in "{grantee_tableId:AssociateProjects}" panel
-    When I click "Associate" after selection of "Agricultural Research Basic and Applied Research" in the table "{grantee_tableId:PlanningObjectiveModalTableId}"
+    When I perform quick search for "Agricultural Research Basic and Applied Research" in "{grantee_tableId:AssociateExternalProgram}" panel
+    When I click "Associate" after selection of "Agricultural Research Basic and Applied Research" in the table "{grantee_tableId:AssociateExternalProgram}"
     When I pause execution for "3" seconds
     And I close "Associate" modal by clicking the top right x button
     And I refresh the page
-    When I click on parallel lines menu bar with data target value "#RelatedLeadCFDANumbersFlexToggle"
-    And I select "Refresh" from parallel lines dropdown of "Related Programs"
+    When I click on parallel lines menu bar with data target value "#toggleFlexTableRelatedLeadCFDANumbers"
+    And I select "Refresh" from parallel lines dropdown of "External Programs"
     Then I see table is refreshing
 
-  @62830 @validateEligibiltySectionPageBlockDetails  @positive
+  @62830 @validateEligibilitySectionPageBlockDetails  @positive
   Scenario: Validate values of fields inside Eligibility page block at leads detail page
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
@@ -744,11 +745,13 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldOpportunityCategory__c"
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
+    When I enter value "Automation Testing" into field "fieldAdditionalEligibilityInformation__c"
+    When I enter value "Demo Leads creation for Automation" into field "fieldGrantorContactText__c"
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
     Then I softly see field "Eligible Applicants" as "State governments"
-    Then I softly see field "Additional Eligibility Information" as "Dummy eligibility information for Automation"
+    Then I softly see field "Additional Eligibility Information" as "Automation Testing"
 
   @62830 @validateAdditionalInformationPageBlockDetails  @positive
   Scenario: Validate values of fields inside additional information page block at leads detail page
@@ -762,6 +765,8 @@ Feature: Leads related scenarios
     When I enter value "Other" into field "fieldOpportunityCategory__c"
     When I enter value "Other" into field "fieldFundingInstrumentType__c"
     When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
+    When I enter value "Automation Testing" into field "fieldAdditionalEligibilityInformation__c"
+    When I enter value "Demo Leads creation for Automation" into field "fieldGrantorContactText__c"
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
@@ -786,12 +791,13 @@ Feature: Leads related scenarios
     Then I see "<fieldDisplayNames>" in flex table header "{grantee_tableId:AllQualificationsTable}"
 
     Examples:
-      | fieldDisplayNames       |
-      | Qualifying Organization |
-      | Qualified By            |
-      | Qualified On            |
-      | Impact                  |
-      | Relevance               |
+      | fieldDisplayNames     |
+      | EGMS ID               |
+      | Internal Organization |
+      | Qualified By          |
+      | Qualified On          |
+      | Impact                |
+      | Relevance             |
 
   @62830 @validateNoOfOrganizationAsZeroForAllQualificationTable  @positive
   Scenario: Validate All Qualifications table should not contain record
@@ -808,7 +814,7 @@ Feature: Leads related scenarios
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -833,7 +839,7 @@ Feature: Leads related scenarios
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -863,7 +869,7 @@ Feature: Leads related scenarios
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -904,7 +910,7 @@ Feature: Leads related scenarios
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -946,7 +952,7 @@ Feature: Leads related scenarios
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -972,7 +978,7 @@ Feature: Leads related scenarios
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
     When I click on "Save" in the page details
     When I pause execution for "3" seconds
-    When I re-login to "As a Grantee" app as "ADMIN" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1008,7 +1014,7 @@ Feature: Leads related scenarios
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1034,7 +1040,7 @@ Feature: Leads related scenarios
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
     When I click on "Save" in the page details
     When I pause execution for "3" seconds
-    When I re-login to "As a Grantee" app as "ADMIN" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee ADMIN" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1060,7 +1066,7 @@ Feature: Leads related scenarios
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1086,7 +1092,7 @@ Feature: Leads related scenarios
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
     When I click on "Save" in the page details
     When I pause execution for "3" seconds
-    When I re-login to "As a Grantee" app as "ADMIN" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee ADMIN" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1114,7 +1120,7 @@ Feature: Leads related scenarios
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1140,7 +1146,7 @@ Feature: Leads related scenarios
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
     When I click on "Save" in the page details
     When I pause execution for "3" seconds
-    When I re-login to "As a Grantee" app as "ADMIN" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee ADMIN" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1169,7 +1175,7 @@ Feature: Leads related scenarios
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1215,7 +1221,7 @@ Feature: Leads related scenarios
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1262,7 +1268,7 @@ Feature: Leads related scenarios
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1674,7 +1680,7 @@ Feature: Leads related scenarios
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1721,7 +1727,7 @@ Feature: Leads related scenarios
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
     When I click on "Save" in the page details
     And I click on "Convert to Opportunity" in the page details
-    When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1812,7 +1818,7 @@ Feature: Leads related scenarios
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1837,7 +1843,7 @@ Feature: Leads related scenarios
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
-    When I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantee" app as "Grantee PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I pause execution for "2" seconds
@@ -1950,7 +1956,7 @@ Feature: Leads related scenarios
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-    Then I softly see field "Qualifying Organization" as "Direccion General"
+    Then I softly see field "Qualifying Organization" as "Department of Health"
     Then I softly see field "Relevance" as "2 - Low"
     Then I softly see field "Impact" as "2 - Low"
     Then I softly see field "Justification" as "Test Justification For Automation"
@@ -2057,6 +2063,7 @@ Feature: Leads related scenarios
     And I pause execution for "2" seconds
     When I click on "Cancel" in the page details
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
+    And I pause execution for "3" seconds
     Then I see value "{SavedValue:Automation Runtime Lead}" for title "Opportunity Title" inside table "{grantee_tableId:QualifiedLeads}"
 
   @63041 @validateSaveAndContinueFunctionalityAtQualifyingLeadDetailPage @smoke
