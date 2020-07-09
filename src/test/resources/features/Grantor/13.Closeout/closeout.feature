@@ -326,3 +326,49 @@ Feature: Validate all scenarios in Closeout
     Then I see the following messages in the page details contains:
       | Type is Required to save.   |
       | Reason is Required to save. |
+
+
+  @40065 @87352 @40608 @89221 @89222 @89223 @ValidatingCloseoutRequest @meenakshi
+  Scenario: To verify the PM user should be able to create the  Closeout Request
+    And I navigate to "Overview" sub tab
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "GrantID"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    #40065
+    Then I softly see "Create Closeout Request" opens in overLay window
+    #87352
+    And I save the field labeled "Closeout" as "CloseoutName"
+    And I save the field labeled "Closeout Effective Date" as "CloseoutEffectiveDate"
+    Then I softly see field "Closeout" as "{SavedValue:CloseoutName}"
+    Then I softly see field "Closeout Effective Date" as "{SavedValue:CloseoutEffectiveDate}"
+    Then I softly see field "EGMS ID" as "{SavedValue:GrantID}"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I navigate to "Overview" sub tab
+    #40608
+    And I save the field labeled "Closeout Activities Due Date" as "CloseoutActivitiesDueDate"
+    Then I softly see field "Closeout Activities Due Date" as "{SavedValue:CloseoutActivitiesDueDate}"
+    Then I softly see field "Closeout Effective Date" as "{SavedValue:CloseoutEffectiveDate}"
+    When I navigate to "Responsibilities" sub tab
+    #89221
+    And I edit the following rows inline in flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "Edit" :
+      | Responsibility   | Name                     | Description                 |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+    Then I softly see that "{SavedValue:FO Username}" has been added in flextable with Id "---closeout:-:closeoutApproverTableId---"
+    Then I softly see that "{SavedValue:PM Username}" has been added in flextable with Id "---closeout:-:closeoutApproverTableId---"
+    #89222
+    When I enter the following values into flex table with id "---closeout:-:closeoutPeerReviewTableId---" by clicking "New" :
+      | Reviewer Name  | Responsibility| Description     | Due Date |
+      | Automation PM | Program Reviewer |Automation Test Description |07/24/2020 |
+    Then I softly see that "Automation PM" has been added in flextable with Id "---closeout:-:closeoutPeerReviewTableId---"
+    Then I softly see that "Program Reviewer" has been added in flextable with Id "---closeout:-:closeoutPeerReviewTableId---"
+    Then I softly see that "Automation Test Description" has been added in flextable with Id "---closeout:-:closeoutPeerReviewTableId---"
+    #89223
+    When I navigate to "Attachments" sub tab
+    When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
+      | Description                 | Required  | Status |
+      | Automation test description | Mandatory | Active |
+    Then I softly see value "Automation test description" for title "Description" inside table "CloseoutChecklistsFlexToggle"
+
