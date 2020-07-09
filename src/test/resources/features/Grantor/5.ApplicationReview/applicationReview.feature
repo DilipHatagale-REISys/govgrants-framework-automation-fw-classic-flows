@@ -2172,7 +2172,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "Management Review" inside flex table with id "---announcement:-:reviewStepTableId---"
     When I click on "Funding Decision Memo" in the page details
     And I click on parallel menu button in flex table title "Funding Accounts"
-    And I select "Download as PDF" from parallel lines dropdown of "Review Steps"
+    And I select "Download as PDF" from parallel lines dropdown of "Funding Accounts"
     And I download the file
     Then I softly see "Funding Accounts" on page "1" of "govgrants" pdf file
     Then I softly see "Available Balance" on page "1" of "govgrants" pdf file
