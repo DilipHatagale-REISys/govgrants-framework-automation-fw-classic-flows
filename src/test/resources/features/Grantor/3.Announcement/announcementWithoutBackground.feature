@@ -580,3 +580,36 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I navigate to "Home" tab
     Then I softly see "{SavedValue:PM Username}" inside flex table with id "---announcement:-:homeCollabFeedId---"
     Then I softly see "Hi" inside flex table with id "---announcement:-:homeCollabFeedId---"
+
+  @78086 @validatingReviewersForSMEAndManagementReviewForm @meenakshi
+  Scenario: To validate the Program review steps are copied to Announcement
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I navigate to "Setup" sub tab
+    And I expand nested table containing column value "SME Review"
+    When I enter the following values into flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Add" :
+      | Reviewer |
+      | Automation FO |
+    And I collapse nested table containing column value "SME Review"
+    And I expand nested table containing column value "Management Review"
+    When I enter the following values into flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Add" :
+      | Reviewer |
+      | Automation EXE |
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    When I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    When I navigate to "Setup" sub tab
+    And I expand nested table containing column value "SME Review"
+    Then I softly see value "Automation FO" for title "Reviewer" inside table "---announcement:-:preScreenReviewFormTableId---"
+    And I expand nested table containing column value "Management Review"
+    Then I softly see value "Automation EXE" for title "Reviewer" inside table "---announcement:-:preScreenReviewFormTableId---"
