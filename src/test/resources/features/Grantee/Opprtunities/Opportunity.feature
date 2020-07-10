@@ -2749,10 +2749,15 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2768,6 +2773,7 @@ Feature: Opportunities related scenarios
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
       | Responsibility     | Name                              | Description |
       | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
       | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
     And I click on "Save and Continue" in the page details
     And I click on "Submit for Approval" in the page details
@@ -2797,8 +2803,8 @@ Feature: Opportunities related scenarios
     Examples:
       | userType      |
       | GRANTEE PM    |
-      | GRANTEE ADMIN |
-      | GRANTEE PO    |
-      | GRANTEE FD    |
-      | GRANTEE EXE   |
-      | GRANTEE FO    |
+#      | GRANTEE ADMIN |
+#      | GRANTEE PO    |
+#      | GRANTEE FD    |
+#      | GRANTEE EXE   |
+#      | GRANTEE FO    |

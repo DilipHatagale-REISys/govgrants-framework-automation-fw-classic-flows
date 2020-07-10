@@ -2885,7 +2885,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @80059 @verifyDownloadAsPFDOptionAtNonRecommendedApplication @monu
+  @80059 @verifyDownloadAsPFDOptionAtNonRecommendedApplication @skipOnJenkins @monu
   Scenario Outline: Validate user is able to download pdf file at non recommended application section
     And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
@@ -3159,3 +3159,62 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
+  @80906 @80907 @80949 @81102 @81103 @81104 @81107 @VerifySubAwardDetails @monu
+  Scenario: Validate user is able to see details of created sub award
+    Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
+    When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
+    And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---" without waiting for record
+    And I click on "Create Subaward" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    Then I softly can see "Overview" sub tab at view detail page
+    Then I softly see "Subaward Information" page block displayed
+    Then I softly see field "Subaward Title" as "{SavedValue:Automation Runtime FDM Announcement}"
+    Then I softly see field "Funding Organization" as "Test Automation Organization"
+    Then I softly see field "Subaward Type" as "Initial"
+    Then I softly see field "Version Number" as "1"
+    #81107 #monu
+    Then I softly see "Program Number" in flex table header "{grantor_tableId:FederalProgramTavleTableId}"
+    Then I softly see "Program Title" in flex table header "{grantor_tableId:FederalProgramTavleTableId}"
+    Then I softly see "Organization Name" in flex table header "{grantor_tableId:FederalProgramTavleTableId}"
+    Then I softly see "Type" in flex table header "{grantor_tableId:FederalProgramTavleTableId}"
+    #80907 #monu
+    Then I softly see "Subrecipient Information" page block displayed
+    Then I softly see field "Subrecipient Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Then I softly see field "DUNS" as "123456788"
+    Then I softly see field "EIN" as "234567891"
+    #80949 #monu
+    And I navigate to "Budget" sub tab
+    Then I softly see "Project Period Details" page block displayed
+    When I save the field labeled "Project Period Start Date" as "startdate"
+    Then I softly see field "Project Period Start Date" as "{SavedValue:startdate}"
+    When I save the field labeled "Project Period End Date" as "endDate"
+    Then I softly see field "Project Period End Date" as "{SavedValue:endDate}"
+    #81102 #monu
+    Then I softly see "Budget Period Details" page block displayed
+    When I save the field labeled "Budget Period End Date" as "BPstartdate"
+    Then I softly see field "Budget Period End Date" as "{SavedValue:BPstartdate}"
+    When I save the field labeled "Carry-Forward" as "carryForwrdAmount"
+    Then I softly see field "Carry-Forward" as "{SavedValue:carryForwrdAmount}"
+    When I save the field labeled "Total Subaward Amount this Budget Period" as "SubAwardAmount"
+    Then I softly see field "Total Subaward Amount this Budget Period" as "{SavedValue:SubAwardAmount}"
+    #81103 #monu
+    Then I softly see "Funding Account" in flex table header "{grantor_tableId:FundingAccountInformationTableId}"
+    Then I softly see "Available Balance" in flex table header "{grantor_tableId:FundingAccountInformationTableId}"
+    Then I softly see "Pre-Encumbrance Balance" in flex table header "{grantor_tableId:FundingAccountInformationTableId}"
+    Then I softly see "Encumbrance" in flex table header "{grantor_tableId:FundingAccountInformationTableId}"
+    #81104 #monu
+    Then I softly see "Budget Category" in flex table header "{grantor_tableId:SubAwardBudgetTableId}"
+    Then I softly see "Awarded Budget" in flex table header "{grantor_tableId:SubAwardBudgetTableId}"
+    Then I softly see "Cash Match" in flex table header "{grantor_tableId:SubAwardBudgetTableId}"
+    Then I softly see "Non-Cash Match" in flex table header "{grantor_tableId:SubAwardBudgetTableId}"
+    Then I softly see "Total Match" in flex table header "{grantor_tableId:SubAwardBudgetTableId}"
+    Then I softly see "Other Leverage" in flex table header "{grantor_tableId:SubAwardBudgetTableId}"
+    Then I softly see "Total Project Cost" in flex table header "{grantor_tableId:SubAwardBudgetTableId}"
