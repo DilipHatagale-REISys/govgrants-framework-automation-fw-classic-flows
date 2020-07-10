@@ -2803,8 +2803,8 @@ Feature: Opportunities related scenarios
     Examples:
       | userType      |
       | GRANTEE PM    |
-#      | GRANTEE ADMIN |
-#      | GRANTEE PO    |
-#      | GRANTEE FD    |
-#      | GRANTEE EXE   |
-#      | GRANTEE FO    |
+      | GRANTEE ADMIN |
+      | GRANTEE PO    |
+      | GRANTEE FD    |
+      | GRANTEE EXE   |
+      | GRANTEE FO    |
