@@ -4097,7 +4097,7 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @80051 @38864 @validatingSMEReviewFormQuestions @meenakshi
+  @80051 @38864 @76503 @76946 @77105 @validatingSMEReviewFormQuestions @meenakshi
   Scenario: To verify,review question displayed by default for all review panel categories for Compliance Review review form in SME review step of planning phase
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -4226,3 +4226,128 @@ Feature: Validate all scenarios for program
     And I softly see value "Provide your assessment of project impact on beneficiaries." for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "5" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I refresh the page
+    #76503
+    When I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Management Review"
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I expand nested table containing column value "Return on Investment (ROI)"
+    And I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Is the project cost effective and has a cost estimate been provided?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "15" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Are the performance goals adequate?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "15" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Rate and describe overall value of the Project." for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "30" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I collapse nested table containing column value "Return on Investment (ROI)"
+    And I expand nested table containing column value "Strategic Alignment"
+    And I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Provide your assessment of project alignment with Agency Goals and Objectives." for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "15" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Assess the overall impact of this project." for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "20" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I refresh the page
+    #76946
+    When I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I expand nested table containing column value "Eligibility"
+    And I click on parallel menu button in flex table title "Review Questions"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Questions"
+    And I download the file
+    Then I softly see new tab is opened
+    And I switch to parent tab
+    And I close "Review Form" modal by clicking the top right x button
+    And I refresh the page
+    #77105
+    When I navigate to "Setup" sub tab
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I expand nested table containing column value "Environment"
+    And I click on parallel menu button in flex table title "Review Questions"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Questions"
+    And I download the file
+    Then I softly see new tab is opened
+
+  @77100 @77102 @77101 @77104 @76984 @validatingSMEReviewFormQuestions @meenakshi
+  Scenario Outline: To verify user allow to download PDF for review question in Schedule of Review Panel Categories in compliance review form for SME review step in planning phase
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I expand nested table containing column value "Schedule"
+    And I click on parallel menu button in flex table title "Review Questions"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Questions"
+    And I download the file
+    Then I softly see new tab is opened
+    And I switch to parent tab
+    #77102
+    When I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      | Question Order | Type    |
+      | 3             | Written |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    Then I softly see value "Written" for title "Type" against the value "3" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    #77101
+    And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---" without waiting for record
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    Then I softly do not see value "3" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    #77104
+    And I collapse nested table containing column value "Schedule"
+    And I expand nested table containing column value "Environment"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question | Type | Max Score |
+      | 4             | Test 4  | Yes/No | 0         |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    Then I softly see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Test 4" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I refresh the page
+    #76984
+    When I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I expand nested table containing column value "Completeness"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question | Type | Max Score |
+      | 5             | Test 5  | Yes/No | 0         |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    Then I softly see value "5" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Test 5" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "5" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "5" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
