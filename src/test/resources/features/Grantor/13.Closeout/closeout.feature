@@ -328,7 +328,7 @@ Feature: Validate all scenarios in Closeout
       | Reason is Required to save. |
 
 
-  @40065 @87352 @40608 @89221 @89222 @89223 @ValidatingCloseoutRequest @meenakshi
+  @40065 @87352 @40608 @89221 @89222 @89223 @89224 @89225 @89226 @89228 @89229 @89227 @ValidatingCloseoutRequest @meenakshi
   Scenario: To verify the PM user should be able to create the  Closeout Request
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -371,4 +371,35 @@ Feature: Validate all scenarios in Closeout
       | Description                 | Required  | Status |
       | Automation test description | Mandatory | Active |
     Then I softly see value "Automation test description" for title "Description" inside table "CloseoutChecklistsFlexToggle"
-
+    #89224
+    And I click on "Attach" icon for "Automation test description" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" with wait for record
+    Then I softly see "Upload Document" opens in overLay window
+    When I upload file "AttachmentTesting.pdf" into library
+    And I click modal button "Save"
+    Then I see the following messages in the page details contains:
+      | Attachment saved successfully. |
+    When I close "Upload Document" modal by clicking the top right x button
+    #89225
+    And I click on hyperlink containing value "View"
+    And I click on "View" icon for "Automation test description" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" with wait for record
+    Then I softly see new tab is opened
+    And I switch to parent tab
+    And I click on top right button "Add Files" in flex table with id "---closeout:-:closeoutFilesTableId---"
+    #89226
+    When I upload attachment "Permanent Records.xlsx" of type "Other" from computer
+    #89228
+    And I click on "Download" icon for "Other" inside flex table with id "---closeout:-:closeoutFilesTableId---" with wait for record
+    Then I softly verify that the file "Permanent Records.xlsx" is downloaded
+    #89229
+    And I click on "View" icon for "Other" inside flex table with id "---closeout:-:closeoutFilesTableId---" with wait for record
+    Then I softly see "View" opens in overLay window
+    Then I see field "Title" as "Permanent Records.xlsx" on modal
+    Then I see field "Classification" as "Other" on modal
+    When I close "View" modal by clicking the top right x button
+    #89227
+    And I click on top right button "Add Files" in flex table with id "---closeout:-:closeoutFilesTableId---"
+    When I upload file present in the flex table "---closeout:-:closeoutAddFileTableId---" from library
+    Then I softly see value "data.xlsx" for title "Title" inside table "---closeout:-:closeoutFilesTableId---"
+    Then I softly can see row level action button "Download" against "data.xlsx" in flex table with id "---closeout:-:closeoutFilesTableId---"
+    Then I softly can see row level action button "View" against "data.xlsx" in flex table with id "---closeout:-:closeoutFilesTableId---"
+    Then I softly can see row level action button "Delete" against "data.xlsx" in flex table with id "---closeout:-:closeoutFilesTableId---"

@@ -4097,3 +4097,257 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
+  @80051 @38864 @76503 @76946 @77105 @validatingSMEReviewFormQuestions @meenakshi
+  Scenario: To verify,review question displayed by default for all review panel categories for Compliance Review review form in SME review step of planning phase
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
+    And I expand nested table containing column value "Budget"
+    And I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Has the applicant submitted a sufficient budget narrative matching the categories contained in the budget?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "15" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Is the budget reasonable given the proposed scope of work?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "15" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Is the budget reasonable given the proposed scope of work?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "10" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Is the need for proposed budget item adequately supported?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "5" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Are proposed indirect costs consistent with applicant's approved indirect cost rate plan?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "10" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "6" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "How much are similar projects typically awarded?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Currency" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I collapse nested table containing column value "Budget"
+    And I expand nested table containing column value "Match"
+    And I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Does the application meet the match requirement outlined in the funding opportunity?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "10" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Are the match costs allowable, allocable, and reasonable?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "5" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Does the application include leverage funds? Is documentation of the leverage included in the application?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "5" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I collapse nested table containing column value "Match"
+    And I expand nested table containing column value "Program Income"
+    And I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Will program income be generated during this project?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "10" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Does the budget outline how program income will be used and tracked? Are the proposed program income uses consistent with program requirements?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "10" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I refresh the page
+    #38864
+    When I navigate to "Setup" sub tab
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I expand nested table containing column value "Capability"
+    And I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Does the applicant demonstrate sufficient management and organizational capacity?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "10" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Does the applicant have the capacity to successfully implement the project on schedule? Do recent past performance and/or resolution efforts on past monitoring/audit findings suggest the applicant has the capacity to implement the project successfully?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "25" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I collapse nested table containing column value "Capability"
+    And I expand nested table containing column value "Approach"
+    And I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Has the applicant provided a clear project narrative?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "10" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Is the management approach (roles and responsibilities of staff/partners) clear and consistent with funding opportunity requirements?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "7" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "How well is the project scope aligned with the funding opportunity?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Low/Med/High" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "3" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "What state unmet needs are addressed by the project proposal?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "5" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Is the need for the project clearly identified?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "6" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "What activities are covered by the project?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "10" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I collapse nested table containing column value "Approach"
+    And I expand nested table containing column value "Impact"
+    And I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Are performance metrics appropriate?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "10" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Have they identified and described beneficiaries (e.g. population served or final recipients of grant funds)?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "10" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Provide your assessment of project impact on beneficiaries." for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "5" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I refresh the page
+    #76503
+    When I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Management Review"
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I expand nested table containing column value "Return on Investment (ROI)"
+    And I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Is the project cost effective and has a cost estimate been provided?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "15" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Are the performance goals adequate?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "15" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "3" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Rate and describe overall value of the Project." for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "30" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I collapse nested table containing column value "Return on Investment (ROI)"
+    And I expand nested table containing column value "Strategic Alignment"
+    And I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Provide your assessment of project alignment with Agency Goals and Objectives." for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "15" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Assess the overall impact of this project." for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I softly see value "20" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I refresh the page
+    #76946
+    When I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I expand nested table containing column value "Eligibility"
+    And I click on parallel menu button in flex table title "Review Questions"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Questions"
+    And I download the file
+    Then I softly see new tab is opened
+    And I switch to parent tab
+    And I close "Review Form" modal by clicking the top right x button
+    And I refresh the page
+    #77105
+    When I navigate to "Setup" sub tab
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I expand nested table containing column value "Environment"
+    And I click on parallel menu button in flex table title "Review Questions"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Questions"
+    And I download the file
+    Then I softly see new tab is opened
+
+  @77100 @77102 @77101 @77104 @76984 @validatingSMEReviewFormQuestions @meenakshi
+  Scenario Outline: To verify user allow to download PDF for review question in Schedule of Review Panel Categories in compliance review form for SME review step in planning phase
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I expand nested table containing column value "Schedule"
+    And I click on parallel menu button in flex table title "Review Questions"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Questions"
+    And I download the file
+    Then I softly see new tab is opened
+    And I switch to parent tab
+    #77102
+    When I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
+      | Question Order | Type    |
+      | 3             | Written |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    Then I softly see value "Written" for title "Type" against the value "3" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    #77101
+    And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---" without waiting for record
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    Then I softly do not see value "3" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    #77104
+    And I collapse nested table containing column value "Schedule"
+    And I expand nested table containing column value "Environment"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question | Type | Max Score |
+      | 4             | Test 4  | Yes/No | 0         |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    Then I softly see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Test 4" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "4" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    And I close "Review Form" modal by clicking the top right x button
+    And I refresh the page
+    #76984
+    When I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I expand nested table containing column value "Completeness"
+    When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question | Type | Max Score |
+      | 5             | Test 5  | Yes/No | 0         |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    Then I softly see value "5" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Test 5" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Edit" against "5" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Then I softly can see row level action button "Delete" against "5" in flex table with id "---program:-:programReviewPanelQuestionsTableId---"
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
