@@ -133,6 +133,12 @@ public class ProjectWebServices {
         return response.jsonPath().getMap("$");
     }
 
+    public static void recaptchaChange(boolean shouldBeDisabled) {
+        String finalEndPoint = endPoint + "/services/apexrest/recaptcha?shouldBeDisabled=" + shouldBeDisabled;
+        Response response = I.amPerforming().restHttp().postCall(null, null, finalEndPoint, "Authorization", "Bearer " + tokenString, null);
+        assertStatusCode(response);
+    }
+
     protected static String getTokenEndPoint() throws RuntimeException {
         String defaultEndPointGetToken = "";
 

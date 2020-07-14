@@ -44,6 +44,17 @@ public class HomePage extends GrantorProjectManager {
     }
 
     /**
+     * check out to YopMail
+     *
+     * @param mailid
+     */
+    public void ckeckoutYopMail(String mailid) {
+        I.amPerforming().actionToGet().newURL("http://www.yopmail.com/en/");
+        I.amPerforming().textInput().in(By.xpath("//input[@id='login']"), mailid);
+        I.amPerforming().click().on(By.xpath("//input[@value='Check Inbox' and @type='submit']"));
+    }
+
+    /**
      * @param tabName - Main tab name
      * @param tableID - pending task table ID
      * @return - count of total records available in pending task
@@ -69,7 +80,7 @@ public class HomePage extends GrantorProjectManager {
 
     public void assertTaskCount(String tabName, String tableID, boolean isSoftly) {
         String finalCount = I.amPerforming().actionToGet().text(By.xpath("//div[@class='container-fluid']//li//span[text()='" + tabName + "']/../..//span[contains(@ng-bind,'taskCount')]"));
-        if (isSoftly){
+        if (isSoftly) {
             I.amPerforming().assertionsTo().assertThat(finalCount).isEqualTo(findTaskCount(tabName, tableID));
         } else {
             Assert.assertEquals(findTaskCount(tabName, tableID), finalCount);
@@ -95,7 +106,7 @@ public class HomePage extends GrantorProjectManager {
     }
 
     public void assertFileInWorkspace(String recordId, boolean isSoftly) {
-        if (isSoftly){
+        if (isSoftly) {
             I.amPerforming().assertionsTo().assertThat(isFileDisplayedInWorkspace(recordId)).isTrue();
         } else {
             Assert.assertTrue(isFileDisplayedInWorkspace(recordId));
@@ -104,6 +115,7 @@ public class HomePage extends GrantorProjectManager {
 
     /**
      * handles to add notes on home tab
+     *
      * @param title
      * @param description
      */
@@ -114,6 +126,7 @@ public class HomePage extends GrantorProjectManager {
 
     /**
      * To select value from global search drop down
+     *
      * @param dropDownValue - value to be selected
      */
     public void selectValueFromGlobalSearchDropDown(String dropDownValue) {
@@ -124,9 +137,9 @@ public class HomePage extends GrantorProjectManager {
     /**
      * To save the todays date as well as date after one year
      */
-    public void saveTodaysDate(){
-        I.amPerforming().propertiesFileOperationsTo().saveValue("Todays Date",I.amPerforming().actionToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
-        I.amPerforming().propertiesFileOperationsTo().saveValue("Expiration Date",I.amPerforming().actionToGet().dateWithOffsetFromGivenDate(I.amPerforming().actionToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")),365,DateTimeFormatter.ofPattern("M/d/yyyy")));
+    public void saveTodaysDate() {
+        I.amPerforming().propertiesFileOperationsTo().saveValue("Todays Date", I.amPerforming().actionToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
+        I.amPerforming().propertiesFileOperationsTo().saveValue("Expiration Date", I.amPerforming().actionToGet().dateWithOffsetFromGivenDate(I.amPerforming().actionToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")), 365, DateTimeFormatter.ofPattern("M/d/yyyy")));
     }
 
     /**
@@ -143,15 +156,15 @@ public class HomePage extends GrantorProjectManager {
         I.amPerforming().textInput().in(userLookupSearchLocator, Keys.ENTER.toString());
 
         if (isSoftly) {
-            if (canOrCannot){
+            if (canOrCannot) {
                 I.amPerforming().assertionsTo().assertThat(presentUsers.contains(userName)).isFalse();
-            }else {
+            } else {
                 I.amPerforming().assertionsTo().assertThat(presentUsers.contains(userName)).isTrue();
             }
         } else {
-            if (canOrCannot){
+            if (canOrCannot) {
                 Assert.assertFalse(presentUsers.contains(userName));
-            }else {
+            } else {
                 Assert.assertTrue(presentUsers.contains(userName));
             }
         }

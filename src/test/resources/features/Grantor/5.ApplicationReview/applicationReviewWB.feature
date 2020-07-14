@@ -401,7 +401,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                                            |
       | {SavedValue:Automation Runtime Announcement for Application} |
 
-  @38857 @80255 @verifySuccessMessageForNotifyApplication @monu
+  @38857 @80254 @80255 @80508 @verifySuccessMessageForNotifyApplication @monu
   Scenario Outline: To validate system generated success message ,after notifying applicants for Rejected Application
     And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
@@ -448,6 +448,8 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
+    #80254 #monu
+    Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     And I click on "Next Review Step" in the page details
@@ -546,6 +548,8 @@ Feature: Validate all scenarios in the Application Review without background
     Then I softly see that "{SavedValue:FO Username}" has been added in flextable with Id "---applicationReview:-:reviewersTableId---"
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:applicationAssignTableId---"
     When I click on top right button "Reject" in flex table with id "---applicationReview:-:applicationAssignTableId---"
+    #80508 #monu
+    Then I softly can see top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     And I pause execution for "3" seconds
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
@@ -2480,7 +2484,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
     When I "Send to Owner" in the approval decision
     Then I softly see the following messages in the page details contains:
-      | Successfully sent to Owner. It may take few minutes to process record|
+      | Successfully sent to Owner. It may take few minutes to process record |
 
     Examples:
       | Announcement Name                                               | Application Name                                                |
@@ -2863,7 +2867,7 @@ Feature: Validate all scenarios in the Application Review without background
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | No                   | Recommended |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | No                    | Recommended |
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -3073,7 +3077,7 @@ Feature: Validate all scenarios in the Application Review without background
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | No                   | Recommended |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | No                    | Recommended |
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -3159,7 +3163,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @80906 @80907 @80949 @81102 @81103 @81104 @81107 @VerifySubAwardDetails @monu
+  @80906 @80907 @80908 @80909 @80949 @81102 @81103 @81104 @81107 @VerifySubAwardDetails @monu
   Scenario: Validate user is able to see details of created sub award
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -3185,6 +3189,24 @@ Feature: Validate all scenarios in the Application Review without background
     Then I softly see "Program Title" in flex table header "{grantor_tableId:FederalProgramTavleTableId}"
     Then I softly see "Organization Name" in flex table header "{grantor_tableId:FederalProgramTavleTableId}"
     Then I softly see "Type" in flex table header "{grantor_tableId:FederalProgramTavleTableId}"
+    #80909 #monu
+    Then I softly see "Project Role" in flex table header "{grantor_tableId:SubAwardContactsTableId}"
+    Then I softly see "Name" in flex table header "{grantor_tableId:SubAwardContactsTableId}"
+    Then I softly see "Email" in flex table header "{grantor_tableId:SubAwardContactsTableId}"
+    Then I softly see "Is Key Personnel" in flex table header "{grantor_tableId:SubAwardContactsTableId}"
+    Then I softly see "Is User" in flex table header "{grantor_tableId:SubAwardContactsTableId}"
+    Then I softly see value "Project Director/Manager" for title "Project Role" against the value "{SavedValue:SPI Username}" inside table "{grantor_tableId:SubAwardContactsTableId}"
+    #80908 #monu
+    When I save the field labeled "Address Line 1" as "ADL1"
+    Then I softly see field "Address Line 1" as "{SavedValue:ADL1}"
+    When I save the field labeled "City" as "City"
+    Then I softly see field "City" as "{SavedValue:City}"
+    When I save the field labeled "County" as "County"
+    Then I softly see field "County" as "{SavedValue:County}"
+    When I save the field labeled "State" as "State"
+    Then I softly see field "State" as "{SavedValue:State}"
+    When I save the field labeled "Zip Code" as "ZipNo"
+    Then I softly see field "Zip Code" as "ZipNo"
     #80907 #monu
     Then I softly see "Subrecipient Information" page block displayed
     Then I softly see field "Subrecipient Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"

@@ -109,3 +109,31 @@ Feature: Validate all scenarios for SME Registration
     Then I see the header is "Registration" in the page details
     Then I see the sub-header is "Step 1 of 1" in the page details
     And I enter "OrgProfileCompleteDetail" values from "UserRegistration_Field_Values.xlsx"
+
+  @33847 @VerifyInternalSubricepientAndSMEReviewerContact @monu
+  Scenario: Validate user is able to see all expected contacts
+    Given I login to "As a Grantor" app as "PM" user
+    And I navigate to "Home" tab
+    When I navigate to "{grantor_sidebar:InternalLink}" content inside "{grantor_sidebar:ContactSubheaderName}" subheader on left panel
+    When I perform quick search for "{grantee_testData:InternalContacts}" in "{grantor_tableId:InternalContactsTableId}" panel
+    Then I softly see value "{grantee_testData:InternalContacts}" for title "Full Name" inside table "{grantor_tableId:InternalContactsTableId}"
+    When I navigate to "{grantor_sidebar:SubrecipientsLink}" content inside "{grantor_sidebar:ContactSubheaderName}" subheader on left panel
+    When I perform quick search for "{grantee_testData:SMEContact}" in "{grantor_tableId:InternalContactsTableId}" panel
+    Then I softly see value "{grantee_testData:SMEContact}" for title "Full Name" inside table "{grantor_tableId:InternalContactsTableId}"
+    When I navigate to "{grantor_sidebar:SMEReviewersLink}" content inside "{grantor_sidebar:ContactSubheaderName}" subheader on left panel
+    When I perform quick search for "{grantee_testData:SMEReviewerContact}" in "{grantor_tableId:PotentialReviewerContactTableId}" panel
+    Then I softly see value "{grantee_testData:SMEReviewerContact}" for title "Full Name" inside table "{grantor_tableId:PotentialReviewerContactTableId}"
+
+  @33837 @VerifySystemDisplayAllRelatedTasks @monu
+  Scenario: Validate user is able to see all expected contacts
+    Given I login to "As a Grantor" app as "PM" user
+    And I navigate to "Home" tab
+    When I navigate to "{grantor_sidebar:PendingTaskLink}" content inside "{grantor_sidebar:MyTasksLinkName}" subheader on left panel
+    Then I softly can see page block "Pending Tasks (Assigned To Me)"
+    Then I softly can see page block "Pending Tasks (Assigned By Me)"
+    Then I softly see "In Progress" value in flex table id "---grantor_tableId:-:PendingTaskAssignedToMeTableId---"
+    Then I softly see "Not Started" value in flex table id "---grantor_tableId:-:PendingTaskAssignedToMeTableId---"
+    When I navigate to "{grantor_sidebar:CompletedTaskLink}" content inside "{grantor_sidebar:MyTasksLinkName}" subheader on left panel
+    Then I softly can see page block "Completed Tasks (Assigned To Me)"
+    Then I softly can see page block "Completed Tasks (Assigned By Me)"
+    Then I softly see "Completed" value in flex table id "---grantor_tableId:-:CompletedTaskAssignedToMeTableId---"
