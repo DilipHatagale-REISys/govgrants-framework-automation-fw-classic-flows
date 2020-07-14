@@ -1225,3 +1225,17 @@ Feature: Validate all scenarios in Desk Review
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---deskreview:-:internalActiveGrants---" panel
     Then I softly see "No Records Found" inside flex table with id "---deskreview:-:internalActiveGrants---"
+
+  @56368 @viewCreatedDeskReview @meenakshi
+  Scenario: User will be able to view the list of all Site Visit / Desk Review created for Awards under Monitoring tab - Desk Review
+    And I save the field labeled "EGMS ID" as "DeskReviewEGMSID"
+    Then I softly see field "EGMS ID" as "{SavedValue:DeskReviewEGMSID}"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---deskreview:-:internalActiveGrants---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalActiveGrants---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
+    Given I navigate to "Management" sub tab
+    Then I softly see value "{SavedValue:DeskReviewEGMSID}" for title "EGMS ID" inside table "---deskreview:-:managementInitiateDRtableid---"

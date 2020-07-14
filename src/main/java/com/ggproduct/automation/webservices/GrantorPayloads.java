@@ -590,11 +590,22 @@ public class GrantorPayloads {
                 return quarterlyProgressReportAward(json);
             case "PROGRESS_REPORT_SEMI_ANNUALLY":
                 return semiAnnuallyProgressReportAward(json);
+            case "CREATE_AWARD_EXE":
+                return createStandaloneAwardUsingEXEUser(json);
 
             default:
                 return json;
         }
     }
+    private JsonObject createStandaloneAwardUsingEXEUser(JsonObject json) {
+        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+        grant.addProperty("OwnerId",ProjectWebServices.getIdOf("User","Automation EXE"));
+        newA.add(grant);
+        json.add("Grant",newA);
+        return json;
+    }
+
 
     private JsonObject semiAnnuallyProgressReportAward(JsonObject json) {
         JsonObject paymentRequestSchedule = json.getAsJsonArray("PaymentRequestSchedule").get(1).getAsJsonObject();
