@@ -56,4 +56,9 @@ public  class HomeSteps {
     public void completeProcessOnYopmailPortal(String emailId) {
         homePage.performOperationOnYopmail(emailId);
     }
+
+    @And("I checkout to yopmail with mailid {string}")
+    public void iCheckoutToYopmailWithMailid(String mailid) {
+        homePage.ckeckoutYopMail(mailid);
+    }
 }

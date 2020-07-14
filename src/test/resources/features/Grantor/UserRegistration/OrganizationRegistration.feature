@@ -97,6 +97,80 @@ Feature: Validate all registration related scenarios
     Then I see "USA" text enter in field "fieldPrimaryRepCountry__c"
     Then I see "Prince George’s" text enter in field "fieldCounty__c"
 
+  @82024 @verifyFilledDetailsPopulatedAtAuthorizedDetailsSection-Organization @monu
+  Scenario:Verify user should be able to see filled details at organization address id getting populated at Authorized section
+    Given I begin "Organization" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
+    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
+    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    Then I see "Vintage Plaza" text enter in field "fieldPrimaryRepAddress1__c"
+    Then I see "Sterling" text enter in field "fieldPrimaryRepCity__c"
+    Then I see "20171" text enter in field "fieldPrimaryRepZipCode__c"
+
+  @82025 @verifyFilledDetailsAtAuthorizedRepresentativePage-Organization @monu
+  Scenario:Verify user should be navigated to captch page after filling all details at authorised representative detail
+    Given I begin "Organization" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
+    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
+    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I see the ReCaptcha input box
+
+  @82030 @verifyEmailNotificationForOrganizationRegistration-Organization @monu @wip
+  Scenario:Verify user should be able to see email notificatio after queued email is approved
+    Given I begin "Organization" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
+    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
+    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I checkout to yopmail with mailid "AutomationOrganization@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Organization Registration for {SavedValue:RuntimeOrgName} has been Approved
+      """
+    Then I see the mail text is as follows :
+      """
+       {regconfirmationmailbody:mailbody}
+      """
+
+  @82784 @VerifyRegistrationPages2of2-Individual @monu
+  Scenario:Verify user should be navigated to Registration step 2 of 2 after clicking on save button on registration step 1 of 2 page
+    Given I begin "Individual" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456789" into "Social Security Number (SSN)" on old form
+    When I enter value as "IndividualRegistration@yopmail.com" into "Email" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    Then I see the header is "Registration" in the page details
+    Then I see the sub-header is "Step 2 of 2" in the page details
+
   @82027 @verifyRegisteredDetailsInsidePendingTask-Organization @monu @wip
   Scenario:Verify if user clicks on download option inside Attachment section new tab getting opened
     Given I begin "Organization" registration
