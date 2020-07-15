@@ -188,3 +188,10 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Examples:
       | User    |
       | AUDITOR |
+
+  @69129 @validateAuditorReassign @meenakshi
+  Scenario: Verify Auditor profile would not have tasks assigned  Re assign will populate no tasks to reassign
+    Given I login to "As a Grantor" app as "PM" user
+    When I navigate to "Home" tab
+    And I navigate to "Reassign" content inside "My Tasks" subheader on left panel
+    Then I softly cannot see user "AUDITOR" in the reassign box
