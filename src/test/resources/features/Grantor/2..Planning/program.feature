@@ -3191,9 +3191,9 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Capability section because it is weighted.|
-      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Approach section because it is weighted.|
-      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Impact section because it is weighted.|
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Capability section because it is weighted. |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Approach section because it is weighted.   |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Impact section because it is weighted.     |
 
   @77403 @validatingSMEReviewFormQuestions @meenakshi
   Scenario: To validate system generated validation message, When Max score:0, for all review questions under the Capability review panel categories and  Weight is present, in program review form of SME review steps in planning phase
@@ -3240,8 +3240,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      |Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Match section because it is weighted. |
-
+      | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Match section because it is weighted. |
 
 
   @77405 @77406 @validatingSMEReviewFormQuestions @meenakshi
@@ -3302,8 +3301,8 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      |Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Schedule section because it is weighted. |
-      |Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Environment section because it is weighted.|
+      | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Schedule section because it is weighted.    |
+      | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Environment section because it is weighted. |
 
 
   @77408 @validatingPreScreenReviewFormQuestions @meenakshi
@@ -3322,7 +3321,7 @@ Feature: Validate all scenarios for program
       | Step Name         | Step Weight (%) |
       | Management Review | 40              |
       | SME Review        | 30              |
-      | Pre-Screen Review | 40               |
+      | Pre-Screen Review | 40              |
     And I expand nested table containing column value "Pre-Screen Review"
     And I click on "Edit" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
     When I enter value "30" into field "Weight__c"
@@ -3344,10 +3343,9 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      |Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Eligibility section because it is weighted.|
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Eligibility section because it is weighted. |
 
-
-  @77487 @77602 @77603 @ValidatingMinimumNoOfReviewsShouldBeGreaterThanZeroInProgramFiscalAndComplianceReviewForm @meenakshi
+  @77487 @77602 @77603 @77604 @ValidatingMinimumNoOfReviewsShouldBeGreaterThanZeroInProgramFiscalAndComplianceReviewForm @meenakshi
   Scenario Outline: To validate system generated error message, if Form Weight (%) : 0% ,Minimum Number of Reviews per Application : 0 , Required? : checked ,for Program,Fiscal and Compliance Review form, in SME Review step in planning phase
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
@@ -3367,41 +3365,54 @@ Feature: Validate all scenarios for program
     And I expand nested table containing column value "SME Review"
     #77487
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Required?  | Minimum Number of Reviews per Application|Form Weight (%)|
-      | Program Review        |  Unchecked   | 0                                         | 0              |
+      | Form Name      | Required? | Minimum Number of Reviews per Application | Form Weight (%) |
+      | Program Review | Unchecked | 0                                         | 0               |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
       | Form Name      | Required? |
       | Program Review | Checked   |
     Then I softly see the following messages in the page details :
-      |For required panel the Minimum Number of Reviews should be greater than zero.|
+      | For required panel the Minimum Number of Reviews should be greater than zero. |
     #77602
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Required?  |Minimum Number of Reviews per Application|Form Weight (%)|
-      | Fiscal Review        |  Unchecked   |0                                         | 0              |
+      | Form Name     | Required? | Minimum Number of Reviews per Application | Form Weight (%) |
+      | Fiscal Review | Unchecked | 0                                         | 0               |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      | Form Name      | Required? |
+      | Form Name     | Required? |
       | Fiscal Review | Checked   |
     Then I softly see the following messages in the page details :
-      |For required panel the Minimum Number of Reviews should be greater than zero.|
+      | For required panel the Minimum Number of Reviews should be greater than zero. |
     #77603
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Required?  |Minimum Number of Reviews per Application | Form Weight (%) |
-      | Compliance Review       |  Unchecked   |0                                         | 0              |
+      | Form Name         | Required? | Minimum Number of Reviews per Application | Form Weight (%) |
+      | Compliance Review | Unchecked | 0                                         | 0               |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      | Form Name      | Required? |
+      | Form Name         | Required? |
       | Compliance Review | Checked   |
     Then I softly see the following messages in the page details :
-      |For required panel the Minimum Number of Reviews should be greater than zero.|
+      | For required panel the Minimum Number of Reviews should be greater than zero. |
+    #77604 #monu
+    And I refresh the page
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
+      | Form Name  | Required? | Minimum Number of Reviews per Application | Form Weight (%) |
+      | Pre-Screen | Unchecked | 0                                         | 0               |
+    Then I softly see the following messages in the page details :
+      | Saved Successfully! |
+    And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
+      | Form Name         | Required? |
+      | Compliance Review | Checked   |
+    Then I softly see the following messages in the page details :
+      | For required panel the Minimum Number of Reviews should be greater than zero. |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -3426,41 +3437,41 @@ Feature: Validate all scenarios for program
     And I expand nested table containing column value "SME Review"
     #77476
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Required?  | Form Weight (%)| Minimum Number of Reviews per Application|
-      | Program Review        |  Unchecked   | 0              |0                                        |
+      | Form Name      | Required? | Form Weight (%) | Minimum Number of Reviews per Application |
+      | Program Review | Unchecked | 0               | 0                                         |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
       | Form Name      | Required? | Minimum Number of Reviews per Application | Form Weight (%) |
       | Program Review | Checked   | 0                                         | 50              |
     Then I softly see the following messages in the page details :
-      |For required panel the Minimum Number of Reviews should be greater than zero.|
+      | For required panel the Minimum Number of Reviews should be greater than zero. |
      #77477
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Required?  | Form Weight (%)|Minimum Number of Reviews per Application|
-      | Fiscal Review        |  Unchecked   | 0              |0                                         |
+      | Form Name     | Required? | Form Weight (%) | Minimum Number of Reviews per Application |
+      | Fiscal Review | Unchecked | 0               | 0                                         |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      | Form Name      | Required? | Minimum Number of Reviews per Application | Form Weight (%) |
+      | Form Name     | Required? | Minimum Number of Reviews per Application | Form Weight (%) |
       | Fiscal Review | Checked   | 0                                         | 30              |
     Then I softly see the following messages in the page details :
-      |For required panel the Minimum Number of Reviews should be greater than zero.|
+      | For required panel the Minimum Number of Reviews should be greater than zero. |
         #77478
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Required?  | Form Weight (%)|Minimum Number of Reviews per Application|
-      | Compliance Review        |  Unchecked   | 0              |0                                     |
+      | Form Name         | Required? | Form Weight (%) | Minimum Number of Reviews per Application |
+      | Compliance Review | Unchecked | 0               | 0                                         |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      | Form Name      | Required? | Minimum Number of Reviews per Application | Form Weight (%) |
+      | Form Name         | Required? | Minimum Number of Reviews per Application | Form Weight (%) |
       | Compliance Review | Checked   | 0                                         | 30              |
     Then I softly see the following messages in the page details :
-      |For required panel the Minimum Number of Reviews should be greater than zero.|
+      | For required panel the Minimum Number of Reviews should be greater than zero. |
     #And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
     Examples:
       | Objective                      |
@@ -3485,13 +3496,13 @@ Feature: Validate all scenarios for program
       | Pre-Screen Review | 25              |
     And I expand nested table containing column value "Management Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Required?  | Form Weight (%)|Minimum Number of Reviews per Application|
-      | Management Review       |  Unchecked   | 0              |0                                     |
+      | Form Name         | Required? | Form Weight (%) | Minimum Number of Reviews per Application |
+      | Management Review | Unchecked | 0               | 0                                         |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      | Form Name      | Required? | Minimum Number of Reviews per Application | Form Weight (%) |
-      | Management Review | Checked   | 0                                         | 100               |
+      | Form Name         | Required? | Minimum Number of Reviews per Application | Form Weight (%) |
+      | Management Review | Checked   | 0                                         | 100             |
     Then I softly see the following messages in the page details contains:
       | For required panel the Minimum Number of Reviews should be greater than zero. |
     Examples:
@@ -3517,10 +3528,10 @@ Feature: Validate all scenarios for program
       | Pre-Screen Review | 25              |
     And I expand nested table containing column value "Pre-Screen Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Required?  | Form Weight (%)|Minimum Number of Reviews per Application|
-      | Pre-Screen      |  Unchecked   | 0              |1                                     |
+      | Form Name  | Required? | Form Weight (%) | Minimum Number of Reviews per Application |
+      | Pre-Screen | Unchecked | 0               | 1                                         |
     Then I softly see the following messages in the page details :
-      |  Reviewers are not required for optional panels|
+      | Reviewers are not required for optional panels |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -3545,26 +3556,26 @@ Feature: Validate all scenarios for program
     And I expand nested table containing column value "SME Review"
     #77685
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Required?  | Form Weight (%)|Minimum Number of Reviews per Application|
-      | Fiscal Review      |  Unchecked   | 0              |1                                     |
+      | Form Name     | Required? | Form Weight (%) | Minimum Number of Reviews per Application |
+      | Fiscal Review | Unchecked | 0               | 1                                         |
     Then I softly see the following messages in the page details :
-      |  Reviewers are not required for optional panels|
+      | Reviewers are not required for optional panels |
     #77686
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Required?  | Form Weight (%)|Minimum Number of Reviews per Application|
-      | Compliance Review      |  Unchecked   | 0              |1                                     |
+      | Form Name         | Required? | Form Weight (%) | Minimum Number of Reviews per Application |
+      | Compliance Review | Unchecked | 0               | 1                                         |
     Then I softly see the following messages in the page details :
-      |  Reviewers are not required for optional panels|
+      | Reviewers are not required for optional panels |
     #77684
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Required?  | Form Weight (%)|Minimum Number of Reviews per Application|
-      | Program Review      |  Unchecked   | 0              |1                                     |
+      | Form Name      | Required? | Form Weight (%) | Minimum Number of Reviews per Application |
+      | Program Review | Unchecked | 0               | 1                                         |
     Then I softly see the following messages in the page details :
-      |  Reviewers are not required for optional panels|
+      | Reviewers are not required for optional panels |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -3588,22 +3599,22 @@ Feature: Validate all scenarios for program
       | Pre-Screen Review | 0               |
     And I expand nested table containing column value "Management Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Form Weight (%)|Minimum Number of Reviews per Application|
-      | Management Review      |  100              |1                                     |
+      | Form Name         | Form Weight (%) | Minimum Number of Reviews per Application |
+      | Management Review | 100             | 1                                         |
     And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
      #77694
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Return on Investment (ROI)   | 40    |
-      | Strategic Alignment   | 60          |
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 40                 |
+      | Strategic Alignment        | 60                 |
     And I perform quick search for "Return on Investment (ROI)" in "---program:-:programReviewPanel---" panel
     And I softly see value "40%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
     And I expand nested table containing column value "Return on Investment (ROI)"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      |  Question Order  | Max Score|
-      | 1                | 0        |
-      | 2                | 0        |
-      | 3                | 0        |
+      | Question Order | Max Score |
+      | 1              | 0         |
+      | 2              | 0         |
+      | 3              | 0         |
     And I refresh the page
     #77706
     And I expand nested table containing column value "Management Review"
@@ -3612,14 +3623,14 @@ Feature: Validate all scenarios for program
     And I softly see value "60%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
     And I expand nested table containing column value "Strategic Alignment"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      |  Question Order  | Max Score|
-      | 1                | 0        |
-      | 2                | 0        |
+      | Question Order | Max Score |
+      | 1              | 0         |
+      | 2              | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Return on Investment (ROI) section because it is weighted. |
-      | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Strategic Alignment section because it is weighted.|
+      | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Strategic Alignment section because it is weighted.        |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -3641,13 +3652,13 @@ Feature: Validate all scenarios for program
       | Step Name         | Step Weight (%) |
       | Management Review | 25              |
       | SME Review        | 75              |
-      | Pre-Screen Review | 0              |
+      | Pre-Screen Review | 0               |
     And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Required?  | Form Weight (%)|Minimum Number of Reviews per Application|
-      | Program Review      |  Unchecked   | 40              |0                                     |
+      | Form Name      | Required? | Form Weight (%) | Minimum Number of Reviews per Application |
+      | Program Review | Unchecked | 40              | 0                                         |
     Then I softly see the following messages in the page details :
-      |You cannot associate a weight to an optional panel|
+      | You cannot associate a weight to an optional panel |
     And I refresh the page
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -3656,10 +3667,10 @@ Feature: Validate all scenarios for program
       | Pre-Screen Review | 25              |
     And I expand nested table containing column value "Pre-Screen Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Required?  | Form Weight (%)|Minimum Number of Reviews per Application|
-      | Pre-Screen      |  Checked   | 100              |0                                     |
+      | Form Name  | Required? | Form Weight (%) | Minimum Number of Reviews per Application |
+      | Pre-Screen | Checked   | 100             | 0                                         |
     Then I softly see the following messages in the page details :
-      |For required panel the Minimum Number of Reviews should be greater than zero.|
+      | For required panel the Minimum Number of Reviews should be greater than zero. |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -3683,15 +3694,15 @@ Feature: Validate all scenarios for program
       | Pre-Screen Review | 25              |
     And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name          | Form Weight (%) | Required? |Minimum Number of Reviews per Application|
-      | Program Review      |   0              | Unchecked   |0                                     |
-      | Fiscal Review      |   0              | Unchecked   |0                                     |
-      | Compliance Review     |   0              | Unchecked   |0                                     |
+      | Form Name         | Form Weight (%) | Required? | Minimum Number of Reviews per Application |
+      | Program Review    | 0               | Unchecked | 0                                         |
+      | Fiscal Review     | 0               | Unchecked | 0                                         |
+      | Compliance Review | 0               | Unchecked | 0                                         |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details :
-      |Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%.|
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -3716,20 +3727,20 @@ Feature: Validate all scenarios for program
       | Pre-Screen Review | 0               |
     And I expand nested table containing column value "Management Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Form Weight (%)|Minimum Number of Reviews per Application|
-      | Management Review      |  100              |1                                     |
+      | Form Name         | Form Weight (%) | Minimum Number of Reviews per Application |
+      | Management Review | 100             | 1                                         |
     And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Return on Investment (ROI)   | 40    |
-      | Strategic Alignment   | 60          |
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 40                 |
+      | Strategic Alignment        | 60                 |
     And I perform quick search for "Strategic Alignment" in "---program:-:programReviewPanel---" panel
     And I softly see value "60%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
     And I expand nested table containing column value "Strategic Alignment"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      |  Question Order  | Max Score|
-      | 1                | 100      |
-      | 2                | 0        |
+      | Question Order | Max Score |
+      | 1              | 100       |
+      | 2              | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -3754,27 +3765,27 @@ Feature: Validate all scenarios for program
       | Step Name         | Step Weight (%) |
       | Management Review | 50              |
       | SME Review        | 25              |
-      | Pre-Screen Review | 25               |
+      | Pre-Screen Review | 25              |
     And I expand nested table containing column value "Pre-Screen Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Form Weight (%)|Minimum Number of Reviews per Application|Required?|
-      | Pre-Screen      |  100              |1                                     |Checked         |
+      | Form Name  | Form Weight (%) | Minimum Number of Reviews per Application | Required? |
+      | Pre-Screen | 100             | 1                                         | Checked   |
     And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
-      | Eligibility   | 60    |
-      | Completeness   | 40  |
+      | Eligibility    | 60                 |
+      | Completeness   | 40                 |
     And I softly see value "60%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
     And I expand nested table containing column value "Eligibility"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      |  Question Order  | Max Score|
-      | 1                | 100      |
-      | 2                | 0        |
+      | Question Order | Max Score |
+      | 1              | 100       |
+      | 2              | 0         |
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      |  Question Order  | Max Score|
-      | 1                | 10      |
+      | Question Order | Max Score |
+      | 1              | 10        |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -3784,13 +3795,13 @@ Feature: Validate all scenarios for program
     And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
-      | Eligibility   | 40   |
-      | Completeness   | 60  |
+      | Eligibility    | 40                 |
+      | Completeness   | 60                 |
     And I softly see value "60%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
     And I expand nested table containing column value "Completeness"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      |  Question Order  | Max Score|
-      | 1                | 100     |
+      | Question Order | Max Score |
+      | 1              | 100       |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -3818,21 +3829,21 @@ Feature: Validate all scenarios for program
       | Pre-Screen Review | 0               |
     And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Form Weight (%)|Minimum Number of Reviews per Application|Required?|
-      | Program Review      |  100              |1                                     |Checked         |
-      | Fiscal Review       |  0              |1                                     |Checked         |
-      | Compliance Review   |  0              |1                                     |Checked         |
+      | Form Name         | Form Weight (%) | Minimum Number of Reviews per Application | Required? |
+      | Program Review    | 100             | 1                                         | Checked   |
+      | Fiscal Review     | 0               | 1                                         | Checked   |
+      | Compliance Review | 0               | 1                                         | Checked   |
     And I click on "Review Form" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
-      | Capability   | 60    |
-      | Approach   | 20  |
-      | Impact   | 20  |
+      | Capability     | 60                 |
+      | Approach       | 20                 |
+      | Impact         | 20                 |
     And I softly see value "60%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
     And I expand nested table containing column value "Capability"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      |  Question Order  | Max Score|
-      | 1                | 100      |
+      | Question Order | Max Score |
+      | 1              | 100       |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -3842,14 +3853,14 @@ Feature: Validate all scenarios for program
     And I click on "Review Form" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
-      | Capability   | 20    |
-      | Approach   | 60  |
-      | Impact   | 20  |
+      | Capability     | 20                 |
+      | Approach       | 60                 |
+      | Impact         | 20                 |
     And I softly see value "60%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
     And I expand nested table containing column value "Approach"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      |  Question Order  | Max Score|
-      | 1                | 100      |
+      | Question Order | Max Score |
+      | 1              | 100       |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -3878,26 +3889,26 @@ Feature: Validate all scenarios for program
       | Pre-Screen Review | 0               |
     And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Form Weight (%)|Minimum Number of Reviews per Application|Required?|
-      | Program Review      |  0              |1                                     |Checked         |
-      | Fiscal Review       |  0              |1                                     |Checked         |
-      | Compliance Review   |  100              |1                                     |Checked         |
+      | Form Name         | Form Weight (%) | Minimum Number of Reviews per Application | Required? |
+      | Program Review    | 0               | 1                                         | Checked   |
+      | Fiscal Review     | 0               | 1                                         | Checked   |
+      | Compliance Review | 100             | 1                                         | Checked   |
     And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
-      | Schedule   | 0    |
-      | Environment| 60  |
-      | Permits   | 40  |
+      | Schedule       | 0                  |
+      | Environment    | 60                 |
+      | Permits        | 40                 |
     And I softly see value "60%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
     And I expand nested table containing column value "Environment"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      |  Question Order  | Max Score|
-      | 1                | 100      |
+      | Question Order | Max Score |
+      | 1              | 100       |
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      |  Question Order  | Max Score|
-      | 1                | 15      |
+      | Question Order | Max Score |
+      | 1              | 15        |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -3907,14 +3918,14 @@ Feature: Validate all scenarios for program
     And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
-      | Schedule   | 0    |
-      | Environment| 40  |
-      | Permits   | 60  |
+      | Schedule       | 0                  |
+      | Environment    | 40                 |
+      | Permits        | 60                 |
     And I softly see value "60%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
     And I expand nested table containing column value "Permits"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      |  Question Order  | Max Score|
-      | 1                | 100      |
+      | Question Order | Max Score |
+      | 1              | 100       |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -3942,21 +3953,21 @@ Feature: Validate all scenarios for program
       | Pre-Screen Review | 0               |
     And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Form Weight (%)|Minimum Number of Reviews per Application|Required?|
-      | Program Review      |  0              |1                                     |Checked         |
-      | Fiscal Review       |  100              |1                                     |Checked         |
-      | Compliance Review   |  0              |1                                     |Checked         |
+      | Form Name         | Form Weight (%) | Minimum Number of Reviews per Application | Required? |
+      | Program Review    | 0               | 1                                         | Checked   |
+      | Fiscal Review     | 100             | 1                                         | Checked   |
+      | Compliance Review | 0               | 1                                         | Checked   |
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
-      | Budget   | 60    |
-      | Match| 20  |
-      | Program Income   | 20  |
+      | Budget         | 60                 |
+      | Match          | 20                 |
+      | Program Income | 20                 |
     And I softly see value "60%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
     And I expand nested table containing column value "Budget"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      |  Question Order  | Max Score|
-      | 1                | 100      |
+      | Question Order | Max Score |
+      | 1              | 100       |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
@@ -3984,33 +3995,33 @@ Feature: Validate all scenarios for program
       | Pre-Screen Review | 0               |
     And I expand nested table containing column value "Management Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
-      |  Form Name             | Required?  | Minimum Number of Reviews per Application|Form Weight (%)|
-      | Management Review        |  Checked   | 1                                     | 100              |
+      | Form Name         | Required? | Minimum Number of Reviews per Application | Form Weight (%) |
+      | Management Review | Checked   | 1                                         | 100             |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Return on Investment (ROI)   | 60    |
-      | Strategic Alignment| 40  |
+      | Section Header             | Section Weight (%) |
+      | Return on Investment (ROI) | 60                 |
+      | Strategic Alignment        | 40                 |
     And I softly see value "40%" for title "Section Weight (%)" inside table "---program:-:programReviewPanel---"
     And I expand nested table containing column value "Return on Investment (ROI)"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      |  Question Order  | Max Score|
-      | 1                | 0      |
-      | 2                | 0      |
-      | 3                | 0      |
+      | Question Order | Max Score |
+      | 1              | 0         |
+      | 2              | 0         |
+      | 3              | 0         |
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
-      |  Question Order  | Max Score|
-      | 1                | 0      |
-      | 2                | 0      |
+      | Question Order | Max Score |
+      | 1              | 0         |
+      | 2              | 0         |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      |Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Return on Investment (ROI) section because it is weighted.|
-      |Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Strategic Alignment section because it is weighted. |
+      | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Return on Investment (ROI) section because it is weighted. |
+      | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Strategic Alignment section because it is weighted.        |
 
     Examples:
       | Objective                      |
@@ -4043,7 +4054,7 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @77192 @validatingDownloadPDFSMEReviewFormQuestions @meenakshi
+  @77192 @validatingDownloadPDFSMEReviewFormQuestions @meenakshi @skipOnJenkins
   Scenario Outline:To verify user allow to download PDF for review question in Impact of Review Panel Categories in Program review form for SME review step in planning phase
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
@@ -4066,6 +4077,89 @@ Feature: Validate all scenarios for program
     And I click on parallel menu button in flex table title "Review Questions"
     And I select "Download as PDF" from parallel lines dropdown of "Review Questions"
     And I download the file
+    Then I see "Review Questions" on page "1" of "govgrants" pdf file
+
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
+
+  @77193 @77194 @77195 @verifyDeletionOfQuestionFromSMEReviewPanel
+  Scenario Outline:To verify user is able to delete question 2 from Program income review form inside SME review panel
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
+    #77194 #monu
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I expand nested table containing column value "Program Income"
+    And I click on "Edit" icon for "<Question 2>" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---" without waiting for record
+    And I enter value "Yes/No" into field "Type__c"
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    #77193 #monu
+    And I refresh the page
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I expand nested table containing column value "Program Income"
+    And I click on "Delete" icon for "<Question 2>" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---" without waiting for record
+    Then I softly see the following messages in the page details :
+      | Record deleted successfully. |
+    Then I softly do not see value "<Question 2>" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+    #77195 #monu
+    And I refresh the page
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I expand nested table containing column value "Program Income"
+    And I click on top right button "New" in flex table with id "---program:-:programReviewPanel---"
+    And I enter value "3" into field "Order__c"
+    And I enter value "Automation Question 3" into field "Question__c"
+    And I enter value "Yes/No" into field "Type__c"
+    And I enter value "10" into field "MaxScore__c"
+    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
+    Then I softly see the following messages in the page details :
+      | Record deleted successfully. |
+    Then I softly see value "Automation Question 3" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
+
+    Examples:
+      | Objective                      | Question 2                                                                                                                                      |
+      | Automation Permanent Objective | Does the budget outline how program income will be used and tracked? Are the proposed program income uses consistent with program requirements? |
+
+  @77199 @validatingDownloadPDFSMEReviewPanelCategory @monu @skipOnJenkins
+  Scenario Outline:To verify user is able to download review panel category for SME review step in planning phase
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
+      | Step Name         | Step Weight (%) |
+      | Management Review | 25              |
+      | SME Review        | 75              |
+      | Pre-Screen Review | 0               |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    And I click on parallel menu button in flex table title "Review Panel Categories"
+    And I select "Download as PDF" from parallel lines dropdown of "Review Panel Categories"
+    And I download the file
+    Then I see "Review Panel Categories" on page "1" of "govgrants" pdf file
+
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -4307,7 +4401,7 @@ Feature: Validate all scenarios for program
     #77102
     When I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
       | Question Order | Type    |
-      | 3             | Written |
+      | 3              | Written |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "Written" for title "Type" against the value "3" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -4320,8 +4414,8 @@ Feature: Validate all scenarios for program
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question | Type | Max Score |
-      | 4             | Test 4  | Yes/No | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 4              | Test 4   | Yes/No | 0         |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -4338,8 +4432,8 @@ Feature: Validate all scenarios for program
     And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question | Type | Max Score |
-      | 5             | Test 5  | Yes/No | 0         |
+      | Question Order | Question | Type   | Max Score |
+      | 5              | Test 5   | Yes/No | 0         |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "5" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
