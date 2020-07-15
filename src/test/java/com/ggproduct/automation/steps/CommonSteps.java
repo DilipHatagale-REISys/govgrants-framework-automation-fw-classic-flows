@@ -26,7 +26,6 @@ public class CommonSteps {
         ProjectWebServices.recaptchaChange(false);
     }
 
-
     @Given("^I delete the record \"([^\"]*)\" from the object \"([^\"]*)\"$")
     public void deleteTestData(String recordName, String objectType) {
         projectManager.deletionApi(recordName, objectType);
