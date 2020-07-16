@@ -503,7 +503,6 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I navigate to "History" sub tab
     And I softly see value "2030-01-25" for title "New Value" against the value "Project Period End Date" inside table "---sitevisits:-:grantHistoryTableId---"
 
-
   @54160 @pendingTaskForSiteVisit @meenakshi
   Scenario: Verify the pending task for the Applicants - Site Visits
     And I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "CREATE_AWARD_EXE"
