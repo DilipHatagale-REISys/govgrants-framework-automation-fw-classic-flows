@@ -503,6 +503,44 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I navigate to "History" sub tab
     And I softly see value "2030-01-25" for title "New Value" against the value "Project Period End Date" inside table "---sitevisits:-:grantHistoryTableId---"
 
+  @54160 @pendingTaskForSiteVisit @meenakshi
+  Scenario: Verify the pending task for the Applicants - Site Visits
+    And I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "CREATE_AWARD_EXE"
+    And I activated standalone subaward "Automation Runtime Award for Associate Amendment Request" with properties "CREATE_AWARD_EXE"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for Amendment Request}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Amendment Request}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    Given I navigate to "Management" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
+    And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    Given I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
+      | Role             | Name           | Description                 |
+      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
+    When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award for Associate Amendment Request}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:EGMSID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    Then I softly see value "{SavedValue:EGMSID}" for title "EGMS ID" against the value "---sitevisits:-:monitoringTabPhasePendingTasks---" inside table "---deskreview:-:managementInitiateDRtableid---"
+
   @54219 @54222 @conductCreatedDeskReview @meenakshi
   Scenario: Verify user (record owner) is able to conduct created Desk Review
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "CREATE_AWARD_EXE"

@@ -550,4 +550,11 @@ public class GenericSteps {
         I.amPerforming().textInput().in(filePath, defaultFilePath + fileName);
         I.amPerforming().click().on(By.xpath("//button[text()='Upload']"));
     }
+
+    @And("I enter value {string} in email body")
+    public void iEnterValueIntoEmailBody(String enterValue) {
+        By emailBody = By.xpath("//body[contains(@id,'accountInvitation')]");
+           I.amPerforming().textInput().in(emailBody, enterValue);
+    }
+
 }
