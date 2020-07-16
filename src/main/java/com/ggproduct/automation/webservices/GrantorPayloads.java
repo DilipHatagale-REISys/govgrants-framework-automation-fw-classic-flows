@@ -566,7 +566,13 @@ public class GrantorPayloads {
      * this switch cases from feature step....
      */
     public JsonObject payloadForCreateStandaloneAward(String grantName, String filter){
-        filter = filter.toUpperCase();
+        String user = "";
+        if(!filter.toLowerCase().contains("user")){
+            filter = filter.toUpperCase();
+        } else {
+            user = filter.replace("user","").trim();
+            filter = "USER";
+        }
         JsonObject json = defaultPayloadCreateStandaloneAward(grantName);
 
         switch (filter){
@@ -590,17 +596,16 @@ public class GrantorPayloads {
                 return quarterlyProgressReportAward(json);
             case "PROGRESS_REPORT_SEMI_ANNUALLY":
                 return semiAnnuallyProgressReportAward(json);
-            case "CREATE_AWARD_EXE":
-                return createStandaloneAwardUsingEXEUser(json);
-
+            case "USER":
+                return createStandaloneAwardUsingUser(json, user);
             default:
                 return json;
         }
     }
-    private JsonObject createStandaloneAwardUsingEXEUser(JsonObject json) {
+    private JsonObject createStandaloneAwardUsingUser(JsonObject json, String user) {
         JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
         JsonArray newA = new JsonArray();
-        grant.addProperty("OwnerId",ProjectWebServices.getIdOf("User","Automation EXE"));
+        grant.addProperty("OwnerId",ProjectWebServices.getIdOf("User",user));
         newA.add(grant);
         json.add("Grant",newA);
         return json;

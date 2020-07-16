@@ -3,7 +3,7 @@ Feature: Validate all scenarios in Closeout
 
   @87347 @87354 @ValidatingCloseoutRequestForEXEUser @meenakshi
   Scenario: To verify the PM user should be able to create the  Closeout Request
-    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "CREATE_AWARD_EXE"
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
