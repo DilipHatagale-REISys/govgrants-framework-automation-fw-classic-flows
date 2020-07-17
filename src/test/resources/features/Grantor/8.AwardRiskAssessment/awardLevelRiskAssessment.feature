@@ -3343,3 +3343,35 @@ Feature: Validate all scenarios in the Risk Assessment
     Examples:
       | Award Name                 | Grant Name                 |
       | {SavedValue:EXE Username}cution Award | {SavedValue:EXE Username}cution Award |
+
+  @59701 @addApproversForRiskAssessment @meenakshi
+  Scenario: Validate whether user is able to Add Approvers to Risk Assessment
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "RiskId"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Management" sub tab
+    When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see status in Progress-bar is "Created" and is "Green"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
+      | Responsibility   | Name          | Description                 |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    Then I softly see that "Automation PM" has been added in flextable with Id "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
+

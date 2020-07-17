@@ -767,3 +767,26 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
       | EXE   |
       | PM    |
+
+  @33882 @34674 @validatingcreateSMEReviewer @meenakshi
+  Scenario: To verify internal user able to Create new SME reviewer
+    Given I login to "As a Grantor" app as "PM" user
+    When I navigate to "Home" tab
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    #33882
+    When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
+    And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I save the contact name as "Automation Runtime Contact"
+    And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
+    Then I softly see value "{SavedValue:Automation Runtime Contact}" for title "Full Name" inside table "---home:-:reviewersTableId---"
+    Then I softly see value "automation.sme@yopmail.com" for title "Email" inside table "---home:-:reviewersTableId---"
+    Then I softly see value "New" for title "Status" inside table "---home:-:reviewersTableId---"
+    Then I softly see value "Test Automation Organization" for title "Sponsoring Agency" inside table "---home:-:reviewersTableId---"
+    #34674
+    And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
+    And I wait for "2" seconds
+    And I enter value "Test Automation Description" in email body
+    And I click "Send" button in modal
+    Then I see the following messages in the page details :
+      | Email Sent Successfully|
