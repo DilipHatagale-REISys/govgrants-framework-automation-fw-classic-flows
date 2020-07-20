@@ -1,7 +1,7 @@
 @smeRegistration @smeReviewerRegistration @userRegistration @parallel-regression @regression
 Feature: Validate all scenarios for SME Registration
 
-  @34872 @VerifyPageDetailsOnRegistrationStep1of1-SMEReviewerRegistration @smoke @monu
+  @34872 @34840 @VerifyPageDetailsOnRegistrationStep1of1-SMEReviewerRegistration @smoke @monu
   Scenario: Validate all expected fields are getting populated on page of Registration Step 1 of 1 while SME reviewer registration
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -17,6 +17,7 @@ Feature: Validate all scenarios for SME Registration
     And I refresh the page
     And I pause execution for "62" seconds
     And I navigate to yopmail portal for "smereviewer@yopmail.com"
+    #34840 #monu
     Then I see the header is "Registration" in the page details
     Then I see the sub-header is "Legal Disclaimer 1 of 2" in the page details
     When I click on "Agree" in the page details
@@ -59,7 +60,7 @@ Feature: Validate all scenarios for SME Registration
       | Confirmation Message                                                                                                                                                                |
       | Your registration request for access to the EGMS has been completed.  You will be sent an email from salesforce.com (technology platform provider) with your Username and Password. |
 
-  @34834 @VerifyCreatedSMEUserDetails-SMEReviewerRegistration @smoke @monu
+  @34834 @34836 @34831 @VerifyCreatedSMEUserDetails-SMEReviewerRegistration @smoke @monu
   Scenario: Validate created SME user details on modal after clicking on view row level action
     Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Home" tab
@@ -70,8 +71,20 @@ Feature: Validate all scenarios for SME Registration
     And I save the contact name as "Automation Runtime Contact"
     And I refresh the page
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---grantor_tableId:-:PotentialReviewerContactTableId---" panel
+    Then I softly see "Full Name" in flex table header "---grantor_tableId:-:PotentialReviewerContactTableId---"
+    Then I softly see "Email" in flex table header "---grantor_tableId:-:PotentialReviewerContactTableId---"
+    Then I softly see "Invited By" in flex table header "---grantor_tableId:-:PotentialReviewerContactTableId---"
+    Then I softly see "Status" in flex table header "---grantor_tableId:-:PotentialReviewerContactTableId---"
+    Then I softly see "Sponsoring Agency" in flex table header "---grantor_tableId:-:PotentialReviewerContactTableId---"
     When I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---grantor_tableId:-:PotentialReviewerContactTableId---"
     And I click modal button "Send"
+    #34836 #monu
+    Then I see the following messages in the page details :
+      | Email Sent Successfully |
+    #34831 #monu
+    And I close modal by clicking the top right x button
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---grantor_tableId:-:PotentialReviewerContactTableId---" panel
+    Then I see value "Invitation Sent" for title "Status" inside table "---grantor_tableId:-:PotentialReviewerContactTableId---"
     And I refresh the page
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
