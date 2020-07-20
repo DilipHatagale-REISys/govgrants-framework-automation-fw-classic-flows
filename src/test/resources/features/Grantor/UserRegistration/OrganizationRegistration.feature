@@ -184,3 +184,28 @@ Feature: Validate all registration related scenarios
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
     And I enter value "No" into field "fieldSameAsOrganizationAddress__c"
     When I click on "Save" in the page details
+
+  @82796 @83035 @verifyConfirmationMessage-Individual @meenakshi
+  Scenario:To validate Confirmation Message, after clicking Submit button on Catcha page of Individual registration process
+    Given I begin "Individual" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456789" into "Social Security Number (SSN)" on old form
+    When I enter value as "IndividualRegistration@yopmail.com" into "Email" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    Then I softly see field "Primary Email" as "individualregistration@yopmail.com"
+    And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter "CreationWithOnlyPaymentDetail" values from "UserRegistration_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I see "No" text enter in field "fieldSameAsOrganizationAddress__c"
+    Then I see "1000 Defense Pentagon" text enter in field "fieldPaymentAddressLine1__c"
+    Then I see "Washington" text enter in field "fieldPaymentAddressCity__c"
+    Then I see "DC" text enter in field "fieldPaymentAddressState__c"
+    Then I see "20301" text enter in field "fieldPaymentAddressZipCode__c"
+    Then I see "(918) 908-9089" text enter in field "fieldPaymentAddressVendorLocation__c"
+    Then I see "1234" text enter in field "fieldPaymentAddressZipCode4__c"
+    When I click on "Submit" in the page details
+    Then I see the following messages in the page details contains:
+      | Confirmation Message                                                                                                                                                                |
+      | Your registration request for access to the EGMS has been completed.  You will be sent an email from salesforce.com (technology platform provider) with your Username and Password.|
