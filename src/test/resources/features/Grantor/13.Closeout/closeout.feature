@@ -432,6 +432,6 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Has the subrecipient submitted all programmatic or progress reports?" as "Yes"
     Then I softly see field "Has the subrecipient submitted all required site visit reports?" as "Yes"
     Then I softly see field "Has the funding organization program staff reviewed and accepted all reports?" as "Yes"
-    Then I softly see field "Has the funding organization program staff reviewed and accepted all reports?" as "Yes"
+    Then I softly see field "Is the subrecipient required to provide ongoing outcome or compliance reporting after the period of performance end date?" as "Yes"
 
 
