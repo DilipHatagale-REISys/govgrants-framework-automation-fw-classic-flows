@@ -328,7 +328,7 @@ Feature: Validate all scenarios in Closeout
       | Reason is Required to save. |
 
 
-  @40065 @87352 @40608 @89221 @89222 @89223 @89224 @89225 @89226 @89228 @89229 @89227 @ValidatingCloseoutRequest @meenakshi
+  @40065 @87352 @40608 @89221 @89222 @89223 @89224 @89225 @89226 @89228 @89229 @89227 @88734 @88735 @88736 @88737 @ValidatingCloseoutRequest @meenakshi
   Scenario: To verify the PM user should be able to create the  Closeout Request
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -403,3 +403,35 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see row level action button "Download" against "data.xlsx" in flex table with id "---closeout:-:closeoutFilesTableId---"
     Then I softly can see row level action button "View" against "data.xlsx" in flex table with id "---closeout:-:closeoutFilesTableId---"
     Then I softly can see row level action button "Delete" against "data.xlsx" in flex table with id "---closeout:-:closeoutFilesTableId---"
+    #88734
+    When I navigate to "Checklist" sub tab
+    And I enter value "Yes" into field "fieldChecklistQuestionPick7__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick8__c"
+    #88735
+    And I enter value "Yes" into field "fieldChecklistQuestionPick9__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick10__c"
+    #88736
+    And I enter value "Yes" into field "fieldChecklistQuestionPick11__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick12__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick13__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick14__c"
+    #88737
+    And I enter value "Yes" into field "fieldChecklistQuestionPick15__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick16__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick17__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick18__c"
+    When I click on "Save" in the page details
+    Then I softly see field "Has the subrecipient met the match requirement?" as "Yes"
+    Then I softly see field "Has the subrecipient provided supporting documentation for all reported match, including third party in-kind match?" as "Yes"
+    Then I softly see field "Did the subrecipient fully expend program income earned during the award period prior to the closeout of the award?" as "Yes"
+    Then I softly see field "Has the subrecipient returned unexpended program income to the funding organiation, if required by program regulations?" as "Yes"
+    Then I softly see field "Has the subrecipient completed the scope of work as outlined in the subaward agreement?" as "Yes"
+    Then I softly see field "Has the subrecipient met all deliverable requirements?" as "Yes"
+    Then I softly see field "Has the subrecipient submitted required documentation of performance completion?" as "Yes"
+    Then I softly see field "Did the subrecipient request an extension to the period of performance?" as "Yes"
+    Then I softly see field "Has the subrecipient submitted all programmatic or progress reports?" as "Yes"
+    Then I softly see field "Has the subrecipient submitted all required site visit reports?" as "Yes"
+    Then I softly see field "Has the funding organization program staff reviewed and accepted all reports?" as "Yes"
+    Then I softly see field "Is the subrecipient required to provide ongoing outcome or compliance reporting after the period of performance end date?" as "Yes"
+
+

@@ -184,3 +184,24 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
     Examples:
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
+
+  @75542 @75541 @validateFederalNGORelateLogsDetails @meenakshi @wip
+  Scenario Outline: To verify user able to search grant in grant section in Related log tab of announcement.
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Published Competitive Announcements"
+    And I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesCompitive" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "ActiveFundingOpportunitiesCompitive" without waiting for record
+    When I navigate to "Related Log" sub tab
+    And I click on advance filter "#advfGranteeGrantsByAccount" of table id "---announcement:-:activeFederalTableId---"
+    And I enter advance filter values inside id "advfGranteeGrantsByAccount"
+      | EGMS ID | Contains | Invalid |
+    Then I softly see "No Records Found" inside flex table with id "---announcement:-:activeFederalTableId---"
+    And I refresh the page
+    And I click on advance filter "#advfGranteeGrantsByAccount" of table id "---announcement:-:activeFederalTableId---"
+    And I enter advance filter values inside id "advfGranteeGrantsByAccount"
+      | EGMS ID | Contains | Record Id |
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---announcement:-:activeFederalTableId---"
+    Examples:
+      | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} |
