@@ -803,6 +803,7 @@ Feature: Opportunities related scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
@@ -820,13 +821,15 @@ Feature: Opportunities related scenarios
     And I click on "Send for Review" icon for "	{SavedValue:GRANTEE PM1 Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     Then  I softly see the text "Review Successfully Initiated."
     Then I softly see field "Status" as "Submitted for Review"
+    And I save the field labeled "EGMS ID" as "egmsid"
     Then I softly can see top right button "Complete Review" in page detail
     Then I softly see value "Sent for Review" for title "Status" against the value "No" inside table "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly cannot see row level action button "Edit" against "Sent for Review" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
-    When I re-login with "PM1" user
+    And I re-login to "As a Grantee" app as "GRANTEE PM1" user on "INTERNAL" portal
+    And I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    Then I softly see value "Review Opportunity #{SavedValue:egmsid} Created for Lead #{SavedValue:LeadNumber}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
 
   @66432 @NotConverted @ValidateAppropriateMessageClickingOnSendForReviewIconForMultipleFiscalReviewers
   Scenario: verify appropriate message while clicking on send for review icon for multiple Fiscal reviewers
@@ -839,6 +842,7 @@ Feature: Opportunities related scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
@@ -858,34 +862,34 @@ Feature: Opportunities related scenarios
     Then I softly see the text "Review Successfully Initiated."
     Then I softly see field "Status" as "Submitted for Review"
     Then I softly can see top right button "Complete Review" in page detail
-    Then I softly see value "Sent for Review" for title "Status" against the value "{SavedValue:GRANTEE FO Username}" inside table "{grantee_tableId:OpportunityPeerReviewers}"
+    Then I softly see value "Sent for Review" for title "Status" against the value "No" inside table "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly cannot see row level action button "Edit" against "Sent for Review" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     Then  I softly see the text "Review Successfully Initiated."
     Then I softly see field "Status" as "Submitted for Review"
+    And I save the field labeled "EGMS ID" as "egmsid"
     Then I softly can see top right button "Complete Review" in page detail
-    Then I softly see value "Sent for Review" for title "Status" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:OpportunityPeerReviewers}"
+    Then I softly see value "Sent for Review" for title "Status" against the value "No" inside table "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly cannot see row level action button "Edit" against "Sent for Review" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
-    And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    Then I softly see value "Review Opportunity #{SavedValue:egmsid} Created for Lead #{SavedValue:LeadNumber}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
+    And I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" against the value "{SavedValue:GRANTEE FO Username}" inside table "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    Then I softly see value "Review Opportunity #{SavedValue:egmsid} Created for Lead #{SavedValue:LeadNumber}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
 
   @66432 @NotConverted @ValidateTheColumnsAvailableInThePendingTaskList @smoke @positive
   Scenario: verify columns should get displayed in pending task list
-    Given I login as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "5" seconds
-    When I perform quick search for "AutomationValidateSendForReviewIcon" in "{grantee_tableId:PendingTask}" panel
     Then I softly see "EGMS ID" in flex table header "{grantee_tableId:PendingTask}"
-    Then I softly see "Task Type" in flex table header "{grantee_tableId:PendingTask}"
+    Then I softly see "Type" in flex table header "{grantee_tableId:PendingTask}"
     Then I softly see "Subject" in flex table header "{grantee_tableId:PendingTask}"
     Then I softly see "Assigned By" in flex table header "{grantee_tableId:PendingTask}"
-    Then I softly see "Created Date" in flex table header "{grantee_tableId:PendingTask}"
     Then I softly see "Due Date" in flex table header "{grantee_tableId:PendingTask}"
 
   @66432 @NotConverted @ValidateInformationAvailableInThePendingTask @smoke @positive
@@ -893,7 +897,7 @@ Feature: Opportunities related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -908,12 +912,13 @@ Feature: Opportunities related scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
     And I pause execution for "2" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -924,11 +929,12 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    Then I softly see value "Review the opportunity" for title "Task Type" inside table "{grantee_tableId:PendingTask}"
-    Then I softly see value "{SavedValue:OpportunityTitle}" for title "Subject" inside table "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    Then I softly see value "Review Grantee opportunity" for title "Type" inside table "{grantee_tableId:PendingTask}"
+    Then I softly see value "Review Opportunity #{SavedValue:egmsid} Created for Lead #{SavedValue:LeadNumber}" for title "Subject" inside table "{grantee_tableId:PendingTask}"
     Then I softly see value "{SavedValue:GRANTEE PM Username}" for title "Assigned By" inside table "{grantee_tableId:PendingTask}"
 
   @66432 @NotConverted @ValidateSubjectValueAssignedByValueAndDueDateOnTheCreatedTaskForTheReviewer @positive
@@ -936,7 +942,7 @@ Feature: Opportunities related scenarios
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -951,12 +957,13 @@ Feature: Opportunities related scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
     And I pause execution for "2" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -967,12 +974,13 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
     Then I softly see value "{SavedValue:GRANTEE PM Username}" for title "Assigned By" inside table "{grantee_tableId:PendingTask}"
     Then I softly see value "{SavedValue:AppDueDate}" for title "Due Date" inside table "{grantee_tableId:PendingTask}"
-    Then I softly see value "{SavedValue:OpportunityTitle}" for title "Subject" inside table "{grantee_tableId:PendingTask}"
+    Then I softly see value "Review Opportunity #{SavedValue:egmsid} Created for Lead #{SavedValue:LeadNumber}" for title "Subject" inside table "{grantee_tableId:PendingTask}"
 
   @66432 @NotConverted @ValidateResendForReviewAfterReviewerSubmitsTheReviewWithProgramReviewer @positive
   Scenario: record owner is able to resend for review after reviewer submits the review(program reviewer)
@@ -980,6 +988,27 @@ Feature: Opportunities related scenarios
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I get the "Opportunity Title"
+    And I save the field labeled "Application Due Date" as "AppDueDate"
+    And I save the field labeled "Opportunity Title" as "OpportunityTitle"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Qualified Leads - All"
@@ -995,6 +1024,7 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
     And I enter value "enterreviewcmnt" into field "fieldReviewComments__c"
@@ -1006,8 +1036,8 @@ Feature: Opportunities related scenarios
     Then I softly cannot see row level action button "Edit" against "Sent for Review" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly see value "Sent for Review" for title "Status" against the value "No" inside table "{grantee_tableId:OpportunityPeerReviewers}"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    Then I softly see value "Review Opportunity #{SavedValue:egmsid} Created for Lead #{SavedValue:LeadNumber}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
 
   @66432 @NotConverted @ValidateResendForReviewAfterReviewerSubmitsTheReviewWithFiscalReviewer @positive
   Scenario: record owner is able to resend for review after reviewer submits the review(fiscal reviewer)
@@ -1016,10 +1046,16 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1030,26 +1066,26 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
     And I enter value "enterreviewcmnt" into field "fieldReviewComments__c"
     And I click on "Save" in the page details
     And I click on "Submit Review" in the page details
-    And I close modal by clicking the top right x button
     And I click on "Resend for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly see field "Status" as "Submitted for Review"
     Then I softly cannot see row level action button "Edit" against "Sent for Review" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly see value "Sent for Review" for title "Status" against the value "No" inside table "{grantee_tableId:OpportunityPeerReviewers}"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    Then I softly see value "Review Opportunity #{SavedValue:egmsid} Created for Lead #{SavedValue:LeadNumber}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
 
   @66432 @NotConverted @ValidateCreatedDateOnTheCreatedTaskForTheReviewer @positive
   Scenario: verify Created date should display the date on which the record owner sent the review
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -1062,12 +1098,13 @@ Feature: Opportunities related scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
     And I pause execution for "2" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1078,8 +1115,9 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
     Then I softly see field "{SavedValue:CreatedDate}" contains todays date withTime
 
   @66432 @NotConverted @ValidateAllowEditingOptionAsNoAfterClickingOnSendForReviewIconForProgramReviewer @positive
@@ -1089,10 +1127,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1103,6 +1155,7 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE FO Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE FO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     Then  I softly see the text "Review Successfully Initiated."
     Then I softly see field "Status" as "Submitted for Review"
     Then I softly can see top right button "Complete Review" in page detail
@@ -1112,8 +1165,8 @@ Feature: Opportunities related scenarios
     Then I softly cannot see row level action button "Edit" against "Sent for Review" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    Then I softly see value "Review Opportunity #{SavedValue:egmsid} Created for Lead #{SavedValue:LeadNumber}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
 
   @66432 @NotConverted @ValidateAllowEditingOptionAsYesAfterClickingOnSendForReviewIconForProgramReviewer @positive
   Scenario: verify allow editing option as Yes after clicking on send for review icon(Program reviewer with Yes option)
@@ -1122,10 +1175,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1136,6 +1203,7 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE FO Username} | Program Reviewer | aaaaaaa     | 1        | Yes                  |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE FO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     Then  I softly see the text "Review Successfully Initiated."
     Then I softly see field "Status" as "Submitted for Review"
     Then I softly can see top right button "Complete Review" in page detail
@@ -1145,8 +1213,8 @@ Feature: Opportunities related scenarios
     Then I softly cannot see row level action button "Edit" against "Sent for Review" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    Then I softly see value "Review Opportunity #{SavedValue:egmsid} Created for Lead #{SavedValue:LeadNumber}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
 
   @66432 @NotConverted @ValidateAllowEditingOptionAsYesAfterClickingOnSendForReviewIconForFiscalReviewer @positive
   Scenario: verify allow editing option as Yes after clicking on send for review icon(Fiscal Reviewer with Yes option)
@@ -1155,10 +1223,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1169,6 +1251,7 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE FO Username} | Fiscal Reviewer | aaaaaaa     | 1        | Yes                  |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE FO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     Then  I softly see the text "Review Successfully Initiated."
     Then I softly see field "Status" as "Submitted for Review"
     Then I softly can see top right button "Complete Review" in page detail
@@ -1178,8 +1261,8 @@ Feature: Opportunities related scenarios
     Then I softly cannot see row level action button "Edit" against "Sent for Review" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    Then I softly see value "Review Opportunity #{SavedValue:egmsid} Created for Lead #{SavedValue:LeadNumber}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
 
   @66432 @NotConverted @ValidateAllowEditingOptionAsNoAfterClickingOnSendForReviewIconForFiscalReviewer @positive
   Scenario: verify allow editing option as Yes after clicking on send for review icon(Fiscal Reviewer with No option)
@@ -1188,10 +1271,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1202,6 +1299,7 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE FO Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE FO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     Then  I softly see the text "Review Successfully Initiated."
     Then I softly see field "Status" as "Submitted for Review"
     Then I softly can see top right button "Complete Review" in page detail
@@ -1211,8 +1309,8 @@ Feature: Opportunities related scenarios
     Then I softly cannot see row level action button "Edit" against "Sent for Review" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    Then I softly see value "Review Opportunity #{SavedValue:egmsid} Created for Lead #{SavedValue:LeadNumber}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
 
   @66432 @NotConverted @ValidateTheAvailabilityOfSendForReviewIconAtReviewRecordLevelForUserWhoIsRecordOwner @positive
   Scenario: verify the availability of send for review icon at review record level for user who is record owner
@@ -1221,10 +1319,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1235,17 +1347,17 @@ Feature: Opportunities related scenarios
       | Reviewer Name                     | Responsibility   | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE EXE Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
-    And I click on "Enter Review" icon for "Chris EXE" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I click on "Enter Review" icon for "{SavedValue:GRANTEE EXE Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     And I pause execution for "5" seconds
     When I enter value "Passed" into field "fieldRating__c"
     And I enter value "enterreviewcmnt" into field "fieldReviewComments__c"
     And I click on "Save" in the page details
     And I click on "Submit Review" in the page details
-    And I close modal by clicking the top right x button
     And I click on "Resend for Review" icon for "{SavedValue:GRANTEE EXE Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     And I pause execution for "5" seconds
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1262,10 +1374,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1275,9 +1401,11 @@ Feature: Opportunities related scenarios
     When I enter the following values into flex table with id "{grantee_tableId:OpportunityPeerReviewers}" by clicking "New" :
       | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
+    And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    Then I softly see value "Review Opportunity #{SavedValue:egmsid} Created for Lead #{SavedValue:LeadNumber}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
     When I perform quick search for "{SavedValue:GRANTEE PM Username}" in "{grantee_tableId:PendingTask}" panel
     Then I softly see value "{SavedValue:GRANTEE PM Username}" for title "Assigned By" against the value "{SavedValue:Automation Runtime Lead}" inside table "{grantee_tableId:PendingTask}"
 
@@ -1287,35 +1415,6 @@ Feature: Opportunities related scenarios
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
-    When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
-    And I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
-    And I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "{grantee_tableId:OpportunityPeerReviewers}" by clicking "New" :
-      | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
-      | {SavedValue:GRANTEE FO Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
-    And I click on "Send for Review" icon for "{SavedValue:GRANTEE FO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
-    And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    Then I see value "{SavedValue:Automation Runtime Lead}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
-
-  @66479 @ValidatePlayButtonToExecuteTheTask @positive
-  Scenario: verify actions column should only show Enter review icon at record level and Status should be Sent for review after clicking play button
-    And I execute batch file:
-      | operationType | objectType | recordName              | opportunitynumber |
-      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login as "PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
@@ -1328,12 +1427,57 @@ Feature: Opportunities related scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
     And I pause execution for "2" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
+    When I click on "Convert to Opportunity" in the page details
+    And I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "{grantee_tableId:OpportunityPeerReviewers}" by clicking "New" :
+      | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE FO Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
+    And I click on "Send for Review" icon for "{SavedValue:GRANTEE FO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
+    And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    Then I see value "Review Opportunity #{SavedValue:egmsid} Created for Lead #{SavedValue:LeadNumber}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
+
+  @66479 @ValidatePlayButtonToExecuteTheTask @positive
+  Scenario: verify actions column should only show Enter review icon at record level and Status should be Sent for review after clicking play button
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1344,9 +1488,10 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     Then I softly see value "Sent for Review" for title "Status" against the value "No" inside table "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly can see row level action button "Enter Review" against "Sent for Review" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
@@ -1358,10 +1503,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1372,9 +1531,10 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I hovering mouse on help text icon inside page block detail "Rating"
@@ -1387,10 +1547,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1401,9 +1575,10 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -1418,10 +1593,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1432,9 +1621,10 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     Then I see field "Review Type" as "Fiscal"
@@ -1446,10 +1636,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1460,9 +1664,10 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     Then I see field "Review Type" as "Program"
@@ -1474,10 +1679,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1488,9 +1707,10 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     And I click on "Save" in the page details
@@ -1505,10 +1725,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1519,16 +1753,16 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE FO Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE FO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE FO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
     And I enter value "enterreviewcmnt" into field "fieldReviewComments__c"
     And I click on "Save" in the page details
-    And I close modal by clicking the top right x button
     Then I softly see value "In Progress" for title "Status" against the value "No" inside table "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly cannot see row level action button "Edit" against "In Progress" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly cannot see row level action button "Delete" against "In Progress" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
@@ -1541,10 +1775,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1555,15 +1803,15 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
     And I enter value "enterreviewcmnt" into field "fieldReviewComments__c"
     And I click on "Save" in the page details
-    And I close modal by clicking the top right x button
     Then I softly see value "In Progress" for title "Status" against the value "No" inside table "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly cannot see row level action button "Edit" against "In Progress" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly cannot see row level action button "Delete" against "In Progress" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
@@ -1576,10 +1824,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1590,10 +1852,11 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "Sent for Review" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -1602,7 +1865,6 @@ Feature: Opportunities related scenarios
     And I click modal button "Submit Review"
     And I pause execution for "2" seconds
     Then I softly see the text "Review successfully submitted."
-    And I close modal by clicking the top right x button
     Then I softly see value "Review Completed" for title "Status" against the value "No" inside table "{grantee_tableId:OpportunityPeerReviewers}"
 
   @66479 @TejalMarch2020 @ValidateIfTheReviewerIsAbleToEditTheRecordIfAllowEditingForTheReviewerIsSetToNo
@@ -1612,10 +1874,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1642,10 +1918,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1656,6 +1946,7 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I click on "Complete Review" in the page details
     Then I softly see field "Status" as "Reviewed"
     Then I softly cannot see top right button "New" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
@@ -1669,10 +1960,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1683,15 +1988,15 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
     And I enter value "resendenterreviewcmnt" into field "fieldReviewComments__c"
     And I click on "Save" in the page details
-    And I close modal by clicking the top right x button
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -1710,10 +2015,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1724,16 +2043,16 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
     And I enter value "resendenterreviewcmnt" into field "fieldReviewComments__c"
     And I click on "Save" in the page details
     And I click on "Submit Review" in the page details
-    And I close modal by clicking the top right x button
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -1752,10 +2071,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1776,10 +2109,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1790,6 +2137,7 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE FO Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE FO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I click on "Complete Review" in the page details
     And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
@@ -1806,10 +2154,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1820,11 +2182,12 @@ Feature: Opportunities related scenarios
       | Reviewer Name                     | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE EXE Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "Created" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I pause execution for "2" seconds
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE EXE Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -1846,10 +2209,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1860,17 +2237,17 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
     And I enter value "enterreviewcmnt" into field "fieldReviewComments__c"
     And I click modal button "Save"
     And I save the field labeled "Review Date" as "ReviewDate"
-    And I close modal by clicking the top right x button
     And I pause execution for "5" seconds
     And I expand nested table containing column value "{SavedValue:GRANTEE PM Username}"
     Then I softly see value "Passed" for title "Rating" against the value "enterreviewcmnt" inside table "{grantee_tableId:OpportunityPeerReviewers}"
@@ -1888,10 +2265,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1903,10 +2294,11 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -1928,10 +2320,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1942,9 +2348,10 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     And I pause execution for "2" seconds
@@ -1961,10 +2368,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -1975,9 +2396,10 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -1985,7 +2407,6 @@ Feature: Opportunities related scenarios
     And I click modal button "Save"
     And I save the field labeled "Rating" as "rating"
     And I save the field labeled "Comments" as "cmnt"
-    And I close modal by clicking the top right x button
     Then I softly see value "In Progress" for title "Status" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:OpportunityPeerReviewers}"
     Then I cannot see row level action button "Edit" against "In Progress" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     Then I cannot see row level action button "Delete" against "In Progress" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
@@ -2004,10 +2425,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2018,9 +2453,10 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I pause execution for "2" seconds
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
@@ -2029,7 +2465,6 @@ Feature: Opportunities related scenarios
     And I enter value "enterreviewcmnt" into field "fieldReviewComments__c"
     And I click on "Save" in the page details
     And I click on "Submit Review" in the page details
-    And I close modal by clicking the top right x button
     Then I softly see value "Review Completed" for title "Status" against the value "No" inside table "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly can see row level action button "Resend for Review" against "Review Completed" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     And I expand nested table containing column value "{SavedValue:GRANTEE PM Username}"
@@ -2045,10 +2480,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2059,18 +2508,18 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE FO Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE FO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE FO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
     And I enter value "enterreviewcmnt" into field "fieldReviewComments__c"
     And I click on "Save" in the page details
     And I click on "Submit Review" in the page details
-    And I close modal by clicking the top right x button
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2080,8 +2529,8 @@ Feature: Opportunities related scenarios
     And I click on "Resend for Review" icon for "{SavedValue:GRANTEE FO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE FO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     And I pause execution for "2" seconds
@@ -2099,7 +2548,6 @@ Feature: Opportunities related scenarios
     Then I softly see field "Comments" as "resendenterreviewcmnt11"
     And I pause execution for "2" seconds
     And I click modal button "Submit Review"
-    And I close modal by clicking the top right x button
     Then I softly see value "Review Completed" for title "Status" against the value "{SavedValue:GRANTEE FO Username}" inside table "{grantee_tableId:OpportunityPeerReviewers}"
 
   @66479 @TejalMarch2020 @ValidateAfterClickOnTheCompleteReviewButtonWhenTheRecordLevelStatusForAssignedReviewersIsSentForReview @wip @needpermntrecord @positive
@@ -2109,10 +2557,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2123,6 +2585,7 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I click on "Complete Review" in the page details
     Then I softly see field "Status" as "Reviewed"
     Then I softly cannot see top right button "New" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
@@ -2130,7 +2593,7 @@ Feature: Opportunities related scenarios
     Then I softly cannot see row level action button "Delete" against "Sent for Review" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly see value "Sent for Review" for title "Status" against the value "No" inside table "{grantee_tableId:OpportunityPeerReviewers}"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
     Then I softly see the following messages in the page details :
       | No Records found |
 
@@ -2141,10 +2604,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2155,16 +2632,16 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
     And I enter value "enterreviewcmnt" into field "fieldReviewComments__c"
     And I click on "Save" in the page details
     And I click on "Submit Review" in the page details
-    And I close modal by clicking the top right x button
     And I click on "Resend for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -2191,10 +2668,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2205,6 +2696,7 @@ Feature: Opportunities related scenarios
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE FO Username} | Fiscal Reviewer | aaaaaaa     | 1        | Yes                  |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE FO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I pause execution for "5" seconds
     And I click on "Complete Review" in the page details
     And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
@@ -2222,10 +2714,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2235,24 +2741,26 @@ Feature: Opportunities related scenarios
     When I enter "OpportunityDetails" values from "Field_Values.xlsx"
     When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
     And I navigate to "Overview" sub tab
-    When I enter value "-1" into field "fieldPreApplicationDueDate__c"
+    When I enter value "No" into field "fieldPreApplicationNeeded__c"
+    #When I enter value "-1" into field "fieldPreApplicationDueDate__c"
     And I pause execution for "2" seconds
+    And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
       | Responsibility     | Name                              | Description |
       | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
       | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
       | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
-    And I click on "Save and Continue" in the page details
     And I click on "Submit for Approval" in the page details
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I refresh the page
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "DC - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2270,10 +2778,24 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2370,7 +2892,7 @@ Feature: Opportunities related scenarios
 
   @63146 @TejalMarch2020 @validateOpportunitiesConvertedToApplicationListPageHelpText  @positive
   Scenario Outline: Validate help text message at Opportunities Converted to Application List Page
-    Given I login as "PM" user
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:ConvertedApplicationLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I hovering mouse on page block help text icon inside table "{grantee_tableId:OpportunityConvertedToApplication}" with tooltip id "ExpiredFundingOpportunitiesFlexGridtooltip"
@@ -2462,7 +2984,7 @@ Feature: Opportunities related scenarios
     And I pause execution for "5" seconds
     And I click on "Submit for Approval" in the page details
     And I pause execution for "5" seconds
-    When I re-login with "PM1" user
+    And I re-login to "As a Grantee" app as "GRANTEE PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "DC - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
@@ -2592,8 +3114,7 @@ Feature: Opportunities related scenarios
     And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     And I pause execution for "3" seconds
     When I "Reject" in the approval decision
-    When I re-login with "PM1" user
-    And I re-login to "As a Grantee" app as "PM1" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
@@ -2641,7 +3162,7 @@ Feature: Opportunities related scenarios
     When I perform quick search for "DC - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
     And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Reject" in the approval decision
-    When I re-login with "PM1" user
+    And I re-login to "As a Grantee" app as "GRANTEE PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel

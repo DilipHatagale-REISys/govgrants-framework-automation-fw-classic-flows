@@ -97,6 +97,22 @@ Feature: Validate all registration related scenarios
     Then I see "USA" text enter in field "fieldPrimaryRepCountry__c"
     Then I see "Prince George’s" text enter in field "fieldCounty__c"
 
+  @82797 @verifyVisibilityOfFieldsAtPaymentAddressSection-Individual @monu
+  Scenario:Verify user is not able to see any fields after selection of Same as organization fields to yes inside payment details page block
+    Given I begin "Individual" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456789" into "Social Security Number (SSN)" on old form
+    When I enter value as "IndividualRegistration@yopmail.com" into "Email" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    Then I softly see fields "fieldPaymentAddressLine1__c" is not visible
+    Then I softly see fields "fieldPaymentAddressCity__c" is not visible
+    Then I softly see fields "fieldPaymentAddressState__c" is not visible
+    Then I softly see fields "fieldPaymentAddressZipCode__c" is not visible
+
   @82024 @verifyFilledDetailsPopulatedAtAuthorizedDetailsSection-Organization @monu
   Scenario:Verify user should be able to see filled details at organization address id getting populated at Authorized section
     Given I begin "Organization" registration
@@ -170,6 +186,70 @@ Feature: Validate all registration related scenarios
     When I click on "Save and Continue" in the page details
     Then I see the header is "Registration" in the page details
     Then I see the sub-header is "Step 2 of 2" in the page details
+
+  @82780 @VerifyRegistrationStep1of2-Individual @monu
+  Scenario:Verify user should be navigated to Registration step 1 of 2 after clicking on Agree button on registration
+    Given I begin "Individual" registration
+    Then I see the header is "Registration" in the page details
+    Then I see the sub-header is "Legal Disclaimer 1 of 2" in the page details
+    When I click on "Agree" in the page details
+    Then I see the header is "Registration" in the page details
+    Then I see the sub-header is "Legal Disclaimer 2 of 2" in the page details
+    When I click on "Agree" in the page details
+    Then I see the header is "Registration" in the page details
+    Then I see the sub-header is "Step 1 of 2" in the page details
+
+  @33827 @verifySavedDetailsOfOrganizationProfileSubTab-Organization @monu
+  Scenario:Verify user should be able to see filled details at organization sub tab after redirecting back to organization profile tab while clicking on back button
+    Given I begin "Organization" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
+    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
+    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    Then I see the header is "Registration" in the page details
+    Then I see the sub-header is "Step 3 of 3" in the page details
+    When I click on "Back" in the page details
+    Then I see "No" text enter in field "fieldSameAsOrganizationAddress__c"
+    Then I see "For Profit Organizations" text enter in field "fieldOrganizationTypeSInglePicklist__c"
+    Then I see "(918) 908-9089" text enter in field "fieldOrgnizationPhoneNumber__c"
+    Then I see "www.google.com" text enter in field "fieldWebsite__c"
+    Then I see "Vintage Plaza" text enter in field "fieldOrganizationStreetAddress__c"
+    Then I see "Prince George’s" text enter in field "fieldCounty__c"
+    Then I see "Sterling" text enter in field "fieldOrganizationCityAddress__c"
+    Then I see "VA" text enter in field "fieldStateDropdownList__c"
+    Then I see "USA" text enter in field "fieldOrganizationsCountry__c"
+    Then I see "20171" text enter in field "fieldOrganizationZipCode__c"
+    Then I see "(918) 908-9089" text enter in field "fieldPaymentAddressVendorLocation__c"
+    Then I see "Yes" text enter in field "fieldSameAsOrganizationAddress__c"
+
+  @81954 @verifyEINNumberAndDUNSNumberAtOrganizationProfileSubTab-Organization @monu
+  Scenario:Verify user should be able to see filled details of EIN Number and DUNS Number at organization sub tab
+    Given I begin "Organization" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456789" into "Employer Identification Number (EIN)" on old form
+    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
+    Then I softly see field "Data Universal Number System (DUNS) #" as "987654321"
+    Then I softly see field "Employer Identification Number (EIN)" as "123456789"
+
+  @81952 @verifyRecipientPortalDetailsUnderContactUS @monu @wip
+  Scenario:Verify user should be able to see details of recipient portal details under contact us sub tab
+    Given I am on "SUBPORTAL" portal
+    Then I softly see the text containing :
+      | Office of Management and Budget |
+      | 45335 Vintage Park Plaza,       |
+      | Sterling, VA 20166              |
+      | Phone: (703)-480-7600           |
+      | Fax: (123) 123-4567             |
 
   @82027 @verifyRegisteredDetailsInsidePendingTask-Organization @monu @wip
   Scenario:Verify if user clicks on download option inside Attachment section new tab getting opened
