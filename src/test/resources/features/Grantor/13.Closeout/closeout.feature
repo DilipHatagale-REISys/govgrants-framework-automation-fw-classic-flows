@@ -328,7 +328,7 @@ Feature: Validate all scenarios in Closeout
       | Reason is Required to save. |
 
 
-  @40065 @87352 @40608 @89221 @89222 @89223 @89224 @89225 @89226 @89228 @89229 @89227 @ValidatingCloseoutRequest @meenakshi
+  @40065 @87352 @40608 @89221 @89222 @89223 @89224 @89225 @89226 @89228 @89229 @89227 @88734 @88735 @88736 @88737 @88738 @88739 @ValidatingCloseoutRequest @meenakshi
   Scenario: To verify the PM user should be able to create the  Closeout Request
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -403,3 +403,111 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see row level action button "Download" against "data.xlsx" in flex table with id "---closeout:-:closeoutFilesTableId---"
     Then I softly can see row level action button "View" against "data.xlsx" in flex table with id "---closeout:-:closeoutFilesTableId---"
     Then I softly can see row level action button "Delete" against "data.xlsx" in flex table with id "---closeout:-:closeoutFilesTableId---"
+    #88734
+    When I navigate to "Checklist" sub tab
+    And I enter value "Yes" into field "fieldChecklistQuestionPick7__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick8__c"
+    #88735
+    And I enter value "Yes" into field "fieldChecklistQuestionPick9__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick10__c"
+    #88736
+    And I enter value "Yes" into field "fieldChecklistQuestionPick11__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick12__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick13__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick14__c"
+    #88737
+    And I enter value "Yes" into field "fieldChecklistQuestionPick15__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick16__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick17__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick18__c"
+    #88738
+    And I enter value "Yes" into field "fieldChecklistQuestionPick19__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick20__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick21__c"
+    #88739
+    And I enter value "Yes" into field "fieldChecklistQuestionPick22__c"
+    And I enter value "Yes" into field "fieldChecklistQuestionPick23__c"
+    When I click on "Save" in the page details
+    Then I softly see field "Has the subrecipient met the match requirement?" as "Yes"
+    Then I softly see field "Has the subrecipient provided supporting documentation for all reported match, including third party in-kind match?" as "Yes"
+    Then I softly see field "Did the subrecipient fully expend program income earned during the award period prior to the closeout of the award?" as "Yes"
+    Then I softly see field "Has the subrecipient returned unexpended program income to the funding organiation, if required by program regulations?" as "Yes"
+    Then I softly see field "Has the subrecipient completed the scope of work as outlined in the subaward agreement?" as "Yes"
+    Then I softly see field "Has the subrecipient met all deliverable requirements?" as "Yes"
+    Then I softly see field "Has the subrecipient submitted required documentation of performance completion?" as "Yes"
+    Then I softly see field "Did the subrecipient request an extension to the period of performance?" as "Yes"
+    Then I softly see field "Has the subrecipient submitted all programmatic or progress reports?" as "Yes"
+    Then I softly see field "Has the subrecipient submitted all required site visit reports?" as "Yes"
+    Then I softly see field "Has the funding organization program staff reviewed and accepted all reports?" as "Yes"
+    Then I softly see field "Is the subrecipient required to provide ongoing outcome or compliance reporting after the period of performance end date?" as "Yes"
+    Then I softly see field "Has the subrecipient submitted a equipment inventory?" as "Yes"
+    Then I softly see field "Has the subrecipient put in place the required deed restrictions or mortgage liens for real property acquired, constructed, rehabilitated, or reconstructed with federal award funds?" as "Yes"
+    Then I softly see field "Did the subrecipient make facility or infrastructure improvements that trigger change of use requirements and is the subrecipient required to provide ongoing maintenance?" as "Yes"
+    Then I softly see field "Has the subrecipient completed all corrective actions for any open findings/concerns?" as "Yes"
+    Then I softly see field "Has the funding organization reviewed and accepted all corrective actions?" as "Yes"
+
+  @87353 @86713 @86714 @76488 @42103 @87351 @ValidatingCloseoutRequest @meenakshi
+  Scenario: To validate status : Sent to Subrecipient in closeout request section when closeout request is Sent to Subrecipient by an internal user
+    And I navigate to "Overview" sub tab
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "GrantID"
+    Then I softly see field "EGMS ID" as "{SavedValue:GrantID}"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    Then I softly see "Create Closeout Request" opens in overLay window
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    #87353
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "EGMS ID" as "CloseoutEGMSID"
+    And I save the field labeled "Closeout" as "CloseoutName"
+    And I save the field labeled "Closeout Effective Date" as "CloseoutEffectiveDate"
+    Then I softly see field "Closeout" as "{SavedValue:CloseoutName}"
+    Then I softly see field "Closeout Effective Date" as "{SavedValue:CloseoutEffectiveDate}"
+    Then I softly see field "EGMS ID" as "{SavedValue:CloseoutEGMSID}"
+    When I click on "Save" in the page details
+    When I click on "Send To Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent To Subrecipient"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Requests" sub tab
+    #86714
+    And I click on "View" icon for "Sent To Subrecipient" inside flex table with id "---closeout:-:closeoutTableId---" without waiting for record
+    When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
+    And I enter value "07/20/2023" into field "fieldCloseoutDate__c"
+    And I enter value "08/12/2023" into field "fieldCloseoutDueDateGrantor__c"
+    When I click on "Save" in the page details
+    Then I softly see field "Closeout Effective Date" as "07/20/2023"
+    Then I softly see field "Closeout Activities Due Date" as "08/12/2023"
+    #76488
+    Then I softly see value "FA-ST-05" for title "Funding Account" inside table "---closeout:-:closeoutFundingAccountsTableId---"
+    And I softly see value "$1,000.00" for title "Encumbrance" inside table "---closeout:-:closeoutFundingAccountsTableId---"
+    And I softly see value "$0.00" for title "Spent" inside table "---closeout:-:closeoutFundingAccountsTableId---"
+    And I softly see value "$1,000.00" for title "Encumbrance Balance" inside table "---closeout:-:closeoutFundingAccountsTableId---"
+    And I softly see value "$0.00" for title "Closeout Deobligation" inside table "---closeout:-:closeoutFundingAccountsTableId---"
+    #42103
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I navigate to "Home" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:CloseoutEGMSID}" in "---closeout:-:homePendingTaskTableId---" panel
+    Then I softly see that "{SavedValue:CloseoutEGMSID}" has been added in flextable with Id "---closeout:-:homePendingTaskTableId---"
+    Then I softly see value "Automation PM" for title "Created By" inside table "---closeout:-:homePendingTaskTableId---"
+    Then I softly see value "Review Closeout Request" for title "Task Type" inside table "---closeout:-:homePendingTaskTableId---"
+    Then I softly see value "07/29/2020" for title "Due Date" inside table "---closeout:-:homePendingTaskTableId---"
+    Then I softly see value "Review Closeout Request for Grant #{SavedValue:GrantID}" for title "Subject" inside table "---closeout:-:homePendingTaskTableId---"
+    #87351
+    And I click on "Start" icon for "{SavedValue:CloseoutEGMSID}" inside flex table with id "---closeout:-:homePendingTaskTableId---"
+    Then I softly can see "Overview" sub tab at view detail page
+    Then I softly can see "Open Items" sub tab at view detail page
+    Then I softly can see "Checklist" sub tab at view detail page
+    Then I softly can see "Attachments" sub tab at view detail page
+    Then I softly can see "History" sub tab at view detail page
+    Then I softly can see "Collab" sub tab at view detail page
+    Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+
+
+
