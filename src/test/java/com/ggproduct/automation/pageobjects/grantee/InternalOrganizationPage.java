@@ -168,7 +168,7 @@ public class InternalOrganizationPage extends GranteeProjectManager {
     public boolean assertLastModifiedDateAsTodaysDateWithTimeAndWithoutTime(String savedValue, boolean timeCheck) {
         boolean result = false;
         if (!timeCheck) {
-            String cdate = I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat((DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a"));
+            String cdate = I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat((DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a")));
             String[] currentsplit = (cdate.split(":", 2));
             String[] arrCSplit = currentsplit[1].split("\\s");
             int date = Integer.parseInt(arrCSplit[0]) + 5;
@@ -752,7 +752,7 @@ public class InternalOrganizationPage extends GranteeProjectManager {
     private boolean isContentGettingSavedBySanpShotOption(String text) {
         boolean result = true;
         if (text.equalsIgnoreCase("Todays Date")) {
-            String cdate = I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat((DateTimeFormatter.ofPattern("M/d/yyyy h:mm a").withLocale(Locale.US)).replaceAll("^0", "");
+            String cdate = I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat((DateTimeFormatter.ofPattern("M/d/yyyy h:mm a").withLocale(Locale.US))).replaceAll("^0", "");
             System.out.println("The current date:-" + cdate);
             String[] currentsplit = (cdate.split(":", 2));
             String[] arrCSplit = currentsplit[1].split("\\s");
