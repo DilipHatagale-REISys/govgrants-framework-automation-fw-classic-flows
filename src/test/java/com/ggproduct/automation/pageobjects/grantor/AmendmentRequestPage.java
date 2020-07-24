@@ -37,6 +37,6 @@ public class AmendmentRequestPage extends GrantorProjectManager {
         String rawDate = getFieldValueFromAPI(awardName, "GrantAwardName__c", "Award__c", "BudgetPeriodEndDate__c");
         String[] rawDateSplitted = rawDate.split(" ")[0].split("-");
         String fieldValue = rawDateSplitted[1] + "/" + rawDateSplitted[2] + "/" + rawDateSplitted[0];
-        I.amPerforming().propertiesFileOperationsTo().saveValue("updatedBudgetPeriodDate", I.amPerforming().actionToGet().dateWithOffsetFromGivenDate(fieldValue,Integer.parseInt(offset),DateTimeFormatter.ofPattern("M/d/uuuu")));
+        I.amPerforming().propertiesFileOperationsTo().saveValue("updatedBudgetPeriodDate", I.amPerforming().dateOperationsToGet().givenDateWithOffsetFromGivenDate(fieldValue,Integer.parseInt(offset),DateTimeFormatter.ofPattern("M/d/uuuu")));
     }
 }
