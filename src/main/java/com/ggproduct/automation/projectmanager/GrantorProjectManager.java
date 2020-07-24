@@ -567,7 +567,7 @@ public class GrantorProjectManager extends ProjectManager{
 
     public boolean isFieldDateGreaterThanOrLessThanTodaysDate(String fieldLabel, String lessOrGreater) throws ParseException {
         String currentDate = govgrants.perform().pageDetails().getFieldValue(fieldLabel, true);
-        String todayDate = I.amPerforming().actionToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy"));
+        String todayDate = I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy"));
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         Date actualDate = sdf.parse(currentDate);
         Date today = sdf.parse(todayDate);

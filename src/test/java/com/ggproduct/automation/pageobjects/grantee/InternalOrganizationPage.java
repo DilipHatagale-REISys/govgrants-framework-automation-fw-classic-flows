@@ -168,7 +168,7 @@ public class InternalOrganizationPage extends GranteeProjectManager {
     public boolean assertLastModifiedDateAsTodaysDateWithTimeAndWithoutTime(String savedValue, boolean timeCheck) {
         boolean result = false;
         if (!timeCheck) {
-            String cdate = I.amPerforming().actionToGet().currentDateTimeInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a"));
+            String cdate = I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat((DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a"));
             String[] currentsplit = (cdate.split(":", 2));
             String[] arrCSplit = currentsplit[1].split("\\s");
             int date = Integer.parseInt(arrCSplit[0]) + 5;
@@ -194,7 +194,7 @@ public class InternalOrganizationPage extends GranteeProjectManager {
                 }
             }
         } else if (timeCheck) {
-            String dateWithoutTime = I.amPerforming().actionToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+            String dateWithoutTime = I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
             if (dateWithoutTime.equals(savedValue)) {
                 result = true;
                 System.out.println("Date without time coming with True Condition");
@@ -223,14 +223,14 @@ public class InternalOrganizationPage extends GranteeProjectManager {
      * assert previous date on leads detail page for application due date
      */
     public void assertPreviousDate(String savedValue) {
-        Assert.assertEquals(savedValue, I.amPerforming().actionToGet().currentDateWithOffsetInDesiredFormat(-1, DateTimeFormatter.ofPattern("MM/dd/yyyy")));
+        Assert.assertEquals(savedValue, I.amPerforming().dateOperationsToGet().currentDateWithOffsetInDesiredFormat(-1, DateTimeFormatter.ofPattern("MM/dd/yyyy")));
     }
 
     /**
      * assert current date on leads detail page for application due date
      */
     public void assertCurrentDate(String savedValue) {
-        Assert.assertEquals(savedValue, I.amPerforming().actionToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy")));
+        Assert.assertEquals(savedValue, I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy")));
     }
 
     /**
@@ -752,7 +752,7 @@ public class InternalOrganizationPage extends GranteeProjectManager {
     private boolean isContentGettingSavedBySanpShotOption(String text) {
         boolean result = true;
         if (text.equalsIgnoreCase("Todays Date")) {
-            String cdate = I.amPerforming().actionToGet().currentDateTimeInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy h:mm a").withLocale(Locale.US)).replaceAll("^0", "");
+            String cdate = I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat((DateTimeFormatter.ofPattern("M/d/yyyy h:mm a").withLocale(Locale.US)).replaceAll("^0", "");
             System.out.println("The current date:-" + cdate);
             String[] currentsplit = (cdate.split(":", 2));
             String[] arrCSplit = currentsplit[1].split("\\s");
@@ -785,7 +785,7 @@ public class InternalOrganizationPage extends GranteeProjectManager {
      * return true if table is getting refreshed on Refresh option click
      */
     private String isTableRefreshOnRefreshOptionClick() {
-        return I.amPerforming().actionToGet().pageLoadStatus();
+        return I.amPerforming().browserOperationsTo().getPageLoadStatus();
     }
 
     /**
@@ -1143,8 +1143,8 @@ public class InternalOrganizationPage extends GranteeProjectManager {
             String firstEndDate = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id = '" + tableId + "']//td//i[contains(@class,'fa-close')]/../../../preceding-sibling::td//field[@field-name='EndDate__c']")).get(0).getText();
             String firstCreationDate = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id = '" + tableId + "']//td//i[contains(@class,'fa-close')]/../../../following-sibling::td//field[@field-name='TaskCreationDate__c']")).get(0).getText();
             String firstDueDate = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id = '" + tableId + "']//td//i[contains(@class,'fa-close')]/../../../following-sibling::td//field[@field-name='DueDate__c']")).get(0).getText();
-            String finalCreationDate = I.amPerforming().actionToGet().dateWithOffsetFromGivenDate(firstEndDate, -Integer.parseInt(taskCreationDays), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
-            String finalDueDate = I.amPerforming().actionToGet().dateWithOffsetFromGivenDate(firstEndDate, Integer.parseInt(taskCompletionDays), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+            String finalCreationDate = I.amPerforming().dateOperationsToGet().givenDateWithOffsetFromGivenDate(firstEndDate, -Integer.parseInt(taskCreationDays), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+            String finalDueDate = I.amPerforming().dateOperationsToGet().givenDateWithOffsetFromGivenDate(firstEndDate, Integer.parseInt(taskCompletionDays), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
             if (firstCreationDate.equals(finalCreationDate) && firstDueDate.equals(finalDueDate)) {
                 flag = true;
             }
