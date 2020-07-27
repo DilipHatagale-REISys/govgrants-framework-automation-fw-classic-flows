@@ -192,7 +192,7 @@ public class GrantorPayloads {
         JsonArray awardArray = new JsonArray();
         award.addProperty("GrantAwardDescription","Award Created From Automation API");
         award.addProperty("BudgetPeriodEndDate", I.amPerforming()
-        .actionToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         award.addProperty("PM",ProjectWebServices.getIdOf("User","Automation PM"));
         award.addProperty("FO",ProjectWebServices.getIdOf("User","Automation FO"));
         award.addProperty("EXE",ProjectWebServices.getIdOf("User","Automation EXE"));
@@ -256,9 +256,9 @@ public class GrantorPayloads {
         JsonObject paymentRequest = new JsonObject();
         paymentRequest.addProperty("SubmissionTitle","Payment Request Schedule");
         paymentRequest.addProperty("CalReportingStartDate", I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         paymentRequest.addProperty("CalReportingEndDate", I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         paymentRequest.addProperty("Frequency","Bi-Monthly");
         paymentRequest.addProperty("ScheduleBase","Reporting Period");
         paymentRequest.addProperty("SubmissionType","Payment Request");
@@ -268,9 +268,9 @@ public class GrantorPayloads {
         JsonObject progressReport = new JsonObject();
         progressReport.addProperty("SubmissionTitle","Progress Report Schedule");
         progressReport.addProperty("CalReportingStartDate", I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         progressReport.addProperty("CalReportingEndDate", I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         progressReport.addProperty("Frequency","Bi-Monthly");
         progressReport.addProperty("ScheduleBase","Reporting Period");
         progressReport.addProperty("SubmissionType","Progress Report");
@@ -345,9 +345,9 @@ public class GrantorPayloads {
         JsonArray pre = new JsonArray();
         jsonObject.addProperty("PreApplicationNeeded","Yes");
         jsonObject.addProperty("PreApplicationDueDate",I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         jsonObject.addProperty("ApplicationDueDate",I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         pre.add(jsonObject);
         json.add("Announcement",pre);
         return json;
@@ -357,9 +357,9 @@ public class GrantorPayloads {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
         jsonObject.addProperty("PreApplicationDueDate",I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(-1, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(-1, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         jsonObject.addProperty("ApplicationDueDate",I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(-1, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(-1, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         pre.add(jsonObject);
         json.add("Announcement",pre);
         return json;
@@ -369,9 +369,9 @@ public class GrantorPayloads {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
         jsonObject.addProperty("PreApplicationDueDate",I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         jsonObject.addProperty("ApplicationDueDate",I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         pre.add(jsonObject);
         json.add("Announcement",pre);
         return json;
@@ -458,7 +458,7 @@ public class GrantorPayloads {
         JsonArray bperiodA = new JsonArray();
 
         bperiod.addProperty("BudgetStartDate",
-                I.amPerforming().actionToGet().currentDateWithOffsetInDesiredFormat(11, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                I.amPerforming().dateOperationsToGet().currentDateWithOffsetInDesiredFormat(11, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         bperiodA.add(bperiod);
         json.add("BudgetPeriod",bperiodA);
         return json;
@@ -489,9 +489,9 @@ public class GrantorPayloads {
         ann.addProperty("LaverageAllowed","Yes");
         ann.addProperty("PreApplicationNeeded","No");
         ann.addProperty("PreApplicationDueDate",I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         ann.addProperty("ApplicationDueDate",I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         ann.addProperty("FocusAreaRequired","Yes");
         ann.addProperty("IsGoalsRequired","Yes");
         ann.addProperty("KPIsRequired","Yes");
@@ -540,9 +540,9 @@ public class GrantorPayloads {
         JsonArray budgetPeriodArray = new JsonArray();
 
         budgetPeriod.addProperty("BudgetStartDate",I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(50, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(50, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         budgetPeriod.addProperty("BudgetEndDate",I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         budgetPeriodArray.add(budgetPeriod);
         parent.add("BudgetPeriod",budgetPeriodArray);
 
@@ -735,10 +735,10 @@ public class GrantorPayloads {
         grant.addProperty("GrantNumber","31231232");
         grant.addProperty("ProjectPeriodStartDate",
                 I.amPerforming()
-                        .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         grant.addProperty("ProjectPeriodEndDate",
                 I.amPerforming()
-                        .actionToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         grant.addProperty("BudgetCategoryPackage","Construction");
         grant.addProperty("GrantType","Formula Grant");
         grant.addProperty("GrantDescription","API Testing For Award Activation From Direct Grant");
@@ -770,7 +770,7 @@ public class GrantorPayloads {
         JsonArray awardArray = new JsonArray();
         award.addProperty("GrantAwardDescription","Award Created From Automation API");
         award.addProperty("BudgetPeriodEndDate", I.amPerforming()
-                .actionToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         award.addProperty("PM",ProjectWebServices.getIdOf("User","Automation PM"));
         award.addProperty("FO",ProjectWebServices.getIdOf("User","Automation FO"));
         award.addProperty("EXE",ProjectWebServices.getIdOf("User","Automation EXE"));
@@ -802,10 +802,10 @@ public class GrantorPayloads {
         paymentRequestSchedule.addProperty("SubmissionTitle","Grant API Test");
         paymentRequestSchedule.addProperty("CalReportingStartDate",
                 I.amPerforming()
-                        .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         paymentRequestSchedule.addProperty("CalReportingEndDate",
                 I.amPerforming()
-                        .actionToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         paymentRequestSchedule.addProperty("Frequency","Annually");
         paymentRequestSchedule.addProperty("ScheduleBase","Calendar");
         paymentRequestSchedule.addProperty("SubmissionType","Payment Request");
@@ -815,10 +815,10 @@ public class GrantorPayloads {
         progressReportSchedule.addProperty("SubmissionTitle",grantName);
         progressReportSchedule.addProperty("CalReportingStartDate",
                 I.amPerforming()
-                        .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         progressReportSchedule.addProperty("CalReportingEndDate",
                 I.amPerforming()
-                        .actionToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         progressReportSchedule.addProperty("Frequency","Annually");
         progressReportSchedule.addProperty("ScheduleBase","Calendar");
         progressReportSchedule.addProperty("SubmissionType","Progress Report");
@@ -831,10 +831,10 @@ public class GrantorPayloads {
         awardServiceArea.addProperty("ServiceArea",ProjectWebServices.getIdOf("ServiceArea__c","Automation Permanent Focus Area"));
         awardServiceArea.addProperty("GATStartDate",
                 I.amPerforming()
-                        .actionToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         awardServiceArea.addProperty("GATEndDate",
                 I.amPerforming()
-                        .actionToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                        .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         awardServiceAreaArray.add(awardServiceArea);
         parent.add("AwardServiceArea",awardServiceAreaArray);
 

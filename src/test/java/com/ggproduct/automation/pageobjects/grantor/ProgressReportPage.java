@@ -95,9 +95,9 @@ public class ProgressReportPage extends GrantorProjectManager {
             fieldValue = fieldValue.replaceAll("\\s.*", "");
         }
         if (isSoftly) {
-            I.amPerforming().assertionsTo().assertThat(I.amPerforming().actionToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy"))).isEqualTo(fieldValue);
+            I.amPerforming().assertionsTo().assertThat(I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy"))).isEqualTo(fieldValue);
         } else {
-            Assert.assertEquals(I.amPerforming().actionToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")), fieldValue);
+            Assert.assertEquals(I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")), fieldValue);
         }
     }
 
@@ -158,9 +158,9 @@ public class ProgressReportPage extends GrantorProjectManager {
      */
     public void assertReportedDateField(boolean isSoftly) {
         if (isSoftly) {
-            I.amPerforming().assertionsTo().assertThat(I.amPerforming().actionToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy"))).isEqualTo(I.amPerforming().propertiesFileOperationsTo().getValue("ReportedDate"));
+            I.amPerforming().assertionsTo().assertThat(I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy"))).isEqualTo(I.amPerforming().propertiesFileOperationsTo().getValue("ReportedDate"));
         } else {
-            Assert.assertEquals(I.amPerforming().propertiesFileOperationsTo().getValue("ReportedDate"), I.amPerforming().actionToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
+            Assert.assertEquals(I.amPerforming().propertiesFileOperationsTo().getValue("ReportedDate"), I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
         }
     }
 
@@ -221,7 +221,7 @@ public class ProgressReportPage extends GrantorProjectManager {
      * @param linkName - link text
      */
     public void clickOnHyperLinkContainingDate(String linkName) {
-        clickOnLink(linkName + " " + I.amPerforming().actionToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
+        clickOnLink(linkName + " " + I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
     }
 
     public boolean compareTwoFieldValues(String savedValue1, String compare, String savedValue2) {

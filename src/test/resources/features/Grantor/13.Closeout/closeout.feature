@@ -445,7 +445,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Has the subrecipient completed all corrective actions for any open findings/concerns?" as "Yes"
     Then I softly see field "Has the funding organization reviewed and accepted all corrective actions?" as "Yes"
 
-  @87353 @86713 @86714 @76488 @42103 @87351 @ValidatingCloseoutRequest @meenakshi
+  @87353 @86713 @40071 @93106 @40644 @86714 @76488 @42103 @87351 @76487 @86716 @86712 @87346 @ValidatingCloseoutRequest @meenakshi
   Scenario: To validate status : Sent to Subrecipient in closeout request section when closeout request is Sent to Subrecipient by an internal user
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -464,9 +464,43 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Closeout" as "{SavedValue:CloseoutName}"
     Then I softly see field "Closeout Effective Date" as "{SavedValue:CloseoutEffectiveDate}"
     Then I softly see field "EGMS ID" as "{SavedValue:CloseoutEGMSID}"
+    #40071
+    And I save the field labeled "Grant Title" as "GrantTitle"
+    And I save the field labeled "Subrecipient Organization" as "SubrecipientOrganization"
+    And I save the field labeled "Funding Organization" as "FundingOrganization"
+    Then I softly see field "Grant Title" as "{SavedValue:GrantTitle}"
+    Then I softly see field "Subrecipient Organization" as "{SavedValue:SubrecipientOrganization}"
+    Then I softly see field "Funding Organization" as "{SavedValue:FundingOrganization}"
     When I click on "Save" in the page details
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Requests" sub tab
+    #93106
+    Then I softly see value "{SavedValue:CloseoutEGMSID}" for title "EGMS ID" inside table "---closeout:-:closeoutTableId---"
+    And I softly see value "Early Completion" for title "Type" inside table "---closeout:-:closeoutTableId---"
+    And I softly see value "Automation Test Description" for title "Reason" inside table "---closeout:-:closeoutTableId---"
+    And I softly see value "Created" for title "Status" inside table "---closeout:-:closeoutTableId---"
+    And I click on "View" icon for "Created" inside flex table with id "---closeout:-:closeoutTableId---" without waiting for record
+    Then I softly can see "Overview" sub tab at view detail page
+    Then I softly can see "Open Items" sub tab at view detail page
+    Then I softly can see "Checklist" sub tab at view detail page
+    Then I softly can see "Responsibilities" sub tab at view detail page
+    Then I softly can see "Attachments" sub tab at view detail page
+    Then I softly can see "History" sub tab at view detail page
+    Then I softly can see "Collab" sub tab at view detail page
+    #40644
+    And I navigate to "Overview" sub tab
+    Then I softly see field "Spent" as "$0.00"
+    Then I softly see field "Actual Cash Match" as "$0.00"
+    Then I softly see field "Actual Non-Cash Match" as "$0.00"
+    Then I softly see field "Actual Total Match" as "$0.00"
     When I click on "Send To Subrecipient" in the page details
     Then I softly see field "Status" as "Sent To Subrecipient"
+    #76487
+    Then I softly see status in Progress-bar is "Sent To Subrecipient" and is "Green"
     And I navigate to "Grants" tab
     When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -507,6 +541,24 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see "History" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+    #86716
+    When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
+    And I enter value "checked" into field "fieldAggreement__c"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see field "Acknowledgement" as "checked"
+    #86712
+    And I click on "Acknowledge" in the page details
+    Then I softly see status in Progress-bar is "Acknowledged by Subrecipient" and is "Green"
+    Then I softly see field "Status" as "Submitted to Grantor"
+    #87346
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:CloseoutEGMSID}" in "---closeout:-:pendingTaskTableId---" panel
+    Then I softly see that "{SavedValue:CloseoutEGMSID}" has been added in flextable with Id "---closeout:-:pendingTaskTableId---"
+
 
   @93254 @93255 @93256 @VerifyCloseOutRequestDetailsPage @smoke @monu
   Scenario: Validate user is able to see closeout request details page after clicking on start button under pending tasks

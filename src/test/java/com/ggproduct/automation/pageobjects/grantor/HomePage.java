@@ -36,7 +36,7 @@ public class HomePage extends GrantorProjectManager {
      * handles yopmail portal emails notification
      */
     public void performOperationOnYopmail(String emailId) {
-        I.amPerforming().actionToGet().newURL("http://www.yopmail.com/");
+        I.amPerforming().browserOperationsTo().navigateToUrl("http://www.yopmail.com/");
         I.amPerforming().textInput().in(By.xpath("//input[@id='login' and @type='text']"), emailId);
         I.amPerforming().click().on(By.xpath("//input[@value='Check Inbox' and @type='submit']"));
         I.amPerforming().click().on(By.xpath("//div[@id='m1']//a[@class='lm']/span[2]"));
@@ -49,7 +49,7 @@ public class HomePage extends GrantorProjectManager {
      * @param mailid
      */
     public void ckeckoutYopMail(String mailid) {
-        I.amPerforming().actionToGet().newURL("http://www.yopmail.com/en/");
+        I.amPerforming().browserOperationsTo().navigateToUrl("http://www.yopmail.com/en/");
         I.amPerforming().textInput().in(By.xpath("//input[@id='login']"), mailid);
         I.amPerforming().click().on(By.xpath("//input[@value='Check Inbox' and @type='submit']"));
     }
@@ -138,8 +138,8 @@ public class HomePage extends GrantorProjectManager {
      * To save the todays date as well as date after one year
      */
     public void saveTodaysDate() {
-        I.amPerforming().propertiesFileOperationsTo().saveValue("Todays Date", I.amPerforming().actionToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
-        I.amPerforming().propertiesFileOperationsTo().saveValue("Expiration Date", I.amPerforming().actionToGet().dateWithOffsetFromGivenDate(I.amPerforming().actionToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")), 365, DateTimeFormatter.ofPattern("M/d/yyyy")));
+        I.amPerforming().propertiesFileOperationsTo().saveValue("Todays Date", I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
+        I.amPerforming().propertiesFileOperationsTo().saveValue("Expiration Date", I.amPerforming().dateOperationsToGet().givenDateWithOffsetFromGivenDate(I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")), 365, DateTimeFormatter.ofPattern("M/d/yyyy")));
     }
 
     /**
