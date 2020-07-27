@@ -559,8 +559,8 @@ Feature: Opportunities related scenarios
     And I pause execution for "2" seconds
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "DC - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2742,7 +2742,6 @@ Feature: Opportunities related scenarios
     When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
     And I navigate to "Overview" sub tab
     When I enter value "No" into field "fieldPreApplicationNeeded__c"
-    #When I enter value "-1" into field "fieldPreApplicationDueDate__c"
     And I pause execution for "2" seconds
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
@@ -2756,6 +2755,14 @@ Feature: Opportunities related scenarios
     And I refresh the page
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
+    When I navigate to "Opportunities" tab
+    And I pause execution for "5" seconds
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I "Approve" in the approval decision
+    And I pause execution for "5" seconds
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     And I pause execution for "5" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2782,16 +2789,8 @@ Feature: Opportunities related scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    And I navigate to "Overview" sub tab
-    And I save the field labeled "Created Date" as "CreatedDate"
-    When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Leads Not Yet Qualified - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
-    And I pause execution for "2" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
@@ -2805,24 +2804,31 @@ Feature: Opportunities related scenarios
     When I enter "OpportunityDetails" values from "Field_Values.xlsx"
     When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
     And I navigate to "Overview" sub tab
-    When I enter value "-1" into field "fieldPreApplicationDueDate__c"
-    And I pause execution for "5" seconds
+    When I enter value "No" into field "fieldPreApplicationNeeded__c"
+    And I click on "Save" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name                              | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
-      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
-    And I click on "Save and Continue" in the page details
-    And I pause execution for "3" seconds
+      | Responsibility     | Name                              | Description     |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | Product Grantee |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | Product Grantee |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | Product Grantee |
     And I click on "Submit for Approval" in the page details
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I refresh the page
     When I "Approve" in the approval decision
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
+    When I navigate to "Opportunities" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I "Approve" in the approval decision
+    And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "DC - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2831,7 +2837,6 @@ Feature: Opportunities related scenarios
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
     When I click on "Create Application" in the page details
-    And I enter value "{SavedValue:GRANTEE PM Username}" into field "ProjectDirectorContact__c"
     When I click on "Save and Continue" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:ConvertedApplicationLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2843,7 +2848,7 @@ Feature: Opportunities related scenarios
     Then I softly see value "Converted to Application" for title "Status" inside table "{grantee_tableId:OpportunityConvertedToApplication}"
     And I refresh the page
     And I pause execution for "5" seconds
-    When I perform quick search for "g78j" in "{grantee_tableId:OpportunityConvertedToApplication}" panel
+    When I perform quick search for "Invalid Data" in "{grantee_tableId:OpportunityConvertedToApplication}" panel
     Then I softly see "No Records Found" inside flex table with id "{grantee_tableId:OpportunityConvertedToApplication}"
 
   @63146 @TejalMarch2020  @validateSortingForOpportunitiesListViewForConvertedToApplication @positive
@@ -2853,10 +2858,16 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:ConvertedApplicationLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2885,23 +2896,17 @@ Feature: Opportunities related scenarios
     Then I softly see content of expected column "Status" is in "Ascending" order of table id "{grantee_tableId:OpportunityConvertedToApplication}"
     When I click on "Status" column header inside table with id "{grantee_tableId:OpportunityConvertedToApplication}"
     Then I softly see content of expected column "Status" is in "Descending" order of table id "{grantee_tableId:OpportunityConvertedToApplication}"
-    When I click on "Created By" column header inside table with id "{grantee_tableId:OpportunityConvertedToApplication}"
-    Then I softly see content of expected column "Created By" is in "Ascending" order of table id "{grantee_tableId:OpportunityConvertedToApplication}"
-    When I click on "Created By" column header inside table with id "{grantee_tableId:OpportunityConvertedToApplication}"
-    Then I softly see content of expected column "Created By" is in "Descending" order of table id "{grantee_tableId:OpportunityConvertedToApplication}"
 
   @63146 @TejalMarch2020 @validateOpportunitiesConvertedToApplicationListPageHelpText  @positive
   Scenario Outline: Validate help text message at Opportunities Converted to Application List Page
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:ConvertedApplicationLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
-    When I hovering mouse on page block help text icon inside table "{grantee_tableId:OpportunityConvertedToApplication}" with tooltip id "ExpiredFundingOpportunitiesFlexGridtooltip"
+    When I hovering mouse on page block help text icon inside table "{grantee_tableId:OpportunityConvertedToApplication}" with tooltip id "ExpiredFundingOpportunitiestooltip"
     Then I softly see "<new_helpText>" shown as help text
     Examples:
-      | new_helpText                                                                                                                                                                                    |
-      | •    Opportunities Converted to Application – All: Shows all opportunities for which any organization has started an application.                                                               |
-      | •    Opportunities Converted to Application - Open: Shows all opportunities for which any organization has started an application, and with an application due date in the future or undefined. |
-      | •    Opportunities Converted to Application - Closed: Shows all opportunities for which any organization has started an application, and with an application due date that has passed.          |
+      | new_helpText                                                               |
+      | Displayes opportunities for which organization has started an application. |
 
   @63353 @TejalMarch2020 @ValidateRecordOwnerCanBeAnApprover @positive
   Scenario: verify record owner can be an approver
@@ -2910,10 +2915,16 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
@@ -2923,26 +2934,34 @@ Feature: Opportunities related scenarios
     When I enter "OpportunityDetails" values from "Field_Values.xlsx"
     When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
     And I navigate to "Overview" sub tab
-    When I enter value "-1" into field "fieldPreApplicationDueDate__c"
-    And I pause execution for "5" seconds
+    When I enter value "No" into field "fieldPreApplicationNeeded__c"
+    And I click on "Save" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name                              | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
-      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
-    And I click on "Save and Continue" in the page details
-    And I pause execution for "5" seconds
+      | Responsibility     | Name                              | Description     |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | Product Grantee |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | Product Grantee |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | Product Grantee |
     And I click on "Submit for Approval" in the page details
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I refresh the page
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     And I pause execution for "2" seconds
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "DC - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I "Approve" in the approval decision
+    And I pause execution for "5" seconds
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
+    When I navigate to "Opportunities" tab
+    And I pause execution for "2" seconds
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -2959,128 +2978,11 @@ Feature: Opportunities related scenarios
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
-    And I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
-    And I click on "Edit" in the page details
-    When I enter "OpportunityDetails" values from "Field_Values.xlsx"
-    When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
-    And I navigate to "Overview" sub tab
-    When I enter value "-1" into field "fieldPreApplicationDueDate__c"
-    And I pause execution for "2" seconds
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name                              | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
-      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
-    And I click on "Save and Continue" in the page details
-    And I pause execution for "5" seconds
-    And I click on "Submit for Approval" in the page details
-    And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "GRANTEE PM1" user on "INTERNAL" portal
-    When I navigate to "Opportunities" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "DC - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
-    When I "Approve" in the approval decision
-    And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
-    When I navigate to "Opportunities" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "DC - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
-    When I "Approve" in the approval decision
-    And I pause execution for "5" seconds
-    And I re-login with "PM1" user
-    And I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
-    Then I softly see field "Status" as "Approved"
-
-  @63353 @TejalMarch2020 @ValidateOneUserCannotBeInMoreThanOneApproverRole @positive
-  Scenario: verify  one user cannot be in more than one approver role
-    And I execute batch file:
-      | operationType | objectType | recordName              | opportunitynumber |
-      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login to "As a Grantee" app as "GRANTEE PM" user
-    When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
-    And I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
-    And I pause execution for "2" seconds
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
-    And I click on "Edit" in the page details
-    When I enter "OpportunityDetails" values from "Field_Values.xlsx"
-    When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
-    And I navigate to "Overview" sub tab
-    When I enter value "-1" into field "fieldPreApplicationDueDate__c"
-    And I pause execution for "2" seconds
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name                              | Description |
-      | Program Approver   | {SavedValue:GRANTEE EXE Username} | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
-    And I pause execution for "5" seconds
-    Then I see the following messages in the page details contains:
-      | You cannot add a person for more than one role. |
-
-  @63353 @TejalMarch2020 @ValidateFiscalApproverIsn'tNeededUnlessCostSharingOrMatchingIsRequired @BugLoggedWith73223 @positive
-  Scenario: Verify that if fiscal approver isn't needed unless  cost sharing or matching is required
-    And I execute batch file:
-      | operationType | objectType | recordName              | opportunitynumber |
-      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login to "As a Grantee" app as "GRANTEE PM" user
-    When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
-    And I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
-    And I click on "Edit" in the page details
-    When I enter "OpportunityDetails" values from "Field_Values.xlsx"
-    When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
-    And I navigate to "Overview" sub tab
-    When I enter value "-1" into field "fieldPreApplicationDueDate__c"
-    When I enter value "Cash Match" into field "fieldCostSharing__c"
-    And I pause execution for "5" seconds
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name                              | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
-      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
-    And I click on "Save and Continue" in the page details
-    And I pause execution for "2" seconds
-    Then I softly see value "Fiscal Approver" for title "Responsibility" inside table "{grantee_tableId:Approvers}"
-
-  @63353 @TejalMarch2020 @ValidateRejectingAnOpportunityWillMakeTheLeadAvailableToQualify @positive
-  Scenario: Verify rejecting a opportunity will make the lead available to qualify
-    And I execute batch file:
-      | operationType | objectType | recordName              | opportunitynumber |
-      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login to "As a Grantee" app as "GRANTEE PM" user
-    When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
@@ -3096,182 +2998,47 @@ Feature: Opportunities related scenarios
     When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
     And I navigate to "Overview" sub tab
     When I enter value "No" into field "fieldPreApplicationNeeded__c"
+    And I click on "Save" in the page details
     And I pause execution for "2" seconds
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name                              | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
-      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
-    #And I click on "Save" in the page details
-    And I pause execution for "2" seconds
+      | Responsibility     | Name                              | Description     |
+      | Program Approver   | {SavedValue:GRANTEE PM1 Username} | Product Grantee |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | Product Grantee |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | Product Grantee |
     And I click on "Submit for Approval" in the page details
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
-    When I navigate to "Opportunities" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "DC - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
-    And I pause execution for "3" seconds
-    When I "Reject" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE PM1" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
-    When I click on "Posted On" column header inside table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I click on "Posted On" column header inside table with id "{grantee_tableId:LeadsNotYetQualified}"
-    And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    And I click on "Qualify Lead" in the page details
-    Then I see field "Status" as "Qualified Lead"
-
-  @63353 @TejalMarch2020 @ValidateRejectingAnOpportunityWillMakeTheQualifiedLeadAvailableToConvertToOpportunity @positive
-  Scenario: Verify rejecting a opportunity will make the qualified lead available to convert to opportunity
-    And I execute batch file:
-      | operationType | objectType | recordName              | opportunitynumber |
-      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login to "As a Grantee" app as "GRANTEE PM" user
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I "Approve" in the approval decision
+    And I pause execution for "5" seconds
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I "Approve" in the approval decision
+    And I pause execution for "5" seconds
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
+    When I navigate to "Opportunities" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I "Approve" in the approval decision
+    And I pause execution for "5" seconds
+    And I re-login with "PM1" user
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
-    And I click on "Edit" in the page details
-    When I enter "OpportunityDetails" values from "Field_Values.xlsx"
-    When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
-    And I navigate to "Overview" sub tab
-    When I enter value "-1" into field "fieldPreApplicationDueDate__c"
-    And I pause execution for "2" seconds
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name                              | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
-      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
-    And I click on "Save and Continue" in the page details
-    And I pause execution for "5" seconds
-    And I click on "Submit for Approval" in the page details
-    And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
-    When I navigate to "Opportunities" tab
-    And I pause execution for "5" seconds
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "DC - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
-    When I "Reject" in the approval decision
-    And I re-login to "As a Grantee" app as "GRANTEE PM1" user on "INTERNAL" portal
-    When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
-    When I click on "Posted On" column header inside table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I click on "Posted On" column header inside table with id "{grantee_tableId:LeadsNotYetQualified}"
-    And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    And I click on "Qualify Lead" in the page details
-    And I pause execution for "2" seconds
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
-    When I click on "Convert to Opportunity" in the page details
-    Then I see field "Status" as "Converted to Opportunity"
+    Then I softly see field "Status" as "Approved"
 
-  @63357 @TejalMarch2020 @ValidateApproverCanSendBackApproval @wip @BugLoggedWith73237 @positive
-  Scenario: verify Approver can send back approval
-    And I execute batch file:
-      | operationType | objectType | recordName              | opportunitynumber |
-      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login to "As a Grantee" app as "GRANTEE PM" user
-    When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
-    And I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
-    And I click on "Edit" in the page details
-    When I enter "OpportunityDetails" values from "Field_Values.xlsx"
-    When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
-    And I navigate to "Overview" sub tab
-    When I enter value "-1" into field "fieldPreApplicationDueDate__c"
-    And I pause execution for "5" seconds
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name                              | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
-      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
-    And I click on "Save and Continue" in the page details
-    And I pause execution for "5" seconds
-    And I click on "Submit for Approval" in the page details
-    And I pause execution for "5" seconds
-    And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
-    When I navigate to "Opportunities" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "DC - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
-    When I "Send to Owner" in the approval decision
-    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
-    When I navigate to "Opportunities" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
-    Then I see field "Status" as "Draft"
-
-  @63355 @TejalMarch2020 @ValidateOpportunityApproverCanForwardApprovalTaskToAnyUser @positive
-  Scenario: verify Opportunity approver can forward approval task to any user
-    And I execute batch file:
-      | operationType | objectType | recordName              | opportunitynumber |
-      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
-    Given I login to "As a Grantee" app as "GRANTEE PM" user
-    When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Qualified Leads - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click on "Convert to Opportunity" in the page details
-    And I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
-    And I click on "Edit" in the page details
-    When I enter "OpportunityDetails" values from "Field_Values.xlsx"
-    When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
-    And I navigate to "Overview" sub tab
-    When I enter value "-1" into field "fieldPreApplicationDueDate__c"
-    And I pause execution for "2" seconds
-    When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name                              | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
-      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
-    And I click on "Save and Continue" in the page details
-    And I click on "Submit for Approval" in the page details
-    And I pause execution for "2" seconds
-    And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
-    When I navigate to "Opportunities" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "DC - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
-    When I select radio button "Reassign" in the approval decision
-    When I enter comment "Automation testing" in the approval decision
-    And I select user "Automation FD" in the approval decision
-    And I submit the approval in the approval decision without processing
-    And I re-login to "As a Grantee" app as "GRANTEE FD" user on "INTERNAL" portal
-    When I navigate to "Opportunities" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "DC - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I pause execution for "2" seconds
-    Then I see value "DC - {SavedValue:Automation Runtime Lead}" for title "Subject" inside table "{grantee_tableId:PendingTask}"
-
-  @63216 @TejalMarch2020 @ValidateOpportunitiesConvertedToApplicationDetailsPage @positive
-  Scenario Outline: verify Opportunities Converted to Application Details page
+  @63353 @TejalMarch2020 @ValidateOneUserCannotBeInMoreThanOneApproverRole @positive
+  Scenario: verify one user cannot be in more than one approver role
     And I execute batch file:
       | operationType | objectType | recordName              | opportunitynumber |
       | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
@@ -3281,6 +3048,7 @@ Feature: Opportunities related scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
@@ -3295,23 +3063,303 @@ Feature: Opportunities related scenarios
     When I enter "OpportunityDetails" values from "Field_Values.xlsx"
     When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
     And I navigate to "Overview" sub tab
-    When I enter value "-1" into field "fieldPreApplicationDueDate__c"
+    When I enter value "No" into field "fieldPreApplicationNeeded__c"
+    And I click on "Save" in the page details
     And I pause execution for "2" seconds
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name                              | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
-    And I click on "Save and Continue" in the page details
+      | Responsibility     | Name                             | Description     |
+      | Program Approver   | {SavedValue:GRANTEE PM Username} | Product Grantee |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username} | Product Grantee |
+      | Executive Approver | {SavedValue:GRANTEE FO Username} | Product Grantee |
+    And I pause execution for "5" seconds
+    Then I see the following messages in the page details contains:
+      | You cannot assign same user to multiple roles. |
+
+  @63353 @TejalMarch2020 @ValidateFiscalApproverIsn'tNeededUnlessCostSharingOrMatchingIsRequired @BugLoggedWith73223 @positive
+  Scenario: Verify that if fiscal approver isn't needed unless  cost sharing or matching is required
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I click on "Convert to Opportunity" in the page details
+    And I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
+    And I click on "Edit" in the page details
+    When I enter "OpportunityDetails" values from "Field_Values.xlsx"
+    When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
+    And I navigate to "Overview" sub tab
+    When I enter value "No" into field "fieldPreApplicationNeeded__c"
+    When I enter value "Cash Match" into field "fieldCostSharing__c"
+    And I click on "Save" in the page details
+    And I pause execution for "5" seconds
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
+      | Responsibility     | Name                              | Description     |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | Product Grantee |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | Product Grantee |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | Product Grantee |
+    And I pause execution for "2" seconds
+    Then I softly see value "Fiscal Approver" for title "Responsibility" inside table "{grantee_tableId:Approvers}"
+
+  @63353 @TejalMarch2020 @ValidateRejectingAnOpportunityWillMakeTheLeadAvailableToQualify @positive
+  Scenario: Verify rejecting a opportunity will make the lead available to qualify
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I click on "Convert to Opportunity" in the page details
+    And I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
+    And I click on "Edit" in the page details
+    When I enter "OpportunityDetails" values from "Field_Values.xlsx"
+    When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
+    And I navigate to "Overview" sub tab
+    When I enter value "No" into field "fieldPreApplicationNeeded__c"
+    And I click on "Save" in the page details
+    And I pause execution for "2" seconds
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
+      | Responsibility     | Name                              | Description     |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | Product Grantee |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | Product Grantee |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | Product Grantee |
     And I click on "Submit for Approval" in the page details
+    And I save the field labeled "EGMS ID" as "egmsid"
+    And I pause execution for "5" seconds
+    When I "Reject" in the approval decision
+    And I re-login to "As a Grantee" app as "GRANTEE PM1" user on "INTERNAL" portal
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    Then I see field "Status" as "Qualified Lead"
+
+  @63353 @TejalMarch2020 @ValidateRejectingAnOpportunityWillMakeTheQualifiedLeadAvailableToConvertToOpportunity @positive
+  Scenario: Verify rejecting a opportunity will make the qualified lead available to convert to opportunity
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I click on "Convert to Opportunity" in the page details
+    And I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
+    And I click on "Edit" in the page details
+    When I enter "OpportunityDetails" values from "Field_Values.xlsx"
+    When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
+    And I navigate to "Overview" sub tab
+    When I enter value "No" into field "fieldPreApplicationNeeded__c"
+    And I click on "Save" in the page details
+    And I pause execution for "2" seconds
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
+      | Responsibility     | Name                              | Description     |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | Product Grantee |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | Product Grantee |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | Product Grantee |
+    And I click on "Submit for Approval" in the page details
+    And I save the field labeled "EGMS ID" as "egmsid"
+    When I "Reject" in the approval decision
+    And I re-login to "As a Grantee" app as "GRANTEE PM1" user on "INTERNAL" portal
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I click on "Convert to Opportunity" in the page details
+    Then I see field "Status" as "Converted to Opportunity"
+
+  @63357 @TejalMarch2020 @ValidateApproverCanSendBackApproval @wip @BugLoggedWith73237 @positive
+  Scenario: verify Approver can send back approval
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I click on "Convert to Opportunity" in the page details
+    And I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
+    And I click on "Edit" in the page details
+    When I enter "OpportunityDetails" values from "Field_Values.xlsx"
+    When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
+    And I navigate to "Overview" sub tab
+    When I enter value "No" into field "fieldPreApplicationNeeded__c"
+    And I click on "Save" in the page details
+    And I pause execution for "2" seconds
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
+      | Responsibility     | Name                              | Description     |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | Product Grantee |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | Product Grantee |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | Product Grantee |
+    And I click on "Submit for Approval" in the page details
+    And I save the field labeled "EGMS ID" as "egmsid"
+    And I pause execution for "5" seconds
+    When I "Send to Owner" in the approval decision
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
+    When I navigate to "Opportunities" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
+    Then I see field "Status" as "Draft"
+
+  @63355 @TejalMarch2020 @ValidateOpportunityApproverCanForwardApprovalTaskToAnyUser @positive
+  Scenario: verify Opportunity approver can forward approval task to any user
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I click on "Convert to Opportunity" in the page details
+    And I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
+    And I click on "Edit" in the page details
+    When I enter "OpportunityDetails" values from "Field_Values.xlsx"
+    When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
+    And I navigate to "Overview" sub tab
+    When I enter value "No" into field "fieldPreApplicationNeeded__c"
+    And I click on "Save" in the page details
+    And I pause execution for "2" seconds
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
+      | Responsibility     | Name                              | Description     |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | Product Grantee |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | Product Grantee |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | Product Grantee |
+    And I click on "Submit for Approval" in the page details
+    And I save the field labeled "EGMS ID" as "egmsid"
+    And I pause execution for "2" seconds
+    When I select radio button "Reassign" in the approval decision
+    When I enter comment "Automation testing" in the approval decision
+    And I select user "{SavedValue:GRANTEE FD Username}" in the approval decision
+    And I submit the approval in the approval decision without processing
+    And I re-login to "As a Grantee" app as "GRANTEE FD" user on "INTERNAL" portal
+    When I navigate to "Opportunities" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" in "{grantee_tableId:PendingTask}" panel
+    And I pause execution for "2" seconds
+    Then I see value "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" for title "Subject" inside table "{grantee_tableId:PendingTask}"
+
+  @63216 @TejalMarch2020 @ValidateOpportunitiesConvertedToApplicationDetailsPage @positive
+  Scenario Outline: verify Opportunities Converted to Application Details page
+    And I execute batch file:
+      | operationType | objectType | recordName              | opportunitynumber |
+      | CreateRecord  | FOA LEAD   | Automation Runtime Lead | OP-N              |
+    Given I login to "As a Grantee" app as "GRANTEE PM" user
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
+    And I click on "Qualify Lead" in the page details
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I click on "Convert to Opportunity" in the page details
+    And I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
+    And I click on "Edit" in the page details
+    When I enter "OpportunityDetails" values from "Field_Values.xlsx"
+    When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
+    And I navigate to "Overview" sub tab
+    When I enter value "No" into field "fieldPreApplicationNeeded__c"
+    And I click on "Save" in the page details
+    And I pause execution for "2" seconds
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
+      | Responsibility     | Name                              | Description     |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | Product Grantee |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | Product Grantee |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | Product Grantee |
+    And I click on "Submit for Approval" in the page details
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I refresh the page
+    When I "Approve" in the approval decision
+    And I pause execution for "3" seconds
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
+    When I navigate to "Opportunities" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "DC - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I pause execution for "3" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
@@ -3320,7 +3368,6 @@ Feature: Opportunities related scenarios
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
     When I click on "Create Application" in the page details
-    And I enter value "{SavedValue:GRANTEE PM Username}" into field "ProjectDirectorContact__c"
     When I click on "Save and Continue" in the page details
     And I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab

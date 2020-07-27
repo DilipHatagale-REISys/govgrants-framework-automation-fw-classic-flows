@@ -330,7 +330,7 @@ Feature: PDF download and validate scenarios from all modules
     And I enter value "100" into field "fieldBudgetEndDate__c"
     And I click modal button "Save"
     And I close modal by clicking the top right x button
-    And I click on top right button "Associate Projects" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
+    And I click on top right button "Associate Focus Area" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
     And I check "BP01" boxes in flex table with id "{grantee_tableId:AssociateProjectsModal}"
     And I click on top right button "Next" in flex table with id "{grantee_tableId:AssociateProjectsModal}"
     When I click on parallel lines menu bar with data target value "#toggleFlexTableSelectPreappGAT"
