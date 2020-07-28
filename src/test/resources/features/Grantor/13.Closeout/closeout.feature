@@ -636,7 +636,7 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Requests" sub tab
     Then I softly see value "{SavedValue:closeoutID}" for title "EGMS ID" inside table "---closeout:-:closeoutTableId---"
 
-  @93258 @VerifyExpectedStatusOfCloseoutRequest-Overridden  @monu
+  @93258 @42108 @VerifyExpectedStatusOfCloseoutRequest-Overridden  @monu @wip
   Scenario: Validate user is able to edit fields values of created closeout
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -663,3 +663,128 @@ Feature: Validate all scenarios in Closeout
     And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:ProjectPeriodCloseoutTableId---"
     When I click on "Submit for Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"
+    #42108 #monu
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    Then I softly see value "{SavedValue:closeoutID}" for title "EGMS ID" inside table "{grantee_tableId:PendingTask}"
+    Then I softly see value "{SavedValue:PM Username}" for title "Assigned By" inside table "{grantee_tableId:PendingTask}"
+
+  @86708 @VerifyStatusOfCloseoutRequestInApprovalHistoryPageBlock  @monu @wip
+  Scenario: Validate user is able to status of closeout request in chevron diagram and inside Approval history table after first approval only
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "closeoutID"
+    When I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    And I enter value "Automation Test justification" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "Edit" :
+      | Responsibility   | Name                     | Description                 |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+    When I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I "Approve" in the approval decision
+    When I navigate to "Closeout" tab
+    And I click toggle button to select "Closeouts - All"
+    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:CloseoutTableId---" panel
+    And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:CloseoutTableId---"
+    And I navigate to "History" sub tab
+    And I see "{SavedValue:PM Username}" against "Initial Submitter" in approval history
+    And I see "{SavedValue:PM Username}" against "Program Office Approval" in approval history
+    Then I softly see column "Date" inside row "2" at position "1" contains text "Step : Program Office Approval"
+    Then I softly see column "Overall Status" inside row "2" at position "1" contains text "Approved"
+
+  @40759 @VerifyExpectedValueInsideFieldHistoryPageBlockOfCloseoutRequest @monu @wip
+  Scenario: Validate expected New value and Old value inside Field History page block for closeout request
+    And I navigate to "Overview" sub tab
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "GrantID"
+    Then I softly see field "EGMS ID" as "{SavedValue:GrantID}"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    Then I softly see "Create Closeout Request" opens in overLay window
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "EGMS ID" as "CloseoutEGMSID"
+    And I save the field labeled "Closeout" as "CloseoutName"
+    And I save the field labeled "Closeout Effective Date" as "CloseoutEffectiveDate"
+    Then I softly see field "Closeout" as "{SavedValue:CloseoutName}"
+    Then I softly see field "Closeout Effective Date" as "{SavedValue:CloseoutEffectiveDate}"
+    Then I softly see field "EGMS ID" as "{SavedValue:CloseoutEGMSID}"
+    When I click on "Save" in the page details
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Requests" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---closeout:-:closeoutTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    When I click on "Send To Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent To Subrecipient"
+    Then I softly see status in Progress-bar is "Sent To Subrecipient" and is "Green"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Requests" sub tab
+    And I click on "View" icon for "Sent To Subrecipient" inside flex table with id "---closeout:-:closeoutTableId---" without waiting for record
+    When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
+    And I enter value "07/20/2023" into field "fieldCloseoutDate__c"
+    And I enter value "08/12/2023" into field "fieldCloseoutDueDateGrantor__c"
+    When I click on "Save" in the page details
+    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I navigate to "Home" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:CloseoutEGMSID}" in "---closeout:-:homePendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:CloseoutEGMSID}" inside flex table with id "---closeout:-:homePendingTaskTableId---"
+    When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
+    And I enter value "checked" into field "fieldAggreement__c"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly see field "Acknowledgement" as "checked"
+    And I click on "Acknowledge" in the page details
+    Then I softly see status in Progress-bar is "Acknowledged by Subrecipient" and is "Green"
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I click on "Edit" in the page details
+    And I enter value "Automation Test justification" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I click on "Override" in the page details
+    Then I softly see field "Status" as "Overridden"
+    Then I see status in Progress-bar is "Overridden" and is "Green"
+    When I navigate to "Closeout" tab
+    And I click toggle button to select "Closeouts - All"
+    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:CloseoutTableId---" panel
+    And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:CloseoutTableId---"
+    And I navigate to "History" sub tab
+    And I perform quick search for "{SavedValue:closeoutID}" in "History" panel
+    Then I softly see value "Overridden" for title "New value" inside table "History"
+    Then I softly see value "Submitted To Grantor" for title "Old value" inside table "History"

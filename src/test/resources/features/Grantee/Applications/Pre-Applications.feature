@@ -698,6 +698,7 @@ Feature: Pre-Applications related scenarios
     And I perform quick search for "{SavedValue:GRANTEE PM Username}" in "{grantee_tableId:ApplicationContactModalTableId}" panel
     And I check "{SavedValue:GRANTEE PM Username}" boxes in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
+    And I close modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate Focus Area" in flex table with id "{grantee_tableId:ApplicationContactTableId}"
     And I pause execution for "3" seconds
@@ -10565,6 +10566,7 @@ Feature: Pre-Applications related scenarios
     And I perform quick search for "{SavedValue:GRANTEE PM Username}" in "{grantee_tableId:ApplicationContactModalTableId}" panel
     And I check "{SavedValue:GRANTEE PM Username}" boxes in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
+    And I close modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate Focus Area" in flex table with id "{grantee_tableId:ApplicationContactTableId}"
     And I pause execution for "3" seconds
@@ -10674,6 +10676,7 @@ Feature: Pre-Applications related scenarios
     And I perform quick search for "{SavedValue:GRANTEE PM Username}" in "{grantee_tableId:ApplicationContactModalTableId}" panel
     And I check "{SavedValue:GRANTEE PM Username}" boxes in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
+    And I close modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate Focus Area" in flex table with id "{grantee_tableId:ApplicationContactTableId}"
     And I pause execution for "3" seconds
@@ -10786,6 +10789,7 @@ Feature: Pre-Applications related scenarios
     And I perform quick search for "{SavedValue:GRANTEE PM Username}" in "{grantee_tableId:ApplicationContactModalTableId}" panel
     And I check "{SavedValue:GRANTEE PM Username}" boxes in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
+    And I close modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate Focus Area" in flex table with id "{grantee_tableId:ApplicationContactTableId}"
     And I pause execution for "3" seconds
@@ -10903,6 +10907,7 @@ Feature: Pre-Applications related scenarios
     And I perform quick search for "{SavedValue:GRANTEE PM Username}" in "{grantee_tableId:ApplicationContactModalTableId}" panel
     And I check "{SavedValue:GRANTEE PM Username}" boxes in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
+    And I close modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate Focus Area" in flex table with id "{grantee_tableId:ApplicationContactTableId}"
     And I pause execution for "3" seconds
@@ -11155,6 +11160,7 @@ Feature: Pre-Applications related scenarios
     And I perform quick search for "{SavedValue:GRANTEE PM Username}" in "{grantee_tableId:ApplicationContactModalTableId}" panel
     And I check "{SavedValue:GRANTEE PM Username}" boxes in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
+    And I close modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate Focus Area" in flex table with id "{grantee_tableId:ApplicationContactTableId}"
     And I pause execution for "3" seconds
@@ -11261,6 +11267,7 @@ Feature: Pre-Applications related scenarios
     And I perform quick search for "{SavedValue:GRANTEE PM Username}" in "{grantee_tableId:ApplicationContactModalTableId}" panel
     And I check "{SavedValue:GRANTEE PM Username}" boxes in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
+    And I close modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate Focus Area" in flex table with id "{grantee_tableId:ApplicationContactTableId}"
     And I pause execution for "3" seconds
@@ -11385,6 +11392,7 @@ Feature: Pre-Applications related scenarios
     And I perform quick search for "{SavedValue:GRANTEE PM Username}" in "{grantee_tableId:ApplicationContactModalTableId}" panel
     And I check "{SavedValue:GRANTEE PM Username}" boxes in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
     And I click on top right button "Associate" in flex table with id "{grantee_tableId:ApplicationContactModalTableId}"
+    And I close modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate Focus Area" in flex table with id "{grantee_tableId:ApplicationContactTableId}"
     And I pause execution for "3" seconds

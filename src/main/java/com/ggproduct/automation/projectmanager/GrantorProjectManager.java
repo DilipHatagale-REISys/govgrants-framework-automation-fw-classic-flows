@@ -607,6 +607,35 @@ public class GrantorProjectManager extends ProjectManager{
         }
     }
 
-
-
+    /**
+     * assert if text is present inside history table
+     */
+    public void assertTextInHistoryTable(String usage, String colName, String rowNo, String tData, String text) {
+        if (usage.contains("softly")) {
+            if (usage.contains("cannot")) {
+                I.amPerforming().assertionsTo().assertThat(isTextPresentInsideHistoryTable(colName, rowNo, tData, text)).isFalse();
+            } else {
+                I.amPerforming().assertionsTo().assertThat(isTextPresentInsideHistoryTable(colName, rowNo, tData, text)).isTrue();
+            }
+        } else {
+            if (usage.contains("cannot")) {
+                Assert.assertFalse(isTextPresentInsideHistoryTable(colName, rowNo, tData, text));
+            } else {
+                Assert.assertTrue(isTextPresentInsideHistoryTable(colName, rowNo, tData, text));
+            }
+        }
+    }
+    /**
+     * @return true if expected text is displayed inside history table
+     */
+    private boolean isTextPresentInsideHistoryTable(String colName, String rowNo, String tData, String text) {
+        boolean flag = false;
+        try {
+            if (I.amPerforming().checkToSee().isDisplayed(I.amPerforming().getElementReference().of(By.xpath("//th[text()='" + colName + "']//ancestor::tbody/following-sibling::tbody[" + rowNo + "]/tr[" + tData + "]//td//*[text()='" + text + "']")))) {
+                flag = true;
+            }
+        } catch (Exception e) {
+        }
+        return flag;
+    }
 }
