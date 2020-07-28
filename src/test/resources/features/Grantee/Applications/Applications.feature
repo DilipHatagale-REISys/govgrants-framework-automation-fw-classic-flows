@@ -998,7 +998,7 @@ Feature: Applications related scenarios
     When I enter value "Project Abstract Value" into field "fieldProjectAbstract__c"
     And I click on "Save and Continue" in the page details
     When I navigate to "Setup" sub tab
-    And I click on top right button "Associate Projects" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
+    And I click on top right button "Associate Focus Area" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
     And I pause execution for "2" seconds
     And I check "BP01" boxes in flex table with id "{grantee_tableId:AssociateProjectsModal}"
     And I pause execution for "2" seconds
@@ -1230,7 +1230,7 @@ Feature: Applications related scenarios
     When I enter value "Project Abstract Value" into field "fieldProjectAbstract__c"
     And I click on "Save and Continue" in the page details
     When I navigate to "Setup" sub tab
-    And I click on top right button "Associate Projects" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
+    And I click on top right button "Associate Focus Area" in flex table with id "{grantee_tableId:BudgetPeriodDetails}"
     And I pause execution for "2" seconds
     And I check "BP01" boxes in flex table with id "{grantee_tableId:AssociateProjectsModal}"
     And I pause execution for "2" seconds
