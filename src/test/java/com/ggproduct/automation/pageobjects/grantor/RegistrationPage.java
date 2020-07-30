@@ -23,7 +23,7 @@ public class RegistrationPage extends ProjectManager {
         privacyPolicyText = By.xpath("//div[contains(@class, 'help-desk-panel-body panel-body')]");
         captch = By.xpath("//iframe[contains(@src, 'www.google.com/recaptcha')]");
         actualmMailText = By.xpath("//div[@id='mailmillieu']//div//center");
-        actualmMailSubjectText = By.xpath("//div[@id='mailhaut']");
+        actualmMailSubjectText = By.xpath("//div[@id='mailhaut']//div");
     }
 
     /**
