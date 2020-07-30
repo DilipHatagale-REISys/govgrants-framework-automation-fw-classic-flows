@@ -288,4 +288,4 @@ Feature: Validate all registration related scenarios
     When I click on "Submit" in the page details
     Then I see the following messages in the page details contains:
       | Confirmation Message                                                                                                                                                                |
-      | Your registration request for access to the EGMS has been completed.  You will be sent an email from salesforce.com (technology platform provider) with your Username and Password.|
+      | Your registration request for access to the EGMS has been completed.  You will be sent an email from salesforce.com (technology platform provider) with your Username and Password. |

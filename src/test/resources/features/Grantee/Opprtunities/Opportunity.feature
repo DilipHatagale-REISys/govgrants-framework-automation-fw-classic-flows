@@ -1,4 +1,4 @@
-@Opportunities @OpportunityDevelopment @grantee-regression @grantee-parallel-regression
+@Opportunities @Grantee-Opportunities @OpportunityDevelopment @grantee-regression @grantee-parallel-regression
 Feature: Opportunities related scenarios
   Test all scenarios related to Opportunities
 

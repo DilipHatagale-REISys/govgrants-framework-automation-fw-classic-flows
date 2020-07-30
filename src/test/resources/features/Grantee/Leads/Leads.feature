@@ -1,4 +1,4 @@
-@Leads @grantee-regression @grantee-parallel-regression
+@Leads @grantee-regression @grantee-parallel-regression @Grantee-Leads
 Feature: Leads related scenarios
   Test all scenarios related to Leads
 
