@@ -1,4 +1,4 @@
-@Grantee-Planning @ProjectsPlanning @grantee-regression @grantee-parallel-regression
+@Grantee-Planning @Grantee-Project @ProjectsPlanning @grantee-regression @grantee-parallel-regression
 Feature: Projects related scenarios
   Test all scenarios related to Projects feature
 

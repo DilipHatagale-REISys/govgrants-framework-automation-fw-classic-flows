@@ -1,4 +1,4 @@
-@Applications @grantee-regression @grantee-parallel-regression
+@Applications @Grantee-Application @grantee-regression @grantee-parallel-regression
 Feature: Applications related scenarios
   Test all scenarios related to Applications
 

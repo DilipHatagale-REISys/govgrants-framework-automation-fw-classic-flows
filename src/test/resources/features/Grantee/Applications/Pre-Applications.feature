@@ -1,4 +1,4 @@
-@Pre-Applications @grantee-regression @grantee-parallel-regression
+@Pre-Applications @Grantee-PreApplication @grantee-regression @grantee-parallel-regression
 Feature: Pre-Applications related scenarios
   Test all scenarios related to Pre-Applications
 
