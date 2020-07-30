@@ -557,4 +557,8 @@ public class GenericSteps {
            I.amPerforming().textInput().in(emailBody, enterValue);
     }
 
+    @Then("^I (softly see|softly cannot see|cannot see|see) column \"([^\"]*)\" inside row \"([^\"]*)\" at position \"([^\"]*)\" contains text \"([^\"]*)\"$")
+    public void iSeeInsideRowOfIndexAndColumnIndex(String usage, String colName, String rowNo, String tData, String text) {
+        grantorProjectManager.assertTextInHistoryTable(usage, colName, rowNo, tData, text);
+    }
 }

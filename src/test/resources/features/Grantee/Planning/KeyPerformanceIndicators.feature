@@ -1,4 +1,4 @@
-@Grantee-Planning @KPI @KeyPerformanceIndicators @grantee-regression @grantee-parallel-regression
+@Grantee-Planning @Grantee-KPI @KPI @KeyPerformanceIndicators @grantee-regression @grantee-parallel-regression
 Feature: Key Performance Indicators related scenarios
   Test all scenarios related to Key Performance Indicators
 
