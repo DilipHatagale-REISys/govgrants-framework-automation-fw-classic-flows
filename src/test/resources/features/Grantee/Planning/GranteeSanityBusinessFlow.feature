@@ -16,7 +16,7 @@ Feature: Sanity scenarios
     Then I softly can see row level action button "Edit" against "{SavedValue:Automation Runtime Strategic}" in flex table with id "StrategicPlansParentFlexToggle"
     Then I softly can see row level action button "Delete" against "{SavedValue:Automation Runtime Strategic}" in flex table with id "StrategicPlansParentFlexToggle"
 
-  @61987 @validateStrategicPlan @validateStrategicPlanGridView   @positive
+  @61987 @validateStrategicPlan @validateStrategicPlanGridViewColumns   @positive
   Scenario Outline: Verify Embedded strategic goals should have all the required columns
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
@@ -25,9 +25,10 @@ Feature: Sanity scenarios
     And I enter value "Automation Runtime Strategic" into field "fieldStrategyTitle__c"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "StrategicId"
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Strategic}" in "StrategicPlansParentFlexToggle" panel
-    And I expand nested table containing column value "{SavedValue:EID}"
+    And I expand nested table containing column value "{SavedValue:StrategicId}"
     Then I see "<ColumnName>" in flex table header "StrategicGoalsChildFlexToggle"
     Examples:
       | ColumnName         |
@@ -192,16 +193,14 @@ Feature: Sanity scenarios
     Given I login to "As a Grantee" app as "<userType>" user
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:ExternalPrograms}" content inside "{grantee_sidebar:ProgramsSubheaderName}" subheader on left panel
-    Then I softly see "EGMS ID" in flex table header "EnhanceExternalProgramEnhancedGridgrid"
     Then I softly see "CFDA" in flex table header "EnhanceExternalProgramEnhancedGridgrid"
-    Then I softly see "Program Name" in flex table header "EnhanceExternalProgramEnhancedGridgrid"
+    Then I softly see "Title" in flex table header "EnhanceExternalProgramEnhancedGridgrid"
     Then I softly see "Federal Agency" in flex table header "EnhanceExternalProgramEnhancedGridgrid"
-    Then I softly see "Agency Abbreviation" in flex table header "EnhanceExternalProgramEnhancedGridgrid"
     Examples:
       | userType      |
       | GRANTEE ADMIN |
       | GRANTEE PM    |
-      | GRATEE PO     |
+      | GRANTEE PO    |
       | GRANTEE FD    |
       | GRANTEE EXE   |
       | GRANTEE FO    |
@@ -224,14 +223,14 @@ Feature: Sanity scenarios
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime KPI}" in "{grantee_tableId:KPITable}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime KPI}" inside table
-    And I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime KPI}" in "{grantee_tableId:KPITable}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime KPI}" inside table
     Then I see the header is "Key Performance Indicator" in the page details
     Then I see the sub-header is "{SavedValue:Automation Runtime KPI}" in the page details
-    And I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime KPI}" in "{grantee_tableId:KPITable}" panel
@@ -367,28 +366,29 @@ Feature: Sanity scenarios
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     And I click on "Qualify Lead" in the page details
-    And I pause execution for "10" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
     And I click on "Edit" in the page details
     When I enter "OpportunityDetails" values from "Field_Values.xlsx"
     When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
-    And I pause execution for "5" seconds
+    And I navigate to "Overview" sub tab
+    When I enter value "No" into field "fieldPreApplicationNeeded__c"
+    And I click on "Save" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name                              | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Fiscal Approver    | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
-    Then I click on "Save and Continue" in the page details
-    Then I click on "Submit for Approval" in the page details
+      | Responsibility     | Name                              | Description     |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | Product Grantee |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | Product Grantee |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | Product Grantee |
+    And I click on "Submit for Approval" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
@@ -407,28 +407,33 @@ Feature: Sanity scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
     And I pause execution for "2" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
-    When I navigate to "Responsibilities" sub tab
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
+    And I navigate to "Responsibilities" sub tab
     And I click on top right button "New" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     And I click on top right button "Save" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     Then I see the text "Required Field Missing"
-    And I click on "Remove record" icon for "Created" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter the following values into flex table with id "{grantee_tableId:OpportunityPeerReviewers}" by clicking "New" :
-      | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
-      | {SavedValue:GRANTEE PM Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
-      | {SavedValue:GRANTEE PO Username} | Fiscal Reviewer  | aaaaaa      | 2        | No                   |
+      | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
+      | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     Then I softly see value "{SavedValue:GRANTEE PM Username}" for title "Reviewer Name" against the value "Program Reviewer" inside table "{grantee_tableId:OpportunityPeerReviewers}"
-    Then I softly see value "{SavedValue:GRANTEE PO Username}" for title "Reviewer Name" against the value "Fiscal Reviewer" inside table "{grantee_tableId:OpportunityPeerReviewers}"
 
   @63246 @NotConverted @ValidateSendForReviewButtonIsDisplayedAndableToClickOnIt @smoke  @positive
   Scenario: verify after adding new peer review send for review button should be displayed and able to click on send for review icon
@@ -441,23 +446,29 @@ Feature: Sanity scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
     And I pause execution for "2" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
-    When I navigate to "Responsibilities" sub tab
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
+    And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:OpportunityPeerReviewers}" by clicking "New" :
       | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
-    When I hovering mouse on table id "{grantee_tableId:OpportunityPeerReviewers}" with table row level icon "Send for Review" for column value "{SavedValue:GRANTEE PM Username}"
-    Then I softly see "Send for Review" as title for "{SavedValue:GRANTEE PM Username}" inside flex table action
     Then I softly can see row level action button "Send for Review" against "{SavedValue:GRANTEE PM Username}" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     Then  I softly see the text "Review Successfully Initiated."
@@ -473,18 +484,26 @@ Feature: Sanity scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
     And I pause execution for "2" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
-    When I navigate to "Responsibilities" sub tab
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
+    And I navigate to "Responsibilities" sub tab
     And I pause execution for "5" seconds
     When I enter the following values into flex table with id "{grantee_tableId:OpportunityPeerReviewers}" by clicking "New" :
       | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
@@ -493,9 +512,9 @@ Feature: Sanity scenarios
       | {SavedValue:GRANTEE PM Username} | Fiscal Reviewer  | aaaaaaa     | 1        | No                   |
       | {SavedValue:GRANTEE PO Username} | Fiscal Reviewer  | aaaaaa      | 1        | No                   |
     Then I softly see value "Program Reviewer" for title "Responsibility" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:OpportunityPeerReviewers}"
-    Then I softly see value "Program Reviewer" for title "Responsibility" against the value "New user PM" inside table "{grantee_tableId:OpportunityPeerReviewers}"
+    Then I softly see value "Program Reviewer" for title "Responsibility" against the value "{SavedValue:GRANTEE PO Username}" inside table "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly see value "Fiscal Reviewer" for title "Responsibility" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:OpportunityPeerReviewers}"
-    Then I softly see value "Fiscal Reviewer" for title "Responsibility" against the value "New user PM" inside table "{grantee_tableId:OpportunityPeerReviewers}"
+    Then I softly see value "Fiscal Reviewer" for title "Responsibility" against the value "{SavedValue:GRANTEE PO Username}" inside table "{grantee_tableId:OpportunityPeerReviewers}"
 
   @63246 @NotConverted @ValidateTheNewButtonAvailabilityForAnOpportunityOtherThanCreatedStatusConvertedToApplication
   Scenario: verify new button should not be displayed for an opportunity other than created status(Converted to Application)
@@ -508,40 +527,58 @@ Feature: Sanity scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
-    And I pause execution for "2" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
     And I click on "Edit" in the page details
     When I enter "OpportunityDetails" values from "Field_Values.xlsx"
     When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
-    And I pause execution for "5" seconds
+    And I navigate to "Overview" sub tab
+    When I enter value "No" into field "fieldPreApplicationNeeded__c"
+    And I click on "Save" in the page details
+    And I pause execution for "2" seconds
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
-      | Responsibility     | Name                              | Description |
-      | Program Approver   | {SavedValue:GRANTEE PM Username}  | prdoh       |
-      | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
-    Then I click on "Save and Continue" in the page details
-    Then I click on "Submit for Approval" in the page details
+      | Responsibility     | Name                              | Description     |
+      | Program Approver   | {SavedValue:GRANTEE PM Username}  | Product Grantee |
+      | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | Product Grantee |
+      | Executive Approver | {SavedValue:GRANTEE EXE Username} | Product Grantee |
+    And I click on "Submit for Approval" in the page details
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I refresh the page
     When I "Approve" in the approval decision
-    And I re-login with "Exe" user
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "DC - {SavedValue:Automation Runtime Lead}" in "{grantee_tableId:Opportunities}" panel
-    And I click on "Start" icon for "DC - {SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:Opportunities}"
+    When I perform quick search for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
+    And I pause execution for "5" seconds
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
+    When I navigate to "Opportunities" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I "Approve" in the approval decision
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
+    When I navigate to "Opportunities" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I "Approve" in the approval decision
+    And I pause execution for "5" seconds
     When I click on "Create Application" in the page details
     And I enter value "{SavedValue:GRANTEE PM Username}" into field "ProjectDirectorContact__c"
     When I click on "Save and Continue" in the page details
-    And I re-login with "PM" user
+    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:ConvertedApplicationLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityConvertedToApplication}" panel
@@ -561,17 +598,16 @@ Feature: Sanity scenarios
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     And I click on "Qualify Lead" in the page details
-    And I pause execution for "2" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
-    And I navigate to "Responsibilities" sub tab
+    When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:OpportunityPeerReviewers}" by clicking "New" :
       | Reviewer Name                    | Responsibility   | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PM Username} | Program Reviewer | aaaaaaa     | 1        | No                   |
@@ -589,12 +625,12 @@ Feature: Sanity scenarios
     Then I softly see value "Sent for Review" for title "Status" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:OpportunityPeerReviewers}"
     Then I softly cannot see row level action button "Edit" against "Sent for Review" in flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
-    When I re-login with "PO" user
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:HomePendingTask}" panel
+    Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:HomePendingTask}"
+    And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:HomePendingTask}" panel
+    Then I softly see value "{SavedValue:Automation Runtime Lead}" for title "Subject" against the value "{SavedValue:GRANTEE PM Username}" inside table "{grantee_tableId:HomePendingTask}"
 
   @66479 @ValidateStatusOfReviewShouldBeChangeFromSentForReviewToInProgress  @positive
   Scenario: verify Review status should be change from sent for review to In Progress
@@ -608,27 +644,28 @@ Feature: Sanity scenarios
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     And I click on "Qualify Lead" in the page details
-    And I pause execution for "10" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
-    And I navigate to "Responsibilities" sub tab
+    When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:OpportunityPeerReviewers}" by clicking "New" :
       | Reviewer Name                    | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE PO Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE PO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
-    And I re-login with "PO" user
+    And I save the field labeled "EGMS ID" as "egmsid"
+    And I pause execution for "3" seconds
+    And I re-login to "As a Grantee" app as "GRANTEE PO" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    When I click on "Created Date" column header inside table with id "{grantee_tableId:PendingTask}"
-    When I click on "Created Date" column header inside table with id "{grantee_tableId:PendingTask}"
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:HomePendingTask}" panel
+    When I click on "Created Date" column header inside table with id "{grantee_tableId:HomePendingTask}"
+    When I click on "Created Date" column header inside table with id "{grantee_tableId:HomePendingTask}"
+    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:HomePendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE PO Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -651,29 +688,36 @@ Feature: Sanity scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
-    And I pause execution for "10" seconds
+    And I pause execution for "2" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:OpportunityPeerReviewers}" by clicking "New" :
       | Reviewer Name                     | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE EXE Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE EXE Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
-    And I pause execution for "5" seconds
-    And I re-login with "EXE" user
+    And I save the field labeled "EGMS ID" as "egmsid"
+    And I pause execution for "3" seconds
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    When I click on "Created Date" column header inside table with id "{grantee_tableId:PendingTask}"
-    When I click on "Created Date" column header inside table with id "{grantee_tableId:PendingTask}"
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:HomePendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:HomePendingTask}"
     And I navigate to "Responsibilities" sub tab
     And I click on "Enter Review" icon for "{SavedValue:GRANTEE EXE Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
@@ -696,31 +740,38 @@ Feature: Sanity scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
-    And I pause execution for "10" seconds
+    And I pause execution for "2" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     When I click on "Convert to Opportunity" in the page details
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "{grantee_tableId:OpportunityPeerReviewers}" by clicking "New" :
       | Reviewer Name                     | Responsibility  | Description | Due Date | Allow Record Editing |
       | {SavedValue:GRANTEE EXE Username} | Fiscal Reviewer | aaaaaaa     | 1        | No                   |
     And I click on "Send for Review" icon for "{SavedValue:GRANTEE EXE Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
-    And I pause execution for "5" seconds
-    And I re-login with "EXE" user
+    And I save the field labeled "EGMS ID" as "egmsid"
+    And I pause execution for "3" seconds
+    And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PendingTask}" panel
-    When I click on "Created Date" column header inside table with id "{grantee_tableId:PendingTask}"
-    When I click on "Created Date" column header inside table with id "{grantee_tableId:PendingTask}"
-    And I click on "Start" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:HomePendingTask}" panel
+    And I click on "Start" icon for "{SavedValue:egmsid}" inside flex table with id "{grantee_tableId:HomePendingTask}"
     And I navigate to "Responsibilities" sub tab
-    And I click on "Enter Review" icon for "{SavedValue:GRANTEE EXE Username}" inside flex table with id "GranteeOpportunityReviewersTempFlexToggle"
+    And I click on "Enter Review" icon for "{SavedValue:GRANTEE EXE Username}" inside flex table with id "{grantee_tableId:OpportunityPeerReviewers}"
     When I enter value "Passed" into field "fieldRating__c"
     And I enter value "enterreviewcmnt" into field "fieldReviewComments__c"
     And I click on "Save" in the page details
@@ -744,41 +795,13 @@ Feature: Sanity scenarios
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     When I click on "Save and Continue" in the page details
     Then  I see the following messages in the page details :
-      | Funding Organization is Required to save under Overview.                   |
-      | Opportunity Number is Required to save under Overview.                     |
-      | Opportunity Title is Required to save under Overview.                      |
-      | Opportunity Category is Required to save under Overview.                   |
-      | Application Due Date is Required to save under Overview.                   |
-      | Funding Instrument Type is Required to save under Overview.                |
-      | Eligible Applicants is Required to save under Overview.                    |
-      | Lead Description is Required to save under Overview.                       |
-      | Grantor Contact Information is Required to save under Overview.            |
-      | Cost Sharing or Matching Requirement is Required to save under Financials. |
-
-  @62815 @validateFederalLeadsDetailsPage-All @smoke   @positive
-  Scenario: Validate source field value on federal leads detail page
-    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
-    When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Leads Not Yet Qualified - All"
-    When I perform quick search for "Grants.gov" in "{grantee_tableId:LeadsNotYetQualified}" panel
-    When I click on "View" icon for "Grants.gov" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    Then I softly see field "Source" as "Grants.gov"
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    When I perform quick search for "Federal" in "{grantee_tableId:LeadsNotYetQualified}" panel
-    When I click on "View" icon for "Federal" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    Then I softly see field "Source" as "Federal"
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Leads Not Yet Qualified - All"
-    When I perform quick search for "State" in "{grantee_tableId:LeadsNotYetQualified}" panel
-    When I click on "View" icon for "State" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    Then I softly see field "Source" as "State"
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click toggle button to select "Leads Not Yet Qualified - All"
-    When I perform quick search for "NGO" in "{grantee_tableId:LeadsNotYetQualified}" panel
-    When I click on "Source" column header inside table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I click on "View" icon for "NGO" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    Then I softly see field "Source" as "NGO"
+      | Opportunity Title is Required to save.                    |
+      | Opportunity Number is Required to save.                   |
+      | Application Due Date is Required to save.                 |
+      | Funding Organization is Required to save.                 |
+      | Eligible Applicants is Required to save.                  |
+      | Lead Description is Required to save.                     |
+      | Cost Sharing or Matching Requirement is Required to save. |
 
   @62830 @validateLeadQualificationWithDifferentUser-NotYetQualified-futureDate  @positive
   Scenario: Validate logged in users organization should not be displayed after qualifying lead with users having different organization - with lead future date
@@ -791,6 +814,14 @@ Feature: Sanity scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
+    When I navigate to "Opportunities" tab
+    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
+    And I click toggle button to select "Leads Not Yet Qualified - All"
+    When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
@@ -798,36 +829,8 @@ Feature: Sanity scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    Then I softly see value "Secretaria Auxiliar de Promocion de la Salud" for title "Qualifying Organization" against the value "GRANTEE PM1 Username" inside table "RelatedQualifiedLeadsgrid"
-    Then I softly see value "GRANTEE PM1 Username" for title "Qualified By" against the value "Secretaria Auxiliar de Promocion de la Salud" inside table "RelatedQualifiedLeadsgrid"
-
-  @62830 @validateQuickSearchAtRelatedProgram  @positive
-  Scenario: Validate quick search is working properly for valid and invalid input at related program detail page
-    Given I login to "As a Grantee" app as "GRANTEE PM" user
-    When I navigate to "Opportunities" tab
-    When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    When I navigate to "Overview" sub tab
-    When I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
-    When I enter value "1" into field "fieldCloseDate__c"
-    When I click on "Save and Continue" in the page details
-    And I click on top right button "Associate" in flex table with id "RelatedLeadCFDANumbersgrid"
-    When I perform quick search for "Agricultural Research Basic and Applied Research" in "toggleFlexTablepopupflextable" panel
-    When I click "Associate" after selection of "Agricultural Research Basic and Applied Research" in the table "popupflextable"
-    When I pause execution for "3" seconds
-    And I close "Associate" modal by clicking the top right x button
-    And I refresh the page
-    And I click on top right button "Associate" in flex table with id "RelatedLeadCFDANumbersgrid"
-    When I perform quick search for "Wildlife Services" in "toggleFlexTablepopupflextable" panel
-    When I click "Associate" after selection of "Wildlife Services" in the table "popupflextable"
-    When I pause execution for "3" seconds
-    And I close "Associate" modal by clicking the top right x button
-    And I refresh the page
-    When I perform quick search for "Agricultural Research Basic and Applied Research" in "RelatedLeadCFDANumbersgrid" panel
-    Then I softly see value "Agricultural Research Basic and Applied Research" for title "Program Title" inside table "RelatedLeadCFDANumbersgrid"
-    When I perform quick search for "2 Agricultural Research Basic and Applied Research" in "RelatedLeadCFDANumbersgrid" panel
-    Then I softly do not see value "2 Agricultural Research Basic and Applied Research" for title "Program Title" inside table "RelatedLeadCFDANumbersgrid"
+    Then I softly see value "Children’s Health Insurance Program" for title "Qualifying Organization" against the value "GRANTEE PM1 Username" inside table "RelatedQualifiedLeadsgrid"
+    Then I softly see value "{SavedValue:GRANTEE PM1 Username}" for title "Qualified By" against the value "Children’s Health Insurance Program" inside table "RelatedQualifiedLeadsgrid"
 
   @62830 @validateNoOfOrganizationAsTotalRecordsForAllQualificationTable  @positive
   Scenario: Validate All Qualifications table should contain number of record same as the number expected leads has been qualified - at qualified lead detail page
@@ -840,23 +843,20 @@ Feature: Sanity scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    And I click on "Qualify Lead" in the page details
-    When I enter value "2 - Low" into field "fieldRelevance__c"
-    When I enter value "2 - Low" into field "fieldImpact__c"
-    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
-    When I pause execution for "3" seconds
-    And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "Created Date" as "CreatedDate"
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
+    And I save the field labeled "EGMS ID" as "LeadNumber"
     And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     When I pause execution for "3" seconds
     And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
@@ -882,7 +882,7 @@ Feature: Sanity scenarios
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     When I pause execution for "3" seconds
     And I re-login to "As a Grantee" app as "GRANTEE PM" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
@@ -894,7 +894,7 @@ Feature: Sanity scenarios
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     When I pause execution for "3" seconds
     And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
@@ -903,12 +903,12 @@ Feature: Sanity scenarios
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     When I navigate to "Overview" sub tab
-    When I perform quick search for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" in "RelatedQualifiedLeadsgrid" panel
-    Then I softly see value "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" for title "Agency" inside table "RelatedQualifiedLeadsgrid"
-    When I perform quick search for "Agency Secretaria Auxiliar de Salud Familiar y Servicios Integrados" in "RelatedQualifiedLeadsgrid" panel
+    When I perform quick search for "Children’s Health Insurance Program" in "RelatedQualifiedLeadsgrid" panel
+    Then I softly see value "Children’s Health Insurance Program" for title "Internal Organization" inside table "RelatedQualifiedLeadsgrid"
+    When I perform quick search for "Invalid" in "RelatedQualifiedLeadsgrid" panel
     Then I see "No Records Found" inside flex table with id "RelatedQualifiedLeadsgrid"
     When I perform quick search for "2 - Low" in "RelatedQualifiedLeadsgrid" panel
-    Then I softly see value "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" for title "Agency" inside table "RelatedQualifiedLeadsgrid"
+    Then I softly see value "Children’s Health Insurance Program" for title "Agency" inside table "RelatedQualifiedLeadsgrid"
     When I perform quick search for "Low - 2" in "RelatedQualifiedLeadsgrid" panel
     Then I see "No Records Found" inside flex table with id "RelatedQualifiedLeadsgrid"
 
@@ -942,7 +942,7 @@ Feature: Sanity scenarios
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
-    Then I softly cannot see row level action button "Edit" against "AutomationDemoLead" in flex table with id "{grantee_tableId:QualifiedLeads}"
+    Then I softly cannot see row level action button "Edit" against "{SavedValue:Automation Runtime Lead}" in flex table with id "{grantee_tableId:QualifiedLeads}"
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
     Then I softly cannot see top right button "Edit" in page detail
 
@@ -962,7 +962,7 @@ Feature: Sanity scenarios
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I enter value "--None--" into field "fieldRelevance__c"
+    When I click on "Save" in the page details
     Then I softly see the following messages in the page details contains:
       | Relevance is Required to save under Overview.     |
       | Impact is Required to save under Overview.        |
@@ -971,123 +971,55 @@ Feature: Sanity scenarios
   @61681 @validateOverviewTabForInternalOrganizations   @positive
   Scenario: Validate Overview sub tab for internal organizations detail page
     Given I login to "As a Grantee" app as "GRANTEE PM" user
-    When I navigate to "HOME" tab
+    When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
-    When I perform quick search for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" in "{grantee_tableId:InternalOrganizations}" panel
-    When I click on "View" icon for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" inside table
+    When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
+    When I click on "View" icon for "Test Automation Organization" inside table
     When I navigate to "Overview" sub tab
     And I softly see the text containing :
       | Overview           |
       | Address            |
       | Related Contacts   |
+      |Child Organizations |
       | Indirect Rates     |
+      |DUNS Numbers        |
       | System Information |
-    Then I softly see field "Organization Abbreviation" as "ASFHS"
-    Then I softly see field "Street" as "123 Salt Flats,"
-    When I click "Ramu Loke" lookup link
+    Then I softly see field "Organization Abbreviation" as "BHDDHO"
+    Then I softly see field "Street" as "Street"
+    When I click "Mahananda Nyamagouda" lookup link
     When I click on "Edit" in the page details
     And I see the text :
       | You dont have permission to access this record. Please contact administrator. |
-    And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
-    When I navigate to "HOME" tab
-    When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
-    When I perform quick search for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" in "{grantee_tableId:InternalOrganizations}" panel
-    When I click on "View" icon for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" inside table
-    When I click "Ramu Loke" lookup link
-    When I click on "Edit" in the page details
-    When I enter value "Admin Address" into field "fieldAboutMe__c"
-    Then I softly see field "About Me" as "Admin Address"
-
-  @61683 @validateAttachmentTabTabForInternalOrganizations  @positive
-  Scenario: Validate Attachment addition and take snap shot functionality at overview sub tab for internal organizations detail page
-    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
-    When I navigate to "HOME" tab
-    When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
-    When I perform quick search for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" in "{grantee_tableId:InternalOrganizations}" panel
-    Then I softly see value "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" for title "Operational Unit" inside table "{grantee_tableId:InternalOrganizations}"
-    When I perform quick search for "Oficina de Preparacion y Coordinacion de Respuesta en Salud Publica" in "{grantee_tableId:InternalOrganizations}" panel
-    Then I softly see value "Oficina de Preparacion y Coordinacion de Respuesta en Salud Publica" for title "Operational Unit" inside table "{grantee_tableId:InternalOrganizations}"
-    When I perform quick search for "Secretaria Auxiliar de Reglamentacion y Acreditacion de Facilidades de Salud" in "{grantee_tableId:InternalOrganizations}" panel
-    Then I softly see value "Secretaria Auxiliar de Reglamentacion y Acreditacion de Facilidades de Salud" for title "Operational Unit" inside table "{grantee_tableId:InternalOrganizations}"
-    When I click on "View" icon for "Secretaria Auxiliar de Reglamentacion y Acreditacion de Facilidades de Salud" inside table
-    When I navigate to "Attachments" sub tab
-    And I softly see the text containing :
-      | Attachments    |
-      | Record History |
-    When I upload attachment "AttachmentTesting.pdf" of type "AGENCY DETAILS"
-    When I pause execution for "3" seconds
-    When I refresh the page
-    Then I see table with header "Attachments" contains records "AttachmentTesting.pdf"
-    When I click on "Delete" icon for "AttachmentTesting.pdf" inside table
-    And I click modal button "Ok"
-    When I click on "Menu" in the page details
-    And I select "Take Snapshot" from dropdown
-    When I pause execution for "8" seconds
-    Then I softly see field "Internal Organization" as "Secretaria Auxiliar de Reglamentacion y Acreditacion de Facilidades de Salud"
-    Then I see take snap shot getting saved with "Todays Date"
-
-  @61749 @validateContactEditFunctionalityAtInternalOrganizations   @positive
-  Scenario Outline: Validate last modified date and last modified by field value at internal organizations contacts view page with different users
-    When I login to "As a Grantee" app as "<userType>" user
-    When I navigate to "HOME" tab
-    When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
-    When I perform quick search for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" in "{grantee_tableId:InternalOrganizations}" panel
-    When I click on "View" icon for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" inside table
-    And I click on top right button "New" in flex table with id "{grantee_tableId:RelatedContacts}"
-    When I enter "InternalContactCorrectData" values from "Field_Values.xlsx"
-    When I enter value "Direccion General" into field "fieldAccountId"
-    When I click on "Save" in the page details
-    And I save the contact name as "Automation Runtime Contact"
-    When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
-    When I perform quick search for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" in "{grantee_tableId:InternalOrganizations}" panel
-    When I click on "View" icon for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" inside table
-    When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:RelatedContacts}" panel
-    When I click on "Edit" icon for "{SavedValue:firstName}" inside table
-    When I enter value "NY" into field "fieldMailingCity"
-    And I click on "Save" in the page details
-    Then I softly see field "City" as "NY"
-    Then I softly see field "Last Modified By" as "<userName>"
-    And I save the field labeled "Last Modified Date" as "ModifiedDate"
-    Then I softly see field "{SavedValue:ModifiedDate}" contains todays date withTime
-
-    Examples:
-      | userType      | userName               |
-      | GRANTEE ADMIN | GRANTEE ADMIN Username |
-      | GRANTEE PM    | GRANTEE PM Username    |
-      | GRANTEE PO    | GRANTEE PO Username    |
-      | GRANTEE FD    | GRANTEE FD Username    |
-      | GRANTEE FO    | GRANTEE FO Username    |
-      | GRANTEE EXE   | GRANTEE EXE Username   |
 
   @61706 @validateAddingOfDUNSNumberWithValidDataAtInternalUser  @positive
   Scenario: Validate addition of DUNS Number with valid inputs at internal organizations
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
-    When I navigate to "HOME" tab
+    When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
-    When I perform quick search for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" in "{grantee_tableId:InternalOrganizations}" panel
-    When I click on "View" icon for "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" inside table
+    When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
+    When I click on "View" icon for "Test Automation Organization" inside table
     When I click on "Edit" in the page details
-    When I enter value "105817142" into field "fieldDUNS__c"
+    When I enter value "456784567" into field "fieldEINText__c"
     When I click on "Save and Continue" in the page details
-    Then I softly see field "DUNS" as "105817142"
+    Then I softly see field "EIN" as "456784567"
 
   @61950 @validateAddingOfContactForNonFederalOrganization    @positive
   Scenario: Validate addition of contact for non federal organization at external non federal organization table
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
-    When I navigate to "HOME" tab
+    When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
-    When I perform quick search for "AIDS Funding Collaborative A" in "{grantee_tableId:NonFederalOrganizations}" panel
-    When I click on "View" icon for "AIDS Funding Collaborative A" inside flex table with id "{grantee_tableId:NonFederalOrganizations}"
+    When I perform quick search for "ACC-APG-Belvoir" in "{grantee_tableId:NonFederalOrganizations}" panel
+    When I click on "View" icon for "ACC-APG-Belvoir" inside flex table with id "{grantee_tableId:NonFederalOrganizations}"
     And I click on top right button "New" in flex table with id "{grantee_tableId:RelatedContacts}"
     When I enter "ExternalNonFederalContact" values from "Field_Values.xlsx"
     When I enter value "automationExternalNonFederalContact1@yopmail.com" into field "fieldEmail"
     When I click on "Save" in the page details
     And I save the contact name as "Automation Runtime Contact"
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
-    When I perform quick search for "AIDS Funding Collaborative A" in "{grantee_tableId:NonFederalOrganizations}" panel
-    When I click on "View" icon for "AIDS Funding Collaborative A" inside flex table with id "{grantee_tableId:NonFederalOrganizations}"
-    When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:RelatedContacts}" panel
-    Then I see value "{SavedValue:firstName}" for title "Full Name" inside table "{grantee_tableId:RelatedContacts}"
+    When I perform quick search for "ACC-APG-Belvoir" in "{grantee_tableId:NonFederalOrganizations}" panel
+    When I click on "View" icon for "ACC-APG-Belvoir" inside flex table with id "{grantee_tableId:NonFederalOrganizations}"
+    When I perform quick search for "Automation External Non Federal Contact Test" in "{grantee_tableId:RelatedContacts}" panel
+    Then I see value "{SavedValue:firstName}" for title "Title" inside table "{grantee_tableId:RelatedContacts}"
     And I click on top right button "New" in flex table with id "{grantee_tableId:RelatedContacts}"
     When I enter "ExternalNonFederalContact" values from "Field_Values.xlsx"
     When I enter value "automationExternalNonFederalContact1@yopmail.com" into field "fieldEmail"
@@ -1098,37 +1030,31 @@ Feature: Sanity scenarios
   @61424 @validateSortingOfColumnAtExternalContactstable   @positive
   Scenario: Validate columns of external contacts table is getting sorted in ascending/descending order on column click
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
-    When I navigate to "HOME" tab
+    When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
-    When I click on "Last Name" column header inside table with id "{grantee_tableId:ExternalFederalContacts}"
-    Then I softly see content of expected column "Last Name" is in "Ascending" order of table id "{grantee_tableId:ExternalFederalContacts}"
-    When I click on "Last Name" column header inside table with id "{grantee_tableId:ExternalFederalContacts}"
-    Then I softly see content of expected column "Last Name" is in "Descending" order of table id "{grantee_tableId:ExternalFederalContacts}"
-    And I refresh the page
-    When I click on "First Name" column header inside table with id "{grantee_tableId:ExternalFederalContacts}"
-    Then I softly see content of expected column "First Name" is in "Ascending" order of table id "{grantee_tableId:ExternalFederalContacts}"
-    When I click on "First Name" column header inside table with id "{grantee_tableId:ExternalFederalContacts}"
-    Then I softly see content of expected column "First Name" is in "Descending" order of table id "{grantee_tableId:ExternalFederalContacts}"
-    And I refresh the page
+    When I click on "Full Name" column header inside table with id "{grantee_tableId:ExternalFederalContacts}"
+    Then I softly see content of expected column "Full Name" is in "Ascending" order of table id "{grantee_tableId:ExternalFederalContacts}"
+    When I click on "Full Name" column header inside table with id "{grantee_tableId:ExternalFederalContacts}"
+    Then I softly see content of expected column "Full Name" is in "Descending" order of table id "{grantee_tableId:ExternalFederalContacts}"
     When I click on "Title" column header inside table with id "{grantee_tableId:ExternalFederalContacts}"
     Then I softly see content of expected column "Title" is in "Ascending" order of table id "{grantee_tableId:ExternalFederalContacts}"
     When I click on "Title" column header inside table with id "{grantee_tableId:ExternalFederalContacts}"
     Then I softly see content of expected column "Title" is in "Descending" order of table id "{grantee_tableId:ExternalFederalContacts}"
     And I refresh the page
-    When I click on "Organization" column header inside table with id "{grantee_tableId:ExternalFederalContacts}"
-    Then I softly see content of expected column "Organization" is in "Ascending" order of table id "{grantee_tableId:ExternalFederalContacts}"
-    When I click on "Organization" column header inside table with id "{grantee_tableId:ExternalFederalContacts}"
-    Then I softly see content of expected column "Organization" is in "Descending" order of table id "{grantee_tableId:ExternalFederalContacts}"
-    And I refresh the page
     When I click on "Email" column header inside table with id "{grantee_tableId:ExternalFederalContacts}"
     Then I softly see content of expected column "Email" is in "Ascending" order of table id "{grantee_tableId:ExternalFederalContacts}"
     When I click on "Email" column header inside table with id "{grantee_tableId:ExternalFederalContacts}"
     Then I softly see content of expected column "Email" is in "Descending" order of table id "{grantee_tableId:ExternalFederalContacts}"
+    And I refresh the page
+    When I click on "Organization" column header inside table with id "{grantee_tableId:ExternalFederalContacts}"
+    Then I softly see content of expected column "Organization" is in "Ascending" order of table id "{grantee_tableId:ExternalFederalContacts}"
+    When I click on "Organization" column header inside table with id "{grantee_tableId:ExternalFederalContacts}"
+    Then I softly see content of expected column "Organization" is in "Descending" order of table id "{grantee_tableId:ExternalFederalContacts}"
 
   @61760 @validateViewPageDetailForExternalFederalContactWithMultipleUsers  @positive
   Scenario Outline: Validate external federal contacts details is displayed for multiple user
     When I login to "As a Grantee" app as "<userType>" user
-    When I navigate to "HOME" tab
+    When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalFederalContacts}"
     When I enter "ExternalFederalContact" values from "Field_Values.xlsx"
@@ -1138,9 +1064,10 @@ Feature: Sanity scenarios
     When I click on "Edit" in the page details
     When I enter value "Automation Federal Contact" into field "fieldTitle"
     And I click on "Save" in the page details
+    And I refresh the page
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:ExternalFederalContacts}" panel
-    When I click on "View" icon for "{SavedValue:firstName}" inside table
+    When I click on "View" icon for "Automation Federal Contact" inside table
     And I softly see the text containing :
       | Contact Information |
       | Address Information |
@@ -1157,58 +1084,21 @@ Feature: Sanity scenarios
       | GRANTEE FO    | {SavedValue:GRANTEE FO Username}    |
       | GRANTEE EXE   | {SavedValue:GRANTEE EXE Username}   |
 
-  @61909 @validateAddingOfContactWithOrWithoutMandatoryFieldsAtFederalContacts @smoke
-  Scenario: Validate adding of contacts with or without mandatory fields at External federal contact
-    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
-    When I navigate to "HOME" tab
-    When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalFederalContacts}"
-    When I click on "Save" in the page details
-    Then I softly see the following messages in the page details contains:
-      | Last Name : You must enter a value |
-    And I refresh the page
-    When I enter value "automationtest" into field "fieldEmail"
-    When I click on "Save" in the page details
-    Then I softly see the following messages in the page details contains:
-      | Last Name : You must enter a value |
-      | Email : Invalid Email Address.     |
-    And I refresh the page
-    When I enter "grantee_sidebarCRwithDuplicateEmail" values from "Field_Values.xlsx"
-    When I enter value "USDA-NRCS-NHO" into field "fieldAccountId"
-    When I click on "Save" in the page details
-    Then I softly see the following messages in the page details contains:
-      | Contacts must have unique email addresses. The email address entered is associated with an existing contact. |
-    And I refresh the page
-    When I enter "grantee_sidebarCRWithInvalidPhone" values from "Field_Values.xlsx"
-    When I enter value "USDA-NRCS-NHO" into field "fieldAccountId"
-    When I click on "Save" in the page details
-    Then I softly see the following messages in the page details contains:
-      | Mobile Phone should be number and (XXX) XXX-XXXX format. |
-      | Phone Number should be number and (XXX) XXX-XXXX format. |
-      | Zip Code should be number and XXXXX format.              |
-    And I refresh the page
-    When I enter "grantee_sidebarCRWithInvalidAddress" values from "Field_Values.xlsx"
-    When I enter value "USDA-NRCS-NHO" into field "fieldAccountId"
-    When I click on "Save" in the page details
-    And I pause execution for "5" seconds
-    Then I softly see the following messages in the page details contains:
-      | Street:Data value too large. (max length=255) |
-
   @61932 @validateEditOfContactForNonFederalOrganizationUnderExternalContact  @positive
   Scenario Outline: Validate user can edit contacts of Non federal organization at external federal contact table
     When I login to "As a Grantee" app as "<userType>" user
-    When I navigate to "HOME" tab
+    When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:ExternalNonFederalContacts}"
     When I enter "ExternalNonFederalContact" values from "Field_Values.xlsx"
-    When I enter value "Health State Organization" into field "fieldAccountId"
+    When I enter value "Department of Health" into field "fieldAccountId"
     When I enter value "automationtest@yopmail.com" into field "fieldEmail"
     When I click on "Save" in the page details
     And I save the contact name as "Automation Runtime Contact"
     When I navigate to "{grantee_sidebar:ExternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:ExternalNonFederalContacts}" panel
-    When I click on "Edit" icon for "{SavedValue:firstName}" inside flex table with id "{grantee_tableId:ExternalNonFederalContacts}"
-    When I enter value "Health State Organization" into field "fieldAccountId"
+    When I click on "Edit" icon for "Automation External Non Federal Contact Test" inside flex table with id "{grantee_tableId:ExternalNonFederalContacts}"
+    When I enter value "Department of Health" into field "fieldAccountId"
     When I enter value "Automation Address Test" into field "fieldMailingStreet"
     And I click on "Save" in the page details
     Then I softly see field "Street" as "Automation Address Test"
@@ -1225,17 +1115,12 @@ Feature: Sanity scenarios
   @62129 @validateSortingOfColumnAtInternalContactTable-myOrganizationContact  @positive
   Scenario: Validate columns of myOrganizationContact Table of internal contact is getting sorted in ascending/descending order on column click
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
-    When I navigate to "HOME" tab
+    When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
-    When I click on "Last Name" column header inside table with id "{grantee_tableId:InternalContacts}"
-    Then I softly see content of expected column "Last Name" is in "Ascending" order of table id "{grantee_tableId:InternalContacts}"
-    When I click on "Last Name" column header inside table with id "{grantee_tableId:InternalContacts}"
-    Then I softly see content of expected column "Last Name" is in "Descending" order of table id "{grantee_tableId:InternalContacts}"
-    And I refresh the page
-    When I click on "First Name" column header inside table with id "{grantee_tableId:InternalContacts}"
-    Then I softly see content of expected column "First Name" is in "Ascending" order of table id "{grantee_tableId:InternalContacts}"
-    When I click on "First Name" column header inside table with id "{grantee_tableId:InternalContacts}"
-    Then I softly see content of expected column "First Name" is in "Descending" order of table id "{grantee_tableId:InternalContacts}"
+    When I click on "Full Name" column header inside table with id "{grantee_tableId:InternalContacts}"
+    Then I softly see content of expected column "Full Name" is in "Ascending" order of table id "{grantee_tableId:InternalContacts}"
+    When I click on "Full Name" column header inside table with id "{grantee_tableId:InternalContacts}"
+    Then I softly see content of expected column "Full Name" is in "Descending" order of table id "{grantee_tableId:InternalContacts}"
     And I refresh the page
     When I click on "Title" column header inside table with id "{grantee_tableId:InternalContacts}"
     Then I softly see content of expected column "Title" is in "Ascending" order of table id "{grantee_tableId:InternalContacts}"
@@ -1247,58 +1132,23 @@ Feature: Sanity scenarios
     When I click on "Email" column header inside table with id "{grantee_tableId:InternalContacts}"
     Then I softly see content of expected column "Email" is in "Descending" order of table id "{grantee_tableId:InternalContacts}"
 
-  @62031 @validateAddingOfInternalContactWithOrWithoutMandatoryFields-myOrganizationContact @smoke
-  Scenario: Validate Internal contact creation with valid Invalid data.
-    Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
-    When I navigate to "HOME" tab
-    When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:InternalContacts}"
-    When I click on "Save" in the page details
-    And I pause execution for "5" seconds
-    Then I softly see the following messages in the page details contains:
-      | Last Name : You must enter a value |
-    And I refresh the page
-    When I enter value "automationtest" into field "fieldEmail"
-    When I click on "Save" in the page details
-    Then I softly see the following messages in the page details contains:
-      | Last Name : You must enter a value |
-      | Email : Invalid Email Address.     |
-    And I refresh the page
-    When I enter "ContactCreationDuplicateEmail" values from "Field_Values.xlsx"
-    When I enter value "SYSTEM" into field "fieldAccountId"
-    When I click on "Save" in the page details
-    Then I softly see the following messages in the page details contains:
-      | Contacts must have unique email addresses. The email address entered is associated with an existing contact. |
-    When I enter "ContactCreationWithInvalidPhone" values from "Field_Values.xlsx"
-    When I enter value "SYSTEM" into field "fieldAccountId"
-    When I click on "Save" in the page details
-    Then I softly see the following messages in the page details contains:
-      | Mobile Phone should be number and (XXX) XXX-XXXX format. |
-      | Phone Number should be number and (XXX) XXX-XXXX format. |
-      | Zip Code should be number and XXXXX format.              |
-    And I refresh the page
-    When I enter value "SYSTEM" into field "fieldAccountId"
-    When I enter "ContactCreationInvalidAddress" values from "Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I pause execution for "5" seconds
-    Then I softly see the following messages in the page details contains:
-      | Street:Data value too large. (max length=255) |
-
   @62033 @validateAdminRecordShouldNotEditedByOthersUsersAtInternalContacts
   Scenario Outline: Validate contact record should not be edited by others users using created by field at Internal contact
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
-    When I navigate to "HOME" tab
+    When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
+    And I click toggle button to select "All Contacts"
     And I click on top right button "New" in flex table with id "{grantee_tableId:InternalContacts}"
     When I enter "InternalContactCorrectData" values from "Field_Values.xlsx"
-    When I enter value "SYSTEM" into field "fieldAccountId"
+    When I enter value "Test Automation Organization" into field "fieldAccountId"
     When I click on "Save" in the page details
     And I save the contact name as "Automation Runtime Contact"
+    And I refresh the page
     When I re-login as "<userType>" user on "default" portal
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
-    And I click toggle button to select "All Internal Contacts"
+    And I click toggle button to select "All Contacts"
     When I perform quick search for "{SavedValue:firstName}" in "{grantee_tableId:InternalContacts}" panel
-    When I click on "View" icon for "{SavedValue:firstName}" inside flex table with id "{grantee_tableId:InternalContacts}"
+    When I click on "View" icon for "AutomationUser" inside flex table with id "{grantee_tableId:InternalContacts}"
     When I click "{SavedValue:GRANTEE ADMIN Username}" lookup link
     When I click on "Edit" in the page details
     And I see the text :
