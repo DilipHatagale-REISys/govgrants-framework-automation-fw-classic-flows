@@ -13,7 +13,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---focusarea:-:FocusAreaFilesTableId---"
-    And I upload attachment "Announcement_Field_Values.xlsx" of type "Other"
+    When I upload attachment "Announcement_Field_Values.xlsx" of type "Other" from computer
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
@@ -92,7 +92,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I close "Upload Template" modal by clicking the top right x button
     And I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
-    And I upload attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts"
+    And I upload the attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts" from computer
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -775,7 +775,7 @@ Feature: Validate sanity testing of Complete Business Flow
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload attachment "data.xlsx" of type "Other"
+    When I upload attachment "data.xlsx" of type "Other" from computer
     And I get the "EGMS ID"
     And I save the field containing "EGMS ID" as "preappID"
     When I click on "Submit to Grantor" in the page details
@@ -1120,7 +1120,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Grant Name>" in "---subAwardFromFDM:-:grantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
@@ -1142,7 +1142,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Accept" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Grant Name>" in "---subAwardFromFDM:-:grantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
@@ -1166,7 +1166,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on submit review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Grant Name>" in "---subAwardFromFDM:-:grantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
@@ -1196,7 +1196,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Grant Name>" in "---subAwardFromFDM:-:grantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
@@ -1211,7 +1211,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Accept after Approval" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Grant Name>" in "---subAwardFromFDM:-:grantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
@@ -1228,7 +1228,7 @@ Feature: Validate sanity testing of Complete Business Flow
   Scenario Outline: Validate the activation of subaward Happy path stand alone and status changes to Activated | Validate subaward Happy path stand alone
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -1296,7 +1296,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1330,7 +1330,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on submit review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1346,7 +1346,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I click on "Accept" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1375,7 +1375,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1390,7 +1390,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Accept after Approval" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1406,7 +1406,7 @@ Feature: Validate sanity testing of Complete Business Flow
   Scenario: Validate the Activation of Risk Assessment and the status changes to Active
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I enter "Grant_Creation1" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -1540,7 +1540,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1593,7 +1593,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1638,7 +1638,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1692,7 +1692,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1777,10 +1777,10 @@ Feature: Validate sanity testing of Complete Business Flow
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "ActiveGrants" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "ActiveGrants"
+    And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "GrantorActiveGrantsgrid" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "GrantorActiveGrantsgrid"
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
@@ -1881,7 +1881,7 @@ Feature: Validate sanity testing of Complete Business Flow
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---deskreview:-:internalActiveGrants---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalActiveGrants---"
@@ -2224,7 +2224,7 @@ Feature: Validate sanity testing of Complete Business Flow
     Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
@@ -2277,7 +2277,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
@@ -2289,7 +2289,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
@@ -2303,7 +2303,7 @@ Feature: Validate sanity testing of Complete Business Flow
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
@@ -2319,6 +2319,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"

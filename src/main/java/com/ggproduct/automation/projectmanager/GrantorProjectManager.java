@@ -5,6 +5,7 @@ import com.testingblaze.misclib.Emails;
 import com.testingblaze.objects.Elements;
 import com.testingblaze.register.EnvironmentFactory;
 import com.testingblaze.register.I;
+import org.apache.commons.lang3.StringUtils;
 import org.assertj.core.util.Files;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -638,4 +639,31 @@ public class GrantorProjectManager extends ProjectManager{
         }
         return flag;
     }
+
+    public Boolean isFieldStatusVisibleInPageblock(String fieldName, String fieldValue, String pageblockName) {
+        boolean flag = false;
+        if (I.amPerforming().checkToSee().isDisplayed(By.xpath("//a[text()='" + pageblockName + "']/ancestor::div[@class='panel-heading']//following-sibling::div//span[text()='" + fieldName + "']/..//following-sibling::dd//span[text()='" + fieldValue + "']"))) {
+            flag = true;
+        } else {
+            flag = false;
+        }
+
+        return flag;
+
+    }
+
+    public void seeFieldStatusInPageBlock(String usage, String fieldName, String fieldValue, String pageblockName)
+    {
+        if (usage.equalsIgnoreCase("see")) {
+            Assert.assertTrue(isFieldStatusVisibleInPageblock(fieldName, fieldValue, pageblockName));
+        }else if (usage.equalsIgnoreCase("softly see")){
+            I.amPerforming().assertionsTo().assertThat(isFieldStatusVisibleInPageblock(fieldName, fieldValue, pageblockName)).isTrue();
+        }else if(usage.equalsIgnoreCase("do not see")){
+            Assert.assertFalse(isFieldStatusVisibleInPageblock(fieldName, fieldValue, pageblockName));
+        }else if(usage.equalsIgnoreCase("softly do not see")){
+            I.amPerforming().assertionsTo().assertThat(isFieldStatusVisibleInPageblock(fieldName, fieldValue, pageblockName)).isFalse();
+        }
+
+    }
+
 }
