@@ -1369,9 +1369,13 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Attachments" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice"
     And I click on "Submit to Grantor" in the page details
-    And I pause execution for "120" seconds
-    Then I can see mail notification for "INTERNAL" user with following subject:
-      | Payment Request <payment id> from <subrecipient name> has been Submitted |
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Submitted
+      """
 
   @55627 @emailNotificationOnSubmitToGrantorReimbursement @jitendra
   Scenario: Verify that on submit to grantor , user is able to check  email notifications Payment Request (Reimbursement)
@@ -1389,9 +1393,13 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 0                 | 0               | 0                        | 100        | 100            |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    And I pause execution for "120" seconds
-    Then I can see mail notification for "INTERNAL" user with following subject:
-      | Payment Request <payment id> from <subrecipient name> has been Submitted |
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Submitted
+      """
 
   @55630 @validateAdvancePRSendBackToSubReceipientEmailNotification @jitendra
   Scenario: Verify that on Send Back to subrecipient , user is able to check email(Advance)
@@ -1414,9 +1422,13 @@ Feature: Validate all scenarios in Payment Request
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I click on "Send Back to Subrecipient" in the page details
-    And I pause execution for "120" seconds
-    Then I can see mail notification for "EXTERNAL" user with following subject:
-      | Payment Request <payment id> for <award id> has been Sent Back for Revisions |
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+     """
+     Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Sent Back for Revisions
+     """
 
   @55628 @approvalOfAdvancePaymentRequestEmailNotification @jitendra
   Scenario: Verify that on submitting for approval , user is able to check email (Advance)
@@ -1447,9 +1459,13 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    And I pause execution for "120" seconds
-    Then I can see mail notification for "INTERNAL" user with following subject:
-      | Payment Request <payment id> from <subrecipient name> has been Submitted for Approval |
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+     """
+     Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Submitted for Approval
+     """
 
   @55636 @approversApprovePaymentRequestEmailNotificationReimbursement @jitendra
   Scenario Outline: Verify that on Approved, user will receive email notifications for Payment Request (Reimbursement)
@@ -1469,7 +1485,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1493,9 +1509,13 @@ Feature: Validate all scenarios in Payment Request
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
-    And I pause execution for "120" seconds
-    Then I can see mail notification for "EXTERNAL" user with following subject:
-      | Payment Request <payment id> for <award id> has been Approved |
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+     """
+     Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Approved
+     """
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
@@ -1536,9 +1556,13 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
-    And I pause execution for "120" seconds
-    Then I can see mail notification for "INTERNAL" user with following subject:
-      | Payment Request <payment id> from <subrecipient name> has been Submitted for Approval |
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Submitted for Approval
+      """
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
@@ -1552,6 +1576,7 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "PaymentId"
+    And I save the field labeled "Subaward" as "SubawardId"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
@@ -1573,9 +1598,13 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
-    And I pause execution for "120" seconds
-    Then I can see mail notification for "INTERNAL" user with following subject:
-      | Payment Request <payment id> for <award id> has been Forwarded |
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} for {SavedValue:SubawardId}has been Forwarded
+      """
 
   @55632 @approvalOfPREmailNotificationAdvance @jitendra
   Scenario: Verify that after approval of advance PR , user can check email notifications for Advance Payment request.
@@ -1740,6 +1769,7 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "PaymentId"
+    And I save the field labeled "Subaward" as "SubawardId"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
@@ -1749,7 +1779,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1767,9 +1797,13 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Disapprove" in the approval decision
-    And I pause execution for "120" seconds
-    Then I can see mail notification for "INTERNAL" user with following subject:
-      | Payment Request <payment id> for <award id> has been Rejected |
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} for {SavedValue:SubawardId}has been Rejected
+      """
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |

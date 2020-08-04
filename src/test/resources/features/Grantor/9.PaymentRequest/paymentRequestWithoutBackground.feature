@@ -336,7 +336,7 @@ Feature: Payment Request scenarios without background
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
-    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I enter "No Program Income_Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
@@ -936,7 +936,7 @@ Feature: Payment Request scenarios without background
     And I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -957,7 +957,8 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Terms" sub tab
     And I click on "View" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
-    Then I see field "Schedule Title" as "Automation Progress Report"
+    And I save the field labeled "Schedule Title" as "AutomationRuntimeProgressReport"
+    Then I see field "Schedule Title" as "{SavedValue:AutomationRuntimeProgressReport}"
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
