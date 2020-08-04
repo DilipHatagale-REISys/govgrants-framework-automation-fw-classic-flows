@@ -15,6 +15,9 @@ public class RegistrationPage extends ProjectManager {
     public By privacyPolicyText, captch;
     public By actualmMailText;
     public By actualmMailSubjectText;
+    public By newPassword;
+    public By confirmNewPassword;
+    public By changePasswordBtn;
 
     /******* "Variables and Locators" *****************/
 
@@ -24,6 +27,9 @@ public class RegistrationPage extends ProjectManager {
         captch = By.xpath("//iframe[contains(@src, 'www.google.com/recaptcha')]");
         actualmMailText = By.xpath("//div[@id='mailmillieu']//div//center");
         actualmMailSubjectText = By.xpath("//div[@id='mailhaut']//div");
+        newPassword = By.xpath("//input[@id='newpassword']");
+        confirmNewPassword = By.xpath("//input[@id='confirmpassword']");
+        changePasswordBtn = By.xpath("//button[@id='password-button']");
     }
 
     /**
@@ -132,5 +138,12 @@ public class RegistrationPage extends ProjectManager {
     public void assertMailSubjectTexMatches(String subjectText) {
         I.amPerforming().assertionsTo().assertThat(I.amPerforming().actionToGet().text(actualmMailSubjectText))
                 .isEqualToNormalizingWhitespace(subjectText);
+    }
+
+    public void setPasswordForTheUser() {
+        String passwordText="SALESFORCE2020";
+        I.amPerforming().textInput().in(newPassword,passwordText);
+        I.amPerforming().textInput().in(confirmNewPassword,passwordText);
+        I.amPerforming().click().on(changePasswordBtn);
     }
 }

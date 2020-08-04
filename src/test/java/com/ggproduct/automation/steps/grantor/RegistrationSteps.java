@@ -61,4 +61,9 @@ public class RegistrationSteps {
     public void iSeeTheMailSubjectIsAsFollows(String subjectText) {
         registrationPage.assertMailSubjectTexMatches(subjectText);
     }
+
+    @Then("I set password for the user")
+    public void iSetPasswordForTheUser() {
+        registrationPage.setPasswordForTheUser();
+    }
 }
