@@ -40,7 +40,7 @@ public class HomePage extends GrantorProjectManager {
         I.amPerforming().textInput().in(By.xpath("//input[@id='login' and @type='text']"), emailId);
         I.amPerforming().click().on(By.xpath("//input[@value='Check Inbox' and @type='submit']"));
         I.amPerforming().click().on(By.xpath("//div[@id='m1']//a[@class='lm']/span[2]"));
-        I.amPerforming().click().on(By.xpath("//span/a[text()='here']"));
+        I.amPerforming().click().on(By.xpath("//span/a[text()='here']| //div[@id='mailmillieu']//a"));
     }
 
     /**
