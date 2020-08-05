@@ -353,3 +353,65 @@ Feature: Validate all registration related scenarios
     Then I softly see value "Primary" for title "Role" inside table "---home:-:userContactsTableId---"
     Then I softly see value "automation.manager@yopmail.com" for title "Email" inside table "---home:-:userContactsTableId---"
     Then I softly see value "(704) 777-7869" for title "Phone" inside table "---home:-:userContactsTableId---"
+
+  @85792 @validateSAUserforUserRegistration-Organization @meenakshi
+  Scenario:To verify SA allow to modify newly created contact in contact table  for Additional user registration process
+    Given I begin "Organization" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
+    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
+    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    And I save the contact name as "Automation Runtime Organization"
+    And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Auto@yopmail.com" into field "fieldPrimaryRepEmail__c"
+    When I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Pending Subrecipient Registrations" content inside "Organization" subheader on left panel
+    When I perform quick search for "AUTOMATION RUNTIME Organization" in "{grantor_tableId:SubrecipientOrganization}" panel
+    When I click on "Start" icon for "AUTOMATION RUNTIME Organization" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
+    And I "Approve" in the approval decision
+    And I checkout to yopmail with mailid "Auto@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Organization Registration for AUTOMATIONRUNTIME Organization has Been Approved
+      """
+
+  @83038 @85790 @validatingApprovedStatusForIndividualRegistration @meenakshi
+  Scenario:To verify after Approved record status changes as : Approved for Individual registration process
+    Given I begin "Individual" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456789" into "Social Security Number (SSN)" on old form
+    When I enter value as "IndividualRegistration@yopmail.com" into "Email" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    Then I softly see field "Primary Email" as "individualregistration@yopmail.com"
+    And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Pending Subrecipient Registrations" content inside "Organization" subheader on left panel
+    When I perform quick search for "Automation User" in "{grantor_tableId:SubrecipientOrganization}" panel
+    When I click on "Start" icon for "Automation User" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    Then I softly see status in Progress-bar is "Approved" and is "Green"
+    #85790
+    And I checkout to yopmail with mailid "IndividualRegistration@yopmail.com"
+    And I pause execution for "1" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Your EGMS Registration has Been Approved
+      """

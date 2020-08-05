@@ -150,3 +150,25 @@ Feature: Validate all scenarios for SME Registration
     Then I softly can see page block "Completed Tasks (Assigned To Me)"
     Then I softly can see page block "Completed Tasks (Assigned By Me)"
     Then I softly see "Completed" value in flex table id "---grantor_tableId:-:CompletedTaskAssignedToMeTableId---"
+
+  @94345 @validatingEmailNotificationForSMEReviewer @meenakshi
+  Scenario: To verify Email notification should be received to SME contact after sending invitation by internal  user
+    Given I login to "As a Grantor" app as "PM" user
+    When I navigate to "Home" tab
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
+    And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I save the contact name as "Automation Runtime Contact"
+    And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
+    And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
+    And I wait for "2" seconds
+    And I enter value "Test Automation Description" in email body
+    And I click "Send" button in modal
+    And I checkout to yopmail with mailid "IndividualRegistration@yopmail.com"
+    And I pause execution for "20" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: You have been Invited to Register in theEnterprise Grants Management System (EGMS)
+      """
