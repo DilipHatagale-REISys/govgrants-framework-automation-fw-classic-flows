@@ -1607,9 +1607,13 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
-    And I pause execution for "120" seconds
-    Then I can see mail notification for "EXTERNAL" user with following subject:
-      | Payment Request <payment id> for <award id> has been Approved |
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Approved
+      """
 
   @55634 @sendToOwnerEmailNotificationAdvance @jitendra
   Scenario: Verify that on Send to Owner , user is able to check  email notifications Payment Request (Advance)
@@ -1641,9 +1645,13 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
-    And I pause execution for "120" seconds
-    Then I can see mail notification for "INTERNAL" user with following subject:
-      | Payment Request <payment id> from <subrecipient name> has been Sent Back |
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Sent Back
+      """
 
   @55638 @sendToOwnerPREmailNotificationReimbursement @jitendra
   Scenario Outline: Verify that on Send to Owner , user is able to check  email notifications Payment Request (Reimbursement)
@@ -1663,7 +1671,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1681,9 +1689,13 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Send to Owner" in the approval decision
-    And I pause execution for "120" seconds
-    Then I can see mail notification for "INTERNAL" user with following subject:
-      | Payment Request <payment id> from <subrecipient name> has been Sent Back |
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Sent Back
+      """
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
@@ -1941,7 +1953,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:advanceFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Advance Requested This Action |
-      | {SavedValue:fundingAccount} | 20                            |
+      | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
       | Responsibility  | Name          | Description                 |
@@ -1950,7 +1962,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
