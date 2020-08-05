@@ -79,6 +79,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -96,8 +97,8 @@ Feature: Validate all scenarios in Closeout
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
+    When I perform quick search for "{SavedValue:EGMSID}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
@@ -262,8 +263,8 @@ Feature: Validate all scenarios in Closeout
     And I save the field value having link labeled "Subrecipient Organization" as "CloseoutSubrecipientOrganization"
     And I save the field value having link labeled "Funding Organization" as "CloseoutFundingOrganization"
     Then I softly see that the saved value "{SavedValue:AcknowledgementCheck}" and "" are equal
-    Then I softly see that the saved value "{SavedValue:AcknowledgementDate}" and " " are equal
-    Then I softly see that the saved value "{SavedValue:AcknowledgementBy}" and " " are equal
+    Then I softly see that the saved value "{SavedValue:AcknowledgementDate}" and "" are equal
+    Then I softly see that the saved value "{SavedValue:AcknowledgementBy}" and "" are equal
     Then I softly see that the saved value "{SavedValue:ProjectPeriodEndDate}" and "{SavedValue:CloseoutEffectiveDate}" are equal
     Then I softly see that the saved value "{SavedValue:SubrecipientOrganization}" and "{SavedValue:CloseoutSubrecipientOrganization}" are equal
     Then I softly see that the saved value "{SavedValue:FundingOrganization}" and "{SavedValue:CloseoutFundingOrganization}" are equal
