@@ -3,6 +3,7 @@ package com.ggproduct.automation.steps;
 import com.ggproduct.automation.usersUrl.UsersAndURL;
 import com.ggproduct.automation.webservices.GranteeWebServices;
 import com.ggproduct.automation.webservices.GrantorWebServices;
+import com.ggproduct.automation.webservices.ProjectWebServices;
 import com.testingblaze.controller.TestSetupController;
 import com.testingblaze.register.EnvironmentFactory;
 import com.testingblaze.report.CSS;
@@ -25,7 +26,7 @@ public class setup {
     GrantorWebServices grantorWebServices;
     GranteeWebServices granteeWebServices;
 
-    public setup(TestSetupController userController,GrantorWebServices grantorWebServices,GranteeWebServices granteeWebServices) {
+    public setup(TestSetupController userController, GrantorWebServices grantorWebServices, GranteeWebServices granteeWebServices) {
         this.userController = userController;
         this.grantorWebServices = grantorWebServices;
         this.granteeWebServices = granteeWebServices;
@@ -45,7 +46,11 @@ public class setup {
 
     @After(order = 1)
     public void deleteMe() {
-        if (StringUtils.containsIgnoreCase(EnvironmentFactory.getEnvironmentName(),"GRANTOR")) grantorWebServices.deleteRecordInHooks();
-        else if (StringUtils.containsIgnoreCase(EnvironmentFactory.getEnvironmentName(),"GRANTEE")) granteeWebServices.deleteRecordInHooks();
+        if (StringUtils.containsIgnoreCase(EnvironmentFactory.getEnvironmentName(), "GRANTOR"))
+            grantorWebServices.deleteRecordInHooks();
+        else if (StringUtils.containsIgnoreCase(EnvironmentFactory.getEnvironmentName(), "GRANTEE"))
+            granteeWebServices.deleteRecordInHooks();
+        //It will deactivate the activated users.
+        ProjectWebServices.changeUserActivationStatus("automationinternal@yopmail.com", false);
     }
 }

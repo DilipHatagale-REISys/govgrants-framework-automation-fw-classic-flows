@@ -67,7 +67,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
@@ -87,7 +86,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
@@ -106,15 +104,14 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime KPI}" in "{grantee_tableId:KPITable}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime KPI}" inside table
-    When I click "Department of Health" lookup link
+    When I click "Test Automation Organization" lookup link
     Then I see the header is "Internal Organization" in the page details
-    Then I see the sub-header is "Department of Health" in the page details
+    Then I see the sub-header is "Test Automation Organization" in the page details
 
   @62123 @KPI @validateActivateKPI @smoke @positive
   Scenario: Verify user can activate KPI.
@@ -127,7 +124,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
@@ -147,7 +143,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
@@ -195,7 +190,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
@@ -225,7 +219,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     Then I see field "Created by" as "{SavedValue:GRANTEE PM Username}"
@@ -241,7 +234,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     And I save the field labeled "Created Date" as "CreatedDate"
@@ -259,7 +251,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
@@ -280,7 +271,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
@@ -326,7 +316,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "<enterValue>" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     Then I softly see field "Measure" as "<enterValue>"
@@ -359,7 +348,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     Then I see the header is "Key Performance Indicator" in the page details
@@ -376,7 +364,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
@@ -396,7 +383,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "KPID"
@@ -417,7 +403,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
@@ -427,8 +412,7 @@ Feature: Key Performance Indicators related scenarios
     And I clear the value from field "fieldDescription__c"
     And I clear the value from field "fieldTitle__c"
     And I clear the value from field "fieldUnit__c"
-    And I clear the value from field "fieldOrientation__c"
-    And I clear the value from field "fieldAgency__c"
+    And I enter value "--None--" into field "fieldOrientation__c"
     And I click on "Save" in the page details
     Then I see the following messages in the page details :
       | Domain is Required to save under Overview.              |
@@ -449,7 +433,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
@@ -492,7 +475,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "KPID"
@@ -526,7 +508,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
@@ -548,7 +529,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
@@ -568,7 +548,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     And I navigate to "Planning" tab
@@ -587,7 +566,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
@@ -607,7 +585,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
@@ -626,7 +603,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     When I navigate to "{grantee_sidebar:KPILinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
@@ -645,7 +621,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
@@ -666,7 +641,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
@@ -685,7 +659,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
@@ -704,7 +677,6 @@ Feature: Key Performance Indicators related scenarios
     And I enter value "Automation KPI Description" into field "fieldDescription__c"
     And I enter value "Walk Score" into field "fieldUnit__c"
     And I enter value "Flat" into field "fieldOrientation__c"
-    And I enter value "888" into field "fieldAgency__c"
     And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "KPID"

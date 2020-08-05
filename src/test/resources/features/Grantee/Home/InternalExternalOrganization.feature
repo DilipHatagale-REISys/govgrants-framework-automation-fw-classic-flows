@@ -50,6 +50,11 @@ Feature:Internal organization related scenarios
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
+    When I enter value "2 - Low" into field "fieldRelevance__c"
+    When I enter value "2 - Low" into field "fieldImpact__c"
+    When I enter value "Test Justification For Automation" into field "fieldJustification__c"
+    When I click on "Save" in the page details
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -94,7 +99,7 @@ Feature:Internal organization related scenarios
     When I click on "View" icon for "Test Automation Organization" inside table
     When I navigate to "Related Log" sub tab
     When I click on advance filter "#advfAgencyQualifiedLeadsRelated" of table id "{grantee_tableId:RelatedLogsQualifiedLeadsTableId}"
-    When I enter advance filter values inside id "advfAgencyPrograms"
+    When I enter advance filter values inside id "advfAgencyQualifiedLeadsRelated"
       | EGMS ID | contains | Invalid{SavedValue:EID} |
     Then I softly see "No Records Found" inside flex table with id "{grantee_tableId:RelatedLogsQualifiedLeadsTableId}"
 
@@ -115,6 +120,7 @@ Feature:Internal organization related scenarios
     And I click on "Activate" in the page details
     And I pause execution for "2" seconds
     And I click on "Qualify Lead" in the page details
+    And I pause execution for "2" seconds
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
@@ -123,9 +129,13 @@ Feature:Internal organization related scenarios
     And I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotConvertedOpportunityLinkName}" content inside "{grantee_sidebar:OpportunitiesSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:OpportunityNotConvertedToApplication}" panel
-    And I click on "Edit" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
-    When I enter "OpportunityDetailsWithPreApp" values from "Field_Values.xlsx"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:OpportunityNotConvertedToApplication}"
+    And I click on "Edit" in the page details
+    When I enter "OpportunityDetails" values from "Field_Values.xlsx"
     When I enter value "50%" into field "fieldProbabilityofWinningreceivingaGrant__c"
+    And I navigate to "Overview" sub tab
+    When I enter value "No" into field "fieldPreApplicationNeeded__c"
+    And I pause execution for "2" seconds
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "{grantee_tableId:Approvers}" by clicking "Edit" :
@@ -134,24 +144,25 @@ Feature:Internal organization related scenarios
       | Executive Approver | {SavedValue:GRANTEE EXE Username} | prdoh       |
       | Fiscal Approver    | {SavedValue:GRANTEE FO Username}  | prdoh       |
     And I click on "Submit for Approval" in the page details
+    And I save the field labeled "EGMS ID" as "egmsid"
     And I refresh the page
-    When I "Approve" in the approval decision
-    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
-    When I navigate to "Opportunities" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I pause execution for "2" seconds
-    When I perform quick search for "{SavedValue:EID}" in "{grantee_tableId:PendingTask}" panel
-    And I save the value from row "1" for column name "EGMS ID" as "PendingEGMSID" from flex table "{grantee_tableId:PendingTask}"
-    And I click on "Start" icon for "Approve Opportunity # {SavedValue:PendingEGMSID} Created for Lead # {SavedValue:EID}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
     And I re-login to "As a Grantee" app as "GRANTEE EXE" user on "INTERNAL" portal
     When I navigate to "Opportunities" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I pause execution for "5" seconds
-    When I perform quick search for "{SavedValue:EID}" in "{grantee_tableId:PendingTask}" panel
-    And I save the value from row "1" for column name "EGMS ID" as "PendingEGMSID" from flex table "{grantee_tableId:PendingTask}"
-    And I click on "Start" icon for "Approve Opportunity # {SavedValue:PendingEGMSID} Created for Lead # {SavedValue:EID}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
     When I "Approve" in the approval decision
+    And I pause execution for "5" seconds
+    And I re-login to "As a Grantee" app as "GRANTEE FO" user on "INTERNAL" portal
+    When I navigate to "Opportunities" tab
+    And I pause execution for "5" seconds
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:egmsid}" in "{grantee_tableId:PendingTask}" panel
+    And I click on "Start" icon for "Approve Opportunity # {SavedValue:egmsid} Created for Lead # {SavedValue:LeadNumber}" inside flex table with id "{grantee_tableId:PendingTask}"
+    When I "Approve" in the approval decision
+    And I pause execution for "5" seconds
     And I re-login to "As a Grantee" app as "GRANTEE ADMIN" user on "INTERNAL" portal
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
@@ -257,7 +268,7 @@ Feature:Internal organization related scenarios
 
   @61748 @validateContactViewFunctionalityAtInternalOrganizations @smoke @positive
   Scenario Outline: Validate contact view detail page with multiple users at internal organizations
-    When I login as "<userType>" user
+    Given I login to "As a Grantee" app as "<userType>" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -290,6 +301,7 @@ Feature:Internal organization related scenarios
     When I enter value "Test Automation Organization" into field "fieldAccountId"
     When I click on "Save" in the page details
     And I save the contact name as "Automation Runtime Contact"
+    And I close modal by clicking the top right x button
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -318,11 +330,11 @@ Feature:Internal organization related scenarios
     When I click on "View" icon for "Test Automation Organization" inside table
     And I navigate to "Overview" sub tab
     When I perform quick search for "{SavedValue:GRANTEE PM Username}" in "{grantee_tableId:RelatedContacts}" panel
-    When I click on "Remove" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:RelatedContacts}"
+    When I click on "Delete" icon for "{SavedValue:GRANTEE PM Username}" inside flex table with id "{grantee_tableId:RelatedContacts}"
     Then I softly see the following messages in the page details contains:
-      | You cannot delete a contact who is an active EGMS user. Please contact your system administrator to deactivate the user. After deactivation, the contact can be deleted. |
+      | You cannot delete this contact as it is associated with other records. |
     When I perform quick search for "AutomationUser" in "{grantee_tableId:RelatedContacts}" panel
-    When I click on "Remove" icon for "AutomationUser" inside flex table with id "{grantee_tableId:RelatedContacts}"
+    When I click on "Delete" icon for "AutomationUser" inside flex table with id "{grantee_tableId:RelatedContacts}"
     Then I softly see the following messages in the page details contains:
       | Record deleted successfully. |
 
@@ -343,7 +355,7 @@ Feature:Internal organization related scenarios
       | Office Phone      |
       | Is User           |
 
-  @61741 @validateSearchIsWorkingOrNotAtRealtedContactsTable @positive
+  @61741 @validateSearchIsWorkingOrNotAtRelatedContactsTable @positive
   Scenario: Validate related contacts search is working or not  with case sensitive at related contacts table
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
@@ -374,7 +386,7 @@ Feature:Internal organization related scenarios
       | Full Name | contains | Invalid {SavedValue:GRANTEE EXE Username} |
     Then I softly see "No Records Found" inside flex table with id "{grantee_tableId:RelatedContacts}"
 
-  @61741 @validatePaginationFunctionalityIsWorkingOrNotAtRealtedContactsTable @positive
+  @61741 @validatePaginationFunctionalityIsWorkingOrNotAtRealtedContactsTable @positive @wip @notrequired
   Scenario: Validate pagination arrow is working fine at Related contacts table
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
@@ -384,7 +396,7 @@ Feature:Internal organization related scenarios
     And I click on page navigation arrow "{grantee_tableId:RelatedContacts}" for table id "Next"
     Then I see table "{grantee_tableId:RelatedContacts}" shows "Page 2 of 2"
 
-  @61741 @validateShowEntriesDropdownFunctionalityIsWorkingOrNotAtRealtedContactsTable @positive
+  @61741 @validateShowEntriesDropdownFunctionalityIsWorkingOrNotAtRealtedContactsTable @positive @wip @notrequired
   Scenario: Validate show entries dropdown is working fine at Related contacts table
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
@@ -403,7 +415,7 @@ Feature:Internal organization related scenarios
     When I click on "View" icon for "Test Automation Organization" inside table
     Then I see default record count of table "{grantee_tableId:RelatedContacts}" is as expected
 
-  @61741 @validateTotalRecordsAtRelatedContactsTable @positive
+  @61741 @validateTotalRecordsAtRelatedContactsTable @positive @wip @notrequired
   Scenario: Validate total records inside table is equal to total number of records present inside Related contacts table
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
@@ -448,21 +460,27 @@ Feature:Internal organization related scenarios
     Then I softly see the following messages in the page details contains:
       | Last Name : You must enter a value |
     And I refresh the page
+    And I click on top right button "New" in flex table with id "{grantee_tableId:RelatedContacts}"
     When I enter value "automationtest" into field "fieldEmail"
     When I click on "Save" in the page details
     Then I softly see the following messages in the page details contains:
       | Last Name : You must enter a value |
       | Email : Invalid Email Address.     |
     And I refresh the page
+    And I click on top right button "New" in flex table with id "{grantee_tableId:RelatedContacts}"
     When I enter "ContactCreationDuplicateEmail" values from "Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I softly see the following messages in the page details contains:
       | Contacts must have unique email addresses. The email address entered is associated with an existing contact. |
+    And I refresh the page
+    And I click on top right button "New" in flex table with id "{grantee_tableId:RelatedContacts}"
     When I enter "ContactCreationWithInvalidPhone" values from "Field_Values.xlsx"
     When I click modal button "Save"
     Then I softly see the following messages in the page details contains:
       | Please enter Valid Phone Number |
+      | Please Enter 5 Digit ZipCode    |
     And I refresh the page
+    And I click on top right button "New" in flex table with id "{grantee_tableId:RelatedContacts}"
     When I enter "ContactCreationInvalidAddress" values from "Field_Values.xlsx"
     When I click on "Save" in the page details
     And I pause execution for "5" seconds
@@ -471,7 +489,7 @@ Feature:Internal organization related scenarios
 
   @61746 @validateAddingOfContactWithDifferentUsers @positive
   Scenario Outline: Validate addition of contact with different users at internal organizations
-    When I login as "<userType>" user
+    Given I login to "As a Grantee" app as "<userType>" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
@@ -479,12 +497,13 @@ Feature:Internal organization related scenarios
     And I click on top right button "New" in flex table with id "{grantee_tableId:RelatedContacts}"
     When I enter "InternalContactCorrectData" values from "Field_Values.xlsx"
     When I click modal button "Save"
+    And I close modal by clicking the top right x button
     When I navigate to "{grantee_sidebar:InternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "{grantee_tableId:InternalOrganizations}" panel
     When I click on "View" icon for "Test Automation Organization" inside table
     When I perform quick search for "AutomationUser" in "{grantee_tableId:RelatedContacts}" panel
     Then I see value "AutomationUser" for title "Title" inside table "{grantee_tableId:RelatedContacts}"
-    When I click on "Remove" icon for "AutomationUser" inside flex table with id "{grantee_tableId:RelatedContacts}"
+    When I click on "Delete" icon for "AutomationUser" inside flex table with id "{grantee_tableId:RelatedContacts}"
     Then I softly see the following messages in the page details contains:
       | Record deleted successfully. |
 
@@ -516,7 +535,7 @@ Feature:Internal organization related scenarios
     And I pause execution for "2" seconds
     And I click modal button "Save"
     Then I softly see the following messages in the page details contains:
-      | Indirect Rates can not overlap. Please check the "Date From" and "Date To" dates of the Indirect Rates |
+      | Two different indirect rate’s dates cannot have overlapping dates. |
 
   @61885 @validateRelatedColumnsOfIndirectRateAtInternalOrganizations @positive
   Scenario Outline: Validate Indirect Rate columns are displayed properly for internal organizations detail page
@@ -658,12 +677,12 @@ Feature:Internal organization related scenarios
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I click on advance filter "#advfNGOOrganizationHierarchy2" of table id "{grantee_tableId:NonFederalOrganizations}"
     When I enter advance filter values inside id "advfNGOOrganizationHierarchy2"
-      | Organization Name | contains | Automation Non Federal Organization |
-    Then I softly see value "Automation Non Federal Organization" for title "Organization Name" inside table "{grantee_tableId:NonFederalOrganizations}"
+      | Organization Name | contains | {SavedValue:Automation Runtime NF Organization} |
+    Then I softly see value "{SavedValue:Automation Runtime NF Organization}" for title "Organization Name" inside table "{grantee_tableId:NonFederalOrganizations}"
     And I refresh the page
     When I click on advance filter "#advfNGOOrganizationHierarchy2" of table id "{grantee_tableId:NonFederalOrganizations}"
     When I enter advance filter values inside id "advfNGOOrganizationHierarchy2"
-      | Organization Name | contains | Invalid Automation Non Federal Organization |
+      | Organization Name | contains | Invalid {SavedValue:Automation Runtime NF Organization} |
     Then I softly see "No Records Found" inside flex table with id "{grantee_tableId:NonFederalOrganizations}"
 
   @62555 @validatePaginationFunctionalityIsWorkingOrNotAtNonFederalOrganizationTable @wip
@@ -743,7 +762,7 @@ Feature:Internal organization related scenarios
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     When I click on parallel lines menu bar with data target value "#NGOOrganizationHierarchy2FlexToggle"
-    And I select "Refresh" from parallel lines dropdown of "Non-Federal Organization"
+    And I select "Refresh" from parallel lines dropdown of "Non-Federal Organizations"
     Then I see table is refreshing
 
   @61871 @validateCreationOfNonFederalOrganization @smoke
@@ -756,12 +775,12 @@ Feature:Internal organization related scenarios
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     Then I see the header is "Non-Federal Organization" in the page details
-    Then I see the sub-header is "Automation Non Federal Organization" in the page details
+    Then I see the sub-header is "{SavedValue:Automation Runtime NF Organization}" in the page details
     When I navigate to "{grantee_sidebar:ExternalOrganization}" content inside "{grantee_sidebar:OrganizationSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime NF Organization}" in "{grantee_tableId:NonFederalOrganizations}" panel
     When I click on "Edit" icon for "{SavedValue:Automation Runtime NF Organization}" inside flex table with id "{grantee_tableId:NonFederalOrganizations}"
     When I enter value "virginia" into field "fieldBillingCity"
-    When I click on "Save and Continue" in the page details
+    When I click on "Save" in the page details
     Then I softly see field "City" as "virginia"
 
     Examples:

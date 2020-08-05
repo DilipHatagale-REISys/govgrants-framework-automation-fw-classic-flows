@@ -854,6 +854,7 @@ Feature: Contacts related scenarios
     Given I login to "As a Grantee" app as "<userType>" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
+    And I click toggle button to select "All Contacts"
     And I click on top right button "New" in flex table with id "{grantee_tableId:InternalContacts}"
     When I enter "InternalContactCorrectData" values from "Field_Values.xlsx"
     When I enter value "Test Automation Organization" into field "fieldAccountId"
@@ -873,16 +874,17 @@ Feature: Contacts related scenarios
     Examples:
       | userType      |
       | GRANTEE ADMIN |
-      | GRANTEE PM    |
-      | GRANTEE PO    |
-      | GRANTEE FO    |
-      | GRANTEE EXE   |
+#      | GRANTEE PM    |
+#      | GRANTEE PO    |
+#      | GRANTEE FO    |
+#      | GRANTEE EXE   |
 
   @62033 @validateModifiedByAndModifiedDateGettingUpdatedAfterEditingInternalContacts  @positive
   Scenario Outline: Validate modified by and modified date getting updated after editing fields or creating new contacts at Internal federal contact table
     Given I login to "As a Grantee" app as "<userType>" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
+    And I click toggle button to select "All Contacts"
     And I click on top right button "New" in flex table with id "{grantee_tableId:InternalContacts}"
     When I enter "InternalContactCorrectData" values from "Field_Values.xlsx"
     When I enter value "Test Automation Organization" into field "fieldAccountId"
@@ -912,6 +914,7 @@ Feature: Contacts related scenarios
     Given I login to "As a Grantee" app as "GRANTEE ADMIN" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
+    And I click toggle button to select "All Contacts"
     And I click on top right button "New" in flex table with id "{grantee_tableId:InternalContacts}"
     When I enter "InternalContactCorrectData" values from "Field_Values.xlsx"
     When I enter value "Test Automation Organization" into field "fieldAccountId"
@@ -932,6 +935,7 @@ Feature: Contacts related scenarios
     Given I login to "As a Grantee" app as "<userType>" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
+    And I click toggle button to select "All Contacts"
     And I click on top right button "New" in flex table with id "{grantee_tableId:InternalContacts}"
     When I enter "InternalContactCorrectData" values from "Field_Values.xlsx"
     When I enter value "Test Automation Organization" into field "fieldAccountId"
@@ -961,6 +965,7 @@ Feature: Contacts related scenarios
     Given I login to "As a Grantee" app as "<userType>" user
     When I navigate to "Home" tab
     When I navigate to "{grantee_sidebar:InternalContact}" content inside "{grantee_sidebar:ContactSubheaderName}" subheader on left panel
+    And I click toggle button to select "All Contacts"
     And I click on top right button "New" in flex table with id "{grantee_tableId:InternalContacts}"
     When I enter "InternalContactCorrectData" values from "Field_Values.xlsx"
     When I enter value "Test Automation Organization" into field "fieldAccountId"

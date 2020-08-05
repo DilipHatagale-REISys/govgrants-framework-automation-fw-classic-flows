@@ -23,3 +23,46 @@ Automation Permanent Strategic Goal2 -> Automation Permanent Objective2
 # Type of Users
 
 # Modules enabled for parallel run
+
+Static Records for Modules
+==================================
+
+Organization
+=============
+1.Automation Non Federal Organization
+  (Created under non federal organization)
+
+2.Automation Test Record 
+  (Created under Related contacts inside internal organization)
+
+3.Automation Indirect Rate
+  (Created under Indirect Rate inside internal organization)
+
+Contacts
+============
+1.Automation Exernal Contact Test Record
+  (Created under External Federal Contact)
+
+2.Automation Dummy External Contact
+
+3. Automation My Organization Contact (For My organization list view)
+
+KPI
+============
+1.Automation Demo KPI
+  (Created under KPI)
+
+Programs
+============
+1.Automation Internal Program
+  (Created under Internal Programs)
+
+Strategic Plan
+=================
+1.Automation Demo Strategic plan
+  (Created under strategic plan)
+
+Lead
+===============
+1.Automation Demo Lead
+  (Created under Not yet qualified Lead)

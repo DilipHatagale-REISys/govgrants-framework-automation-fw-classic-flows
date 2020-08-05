@@ -77,14 +77,14 @@ public class GrantorWebServices extends ProjectWebServices {
         return response;
     }
 
-    public static void deleteAttachmentsForRecord(String recordName, String objectAPIName){
+    public static void deleteAttachmentsForRecord(String recordName, String objectAPIName) {
         String recordId = getIdOf(objectAPIName, recordName);
         JsonObject parent = new JsonObject();
         JsonArray array = new JsonArray();
         array.add(recordId);
-        parent.add("recordid",array);
+        parent.add("recordid", array);
         String finalEndPoint = endPoint + "/services/apexrest/deleteFiles";
-        Response response = I.amPerforming().restHttp().postCall(parent,null, finalEndPoint, "Authorization", "Bearer " + tokenString, null);
+        Response response = I.amPerforming().restHttp().postCall(parent, null, finalEndPoint, "Authorization", "Bearer " + tokenString, null);
         assertStatusCode(response);
     }
 
@@ -133,12 +133,15 @@ public class GrantorWebServices extends ProjectWebServices {
             }
             if (StringUtils.containsIgnoreCase(record, "application")) {
                 try {
-                    deleteAttachmentsForRecord(I.amPerforming().propertiesFileOperationsTo().getValue(record),"PreApplication__c");
+                    deleteAttachmentsForRecord(I.amPerforming().propertiesFileOperationsTo().getValue(record), "PreApplication__c");
                 } catch (AssertionError error) {
                 }
                 deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record), "APPLICATION REVIEWS");
                 deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record), "PreApplication");
                 deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record), "Application");
+            }
+            if (StringUtils.containsIgnoreCase(record, "Organization")) {
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record), "USER REGISTRATION");
             }
         }
 
@@ -162,6 +165,7 @@ public class GrantorWebServices extends ProjectWebServices {
             deleteFDM(recordNameList);
         }
     }
+
     public void initateApplicationReviewOnAnnouncement(String applicationTitle, String announcementTitle, String filter) {
         initiateApplicationReview(projectApis.applicationReview(applicationTitle, announcementTitle, filter));
     }
@@ -171,10 +175,10 @@ public class GrantorWebServices extends ProjectWebServices {
      * @param applicationName name of application
      */
     public void approveDFM(String applicationName) {
-        approveDFMPostCall(projectApis.defaultRequestPayroleForApprovedDFM(),applicationName);
+        approveDFMPostCall(projectApis.defaultRequestPayroleForApprovedDFM(), applicationName);
     }
 
-    public void reviewedApplication(String applicationName){
+    public void reviewedApplication(String applicationName) {
         reviewApplicationPostCall(projectApis.defaultPayloadReviewApplication(), applicationName);
     }
 
@@ -188,7 +192,7 @@ public class GrantorWebServices extends ProjectWebServices {
 
     /**
      * @param applicationName name of application from which we have to create activate FDM
-     * @see  GrantorPayloads#defaultPayloadActivateAwardFromFDM()
+     * @see GrantorPayloads#defaultPayloadActivateAwardFromFDM()
      */
     public void activateFMD(String applicationName) {
         activateAwardFromFDMPostCall(projectApis.defaultPayloadActivateAwardFromFDM(), applicationName);
@@ -197,22 +201,22 @@ public class GrantorWebServices extends ProjectWebServices {
     /**
      * @param annType type of announcement such as Formula, Competitive, Directed
      * @param annName name of announcement
-     * @param filter if we want to change anything from default payload then we can create
-     *               our own filter in publishAnnPayload(String, String) method
-     * @see  GrantorPayloads#publishAnnPayload(String, String, String)
+     * @param filter  if we want to change anything from default payload then we can create
+     *                our own filter in publishAnnPayload(String, String) method
+     * @see GrantorPayloads#publishAnnPayload(String, String, String)
      */
     public void publishAnnouncment(String annType, String annName, String filter) {
-        publishAnnouncementPostCall(projectApis.publishAnnPayload(annType,annName,filter));
+        publishAnnouncementPostCall(projectApis.publishAnnPayload(annType, annName, filter));
     }
 
     /**
      * @param grantName name of award
-     * @param filter if we want to change anything from default payload then we can create
-     *               our own filter in payloadForCreateStandaloneAward(String, String) method
+     * @param filter    if we want to change anything from default payload then we can create
+     *                  our own filter in payloadForCreateStandaloneAward(String, String) method
      * @see GrantorPayloads#payloadForCreateStandaloneAward(String, String)
      */
     public void activateSubaward(String grantName, String filter) {
-        activateSubawardGetCall(projectApis.payloadForCreateStandaloneAward(grantName, filter),grantName);
+        activateSubawardGetCall(projectApis.payloadForCreateStandaloneAward(grantName, filter), grantName);
     }
 
     private void activateSubawardGetCall(JsonObject jsonObject, String awardName) {
@@ -352,5 +356,9 @@ public class GrantorWebServices extends ProjectWebServices {
 
     private void deleteSiteVisit(String recordName) {
         deletionApi(recordName, "Site Visit");
+    }
+
+    private void deleteOrganization(String recordName) {
+        deletionApi(recordName, "USER REGISTRATION");
     }
 }

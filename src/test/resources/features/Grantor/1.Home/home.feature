@@ -96,6 +96,7 @@ Feature: Validate all scenarios in the home tab
     When I click modal button "Save"
     And I save the contact name as "Automation Runtime Contact"
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
     Examples:
       | User  |
@@ -230,9 +231,11 @@ Feature: Validate all scenarios in the home tab
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
     When I click modal button "Save"
     And I save the contact name as "Automation Runtime Contact"
+    And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:internalContactTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---" without waiting for record
     Then I softly see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
-    When I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---" without waiting for record
+    And I click modal button "Edit"
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"
     Then I softly see value "New" for title "Status" inside table "---home:-:internalContactTableId---"
@@ -241,7 +244,7 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
 
   @56735 @smereviewersContactEdition
-  Scenario Outline: Verifying all Internal Users has Edit access to SME ---home:-:reviewersTableId--- Contact
+  Scenario Outline: Verifying all Internal Users has Edit access to SME Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
@@ -249,7 +252,8 @@ Feature: Validate all scenarios in the home tab
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
     And I save the contact name as "Automation Runtime Contact"
-    And I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
+    And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
+    When I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
     When I enter "Edition" values from "PotentialContact_Field_values.xlsx"
     And I click modal button "Save"
     Then I see value "New" for title "Status" inside table "---home:-:reviewersTableId---"
@@ -325,7 +329,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     When I enter the following values into flex table with id "---home:-:dunsTableId---" by clicking "New" :
-      | DUNS Number | Entity Name as Registered    | Location |
+      | DUNS Number | Entity Name as Registered       | Location |
       | 138047990   | Automation Runtime Contact Name | HernNdon |
     Then I softly see values "138047990" and "HernNdon" inside table
     When I click on "Edit" icon for "138047990" inside flex table with id "---home:-:dunsTableId---" without waiting for record
@@ -452,7 +456,7 @@ Feature: Validate all scenarios in the home tab
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
     And I click on "Submit For Approval" in the page details
@@ -524,7 +528,7 @@ Feature: Validate all scenarios in the home tab
     Given I click on "Back" in the page details
     And I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Contact |
+      | Name                      | Project Role             | Is Key Contact |
       | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Given I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
@@ -556,7 +560,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @58245 @reassign @smoke
+  @58245 @verifyReassignFunctionality @reassign @smoke
   Scenario: The Reassign on the left Navigation allows the reassignment of tasks.
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -577,7 +581,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
-    When I click "Add" after selection of "<Focus Area>" in the table "---program:-:associateFocusAreaTableId---"
+    When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
     When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
@@ -586,7 +590,7 @@ Feature: Validate all scenarios in the home tab
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
     And I click on "Submit For Approval" in the page details
@@ -681,7 +685,7 @@ Feature: Validate all scenarios in the home tab
     When I click on "Save" in the page details
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     And I get the "EGMS ID"
@@ -734,6 +738,7 @@ Feature: Validate all scenarios in the home tab
     And I select "Programs" from dropdown for Global search
     And I perform quick search inside global search "{SavedValue:ProgramID}"
     And I click toggle button to select "Internal Programs"
+    And I perform quick search for "{SavedValue:ProgramID}" in "Program__c" panel
     Then I see value "{SavedValue:ProgramID}" for title "EGMS ID" inside table "Program__c"
 
   @62912 @VerifyrecentlyViewedRecordAndDetailsOnMiniPageLayoutAndHoverLink @keerti @wip
@@ -757,6 +762,7 @@ Feature: Validate all scenarios in the home tab
     When I click modal button "Save"
     And I save the contact name as "Automation Runtime Contact"
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
     And I click "Send" button in modal
     When I close "Send Invitation" modal by clicking the top right x button
@@ -789,4 +795,4 @@ Feature: Validate all scenarios in the home tab
     And I enter value "Test Automation Description" in email body
     And I click "Send" button in modal
     Then I see the following messages in the page details :
-      | Email Sent Successfully|
+      | Email Sent Successfully |
