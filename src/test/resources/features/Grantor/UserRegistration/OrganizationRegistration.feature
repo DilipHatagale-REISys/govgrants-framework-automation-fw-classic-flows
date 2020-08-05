@@ -289,3 +289,67 @@ Feature: Validate all registration related scenarios
     Then I see the following messages in the page details contains:
       | Confirmation Message                                                                                                                                                                |
       | Your registration request for access to the EGMS has been completed.  You will be sent an email from salesforce.com (technology platform provider) with your Username and Password. |
+
+  @84611 @83374 @83527 @84612 @83373 @validateSAUserforUserRegistration-Organization @meenakshi
+  Scenario:To verify SA allow to modify newly created contact in contact table  for Additional user registration process
+    Given I begin "Organization" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
+    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
+    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    And I save the contact name as "Automation Runtime Organization"
+    And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "AutomationInternal@yopmail.com" into field "fieldPrimaryRepEmail__c"
+    When I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Pending Subrecipient Registrations" content inside "Organization" subheader on left panel
+    When I perform quick search for "AUTOMATION RUNTIME Organization" in "{grantor_tableId:SubrecipientOrganization}" panel
+    When I click on "Start" icon for "AUTOMATION RUNTIME Organization" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
+    And I "Approve" in the approval decision
+    And I checkout to yopmail with mailid "AutomationInternal@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I navigate to yopmail portal for "AutomationInternal@yopmail.com"
+    Then I set password for the user
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Overview" sub tab
+    And I click on top right button "New" in flex table with id "---home:-:userContactsTableId---"
+    And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I close "New Contact" modal by clicking the top right x button
+    And I click on "Edit" icon for "Primary" inside flex table with id "---home:-:userContactsTableId---" without waiting for record
+    And I enter value "(704) 777-7869" into field "fieldPhone"
+    #83374
+    And I enter value "automation.manager@yopmail.com" into field "fieldEmail"
+    When I click on "Save" in the page details
+    When I close "Edit" modal by clicking the top right x button
+    Then I softly see value "(704) 777-7869" for title "Phone" inside table "---home:-:userContactsTableId---"
+    Then I softly see value "automation.manager@yopmail.com" for title "Email" inside table "---home:-:userContactsTableId---"
+    #83527
+    And I click on "View" icon for "Primary" inside flex table with id "---home:-:userContactsTableId---" without waiting for record
+    And I save the field labeled "Address Line 1" as "AddressLine1"
+    And I save the field labeled "City" as "CityName"
+    And I save the field labeled "Zip Code" as "ZipCode"
+    And I save the field labeled "Country" as "CountryName"
+    Then I softly see field "Address Line 1" as "{SavedValue:AddressLine1}"
+    Then I softly see field "City" as "{SavedValue:CityName}"
+    Then I softly see field "Zip Code" as "{SavedValue:ZipCode}"
+    Then I softly see field "Country" as "{SavedValue:CountryName}"
+    When I close "View" modal by clicking the top right x button
+    #84612
+    Then I softly can see row level action button "Edit" against "New" in flex table with id "---home:-:userContactsTableId---"
+    Then I softly can see row level action button "View" against "New" in flex table with id "---home:-:userContactsTableId---"
+    #83373
+    Then I softly see value "Automation User" for title "Full Name" inside table "---home:-:userContactsTableId---"
+    Then I softly see value "Primary" for title "Role" inside table "---home:-:userContactsTableId---"
+    Then I softly see value "automation.manager@yopmail.com" for title "Email" inside table "---home:-:userContactsTableId---"
+    Then I softly see value "(704) 777-7869" for title "Phone" inside table "---home:-:userContactsTableId---"

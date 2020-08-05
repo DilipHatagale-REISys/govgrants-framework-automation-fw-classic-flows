@@ -561,4 +561,9 @@ public class GenericSteps {
     public void iSeeInsideRowOfIndexAndColumnIndex(String usage, String colName, String rowNo, String tData, String text) {
         grantorProjectManager.assertTextInHistoryTable(usage, colName, rowNo, tData, text);
     }
+
+    @And("^I (see|softly see|do not see|softly do not see) field \"([^\"]*)\" as \"([^\"]*)\" in \"([^\"]*)\" pageblock$")
+    public void iSeeFieldStatusInPageBlock(String usage, String fieldName, String fieldValue, String pageblockName) {
+        grantorProjectManager.seeFieldStatusInPageBlock(usage,fieldName,fieldValue,pageblockName);
+    }
 }

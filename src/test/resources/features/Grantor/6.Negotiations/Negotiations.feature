@@ -535,6 +535,9 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     When I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "ApplicationSectionsForRevision__c"
+    When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -589,6 +592,9 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     When I click on "Initiate Negotiation" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     When I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "ApplicationSectionsForRevision__c"
+    When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
@@ -755,7 +761,8 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Created Date" is getting updated with todays date
-    Then I softly see field "Status" as "Complete"
+    #Then I softly see field "Status" as "Complete"
+    Then I softly see field "Status" as "Complete" in "Negotiation Request Details" pageblock
 
   @65074 @fieldupdateBySPI @deepika
   Scenario: Validate whether SPI user can edit the field of Negotiation Request from Application tab
@@ -783,7 +790,8 @@ Feature: Validate all scenarios in Negotiations
       | Value                              | Field                |
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
-    Then I see field "Details" as "Automation Negotiation Iniatiation"
+    Then I softly see field "Details" as "Automation Negotiation Iniatiation" in "Applicant Response" pageblock
+    #Then I see field "Details" as "Automation Negotiation Iniatiation"
 
   @65290  @validateApplicationSectionsforRevisionField  @mahadev
   Scenario: To verify the details selected in Application Sections for Revision in negotiation tab in negotiation module and on clicking the forward arrow it should shift to the chosen side by the Award owne
@@ -812,8 +820,10 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Initiate Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
     And I enter value "7" into field "NegotiationDueDate__c"
+    And I enter value "Overview: Project Information" into field "ApplicationSectionsForRevision__c"
+    And I enter value "Negoatiation Initiated" into field "ExplanationOfRevisionsNeeded__c"
     And I click on "Save" in the page details
-    Then I see field "Due Date" as "{Date:M/d/yyyy::d+7}"
+    Then I see field "Due Date" as "{Date:MM/dd/yyyy::d+7}"
 
   @66068 @negotiationInitiatedWithBlankDueDate @deepika
   Scenario: Validate whether record owner can save the negotiation request without Due date on Overview Tab
