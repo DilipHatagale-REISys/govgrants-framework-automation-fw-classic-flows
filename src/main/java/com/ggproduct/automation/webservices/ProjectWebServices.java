@@ -2,6 +2,7 @@ package com.ggproduct.automation.webservices;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.testingblaze.controller.TestSetupController;
 import com.testingblaze.register.EnvironmentFactory;
 import com.testingblaze.register.I;
 import io.restassured.response.Response;
@@ -136,6 +137,15 @@ public class ProjectWebServices {
     public static void recaptchaChange(boolean shouldBeDisabled) {
         String finalEndPoint = endPoint + "/services/apexrest/recaptcha?shouldBeDisabled=" + shouldBeDisabled;
         Response response = I.amPerforming().restHttp().postCall(null, null, finalEndPoint, "Authorization", "Bearer " + tokenString, null);
+        assertStatusCode(response);
+    }
+
+    public static void changeUserActivationStatus(String usersToUpdate, boolean shouldBeActivated) {
+        String finalEndPoint = endPoint + "/services/apexrest/Active/" + TestSetupController.usersController.getUserName(usersToUpdate);
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("isActive", shouldBeActivated);
+        TestSetupController.usersController.getUserName(usersToUpdate);
+        Response response = I.amPerforming().restHttp().patchCall(jsonObject, null, finalEndPoint, "Authorization", "Bearer " + tokenString, null);
         assertStatusCode(response);
     }
 

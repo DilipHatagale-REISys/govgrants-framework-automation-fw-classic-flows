@@ -289,7 +289,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Pre-Screen Review - Pre-Screen: The total section weight must equal 100% or 0%, it is currently 90%. |
+      | Review Forms weight should be equal to 0% or 100% |
     And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -298,7 +298,8 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Eligibility section because it is weighted. |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted. |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Eligibility section because it is weighted.  |
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
@@ -310,7 +311,11 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - SME Review - Compliance Review: A weighted form must contain weighted sections. |
+      | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Schedule section because it is weighted.     |
+      | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Environment section because it is weighted.  |
+      | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Permits section because it is weighted.      |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted. |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Eligibility section because it is weighted.  |
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
@@ -333,7 +338,6 @@ Feature: Validate all scenarios for program
       | Environment    | 30                 |
       | Permits        | 40                 |
     And I close "Review Form" modal by clicking the top right x button
-    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Schedule section because it is weighted.    |
       | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Environment section because it is weighted. |
@@ -635,9 +639,11 @@ Feature: Validate all scenarios for program
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
       | Reviewer |
       | David FO |
+    When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
+      | Reviewer |
       | Sarah PM |
     Then I softly see the following messages in the page details :
-      | Saved Successfully! |
+      | Saved Successfully. |
     And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     Then I softly see value "Strategic Alignment" for title "Section Header" inside table "---program:-:programReviewPanel---"
     Then I softly see value "Return on Investment (ROI)" for title "Section Header" inside table "---program:-:programReviewPanel---"
@@ -648,7 +654,7 @@ Feature: Validate all scenarios for program
       | Saved successfully. |
     And I perform quick search for "Return on Investment (ROI)" in "---program:-:programReviewPanel---" panel
     Then I softly see value "Return on Investment (ROI)" for title "Section Header" inside table "---program:-:programReviewPanel---"
-    And I click on advance filter "#advfProgramRelatedReviewPanelCategories" of table id "---announcement:-:businessFormlistTableId---"
+    And I click on advance filter "#advfProgramRelatedReviewPanelCategories" of table id "---announcement:-:ReviewPanelCategoriesTableId---"
     And I enter advance filter values inside id "advfProgramRelatedReviewPanelCategories"
       | Section Header | contains | Return on Investment (ROI) |
     Then I softly see value "Return on Investment (ROI)" for title "Section Header" inside table "---program:-:programReviewPanel---"
@@ -1074,7 +1080,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      |Setup Tab - SME Review - Compliance Review: A weighted form must contain weighted sections.|
+      | Setup Tab - SME Review - Compliance Review: A weighted form must contain weighted sections. |
 
   @76480 @76481 @76482 @ManagementReviewPanelCategoryReviewFormWeight @keerti
   Scenario: To validate system generated error message , When Total section Weight is more than 100% for all Review Panel Categories in management review form for management review step in planning phase

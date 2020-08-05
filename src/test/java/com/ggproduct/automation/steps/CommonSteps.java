@@ -4,7 +4,6 @@ import com.ggproduct.automation.projectmanager.ProjectManager;
 import com.ggproduct.automation.webservices.ProjectWebServices;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 
 public class CommonSteps {

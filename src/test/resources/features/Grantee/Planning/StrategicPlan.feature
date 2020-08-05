@@ -11,8 +11,8 @@ Feature: Strategic Plan related scenarios
     Then I softly see value "<value>" for title "<ColumnName>" inside table "{grantee_tableId:StrategicPlans}"
     Examples:
       | ColumnName            | value                               |
-      | EGMS ID               | SPN-0030                            |
-      | Internal Organization | Department of Health                |
+      | EGMS ID               | SPN-0002                            |
+      | Internal Organization | Test Automation Organization        |
       | Title                 | Automation Permanent Strategic Plan |
 
   @61948 @validateStrategicPlan @validateStrategicPlanAdvanceSearch @positive
@@ -190,7 +190,7 @@ Feature: Strategic Plan related scenarios
     Then I see the sub-header is "{SavedValue:Automation Runtime Strategic}" in the page details
     Then I softly see field "EGMS ID" as "{SavedValue:EID}"
     Then I softly see field "Status" as "Draft"
-    Then I softly see field "Internal Organization" as "Department of Health"
+    Then I softly see field "Internal Organization" as "Test Automation Organization"
 
   @62001 @validateStrategicPlan @validateInternalOrganizationShouldBeAHyperlink @positive
   Scenario: Verify Internal organization should be a hyperlink
@@ -204,54 +204,9 @@ Feature: Strategic Plan related scenarios
     When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Strategic}" in "{grantee_tableId:StrategicPlans}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Strategic}" inside table
-    When I click "Department of Health" lookup link
+    When I click "Test Automation Organization" lookup link
     Then I see the header is "Internal Organization" in the page details
-    Then I see the sub-header is "Department of Health" in the page details
-
-  @62001 @validateStrategicPlan @validateAttachmentsAddDocument @smoke @positive
-  Scenario: Verify Attachments add document
-    Given I login to "As a Grantee" app as "GRANTEE PM" user
-    And I navigate to "Planning" tab
-    When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
-    And I enter value "Automation Runtime Strategic" into field "fieldStrategyTitle__c"
-    And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
-    And I navigate to "Attachments" sub tab
-    And I upload attachment "AttachmentTesting.pdf" of type "Strategic Plan"
-    And I refresh the page
-    Then I see table with header "Attachments" contains records "AttachmentTesting.pdf"
-
-  @62001 @validateStrategicPlan @validateUserCanDeleteAttachedDocument @smoke @positive
-  Scenario: Verify User can delete Attached document
-    Given I login to "As a Grantee" app as "GRANTEE PM" user
-    And I navigate to "Planning" tab
-    When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
-    And I enter value "Automation Runtime Strategic" into field "fieldStrategyTitle__c"
-    And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
-    And I navigate to "Attachments" sub tab
-    And I upload attachment "AttachmentTesting.pdf" of type "Strategic Plan"
-    And I pause execution for "2" seconds
-    And I click on "Delete" icon for "GRANTEE PM Username" inside table
-    Then I see confirmation box with body "Record deleted successfully." is displayed
-
-  @62001 @validateStrategicPlan @validateUserCanEditAttachedDocument @positive
-  Scenario: Verify User can edit Attached document
-    Given I login to "As a Grantee" app as "GRANTEE PM" user
-    And I navigate to "Planning" tab
-    When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
-    And I enter value "Automation Runtime Strategic" into field "fieldStrategyTitle__c"
-    And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
-    And I navigate to "Attachments" sub tab
-    And I upload attachment "AttachmentTesting.pdf" of type "Strategic Plan"
-    And I refresh the page
-    And I click on "Edit" icon for "Automation PM Grantee" inside table
-    And I close modal by clicking the top right x button
-    Then I softly see table with header "Attachments" contains records "AttachmentTesting.pdf"
+    Then I see the sub-header is "Test Automation Organization" in the page details
 
   @62190 @validateStrategicPlan @CanNotCreateNewStrategicPlanUsingInvalidUser
   Scenario Outline: Verify User <user> can not create new Strategic Plan OR Verify URL Tampering is blocked
@@ -274,7 +229,7 @@ Feature: Strategic Plan related scenarios
     And I enter value "Automation Runtime Strategic" into field "fieldStrategyTitle__c"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    Then I see field "Internal Organization" as "Department of Health"
+    Then I see field "Internal Organization" as "Test Automation Organization"
 
   @62190 @validateStrategicPlan @goalsOpenNewWindow @smoke @positive
   Scenario: Verify new goal window open
@@ -559,42 +514,6 @@ Feature: Strategic Plan related scenarios
     And I enter value "Automation Goal Description Edit" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     Then I see field "Description" as "Automation Goal Description Edit"
-
-  @62324 @validateStrategicPlan @validateStrategicGoalEditAddAttachment @smoke @positive
-  Scenario: Verify user can add attachments
-    Given I login to "As a Grantee" app as "GRANTEE PM" user
-    And I navigate to "Planning" tab
-    When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
-    And I enter value "Automation Runtime Strategic" into field "fieldStrategyTitle__c"
-    And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
-    And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicGoalsandObjective}"
-    And I enter value "Automation St Goal" into field "StrategyTitle__c"
-    And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
-    And I navigate to "Attachments" sub tab
-    And I upload attachment "AttachmentTesting.pdf" of type "Strategic Plan"
-    And I refresh the page
-    Then I see table with header "Attachments" contains records "AttachmentTesting.pdf"
-
-  @62324 @validateStrategicPlan @validateStrategicGoalEditAddNote @smoke @positive
-  Scenario: Verify user can add Note
-    Given I login to "As a Grantee" app as "GRANTEE PM" user
-    And I navigate to "Planning" tab
-    When I navigate to "{grantee_sidebar:StrategicPlanLinkName}" content inside "{grantee_sidebar:SetUpSubheaderName}" subheader on left panel
-    And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicPlans}"
-    And I enter value "Automation Runtime Strategic" into field "fieldStrategyTitle__c"
-    And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
-    And I click on top right button "New" in flex table with id "{grantee_tableId:StrategicGoalsandObjective}"
-    And I enter value "Automation St Goal" into field "StrategyTitle__c"
-    And I click modal button "Save and Continue"
-    And I click on "Save" in the page details
-    And I navigate to "Attachments" sub tab
-    And I add notes records
-    And I close "Add Notes" modal by clicking the top right x button
-    Then I see table with header "Notes" contains records "Notes Record"
 
   @62324 @validateStrategicPlan @validateStrategicGoalEditModifiedBy @positive
   Scenario: Verify last modify field showing correct name
