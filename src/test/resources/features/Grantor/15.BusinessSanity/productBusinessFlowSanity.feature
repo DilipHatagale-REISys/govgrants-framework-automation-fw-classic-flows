@@ -1242,8 +1242,8 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Save" in the page details
     When I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I perform quick search for "Automation Runtime Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Add" after selection of "Automation Runtime Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
@@ -1328,6 +1328,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I click modal button "Save"
     And I pause execution for "5" seconds
     And I click on submit review
+    When I close "Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1445,6 +1446,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I click modal button "Save"
     And I pause execution for "5" seconds
     And I click on submit review
+    When I close "Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "DynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
@@ -1622,6 +1624,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1667,7 +1670,7 @@ Feature: Validate sanity testing of Complete Business Flow
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @72351 @scheduledReimbursementPaymentRequestHappyPath
+  @72351 @scheduledReimbursementPaymentRequestHappyPath @bug-94779
   Scenario Outline: Validate the Scheduled Payment Request happy path and the status changes to 'Paid' and is green
     Given I activated standalone subaward "Automation Runtime award" with properties "default"
     Given I delete the record "<Award Name>" from the object "Payment Request"
@@ -1729,9 +1732,9 @@ Feature: Validate sanity testing of Complete Business Flow
     Given I am on "SUBPORTAL" portal
     When I login as "SPI" user
     And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:progressReportFlexTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:progressReportFlexTableId---" without waiting for record
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I click on "Edit" in the page details
@@ -1868,7 +1871,9 @@ Feature: Validate sanity testing of Complete Business Flow
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    And I click on "View" icon for "<Site Visit Name>" inside table without waiting for record
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+   # And I click on "View" icon for "<Site Visit Name>" inside table without waiting for record
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
     Examples:
@@ -1986,8 +1991,8 @@ Feature: Validate sanity testing of Complete Business Flow
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Site Visit}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Site Visit}" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Intake}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Intake}" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
@@ -2038,7 +2043,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
     When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
-    When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement Application Intake}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
@@ -2239,6 +2244,9 @@ Feature: Validate sanity testing of Complete Business Flow
     And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
     When I click on "Edit" in the page details
     And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
+    When I click on "Edit" in the page details
     And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "NewBudgetPeriodEndDate__c"
     When I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
