@@ -92,8 +92,7 @@ Feature: Validate all scenarios in Funding Source
 
   @52661 @creationFSFOUser
   Scenario Outline:Verify that users (other than Admin/PM/EXE)are not able to create funding account &  funding source
-    When I am on "INTERNAL" portal
-    When I login as "<User>" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Planning" tab
     And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     Then  I cannot see top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
@@ -103,8 +102,7 @@ Feature: Validate all scenarios in Funding Source
 
   @52662 @deactivateFundingSource
   Scenario: Verify that  user can  deactivate  Funding Source
-    When I am on "INTERNAL" portal
-    When I login as "EXE" user
+    Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click toggle button to select "Internal Funding Sources - Draft"
@@ -125,8 +123,7 @@ Feature: Validate all scenarios in Funding Source
 
   @52663 @deactivateFundingSourcePMUser
   Scenario: Verify that  PM user can  deactivate  Funding Source
-    Given I am on "INTERNAL" portal
-    When I login to "As a Grantor" app as "EXE" user
+    Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
@@ -153,8 +150,7 @@ Feature: Validate all scenarios in Funding Source
 
   @52666 @reactivateFundingSource @mahadev
   Scenario Outline: Verify that  user can  reactivate the deactivated  Funding Source
-    When I am on "INTERNAL" portal
-    When I login as "EXE" user
+    When I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click toggle button to select "Internal Funding Sources - Draft"
@@ -187,4 +183,4 @@ Feature: Validate all scenarios in Funding Source
     Then I see status in Progress-bar is "Active" and is "Green"
     Examples:
       | Funding Source                                 |
-      | {SavedValue:EXE Username}cution Funding Source |
+      | {SavedValue:Automation Runtime Funding Source} |

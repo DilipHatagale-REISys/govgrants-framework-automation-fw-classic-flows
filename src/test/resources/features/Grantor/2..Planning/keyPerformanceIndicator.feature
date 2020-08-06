@@ -76,8 +76,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
 
   @kpiCreationPM
   Scenario: Negative Case - Verify that other users (Other than Admin/EXE) are not able to create KPI
-    Given I am on "INTERNAL" portal
-    Given I login as "PM" user
+    Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     Then  I cannot see top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"

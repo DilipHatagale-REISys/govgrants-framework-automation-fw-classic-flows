@@ -1993,8 +1993,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    Given I am on "INTERNAL" portal
-    When I login as "EXE" user
     And I navigate to "Announcements" tab
     And I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Draft Competitive Announcements"

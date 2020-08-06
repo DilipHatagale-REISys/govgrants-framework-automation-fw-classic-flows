@@ -113,14 +113,14 @@ Feature: Validate all scenarios in Strategic Plan
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
-    When I enter value "{SavedValue:EXE Username}cution Strategic Goal" into field "fieldStrategyTitle__c"
+    When I enter value "Execution Strategic Goal" into field "fieldStrategyTitle__c"
     When I click modal button "Save and Close"
     When I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
-    When I enter in modal value "{SavedValue:EXE Username}cution Objective" into field "StrategyTitle__c"
+    When I enter in modal value "Execution Objective" into field "StrategyTitle__c"
     When I click modal button "Save and Close"
     And I click on "Save" in the page details
-    When I navigate to "Related Logs" sub tab
+    When I navigate to "Related Log" sub tab
     And I click on top right button "Associate" in flex table with id "---strategicplan:-:ObjectivesKPITableId---"
     When I perform quick search for "Automation Permanent KPI for Regression" in "---strategicplan:-:ListOfActiveKPITableId---" panel
     When I click "Associate" after selection of "Automation Permanent KPI for Regression" in the table "---strategicplan:-:ListOfActiveKPITableId---"
@@ -129,7 +129,6 @@ Feature: Validate all scenarios in Strategic Plan
     #marking as notFunctional as we can not activate multiple strategic plan for one organization
   @34721 @strategicPlanHappyPath @notFunctional
   Scenario: strategic plan Happy Path
-    And I click on "Edit" in the page details
     When I enter "StrategicPlanEdition" values from "StrategicPlan_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I add an attachment "InternalOrganization_Field_Values.xlsx"

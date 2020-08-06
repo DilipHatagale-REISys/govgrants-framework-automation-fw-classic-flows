@@ -13,7 +13,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---focusarea:-:FocusAreaFilesTableId---"
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Other" from computer
+    When I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
@@ -158,6 +158,7 @@ Feature: Validate sanity testing of Complete Business Flow
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
+    And I pause execution for "3" seconds
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -172,13 +173,12 @@ Feature: Validate sanity testing of Complete Business Flow
     When I click modal button "Save"
     And I click on submit review
     When I close "Enter Review" modal by clicking the top right x button
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Draft Competitive Announcements"
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
-    And I wait for "90" seconds
     Given I click on "Complete Review" in the page details
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
@@ -310,7 +310,6 @@ Feature: Validate sanity testing of Complete Business Flow
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
-    And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Draft Competitive Announcements"
@@ -775,7 +774,7 @@ Feature: Validate sanity testing of Complete Business Flow
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    When I upload attachment "data.xlsx" of type "Other" from computer
+    When I upload attachment "Attachment.pdf" of type "Other" from computer
     And I get the "EGMS ID"
     And I save the field containing "EGMS ID" as "preappID"
     When I click on "Submit to Grantor" in the page details
@@ -938,6 +937,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I check "{SavedValue:EXE Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
     When I close "Assign Reviewers" modal by clicking the top right x button
+    And I refresh the page
     And I check "All" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -948,6 +948,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -964,6 +965,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I click on "Submit" in the page details
+    And I pause execution for "2" seconds
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -1222,7 +1224,6 @@ Feature: Validate sanity testing of Complete Business Flow
     Examples:
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
-
 
   @72348 @awardHappyPathStandAlone
   Scenario Outline: Validate the activation of subaward Happy path stand alone and status changes to Activated | Validate subaward Happy path stand alone
@@ -1591,7 +1592,8 @@ Feature: Validate sanity testing of Complete Business Flow
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
     When I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice"
+    And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
+    When I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1691,7 +1693,8 @@ Feature: Validate sanity testing of Complete Business Flow
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 200                      | 100        | 100            |
     When I close "Add Line Items" modal by clicking the top right x button
     When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Invoice"
+    And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
+    When I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
