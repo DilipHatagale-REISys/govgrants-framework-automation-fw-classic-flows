@@ -9,7 +9,7 @@ Feature: Validate all scenarios in Focus Area
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
     When I enter value "Automation Runtime Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
-    Then I see status in Progress-bar is "Created" and is "Green"
+    Then I see status in Progress-bar is "Draft" and is "Green"
 
   @50963 @editionOfFocusArea
   Scenario: Edition of Focus Area by User - Admin/EXE/PM
@@ -21,7 +21,7 @@ Feature: Validate all scenarios in Focus Area
     When I click modal button "Save and Continue"
     When I enter value "Automation Test Description" into field "Description__c"
     And I click on "Save" in the page details
-    Then I see status in Progress-bar is "Created" and is "green"
+    Then I see status in Progress-bar is "Draft" and is "green"
 
   @50961 @addAttachmentToFocusArea
   Scenario Outline: Addition of Attachment to Focus Area by User - Admin/EXE/PM
