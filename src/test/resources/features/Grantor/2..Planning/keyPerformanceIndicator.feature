@@ -99,7 +99,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
     Then I cannot see row level action button "Edit" against "{SavedValue:Automation Runtime KPI}" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
 
-  @52622 @userFODeelteKPI
+  @52622 @userFODeleteKPI
   Scenario: Negative Case-Verfiy that PM user cannot Delete the record
     Given I am on "INTERNAL" portal
     Given I login as "EXE" user

@@ -32,27 +32,33 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I see the following messages in the page details :
       | If you select Subrecipient Match Required setting as Yes then you need to set value for Required Match % |
 
-  @70553 @70604 @75457 @validationForNoFocusArea @smoke @aashish
+  @70553 @70604 @validationForNoFocusAreaAndNOObjective @smoke @monu
   Scenario: To Verify that If user selected focus area as NO then at announcement level then no other focus area are allowed to add while creating the Announcement
-  | To Verify that If user selected objective as NO then at announcement level then no other objective are allowed to add while creating the Announcement
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
-    When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click on top right button "New" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
-    And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
+    When I navigate to "Directed" content inside "Announcements" subheader on left panel
+    And I click on top right button "New" in flex table with id "---announcement:-:annoucementTableId---"
+    And I enter "DirectedAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
-    When I enter "Creation Second Modal4" values from "Announcement_Field_Values.xlsx"
+    When I enter "Creation Second Modal FA" values from "Announcement_Field_Values.xlsx"
+    And I enter value "No" into field "fieldIsGoalsRequired__c"
     And I click modal button "Save and Continue"
     And I navigate to "Setup" sub tab
     Then I softly do not see "Related Focus Areas" page block displayed
     Then I softly do not see "Objectives" page block displayed
+
+  @75457 @validationDetailsOdPublishedCompetitiveAnnouncement @smoke @aashish
+  Scenario: To Verify that If user selected focus area as NO then at announcement level then no other focus area are allowed to add while creating the Announcement
+    And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "Published Competitive Announcements"
-    And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---announcement:-:announcemetTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---announcement:-:announcemetTableId---" without waiting for record
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---announcement:-:competitiveTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---announcement:-:competitiveTableId---" without waiting for record
     And I navigate to "Related Log" sub tab
-    And I click on "View" icon for "Funding Decision Memo" inside flex table with id "---announcement:-:announcemetTableId---" without waiting for record
+    And I click on "View" icon for "Funding Decision Memo" inside flex table with id "---grantor_tableId:-:FDMTableId---" without waiting for record
     Then I softly can see "Funding Decision Memo" sub tab at view detail page
     Then I softly can see "Responsibilities" sub tab at view detail page
     Then I softly can see "History" sub tab at view detail page
@@ -147,7 +153,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Management Review | 20              |
-    Then I softly see value "20%" for title "Step Weight (%)" inside table "---announcement:-:preScreenReviewFormTableId---"
+    Then I softly see value "20.00%" for title "Step Weight (%)" inside table "---announcement:-:preScreenReviewFormTableId---"
     When I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Management Review | 75              |
@@ -203,12 +209,11 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I enter value "-5" into field "fieldPreApplicationDueDate__c"
     And I enter value "-5" into field "fieldApplicationDueDate__c"
     And I click on "Save" in the page details
-    And I click on "Submit For Approval" in the page details
     Then I softly see the following messages in the page details :
       | Overview Tab - Pre-Application Due Date cannot be in the past. |
       | Overview Tab - Application Due Date cannot be in the past.     |
 
-  @71445 @71580 @71593 @userCanValidateGeratedErrorMessage @aashish @bugged
+  @71445 @71580 @71593 @userCanValidateGeratedErrorMessage @aashish
   Scenario: To validate system generates error message,when user giving form weight but review steps weight is 0 in Announcement
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -229,7 +234,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Fiscal Review     | 25              |
       | Program Review    | 25              |
       | Compliance Review | 50              |
-    And I click on top right button "Save" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
@@ -432,7 +436,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I login to "As a Grantor" app as "<users>" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    Then I can see top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    Then I can see top right button "New" in flex table with id "---announcement:-:competitiveTableId---"
     Examples:
       | users |
       | FO    |
@@ -450,7 +454,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click modal button "Save and Continue"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -595,12 +599,12 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "SME Review"
     When I enter the following values into flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Add" :
-      | Reviewer |
+      | Reviewer      |
       | Automation FO |
     And I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I enter the following values into flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Add" :
-      | Reviewer |
+      | Reviewer       |
       | Automation EXE |
     When I click on "Save" in the page details
     And I get the "EGMS ID"

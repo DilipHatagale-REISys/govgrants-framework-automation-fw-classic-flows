@@ -766,7 +766,7 @@ Feature: Validate all scenarios for program
     When I close "Upload Template" modal by clicking the top right x button
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
-    And I upload attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts"
+    And I upload attachment "Attachment.pdf" of type "Program Artifacts"
     And I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
 
@@ -804,7 +804,7 @@ Feature: Validate all scenarios for program
     When I close "Upload Template" modal by clicking the top right x button
     And I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
-    And I upload attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts"
+    And I upload attachment "Attachment.pdf" of type "Program Artifacts"
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -874,7 +874,7 @@ Feature: Validate all scenarios for program
     Then I see value "Record Id" for title "EGMS ID" inside table "---focusarea:-:relatedProgramsTableId---"
     Examples:
       | Focus Area                      | Program Name                                     |
-      | Automation Permanent Focus Area | {SavedValue:EXE Username}cution Internal Program |
+      | Automation Permanent Focus Area | {SavedValue:Automation Runtime Internal Program} |
 
   @53690 @Verify_Relatedlogs_table_for_focusArea_for_Draft_Program @mahadev @smoke
   Scenario Outline: Verify related log table for focus area for draft Program
