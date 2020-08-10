@@ -148,7 +148,7 @@ Feature: Payment Request scenarios without background
     And I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -166,7 +166,7 @@ Feature: Payment Request scenarios without background
     And I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -412,7 +412,7 @@ Feature: Payment Request scenarios without background
     And I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -532,7 +532,7 @@ Feature: Payment Request scenarios without background
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -722,7 +722,7 @@ Feature: Payment Request scenarios without background
     And I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -763,7 +763,7 @@ Feature: Payment Request scenarios without background
       | SPI        |
       | SPA        |
 
-  @51068 @ReimbursementPaymentRequestAddAttachment
+  @51068 @ReimbursementPaymentRequestAddAttachment @bug-94779
   Scenario Outline: Validate the attachment for Reimbursement Payment Request
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
