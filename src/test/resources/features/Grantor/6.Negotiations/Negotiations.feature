@@ -761,8 +761,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
     And I save the field labeled "Created Date" as "CreatedDate"
-    Then I softly see field "Closeout Activities Due Date" as "{SavedValue:CloseoutActivitiesDueDate}"
-    Then I softly see field "Created Date" as "{SavedValue:CloseoutActivitiesDueDate}" in "Negotiation Request Details" pageblock
+    Then I softly see field "Created Date" as "{SavedValue:CreatedDate}" in "Negotiation Request Details" pageblock
     Then I softly see field "Status" as "Complete" in "Negotiation Request Details" pageblock
 
   @65074 @fieldupdateBySPI @deepika
