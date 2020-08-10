@@ -93,7 +93,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     And I click on "Notify" in the page details
-    Then I softly see that "{SavedValue:Automation Runtime Desk Review Org level}" is in "Notified" status
+    Then I softly see field "Status" as "Notified"
 
   @54462 @addingOutcomeDeskReviewOrgLevel @deepika
   Scenario: Adding outcomes to Desk Review OrgLevel
@@ -488,7 +488,8 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
-    Then I softly see that "{SavedValue:Automation Runtime Desk Review Org level}" has been added in flextable with Id "---deskreview:-:deskReviewGridViewTableId---"
+    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
+    Then I softly see that "Record Id" has been added in flextable with Id "---deskreview:-:deskReviewGridViewTableId---"
 
   @55459 @54887 @deskReviewOrgLevelSendToSubrecipientWithOutAddingCorerctiveItems @deepika
   Scenario:  Validate User will not be able to submit the Desk Review Org Level to Grantor without adding corrective actions to findings.
@@ -721,10 +722,14 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I perform quick search for "Record Id" in "---orgLevelDeskReview:-:homePhasePendingTasks---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:homePhasePendingTasks---"
     Then I softly cannot see "Reports and Outcomes" sub tab at view detail page
-    Then I softly see that "{SavedValue:Automation Runtime Desk Review Org level}" is in "Notified" status
-    When I pause execution for "120" seconds
-    Then I softly can see mail notification for "EXTERNAL" user with following subject:
-      | Desk Review for {SavedValue:DeskReviewId} has been scheduled |
+    Then I softly see field "Status" as "Notified"
+    And I checkout to yopmail with mailid "automation.spi@yopmail.com"
+    And I pause execution for "120" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Desk Review for {SavedValue:DeskReviewId} has been scheduled
+      """
 
   @56001 @deskReviewWithoutFormFillingOrgLevel @deepika
   Scenario: User will not be able to submit the Desk Review for approval without completed forms
@@ -1121,13 +1126,13 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
-    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I click on "Remove" icon for "{SavedValue:SPI Username}" inside flex table with id "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    Then I softly see "No Records Found" inside flex table with id "---orgLevelDeskReview:-:deskReviewContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI Username}" in the table "---orgLevelDeskReview:-:associateContactsId---"
+    And I click on "Remove" icon for "{SavedValue:SPI Username}" inside flex table with id "---orgLevelDeskReview:-:associateContactsId---"
+    Then I softly see "No Records Found" inside flex table with id "---orgLevelDeskReview:-:associateContactsId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
-    And I click on "Remove" icon for "{SavedValue:Automation Runtime Award Record}" inside flex table with id "---orgLevelDeskReview:-:selectAwardId---"
-    Then I softly see "No Records Found" inside flex table with id "---orgLevelDeskReview:-:selectAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---orgLevelDeskReview:-:associateAwardId---"
+    And I click on "Remove" icon for "{SavedValue:Automation Runtime Award Record}" inside flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+    Then I softly see "No Records Found" inside flex table with id "---orgLevelDeskReview:-:associateAwardId---"
 
   @65150 @reviewerCanNotEditAfterSubmittingtheReviewOrgLevel @deepika
   Scenario: Validate after submitting the review comments for Org Level Desk Review, the Edit button should will be unavailable for the reviewer

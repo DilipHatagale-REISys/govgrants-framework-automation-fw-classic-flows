@@ -361,7 +361,7 @@ Feature: Validate all scenarios in Closeout
     #89222
     When I enter the following values into flex table with id "---closeout:-:closeoutPeerReviewTableId---" by clicking "New" :
       | Reviewer Name | Responsibility   | Description                 | Due Date   |
-      | Automation PM | Program Reviewer | Automation Test Description | 07/24/2020 |
+      | Automation PM | Program Reviewer | Automation Test Description | 10         |
     Then I softly see that "Automation PM" has been added in flextable with Id "---closeout:-:closeoutPeerReviewTableId---"
     Then I softly see that "Program Reviewer" has been added in flextable with Id "---closeout:-:closeoutPeerReviewTableId---"
     Then I softly see that "Automation Test Description" has been added in flextable with Id "---closeout:-:closeoutPeerReviewTableId---"
@@ -446,7 +446,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Has the subrecipient completed all corrective actions for any open findings/concerns?" as "Yes"
     Then I softly see field "Has the funding organization reviewed and accepted all corrective actions?" as "Yes"
 
-  @87353 @86713 @40071 @93106 @40644 @86714 @76488 @42103 @87351 @76487 @86716 @86712 @87346 @ValidatingCloseoutRequest @meenakshi
+  @87353 @86713 @40071 @93106 @40644 @86714 @76488 @42103 @87351 @76487 @86716 @86712 @87346 @ValidatingSentToSubrecipientInCloseoutRequest @meenakshi
   Scenario: To validate status : Sent to Subrecipient in closeout request section when closeout request is Sent to Subrecipient by an internal user
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -518,7 +518,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Closeout Effective Date" as "07/20/2023"
     Then I softly see field "Closeout Activities Due Date" as "08/12/2023"
     #76488
-    Then I softly see value "FA-ST-05" for title "Funding Account" inside table "---closeout:-:closeoutFundingAccountsTableId---"
+    Then I softly see value "FA-ST-02" for title "Funding Account" inside table "---closeout:-:closeoutFundingAccountsTableId---"
     And I softly see value "$1,000.00" for title "Encumbrance" inside table "---closeout:-:closeoutFundingAccountsTableId---"
     And I softly see value "$0.00" for title "Spent" inside table "---closeout:-:closeoutFundingAccountsTableId---"
     And I softly see value "$1,000.00" for title "Encumbrance Balance" inside table "---closeout:-:closeoutFundingAccountsTableId---"
@@ -527,14 +527,14 @@ Feature: Validate all scenarios in Closeout
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Home" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:CloseoutEGMSID}" in "---closeout:-:homePendingTaskTableId---" panel
-    Then I softly see that "{SavedValue:CloseoutEGMSID}" has been added in flextable with Id "---closeout:-:homePendingTaskTableId---"
-    Then I softly see value "Automation PM" for title "Created By" inside table "---closeout:-:homePendingTaskTableId---"
-    Then I softly see value "Review Closeout Request" for title "Task Type" inside table "---closeout:-:homePendingTaskTableId---"
-    Then I softly see value "07/29/2020" for title "Due Date" inside table "---closeout:-:homePendingTaskTableId---"
-    Then I softly see value "Review Closeout Request for Grant #{SavedValue:GrantID}" for title "Subject" inside table "---closeout:-:homePendingTaskTableId---"
+    When I perform quick search for "{SavedValue:CloseoutEGMSID}" in "---closeout:-:externalHomePendingTasktableId---" panel
+    Then I softly see that "{SavedValue:CloseoutEGMSID}" has been added in flextable with Id "---closeout:-:externalHomePendingTasktableId---"
+    Then I softly see value "Automation PM" for title "Created By" inside table "---closeout:-:externalHomePendingTasktableId---"
+    Then I softly see value "Review Closeout Request" for title "Task Type" inside table "---closeout:-:externalHomePendingTasktableId---"
+    Then I softly see value "{Date:MM/dd/yyyy::d+7}" for title "Due Date" inside table "---closeout:-:externalHomePendingTasktableId---"
+    Then I softly see value "Review Closeout Request for Grant #{SavedValue:GrantID}" for title "Subject" inside table "---closeout:-:externalHomePendingTasktableId---"
     #87351
-    And I click on "Start" icon for "{SavedValue:CloseoutEGMSID}" inside flex table with id "---closeout:-:homePendingTaskTableId---"
+    And I click on "Start" icon for "{SavedValue:CloseoutEGMSID}" inside flex table with id "---closeout:-:externalHomePendingTasktableId---"
     Then I softly can see "Overview" sub tab at view detail page
     Then I softly can see "Open Items" sub tab at view detail page
     Then I softly can see "Checklist" sub tab at view detail page
@@ -836,8 +836,8 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Closeout" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
-    Then I softly see value "{SavedValue:closeoutID}" for title "EGMS ID" inside table "{grantee_tableId:PendingTask}"
-    Then I softly see value "{SavedValue:PM Username}" for title "Assigned By" inside table "{grantee_tableId:PendingTask}"
+    Then I softly see value "{SavedValue:closeoutID}" for title "EGMS ID" inside table "---closeout:-:pendingTaskTableId---"
+    Then I softly see value "{SavedValue:PM Username}" for title "Assigned By" inside table "---closeout:-:pendingTaskTableId---"
 
   @86708 @VerifyStatusOfCloseoutRequestInApprovalHistoryPageBlock  @monu
   Scenario: Validate user is able to see status of closeout request in chevron diagram and inside Approval history table after first approval only
@@ -939,8 +939,8 @@ Feature: Validate all scenarios in Closeout
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Home" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:CloseoutEGMSID}" in "---closeout:-:homePendingTaskTableId---" panel
-    And I click on "Start" icon for "{SavedValue:CloseoutEGMSID}" inside flex table with id "---closeout:-:homePendingTaskTableId---"
+    When I perform quick search for "{SavedValue:CloseoutEGMSID}" in "---closeout:-:externalHomePendingTasktableId---" panel
+    And I click on "Start" icon for "{SavedValue:CloseoutEGMSID}" inside flex table with id "---closeout:-:externalHomePendingTasktableId---"
     When I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
     And I enter value "checked" into field "fieldAggreement__c"
@@ -1019,8 +1019,8 @@ Feature: Validate all scenarios in Closeout
     When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
     When I navigate to "Home" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "{SavedValue:CloseoutEGMSID}" in "---closeout:-:homePendingTaskTableId---" panel
-    And I click on "Start" icon for "{SavedValue:CloseoutEGMSID}" inside flex table with id "---closeout:-:homePendingTaskTableId---"
+    When I perform quick search for "{SavedValue:CloseoutEGMSID}" in "---closeout:-:externalHomePendingTasktableId---" panel
+    And I click on "Start" icon for "{SavedValue:CloseoutEGMSID}" inside flex table with id "---closeout:-:externalHomePendingTasktableId---"
     When I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
     And I enter value "checked" into field "fieldAggreement__c"

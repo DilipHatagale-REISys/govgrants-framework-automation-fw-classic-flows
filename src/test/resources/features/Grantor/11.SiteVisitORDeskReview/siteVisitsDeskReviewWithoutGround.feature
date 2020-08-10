@@ -7,7 +7,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I activated standalone subaward "Automation Runtime Award for Associate Amendment Request" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award for Amendment Request}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for Amendment Request}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -34,7 +34,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I click on "Conduct" in the page details
     And I save the field labeled "EGMS ID" as "SiteVisitID"
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award for Amendment Request}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for Amendment Request}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -101,7 +101,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award for Amendment Request}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for Amendment Request}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -128,7 +128,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I click on "Conduct" in the page details
     And I save the field labeled "EGMS ID" as "DeskReviewID"
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award for Amendment Request}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for Amendment Request}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -195,7 +195,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award for Amendment Request}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for Amendment Request}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -256,7 +256,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I "Approve" in the approval decision
     And I save the field labeled "EGMS ID" as "SiteVisitID"
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award for Amendment Request}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for Amendment Request}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -320,7 +320,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "Approved" in "---sitevisits:-:grantorSiteVisitsTableID---" panel
     Then I softly see "No Records Found" inside flex table with id "---sitevisits:-:grantorSiteVisitsTableID---"
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award for Amendment Request}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for Amendment Request}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -336,7 +336,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award for Amendment Request}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for Amendment Request}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -397,7 +397,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I click on "Start" icon for "{SavedValue:DeskReviewID}" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I "Approve" in the approval decision
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award for Amendment Request}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for Amendment Request}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -460,7 +460,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "Approved" in "---deskreview:-:managementInitiateDRtableid---" panel
     Then I softly see "No Records Found" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award for Amendment Request}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for Amendment Request}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -477,7 +477,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Given I delete the record "Automation Site Visit" from the object "Site Visit"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     And I perform quick search for "{SavedValue:Automation Runtime Award for Amendment Request}" in "ActiveGrants" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for Amendment Request}" inside flex table with id "ActiveGrants"
@@ -491,7 +491,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award for Amendment Request}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for Amendment Request}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -509,7 +509,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I activated standalone subaward "Automation Runtime Award for Associate Amendment Request" with properties "CREATE_AWARD_EXE"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award for Amendment Request}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for Amendment Request}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -547,7 +547,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "CREATE_AWARD_EXE"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---deskreview:-:internalActiveGrants---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalActiveGrants---"

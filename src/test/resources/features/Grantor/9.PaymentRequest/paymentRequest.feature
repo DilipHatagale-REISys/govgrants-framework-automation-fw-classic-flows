@@ -57,7 +57,7 @@ Feature: Validate all scenarios in Payment Request
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -96,7 +96,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -138,7 +138,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -822,10 +822,10 @@ Feature: Validate all scenarios in Payment Request
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
-    And I upload attachment "InternalOrganization_Field_Values.xlsx" from workspace
-    Then I see "InternalOrganization_Field_Values.xlsx" has been added in "Attachment" flex table
+    And I upload attachment "Doubts.txt" from workspace
+    Then I see "Doubts.txt" has been added in "Attachment" flex table
 
-  @54416 @uploadAttachmentFromWorkspaceReimbursementPR @mahadev @bugged-66960
+  @54416 @uploadAttachmentFromWorkspaceReimbursementPR @mahadev @bugged-66960 @bug-94779
   Scenario: verify that user can upload document from workspace for Reimbursement Payment Request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -895,7 +895,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1349,6 +1349,13 @@ Feature: Validate all scenarios in Payment Request
       | Responsibility  | Name          | Description                 |
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Send Back to Subrecipient" in the page details
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Sent Back for Revisions
+      """
     And I pause execution for "120" seconds
     Then I can see mail notification for "EXTERNAL" user with following subject:
       | Payment Request <payment id> for <award id> has been Sent Back for Revisions |
@@ -1538,7 +1545,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1747,7 +1754,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -1765,9 +1772,13 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
-    And I pause execution for "120" seconds
-    Then I can see mail notification for "INTERNAL" user with following subject:
-      | Payment Request <payment id> for <award id> has been Forwarded |
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} for {SavedValue:SubawardId}has been Forwarded
+      """
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
@@ -1850,8 +1861,13 @@ Feature: Validate all scenarios in Payment Request
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Disapprove" in the approval decision
-    Then I can see mail notification for "INTERNAL" user with following subject:
-      | Payment Request <payment id> for <award id> has been Rejected |
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} for {SavedValue:SubawardId}has been Rejected
+      """
 
   @55404 @advancePRSentBackToOwner @jitendra
   Scenario: Verify that Payment Approval can send back Payment request to Owner (Advance)
@@ -2068,7 +2084,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
@@ -2112,7 +2128,7 @@ Feature: Validate all scenarios in Payment Request
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:grantorGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table

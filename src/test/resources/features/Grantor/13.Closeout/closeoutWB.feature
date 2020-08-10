@@ -65,7 +65,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see "Pending Amendment Requests" page block displayed
     Then I softly see "Pending Progress Reports" page block displayed
     Then I softly see "Pending Payment Requests" page block displayed
-    Then I softly see "Pending Site visits/ Desk Reviews" page block displayed
+    Then I softly see "Pending Site Visits / Desk Reviews" page block displayed
     Then I softly see that "{SavedValue:AmendmentEGMSID}" has been added in flextable with Id "---closeout:-:closeoutPendingAmendmentRequestsTableId---"
     Examples:
       | Award Name                                      | Grant Name                                      |
@@ -108,7 +108,7 @@ Feature: Validate all scenarios in Closeout
       | Award Name                                      | Grant Name                                      |
       | {SavedValue:Automation Runtime Amendment Award} | {SavedValue:Automation Runtime Amendment Award} |
 
-  @93795 @76492 @76493 @86710 @validateCompletedStatusInProjectPeriodCloseoutsForEXEUser @meenakshi
+  @93795 @76492 @76493 @86710 @validateEmailNotificationReceivedForCloseoutsForEXEUser @meenakshi
   Scenario: To verify Email notification should be received to Closeout Owner when Closeout has created for closeout phase
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user"
     When I login to "As a Grantor" app as "EXE" user
@@ -223,7 +223,7 @@ Feature: Validate all scenarios in Closeout
     And I click toggle button to select "Project Period Closeouts - Completed"
     Then I softly see value "Completed" for title "Status" inside table "---closeout:-:ProjectPeriodCloseoutTableId---"
 
-  @87358 @86711 @86707 @86709 @VerifyEmailNoificationForCloseout @meenakshi
+  @87358 @86711 @86707 @86709 @VerifyEmailNoificationRecievedBySPIUserForCloseout @meenakshi
   Scenario: To verify Email notification should be received to SPI user when closeout Request has Sent to Subrecipient in Closeout phase
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -291,7 +291,7 @@ Feature: Validate all scenarios in Closeout
       Sandbox: Notification: Closeout Request {SavedValue:closeoutID} has beenSubmitted for your Approval.
       """
 
-  @94022 @94019 @94021 @94040 @94042 @validateCompletedStatusInProjectPeriodCloseoutsForEXEUser @meenakshi
+  @94022 @94019 @94021 @94040 @94042 @validateSendCloseoutRequestForSendReviewForEXEUser @meenakshi
   Scenario: To verify Closeout owner able to send the Closeout request for Send for review in closeout phase
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user"
     When I login to "As a Grantor" app as "EXE" user
@@ -328,12 +328,12 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Status" as "Submitted for Review"
     #94019
     And I edit the following rows inline in flex table with id "---closeout:-:closeoutPeerReviewTableId---" by clicking "Edit" :
-      | Description            | Due Date |
-      | Automation Description | 7        |
+      |Reviewer Name           | Description            | Due Date |
+      |{SavedValue:PM Username}| Automation Description | 7        |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I softly see value "Automation Description" for title "Description" inside table "---closeout:-:closeoutPeerReviewTableId---"
-    And I softly see value "08/06/2020" for title "Due Date" inside table "---closeout:-:closeoutPeerReviewTableId---"
+    And I softly see value "{Date:MM/dd/yyyy::d+7}" for title "Due Date" inside table "---closeout:-:closeoutPeerReviewTableId---"
     #94021
     And I click on "Delete" icon for "Automation PM" inside flex table with id "---closeout:-:closeoutPeerReviewTableId---" without waiting for record
     Then I softly see the following messages in the page details contains:

@@ -1591,7 +1591,6 @@ Feature: Validate sanity testing of Complete Business Flow
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
     When I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1736,7 +1735,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I navigate to "Monitoring" tab
     When I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:progressReportFlexTableId---" panel
-    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:progressReportFlexTableId---" without waiting for record
+    When I click on "Edit" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:progressReportFlexTableId---" without waiting for record
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I click on "Edit" in the page details
