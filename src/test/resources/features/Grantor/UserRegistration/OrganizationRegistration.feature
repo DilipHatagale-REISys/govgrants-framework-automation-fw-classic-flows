@@ -290,7 +290,7 @@ Feature: Validate all registration related scenarios
       | Confirmation Message                                                                                                                                                                |
       | Your registration request for access to the EGMS has been completed.  You will be sent an email from salesforce.com (technology platform provider) with your Username and Password. |
 
-  @84611 @83374 @83527 @84612 @83373 @validateSAUserforUserRegistration-Organization @meenakshi
+  @84611 @83374 @83527 @84612 @83373 @84613 @validateSAUserforUserRegistration-Organization @meenakshi
   Scenario:To verify SA allow to modify newly created contact in contact table  for Additional user registration process
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -323,6 +323,9 @@ Feature: Validate all registration related scenarios
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Overview" sub tab
     And I click on top right button "New" in flex table with id "---home:-:userContactsTableId---"
+    #84613 #monu
+    Then I see only the following ordered options in dropdown field "Source__c" :
+      | --None-- | Agency Director | Fiscal Manager | Program Director | Program Fiscal Contact | Grants Manager | Legal Contact |
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I close "New Contact" modal by clicking the top right x button
@@ -415,3 +418,47 @@ Feature: Validate all registration related scenarios
       """
       Sandbox: Your EGMS Registration has Been Approved
       """
+
+  @83539 @validatingRegistrationLegalDisclaimer1of2 @monu @wip
+  Scenario:To verify after sending Invitation for created contact , user is able to see Registration Legal Disclaimer 1 of 2 page on click of click here link
+    Given I begin "Organization" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
+    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
+    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    And I save the contact name as "Automation Runtime Organization"
+    And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "AutomationInternal@yopmail.com" into field "fieldPrimaryRepEmail__c"
+    When I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Pending Subrecipient Registrations" content inside "Organization" subheader on left panel
+    When I perform quick search for "AUTOMATION RUNTIME Organization" in "{grantor_tableId:SubrecipientOrganization}" panel
+    When I click on "Start" icon for "AUTOMATION RUNTIME Organization" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
+    And I "Approve" in the approval decision
+    And I checkout to yopmail with mailid "AutomationInternal@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I navigate to yopmail portal for "AutomationInternal@yopmail.com"
+    Then I set password for the user
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Overview" sub tab
+    And I click on top right button "New" in flex table with id "---home:-:userContactsTableId---"
+    And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I close "New Contact" modal by clicking the top right x button
+    And I click on "Send Invitation" icon for "Primary" inside flex table with id "---home:-:userContactsTableId---" without waiting for record
+    And I click modal button "Send"
+    And I refresh the page
+    And I pause execution for "180" seconds
+    And I navigate to yopmail portal for "AutomationInternal@yopmail.com"
+    Then I see the header is "Registration" in the page details
+    Then I see the sub-header is "Legal Disclaimer 1 of 2" in the page details

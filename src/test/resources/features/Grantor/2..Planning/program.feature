@@ -643,7 +643,7 @@ Feature: Validate all scenarios for program
       | Reviewer |
       | Sarah PM |
     Then I softly see the following messages in the page details :
-      | Saved Successfully. |
+      | Saved Successfully! |
     And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     Then I softly see value "Strategic Alignment" for title "Section Header" inside table "---program:-:programReviewPanel---"
     Then I softly see value "Return on Investment (ROI)" for title "Section Header" inside table "---program:-:programReviewPanel---"
@@ -651,7 +651,7 @@ Feature: Validate all scenarios for program
       | Section Order | Section Header    |
       | 3             | Automation Header |
     Then I softly see the following messages in the page details :
-      | Saved successfully. |
+      | Saved successfully! |
     And I perform quick search for "Return on Investment (ROI)" in "---program:-:programReviewPanel---" panel
     Then I softly see value "Return on Investment (ROI)" for title "Section Header" inside table "---program:-:programReviewPanel---"
     And I click on advance filter "#advfProgramRelatedReviewPanelCategories" of table id "---announcement:-:ReviewPanelCategoriesTableId---"
@@ -766,7 +766,8 @@ Feature: Validate all scenarios for program
     When I close "Upload Template" modal by clicking the top right x button
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
-    And I upload attachment "Attachment.pdf" of type "Program Artifacts"
+    And I upload attachment "Attachment.pdf" of type "Program Artifacts" from computer
+    And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
 
@@ -804,7 +805,8 @@ Feature: Validate all scenarios for program
     When I close "Upload Template" modal by clicking the top right x button
     And I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
-    And I upload attachment "Attachment.pdf" of type "Program Artifacts"
+    And I upload attachment "Attachment.pdf" of type "Program Artifacts" from computer
+    And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -956,7 +958,7 @@ Feature: Validate all scenarios for program
     Then I see status in Progress-bar is "Active" and is "Green"
     Examples:
       | Focus Area                      | Program Name                                     |
-      | Automation Permanent Focus Area | {SavedValue:EXE Username}cution Internal Program |
+      | Automation Permanent Focus Area | {SavedValue:Automation Runtime Internal Program} |
 
   @76333 @76334 @76332 @SMEProgramReviewFormAndFiscalReviewForm @keerti
   Scenario Outline: To verify Filter functionality for review panel categories section in program review form in SME review step of setup tab in planning
@@ -1465,7 +1467,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "Written" for title "Type" against the value "3" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I click on "Delete" icon for "4" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---" without waiting for record
     Then I softly see the following messages in the page details contains:
-      | Record deleted successfully. |
+      | Record deleted successfully! |
     Then I softly do not see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
@@ -1475,7 +1477,7 @@ Feature: Validate all scenarios for program
       | Saved Successfully! |
     And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---" without waiting for record
     Then I softly see the following messages in the page details contains:
-      | Record deleted successfully. |
+      | Record deleted successfully! |
     Then I softly do not see value "3" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
     Examples:
       | Objective                      |
@@ -3127,7 +3129,7 @@ Feature: Validate all scenarios for program
 
   @81231 @validatingComplainceReviewQuestionsInSMEReviewForEXEUser @meenakshi
   Scenario: To verify,review question displayed by default for all review panel categories for Compliance Review review form in SME review step of planning phase
-    When I login to "As a Grantor" app as "EXE" user
+    And I re-login as "As a Grantor" user on "EXE" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Internal Programs - All"
@@ -3400,7 +3402,6 @@ Feature: Validate all scenarios for program
       | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Schedule section because it is weighted.    |
       | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Environment section because it is weighted. |
 
-
   @77408 @validatingMaxScoreZeroForEligiblityInPreScreenReviewFormQuestions @meenakshi
   Scenario Outline: To validate system generated validation message, When Max score:0, for all review questions under the Eligibility review panel categories and  Weight is present, in prescreening Review form of prescreening review steps in planning phase
     And I click on "Edit" in the page details
@@ -3507,6 +3508,7 @@ Feature: Validate all scenarios for program
       | Pre-Screen | Unchecked | 0                                         | 0               |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
+    And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---program:-:reviewFormPanelId---" by clicking "Edit" :
       | Form Name         | Required? |
       | Compliance Review | Checked   |
