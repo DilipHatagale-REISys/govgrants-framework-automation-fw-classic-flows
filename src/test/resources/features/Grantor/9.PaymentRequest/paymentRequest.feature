@@ -88,7 +88,7 @@ Feature: Validate all scenarios in Payment Request
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 100000000       | 20                       | 100        | 100            |
     Then I softly see the following messages in the page details contains:
-      | Advance applied cannot be greater than the Net Payment. : |
+      | Advance applied cannot be greater than the Net Payment.|
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 100        | 100            |
@@ -589,7 +589,7 @@ Feature: Validate all scenarios in Payment Request
       | Budget Category | Advance Requested This Action |
       | Construction    | 10000000                      |
     Then I softly see the following messages in the page details contains:
-      | Advance Requested cannot be greater than the Advance Request Balance : |
+      | Advance Requested cannot be greater than the Advance Request Balance|
     And I refresh the page
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
@@ -825,7 +825,7 @@ Feature: Validate all scenarios in Payment Request
     And I upload attachment "Doubts.txt" from workspace
     Then I see "Doubts.txt" has been added in "Attachment" flex table
 
-  @54416 @uploadAttachmentFromWorkspaceReimbursementPR @mahadev @bugged-66960 @bug-94779
+  @54416 @uploadAttachmentFromWorkspaceReimbursementPR @mahadev @bug-94779
   Scenario: verify that user can upload document from workspace for Reimbursement Payment Request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1356,9 +1356,6 @@ Feature: Validate all scenarios in Payment Request
       """
       Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Sent Back for Revisions
       """
-    And I pause execution for "120" seconds
-    Then I can see mail notification for "EXTERNAL" user with following subject:
-      | Payment Request <payment id> for <award id> has been Sent Back for Revisions |
 
   @55626 @advancePaymentRequestSubmitToGrantorBySPIEmailNotification @jitendra
   Scenario: Verify that on submit to grantor , user is able to check  email notifications Payment Request (Advance)

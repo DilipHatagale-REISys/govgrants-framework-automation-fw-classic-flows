@@ -313,7 +313,8 @@ Feature: Validate all scenarios in Desk Review
       """
       Sandbox: Notification: Desk Review Report Submitted by Subrecipient
       """
-    And I re-login as "dynamicUser" user on "INTERNAL" portal
+    Given I am on "INTERNAL" portal
+    When I login as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -375,10 +376,15 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Start" icon for "{SavedValue:dvID}" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I "Send to Owner" in the approval decision
     Then I softly see status in Progress-bar is "Created" and is "green"
-    And I pause execution for "200" seconds
-    Then I softly can see mail notification for "INTERNAL" user with following subject:
-      | Desk Review Report for "{SavedValue:dvID}" has been Sent Back |
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Desk Review Report for {SavedValue:dvID} has been SentBack
+      """
+    Given I am on "INTERNAL" portal
+    When I login as "FO" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:dvID}" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
@@ -1228,8 +1234,8 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---deskreview:-:internalActiveGrants---" panel
-    Then I softly see "No Records Found" inside flex table with id "---deskreview:-:internalActiveGrants---"
+    When I perform quick search for "Record Id" in "---deskreview:-:internalActiveGrants---" panel
+    Then I softly see "Record Id" inside flex table with id "---deskreview:-:internalActiveGrants---"
 
   @56368 @viewCreatedDeskReview @meenakshi
   Scenario: User will be able to view the list of all Site Visit / Desk Review created for Awards under Monitoring tab - Desk Review
