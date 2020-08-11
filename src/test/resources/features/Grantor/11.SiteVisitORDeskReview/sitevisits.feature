@@ -51,12 +51,18 @@ Feature: Validate all scenarios in the Site Visit
     And I refresh the page
     And I click on "Notify" in the page details
     And I save the field labeled "EGMS ID" as "SiteVisitId"
-    Then I softly see that "{SavedValue:Automation Runtime Award Site Visit}" is in "Notified" status
+    Then I softly see field "Status" as "Notified"
     Then I softly see status in Progress-bar is "Notified" and is "green"
-    When I pause execution for "120" seconds
-    Then I softly can see mail notification for "EXTERNAL" user with following subject:
-      | Site Visit for {SavedValue:SiteVisitId} has been scheduled |
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Site Visit for {SavedValue:SiteVisitId} has been scheduled
+      """
+    Then I refresh the page
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:SiteVisitId}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -189,6 +195,8 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside table
     Given I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
@@ -322,6 +330,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "<Site Visit Name>" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "<Site Visit Name>" inside table
     Given I click on "Send to Subrecipient" in the page details
     And I navigate to "Reports and Outcomes" tab
@@ -337,7 +346,7 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "<Site Visit Name>" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "Delete" icon for "<Site Visit Name>" inside table
-    Then I do not see values "{SavedValue:Automation Runtime Award Site Visit}" and "Title" inside table
+    Then I do not see values "<Site Visit Name>" and "Title" inside table
     Examples:
       | Site Visit Name                                  |
       | {SavedValue:Automation Runtime Award Site Visit} |
@@ -600,10 +609,16 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Start" icon for "{SavedValue:siteVisitID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
-    And I pause execution for "200" seconds
-    Then I softly can see mail notification for "INTERNAL" user with following subject:
-      | Site Visit Report for {SavedValue:siteVisitID} has been Forwarded |
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Site Visit Report for {SavedValue:siteVisitID} has been Forwarded
+      """
+    Then I refresh the page
+    And I am on "INTERNAL" portal
+    When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:siteVisitID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -800,14 +815,20 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Start" icon for "{SavedValue:svID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I "Send to Owner" in the approval decision
     Then I softly see status in Progress-bar is "Created" and is "green"
-    And I pause execution for "200" seconds
-    Then I softly can see mail notification for "INTERNAL" user with following subject:
-      | Site Visit Report for {SavedValue:svID} has been Sent Back |
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "20" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Site Visit Report for {SavedValue:svID} has been SentBack
+      """
+    Then I refresh the page
+    And I am on "INTERNAL" portal
+    When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "{SavedValue:svID}" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    Then I softly see that "{SavedValue:Automation Runtime Award Site Visit}" has been added in flextable with Id "---sitevisits:-:manageSiteVisitTableId---"
+    Then I softly see that "{SavedValue:svID}" has been added in flextable with Id "---sitevisits:-:manageSiteVisitTableId---"
 
   @60830 @56038 @FieldHistoryUpdatedSendBackToOwnerByPM @keerti
   Scenario:  To Validate field history update post Award level Site Visit is send back to owner by program approver and Submit for Approval button
@@ -1128,8 +1149,12 @@ Feature: Validate all scenarios in the Site Visit
   @61178 @addAttachmentToSiteVisit @deepika
   Scenario: Validate whether PM will be able to add any specific docuements required along with the supporting documents details under the attachments section
     When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Other"
-    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
+    When I enter the following values into flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" by clicking "Add" :
+      | Description | Required   | Status |
+      | Automation  | Mandatory | Active |
+    And I click on "Upload Template" icon for "Automation" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" with wait for record
+    When I upload file "AttachmentTesting.pdf" into library
+    When I close "Upload Document" modal by clicking the top right x button
 
   @61860 @approverCompletedTaskSiteVisits @deepika
   Scenario: Validate whether user is able to view the Completed task once approved under Monitoring Tab
@@ -1425,8 +1450,8 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
-    Then I softly can see row level action button "Delete" against "{SavedValue:Automation Runtime Award Site Visit}" in flex table with id "GrantorSiteVisitsAward"
-    When I click on "Delete" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "GrantorSiteVisitsAward"
+    Then I softly can see row level action button "Delete" against "Record Id" in flex table with id "GrantorSiteVisitsAward"
+    When I click on "Delete" icon for "Record Id" inside flex table with id "GrantorSiteVisitsAward"
     Then I softly see the following messages in the page details contains:
       | Record deleted successfully. |
 
@@ -1561,7 +1586,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "flexGridRelatedAwards1"
     Given I navigate to "Management" sub tab
     When I perform quick search for "Record Id" in "GrantorSiteVisitsAward" panel
-    Then I see that "{SavedValue:Automation Runtime Award Site Visit}" has been added in flextable with Id "GrantorSiteVisitsAward"
+    Then I see that "Record Id" has been added in flextable with Id "GrantorSiteVisitsAward"
 
   @66392 @66384 @66561 @validateSendBackToSubRecipientButton @mahadev
   Scenario: To verify that Send back to subrecipient button appear on the top right corner of the page of award owner(PM) in site visit page when status is submitted to grantor

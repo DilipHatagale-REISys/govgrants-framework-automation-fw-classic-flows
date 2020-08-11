@@ -2698,7 +2698,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see field "Closeout Requests" inside page block
 
 
-  @40071 @40605 @meenakshi @closeOutGrantOverview
+  @40071 @40605 @meenakshi @closeOutAcknowlegdmentSectionInGrantOverview
   Scenario: Verify , whether the fields are carried forward from the Grant Overview tab to Closeout Grant Overview Tab and whether the Acknowledgement section has Default Null Value before sent to sub-recipient.
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I login to "As a Grantor" app as "PM" user
