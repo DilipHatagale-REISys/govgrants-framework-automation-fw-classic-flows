@@ -642,7 +642,7 @@ public class GrantorProjectManager extends ProjectManager{
 
     public Boolean isFieldStatusVisibleInPageblock(String fieldName, String fieldValue, String pageblockName) {
         boolean flag = false;
-        if (I.amPerforming().checkToSee().isDisplayed(By.xpath("//a[text()='" + pageblockName + "']/ancestor::div[@class='panel-heading']//following-sibling::div//span[text()='" + fieldName + "']/..//following-sibling::dd//span[text()='" + fieldValue + "']"))) {
+        if (I.amPerforming().checkToSee().isDisplayed(By.xpath("//a[text()='" + pageblockName + "']/ancestor::div[@class='panel-heading']//following-sibling::div//span[text()='" + fieldName + "']/ancestor::div[@class='textFieldWrapFlex']//div//dd//span[text()='" + fieldValue + "']"))) {
             flag = true;
         } else {
             flag = false;

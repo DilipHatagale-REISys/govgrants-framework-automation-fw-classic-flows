@@ -24,8 +24,8 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    Then I softly see field "Status" as "Sent to Subrecipient"
-    Then I softly see that "{SavedValue:Automation Runtime FDM Announcement}" is in "Negotiation Initiated" status
+    Then I softly see field "Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
+    Then I softly see field "Status" as "Negotiation Initiated"
 
   @65295 @57033 @65310 @57034 @65356 @submitToGrantorbySubrecipientCompleteNegotiation @deepika @smoke
   Scenario: Validate the Applicants able to submit the Application after edit and Internal Agency user decision on Completing the Negotiation | Validate task for SR user
@@ -648,7 +648,7 @@ Feature: Validate all scenarios in Negotiations
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     Then I cannot see top right button "Send to Subrecipient" in page detail
 
-  @62669 @AddedAttachmentForNegotiations @keerti
+  @62669 @AddedAttachmentForNegotiations @keerti @bug-94779
   Scenario: Validate the Addition of  attachment to Negotiations
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -760,8 +760,8 @@ Feature: Validate all scenarios in Negotiations
     And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:phasePendingTasksTableId---"
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
-    Then I softly see field "Created Date" is getting updated with todays date
-    #Then I softly see field "Status" as "Complete"
+    And I save the field labeled "Created Date" as "CreatedDate"
+    Then I softly see field "Created Date" as "{SavedValue:CreatedDate}" in "Negotiation Request Details" pageblock
     Then I softly see field "Status" as "Complete" in "Negotiation Request Details" pageblock
 
   @65074 @fieldupdateBySPI @deepika
@@ -791,7 +791,6 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
     Then I softly see field "Details" as "Automation Negotiation Iniatiation" in "Applicant Response" pageblock
-    #Then I see field "Details" as "Automation Negotiation Iniatiation"
 
   @65290  @validateApplicationSectionsforRevisionField  @mahadev
   Scenario: To verify the details selected in Application Sections for Revision in negotiation tab in negotiation module and on clicking the forward arrow it should shift to the chosen side by the Award owne
@@ -954,8 +953,8 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "ActiveFundingOpportunitiesCompitive"
     When I save the field labeled "EGMS ID" as "AnnID"
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Draft"
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
     When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:grantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:grantsTableId---"
     When I click on hyperlink containing value "{SavedValue:AnnID}"

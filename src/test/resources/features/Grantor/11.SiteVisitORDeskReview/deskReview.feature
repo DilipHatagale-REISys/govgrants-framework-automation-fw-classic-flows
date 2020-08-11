@@ -6,7 +6,7 @@ Feature: Validate all scenarios in Desk Review
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---deskreview:-:internalActiveGrants---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalActiveGrants---"
@@ -303,15 +303,19 @@ Feature: Validate all scenarios in Desk Review
       | Title                           | Description            | Status      | Due Date | Assigned To    |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
     And I collapse nested table containing column value "Automation Finding"
-    Then I softly see that "{SavedValue:Automation Runtime Award Desk Review}" is in "Sent to Subrecipient" status
+    Then I softly see field "Status" as "Sent to Subrecipient"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
-    And I pause execution for "200" seconds
-    Then I softly can see mail notification for "INTERNAL" user with following subject:
-      | Desk Review Report Submitted by Subrecipient |
+    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Desk Review Report Submitted by Subrecipient
+      """
     And I re-login as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---deskreview:-:internalActiveGrants---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalActiveGrants---"
@@ -537,6 +541,7 @@ Feature: Validate all scenarios in Desk Review
   Scenario Outline: Verify that record owner can delete created state desk review from Award level
     Given I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "<Desk Review Name>" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "Delete" icon for "<Desk Review Name>" inside table
     Then I do not see values "{SavedValue:Automation Runtime Award Desk Review}" and "Title" inside table
     Examples:
@@ -597,7 +602,7 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
-    Then I softly see that "{SavedValue:Automation Runtime Award Desk Review}" has been added in flextable with Id "---deskreview:-:deskReviewGridViewTableId---"
+    Then I softly see that "Record Id" has been added in flextable with Id "---deskreview:-:deskReviewGridViewTableId---"
 
   @55366 @detailsOnDeskReviewBeforeNotification @deepika
   Scenario: Verify user is not able to delete desk review record if it is not in Created state (Negative TC)
@@ -1087,7 +1092,7 @@ Feature: Validate all scenarios in Desk Review
   @65244 @deleteCreateDeskReview @deepika
   Scenario: Validate whether user will be able to delete the created Desk Review
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---deskreview:-:internalActiveGrants---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalActiveGrants---"
@@ -1095,8 +1100,8 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
     Then I softly can see row level action button "Delete" against "{SavedValue:Automation Runtime Award Desk Review}" in flex table with id "---deskreview:-:managementInitiateDRtableid---"
-    When I click on "Delete" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
-    And I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---deskreview:-:managementInitiateDRtableid---" panel
+    When I click on "Delete" icon for "Record Id" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
+    And I perform quick search for "Record Id" in "---deskreview:-:managementInitiateDRtableid---" panel
     Then I softly see "No Records Found" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
 
   @65245 @historyOfDeskReviewsendbacktoOwner @deepika
@@ -1221,7 +1226,7 @@ Feature: Validate all scenarios in Desk Review
   Scenario: Validate whether other than record owner can Fo user view the created Desk Review by PM
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---deskreview:-:internalActiveGrants---" panel
     Then I softly see "No Records Found" inside flex table with id "---deskreview:-:internalActiveGrants---"
@@ -1231,7 +1236,7 @@ Feature: Validate all scenarios in Desk Review
     And I save the field labeled "EGMS ID" as "DeskReviewEGMSID"
     Then I softly see field "EGMS ID" as "{SavedValue:DeskReviewEGMSID}"
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---deskreview:-:internalActiveGrants---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalActiveGrants---"
