@@ -262,7 +262,7 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
 
   @56736 @56737 @additionalAddressesCreationEdition
-  Scenario Outline: Validate whether ADMIN can Create and Edition of Additional Addresses
+  Scenario: Validate whether ADMIN can Create and Edition of Additional Addresses
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
@@ -278,9 +278,6 @@ Feature: Validate all scenarios in the home tab
     And I enter "AdditioanlAddressesEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
     Then I softly see that "Test Automation Organization" is in "Active" status
-    Examples:
-      | User  |
-      | ADMIN |
 
   @56739 @56907 @relatedContactsCreationEdition
   Scenario Outline: The Internal Users should be able to Create and Edit Related Contacts
@@ -478,7 +475,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
-    Then I see values "567890980" and "345678908" inside table
+    Then I see values "234567891" and "123456788" inside table
     Examples:
       | User  |
       | ADMIN |
@@ -671,7 +668,7 @@ Feature: Validate all scenarios in the home tab
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "ActiveGrants" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "ActiveGrants" without waiting for record

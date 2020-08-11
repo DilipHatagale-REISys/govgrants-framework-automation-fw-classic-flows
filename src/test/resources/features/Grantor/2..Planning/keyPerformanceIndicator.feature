@@ -46,7 +46,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---keyperformanceindicator:-:GrantorKPIFilesTableId---"
-    And I upload attachment "Announcement_Field_Values.xlsx" of type "Other"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
     Then I see "Other" has been added in "Attachments" flex table
     Examples:
       | User  |
@@ -66,7 +66,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     And I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---keyperformanceindicator:-:GrantorKPIFilesTableId---"
-    And I upload attachment "Announcement_Field_Values.xlsx" of type "Other"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
     Examples:
@@ -76,7 +76,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
 
   @kpiCreationPM
   Scenario: Negative Case - Verify that other users (Other than Admin/EXE) are not able to create KPI
-    Given I login to "As a Grantor" app as "EXE" user
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     Then  I cannot see top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"

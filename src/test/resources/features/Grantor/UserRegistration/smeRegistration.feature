@@ -46,7 +46,7 @@ Feature: Validate all scenarios for SME Registration
     When I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---grantor_tableId:-:PotentialReviewerContactTableId---"
     And I click modal button "Send"
     And I refresh the page
-    And I pause execution for "120" seconds
+    And I pause execution for "180" seconds
     And I navigate to yopmail portal for "smereviewer@yopmail.com"
     Then I see the header is "Registration" in the page details
     Then I see the sub-header is "Legal Disclaimer 1 of 2" in the page details
