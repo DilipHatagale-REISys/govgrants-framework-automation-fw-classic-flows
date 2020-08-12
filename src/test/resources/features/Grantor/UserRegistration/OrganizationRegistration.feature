@@ -419,7 +419,7 @@ Feature: Validate all registration related scenarios
       Sandbox: Your EGMS Registration has Been Approved
       """
 
-  @83539 @validatingRegistrationLegalDisclaimer1of2 @monu @wip
+  @83539 @validatingRegistrationLegalDisclaimer1of2 @monu
   Scenario:To verify after sending Invitation for created contact , user is able to see Registration Legal Disclaimer 1 of 2 page on click of click here link
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -444,7 +444,7 @@ Feature: Validate all registration related scenarios
     When I click on "Start" icon for "AUTOMATION RUNTIME Organization" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
     And I "Approve" in the approval decision
     And I checkout to yopmail with mailid "AutomationInternal@yopmail.com"
-    And I pause execution for "180" seconds
+    And I pause execution for "190" seconds
     Then I refresh the page
     And I navigate to yopmail portal for "AutomationInternal@yopmail.com"
     Then I set password for the user
@@ -454,11 +454,70 @@ Feature: Validate all registration related scenarios
     And I click on top right button "New" in flex table with id "---home:-:userContactsTableId---"
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the contact name as "Automation Runtime Contact"
     When I close "New Contact" modal by clicking the top right x button
-    And I click on "Send Invitation" icon for "Primary" inside flex table with id "---home:-:userContactsTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:userContactsTableId---" panel
+    #83535 #monu
+    Then I softly see value "{SavedValue:Automation Runtime Contact}" for title "Full Name" inside table "---home:-:userContactsTableId---"
+    And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:userContactsTableId---" without waiting for record
+    #83533 #monu
+    Then I softly see value "Invitation Sent" for title "Status" inside table "---home:-:userContactsTableId---"
     And I click modal button "Send"
+    When I close "Send Invitation" modal by clicking the top right x button
     And I refresh the page
     And I pause execution for "180" seconds
-    And I navigate to yopmail portal for "AutomationInternal@yopmail.com"
+    And I navigate to yopmail portal for "AutomationManager@yopmail.com"
     Then I see the header is "Registration" in the page details
     Then I see the sub-header is "Legal Disclaimer 1 of 2" in the page details
+
+  @83531 @validatingEditingOfContact @monu
+  Scenario:To verify user is able to edit phone number of newly created contact
+    Given I begin "Organization" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
+    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
+    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    And I save the contact name as "Automation Runtime Organization"
+    And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "AutomationInternal@yopmail.com" into field "fieldPrimaryRepEmail__c"
+    When I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Pending Subrecipient Registrations" content inside "Organization" subheader on left panel
+    When I perform quick search for "AUTOMATION RUNTIME Organization" in "{grantor_tableId:SubrecipientOrganization}" panel
+    When I click on "Start" icon for "AUTOMATION RUNTIME Organization" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
+    And I "Approve" in the approval decision
+    And I checkout to yopmail with mailid "AutomationInternal@yopmail.com"
+    And I pause execution for "190" seconds
+    Then I refresh the page
+    And I navigate to yopmail portal for "AutomationInternal@yopmail.com"
+    Then I set password for the user
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Overview" sub tab
+    And I click on top right button "New" in flex table with id "---home:-:userContactsTableId---"
+    #83528 #monu
+    Then I see "Automation Runtime Organization" text enter in field "fieldAccountId"
+    And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the contact name as "Automation Runtime Contact"
+    When I close "New Contact" modal by clicking the top right x button
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:userContactsTableId---" panel
+    And I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:userContactsTableId---" without waiting for record
+    And I enter value "704-777-(7869)" into field "fieldPhone"
+    When I click on "Save" in the page details
+    When I close "Edit" modal by clicking the top right x button
+    Then I softly see value "Invitation Sent" for title "Status" inside table "---home:-:userContactsTableId---"
+    #80530 #monu
+    And I click on "View" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:userContactsTableId---" without waiting for record
+    Then I softly see field "Type" as "Recipient"
+    Then I softly see "Contact Information" page block displayed
+    Then I softly see "Address Information" page block displayed
+    Then I softly see "System Information" page block displayed
