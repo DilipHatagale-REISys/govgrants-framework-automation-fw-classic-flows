@@ -12,10 +12,10 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
   @50999 @51000 @awardSiteVisitAndDeskReview
   Scenario Outline: Validate award site visit and desk review creation
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "ActiveGrants" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "ActiveGrants" without waiting for record
+    And I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "GrantorActiveGrantsgrid" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "GrantorActiveGrantsgrid" without waiting for record
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "flexGridRelatedAwards1" without waiting for record
     When I navigate to "Management" sub tab
@@ -26,7 +26,7 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
     When I click on "Save" in the page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardFromFDM:-:grantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
@@ -85,16 +85,16 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
   Scenario: : To Verify that the Default package associated with subaward should be displayed correctly |
   To verify that Initiate Desk review button appear on site visit table of management tab of Award owner after Subaward is activated
     Given I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "ActiveGrants" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "ActiveGrants" without waiting for record
+    And I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "GrantorActiveGrantsgrid" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "GrantorActiveGrantsgrid" without waiting for record
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "flexGridRelatedAwards1" without waiting for record
     And I get the "EGMS ID"
     Then I softly see that "Subaward" is in "Activated" status
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
     And I click on "View" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
     And I navigate to "Attachments" sub tab
@@ -109,7 +109,7 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
   @68650 @continuationAndVersionCheckAfterPeriodicRenewalAmendmentFromFDM @jitendra @aashish @smoke
   Scenario Outline: Validate that after periodic renewal amendment Subaward type changes from Initial to Continuation and the Version number is still retained at 1 also the Status changes to pending Activation from Activated
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
