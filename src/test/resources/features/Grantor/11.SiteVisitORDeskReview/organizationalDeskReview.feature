@@ -30,6 +30,8 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Fiscal" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
     Then I see field "Monitoring Type" as "Fiscal"
 
   @54295 @monitoringTypeProgramDR @deepika
@@ -38,6 +40,8 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Program" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
+    And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click on "Save" in the page details
     Then I see field "Monitoring Type" as "Program"
 
   @54423 @orgDeskReviewTypeApplication @deepika

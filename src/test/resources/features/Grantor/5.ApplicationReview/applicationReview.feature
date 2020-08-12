@@ -1362,7 +1362,7 @@ Feature: Validate all scenarios in the Application Review
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
   @79746 @ValidatingReviewPanelCategoriesManagementReviewStepForm @meenakshi
-  Scenario Outline: To validate user able to click on "Review Form" Icon in the forms section of management review step on related log tab of Application phase.
+  Scenario Outline: To validate user able to click on "Review Form" Icon in the forms sec   tion of management review step on related log tab of Application phase.
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -1386,7 +1386,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @80151 @ValidatingErrorMessagePreScreenReviewStepForm @meenakshi
+  @80151 @ValidatingSystemGeneratedErrorMessagePreScreenReviewStepForm @meenakshi
   Scenario Outline: To validate system generated error message, When Announcement Owner assigning application to the reviewer who has submitted the application in application phase of prescreening review step
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -1477,7 +1477,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @79199 @79200 @ValidatingPreScreenReviewStepForm @meenakshi
+  @79199 @79200 @ValidatingUserClickReviewFormInPreScreenReviewStepForm @meenakshi
   Scenario Outline: To verify user able to click "Review Form" Icon in forms section of related log tab in prescreening review step of Application phase
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -1599,7 +1599,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @80157 @ValidatingErrorMessagePreScreenReviewStepForm @meenakshi
+  @80157 @ValidatingErrorMessageAnnouncementOwnerAssigningInPreScreenReviewStepForm @meenakshi
   Scenario Outline: To validate system generated error message, When Announcement Owner assigning application to the reviewer who has submitted the application in application phase of prescreening review step
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -1797,7 +1797,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @79960 @verifingCompletedTaskForPrescreenManagementReview @meenakshi
+  @79960 @verifingCompletedTaskForPrescreenAndManagementReview @meenakshi
   Scenario Outline: To verify the tasks will be displayed on completed tasks for the reviewer, when reviewer submit Reviews form successfully,for prescreen review step in  Application phase
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab

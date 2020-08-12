@@ -7,7 +7,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I delete the record "Automation Award for Risk Assessment" from the object "Grant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I enter in modal "Grant_Creation3" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -73,8 +73,8 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Draft"
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
@@ -100,8 +100,8 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I click on "Accept" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Draft"
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
@@ -127,8 +127,8 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Draft"
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
@@ -160,7 +160,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I get the "EGMS ID"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Organizational Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Award for Organizational Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
@@ -213,7 +213,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Organizational Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Award for Organizational Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
@@ -225,7 +225,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Organizational Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Award for Organizational Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
@@ -247,7 +247,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I get the "EGMS ID"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Organizational Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Award for Organizational Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
@@ -304,7 +304,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Organizational Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Award for Organizational Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
@@ -331,7 +331,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I get the "EGMS ID"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Organizational Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Award for Organizational Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
@@ -377,7 +377,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I "Approve" in approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Organizational Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Award for Organizational Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
@@ -389,7 +389,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Organizational Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Award for Organizational Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
@@ -405,7 +405,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I delete the record "Automation Award for Organizational Risk Assessment" from the object "subaward"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Organizational Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Award for Organizational Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
@@ -455,7 +455,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
-    And I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "Automation Award for Organizational Risk Assessment" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "Automation Award for Organizational Risk Assessment" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
