@@ -325,6 +325,8 @@ public class GrantorPayloads {
             case "PRE_APPLICATION_YES_AND_NO_MATCH":
                 json = updatePreApplicationAsYesForAnnouncement(json);
                 return updateMachRequiredToNoAnnouncement(json);
+            case "SUB_MATCH_YES_RISK_YES_EXPENSE_YES_ADVANCE_YES":
+                return subMatchYesRequiredMatch10RiskYesExpenseYesAdvacnceYesAnnouncement(json);
 
             default:
                 return json;
@@ -402,6 +404,18 @@ public class GrantorPayloads {
         JsonArray pre = new JsonArray();
         jsonObject.addProperty("PreApplicationNeeded","Yes");
         jsonObject.addProperty("FocusAreaRequired","No");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
+    }
+    private JsonObject subMatchYesRequiredMatch10RiskYesExpenseYesAdvacnceYesAnnouncement(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("IsMatchRequired","Yes");
+        jsonObject.addProperty("GranteeMatch",10);
+        jsonObject.addProperty("RiskAssessment_Required","Yes");
+        jsonObject.addProperty("AreExpensesBuildIUpLevel","Yes");
+        jsonObject.addProperty("IsAdvancePermitted","Yes");
         pre.add(jsonObject);
         json.add("Announcement",pre);
         return json;
