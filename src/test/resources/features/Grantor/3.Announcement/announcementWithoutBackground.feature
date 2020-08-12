@@ -140,21 +140,23 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Description | Required  | Applies To  | Status |
       | Test2       | Mandatory | Application | Active |
     And I click on advance filter "#advfAnnouncementChecklists" of table id "---announcement:-:annChecklist---"
-    And I enter advance filter values inside id "---announcement:-:annChecklist---"
+    And I enter advance filter values inside id "advfAnnouncementChecklists"
       | Description | contains | Test2 |
     Then I softly see value "Test2" for title "Description" inside table "---announcement:-:annChecklist---"
-    And I enter advance filter values inside id "---announcement:-:annChecklist---"
+    And I refresh the page
+    And I click on advance filter "#advfAnnouncementChecklists" of table id "---announcement:-:annChecklist---"
+    And I enter advance filter values inside id "advfAnnouncementChecklists"
       | Description | contains | Test3 |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:annChecklist---"
     And I refresh the page
-    Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:preScreenReviewFormTableId---"
-    When I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    Then I softly see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:AnnouncementReviewPanel---"
+    When I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Management Review | 20              |
-    Then I softly see value "20.00%" for title "Step Weight (%)" inside table "---announcement:-:preScreenReviewFormTableId---"
-    When I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    Then I softly see value "20.00%" for title "Step Weight (%)" inside table "---announcement:-:AnnouncementReviewPanel---"
+    When I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Management Review | 75              |
     And I click on "Save" in the page details
@@ -163,7 +165,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Setup Tab - The total Review Step weight must equal 100%, it is currently 150.00%. |
     And I click on "Edit" in the page details
     And I navigate to "Setup" sub tab
-    When I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Management Review | 25              |
       | SME Review        | 25              |
@@ -173,7 +175,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Setup Tab - The total Review Step weight must equal 100%, it is currently 50.00%. |
     And I click on "Edit" in the page details
     And I navigate to "Setup" sub tab
-    When I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Management Review | 0               |
       | SME Review        | 0               |
@@ -184,15 +186,15 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Setup Tab - The total Review Step weight must equal 100%, it is currently 0.00%. |
     And I click on "Edit" in the page details
     And I navigate to "Setup" sub tab
-    When I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Management Review | 50              |
       | SME Review        | 50              |
     And I click on "Save" in the page details
     And I click on "Edit" in the page details
     And I navigate to "Setup" sub tab
-    And I click on "Delete" icon for "Pre-Screen Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    Then I softly do not see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:preScreenReviewFormTableId---"
+    And I click on "Delete" icon for "Pre-Screen Review" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
+    Then I softly do not see value "Pre-Screen Review" for title "Step Name" inside table "---announcement:-:AnnouncementReviewPanel---"
     And I navigate to "Overview" sub tab
     And I enter value "30" into field "fieldApplicationDueDate__c"
     And I enter value "40" into field "fieldPreApplicationDueDate__c"
@@ -213,7 +215,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Overview Tab - Pre-Application Due Date cannot be in the past. |
       | Overview Tab - Application Due Date cannot be in the past.     |
 
-  @71445 @71580 @71593 @userCanValidateGeratedErrorMessage @aashish
+  @71445 @71580 @71593 @userCanValidateGeneratedErrorMessage @aashish
   Scenario: To validate system generates error message,when user giving form weight but review steps weight is 0 in Announcement
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -224,20 +226,20 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter "Pre-Application Modal" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I navigate to "Setup" sub tab
-    When I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Management Review | 100             |
       | SME Review        | 0               |
     And I expand nested table containing column value "SME Review"
-    And I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Name         | Form Weight (%) |
       | Fiscal Review     | 25              |
       | Program Review    | 25              |
       | Compliance Review | 50              |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
-    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    Then I softly can see top right button "New" in flex table with id "---announcement:-:reviewPanelTableId---"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
+    Then I softly can see top right button "New" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
 
   @71150 @71578 @71303 @71051 @71054 @71497 @71500 @71503 @71523 @71518 @71151 @71152 @71540 @71153 @71056 @71314 @71307 @verifyTotalReviewFormWeight @aashish @smoke
   Scenario: To validate system generated error message when total Review Form  weight(%) is more than 100 % while creating Announcement
@@ -250,55 +252,55 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter "Pre-Application Modal" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I navigate to "Setup" sub tab
-    When I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Management Review | 50              |
       | SME Review        | 50              |
     And I click on "Save" in the page details
     And I expand nested table containing column value "SME Review"
-    Then I softly see "Form Name" in flex table header "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see "Form Weight (%)" in flex table header "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see "Minimum Number of Reviews per Application" in flex table header "---announcement:-:preScreenReviewFormTableId---"
-    And I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    Then I softly see "Form Name" in flex table header "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see "Form Weight (%)" in flex table header "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see "Minimum Number of Reviews per Application" in flex table header "---announcement:-:AnnouncementReviewPanel---"
+    And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Name      | Form Weight (%) |
       | Fiscal Review  | 75              |
       | Program Review | 75              |
-    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step, it is currently 150.00%. |
-    And I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Name      | Form Weight (%) |
       | Fiscal Review  | 20              |
       | Program Review | 20              |
-    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step, it is currently 40.00%. |
-    And I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Name      | Form Weight (%) |
       | Fiscal Review  | 0               |
       | Program Review | 0               |
-    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
-    And I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Name      | Form Weight (%) |
       | Fiscal Review  | 60              |
       | Program Review | 40              |
-    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | There are no errors with the review step templates. |
-    And I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Name      | Form Weight (%) |
       | Program Review | 70              |
-    And I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Weight (%) | Form Name           |
       | 70.00%          | Program Review Form |
-    Then I softly see value "Program Review Form" for title "Form Name" inside table "---announcement:-:preScreenReviewFormTableId---"
-    And I click on "Delete" icon for "Program Review Form" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
+    Then I softly see value "Program Review Form" for title "Form Name" inside table "---announcement:-:AnnouncementReviewPanel---"
+    And I click on "Delete" icon for "Program Review Form" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
-    Then I softly do not see value "Program Review Form" for title "Form Name" inside table "---announcement:-:preScreenReviewFormTableId---"
-    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
+    Then I softly do not see value "Program Review Form" for title "Form Name" inside table "---announcement:-:AnnouncementReviewPanel---"
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     Then I softly see value "75%" for title "Section Weight (%)" against the value "Budget" inside table "---announcement:-:reviewPanelTableId---"
     Then I softly see value "15%" for title "Section Weight (%)" against the value "Match" inside table "---announcement:-:reviewPanelTableId---"
     Then I softly see value "10%" for title "Section Weight (%)" against the value "Program Income" inside table "---announcement:-:reviewPanelTableId---"
@@ -317,23 +319,23 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I close modal by clicking the top right x button
-    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%, it is currently 180%. |
-    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Budget         | 0                  |
       | Match          | 0                  |
       | Program Income | 0                  |
     And I close modal by clicking the top right x button
-    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | Setup Tab - SME Review - Fiscal Review: A score cannot be associated to a question in the Program Income section because it does not have a weight. |
       | Setup Tab - SME Review - Fiscal Review: A score cannot be associated to a question in the Match section because it does not have a weight.          |
       | Setup Tab - SME Review - Fiscal Review: A score cannot be associated to a question in the Budget section because it does not have a weight.         |
       | Setup Tab - SME Review - Fiscal Review: A weighted form must contain weighted sections.                                                             |
-    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
+    And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Budget         | 25                 |
@@ -342,12 +344,12 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I close modal by clicking the top right x button
-    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | There are no errors with the review step templates. |
     And I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-    And I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
+    And I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header             | Section Weight (%) |
       | Return on Investment (ROI) | 50                 |
@@ -355,12 +357,12 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I close modal by clicking the top right x button
-    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%, it is currently 80%. |
     And I pause execution for "3" seconds
     And I expand nested table containing column value "SME Review"
-    And I click on "Review Form" icon for "Program Review Form" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
+    And I click on "Review Form" icon for "Program Review Form" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Weight (%) | Section Header   |
       | 15%                | Capability Forms |
@@ -392,57 +394,56 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter "Pre-Application Modal" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I navigate to "Setup" sub tab
-    When I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Management Review | 0               |
       | SME Review        | 100             |
     And I click on "Save" in the page details
     And I expand nested table containing column value "SME Review"
-    Then I softly see value "Fiscal Review" for title "Form Name" inside table "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see value "Program Review" for title "Form Name" inside table "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see value "Compliance Review" for title "Form Name" inside table "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see "Form Name" in flex table header "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see "Form Weight (%)" in flex table header "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see "Minimum Number of Reviews per Application" in flex table header "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see "Required?" in flex table header "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see "Actions" in flex table header "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see "Reviewer" in flex table header "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see "Email" in flex table header "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see "Organization Name" in flex table header "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see "# of Applications Assigned" in flex table header "---announcement:-:preScreenReviewFormTableId---"
-    And I edit the following rows inline in flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Edit" :
+    Then I softly see value "Fiscal Review" for title "Form Name" inside table "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see value "Program Review" for title "Form Name" inside table "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see value "Compliance Review" for title "Form Name" inside table "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see "Form Name" in flex table header "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see "Form Weight (%)" in flex table header "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see "Minimum Number of Reviews per Application" in flex table header "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see "Required?" in flex table header "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see "Actions" in flex table header "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see "Reviewer" in flex table header "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see "Email" in flex table header "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see "Organization Name" in flex table header "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see "# of Applications Assigned" in flex table header "---announcement:-:AnnouncementReviewPanel---"
+    And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Name         | Form Weight (%) |
       | Fiscal Review     | 25              |
       | Program Review    | 25              |
       | Compliance Review | 50              |
-    And I click on top right button "Save" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
-    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
+    And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | There are no errors with the review step templates. |
-    When I enter the following values into flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Add" :
+    When I enter the following values into flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Add" :
       | Reviewer |
       | David FO |
-    Then I softly see value "David FO" for title "Reviewer" inside table "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see value "david.fo@yopmail.com" for title "Email" inside table "---announcement:-:preScreenReviewFormTableId---"
-    Then I softly see value "Department of Health" for title "Organization Name" inside table "---announcement:-:preScreenReviewFormTableId---"
-    And I click on "Remove from Form" icon for "David FO" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
+    Then I softly see value "David FO" for title "Reviewer" inside table "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see value "david.fo@yopmail.com" for title "Email" inside table "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see value "Department of Health" for title "Organization Name" inside table "---announcement:-:AnnouncementReviewPanel---"
+    And I click on "Remove from Form" icon for "David FO" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
 
-  @70861 @70858 @profileNotAllowedToCreateAnnouncement @aashish @bugged
+  @70861 @70858 @profileNotAllowedToCreateAnnouncement @aashish
   Scenario Outline: Verify user having FO/FD Profile are not allowed to create announcements
     When I login to "As a Grantor" app as "<users>" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    Then I can see top right button "New" in flex table with id "---announcement:-:competitiveTableId---"
+    Then I cannot see top right button "New" in flex table with id "---announcement:-:competitiveTableId---"
     Examples:
       | users |
       | FO    |
       | FD    |
 
-  @jitendra @SystemsErrorAfterApplyingWrongFilter @73630 @73626
+  @73630 @73626 @SystemsErrorAfterApplyingWrongFilter @jitendra
   Scenario: To validate system is getting displayed error message while adding invalid values into the filter for Approves section on responsibility tab of announcement
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
@@ -459,7 +460,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     And I click on advance filter "#advfGrantorAnnouncementRolesandResponsibilities" of table id "---announcement:-:approversTableId---"
-    And I enter advance filter values inside id "---announcement:-:approversTableId---"
+    And I enter advance filter values inside id "advfGrantorAnnouncementRolesandResponsibilities"
       | Responsibility | equals to | Program Reviewer |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:approversTableId---"
     And I navigate to "Setup" sub tab
@@ -471,7 +472,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
   @73854 @73855 @73852 @73853 @jitendra @filterNotYetQualifiedSPAUser
   Scenario:  To verify, filter functionality for Not Yet Qualified:All section for announcement by external user
   | To verify, all closed opportunity which has Not Qualified should reflect under Not Yet Qualified: Closed list view
-    When I login to "Grants Portal" app as "SPA" user
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPA" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -487,8 +489,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click toggle button to select "Not Yet Qualified Opportunities - Closed"
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:opportunityNotQtableId---"
     And I click toggle button to select "Not Yet Qualified Opportunities - All"
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Application Intake}" in "---announcement:-:opportunityNotQtableId---" panel
-    Then I softly see value "{SavedValue:Automation Runtime Announcement for Application Intake}" for title "Title" inside table "---announcement:-:opportunityNotQtableId---"
+    And I perform quick search for "{SavedValue:annId}" in "---announcement:-:opportunityNotQtableId---" panel
+    Then I softly see value "{SavedValue:annId}" for title "Announcement ID" inside table "---announcement:-:opportunityNotQtableId---"
 
   @73866 @73870 @jitendra @viewQualifiedOpportunitySPA
   Scenario: To verify user allow to view Qualified opportunity  in opportunity tab
@@ -506,12 +508,13 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Qualified Opportunities - All"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for Application Intake}" in "---preApplication:-:qualifiedOpprtunitesTableId---" panel
-    Then I softly see value "{SavedValue:Automation Runtime Announcement for Application Intake}" for title "Title" inside table "---preApplication:-:qualifiedOpprtunitesTableId---"
+    And I pause execution for "10" seconds
+    Then I softly see value "{SavedValue:Automation Runtime Announcement for Application Intake}" for title "Opportunity Name" inside table "---preApplication:-:qualifiedOpprtunitesTableId---"
     And I save the value from row "1" for column name "EGMS ID" as "egms id" from flex table "---preApplication:-:qualifiedOpprtunitesTableId---"
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Application Intake}" inside flex table with id "---preApplication:-:qualifiedOpprtunitesTableId---" without waiting for record
     Then I softly see field "EGMS ID" as "{SavedValue:egms id}"
 
-  @73857 @75635 @75624 @publishingExtendDatedButtonDisplay
+  @73857 @75635 @75624 @publishingExtendDatedButtonDisplay @buglogged95462
   Scenario: To Verify that Extend Dates(Revise) button will be shown when Announcement status is Published  for announcement
     Given I published "Competitive" type announcement having name "Announcement Runtime for Announcement Extend" and properties "default"
     And I login to "As a Grantor" app as "PM" user
@@ -559,7 +562,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I download the file
     And I see "{SavedValue:Automation Announcement for pdf Tests}" on page "1" of "govgrants" pdf file
 
-  @75632 @75621 @searchFunctionalityForMessagesMyFeedInCollab @keerti
+  @75632 @75621 @searchFunctionalityForMessagesMyFeedInCollab @keerti @buglogged95462
   Scenario: To verify search functionality for messages section in collab tab for announcement
   | To verify entered My Feed from the collab tab section of announcement is getting displayed on home phase.
     Given I published "Competitive" type announcement having name "Automation Runtime Competitive Announcement" and properties "default"
@@ -598,12 +601,12 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click modal button "Save and Continue"
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "SME Review"
-    When I enter the following values into flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Add" :
+    When I enter the following values into flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
     And I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
-    When I enter the following values into flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "Add" :
+    When I enter the following values into flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Add" :
       | Reviewer       |
       | Automation EXE |
     When I click on "Save" in the page details
@@ -614,6 +617,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     When I navigate to "Setup" sub tab
     And I expand nested table containing column value "SME Review"
-    Then I softly see value "Automation FO" for title "Reviewer" inside table "---announcement:-:preScreenReviewFormTableId---"
+    Then I softly see value "Automation FO" for title "Reviewer" inside table "---announcement:-:AnnouncementReviewPanel---"
     And I expand nested table containing column value "Management Review"
-    Then I softly see value "Automation EXE" for title "Reviewer" inside table "---announcement:-:preScreenReviewFormTableId---"
+    Then I softly see value "Automation EXE" for title "Reviewer" inside table "---announcement:-:AnnouncementReviewPanel---"

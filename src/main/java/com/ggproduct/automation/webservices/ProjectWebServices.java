@@ -141,10 +141,9 @@ public class ProjectWebServices {
     }
 
     public static void changeUserActivationStatus(String usersToUpdate, boolean shouldBeActivated) {
-        String finalEndPoint = endPoint + "/services/apexrest/Active/" + TestSetupController.usersController.getUserName(usersToUpdate);
+        String finalEndPoint = endPoint + "/services/apexrest/Active/" + usersToUpdate;
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("isActive", shouldBeActivated);
-        TestSetupController.usersController.getUserName(usersToUpdate);
         Response response = I.amPerforming().restHttp().patchCall(jsonObject, null, finalEndPoint, "Authorization", "Bearer " + tokenString, null);
         assertStatusCode(response);
     }

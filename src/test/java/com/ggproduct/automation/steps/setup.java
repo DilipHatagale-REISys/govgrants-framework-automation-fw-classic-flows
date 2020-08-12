@@ -51,6 +51,6 @@ public class setup {
         else if (StringUtils.containsIgnoreCase(EnvironmentFactory.getEnvironmentName(), "GRANTEE"))
             granteeWebServices.deleteRecordInHooks();
         //It will deactivate the activated users.
-        //ProjectWebServices.changeUserActivationStatus("automationinternal@yopmail.com", false);
+        //ProjectWebServices.changeUserActivationStatus("automationinternal", false);
     }
 }
