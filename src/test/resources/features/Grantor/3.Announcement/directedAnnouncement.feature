@@ -46,8 +46,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---announcement:-:AnnouncementServiceArea1TableId---"
     When I click on advance filter "#advfAnnouncementServiceArea1" of table id "---announcement:-:AnnouncementServiceArea1TableId---"
     When I enter advance filter values inside id "advfAnnouncementServiceArea1"
-      | EGMS ID | Equals to | 00064 |
-    Then I softly see value "00064" for title "EGMS ID" inside table "---announcement:-:AnnouncementServiceArea1TableId--"
+      | EGMS ID | Equals to | 00001 |
+    Then I softly see value "00001" for title "EGMS ID" inside table "---announcement:-:AnnouncementServiceArea1TableId--"
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---announcement:-:AnnouncementServiceArea1TableId---"
     And I refresh the page
     When I click on advance filter "#advfAnnouncementServiceArea1" of table id "---announcement:-:AnnouncementServiceArea1TableId---"
@@ -78,12 +78,12 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
-      | Name           | Responsibility   | Description              | Due Date | Allow Record Editing |
+      | Name                      | Responsibility   | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username}  | Fiscal Reviewer  | Review Financial details | 10       | No                   |
       | {SavedValue:PM Username}  | Program Reviewer | Review Financial details | 11       | No                   |
       | {SavedValue:EXE Username} | Program Reviewer | Review Financial details | 11       | No                   |
@@ -102,7 +102,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly can see row level action button "Delete" against "{SavedValue:FO Username}" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
     Then I softly can see row level action button "Send for Review" against "{SavedValue:FO Username}" in flex table with id "---announcement:-:flexGridApproverRolesTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "Edit" :
-      | Name          | Description                      |
+      | Name                     | Description                      |
       | {SavedValue:FO Username} | Review Financial details updated |
     Then I softly see value "Review Financial details updated" for title "Description" inside table "---announcement:-:flexGridApproverRolesTableId---"
     And I perform quick search for "Automation" in "---announcement:-:flexGridApproverRolesTableId---" panel
@@ -112,7 +112,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
-      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---" without waiting for record
     Then I softly see the following messages in the page details :
@@ -310,12 +310,12 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
-      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
@@ -481,7 +481,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on advance filter "#advfAnnouncementKeyOutcomes" of table id "---announcement:-:kpiflextableid---"
     When I enter advance filter values inside id "advfAnnouncementKeyOutcomes"
       | Title | Contains | AAtamation |
-    Then I softly see "No Records Found" inside flex table with id "---announcement:-:kpiflextableid---" without waiting for record
+    Then I softly see "No Records Found" inside flex table with id "---announcement:-:kpiflextableid---"
     And I refresh the page
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
@@ -492,12 +492,12 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
-      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
@@ -693,12 +693,12 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
-      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
@@ -838,9 +838,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Send to Owner" in the approval decision
-    Then I softly see status in Progress-bar is "Created" and is "green"
+    Then I softly see status in Progress-bar is "Draft" and is "green"
     When I navigate to "History" sub tab
-    Then I softly see that "Announcement" is in "Created" status
+    Then I softly see that "Announcement" is in "Draft" status
     And I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -882,12 +882,12 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
-      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
