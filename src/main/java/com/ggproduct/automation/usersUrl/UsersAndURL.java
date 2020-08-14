@@ -166,6 +166,7 @@ public class UsersAndURL implements UsersController {
         username.put("IND", "ind.automation@yopmail.com");
         username.put("SA", "automationspi@yopmail.com");  // need to check this user.
         username.put("SPI2", "automationspi2@yopmail.com");
+        username.put("SPI4", "automationspi2@yopmail.com");
         username.put("SPI3", "automationspi3@yopmail.com");
         username.put("AUDITOR", "automationauditor@yopmail.com");
 

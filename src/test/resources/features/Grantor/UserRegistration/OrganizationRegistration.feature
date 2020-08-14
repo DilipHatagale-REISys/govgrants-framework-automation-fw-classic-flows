@@ -265,6 +265,36 @@ Feature: Validate all registration related scenarios
     And I enter value "No" into field "fieldSameAsOrganizationAddress__c"
     When I click on "Save" in the page details
 
+  @82028 @verifyOrganizationDetailPageDuringApproval-Organization @monu
+  Scenario:Verify if user can see organization detail page while approval
+    Given I begin "Organization" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
+    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
+    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    And I save the contact name as "Automation Runtime Organization"
+    And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "AutomationInternal@yopmail.com" into field "fieldPrimaryRepEmail__c"
+    When I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Pending Subrecipient Registrations" content inside "Organization" subheader on left panel
+    When I perform quick search for "AUTOMATION RUNTIME Organization" in "{grantor_tableId:SubrecipientOrganization}" panel
+    When I click on "Start" icon for "AUTOMATION RUNTIME Organization" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
+    Then I softly see field "Status" as "Submitted for Approval"
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    Then I softly can see "Overview" sub tab at view detail page
+    Then I softly can see "User Profile" sub tab at view detail page
+    Then I softly can see "Collab" sub tab at view detail page
+    Then I softly can see "Attachments" sub tab at view detail page
+
   @82796 @83035 @verifyConfirmationMessage-Individual @meenakshi
   Scenario:To validate Confirmation Message, after clicking Submit button on Catcha page of Individual registration process
     Given I begin "Individual" registration
@@ -324,7 +354,7 @@ Feature: Validate all registration related scenarios
     And I navigate to "Overview" sub tab
     And I click on top right button "New" in flex table with id "---home:-:userContactsTableId---"
     #84613 #monu
-    Then I see only the following ordered options in dropdown field "Source__c" :
+    Then I see only the following ordered options in dropdown field "fieldContactType__c" :
       | --None-- | Agency Director | Fiscal Manager | Program Director | Program Fiscal Contact | Grants Manager | Legal Contact |
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -510,6 +540,19 @@ Feature: Validate all registration related scenarios
     And I save the contact name as "Automation Runtime Contact"
     When I close "New Contact" modal by clicking the top right x button
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:userContactsTableId---" panel
+    #83532 #monu
+    Then I softly see "Full Name" in flex table header "---home:-:userContactsTableId---"
+    Then I softly see "Role" in flex table header "---home:-:userContactsTableId---"
+    Then I softly see "Email" in flex table header "---home:-:userContactsTableId---"
+    Then I softly see "Phone" in flex table header "---home:-:userContactsTableId---"
+    Then I softly see "Status" in flex table header "---home:-:userContactsTableId---"
+    Then I softly see "Is User" in flex table header "---home:-:userContactsTableId---"
+    Then I softly see value "{SavedValue:Automation Runtime Contact}" for title "Full Name" inside table "---home:-:userContactsTableId---"
+    Then I softly see value "Primary" for title "Role" inside table "---home:-:userContactsTableId---"
+    Then I softly see value "AutomationManager@yopmail.com" for title "Email" inside table "---home:-:userContactsTableId---"
+    Then I softly see value "704-777-(7868)" for title "Status" inside table "---home:-:userContactsTableId---"
+    Then I softly see value "Active" for title "Status" inside table "---home:-:userContactsTableId---"
+    Then I softly can see row level action button "Send Invitation" against "True" in flex table with id "---home:-:userContactsTableId---"
     And I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:userContactsTableId---" without waiting for record
     And I enter value "704-777-(7869)" into field "fieldPhone"
     When I click on "Save" in the page details
@@ -521,3 +564,90 @@ Feature: Validate all registration related scenarios
     Then I softly see "Contact Information" page block displayed
     Then I softly see "Address Information" page block displayed
     Then I softly see "System Information" page block displayed
+
+  @84614 @validateRolesDropdownValues-Organization @monu
+  Scenario:To verify while creating new contacts for Activated users, roles picklist having all expected values
+    Given I begin "Organization" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
+    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
+    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    And I save the contact name as "Automation Runtime Organization"
+    And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "AutomationInternal@yopmail.com" into field "fieldPrimaryRepEmail__c"
+    When I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Pending Subrecipient Registrations" content inside "Organization" subheader on left panel
+    When I perform quick search for "AUTOMATION RUNTIME Organization" in "{grantor_tableId:SubrecipientOrganization}" panel
+    When I click on "Start" icon for "AUTOMATION RUNTIME Organization" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
+    And I "Approve" in the approval decision
+    And I checkout to yopmail with mailid "AutomationInternal@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I navigate to yopmail portal for "AutomationInternal@yopmail.com"
+    Then I set password for the user
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I navigate to "Overview" sub tab
+    And I click on top right button "New" in flex table with id "---home:-:userContactsTableId---"
+    Then I see only the following ordered options in dropdown field "fieldUserRole__c" :
+      | --None-- | Non-User | Secondary | Primary |
+
+  @85781 @validatePlaceOfPerformanceFieldsWRTOrganizationFields-Organization @monu
+  Scenario:Verify place of performance fields while creating organization user is getting populated to created application by same user
+    Given I begin "Organization" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
+    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
+    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    And I save the contact name as "Automation Runtime Organization"
+    And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "AutomationInternal@yopmail.com" into field "fieldPrimaryRepEmail__c"
+    When I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Pending Subrecipient Registrations" content inside "Organization" subheader on left panel
+    When I perform quick search for "AUTOMATION RUNTIME Organization" in "{grantor_tableId:SubrecipientOrganization}" panel
+    When I click on "Start" icon for "AUTOMATION RUNTIME Organization" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
+    And I "Approve" in the approval decision
+    And I checkout to yopmail with mailid "AutomationInternal@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I navigate to yopmail portal for "AutomationInternal@yopmail.com"
+    Then I set password for the user
+    And I navigate to "Home" tab
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
+    When I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI4" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I navigate to "Overview" sub tab
+    Then I softly see field "Address line 1" as "Sterling"
+    Then I softly see field "Zip Code" as "20171"
+    Then I softly see field "State" as "VA"
+    #85783 #monu
+    When I click on "Edit" in the page details
+    And I enter value "20172" into field "fieldZip4__c"
+    When I click on "Save" in the page details
+    Then I softly see field "Zip Code" as "20172"

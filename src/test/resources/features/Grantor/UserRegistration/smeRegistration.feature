@@ -15,7 +15,7 @@ Feature: Validate all scenarios for SME Registration
     When I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---grantor_tableId:-:PotentialReviewerContactTableId---"
     And I click modal button "Send"
     And I refresh the page
-    And I pause execution for "62" seconds
+    And I pause execution for "180" seconds
     And I navigate to yopmail portal for "smereviewer@yopmail.com"
     #34840 #monu
     Then I see the header is "Registration" in the page details
@@ -172,3 +172,16 @@ Feature: Validate all scenarios for SME Registration
       """
       Sandbox: Notification: You have been Invited to Register in theEnterprise Grants Management System (EGMS)
       """
+
+  @35012 @VerifySMEReviewerDetailPage-SMEReviewerRegistration @smoke @monu @wip
+  Scenario: Validate all details of created Sme Reviewer
+    Given I login to "As a Grantor" app as "PM" user
+    And I navigate to "Home" tab
+    When I navigate to "{grantor_sidebar:smeReviewer}" content inside "{grantor_sidebar:ContactSubheaderName}" subheader on left panel
+    And I click on top right button "New" in flex table with id "---grantor_tableId:-:PotentialReviewerContactTableId---"
+    And I enter "smeReviewerRegistration" values from "Registration_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I save the contact name as "Automation Runtime Contact"
+    And I refresh the page
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---grantor_tableId:-:PotentialReviewerContactTableId---" panel
+    When I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---grantor_tableId:-:PotentialReviewerContactTableId---"
