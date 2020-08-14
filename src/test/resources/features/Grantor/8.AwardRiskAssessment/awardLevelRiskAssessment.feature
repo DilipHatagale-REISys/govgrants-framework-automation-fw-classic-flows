@@ -2163,8 +2163,9 @@ Feature: Validate all scenarios in the Risk Assessment
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
     When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "AGENCY DETAILS"
-    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
+    And I click on top right button "Add Files" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentFileTableId---"
+    When I upload attachment "Announcement_Field_Values.xlsx" of type "AGENCY DETAILS" from computer
+    Then I softly see value "Announcement_Field_Values.xlsx" for title "Title" inside table "---orgRiskAssessment:-:orgRiskAssessmentFileTableId---"
 
   @60218 @taskNotCreatedForFOWhenPMSendbacktoOwnerOfRiskAssessment @deepika
   Scenario: To validate  task is not created for Fiscal Approver when progress approver Sends back the Risk Assessment to Owner.
