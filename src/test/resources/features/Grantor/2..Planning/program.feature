@@ -4286,7 +4286,7 @@ Feature: Validate all scenarios for program
     And I click on "Review Form" icon for "Program Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I expand nested table containing column value "Capability"
     And I click on "Edit" icon for "<Question 2>" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---" without waiting for record
-    And I enter value "Date" into field "Type__c"
+    And I enter in modal value "Date" into field "Type__c"
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     Then I softly see value "Date" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
     #77200 #monu
@@ -4361,7 +4361,7 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @77346 @validatingDownloadPDFForProgramIncomeInSMEReviewFormQuestions @meenakshi
+  @77346 @validatingDownloadPDFForProgramIncomeInSMEReviewFormQuestions @meenakshi @skipOnJenkins
   Scenario Outline:To verify user allow to download PDF for review question in Program Income of Review Panel Categories in Fiscal review form for SME review step in planning phase
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
@@ -4384,6 +4384,7 @@ Feature: Validate all scenarios for program
     And I click on parallel menu button in flex table title "Review Questions"
     And I select "Download as PDF" from parallel lines dropdown of "Review Questions"
     And I download the file
+    Then I softly see "Review Questions" on page "1" of "govgrants" pdf file
     Examples:
       | Objective                      |
       | Automation Permanent Objective |

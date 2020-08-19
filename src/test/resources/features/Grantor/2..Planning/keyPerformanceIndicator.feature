@@ -47,7 +47,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---keyperformanceindicator:-:GrantorKPIFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
-    Then I see "Other" has been added in "Attachments" flex table
+    Then I see "Other" has been added in "KPI Files" flex table
     Examples:
       | User  |
       | ADMIN |
@@ -79,7 +79,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
-    Then  I cannot see top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
+    Then  I can see top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
 
   @52625 @userFOEditKPI
   Scenario: Negative Case-Verfiy that PM user cannot Edit the record

@@ -110,7 +110,6 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
 
-
   @68460 @71420 @adminUserRowLevelButton @jitendra
   Scenario: Validate that Edit and View and Delete button appear for Admin in Grant Draft table after the Grant is Created and on clicking the respective icon it works.
     When I login to "As a Grantor" app as "ADMIN" user

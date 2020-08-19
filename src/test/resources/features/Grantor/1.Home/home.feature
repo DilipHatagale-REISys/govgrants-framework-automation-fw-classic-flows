@@ -534,10 +534,10 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---home:-:subrecipientActiveAccountId---" panel
     When I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---home:-:subrecipientActiveAccountId---" without waiting for record
     And I navigate to "Related Log" sub tab
-    When I perform quick search for "{SavedValue:Automation Runtime Announcement for Application}" in "RecipientAppReviewList" panel
-    Then I softly can see row level action button "View" against "{SavedValue:Automation Runtime Announcement for Application}" in flex table with id "RecipientAppReviewList"
-    When I perform quick search for "{SavedValue:Automation Runtime Award Record}" in "ActiveGrantsByOrganization" panel
-    Then I softly can see row level action button "View" against "{SavedValue:Automation Runtime Award Record}" in flex table with id "ActiveGrantsByOrganization"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement for Application}" in "---home:-:SubmittedApplicationTableId---" panel
+    Then I softly can see row level action button "View" against "{SavedValue:Automation Runtime Announcement for Application}" in flex table with id "---home:-:SubmittedApplicationTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award Record}" in "---home:-:RelatedLogGrantsTableId---" panel
+    Then I softly can see row level action button "View" against "{SavedValue:Automation Runtime Award Record}" in flex table with id "---home:-:RelatedLogGrantsTableId---"
     Examples:
       | User  |
       | ADMIN |
@@ -670,10 +670,10 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "ActiveGrants" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "ActiveGrants" without waiting for record
+    And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "flexGridRelatedAwards1" without waiting for record
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     Given I navigate to "Management" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
     And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"

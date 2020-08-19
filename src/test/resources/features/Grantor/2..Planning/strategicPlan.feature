@@ -23,9 +23,9 @@ Feature: Validate all scenarios in Strategic Plan
     When I click on "Back To Strategic Plan" in the page details
     Then I softly see that "Execution Strategic Goal" has been added in flextable with Id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I navigate to "Attachments" sub tab
-    And I click on top right button "Add Files" in flex table with id "---strategicplan:-:StrategicPlanFilesTableId---"
+    And I click on top right button "Add Files" in flex table with id "---strategicplan:-:strategicGoalObjectivesAttTableId---"
     And I upload attachment "Attachment.pdf" of type "Strategic Plan" from computer
-    Then I softly see "Strategic Plan" has been added in "Attachments" flex table
+    Then I softly see "Strategic Plan" has been added in "Strategic Plan Files" flex table
 
   @51045 @editionOfStrategicGoal
   Scenario: Edition of Strategic Goal inside a Strategic Plan by User - Admin/EXE/PM
@@ -54,7 +54,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on top right button "Add Files" in flex table with id "---strategicplan:-:flexGridGrantorStrategicGoalFiles---"
     And I upload attachment "Attachment.pdf" of type "Strategic Goal" from computer
     And I click on "Save" in the page details
-    Then I see "Strategic Goal" has been added in "Attachments" flex table
+    Then I see "Strategic Goal" has been added in "Strategic Goal Files" flex table
 
   @51047 @creationOfObjective
   Scenario: Creation of Objective inside a Strategic Goal by User - Admin/EXE/PM
@@ -105,7 +105,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---strategicplan:-:flexGridGrantorObjectiveFiles---"
-    And I upload attachment "Attachment.pdf" of type "Strategic Objective" from computer
+    And I upload attachment "Attachment.pdf" of type "Strategic Plan" from computer
     Then I see "Strategic Objective" has been added in "Attachments" flex table
 
   @34724 @associatingKPIToObjective @smoke
@@ -127,7 +127,7 @@ Feature: Validate all scenarios in Strategic Plan
     Then I see that "Automation Permanent KPI for Regression" has been added in flextable with Id "---strategicplan:-:ObjectivesKPITableId---"
 
     #marking as notFunctional as we can not activate multiple strategic plan for one organization
-  @34721 @strategicPlanHappyPath @notFunctional
+  @34721 @strategicPlanHappyPath @notFunctional @wip
   Scenario: strategic plan Happy Path
     When I enter "StrategicPlanEdition" values from "StrategicPlan_Field_Values.xlsx"
     And I click on "Save" in the page details

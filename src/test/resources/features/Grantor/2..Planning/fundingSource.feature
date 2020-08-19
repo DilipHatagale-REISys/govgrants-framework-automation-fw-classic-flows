@@ -37,7 +37,7 @@ Feature: Validate all scenarios in Funding Source
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
-    Then I see "Other" has been added in "Attachments" flex table
+    Then I see "Other" has been added in "Funding Source Files" flex table
 
   @51037 @creationOfFundingAccount @smoke
   Scenario: Creation of Funding Account

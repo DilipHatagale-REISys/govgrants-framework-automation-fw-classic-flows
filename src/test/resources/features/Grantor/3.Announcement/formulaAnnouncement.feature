@@ -193,7 +193,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
     When I navigate to "Overview" sub tab
-    And I enter value "-1" into field "ApplicationDueDate__c"
+    And I enter value "1" into field "ApplicationDueDate__c"
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -781,7 +781,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Send to Owner" in the approval decision
-    Then I softly see status in Progress-bar is "Draft" and is "green"
+    Then I softly see status in Progress-bar is "Crated" and is "green"
     When I navigate to "History" sub tab
     Then I softly see that "Announcement" is in "Draft" status
     When I navigate to "Announcements" tab

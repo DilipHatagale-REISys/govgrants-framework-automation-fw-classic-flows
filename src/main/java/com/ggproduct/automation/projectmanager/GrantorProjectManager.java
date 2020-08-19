@@ -27,7 +27,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 
-public class GrantorProjectManager extends ProjectManager{
+public class GrantorProjectManager extends ProjectManager {
     private String fieldValue;
 
     /******
@@ -138,7 +138,7 @@ public class GrantorProjectManager extends ProjectManager{
      */
     public Boolean isValueInsideFlexTable(String value, String flexTableHeader) {
         try {
-            return I.amPerforming().checkToSee().isDisplayed(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']"));
+            return I.amPerforming().checkToSee().isDisplayed(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']|| //div[@id='myTabbedContent']//a//span[contains(text(),'" + flexTableHeader + "')]/ancestor::div/following-sibling::div//tbody//td//span[text()='" + value + "']"));
         } catch (Exception e) {
         }
         return false;
@@ -162,7 +162,7 @@ public class GrantorProjectManager extends ProjectManager{
     }
 
     public void assertThatFileIsDownloaded(String fileType, boolean isSoftly) {
-        File file = new File(System.getProperty("user.dir") +File.separatorChar+ "target");
+        File file = new File(System.getProperty("user.dir") + File.separatorChar + "target");
         File[] directory = I.amPerforming().fileHandling().toGetCompleteFilesListOnLocalDirectory(file.getAbsolutePath());
         for (File files : directory) {
             if (files.getName().endsWith(".tmp")) {
@@ -478,13 +478,13 @@ public class GrantorProjectManager extends ProjectManager{
         }
         if (usage.contains("softly")) {
             I.amPerforming().assertionsTo().assertThat(savedValue1).isEqualToIgnoringCase(savedValue2);
-        } else if (usage.contains("not")){
+        } else if (usage.contains("not")) {
             Assert.assertEquals("Saved value :" + savedValue1 + " is not equals to saved value " + savedValue2, savedValue1, savedValue2);
         }
     }
 
     /**
-     * @param usage softly or not
+     * @param usage            softly or not
      * @param iniBudgetBalance
      * @param decreasedBy
      * @param currentBalance
@@ -573,13 +573,13 @@ public class GrantorProjectManager extends ProjectManager{
         Date actualDate = sdf.parse(currentDate);
         Date today = sdf.parse(todayDate);
         if (lessOrGreater.equalsIgnoreCase("less")) {
-            if (actualDate.before(today)){
+            if (actualDate.before(today)) {
                 return true;
             } else {
                 return false;
             }
         } else {
-            if (actualDate.after(today)){
+            if (actualDate.after(today)) {
                 return true;
             } else {
                 return false;
@@ -593,15 +593,14 @@ public class GrantorProjectManager extends ProjectManager{
      */
     public void clickAllDeleteButtonsInsideFlexTable(String flextableId) {
         By columnSelector = By.xpath("//*[@id='" + flextableId + "']//table//tr//td[1]");
-        List<Elements> rowValues=I.amPerforming().getElementReference().forListOfElements().of(columnSelector);
-        int rowSize= rowValues.size();
-        int counter=0;
-        for(int i=rowValues.size()-1; i>=0; i--) {
+        List<Elements> rowValues = I.amPerforming().getElementReference().forListOfElements().of(columnSelector);
+        int rowSize = rowValues.size();
+        int counter = 0;
+        for (int i = rowValues.size() - 1; i >= 0; i--) {
             List<Elements> rowValues2 = I.amPerforming().getElementReference().forListOfElements().of(columnSelector);
-            if(rowValues2.get(counter).getText().equalsIgnoreCase("No Records Found")) {
+            if (rowValues2.get(counter).getText().equalsIgnoreCase("No Records Found")) {
                 counter++;
-            }
-            else{
+            } else {
                 I.amPerforming().click().on(govgrants.perform().flexTable().getTableActionIcon(flextableId, "Delete", rowValues2.get(counter).getText()));
                 govgrants.perform().modal().acceptPopUp();
             }
@@ -626,6 +625,7 @@ public class GrantorProjectManager extends ProjectManager{
             }
         }
     }
+
     /**
      * @return true if expected text is displayed inside history table
      */
@@ -652,15 +652,14 @@ public class GrantorProjectManager extends ProjectManager{
 
     }
 
-    public void seeFieldStatusInPageBlock(String usage, String fieldName, String fieldValue, String pageblockName)
-    {
+    public void seeFieldStatusInPageBlock(String usage, String fieldName, String fieldValue, String pageblockName) {
         if (usage.equalsIgnoreCase("see")) {
             Assert.assertTrue(isFieldStatusVisibleInPageblock(fieldName, fieldValue, pageblockName));
-        }else if (usage.equalsIgnoreCase("softly see")){
+        } else if (usage.equalsIgnoreCase("softly see")) {
             I.amPerforming().assertionsTo().assertThat(isFieldStatusVisibleInPageblock(fieldName, fieldValue, pageblockName)).isTrue();
-        }else if(usage.equalsIgnoreCase("do not see")){
+        } else if (usage.equalsIgnoreCase("do not see")) {
             Assert.assertFalse(isFieldStatusVisibleInPageblock(fieldName, fieldValue, pageblockName));
-        }else if(usage.equalsIgnoreCase("softly do not see")){
+        } else if (usage.equalsIgnoreCase("softly do not see")) {
             I.amPerforming().assertionsTo().assertThat(isFieldStatusVisibleInPageblock(fieldName, fieldValue, pageblockName)).isFalse();
         }
 

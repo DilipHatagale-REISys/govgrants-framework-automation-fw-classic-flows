@@ -328,8 +328,8 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Status" as "Submitted for Review"
     #94019
     And I edit the following rows inline in flex table with id "---closeout:-:closeoutPeerReviewTableId---" by clicking "Edit" :
-      |Reviewer Name           | Description            | Due Date |
-      |{SavedValue:PM Username}| Automation Description | 7        |
+      | Reviewer Name            | Description            | Due Date |
+      | {SavedValue:PM Username} | Automation Description | 7        |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I softly see value "Automation Description" for title "Description" inside table "---closeout:-:closeoutPeerReviewTableId---"
@@ -542,3 +542,104 @@ Feature: Validate all scenarios in Closeout
     And I see "{SavedValue:PM Username}" against "Program Office Approval" in approval history
     Then I softly see column "Date" inside row "1" at position "1" contains text "Step : Fiscal Office Approval"
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Approved"
+
+  @95571 @VerifyVisibilityOfAddFilesFopTerminationCloseoutRequest-EXEUser @monu
+  Scenario: Validate Exe user is not able to see Add files button under closeout details while creating termination closeout request
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    And I navigate to "Overview" sub tab
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "GrantID"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "TerminationValues" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "TerminationEdition" values from "Closeout_Field_Values.xlsx"
+    And I save the field labeled "EGMS ID" as "closeoutID"
+    When I click on "Save" in the page details
+    When I navigate to "Attachments" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---closeout:-:CloseoutDetailsTableId---"
+
+  @95599 @95609 @95607 @VerifySubrecipientAbleToAddAttachmentForTerminationCloseoutRequest-EXEUser @monu
+  Scenario: Validate subrecipient user is able to see Add files button on under closeout details while creating termination closeout request
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    And I navigate to "Overview" sub tab
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "GrantID"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "TerminationValues" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "TerminationEdition" values from "Closeout_Field_Values.xlsx"
+    And I save the field labeled "EGMS ID" as "closeoutID"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "Edit" :
+      | Responsibility   | Name                     | Description                 |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+    Then I softly see that "{SavedValue:FO Username}" has been added in flextable with Id "---closeout:-:closeoutApproverTableId---"
+    When I click on "Send To Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---closeout:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I navigate to "Attachments" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---closeout:-:CloseoutDetailsTableId---"
+    And I click on top right button "Add Files" in flex table with id "---closeout:-:CloseoutDetailsTableId---"
+    And I upload attachment "Attachment.pdf" of type "Federal Closeout Document" from computer
+    Then I softly see "closeout files.png" has been added in "Closeout Files" flex table
+    #95609 #monu
+    And I click on "Edit" icon for "closeout files.png" inside flex table with id "---closeout:-:CloseoutDetailsTableId---"
+    When I select Classification as "Other" at upload file modal
+    When I enter value as "Test Automation" in field "Description" at Library Files
+    When I click on "Save" button in send email modal
+    Then I softly see value "Other" for title "Classification" inside table "---closeout:-:CloseoutDetailsTableId---"
+    #95607 #monu
+    And I click on "Delete" icon for "closeout files.png" inside flex table with id "---closeout:-:CloseoutDetailsTableId---"
+    Then I see the following messages in the page details :
+      | File closeout files.png deleted successfully. |
+
+  @96201 @96202 @VerifyCloseoutDeobligatedAmountForCloseout-Scheduled @monu
+  Scenario: Validate user can see closeout deobligated amount for created scheduled closeout request
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
+    Given I delete the record "{SavedValue:Automation Runtime Award for closeout}" from the object "Closeout"
+    When I create a post award record "Closeout" for the Award "{SavedValue:Automation Runtime Award for closeout}" having object api name as "Closeout"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "EGMS ID" as "GrantID"
+    When I navigate to "Requests" sub tab
+    #96202 #monu
+    Then I softly see value "Created" for title "Status" inside table "---closeout:-:RequestTabCloseoutRequestTableId---"
+    Then I can see row level action button "Edit" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
+    Then I can see row level action button "View" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
+    When I click on "View" icon for "Scheduled" inside flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
+    And I pause execution for "10" seconds
+    Then I softly can see top right button "Edit" in page detail
+    Then I softly can see top right button "Send To Subrecipient" in page detail
+    Then I softly can see top right button "Override" in page detail
+    ####################################################################
+    And I save the field labeled "EGMS ID" as "closeoutID1"
+    When I click on "Edit" in the page details
+    Then I softly see value "$0.00" for title "Closeout Deobligation" inside table "---closeout:-:closeoutFundingAccountsTableId---"
+    And I click on hyperlink containing value "FA-ST-13"
+    And I navigate to "Related Log" sub tab
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:CloseoutRelatedSubAwardsTableId---" panel
+    Then I softly see value "$0.00" for title "Closeout Deobligation" inside table "---closeout:-:CloseoutRelatedSubAwardsTableId---"
