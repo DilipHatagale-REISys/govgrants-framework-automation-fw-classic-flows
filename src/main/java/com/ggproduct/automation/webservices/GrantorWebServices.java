@@ -62,7 +62,7 @@ public class GrantorWebServices extends ProjectWebServices {
             I.amPerforming().waitFor().makeThreadSleep(3000);
         }
 
-        if (status.equalsIgnoreCase("Completed") && objectName.length == 1) {
+        if (status.equalsIgnoreCase("Completed") && objectName.length == 1 && !objectApiName.equalsIgnoreCase("closeout"))  {
             return getRecordId(recordName, "Title__c", objectApiName);
         } else {
             return response;

@@ -419,16 +419,23 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Compliance Review | 50              |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
+    And I expand nested table containing column value "SME Review"
+    And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
+    And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
+      | Section Header | Section Weight (%) |
+      | Schedule       | 50                 |
+      | Environment    | 25                 |
+      | Permits        | 25                 |
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | There are no errors with the review step templates. |
     When I enter the following values into flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Add" :
       | Reviewer |
       | David FO |
-    Then I softly see value "David FO" for title "Reviewer" inside table "---announcement:-:AnnouncementReviewPanel---"
-    Then I softly see value "david.fo@yopmail.com" for title "Email" inside table "---announcement:-:AnnouncementReviewPanel---"
-    Then I softly see value "Department of Health" for title "Organization Name" inside table "---announcement:-:AnnouncementReviewPanel---"
-    And I click on "Remove from Form" icon for "David FO" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
+    Then I softly see value "Automation PM" for title "Reviewer" inside table "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see value "donald_pm@ggp.test7.atm.automation" for title "Email" inside table "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see value "Test Automation Organization" for title "Organization Name" inside table "---announcement:-:AnnouncementReviewPanel---"
+    And I click on "Remove from Form" icon for "Automation PM" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
 
@@ -482,6 +489,8 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I enter advance filter values inside id "advfnyqae"
       | Announcement ID | Contains | {SavedValue:annId} |
     Then I softly see value "{SavedValue:annId}" for title "Announcement ID" inside table "---announcement:-:opportunityNotQtableId---"
+    And I refresh the page
+    And I click on advance filter "#advfnyqae" of table id "---announcement:-:opportunityNotQtableId---"
     And I enter advance filter values inside id "advfnyqae"
       | Announcement ID | Contains | I am laughing |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:opportunityNotQtableId---"
@@ -497,18 +506,15 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
   | To verify, searched functionality for Qualified Opportunities :All section for opportunities phase
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Application Intake" and properties "default"
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for Application Intake}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Application Intake}" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---" without waiting for record
     When I click on "Qualify" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
-    And I navigate to "Opportunities" tab
     When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Qualified Opportunities - All"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for Application Intake}" in "---preApplication:-:qualifiedOpprtunitesTableId---" panel
-    And I pause execution for "10" seconds
     Then I softly see value "{SavedValue:Automation Runtime Announcement for Application Intake}" for title "Opportunity Name" inside table "---preApplication:-:qualifiedOpprtunitesTableId---"
     And I save the value from row "1" for column name "EGMS ID" as "egms id" from flex table "---preApplication:-:qualifiedOpprtunitesTableId---"
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Application Intake}" inside flex table with id "---preApplication:-:qualifiedOpprtunitesTableId---" without waiting for record
