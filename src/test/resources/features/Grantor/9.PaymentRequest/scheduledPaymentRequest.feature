@@ -14,7 +14,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
     Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
     Examples:
       | Award Name                            | Login User |
-      | {SavedValue:Automation Runtime award} | SPI        |
+      | {SavedValue:Automation Runtime award} | SPI3        |
       | {SavedValue:Automation Runtime award} | SPA        |
 
   @55398 @submittedPRDisplayedInCompletedTask @mahadev
@@ -23,7 +23,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
     Given I delete the record "<Award Name>" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
     And I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
