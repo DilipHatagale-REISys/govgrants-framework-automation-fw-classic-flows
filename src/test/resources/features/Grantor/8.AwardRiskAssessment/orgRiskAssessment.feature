@@ -106,11 +106,11 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I enter "OrgAssessmentValues" values from "RiskAssessment_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "AGENCY DETAILS"
-    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
-    And I refresh the page
-    Then I see "AGENCY DETAILS" has been added in "Attachments" flex table
-
+    And I click on top right button "Add Files" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentFileTableId---"
+    When I upload attachment "Announcement_Field_Values.xlsx" of type "AGENCY DETAILS" from computer
+    Then I softly see value "Announcement_Field_Values.xlsx" for title "Title" inside table "---orgRiskAssessment:-:orgRiskAssessmentFileTableId---"
+    Then I softly see value "AGENCY DETAILS" for title "Classification" inside table "---orgRiskAssessment:-:orgRiskAssessmentFileTableId---"
+#
   @62197 @pendingTaskCreatedForGrantor @deepika
   Scenario: Validate whether pending task is created for grantor when Authorized Signatory requested for Revision
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
@@ -472,8 +472,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "View" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:activeOrgTableID---" without waiting for record
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
-    Then I see value "" for title "Effective Date" against the value "{SavedValue:EGMSID}" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    Then I see value "" for title "Expiration Date" against the value "{SavedValue:EGMSID}" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I softly see value "" for title "Effective Date" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I softly see value "" for title "Expiration Date" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @62303 @OrgLRAOnceActiveThenCreatedDateIsTodaysDate @deepika
   Scenario: Validate once the Org Level Risk Assessment is Active, then the Created Date is Today's date
@@ -1008,6 +1008,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    When I pause execution for "10" seconds
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1181,11 +1182,14 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Submit" in the page details
+    And I navigate to "Overview" sub tab
+    Then I see field "Effective Date" is getting updated with todays date
+    And I save the field labeled "Effective Date" as "EffectiveDate"
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
-    Then I see field "Effective Date" is getting updated with todays date
+    Then I softly see value "{SavedValue:EffectiveDate}" for title "Effective Date" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @63077 @VerifyTaskForNoPopUpWhenClickedOnRequestNewAssessment @keerti
   Scenario: Validate task is not created for Grantor when the SA user clicks as 'No' on pop up when clicked on Request New Assessment
@@ -1322,6 +1326,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I pause execution for "10" seconds
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
