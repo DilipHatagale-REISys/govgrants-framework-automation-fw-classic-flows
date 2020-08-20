@@ -75,7 +75,7 @@ Feature: Validate all scenarios in Closeout
     And I click on "Acknowledge" in the page details
     Then I softly see status in Progress-bar is "Acknowledged by Subrecipient" and is "green"
 
-  @50979 @50978 @86715 @overrideCloseoutAndsubmitForApproval @smoke
+  @50979 @50978 @86715 @overrideCloseoutAndSubmitForApproval @smoke
   Scenario Outline: Grant owner overrides the Closeout and is submitted for approval
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -252,7 +252,7 @@ Feature: Validate all scenarios in Closeout
       | Approval   | Start         | Approve  |                   |
     Then I see status in Progress-bar is "Completed" and is "green"
 
-  @40066 @40605 @40608 @40071 @NavigationAcknowledgementAutopopulatedFieldsGrantOverview  @Keerti
+  @40066 @40605 @40608 @40071 @NavigationAcknowledgementAutoPopulatedFieldsGrantOverview  @Keerti
   Scenario: Navigating to the Closeout Request/Validating whether the Acknowledgement section has Default Null Value before sent to sub-recipient
   / Verifying the Auto-populated fields Closeout Effective Date and the Closeout Activities Due date
   /Validating whether the fields are carried forward from the Grant Overview tab to Closeout Grant Overview Tab
@@ -1263,3 +1263,81 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Has the subrecipient met the match requirement?" as "Yes"
     Then I softly see field "Did the subrecipient fully expend program income earned during the award period prior to the closeout of the award?" as "Yes"
     Then I softly see field "Has the subrecipient completed the scope of work as outlined in the subaward agreement?" as "Yes"
+
+  @96615 @VerifyAdvanceValueAtCloseoutRequest @monu
+  Scenario: Verify user can see advance value at closeout request as same as on SubAward
+    And I navigate to "Actuals" sub tab
+    And I save the field labeled "Advance Available" as "AdvanceAmount"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Overview" sub tab
+    Then I softly see field "Advance Available" as "{SavedValue:AdvanceAmount}"
+
+  @96612 @VerifyAdvanceBalanceOfFundingAccountAtcloseoutRequest @monu
+  Scenario: Verify user can see advance balance of funding account at closeout request as same as on SubAward
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---subAwardStandAlone:-:GrantsSubAwardsTableId---"
+    And I navigate to "Actuals" sub tab
+    And I save the field labeled "Advance Balance" as "AdvanceBalance"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Overview" sub tab
+    Then I softly see value "{SavedValue:AdvanceBalance}" for title "Advance Balance" inside table "---closeout:-:closeoutFundingAccountsTableId---"
+
+  @96485 @93576 @93582 @VerifyOverriddenPermissionWithSubRecipientUser  @monu
+  Scenario: Validate sub recipient user is not allowed to override pending item
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "EGMS ID" as "GrantID"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "CloseoutID"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "Edit" :
+      | Responsibility   | Name                     | Description                 |
+      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+    Given I click on "Send To Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    #93576 #monu
+    Then I softly see value "{SavedValue:CloseoutID}" for title "EGMS ID" inside table "---closeout:-:pendingTaskTableId---"
+    ##########################################################################################################################
+    And I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    Then I softly can see top right button "Edit" in page detail
+    When I click on "Edit" in the page details
+    And I navigate to "Overview" sub tab
+    And I enter value "checked" into field "fieldAggreement__c"
+    When I click on "Save" in the page details
+    And I wait for "2" seconds
+    Then I softly can see top right button "Edit" in page detail
+    Then I softly cannot see top right button "Override" in page detail
+    And I click on "Acknowledge" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    #93582 #monu
+    Then I see status in Progress-bar is "Created" and is "Green"
+    Then I softly see status in Progress-bar is "Acknowledged by Subrecipient" and is "green"
+    #################################################################
+    And I click on hyperlink containing value "{SavedValue:GrantID}"
+    And I navigate to "Requests" sub tab
+    And I click on "View" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:RecipientCloseoutRequestTableId---"
+    Then I softly cannot see top right button "Override" in page detail

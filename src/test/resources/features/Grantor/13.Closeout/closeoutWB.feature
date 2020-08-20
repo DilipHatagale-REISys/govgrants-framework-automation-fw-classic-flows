@@ -643,3 +643,90 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Related Log" sub tab
     When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:CloseoutRelatedSubAwardsTableId---" panel
     Then I softly see value "$0.00" for title "Closeout Deobligation" inside table "---closeout:-:CloseoutRelatedSubAwardsTableId---"
+
+  @96671 @96734 @VerifyUpdatedDetailsInHistorySectionForCloseout-Scheduled @monu
+  Scenario: Validate user can see updated details in hiostory section after created scheduled closeout request is sent to sub recipient
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
+    Given I delete the record "{SavedValue:Automation Runtime Award for closeout}" from the object "Closeout"
+    When I create a post award record "Closeout" for the Award "{SavedValue:Automation Runtime Award for closeout}" having object api name as "Closeout"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Requests" sub tab
+    When I click on "View" icon for "Scheduled" inside flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
+    Then I softly can see top right button "Send To Subrecipient" in page detail
+    And I save the field labeled "EGMS ID" as "closeoutID"
+    When I click on "Send To Subrecipient" in the page details
+    And I navigate to "History" sub tab
+    And I perform quick search for "{SavedValue:closeoutID}" in "History" panel
+    Then I softly see value "Sent to Subrecipient" for title "New Value" inside table "History"
+    Then I softly see value "{SavedValue:closeoutID}" for title "EGMS ID" inside table "History"
+    #96734 #monu
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I click on "Edit" in the page details
+    And I navigate to "Overview" sub tab
+    And I enter value "checked" into field "fieldAggreement__c"
+    When I click on "Save" in the page details
+    And I click on "Acknowledge" in the page details
+    And I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    And I navigate to "Requests" sub tab
+    When I click on "View" icon for "Scheduled" inside flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
+    And I navigate to "History" sub tab
+    And I perform quick search for "{SavedValue:closeoutID}" in "History" panel
+    Then I softly see value "true" for title "New Value" inside table "History"
+    Then I softly see value "false" for title "Old Value" inside table "History"
+    Then I softly see value "Acknowledgement" for title "Changed Field" inside table "History"
+    Then I softly see value "{SavedValue:closeoutID}" for title "EGMS ID" inside table "History"
+
+  @93539 @verifyValidationMessageForOverrideJustification @monu
+  Scenario: Validate error message for Override justification
+    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    Given I navigate to "Management" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
+    And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "SiteVisitID"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---closeout:-:grantsTableId---"
+    And I navigate to "Overview" sub tab
+    And I save the field labeled "EGMS ID" as "GrantID"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "CloseoutID"
+    When I click on "Save" in the page details
+    When I navigate to "Open Items" sub tab
+    Then I softly see value "{SavedValue:SiteVisitID}" for title "EGMS ID" inside table "---siteVisits:-:PendingSiteVisitDeskReviewTableId---"
+    When I click on "Override" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - Provide justification for overriding open items to closure and proceeding with the closeout.|
+
