@@ -195,7 +195,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "SentToSubrecipient.pdf" for title "File Name" against the value "SentToSubrecipient.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     Then I softly see value "{SavedValue:PM Username}" for title "Taken By" against the value "SentToSubrecipient.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     Then I softly see value "Acknowledge.pdf" for title "File Name" against the value "Acknowledge.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "{SavedValue:SPI Username}" for title "Taken By" against the value "Acknowledge.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+    Then I softly see value "{SavedValue:SPI3 Username}" for title "Taken By" against the value "Acknowledge.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     Then I softly see value "Overriden.pdf" for title "File Name" against the value "Overriden.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     Then I softly see value "{SavedValue:PM Username}" for title "Taken By" against the value "Overriden.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     Then I softly see value "Submission.pdf" for title "File Name" against the value "Submission.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
