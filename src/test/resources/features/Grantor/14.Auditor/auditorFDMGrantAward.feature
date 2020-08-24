@@ -6,7 +6,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     Given I activated standalone subaward "Automation Runtime award" with properties "default"
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     Then I cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I perform quick search for "{SavedValue:Automation Runtime award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -18,7 +18,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     Given I activated standalone subaward "Automation Runtime award" with properties "default"
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     Then I softly cannot see row level action button "Edit" against "{SavedValue:Automation Runtime award}" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     When I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
@@ -31,7 +31,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     Given I activated standalone subaward "Automation Runtime award" with properties "default"
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     Then I softly see status in Progress-bar is "Active" and is "green"
@@ -45,7 +45,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     Given I activated standalone subaward "Automation Runtime award" with properties "default"
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Grants" tab
-    When I navigate to "Grants and Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I click on "Menu" in the page details
