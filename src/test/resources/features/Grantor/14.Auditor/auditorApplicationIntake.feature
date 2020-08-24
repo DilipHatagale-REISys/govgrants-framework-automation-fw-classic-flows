@@ -5,7 +5,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
   Scenario: Validate whether Auditor can view the application that is in Created Status
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---preApplication:-:notYetQualifiedTable---" panel
@@ -57,7 +57,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -93,7 +93,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
   Scenario Outline: Validate Auditor should be able to View submitted application details but cannot edit the submitted application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "<Application Name>" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
@@ -125,8 +125,8 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     Given I click on "Back" in the page details
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Contact |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
+      | Name                       | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     When I re-login to "As a Grantor" app as "Auditor" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -160,7 +160,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
   Scenario Outline: Validate Auditor should have view / read  only access to submitted pre-application| Validate Auditor should not be  able to Review/Accept/Reject Preapplication
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---preApplication:-:notYetQualifiedTable---" panel
@@ -187,7 +187,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I click on "Start" icon for "Record id" inside table
     When I click on "Accept" in the page details
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - Submitted"
@@ -218,8 +218,8 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     Given I click on "Back" in the page details
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Contact |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
+      | Name                      | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Given I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     When I navigate to "Applications" tab

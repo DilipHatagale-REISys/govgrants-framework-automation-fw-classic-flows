@@ -57,7 +57,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
   Scenario Outline: Validate Auditor should not be  able to Edit/Approve FDM
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
@@ -75,7 +75,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
       | Category Name | Budget | Cash Match | Non-Cash Match |
       | Construction  | 1000   | 100        | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:SPI Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab

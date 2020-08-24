@@ -5,7 +5,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
   Scenario Outline: Validate Auditor should have view / read  only access to advances Paid Payment Request under Monitoring Tab
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
@@ -245,7 +245,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI" user
+    When I login as "SPI3" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
