@@ -178,7 +178,8 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Other"
+    And I click on top right button "Add Files" in flex table with id "---auditor:-:PreApplicationTableId---"
+    When I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -187,7 +188,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I click on "Start" icon for "Record id" inside table
     When I click on "Accept" in the page details
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    When I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - Submitted"
