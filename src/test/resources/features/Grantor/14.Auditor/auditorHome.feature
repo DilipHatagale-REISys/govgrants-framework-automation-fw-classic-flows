@@ -73,22 +73,29 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
       | User    |
       | AUDITOR |
 
-  @69125 @auditorCannotCreateEDitContact
+  @69125 @auditorCannotCreateEditContact
   Scenario Outline: Validate Auditor should not be  able to Create/Edit any Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
     Then I softly cannot see top right button "New" in flex table with id "---home:-:internalContactTableId---"
-    When I perform quick search for "Automation PO" in "---home:-:internalContactTableId---" panel
+    When I perform quick search for "Automation FO" in "---home:-:internalContactTableId---" panel
     Then I see the following rows under the following headers in table with id "---home:-:internalContactTableId---" :
-      | Full Name     | Actions |
-      | Automation PO | View    |
+      | Full Name     |
+      | Automation PO |
+    Then I softly see "Full Name" in flex table header "---home:-:internalContactTableId---"
+    Then I softly see "Organization" in flex table header "---home:-:internalContactTableId---"
+    Then I softly see "Email" in flex table header "---home:-:internalContactTableId---"
+    Then I softly see "Phone" in flex table header "---home:-:internalContactTableId---"
+    Then I softly see "Status" in flex table header "---home:-:internalContactTableId---"
+    Then I softly see "Is User" in flex table header "---home:-:internalContactTableId---"
+
     Examples:
       | User    |
       | AUDITOR |
 
   @69126 @auditorCanViewCreatedContact
-  Scenario Outline: Validate Auditor should have view / read  only access to record.
+  Scenario: Validate Auditor should have view / read  only access to record.
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
@@ -102,9 +109,6 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Then I softly can see row level action button "View" against "Automation PO" in flex table with id "---home:-:internalContactTableId---"
     And I click on "View" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---"
     Then I softly see field "Organization" as "Test Automation Organization"
-    Examples:
-      | User    |
-      | AUDITOR |
 
   @69144 @69132 @69128 @auditorCannotSendInvitationCanViewSMEReviewersContactDetails
   Scenario Outline: Verify Auditor  Cannot create SME conatct and do not have access to send invitation (Bulk or single clicking paper aeroplane icon)/ Verify Auditor can view / read  only access to SME Reviewers Contact details
@@ -112,8 +116,8 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     Then I softly cannot see top right button "New" in flex table with id "---home:-:reviewersTableId---"
-    When I perform quick search for "Automation SME" in "---home:-:reviewersTableId---" panel
-    Then I softly can see row level action button "View" against "Automation SME" in flex table with id "---home:-:reviewersTableId---"
+    When I perform quick search for "Test User" in "---home:-:reviewersTableId---" panel
+    Then I softly can see row level action button "View" against "Test User" in flex table with id "---home:-:reviewersTableId---"
     Then I softly cannot see row level action button "Send Invitation" against "Automation SME" in flex table with id "---home:-:reviewersTableId---"
     Examples:
       | User    |

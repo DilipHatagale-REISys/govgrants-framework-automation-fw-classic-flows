@@ -401,7 +401,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Focus Area                       |
       | Automation Permanent Focus Area2 |
 
-  @56843 @66584 @ValidateGranotrCanIncreaseAwardBudgetAmountInFundingchangeTypeRequest @mahadev
+  @56843 @66584 @96425 @ValidateGranotrCanIncreaseAwardBudgetAmountInFundingChangeTypeRequest @mahadev
   Scenario: Verify Internal user can send request to Sub-recipient for increase in the award budget amount using Funding change option.
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -411,6 +411,8 @@ Feature: Validate all scenarios in the Amendment Request
       | Value                       | Field                              |
       | Automation Test Description | fieldFundingChangeJustification__c |
       | 1000                        | fieldRequestedChangeInBudget__c    |
+    #96425 #monu
+    Then I softly see field "Requested Change in Budget" as "$1,000.00"
     And I click on "Save" in the page details
     Then I softly can see top right button "Send to Subrecipient" in page detail
     And I get the updated budget end date by offset "0" for award "{SavedValue:Automation Runtime Award}"
