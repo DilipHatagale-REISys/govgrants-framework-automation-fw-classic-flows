@@ -600,7 +600,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see top right button "Add Files" in flex table with id "---closeout:-:CloseoutDetailsTableId---"
     And I click on top right button "Add Files" in flex table with id "---closeout:-:CloseoutDetailsTableId---"
     And I upload attachment "Attachment.pdf" of type "Federal Closeout Document" from computer
-    Then I softly see "closeout files.png" has been added in "Closeout Files" flex table
+    Then I softly see "Attachment.pdf" has been added in "Federal Closeout Document" flex table
     #95609 #monu
     And I click on "Edit" icon for "closeout files.png" inside flex table with id "---closeout:-:CloseoutDetailsTableId---"
     When I select Classification as "Other" at upload file modal
