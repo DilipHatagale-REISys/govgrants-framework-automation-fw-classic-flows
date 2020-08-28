@@ -2112,7 +2112,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Grant Name                            |
       | {SavedValue:Automation Runtime Award} |
 
-  @62966 @97938 @SRUserCanViewRiskScoreForARACopiedToNewCreatedAndAmendmentTypeTermsAndConditionsAmendment @smoke
+  @62966 @97938 @97976 @97966 @97942 @97917 @SRUserCanViewRiskScoreForARACopiedToNewCreatedAndAmendmentTypeTermsAndConditionsAmendment @smoke
   Scenario: Validate whether SR user can view the Risk Score which remained as is when Award Risk Assessment is copied to new created award when amendment type -  Terms and conditions amendment
     And I navigate to "Management" sub tab
     When I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---" without waiting for record
@@ -2133,6 +2133,8 @@ Feature: Validate all scenarios in the Amendment Request
       | Value                    | Field               |
       | Automation Justification | fieldTncComments__c |
     And I click on "Save" in the page details
+    #97917 #monu
+    Then I softly see status in Progress-bar is "Created" and is "Green"
     And I save the field labeled "EGMS ID" as "EGMSID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
@@ -2141,6 +2143,8 @@ Feature: Validate all scenarios in the Amendment Request
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I save the field labeled "EGMS ID" as "EGMSID"
+    And I save the field labeled "Subaward" as "AwardNo"
+    And I save the field labeled "Amendment Types" as "AmendmentType"
     And I click on "Send to Subrecipient" in the page details
     #97938 #monu
     Then I see status in Progress-bar is "Sent to Subrecipient" and is "Green"
@@ -2149,13 +2153,21 @@ Feature: Validate all scenarios in the Amendment Request
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+   #97942 #monu
+    Then I softly see field "Subaward" as "{SavedValue:AwardNo}"
+    Then I softly see field "Amendment Types" as "{SavedValue:AmendmentType}"
     And I click on "Acknowledge" in the page details
+    #97966 #monu
+    Then I softly see status in Progress-bar is "Acknowledged" and is "green"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Acknowledged" and is "green"
     And I click on "Submit for Approval" in the page details
+    #97976 #monu
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab

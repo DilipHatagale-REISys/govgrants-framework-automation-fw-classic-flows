@@ -1116,8 +1116,8 @@ Feature: Amendment Request scenarios without background
     When I perform quick search for "{SavedValue:SOWAMENDMENTREQUEST}" in "---amendment:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:SOWAMENDMENTREQUEST}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
 
-  @97073 @ValidateUpdationOfKPIByPrimaryApplicant-PeriodicRenewal @monu
-  Scenario: Verify task is getting generated for sub recipient for periodic renewal amendment request
+  @97073 @97056 @ValidateUpdationOfKeyPersonalByPrimaryApplicant-PeriodicRenewal @monu
+  Scenario: Verify subrecipient user is able to update Key personal information for periodic renewal amendment request
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
@@ -1158,6 +1158,13 @@ Feature: Amendment Request scenarios without background
     And I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "Principal Investigator" for title "Project Role" inside table "---amendment:-:RecipientKeyPersonalTableId---"
+    #97056 #monu
+    And I click on "Edit" icon for "Economic Development" inside flex table with id "---amendment:-:RecipientKPITableId---" without waiting for record
+    And I enter value "20" into field "Target__c"
+    And I click on top right button "Save" in flex table with id "---amendment:-:RecipientKPITableId---"
+    And I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    Then I softly see value "20" for title "Target" inside table "---amendment:-:RecipientKPITableId---"
 
   @97443 @ValidateSubmissionOfAmendmentRequestToGrantorBySubrecipient-PeriodicRenewal @monu
   Scenario: Verify sub recipient user is able to submit the amendment request to grantor for periodic renewal amendment request
@@ -1567,6 +1574,56 @@ Feature: Amendment Request scenarios without background
     And I enter value "2000" into field "fieldRequestedChangeInBudget__c"
     When I click on "Save" in the page details
     Then I softly see field "Awarded Budget this Period" as "$2,000.00"
+
+  @97049 @97053 @ValidateAddEditDeleteOfFocusArea-PeriodicRenewal @monu
+  Scenario Outline: Verify internal user is able to Add edit delete focus area
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    When I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "SOWAMENDMENTREQUEST"
+    And I save the field labeled "Proposed Budget Period Start Date" as "PBPSD"
+    And I save the field labeled "Proposed Budget Period End Date" as "PBPED"
+    And I click on top right button "Associate" in flex table with id "---amendment:-:FundingChangeFocusAreaTableId---"
+    When I perform quick search for "<Focus Area>" in "---amendment:-:focusAreaTableId---" panel
+    When I click "Associate" after selection of "<Focus Area>" in the table "---amendment:-:focusAreaTableId---"
+    When I close "Focus Areas" modal by clicking the top right x button
+    Then I see that "<Focus Area>" has been added in flextable with Id "---amendment:-:FundingChangeFocusAreaTableId---"
+    And I click on "Edit" icon for "Automation Permanent Focus Area" inside flex table with id "---amendment:-:FundingChangeFocusAreaTableId---" without waiting for record
+    And I enter value "{SavedValue:PBPSD}" into field "GATStartDate__c"
+    And I enter value "{SavedValue:PBPED}" into field "GATEndDate__c"
+    And I click on top right button "Save" in flex table with id "---amendment:-:FundingChangeFocusAreaTableId---"
+    Then I softly see value "{SavedValue:PBPSD}" for title "Start Date" inside table "---amendment:-:FundingChangeFocusAreaTableId---"
+    Then I softly see value "{SavedValue:PBPED}" for title "End Date" inside table "---amendment:-:FundingChangeFocusAreaTableId---"
+    And I click on "Remove" icon for "<Focus Area>" inside flex table with id "---amendment:-:FundingChangeFocusAreaTableId---" without waiting for record
+    Then I softly do not see value "<Focus Area>" for title "Title" inside table "---amendment:-:FundingChangeFocusAreaTableId---"
+    #97053 #monu
+    And I click on top right button "New" in flex table with id "---amendment:-:AmendmentSpecialConditionTableId---"
+    And I enter in modal value "Automation Special Conditions" into field "fieldTitle__c"
+    And I enter in modal value "Automation Special Conditions description" into field "cke_1_contents"
+    And I enter in modal value "0" into field "fieldEffectiveFrom__c"
+    And I enter in modal value "1" into field "fieldEffectiveTill__c"
+    And I click modal button "Save"
+    And I refresh the page
+    Then I softly see value "Automation Special Conditions" for title "Name" inside table "---amendment:-:AmendmentSpecialConditionTableId---"
+    And I click on "Edit" icon for "Automation Special Conditions" inside flex table with id "---amendment:-:AmendmentSpecialConditionTableId---" without waiting for record
+    And I enter in modal value "Automation Special Conditions1" into field "fieldTitle__c"
+    And I enter in modal value "Automation Special Conditions description1" into field "cke_1_contents"
+    Then I softly see value "Automation Special Conditions1" for title "Name" inside table "---amendment:-:AmendmentSpecialConditionTableId---"
+
+    Examples:
+      | Focus Area                       |
+      | Automation Permanent Focus Area2 |
 
   @97145 @97150 @ValidatePrimaryApplicantCanEditAward-SOW @monu
   Scenario: Verify primary applicant can edit award title and description for SOW amendment request
