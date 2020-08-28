@@ -1188,7 +1188,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Unpublish" in the page details
     Then I softly see status in Progress-bar is "Draft" and is "green"
     And I pause execution for "2" seconds
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "Record Id" in "---announcement:-:opportunityNotQtableId---" panel
@@ -1955,7 +1955,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Opportunities" tab
     And I perform quick search for "Record Id" in "popupflextable" panel
     Then I do not see value "Record Id" for title "Announcement ID" inside table "popupflextable"

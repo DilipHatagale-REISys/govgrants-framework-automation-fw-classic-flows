@@ -474,7 +474,7 @@ Feature: Payment Request scenarios without background
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name          | Description                 |
+      | Responsibility  | Name                     | Description                 |
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
@@ -527,7 +527,7 @@ Feature: Payment Request scenarios without background
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name          | Description                 |
+      | Responsibility  | Name                     | Description                 |
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
@@ -580,7 +580,7 @@ Feature: Payment Request scenarios without background
       | {SavedValue:fundingAccount} | 20                    |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name          | Description                 |
+      | Responsibility  | Name                     | Description                 |
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
@@ -635,7 +635,7 @@ Feature: Payment Request scenarios without background
       | {SavedValue:fundingAccount} | 20                    |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name          | Description                 |
+      | Responsibility  | Name                     | Description                 |
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
@@ -760,7 +760,7 @@ Feature: Payment Request scenarios without background
     Then I see field "Acknowledgement" as "I Agree"
     Examples:
       | Login User |
-      | SPI        |
+      | SPI3       |
       | SPA        |
 
   @51068 @ReimbursementPaymentRequestAddAttachment @bug-94779
@@ -785,7 +785,7 @@ Feature: Payment Request scenarios without background
     Then I see "Invoice" has been added in "Attachment" flex table
     Examples:
       | User |
-      | SPI  |
+      | SPI3 |
       | SPA  |
 
   @55400 @EditActionNotDisplayedReimbursementPR @mahadev
@@ -807,7 +807,7 @@ Feature: Payment Request scenarios without background
     Then I cannot see row level action button "Edit" against "Construction" in flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---"
     Examples:
       | User |
-      | SPI  |
+      | SPI3 |
       | SPA  |
 
   @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal @mahadev
@@ -828,7 +828,7 @@ Feature: Payment Request scenarios without background
     Then I can see "1" record value is checked for field name "TaskCreated__c"
     Examples:
       | Award Name                            | Grant Name                            | User |
-      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | SPI  |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | SPI3 |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | SPA  |
 
   @55809 @PRReimbursement2ndIsFinalPayment1stPRShouldShowValidMsg @jitendra @smoke
@@ -886,7 +886,7 @@ Feature: Payment Request scenarios without background
       | {SavedValue:fundingAccount} | 10                    |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name          | Description                 |
+      | Responsibility  | Name                     | Description                 |
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
@@ -1022,7 +1022,7 @@ Feature: Payment Request scenarios without background
       | {SavedValue:fundingAccount} | 30                    |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name          | Description                 |
+      | Responsibility  | Name                     | Description                 |
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
