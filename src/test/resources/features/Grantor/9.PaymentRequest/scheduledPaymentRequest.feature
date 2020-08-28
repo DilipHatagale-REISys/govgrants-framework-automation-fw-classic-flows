@@ -14,7 +14,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
     Then I see value "Record Id" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
     Examples:
       | Award Name                            | Login User |
-      | {SavedValue:Automation Runtime award} | SPI3        |
+      | {SavedValue:Automation Runtime award} | SPI3       |
       | {SavedValue:Automation Runtime award} | SPA        |
 
   @55398 @submittedPRDisplayedInCompletedTask @mahadev

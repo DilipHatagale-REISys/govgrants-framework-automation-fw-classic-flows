@@ -35,9 +35,9 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I close "Associate Contacts" modal by clicking the top right x button
     And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
-      | automation spa | Other                    |                  |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
+      | automation spa             | Other                    |                  |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see that "automation spa" has been added in flextable with Id "---subAwardStandAlone:-:associatedContactsTableId---"
@@ -119,7 +119,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I save the field labeled "EGMS ID" as "egmsId"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -137,7 +137,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   Scenario: Validate the assignment of Approvers for the award | To verify that approvers can be added in the subaward phase when login by award owner as a PM
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
+      | Responsibility     | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
@@ -187,7 +187,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -208,11 +208,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -227,7 +227,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     Then I softly cannot see top right button "Accept" in page detail
     Then I softly cannot see top right button "Reject" in page detail
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
@@ -279,7 +279,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -300,18 +300,18 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -384,7 +384,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -406,7 +406,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role            | Description                 | Due Date | Allow Record Editing |
+      | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        | No                   |
     Then I softly see that "{SavedValue:FO Username}" has been added in flextable with Id "---subAwardStandAlone:-:peerReviewersTableId---"
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" without waiting for record
@@ -466,7 +466,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -487,17 +487,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -578,7 +578,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -599,17 +599,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -683,7 +683,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -704,17 +704,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -768,7 +768,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I softly do not see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
@@ -850,7 +850,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -876,17 +876,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -932,7 +932,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I softly can see "Actuals" sub tab at view detail page
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1072,7 +1072,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -1098,11 +1098,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -1111,7 +1111,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "History" sub tab
     Then I softly see value "Subaward_Send_to_Subrecipient.pdf" for title "File Name" against the value "Subaward_Send_to_Subrecipient.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     Then I softly see value "{SavedValue:PM Username}" for title "Taken By" against the value "Subaward_Send_to_Subrecipient.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1119,7 +1119,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Accept" in the page details
     And I navigate to "History" sub tab
     Then I softly see value "Award_Accepted.pdf" for title "File Name" against the value "Award_Accepted.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "{SavedValue:SPI Username}" for title "Taken By" against the value "Award_Accepted.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+    Then I softly see value "{SavedValue:SPI3 Username}" for title "Taken By" against the value "Award_Accepted.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1163,7 +1163,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1171,7 +1171,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Accept after Approval" in the page details
     And I navigate to "History" sub tab
     Then I softly see value "Accepted_After_Approval.pdf" for title "File Name" against the value "Accepted_After_Approval.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "{SavedValue:SPI Username}" for title "Taken By" against the value "Accepted_After_Approval.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+    Then I softly see value "{SavedValue:SPI3 Username}" for title "Taken By" against the value "Accepted_After_Approval.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1184,7 +1184,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly cannot see top right button "Associate" for "---subAwardStandAlone:-:focusAreaTableId---" flex table
     Then I softly cannot see top right button "Edit" in flex table with id "---subAwardStandAlone:-:focusAreaTableId--"
     And I click on "Activate" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1194,7 +1194,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     And I navigate to "History" sub tab
     Then I softly see value "Award_Accepted.pdf" for title "File Name" against the value "Award_Accepted.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "{SavedValue:SPI Username}" for title "Taken By" against the value "Award_Accepted.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+    Then I softly see value "{SavedValue:SPI3 Username}" for title "Taken By" against the value "Award_Accepted.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
@@ -1255,17 +1255,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1304,7 +1304,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1323,12 +1323,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "{SavedValue:subawardID}" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility  | Name          | Description                 |
+      | Responsibility  | Name                     | Description                 |
       | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
@@ -1376,7 +1376,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -1396,17 +1396,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1450,7 +1450,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1511,7 +1511,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -1525,10 +1525,10 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I search "SPI" approver in flex table with id "---subAwardStandAlone:-:awardApproversTableId---"
+    And I search "SPI3" approver in flex table with id "---subAwardStandAlone:-:awardApproversTableId---"
     Then I see that approver is not present after searching in dropdown
     Examples:
       | Award Name                                   | Grant Name                                   |
@@ -1579,17 +1579,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1661,17 +1661,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1750,7 +1750,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -1776,17 +1776,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1831,7 +1831,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1891,7 +1891,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -1917,17 +1917,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1972,7 +1972,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -2175,7 +2175,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -2201,17 +2201,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -2375,7 +2375,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -2396,11 +2396,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -2451,7 +2451,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -2472,11 +2472,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -2600,7 +2600,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -2621,17 +2621,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -2705,7 +2705,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -2726,11 +2726,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -2807,7 +2807,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -2833,17 +2833,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -2871,7 +2871,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Closed"
     Then I softly see value "Closed/Completed" for title "Status" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Closed"
@@ -2920,7 +2920,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -2941,17 +2941,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -3029,7 +3029,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -3050,11 +3050,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -3115,7 +3115,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -3136,17 +3136,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -3285,7 +3285,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -3311,18 +3311,18 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     When I get the "EGMS ID"
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     And I click on "Send to Subrecipient" in the page details
     And I pause execution for "3" seconds
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I perform quick search for "Record Id" in "flexGridRecipientActiveGrants" panel
@@ -3394,7 +3394,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -3420,17 +3420,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role            | Description                 | Due Date | Allow Record Editing |
+      | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        | No                   |
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" without waiting for record
     Then I softly can see top right button "Edit" in page detail
@@ -3480,7 +3480,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -3506,18 +3506,18 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "egmsId"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role            | Description                 | Due Date | Allow Record Editing |
+      | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        | No                   |
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" without waiting for record
     Then I softly see value "Sent for Review" for title "Status" against the value "Fiscal Reviewer" inside table "---subAwardStandAlone:-:peerReviewersTableId---"
@@ -3580,7 +3580,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -3606,17 +3606,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role            | Description                 | Due Date | Allow Record Editing |
+      | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        | No                   |
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" without waiting for record
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -3693,7 +3693,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -3719,17 +3719,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role            | Description                 | Due Date | Allow Record Editing |
+      | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        | No                   |
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" without waiting for record
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -3801,7 +3801,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -3828,20 +3828,20 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role            | Description                 | Due Date | Allow Record Editing |
+      | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        | No                   |
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role             | Description                 | Due Date | Allow Record Editing |
+      | Reviewer Name            | Role             | Description                 | Due Date | Allow Record Editing |
       | {SavedValue:PM Username} | Program Reviewer | Automation Test Description | 7        | No                   |
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" without waiting for record
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -3865,7 +3865,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Complete Review" in the page details
     And I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -3940,7 +3940,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -3967,11 +3967,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -3985,7 +3985,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -4047,7 +4047,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     Then I see value "{SavedValue:FO Username}" for title "Name" inside table "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
@@ -4074,22 +4074,22 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role            | Description                 | Due Date | Allow Record Editing |
+      | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        | No                   |
     Then I softly see value "{SavedValue:FO Username}" for title "Reviewer Name" inside table "---subAwardStandAlone:-:peerReviewersTableId---"
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" without waiting for record
     Then I softly see the following messages in the page details contains:
-      | Review Successfully Initiated.|
+      | Review Successfully Initiated. |
     Then I softly see value "Sent for Review" for title "Status" inside table "---subAwardStandAlone:-:peerReviewersTableId---"
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -4111,7 +4111,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Complete Review" in the page details
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -4195,7 +4195,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     Then I see value "{SavedValue:FO Username}" for title "Name" inside table "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
@@ -4217,17 +4217,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role            | Description                 | Due Date | Allow Record Editing |
+      | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        | No                   |
     Then I softly see value "{SavedValue:FO Username}" for title "Reviewer Name" inside table "---subAwardStandAlone:-:peerReviewersTableId---"
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" without waiting for record
@@ -4254,7 +4254,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Complete Review" in the page details
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -4327,7 +4327,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -4348,17 +4348,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -4399,7 +4399,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -4449,7 +4449,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -4470,11 +4470,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -4545,7 +4545,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -4566,17 +4566,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -4616,7 +4616,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I save the field labeled "EGMS ID" as "egmsId"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     Then I softly can see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
@@ -4667,7 +4667,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -4688,11 +4688,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -4703,7 +4703,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -4754,7 +4754,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -4775,17 +4775,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -4843,7 +4843,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -4864,17 +4864,17 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -4933,7 +4933,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -4954,11 +4954,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -4976,7 +4976,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I enter value "Automation Test1 Description" into field "fieldGrantAwardDescription__c"
     And I click on "Save" in the page details
     Then I softly see field "Brief information about the subaward." as "Automation Test1 Description"
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     And I click toggle button to select "Grants - Pending"
     And I perform quick search for "<Grant Name>"
@@ -5049,7 +5049,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -5070,18 +5070,18 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel

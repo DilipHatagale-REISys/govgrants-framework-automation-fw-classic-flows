@@ -22,7 +22,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I click on "Save" in the page details
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     Given I navigate to "Overview" sub tab
@@ -56,12 +56,12 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
-      | Role             | Name          | Description                 |
+      | Role             | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -116,7 +116,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I click on "Save" in the page details
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     Given I navigate to "Overview" sub tab
@@ -150,12 +150,12 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
-      | Role             | Name          | Description                 |
+      | Role             | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -211,7 +211,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I save the field labeled "EGMS ID" as "EGMSID"
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     Given I navigate to "Overview" sub tab
@@ -221,7 +221,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award for Associate Amendment Request}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:EGMSID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -278,12 +278,12 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
-      | Role             | Name          | Description                 |
+      | Role             | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -352,7 +352,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I save the field labeled "EGMS ID" as "DeskReviewID"
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -419,12 +419,12 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
-      | Role             | Name          | Description                 |
+      | Role             | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -525,7 +525,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I save the field labeled "EGMS ID" as "EGMSID"
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     Given I navigate to "Overview" sub tab
@@ -535,7 +535,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award for Associate Amendment Request}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:EGMSID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -562,9 +562,9 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I get the "EGMS ID"
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"

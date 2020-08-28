@@ -24,7 +24,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate the creation, edition, created date and ParticipantAsociation
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     Then I softly see status in Progress-bar is "Created" and is "green"
@@ -39,7 +39,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Notify Subrecipient and the respective POC from the applicant organization will receive a pending task about the Site Visit|Validate the external user will receive an email notification when the site visit is in notified status
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     Then I softly see that "{SavedValue:EXE Username}" has been added in flextable with Id "---sitevisits:-:approverSiteVisitTableId---"
@@ -62,7 +62,7 @@ Feature: Validate all scenarios in the Site Visit
       """
     Then I refresh the page
     And I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:SiteVisitId}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -72,7 +72,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate conduct, adding outcomes and submitting site visits for approval
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     Given I navigate to "Overview" sub tab
@@ -83,7 +83,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
     Then I softly see status in Progress-bar is "In Progress" and is "green"
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -111,7 +111,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: User will be able to review the supporting document checklist submitted by the subrecipient and Filling up of form in Site Visit
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I save the field labeled "EGMS ID" as "EGMSID"
@@ -125,7 +125,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:EGMSID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -146,7 +146,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Approval of Site Visit and Send Site Visit to Subrecipient | validate task for program approver
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I save the field labeled "EGMS ID" as "EGMSID"
@@ -157,7 +157,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:EGMSID}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -205,7 +205,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Site Visit Corrective Actions By Subrecipient and Submit to Grantor by Subrecipient
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -216,7 +216,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -255,7 +255,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Given I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -263,18 +263,18 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
-      | Title                               | Description            | Status      | Due Date | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
+      | Title                               | Description            | Status      | Due Date | Assigned To                |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
@@ -283,7 +283,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario Outline: Verify that only recipient user can add corrective actions and not by Internal User on status send to subrecipeint for Award level
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -294,7 +294,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -355,7 +355,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Verify that upon conduct,  Reports And Outcomes tab are editable to the internal user for an award  level site visit
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -366,7 +366,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -385,7 +385,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly can see top right button "Notify" in page detail
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -410,7 +410,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Verify user (record owner only) is able to plan and notify created site visit to subrecipient and other user cannot notify  - Award Level
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -428,7 +428,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario:  User will not be able to submit the Site Visit to Grantor without adding corrective actions to findings | To verify that submit to grantor button appear on site visit page at SR end
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -438,7 +438,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -478,7 +478,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Given I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -491,7 +491,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario:  Applicant is not able to view the report or outcomes while in the Notified status and User will not be able to submit the Site Visit for approval without completed forms
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -501,7 +501,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -521,7 +521,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate whether the approver will be able to view the Pending task under Monitoring
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -532,7 +532,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -563,7 +563,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate when the Approver forward Site Visit to other user, the Pending Task will be created to the User |Validate when the site viist record is forwarded to another user, an email notification is sent to record owner on same.
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -574,7 +574,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -628,7 +628,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate the Infomation send to the subrecipients other than record owner, Fo user cannot accept and close the site visits and PM can accept and close
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -638,7 +638,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -679,7 +679,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly can see top right button "Send to Subrecipient" in page detail
     Given I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -687,18 +687,18 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
-      | Title                               | Description            | Status      | Due Date | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
+      | Title                               | Description            | Status      | Due Date | Assigned To                |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -717,7 +717,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate Validate Approvers Table is not editable for record owner and Reports and Outcome Tab visibility after Notified Status
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     Then I softly can see row level action button "Edit" against "Program Approver" in flex table with id "---sitevisits:-:approverSiteVisitTableId---"
@@ -739,14 +739,14 @@ Feature: Validate all scenarios in the Site Visit
     When I click on "Remove" icon for "<Internal>" inside flex table with id "---sitevisits:-:participantsTableId---"
     Then I softly do not see value "<Internal>" for title "Name" inside table "---sitevisits:-:participantsTableId---"
     Examples:
-      | Internal       |
+      | Internal                  |
       | {SavedValue:EXE Username} |
 
   @55872 @55796 @55805 @recipientsCannotCreateOutcomesSV @deepika
   Scenario: Recipients will not be able to create / edit the Site Visit Outcomes and view the Notify and Conduct button on the Site Visit
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -757,7 +757,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -769,7 +769,7 @@ Feature: Validate all scenarios in the Site Visit
   Verify when the FO user Send Back to owner during approval process of site visits , the record owner recieves an email notification
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -780,7 +780,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -834,7 +834,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario:  To Validate field history update post Award level Site Visit is send back to owner by program approver and Submit for Approval button
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -845,7 +845,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -881,7 +881,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate whether record Owner is able to view the Snapshot after Site Visits Send to Subrecipient
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -892,7 +892,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -943,7 +943,7 @@ Feature: Validate all scenarios in the Site Visit
   Validate whether external user will receive an email notification when Site Visit is accepted and closed.
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -954,7 +954,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -993,7 +993,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Given I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -1001,18 +1001,18 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
-      | Title                               | Description            | Status      | Due Date | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
+      | Title                               | Description            | Status      | Due Date | Assigned To                |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -1030,7 +1030,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on hyperlink containing value "Site Visit - Accept And Close"
     When I download the file
     Then I softly see "Closed" on page "1" of "govgrants" pdf file
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "ApplicantSiteVisitReports" panel
@@ -1047,7 +1047,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate system does not allow the peer reviewer to edit/Enter review comments and Edit button hidden if the Site Visits marked as complete review
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     Given I navigate to "Overview" sub tab
@@ -1061,7 +1061,7 @@ Feature: Validate all scenarios in the Site Visit
     Then I softly see field "StartDate__c" is not editable
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---sitevisits:-:reviewersFlexTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Reviewer Name            | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
@@ -1099,7 +1099,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: To Validate  Approvers Table is not editable and field history update Award Level Site Visits  is send back to owner by Fiscal Approver
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -1109,7 +1109,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -1150,7 +1150,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate whether PM will be able to add any specific docuements required along with the supporting documents details under the attachments section
     When I navigate to "Attachments" sub tab
     When I enter the following values into flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" by clicking "Add" :
-      | Description | Required   | Status |
+      | Description | Required  | Status |
       | Automation  | Mandatory | Active |
     And I click on "Upload Template" icon for "Automation" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" with wait for record
     When I upload file "AttachmentTesting.pdf" into library
@@ -1160,7 +1160,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate whether user is able to view the Completed task once approved under Monitoring Tab
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -1170,7 +1170,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:externalHomePendingTaskTableId---" panel
@@ -1207,7 +1207,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate whether pending task is created for Program approver under Home Tab when the award owner submits the Site Visits for approval
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -1217,7 +1217,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:externalHomePendingTaskTableId---" panel
@@ -1249,7 +1249,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate Non award owner can't / does not have permission to Site Visits for Approval and is able to view created Site Visits under Monitoring tab
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -1260,7 +1260,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -1292,7 +1292,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate whether pending task is created for Program approver under Home Tab when the award owner submits the Site Visits for approval
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -1302,7 +1302,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:externalHomePendingTaskTableId---" panel
@@ -1334,7 +1334,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate whether user is to able to intiate the peer review process and  owner is allowed to add a peer reviewer of type Program Reviewer for Site Visits
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -1344,7 +1344,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:externalHomePendingTaskTableId---" panel
@@ -1357,7 +1357,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click on "Conduct" in the page details
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---sitevisits:-:reviewersFlexTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Reviewer Name            | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     Then I softly see that "Sent for Review" has been added in flextable with Id "---sitevisits:-:reviewersFlexTableId---"
@@ -1366,7 +1366,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate Pending task is not created to fiscal approver when program approver performs send to the owner | To verify that program review form can be filled successfully in reports and outcomes tab when filled by award owner(PM profile) in site review
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -1376,7 +1376,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -1416,7 +1416,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate whether Pm user can create second Site Visits when first is created status
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     And I navigate to "Grants" tab
@@ -1459,7 +1459,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate History Field is getting Updated at Award owner End when Site Visit status is Submitted to Grantor.
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -1470,7 +1470,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -1510,7 +1510,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: Validate Site Visit Submit to Grantor and Corrective Actions By Subrecipient
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -1521,7 +1521,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -1560,7 +1560,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Given I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -1569,8 +1569,8 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
-      | Title                               | Description            | Status      | Due Date | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | -10      | {SavedValue:SPI Username} |
+      | Title                               | Description            | Status      | Due Date | Assigned To                |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | -10      | {SavedValue:SPI3 Username} |
     When I collapse nested table containing column value "Automation Observation"
     Then I see the following messages in the page details contains:
       | Due date must be future date |
@@ -1592,7 +1592,7 @@ Feature: Validate all scenarios in the Site Visit
   Scenario: To verify that Send back to subrecipient button appear on the top right corner of the page of award owner(PM) in site visit page when status is submitted to grantor
     Given I navigate to "Responsibilities" sub tab
     When I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name           | Description                 |
+      | Role             | Name                      | Description                 |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
@@ -1603,7 +1603,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -1642,7 +1642,7 @@ Feature: Validate all scenarios in the Site Visit
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Given I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
@@ -1650,18 +1650,18 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
-      | Title                               | Description            | Status      | Due Date | Assigned To    |
-      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
+      | Title                               | Description            | Status      | Due Date | Assigned To                |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To    |
-      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI Username} |
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     And I collapse nested table containing column value "Automation Finding"
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -1671,7 +1671,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly can see top right button "Send Back to Subrecipient" in page detail
     When I click on "Send Back to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel

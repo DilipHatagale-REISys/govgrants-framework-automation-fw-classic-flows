@@ -52,7 +52,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     Then I softly see that "{SavedValue:PM Username}" has been added in flextable with Id "---progressReport:-:approversTableId---"
@@ -61,7 +61,7 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "History" sub tab
     Then I softly see value "Sent Back to Subrecipient" for title "New Value" inside table "History"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI" user
+    When I login as "SPI3" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
@@ -82,7 +82,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     Given I click on "Submit for Approval" in the page details
@@ -127,7 +127,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "{SavedValue:Automation Runtime award}" in "---progressReport:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---progressReport:-:subawardsTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---progressreport:-:RecipientSubAwardTableId---" without waiting for record
     And I navigate to "Performance" sub tab
     Then I softly see value "25" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:awardKPITableId---"
 
@@ -179,7 +179,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -270,18 +270,18 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressreport:-:subawardsTableId---" without waiting for record
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressreport:-:RecipientSubAwardTableId---" without waiting for record
     When I navigate to "Performance" sub tab
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:recipientAwardProgressReportTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
@@ -335,7 +335,7 @@ Feature: Validate all scenarios in Progress Report
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     Then I see value "Annually" for title "Frequency" inside table "<progressReportsScheduleId>"
     Examples:
-      | progressReportsScheduleId                        | progressReportSheet              | subawardsTableId                        | activeGrantsTableId                        |
+      | progressReportsScheduleId                        | progressReportSheet              | subawardsTableId                            | activeGrantsTableId                        |
       | ---progressReport:-:progressReportsScheduleId--- | ProgressReport_Field_Values.xlsx | ---subAwardStandalone:-:subawardsTableId--- | ---progressReport:-:activeGrantsTableId--- |
 
   @59679 @58763 @45730 @ProgramApproverSenBackPRToOwner @jitendra
@@ -366,7 +366,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -430,11 +430,11 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -530,7 +530,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     Then I softly see value "{SavedValue:PM Username}" for title "Name" against the value "Automation Test Description" inside table "---progressReport:-:approversTableId---"
 
@@ -636,7 +636,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     Given I click on "Submit for Approval" in the page details
@@ -652,7 +652,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
     When I click toggle button to select "Progress Reports - Approved"
@@ -681,11 +681,11 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     Given I click on "Submit for Approval" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -807,7 +807,7 @@ Feature: Validate all scenarios in Progress Report
     When I get the "EGMS ID"
     Given I click on "Submit to Grantor" in the page details
     And I navigate to "Overview" sub tab
-    Then I softly see field "Submitted By:" as "{SavedValue:SPI Username}"
+    Then I softly see field "Submitted By:" as "{SavedValue:SPI3 Username}"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -815,7 +815,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -874,7 +874,7 @@ Feature: Validate all scenarios in Progress Report
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---progressReport:-:pendingTaskTableId---"
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     And I click on "Send Back to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---progressReport:-:pendingTaskTableId---" panel
@@ -901,7 +901,7 @@ Feature: Validate all scenarios in Progress Report
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     And I click on "Send Back to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
@@ -1114,7 +1114,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -1152,7 +1152,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -1245,7 +1245,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -1274,7 +1274,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     When I create a post award record "ProgressReport" for the Award "<Grant Name>" having object api name as "ProgressReports__c,false"
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1317,7 +1317,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description                 | Due Date |
+      | Reviewer Name            | Responsibility  | Description                 | Due Date |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        |
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---progressReport:-:peerReviewersTableId---" without waiting for record
     And I navigate to "Grants" tab
@@ -1327,7 +1327,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:activeGrantsTableId---" without waiting for record
     When I navigate to "Management" sub tab
     Then I softly see value "Submitted for Review" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---progressReport:-:grantorGrantProgressReportTableId---"
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1359,7 +1359,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:activeGrantsTableId---" without waiting for record
     When I navigate to "Management" sub tab
     Then I softly see value "Reviewed" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---progressReport:-:grantorGrantProgressReportTableId---"
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1394,7 +1394,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     Given I click on "Send Back to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
@@ -1412,7 +1412,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     Given I click on "Submit for Approval" in the page details
@@ -1461,7 +1461,7 @@ Feature: Validate all scenarios in Progress Report
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     Given I click on "Send Back to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
@@ -1479,7 +1479,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     Given I click on "Submit for Approval" in the page details
@@ -1496,7 +1496,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     And I see status in Progress-bar is "Approved" and is "green"
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1526,7 +1526,7 @@ Feature: Validate all scenarios in Progress Report
     And I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     And I click on "Send Back to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1580,7 +1580,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -1615,7 +1615,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -1693,7 +1693,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description                 | Due Date |
+      | Reviewer Name            | Responsibility  | Description                 | Due Date |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        |
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---progressReport:-:peerReviewersTableId---" without waiting for record
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1765,7 +1765,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description                 | Due Date |
+      | Reviewer Name            | Responsibility  | Description                 | Due Date |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        |
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---progressReport:-:peerReviewersTableId---" without waiting for record
     Then I softly see the following messages in the page details contains:
@@ -1818,10 +1818,10 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description                 | Due Date |
+      | Reviewer Name            | Responsibility  | Description                 | Due Date |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        |
     And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility   | Description                 | Due Date |
+      | Reviewer Name            | Responsibility   | Description                 | Due Date |
       | {SavedValue:PM Username} | Program Reviewer | Automation Test Description | 7        |
     Then I see value "{SavedValue:FO Username}" for title "Reviewer Name" inside table "---progressReport:-:peerReviewersTableId---"
     Then I see value "{SavedValue:PM Username}" for title "Reviewer Name" inside table "---progressReport:-:peerReviewersTableId---"
@@ -1849,7 +1849,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "Record Id" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name  | Responsibility   | Description                 | Due Date |
+      | Reviewer Name             | Responsibility   | Description                 | Due Date |
       | {SavedValue:EXE Username} | Program Reviewer | Automation Test Description | 7        |
     And I click on "Send for Review" icon for "Program Reviewer" inside flex table with id "---progressReport:-:peerReviewersTableId---"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -1891,7 +1891,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---progressreport:-:GrantorProgressReportReviewerTableId---" by clicking "New" :
-      | Reviewer Name | Responsibility  | Description              | Due Date |
+      | Reviewer Name            | Responsibility  | Description              | Due Date |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
@@ -1982,7 +1982,7 @@ Feature: Validate all scenarios in Progress Report
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:approversTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details

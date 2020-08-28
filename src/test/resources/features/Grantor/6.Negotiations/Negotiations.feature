@@ -42,7 +42,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -80,7 +80,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -101,7 +101,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -152,7 +152,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -192,7 +192,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -231,7 +231,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -272,7 +272,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -354,7 +354,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -398,7 +398,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -425,7 +425,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -458,7 +458,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -482,7 +482,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "RecordId"
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:RecordId}" in "---negotiation:-:homePendingTasks---" panel
@@ -505,7 +505,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
     When I click on "Send Back to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Negotiation Initiated" and is "green"
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:RecordId}" in "---negotiation:-:homePendingTasks---" panel
@@ -540,7 +540,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -597,7 +597,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -676,7 +676,7 @@ Feature: Validate all scenarios in Negotiations
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -708,7 +708,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -743,7 +743,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -779,7 +779,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Applications" subheader on left panel
     And I perform quick search for "Record Id" in "---negotiation:-:applicationsflexTableId---" panel
@@ -856,7 +856,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
@@ -929,7 +929,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel

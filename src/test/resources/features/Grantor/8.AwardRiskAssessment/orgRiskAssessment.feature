@@ -966,7 +966,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -1054,7 +1054,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Activate" in the page details
     Then I see that "Subaward" is in "Activated" status
     Examples:
-      | Award Name                 | Grant Name                 |
+      | Award Name                            | Grant Name                            |
       | {SavedValue:EXE Username}cution Award | {SavedValue:EXE Username}cution Award |
 
   @62952 @orRiskAssessmentIsNotDisplayedForINDUser @deepika
@@ -1304,7 +1304,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
       | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -1364,7 +1364,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I see the following messages in the page details contains:
       | Your Organization does not have an active Risk Assessment. Create and activate a Risk Assessment as the Subaward cannot be accepted without an active Risk Assessment. |
     Examples:
-      | Award Name                 | Grant Name                 |
+      | Award Name                            | Grant Name                            |
       | {SavedValue:EXE Username}cution Award | {SavedValue:EXE Username}cution Award |
 
   @63979 @grantorCanViewOverallRisk @deepika

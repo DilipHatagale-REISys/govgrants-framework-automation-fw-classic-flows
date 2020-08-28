@@ -28,7 +28,7 @@ Feature: Amendment Request scenarios without background
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -74,7 +74,7 @@ Feature: Amendment Request scenarios without background
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -121,7 +121,7 @@ Feature: Amendment Request scenarios without background
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -207,7 +207,7 @@ Feature: Amendment Request scenarios without background
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -253,7 +253,7 @@ Feature: Amendment Request scenarios without background
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -294,7 +294,7 @@ Feature: Amendment Request scenarios without background
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -338,7 +338,7 @@ Feature: Amendment Request scenarios without background
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -384,7 +384,7 @@ Feature: Amendment Request scenarios without background
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -425,7 +425,7 @@ Feature: Amendment Request scenarios without background
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -471,7 +471,7 @@ Feature: Amendment Request scenarios without background
     When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
-    And I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -510,7 +510,7 @@ Feature: Amendment Request scenarios without background
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -594,7 +594,7 @@ Feature: Amendment Request scenarios without background
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -680,7 +680,7 @@ Feature: Amendment Request scenarios without background
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -766,7 +766,7 @@ Feature: Amendment Request scenarios without background
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -830,7 +830,7 @@ Feature: Amendment Request scenarios without background
     Then I see field "Awarded Budget" as "$3,000.00"
     Examples:
       | Award Name                                      | Grant Name                                      | User |
-      | {SavedValue:Automation Runtime Amendment Award} | {SavedValue:Automation Runtime Amendment Award} | SPI  |
+      | {SavedValue:Automation Runtime Amendment Award} | {SavedValue:Automation Runtime Amendment Award} | SPI3  |
 
   @54865 @ValidateRevisedBudgetAmountBalanceUpdatedOnAwardBudgetTabAtGrantorSide @mahadev
   Scenario Outline: Verify that as per 'Revised Award Budget', "Balance" amount is updated on Award on budget tab at grantor side
@@ -859,7 +859,7 @@ Feature: Amendment Request scenarios without background
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -958,7 +958,7 @@ Feature: Amendment Request scenarios without background
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -1040,7 +1040,7 @@ Feature: Amendment Request scenarios without background
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel

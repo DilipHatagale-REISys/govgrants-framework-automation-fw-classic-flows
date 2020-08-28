@@ -55,7 +55,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -81,7 +81,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
@@ -178,7 +178,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
@@ -269,7 +269,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
       | {SavedValue:fundingAccount} | 1000                |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
+      | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
@@ -349,7 +349,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
-      | Role             | Name          | Description                 |
+      | Role             | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     And I click on "Send to Subrecipient" in the page details
@@ -428,7 +428,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
       | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "Edit" :
-      | Role             | Name          | Description                 |
+      | Role             | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
