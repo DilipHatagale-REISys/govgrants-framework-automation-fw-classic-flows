@@ -170,7 +170,7 @@ public class GrantorPayloads {
         ids.add("MasterKPI__c",kpi);
 
         JsonArray contact = new JsonArray();
-        contact.add("Automation SPI");
+        contact.add("Automation SPI3");
         ids.add("Contact",contact);
 
         return ids;
@@ -238,7 +238,7 @@ public class GrantorPayloads {
         JsonObject keyContacts = new JsonObject();
         JsonArray keyContactsArray = new JsonArray();
         keyContacts.addProperty("ProjectRole","Project Director/Manager");
-        keyContacts.addProperty("Contact",map.get("Automation SPI"));
+        keyContacts.addProperty("Contact",map.get("Automation SPI3"));
         keyContacts.addProperty("IsKeyContact",true);
         keyContactsArray.add(keyContacts);
         parent.add("KeyContacts",keyContactsArray);

@@ -20,16 +20,6 @@ Feature: Validate all scenarios in Closeout
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "Green"
-    #96200 #monu
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
-    When I navigate to "Requests" sub tab
-    Then I softly can see row level action button "View" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
-    Then I softly cannot see row level action button "Edit" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
-    Then I softly cannot see row level action button "Delete" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
 
   @50975 @50974 @assigningApproversAndsendCloseoutToSubrecipient @smoke
   Scenario: Send Closeout Request to Subrecipient and assigning approvers to the closeout Request
@@ -339,7 +329,7 @@ Feature: Validate all scenarios in Closeout
       | Type is Required to save.   |
       | Reason is Required to save. |
 
-  @40065 @87352 @40608 @89221 @89222 @89223 @89224 @89225 @89226 @89228 @89229 @89227 @88734 @88735 @88736 @88737 @88738 @88739 @ValidatingCloseoutRequest @meenakshi
+  @40065 @87352 @40608 @89221 @89222 @89223 @89224 @89225 @89226 @89228 @89229 @89227 @88734 @88735 @88736 @88737 @88738 @88739 @ValidatingCloseoutRequest @meenakshi @buglogged100681
   Scenario: To verify the PM user should be able to create the  Closeout Request
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -392,7 +382,6 @@ Feature: Validate all scenarios in Closeout
     When I close "Upload Document" modal by clicking the top right x button
     #89225
     And I click on hyperlink containing value "View"
-    And I click on "View" icon for "Automation test description" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" with wait for record
     Then I softly see new tab is opened
     And I switch to parent tab
     And I click on top right button "Add Files" in flex table with id "---closeout:-:closeoutFilesTableId---"
@@ -577,10 +566,22 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:CloseoutEGMSID}" in "---closeout:-:pendingTaskTableId---" panel
     Then I softly see that "{SavedValue:CloseoutEGMSID}" has been added in flextable with Id "---closeout:-:pendingTaskTableId---"
-    #93641
+
+  @93641 @ValidatingUserCanSeeProjectPeriodCloseoutRequestListView @monu
+  Scenario: Verify user can see created closeout request in draft list view
+    And I navigate to "Overview" sub tab
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "GrantID"
+    Then I softly see field "EGMS ID" as "{SavedValue:GrantID}"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    Then I softly see "Create Closeout Request" opens in overLay window
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "CloseoutEGMSID"
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
-    And I click toggle button to select "Project Period Closeouts - All"
+    And I click toggle button to select "Project Period Closeouts - Draft"
     When I perform quick search for "{SavedValue:CloseoutEGMSID}" in "---closeout:-:ProjectPeriodCloseoutTableId---" panel
     Then I softly see value "{SavedValue:CloseoutEGMSID}" for title "EGMS ID" inside table "---closeout:-:ProjectPeriodCloseoutTableId---"
     And I softly see value "Early Completion" for title "Sub-Type" inside table "---closeout:-:ProjectPeriodCloseoutTableId---"
@@ -1115,7 +1116,7 @@ Feature: Validate all scenarios in Closeout
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Closeout Request {SavedValue:closeoutID} has beenapproved for grant# {SavedValue:Automation Runtime Award for closeout}
+      Sandbox: Notification: Closeout Request {SavedValue:closeoutID} has beenapproved for grant# {SavedValue:Automation Runtime Award for closeout}
       """
 
   @96255 @VerifySystemErrorMessageForReason @monu

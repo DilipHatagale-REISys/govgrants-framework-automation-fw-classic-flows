@@ -11,9 +11,10 @@ Feature: Validate all scenarios in the Site Visit
     And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "GrantorActiveGrantsgrid" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "GrantorActiveGrantsgrid"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---sitevisits:-:GrantsSubAwardsTableId---"
     Given I navigate to "Management" sub tab
-    And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
+    And I click on top right button "Initiate Site Visit" in flex table with id "---sitevisits:-:InitiateSiteVisitTableId---"
+    And I pause execution for "4" seconds
     And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
@@ -116,8 +117,13 @@ Feature: Validate all scenarios in the Site Visit
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" from workspace
-    Then I softly see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
+    When I enter the following values into flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" by clicking "Add" :
+      | Description | Required  | Status |
+      | Automation  | Mandatory | Active |
+    And I click on "Upload Template" icon for "Automation" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" with wait for record
+    When I upload file "AttachmentTesting.pdf" into library
+    When I close "Upload Document" modal by clicking the top right x button
+    Then I see "AttachmentTesting.pdf" has been added in "Supporting Documents Checklist" flex table
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
     When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
@@ -875,7 +881,7 @@ Feature: Validate all scenarios in the Site Visit
     And I "Send to Owner" in the approval decision
     When I navigate to "History" sub tab
     When I perform quick search for "{SavedValue:Record Id}" in "History" panel
-    Then I softly see value "Active" for title "New Value" inside table "History"
+    Then I softly see value "In Progress" for title "New Value" inside table "History"
 
   @60833 @theSnapshotAfterSiteVisitsIsSendToSubrecipient @keerti @skipOnJenkins
   Scenario: Validate whether record Owner is able to view the Snapshot after Site Visits Send to Subrecipient
@@ -1040,8 +1046,18 @@ Feature: Validate all scenarios in the Site Visit
   @60834 @AdditionOfAttachmentForAwardSiteVisits @keerti
   Scenario: Validating addition of attachment to Award Site Visits
     When I navigate to "Attachments" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" from workspace
-    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
+    When I enter the following values into flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" by clicking "Add" :
+      | Description                 | Required  | Status |
+      | Automation test description | Mandatory | Active |
+    When I click on "Upload Template" icon for " Automation test description" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" without waiting for record
+    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
+    Then I softly see the following messages in the page details :
+      | Attachement saved successfully. |
+    When I close "Upload Template" modal by clicking the top right x button
+    And I perform quick search for "Automation test description" in "---sitevisits:-:siteVisitSupportingDocumentChecklist---" panel
+    Then I softly see value "Mandatory" for title "Required" inside table "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
+    Then I softly see value "Award" for title "Applies To" inside table "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
+    Then I softly see value "Active" for title "Status" inside table "---sitevisits:-:siteVisitSupportingDocumentChecklist---"
 
   @60839 @56013 @60837 @60840 @peerReviewerCanNotEdit/EnterReviewComments @keerti @smoke
   Scenario: Validate system does not allow the peer reviewer to edit/Enter review comments and Edit button hidden if the Site Visits marked as complete review
@@ -1155,6 +1171,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Upload Template" icon for "Automation" inside flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" with wait for record
     When I upload file "AttachmentTesting.pdf" into library
     When I close "Upload Document" modal by clicking the top right x button
+    Then I see "AttachmentTesting.pdf" has been added in "Supporting Documents Checklist" flex table
 
   @61860 @approverCompletedTaskSiteVisits @deepika
   Scenario: Validate whether user is able to view the Completed task once approved under Monitoring Tab
@@ -1424,9 +1441,9 @@ Feature: Validate all scenarios in the Site Visit
     And I click toggle button to select "Grants - Active"
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "GrantorActiveGrantsgrid"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---sitevisits:-:GrantsSubAwardsTableId---"
     Given I navigate to "Management" sub tab
-    And I click on top right button "Initiate Site Visit" in flex table with id "GrantorSiteVisitsAward"
+    And I click on top right button "Initiate Site Visit" in flex table with id "---sitevisits:-:InitiateSiteVisitTableId---"
     And I enter "Creation" values from "SiteVisit_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
@@ -1437,7 +1454,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click toggle button to select "Grants - Active"
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "GrantorActiveGrantsgrid"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---sitevisits:-:GrantsSubAwardsTableId---"
     Given I navigate to "Management" sub tab
     Then I see that "{SavedValue:secID}" has been added in flextable with Id "---sitevisits:-:grantorSiteVisitsTableID---"
 
@@ -1448,10 +1465,10 @@ Feature: Validate all scenarios in the Site Visit
     And I click toggle button to select "Grants - Active"
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "GrantorActiveGrantsgrid"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---sitevisits:-:GrantsSubAwardsTableId---"
     Given I navigate to "Management" sub tab
-    Then I softly can see row level action button "Delete" against "Record Id" in flex table with id "GrantorSiteVisitsAward"
-    When I click on "Delete" icon for "Record Id" inside flex table with id "GrantorSiteVisitsAward"
+    Then I softly can see row level action button "Delete" against "Record Id" in flex table with id "---sitevisits:-:InitiateSiteVisitTableId---"
+    When I click on "Delete" icon for "Record Id" inside flex table with id "---sitevisits:-:InitiateSiteVisitTableId---"
     Then I softly see the following messages in the page details contains:
       | Record deleted successfully. |
 
@@ -1504,7 +1521,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I "Send to Owner" in the approval decision
     When I navigate to "History" sub tab
-    Then I see value "Active" for title "New Value" inside table "History"
+    Then I see value "In Progress" for title "New Value" inside table "History"
 
   @65241 @69410 @corerctiveActionsDueDateSiteVisit @deepika
   Scenario: Validate Site Visit Submit to Grantor and Corrective Actions By Subrecipient
@@ -1583,10 +1600,10 @@ Feature: Validate all scenarios in the Site Visit
     And I click toggle button to select "Grants - Active"
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "GrantorActiveGrantsgrid"
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "flexGridRelatedAwards1"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---sitevisits:-:GrantsSubAwardsTableId---"
     Given I navigate to "Management" sub tab
-    When I perform quick search for "Record Id" in "GrantorSiteVisitsAward" panel
-    Then I see that "Record Id" has been added in flextable with Id "GrantorSiteVisitsAward"
+    When I perform quick search for "Record Id" in "---sitevisits:-:InitiateSiteVisitTableId---" panel
+    Then I see that "Record Id" has been added in flextable with Id "---sitevisits:-:InitiateSiteVisitTableId---"
 
   @66392 @66384 @66561 @validateSendBackToSubRecipientButton @mahadev
   Scenario: To verify that Send back to subrecipient button appear on the top right corner of the page of award owner(PM) in site visit page when status is submitted to grantor

@@ -137,7 +137,7 @@ Feature: Pre-Application scenarios without background
     And I navigate to "Overview" sub tab
     Then I softly see field "PreApplication Due Date" is getting updated with todays date
     When I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -157,12 +157,13 @@ Feature: Pre-Application scenarios without background
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for PreApp and App}" inside table without waiting for record
     And I click on "Unpublish" in the page details
     When I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI3" user
     And I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for PreApp and App}" in "---preApplication:-:recipientPreApplicationsTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for PreApp and App}" inside table
     # this is bug... not working as expected
+    And I click on "Submit to Grantor" in the page details
     Then I softly cannot see top right button "Submit to Grantor" in page detail
 
   @71413 @userCannotCreatePreAppWhenSettingIsNo @deepika
@@ -179,14 +180,14 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly cannot see top right button "Create Pre-Application" in page detail
 
-  @72516 @72518 @34154 @72519 @72520 @72515 @preapplicationInformationCopiedToApplication @deepika
+  @72516 @72518 @34154 @72519 @72520 @72515 @preapplicationInformationCopiedToApplication @deepika @buglogged100926
   Scenario: Validate the Pre Application information is copied to Application | Validate whether user is able to acknowledge the application submission by entering the mandatory details.
   Validate the Match Percentage validation during submit for approval when the Match required setting as Yes | Validate when the pre-application is submitted to grantor then the pending task is created for PM user
   Validate the once the PM user accepts the pre-application when is submitted to grantor using the pending task, then the task moved from pending to Completed task table
   Validate other than record Owner Pm , other users will not be to Accept submitted Pre-Application
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES"
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
+    When I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -199,14 +200,13 @@ Feature: Pre-Application scenarios without background
     And I save the field labeled "Subaward Floor" as "subawardfloor"
     And I save the field labeled "Subaward Ceiling" as "subawardcieling"
     And I save the field labeled "Match Required?" as "matchrequired"
-    And I save the field containing "Match Required?" as "No"
     And I get the "EGMS ID"
     Given I click on "Edit" in the page details
     And I enter "Edition1" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload attachment "data.xlsx" of type "Other"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Enter an Acknowledgement before submitting this Pre-Application. |
@@ -246,7 +246,7 @@ Feature: Pre-Application scenarios without background
     When I perform quick search for "Record Id" in "---preApplication:-:preappCompletedTasksTableId---" panel
     Then I softly see "Record Id" inside flex table with id "---preApplication:-:preappCompletedTasksTableId---"
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
+    When I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - Submitted"
@@ -259,8 +259,8 @@ Feature: Pre-Application scenarios without background
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
     Then I softly see selected element "{SavedValue:subawardfloor}"
-    And I softly see selected element "{SavedValue:subawardcieling}"
-    And I softly see selected element "{SavedValue:matchrequired}"
+    Then I softly see selected element "{SavedValue:subawardcieling}"
+    Then I softly see selected element "{SavedValue:matchrequired}"
 
   @72522 @preapplicationQualifiedIsAddedToTheTable @deepika @smoke
   Scenario: Validate once Application is qualified then user can view the Qualified Application from Qualfied Table and it is removed from Non -yet qualified table
@@ -295,7 +295,7 @@ Feature: Pre-Application scenarios without background
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "AnnId"
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -436,14 +436,14 @@ Feature: Pre-Application scenarios without background
     Then I softly see that "{SavedValue:Automation Runtime Announcement for Pre-Application}" has been added in flextable with Id "---applicationIntake:-:activeOpportunitiesTableId---"
     Examples:
       | User |
-      | SPI  |
+      | SPI3  |
       | SPA  |
 
   @34147 @validateRequestedAmountIsGreateThanSubawardFloorAmount @deepika
   Scenario: Verify SPI & SPA user is not able to Submit Pre-Application to Grantor with Requested Amount greater than Subaward Floor Amount
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES"
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
+    When I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -466,7 +466,7 @@ Feature: Pre-Application scenarios without background
       | Construction  | 100    | 1000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload attachment "data.xlsx" of type "Other"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
     And I refresh the page
     When I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details contains:
@@ -571,7 +571,7 @@ Feature: Pre-Application scenarios without background
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload attachment "data.xlsx" of type "Other"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
     Then I softly cannot see top right button "Edit" in page detail
     When I navigate to "Opportunities" tab
@@ -641,7 +641,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Verify SPI user is not able to Submit Pre-Application to Grantor with zero budget/requested amount
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES"
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
+    When I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -664,7 +664,7 @@ Feature: Pre-Application scenarios without background
       | Construction  | 0      | 0          | 0              | 0              |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload attachment "data.xlsx" of type "Other"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
     And I refresh the page
     When I click on "Submit to Grantor" in the page details
     Then I softly see the following messages in the page details contains:
@@ -713,7 +713,7 @@ Feature: Pre-Application scenarios without background
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-App}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I get the "EGMS ID"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -733,7 +733,7 @@ Feature: Pre-Application scenarios without background
     And I click on "Unpublish" in the page details
     And I save the field labeled "EGMS ID" as "unpublished"
     Then I softly see status in Progress-bar is "Created" and is "green"
-    When I re-login to "Grants Portal" app as "SPI" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -778,7 +778,7 @@ Feature: Pre-Application scenarios without background
     When I click on "View" icon for "Record Id" inside table
     And I click on "Publish" in the page details
     When I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -804,7 +804,7 @@ Feature: Pre-Application scenarios without background
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload attachment "data.xlsx" of type "Other"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "green"
 
@@ -812,7 +812,7 @@ Feature: Pre-Application scenarios without background
   Scenario: Validate whether User will be able to view the Match column in the budget grid when the value set as Yes while announcement creation with pre-application is set as yes
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-Application" and properties "PRE_APPLICATION_YES_AND_NO_MATCH"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -828,7 +828,7 @@ Feature: Pre-Application scenarios without background
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I softly see field "Match Required?" as "No"
+    Then I softly see field "Match Required?" as "Yes"
     And I navigate to "Budget" sub tab
     Then I softly can see page block "Focus Area"
     When I navigate to "Budget" sub tab
