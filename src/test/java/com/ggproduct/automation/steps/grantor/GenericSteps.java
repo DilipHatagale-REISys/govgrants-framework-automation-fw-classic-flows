@@ -410,7 +410,7 @@ public class GenericSteps {
             }
         }
 
-        I.amPerforming().assertionsTo().assertThat(I.amPerforming().actionToGet().text("//div[@id='chevronBarId']//ul[2]//li[" + expectedIndex + "]//a").trim()).isEqualToIgnoringCase(seeThisString);
+        I.amPerforming().assertionsTo().assertThat(I.amPerforming().actionToGet().text(By.xpath("//div[@id='chevronBarId']//ul[2]//li[" + expectedIndex + "]//a")).trim()).isEqualToIgnoringCase(seeThisString);
     }
 
     @Description("Check the Application Due Date is Less/greater than today's Date")

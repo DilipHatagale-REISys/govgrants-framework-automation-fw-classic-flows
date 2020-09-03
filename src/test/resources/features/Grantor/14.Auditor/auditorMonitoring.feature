@@ -127,9 +127,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     Given I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---auditor:-:sitevisitMonitoringTableId---" panel
-    Then I see the following rows under the following headers in table with id "---auditor:-:sitevisitMonitoringTableId---" :
-      | Title                                            | Actions |
-      | {SavedValue:Automation Runtime Award Site Visit} | View    |
+    Then I can see row level action button "View" against "{SavedValue:Automation Runtime Award Site Visit}" in flex table with id "---auditor:-:sitevisitMonitoringTableId---"
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---auditor:-:sitevisitMonitoringTableId---"
     Then I softly cannot see top right button "Accept and Close" in page detail
 
@@ -161,14 +159,12 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I enter "Edition" values from "DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
-    When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     Given I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---auditor:-:deskreviewMonitoringTableId---" panel
     Then I softly cannot see row level action button "Delete" against "{SavedValue:Automation Runtime Award Desk Review}" in flex table with id "---auditor:-:deskreviewMonitoringTableId---"
-    Then I see the following rows under the following headers in table with id "---auditor:-:deskreviewMonitoringTableId---" :
-      | Title                                             | Actions |
-      | {SavedValue:Automation Runtime Award Desk Review} | View    |
+    Then I can see row level action button "View" against "{SavedValue:Automation Runtime Award Desk Review}" in flex table with id "---auditor:-:sitevisitMonitoringTableId---"
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---auditor:-:deskreviewMonitoringTableId---"
     Then I softly cannot see top right button "Accept and Close" in page detail
     Examples:
@@ -201,7 +197,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
@@ -296,7 +292,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I get the "EGMS ID"
     Given I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name          | Description                 |
+      | Role             | Name                     | Description                 |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
     When I get the "EGMS ID"
@@ -373,7 +369,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name          | Description                 |
+      | Responsibility   | Name                     | Description                 |
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
@@ -395,7 +391,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name | Role            | Description                 | Due Date | Allow Record Editing |
+      | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        | No                   |
     Then I softly see that "{SavedValue:FO Username}" has been added in flextable with Id "---subAwardStandAlone:-:peerReviewersTableId---"
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---"

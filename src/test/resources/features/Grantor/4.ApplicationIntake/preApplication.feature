@@ -4,7 +4,7 @@ Feature: Validate all scenarios in the Pre-Application
   Background: Qualify Announcement and Create PreApplication
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
@@ -18,7 +18,7 @@ Feature: Validate all scenarios in the Pre-Application
   @67063 @validateVariousRolesAppearsPreApplication @jitendra
   Scenario: To Validate that various roles appear in the project roles dropdown in contact tableon preapplication of  SPI profile
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:SPI Username}" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
     Then I verify that All the following projects roles are available in picklist :
       | Principal Investigator   |
       | Fiscal Contact           |
@@ -36,7 +36,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I click "Add" after selection of "Automation SPA" in the table "---preApplication:-:associatePreAppContactsTableId---"
     And I close modal by clicking the top right x button
     Then I softly see value "Automation SPA" for title "Name" inside table "---preApplication:-:flexGridPreAppContactTableId---"
-    When I click on "View" icon for "{SavedValue:SPI Username}" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    When I click on "View" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
     And I save the field labeled "Organization" as "orgName1"
     And I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
@@ -64,7 +64,7 @@ Feature: Validate all scenarios in the Pre-Application
     Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:focusAreaAssociateTableId---"
     And I close modal by clicking the top right x button
     And I expand nested table containing column value "BP01"
-    Then I softly see field "Focus Area : Automation Permanent Focus Area" inside page block
+    Then I see "Focus Area :" inside rows of enhanced grid id "---program:-:enhancedGridTableId---"
     When I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 1000       | 5000           | 100            |
@@ -75,8 +75,8 @@ Feature: Validate all scenarios in the Pre-Application
   Scenario: Validate the attachment checklist of the PreApplication
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload attachment "data.xlsx" of type "Other"
-    Then I see "Other" has been added in "Attachments" flex table
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
+    Then I see "Other" has been added in "Supporting Documents Checklist" flex table
 
   @70466 @53160 @70467 @submitPreApplication @smoke @deepika
   Scenario: Submitting an pre application to Grantor |To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on pre-application
@@ -91,7 +91,7 @@ Feature: Validate all scenarios in the Pre-Application
     Then I softly see value "$10,150.00" for title "Total Project Cost" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload attachment "data.xlsx" of type "Other"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "green"
     Then I softly cannot see top right button "Edit" in page detail
@@ -110,10 +110,10 @@ Feature: Validate all scenarios in the Pre-Application
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload attachment "data.xlsx" of type "Other"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - All"
@@ -131,7 +131,7 @@ Feature: Validate all scenarios in the Pre-Application
     Then I softly can see top right button "Reject" in page detail
     When I click on "Accept" in the page details
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - Submitted"
@@ -164,8 +164,8 @@ Feature: Validate all scenarios in the Pre-Application
     Given I click on "Back" in the page details
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Contact |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
+      | Name                       | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Then I softly see status in Progress-bar is "Submitted" and is "Green"
     Given I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
@@ -207,7 +207,7 @@ Feature: Validate all scenarios in the Pre-Application
     Then I softly see value "$10,150.00" for title "Total Project Cost" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload attachment "data.xlsx" of type "Other"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
     And I click on Menu icon present on top right corner of the page
     And I select "Take Snapshot" from dropdown
@@ -228,7 +228,7 @@ Feature: Validate all scenarios in the Pre-Application
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload attachment "data.xlsx" of type "Other"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Applications" tab
@@ -244,7 +244,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "Reject" in the page details
     Then I softly see status in Progress-bar is "Rejected" and is "Red"
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - Submitted"
@@ -268,10 +268,10 @@ Feature: Validate all scenarios in the Pre-Application
       | Construction  | 5000   | 5000       | 50             | 100            |
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
-    And I upload attachment "data.xlsx" of type "Other"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - All"
@@ -286,7 +286,7 @@ Feature: Validate all scenarios in the Pre-Application
     And I click on "Start" icon for "Record id" inside flex table with id "---preApplication:-:pendingTaskTableId---"
     When I click on "Accept" in the page details
     Given I am on "SUBPORTAL" portal
-    And I login as "SPI" user
+    And I login as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - Submitted"
@@ -320,8 +320,8 @@ Feature: Validate all scenarios in the Pre-Application
     Given I click on "Back" in the page details
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Contact |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
+      | Name                       | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Given I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab

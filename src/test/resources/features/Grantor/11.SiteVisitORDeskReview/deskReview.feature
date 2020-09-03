@@ -19,6 +19,7 @@ Feature: Validate all scenarios in Desk Review
     And I enter "Edition" values from "DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "DeskReview"
 
   @51010 @51011 @51012 @51013 @62109 @deskReviewCreationEditionParticipantAssociationApproverSelection @smoke
   Scenario: Validate the Creation, Created Date, Edition, Participant Association of Desk Review and Approver selection of Desk Review
@@ -1155,7 +1156,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I "Send to Owner" in the approval decision
     When I navigate to "History" sub tab
-    Then I see value "Active" for title "New Value" inside table "History"
+    Then I see value "In Progress" for title "New Value" inside table "History"
 
   @65246 @69407 @corerctiveActionsDueDateDeskReview @deepika
   Scenario: Validate Desk Review Submit to Grantor and Corrective Actions By Subrecipient
@@ -1234,8 +1235,13 @@ Feature: Validate all scenarios in Desk Review
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    When I perform quick search for "Record Id" in "---deskreview:-:internalActiveGrants---" panel
-    Then I softly see "Record Id" inside flex table with id "---deskreview:-:internalActiveGrants---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---deskreview:-:internalActiveGrants---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalActiveGrants---"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
+    Given I navigate to "Management" sub tab
+    When I perform quick search for "Record Id" in "---deskreview:-:managementInitiateDRtableid---" panel
+    Then I softly see "Record Id" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
 
   @56368 @viewCreatedDeskReview @meenakshi
   Scenario: User will be able to view the list of all Site Visit / Desk Review created for Awards under Monitoring tab - Desk Review

@@ -103,7 +103,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Status" as "Created"
     When I click on "Save" in the page details
     When I navigate to "Open Items" sub tab
-    Then I softly see that "{SavedValue:SiteVisitID}" has been added in flextable with Id "---closeout:-:closeoutPendingAmendmentRequestsTableId---"
+    Then I softly see that "{SavedValue:SiteVisitID}" has been added in flextable with Id "---closeout:-:PendingSiteVisitDeskReviewTableId---"
     Examples:
       | Award Name                                      | Grant Name                                      |
       | {SavedValue:Automation Runtime Amendment Award} | {SavedValue:Automation Runtime Amendment Award} |
@@ -242,19 +242,19 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     Given I click on "Send To Subrecipient" in the page details
     And I checkout to yopmail with mailid "automation.spi@yopmail.com"
-    And I pause execution for "20" seconds
+    And I pause execution for "190" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification of Closeout Request for {SavedValue:Automation Runtime Award for closeout}
+      Sandbox: Notification of Closeout Request for {SavedValue:Automation RuntimeAward for closeout}
       """
     #86711
     And I checkout to yopmail with mailid "automation.spa@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "190" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification of Closeout Request for {SavedValue:Automation Runtime Award for closeout}
+      Sandbox: Notification of Closeout Request for {SavedValue:Automation RuntimeAward for closeout}
       """
     Then I refresh the page
     And I am on "INTERNAL" portal
@@ -276,7 +276,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Submit for Approval" in the page details
     #86707
     And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "190" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -284,13 +284,12 @@ Feature: Validate all scenarios in Closeout
       """
     #86709
     And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "190" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
       Sandbox: Notification: Closeout Request {SavedValue:closeoutID} has beenSubmitted for your Approval.
       """
-
   @94022 @94019 @94021 @94040 @94042 @validateSendCloseoutRequestForSendReviewForEXEUser @meenakshi
   Scenario: To verify Closeout owner able to send the Closeout request for Send for review in closeout phase
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user"
@@ -562,6 +561,12 @@ Feature: Validate all scenarios in Closeout
     And I enter "TerminationEdition" values from "Closeout_Field_Values.xlsx"
     And I save the field labeled "EGMS ID" as "closeoutID"
     When I click on "Save" in the page details
+    And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Closeout" tab
+    When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
+    And I click toggle button to select "Project Period Closeouts - All"
+    And I perform quick search for "{SavedValue:closeoutID}" in "ProjectPeriodCloseoutGrantor" panel
+    And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "ProjectPeriodCloseoutGrantor"
     When I navigate to "Attachments" sub tab
     Then I softly cannot see top right button "Add Files" in flex table with id "---closeout:-:CloseoutDetailsTableId---"
 
@@ -597,20 +602,20 @@ Feature: Validate all scenarios in Closeout
     When I perform quick search for "Record Id" in "---closeout:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I navigate to "Attachments" sub tab
-    Then I softly can see top right button "Add Files" in flex table with id "---closeout:-:CloseoutDetailsTableId---"
-    And I click on top right button "Add Files" in flex table with id "---closeout:-:CloseoutDetailsTableId---"
+    Then I softly can see top right button "Add Files" in flex table with id "---closeout:-:ExternalCloseoutDetailsTableId---"
+    And I click on top right button "Add Files" in flex table with id "---closeout:-:ExternalCloseoutDetailsTableId---"
     And I upload attachment "Attachment.pdf" of type "Federal Closeout Document" from computer
-    Then I softly see "Attachment.pdf" has been added in "Federal Closeout Document" flex table
+    Then I softly see "Attachment.pdf" has been added in "Closeout Files" flex table
     #95609 #monu
-    And I click on "Edit" icon for "closeout files.png" inside flex table with id "---closeout:-:CloseoutDetailsTableId---"
+    And I click on "Edit" icon for "Attachment.pdf" inside flex table with id "---closeout:-:ExternalCloseoutDetailsTableId---"
     When I select Classification as "Other" at upload file modal
     When I enter value as "Test Automation" in field "Description" at Library Files
     When I click on "Save" button in send email modal
-    Then I softly see value "Other" for title "Classification" inside table "---closeout:-:CloseoutDetailsTableId---"
+    Then I softly see value "Other" for title "Classification" inside table "---closeout:-:ExternalCloseoutDetailsTableId---"
     #95607 #monu
-    And I click on "Delete" icon for "closeout files.png" inside flex table with id "---closeout:-:CloseoutDetailsTableId---"
+    And I click on "Delete" icon for "Attachment.pdf" inside flex table with id "---closeout:-:ExternalCloseoutDetailsTableId---"
     Then I see the following messages in the page details :
-      | File closeout files.png deleted successfully. |
+      | File Attachment.pdf deleted successfully. |
 
   @96201 @96202 @VerifyCloseoutDeobligatedAmountForCloseout-Scheduled @monu
   Scenario: Validate user can see closeout deobligated amount for created scheduled closeout request
@@ -869,3 +874,31 @@ Feature: Validate all scenarios in Closeout
     And I select radio button "Forward" in the approval decision
     Then I can see the comment box in the approval decision
     Then I can see user "{SavedValue:EXE Username}" in the user lookup in the approval decision
+
+  @96200 @VerifyEditDeleteActionIconsAtAdhocCloseout @buglogged93860
+  Scenario: Validate user other than owner is not able to see Edit and delete row level icon
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "closeoutRequestNo"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I see status in Progress-bar is "Created" and is "Green"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Requests" sub tab
+    Then I softly can see row level action button "View" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
+    Then I softly cannot see row level action button "Edit" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
+    Then I softly cannot see row level action button "Delete" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"

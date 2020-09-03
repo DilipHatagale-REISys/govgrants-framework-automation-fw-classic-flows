@@ -216,6 +216,7 @@ Feature: Payment Request scenarios without background
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |
     When I close "Add Line Items" modal by clicking the top right x button
     And I navigate to "Attachments" sub tab
+    #steps need to be added for supportive document
     Then I see that "Automation" has been added in flextable with Id "---paymentRequest:-:checklistTableId---"
     Examples:
       | Award Name                            | Grant Name                            |
@@ -269,6 +270,7 @@ Feature: Payment Request scenarios without background
     When I enter "No Program Income_Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
+    #after bug fix steps need to modify bug 94779
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Invoice"
     Then I see "Announcement_Field_Values.xlsx" has been added in "Attachment" flex table
     Examples:
@@ -315,6 +317,7 @@ Feature: Payment Request scenarios without background
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Attachments" sub tab
+    #steps needs to be added for suppporting document after bug fix 94779
     Then I see that "Automation" has been added in flextable with Id "---paymentRequest:-:checklistTableId---"
     Examples:
       | Award Name                            | Grant Name                            |
@@ -780,6 +783,7 @@ Feature: Payment Request scenarios without background
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
+    #steps need to be modify after bug fix 94779
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Invoice"
     And I pause execution for "2" seconds
     Then I see "Invoice" has been added in "Attachment" flex table

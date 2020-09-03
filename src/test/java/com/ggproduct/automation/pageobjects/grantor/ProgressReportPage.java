@@ -95,9 +95,9 @@ public class ProgressReportPage extends GrantorProjectManager {
             fieldValue = fieldValue.replaceAll("\\s.*", "");
         }
         if (isSoftly) {
-            I.amPerforming().assertionsTo().assertThat(I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy"))).isEqualTo(fieldValue);
+            I.amPerforming().assertionsTo().assertThat(I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy"))).isEqualTo(fieldValue);
         } else {
-            Assert.assertEquals(I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")), fieldValue);
+            Assert.assertEquals(I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy")), fieldValue);
         }
     }
 

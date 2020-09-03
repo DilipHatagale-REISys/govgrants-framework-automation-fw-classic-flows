@@ -410,7 +410,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Revise Risk Assessment" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
     Then I softly see values "Automation Permanent Organization for Risk Assessment" and "Revise Risk Assessment" inside table
-    And I checkout to yopmail with mailid "automationspi@yopmail.com"
+    And I checkout to yopmail with mailid "automationspi3@yopmail.com"
     And I pause execution for "40" seconds
     Then I refresh the page
     And I see the mail subject is as follows :

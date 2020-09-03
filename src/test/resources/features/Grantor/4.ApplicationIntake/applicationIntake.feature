@@ -4,7 +4,7 @@ Feature: Validate all scenarios in the Application Intake
   Background: Qualify Announcement and Create Application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI" user
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
@@ -64,7 +64,7 @@ Feature: Validate all scenarios in the Application Intake
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:SPI Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
@@ -100,7 +100,7 @@ Feature: Validate all scenarios in the Application Intake
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:SPI Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
@@ -118,8 +118,8 @@ Feature: Validate all scenarios in the Application Intake
     Given I click on "Back" in the page details
     And I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Contact |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
+      | Name                       | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -162,7 +162,7 @@ Feature: Validate all scenarios in the Application Intake
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:SPI Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
@@ -193,7 +193,7 @@ Feature: Validate all scenarios in the Application Intake
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:SPI Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I navigate to "Attachments" sub tab
@@ -214,7 +214,7 @@ Feature: Validate all scenarios in the Application Intake
   Validate whether Application Title field is editable after creating the Application
     When I navigate to "Overview" sub tab
     Then I softly see field "Created Date" is not editable
-    When I click on "Edit" icon for "{SavedValue:SPI Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     Then I softly verify that All the following projects roles are available in picklist :
       | Principal Investigator   |
       | Fiscal Contact           |
@@ -227,11 +227,12 @@ Feature: Validate all scenarios in the Application Intake
   @70527 @applicationAttachmentAndNotes @deepika
   Scenario: Validate whether user can add attachment checklist and Notes on the Application
     When I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "General Assurances"
-    Then I softly see "Active" has been added in "Attachments" flex table
+    And I click on top right button "Add Files" in flex table with id "---applicationIntake:-:ApplicationAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "General Assurances" from computer
+    Then I softly see "Attachment.pdf" has been added in "Supporting Documents Checklist" flex table
     And I add notes records
     And I close modal by clicking the top right x button
-    Then I softly see value "Notes Record" for title "Title" inside table "toggleNotes"
+    Then I softly see value "Notes Record" for title "Title" inside table "---applicationIntake:-:ApplicationNotesTableId---"
 
   @73521 @70526 @snapshotAfterApplicationIsSubmitted @deepika @skipOnJenkins
   Scenario Outline: Validate SR user is able to view the Snapshot after Application is Submitted to Grantor status| Validate once the Application is submitted to Grantor then the field Submitted by on Overview Tab will get updated by the User Name.
@@ -244,7 +245,7 @@ Feature: Validate all scenarios in the Application Intake
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:SPI Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
@@ -262,11 +263,11 @@ Feature: Validate all scenarios in the Application Intake
     Given I click on "Back" in the page details
     And I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Contact |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
+      | Name                       | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     And I navigate to "Overview" sub tab
-    Then I softly see field "Submitted By" as "{SavedValue:SPI Username}"
+    Then I softly see field "Submitted By" as "{SavedValue:SPI3 Username}"
     Given I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -287,9 +288,9 @@ Feature: Validate all scenarios in the Application Intake
   Scenario:Validate whether user is able to associate new contacts while creating an application
     And I navigate to "Overview" sub tab
     When I click on top right button "Associate" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    When I perform quick search for "automation spa" in "---applicationIntake:-:associateNewContactsTableId---" panel
-    When I click "Add" after selection of "automation spa" in the table "---applicationIntake:-:associateNewContactsTableId---"
-    Then I see "automation spa" has been added in "---applicationReview:-:flexGridAppContactTableId---" flex table
+    When I perform quick search for "Automation SPA" in "---applicationIntake:-:associateNewContactsTableId---" panel
+    When I click "Add" after selection of "Automation SPA" in the table "---applicationIntake:-:associateNewContactsTableId---"
+    Then I see "Automation SPA" has been added in "---applicationReview:-:flexGridAppContactTableId---" flex table
 
   @73944 @73945 @71409 @73947 @73950 @73948 @73949 @maxAppValidationError @deepika
   Scenario: Validate whether User  will be able to view the following error message "Reached the Maximum number of Applications" when the limit has been reached.
@@ -307,7 +308,7 @@ Feature: Validate all scenarios in the Application Intake
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:SPI Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
@@ -325,15 +326,15 @@ Feature: Validate all scenarios in the Application Intake
     Given I click on "Back" in the page details
     And I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
-      | Name           | Project Role             | Is Key Contact |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
+      | Name                       | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     When I navigate to "Opportunities" tab
     When I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Opportunities Converted to Application - All"
-    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Opportunity Name" inside table "cae"
+    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "cae"
     And I click toggle button to select "Opportunities Converted to Application - Open"
-    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Opportunity Name" inside table "cae"
+    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "cae"
     When I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "cae" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside flex table with id "cae"
     When I click on "Create Application" in the page details
@@ -344,7 +345,7 @@ Feature: Validate all scenarios in the Application Intake
     When I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Opportunities Converted to Application - All"
     When I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---applicationIntake:-:convertedToApplicationTableID---" panel
-    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Opportunity Name" inside table "---applicationIntake:-:convertedToApplicationTableID---"
+    Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "---applicationIntake:-:convertedToApplicationTableID---"
     And I save the value from row "1" for column name "Funding Opportunity Id" as "oppId" from flex table "---applicationIntake:-:convertedToApplicationTableID---"
     And I click on advance filter "#advfcae" of table id "---applicationIntake:-:convertedToApplicationTableID---"
     And I enter advance filter values inside id "---applicationIntake:-:convertedToApplicationTableID---"
