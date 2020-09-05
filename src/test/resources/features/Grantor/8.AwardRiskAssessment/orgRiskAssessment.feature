@@ -914,8 +914,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I enter value "Checked" into field "Signature__c"
     When I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
-    Given I delete the record "{SavedValue:EXE Username}cution Award" from the object "Award"
-    And I delete the record "{SavedValue:EXE Username}cution Award" from the object "Grant"
+    Given I delete the record "{SavedValue:Automation Runtime Execution Award}" from the object "Award"
+    And I delete the record "{SavedValue:Automation Runtime Execution Award}" from the object "Grant"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1054,10 +1054,10 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Activate" in the page details
     Then I see that "Subaward" is in "Activated" status
     Examples:
-      | Award Name                            | Grant Name                            |
-      | {SavedValue:EXE Username}cution Award | {SavedValue:EXE Username}cution Award |
+      | Award Name                                      | Grant Name                                      |
+      | {SavedValue:Automation Runtime Execution Award} | {SavedValue:Automation Runtime Execution Award} |
 
-  @62952 @orRiskAssessmentIsNotDisplayedForINDUser @deepika
+  @62952 @orRiskAssessmentIsNotDisplayedForINDUser @deepika @issuewithINDUser
   Scenario:  Validate Data related to organization risk assessment should not be displayed on the Individual Profile view .
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -1245,8 +1245,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
 
   @63233 @verifyRiskAssessmemtException @deepika @smoke
   Scenario Outline: Validate system generates generates an exception at award activation if Organizational Risk Assessment is Created and not Active
-    Given I delete the record "{SavedValue:EXE Username}cution Award" from the object "Award"
-    And I delete the record "{SavedValue:EXE Username}cution Award" from the object "Grant"
+    Given I delete the record "{SavedValue:Automation Runtime Execution Award}" from the object "Award"
+    And I delete the record "{SavedValue:Automation Runtime Execution Award}" from the object "Grant"
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
@@ -1263,7 +1263,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I enter in modal "Grant_Edition1" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I navigate to "Subawards" sub tab
-    And I click on "Start" icon for "Revise Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
+    When I click on "View" icon for "{SavedValue:Automation Runtime Execution Award}" inside flex table with id "---subAwardStandalone:-:subawardsTableId---"
     And I get the "EGMS ID"
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -1310,7 +1310,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SA" user on "SUBPORTAL" portal
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1355,7 +1355,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SA" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1364,8 +1364,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     Then I see the following messages in the page details contains:
       | Your Organization does not have an active Risk Assessment. Create and activate a Risk Assessment as the Subaward cannot be accepted without an active Risk Assessment. |
     Examples:
-      | Award Name                            | Grant Name                            |
-      | {SavedValue:EXE Username}cution Award | {SavedValue:EXE Username}cution Award |
+      | Award Name                                      | Grant Name                                      |
+      | {SavedValue:Automation Runtime Execution Award} | {SavedValue:Automation Runtime Execution Award} |
 
   @63979 @grantorCanViewOverallRisk @deepika
   Scenario: Validate Internal User can also View the OverallRisk field on Risk Assessment Tab
@@ -1581,7 +1581,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Automation Permanent Organization for Risk Assessment" in "---orgRiskAssessment:-:completedTaskTableId---" panel
     Then I see that "Automation Permanent Organization for Risk Assessment" has been added in flextable with Id "---orgRiskAssessment:-:completedTaskTableId---"
 
-  @64124 @orRiskAssessmentTaskNotDisplayedForINDUser @deepika
+  @64124 @orRiskAssessmentTaskNotDisplayedForINDUser @deepika @issuewithINDUser
   Scenario:  Validate Task for submitting organizational Risk Assessment should not be generated for IND profile User .
     When I re-login as "IND" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
@@ -1687,7 +1687,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
-    When I re-login as "SPI2" user on "SUBPORTAL" portal
+    When I re-login as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
@@ -1696,7 +1696,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
   @64603 @taskIsNotCreatedForSPI @deepika
   Scenario: Verify Task is not generated for SPI to Create Risk Assessment for an Organization
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI2" user
+    When I login as "SPI3" user
     When I create a risk assessment record for organization "Automation Permanent Organization for Risk Assessment"
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1753,7 +1753,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Active" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     And I click on top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    When I re-login as "SPI2" user on "SUBPORTAL" portal
+    When I re-login as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Revise Risk Assessment" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
@@ -1811,7 +1811,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "EGMSID"
-    When I re-login to "Grants Portal" app as "SPI2" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
@@ -1828,7 +1828,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
-    When I re-login to "Grants Portal" app as "SPI2" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
@@ -1878,7 +1878,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I click on "Submit" in the page details
-    When I re-login as "SPI2" user on "SUBPORTAL" portal
+    When I re-login as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
@@ -2009,5 +2009,3 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Overview" sub tab
     Then I see field "Effective Date" is not editable
     Then I see field "Expiration Date" is not editable
-
-    

@@ -94,7 +94,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "History" sub tab
     Then I softly see value "Active" for title "New Value" inside table "History"
 
-  @58168 @58169 @59875 @pendingTaskCreationforRiskAssesmentostRejectCheckFieldHistory @deepika
+  @58168 @58169 @59875 @pendingTaskCreationforRiskAssesmentostRejectCheckFieldHistory @deepika @buglogged101142
   Scenario: Validate the field history after rejection of Risk Assessment and whether user is able to view the pending task once submitted for approval under Monitoring Tab and First Approver is able to reject the Risk Assessment then status in Progress bar is Rejected.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -526,7 +526,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Management" sub tab
     Then I can see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
 
-  @58820 @58180 @58937 @61383 @66070 @recipientCanViewActiveRAeditButtonAfterSubmitforApprovalcreationofSecondRA @deepika @smoke
+  @58820 @58180 @58937 @61383 @66070 @recipientCanViewActiveRAeditButtonAfterSubmitforApprovalcreationofSecondRA @deepika @smoke @buglogged101142
   Scenario: Validate Subrecipients can view the Active Risk Assessment and Award Owner is not allowed to Edit the Risk Assessment post submitting it for approval and Pending task is created for the Fiscal approver when Program approver approves the RA and completed task
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -719,7 +719,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     Then I can see row level action button "Edit" against "Record Id" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
 
-  @58822 @riskAssessmentRevisionBeforeAwardActivation @deepika @Bud-69861
+  @58822 @riskAssessmentRevisionBeforeAwardActivation @deepika
   Scenario Outline: Validate the 'New' Button  availability to create  a new Risk Assessment is not available to Award Owner after award activation
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1322,7 +1322,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "History" sub tab
     Then I see value "Submitted for Approval" for title "Old Value" inside table "History"
 
-  @59809 @historyOfRiskAssessmentWhenSendBacktoOwnerbyFO @deepika
+  @59809 @historyOfRiskAssessmentWhenSendBacktoOwnerbyFO @deepika @buglogged101142
   Scenario: To Validate field history update post Risk Assessment is send back to owner by Fiscal Approver.
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2915,7 +2915,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2976,7 +2976,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
-    Then I see field "Overall Risk" as "34.00%"
+    Then I see field "Overall Risk" as "37.00%"
 
   @addAttachmentForRecordOnwerInTable @deepika
   Scenario: Validate attachment is added to the flex table after submiting the risk assessment for approval.
@@ -2999,8 +2999,8 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save and Continue" in the page details
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---orgRiskAssessment:-:awardRiskAssessmentTableId---"
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "AGENCY DETAILS" from computer
-    Then I softly see value "Announcement_Field_Values.xlsx" for title "Title" inside table "---orgRiskAssessment:-:awardRiskAssessmentTableId---"
+    When I upload attachment "Attachment.pdf" of type "AGENCY DETAILS" from computer
+    Then I softly see value "Attachment.pdf" for title "Title" inside table "---orgRiskAssessment:-:awardRiskAssessmentTableId---"
 
   @58825 @monitoringTabListViewsOfRiskAssessment @deepika
   Scenario: Monitoring Tab List Views for all Award level risk assessments in the internal portal
@@ -3232,8 +3232,8 @@ Feature: Validate all scenarios in the Risk Assessment
 
   @66874 @orgRAisExpiredAwardRiskAssessmentSetasNo @deepika
   Scenario Outline: Validate when Organization Risk Assessment is not active and Award Risk Assessment Required is selected as No then System should throw an exception when user activates the award.
-    Given I delete the record "{SavedValue:EXE Username}cution Award" from the object "Award"
-    And I delete the record "{SavedValue:EXE Username}cution Award" from the object "Grant"
+    Given I delete the record "{SavedValue:Automation Runtime Execution Award}" from the object "Award"
+    And I delete the record "{SavedValue:Automation Runtime Execution Award}" from the object "Grant"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
@@ -3347,7 +3347,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Your Organization does not have an active Risk Assessment. Create and activate a Risk Assessment as the Subaward cannot be accepted without an active Risk Assessment. |
     Examples:
       | Award Name                            | Grant Name                            |
-      | {SavedValue:EXE Username}cution Award | {SavedValue:EXE Username}cution Award |
+      | {SavedValue:Automation Runtime Execution Award} | {SavedValue:Automation Runtime Execution Award} |
 
   @59701 @addApproversForRiskAssessment @meenakshi
   Scenario: Validate whether user is able to Add Approvers to Risk Assessment

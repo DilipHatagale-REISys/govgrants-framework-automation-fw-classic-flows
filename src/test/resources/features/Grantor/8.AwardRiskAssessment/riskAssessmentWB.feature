@@ -180,7 +180,7 @@ Feature: Risk Assessment scenarios without background
     When I click on "View" icon for "Active" inside flex table with id "---riskassessment:-:organizationprofileviewTableId---" without waiting for record
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
 
-  @60967 @60336 @60334 @60333 @FundingChangeAmendmentRiskScore @deepika @bug-ticketNumber-68419
+  @60967 @60336 @60334 @60333 @FundingChangeAmendmentRiskScore @deepika
   Scenario: Validate the Risk Score which should remain as is when Award Risk Assessment is copied to new created award when amendment type - Funding Change
     And I activated standalone subaward "Automation Runtime Award Risk Assessment" with properties "YES_RISK_ASSESSMENT"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -288,7 +288,7 @@ Feature: Risk Assessment scenarios without background
     When I click on "View" icon for "Active" inside flex table with id "---riskassessment:-:organizationprofileviewTableId---" without waiting for record
     Then I softly see field "OverAll Risk" as "{SavedValue:OverAllRisk}"
 
-  @62956 @62957 @62958 @awardRACopiedToperiodicRenewalOverallRisk @deepika @bug-ticketNumber-64367
+  @62956 @62957 @62958 @awardRACopiedToperiodicRenewalOverallRisk @deepika
   Scenario: Validate The Risk assessment is not carried forward to new active award and new button to risk assessmnet is avialble for old award owner-  Periodic Renewal Amendment
     And I activated standalone subaward "Automation Runtime Award Risk Assessment" with properties "YES_RISK_ASSESSMENT"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -595,8 +595,9 @@ Feature: Risk Assessment scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I navigate to "Management" sub tab
-    And I perform quick search for "Active" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
-    When I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---" without waiting for record
+    And I pause execution for "30" seconds
+    And I perform quick search for "Active" in "---riskassessment:-:AwardRiskAssesmentTableId---" panel
+    When I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:AwardRiskAssesmentTableId---" without waiting for record
     And I save the field labeled "OverAll Risk" as "OverAllRisk"
     And I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Grants" tab
