@@ -915,7 +915,7 @@ Feature: Payment Request scenarios without background
   Scenario Outline: Validate progress report schedules getting updated on active award after editing schedule
     And I activated standalone subaward "Automation Runtime Award" with properties "NO_ADVANCE_PERMISSION"
     And I am on "INTERNAL" portal
-    And I login to "As a Grantor" app as "dynamicUser" user
+    And I login to "As a publishGrantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"

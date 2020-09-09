@@ -10,6 +10,7 @@ Feature: Validate all scenarios in Payment Request
     And I click toggle button to select "Subawards  - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "SubawardId"
 
   @38840 @creationOfAdhocReimbursementPaymentRequest @smoke
   Scenario: To create an Adhoc Reimbursement Payment Request
@@ -455,7 +456,7 @@ Feature: Validate all scenarios in Payment Request
     And I pause execution for "2" seconds
     Then I see status in Progress-bar is "Approved" and is "Green"
 
-  @53981 @sendBackAdvancePaymentRequest @mahadev
+  @53981 @sendBackAdvancePaymentRequest @mahadev @buglogged101142
   Scenario: Validate confirmation message after sending back of advance payment request to owner
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -487,7 +488,7 @@ Feature: Validate all scenarios in Payment Request
     And I "Send to Owner" in the approval decision
     Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
 
-  @53982 @forwardAdvancePaymentRequest @mahadev
+  @53982 @forwardAdvancePaymentRequest @mahadev @buglogged101142
   Scenario: validate approver can forward advance payment request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -636,7 +637,7 @@ Feature: Validate all scenarios in Payment Request
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "Green"
 
-  @54593 @54666 @54352 @70816 @54664 @54665 @validatePaidButtonNotDisplayedAfterRejectingReimbursementPR @mahadev
+  @54593 @54666 @54352 @70816 @54664 @54665 @validatePaidButtonNotDisplayedAfterRejectingReimbursementPR @mahadev @buglogged101170
   Scenario: Validate the paid button not displayed on reimbursement Payment request after rejection
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -800,7 +801,7 @@ Feature: Validate all scenarios in Payment Request
     And I refresh the page
     Then I see "Invoice" has been added in "Attachment" flex table
 
-  @54409 @uploadAttachmentOfTypeInvoiceAdvancePR @mahadev
+  @54409 @uploadAttachmentOfTypeInvoiceAdvancePR1 @mahadev
   Scenario: verify that uploaded document will reflect on  attachment section of type Invoice for advance payment request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -957,7 +958,7 @@ Feature: Validate all scenarios in Payment Request
       | Title        | Disallowed Amount | Disallowed Amount Reason    |
       | Extra Salary | 50                | Automation Test Description |
     Then I see the following messages in the page details :
-      | Advance applied cannot be greater than the Net Payment. : |
+      | Advance applied cannot be greater than the Net Payment. |
 
   @54323 @validateSuccesfulApprovedMessageOnReimbursementPR @mahadev
   Scenario: Validate succesfully approved message on Reimbursement Payment Request
@@ -1058,7 +1059,7 @@ Feature: Validate all scenarios in Payment Request
     And I "Disapprove" in the approval decision
     Then I can see the message "Successfully disapproved" in the approval decision
 
-  @54326 @validateSendBackMessageOnReimbursementPR @mahadev
+  @54326 @validateSendBackMessageOnReimbursementPR @mahadev @buglogged101142
   Scenario: Validate succesfully send back payment request message on Reimbursement Payment Request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1354,7 +1355,7 @@ Feature: Validate all scenarios in Payment Request
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Sent Back for Revisions
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI3 has been Sent Back for Revisions
       """
 
   @55626 @advancePaymentRequestSubmitToGrantorBySPIEmailNotification @jitendra
@@ -1378,7 +1379,7 @@ Feature: Validate all scenarios in Payment Request
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Submitted
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI3 has been Submitted
       """
 
   @55627 @emailNotificationOnSubmitToGrantorReimbursement @jitendra
@@ -1402,7 +1403,7 @@ Feature: Validate all scenarios in Payment Request
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Submitted
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI3 has been Submitted
       """
 
   @55630 @validateAdvancePRSendBackToSubReceipientEmailNotification @jitendra
@@ -1431,7 +1432,7 @@ Feature: Validate all scenarios in Payment Request
     Then I refresh the page
     And I see the mail subject is as follows :
      """
-     Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Sent Back for Revisions
+     Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI3 has been Sent Back for Revisions
      """
 
   @55628 @approvalOfAdvancePaymentRequestEmailNotification @jitendra
@@ -1468,7 +1469,7 @@ Feature: Validate all scenarios in Payment Request
     Then I refresh the page
     And I see the mail subject is as follows :
      """
-     Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Submitted for Approval
+     Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI3 has been Submitted
      """
 
   @55636 @approversApprovePaymentRequestEmailNotificationReimbursement @jitendra
@@ -1518,7 +1519,7 @@ Feature: Validate all scenarios in Payment Request
     Then I refresh the page
     And I see the mail subject is as follows :
      """
-     Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Approved
+     Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI3 has been Approved
      """
     Examples:
       | Award Name                            | Grant Name                            |
@@ -1565,7 +1566,7 @@ Feature: Validate all scenarios in Payment Request
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Submitted for Approval
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI3 has been Submitted for Approval
       """
     Examples:
       | Award Name                            | Grant Name                            |
@@ -1645,7 +1646,7 @@ Feature: Validate all scenarios in Payment Request
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Approved
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI3 has been Approved
       """
 
   @55634 @sendToOwnerEmailNotificationAdvance @jitendra
@@ -1683,7 +1684,7 @@ Feature: Validate all scenarios in Payment Request
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Sent Back
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI3 has been Sent Back
       """
 
   @55638 @sendToOwnerPREmailNotificationReimbursement @jitendra
@@ -1727,7 +1728,7 @@ Feature: Validate all scenarios in Payment Request
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI has been Sent Back
+      Sandbox: Notification: Payment Request {SavedValue:PaymentId} from AutomationSPI3 has been Sent Back
       """
     Examples:
       | Award Name                            | Grant Name                            |
@@ -1866,7 +1867,7 @@ Feature: Validate all scenarios in Payment Request
       Sandbox: Notification: Payment Request {SavedValue:PaymentId} for {SavedValue:SubawardId}has been Rejected
       """
 
-  @55404 @advancePRSentBackToOwner @jitendra
+  @55404 @advancePRSentBackToOwner @jitendra @buglogged101132
   Scenario: Verify that Payment Approval can send back Payment request to Owner (Advance)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1955,7 +1956,8 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 10                    |
     And I click on "Submit for Approval" in the page details
-    Then I see the following messages in the page details contains:
+    And I click on "Submit for Approval" in the page details
+    Then I softly see the following messages in the page details contains:
       | Responsibilities Tab - A Fiscal Approver is required in order to submit this Payment Request for approval. |
 
   @55405 @advanceMultiplePRErrorMsgOnSecondPR @jitendra

@@ -72,8 +72,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardFromFDM:-:associateContactTableId---"
-    When I perform quick search for "automation spa" in "---subAwardFromFDM:-:keyContactsTableId---" panel
-    When I click "Associate" after selection of "automation spa" in the table "---subAwardFromFDM:-:keyContactsTableId---"
+    When I perform quick search for "Automation SPA" in "---subAwardFromFDM:-:keyContactsTableId---" panel
+    When I click "Associate" after selection of "Automation SPA" in the table "---subAwardFromFDM:-:keyContactsTableId---"
     When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
@@ -385,16 +385,34 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I enter in modal "Payment Request Schedule_FDM" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close "Edit Payment Request Schedule" modal by clicking the top right x button
+    Given I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:GrantsRolesAndResponsibilitiesTableId---" by clicking "Edit" :
+      | Role               | Name                      | Description                 |
+      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
+      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
     And I navigate to "Budget" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 500         |
     And I click on "Submit for Approval" in the page details
+    And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Associate Funding Account with proper Encumbrance value as per Total Subaward Amount This Budget Period. |
+    And I navigate to "Budget" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1001        |
+    And I click on "Submit for Approval" in the page details
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Associate Funding Account with proper Encumbrance value as per Total Subaward Amount This Budget Period. |
@@ -651,7 +669,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @38222  @50994 @65418 @65420 @awardApprovalAndSendToRecipientAfterApproval
+  @38222 @50994 @65418 @65420 @awardApprovalAndSendToRecipientAfterApproval @buglogged101436
   Scenario Outline: Validate award approval and send to subrecipient after approval | validate submit for approval button displayed
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -913,7 +931,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @67557 @PRFrequencyNotEnterAndSubmitForApprove @jitendra
+  @67557 @PRFrequencyNotEnterAndSubmitForApprove @jitendra @buglogged101430
   Scenario Outline: To validate that if frequency column is not set in the payment requests schedule Table  by the Grantor (Internal user pm profile ) and Submit for approval button is clicked the validation message must appear.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -1081,8 +1099,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardFromFDM:-:associateContactTableId---"
-    When I perform quick search for "automation spa" in "---subAwardFromFDM:-:keyContactsTableId---" panel
-    When I click "Associate" after selection of "automation spa" in the table "---subAwardFromFDM:-:keyContactsTableId---"
+    When I perform quick search for "Automation SPA" in "---subAwardFromFDM:-:keyContactsTableId---" panel
+    When I click "Associate" after selection of "Automation SPA" in the table "---subAwardFromFDM:-:keyContactsTableId---"
     When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
@@ -1229,7 +1247,7 @@ Feature: Validate all scenarios in the award created from FDM
     Then I softly see field "Project Period Start Date" as "{SavedValue:PPSD}"
     Then I softly see field "Program Income Allowed?" as "{SavedValue:PIA}"
     Then I softly see field "Project Period End Date" as "{SavedValue:PPED}"
-    Then I softly see field "Created by" as "{SavedValue:CreatedBy}"
+    Then I softly see field "Created by" as "{SavedValue:PM Username}"
     Then I softly see field "KPI's Required?" as "{SavedValue:KPI}"
     Then I softly see field "Funding Organization" as "{SavedValue:InternalOrg}"
     Then I softly see field "Objectives Required?" as "{SavedValue:ObjRequired}"
@@ -1413,8 +1431,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardFromFDM:-:associateContactTableId---"
-    When I perform quick search for "automation spa" in "---subAwardFromFDM:-:keyContactsTableId---" panel
-    When I click "Associate" after selection of "automation spa" in the table "---subAwardFromFDM:-:keyContactsTableId---"
+    When I perform quick search for "Automation SPA" in "---subAwardFromFDM:-:keyContactsTableId---" panel
+    When I click "Associate" after selection of "Automation SPA" in the table "---subAwardFromFDM:-:keyContactsTableId---"
     When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:associateContactTableId---" by clicking "Edit" :
@@ -1619,7 +1637,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     When I navigate to "Budget" sub tab
-    Then I cannot see row level action button "Edit" against "{SavedValue:fundingAccount}" in flex table with id "---subAwardFromFDM:-:fundingAccountsTableId---"
+    Then I cannot see row level action button "Edit" against "{SavedValue:fundingAccount}" in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---"
     Examples:
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
@@ -1720,7 +1738,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I get the value from row "1" for column name "EGMS ID" in flex table "SelectAwardFundingAccounts"
     When I click "Add" after selection of "{SavedValue:lastValueFromTableForCol}" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
-    Then I see "{SavedValue:lastValueFromTableForCol}" has been added in "---subAwardStandAlone:-:awardFundingAccountsTableId---" flex table
+    Then I see value "{SavedValue:lastValueFromTableForCol}" for title "Funding Account" inside table "---subAwardFromFDM:-:AwardFundingAccountTableId---"
     Examples:
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |

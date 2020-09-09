@@ -138,7 +138,7 @@ public class GrantorProjectManager extends ProjectManager {
      */
     public Boolean isValueInsideFlexTable(String value, String flexTableHeader) {
         try {
-            return I.amPerforming().checkToSee().isDisplayed(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']|| //div[@id='myTabbedContent']//a//span[contains(text(),'" + flexTableHeader + "')]/ancestor::div/following-sibling::div//tbody//td//span[text()='" + value + "']"));
+            return I.amPerforming().checkToSee().isDisplayed(By.xpath("//div[@id='myTabbedContent']//a[@title='" + flexTableHeader + "']/../../../following-sibling::div//tbody//td//span[text()='" + value + "']|//div[@id='myTabbedContent']//a//span[contains(text(),'" + flexTableHeader + "')]/ancestor::div/following-sibling::div//tbody//td//span[text()='" + value + "']"));
         } catch (Exception e) {
         }
         return false;
