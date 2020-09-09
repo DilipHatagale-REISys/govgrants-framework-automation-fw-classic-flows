@@ -37,13 +37,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
-      | automation spa             | Other                    |                  |
+      | Automation SPA             | Other                    |                  |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
-    Then I softly see that "automation spa" has been added in flextable with Id "---subAwardStandAlone:-:associatedContactsTableId---"
+    Then I softly see that "Automation SPA" has been added in flextable with Id "---subAwardStandAlone:-:associatedContactsTableId---"
     Examples:
       | Contact        |
-      | automation spa |
+      | Automation SPA |
 
   @51131 @awardStandAloneAddFundingAccount
   Scenario: Funding Account budget addition to award
@@ -94,6 +94,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:kpiTableId---"
     When I enter "KPI" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
+    When I close "GrantorAwardKeyOutcomes" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Target |
       | Automation Permanent KPI for Regression | 10     |
@@ -102,7 +103,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Title                                   |
       | Automation Permanent KPI for Regression |
 
-  @51136 @51129 @65974 @awardCreateAndEdit @allRiskAssessmentApprovalAndActivation @smoke
+  @51136 @51129 @65974 @awardCreateAndEdit @allRiskAssessmentApprovalAndActivation @smoke @buglogged101142
   Scenario: Risk Assessment approval in an award
     Then I softly see status in Progress-bar is "Created" and is "Green"
     When I click on "Edit" in the page details
@@ -1003,7 +1004,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I expand nested table containing column value "Payment Request"
     Then I see total records count "Total Records:120" in flex table "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
 
-  @53838 @editionOfPaymentRequestSchedule @mahadev
+  @53838 @editionOfPaymentRequestSchedule @mahadev @buglogged101430
   Scenario: Verify that Payment Request Schedule is editable to internal user on draft award
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -1380,12 +1381,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
       | Program Approver | {SavedValue:PM Username} | Automation Test Description |
     And I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1471,7 +1466,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @66879 @UnableToActivateSubAwardIfRiskAssesmentApprovePMHasNotApprovedIt @jitendra
+  @66879 @UnableToActivateSubAwardIfRiskAssesmentApprovePMHasNotApprovedIt1 @jitendra
   Scenario Outline: To verify that approver of ( SPI/SPA) cannot be added in Program approver in Responsibility tab by the award owner for Award approval
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2053,7 +2048,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:120" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
-  @55301 @SelectDesiredFrequencyAsQuarterly @jitendra
+  @55301 @SelectDesiredFrequencyAsQuarterly @jitendra @buglogged101912
   Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as Quarterly.
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
@@ -2063,7 +2058,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:4" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
-  @55293 @ScheduleEndDateAfterStartDate @jitendra
+  @55293 @ScheduleEndDateAfterStartDate @jitendra @buglogged101912
   Scenario: Verify While creating schedule user is not allowed to select the Schedule End Date after Project Period End Date.
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
@@ -2072,7 +2067,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see the following messages in the page details contains:
       | Schedule End date cannot be after Project Period End Date |
 
-  @55300 @SelectDesiredFrequencyAsBiMonthly @jitendra
+  @55300 @SelectDesiredFrequencyAsBiMonthly @jitendra @buglogged101912
   Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as Bi Monthly.
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
@@ -2130,7 +2125,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see the text containing :
       | Schedule Start date cannot be before Budget Period Start Date. |
 
-  @55292 @verifyUserIsAllowedToSelectProgressReportScheduleStartDate @mahadev
+  @55292 @verifyUserIsAllowedToSelectProgressReportScheduleStartDate @mahadev @buglogged101912
   Scenario: Verify While creating progress report schedule user should be allowed to select the start date
     When I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
@@ -2296,7 +2291,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see the following messages in the page details contains:
       | Schedule Start date cannot be before Budget Period Start Date |
 
-  @57692 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @mahadev
+  @57692 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @mahadev @buglogged101912
   Scenario: Verify functionality of Desired Frequency as Monthly with Schedule Base type as Reporting period
     When I click on "Edit" in the page details
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2309,7 +2304,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:16" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
-  @45740 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @mahadev
+  @45740 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @mahadev @buglogged101912
   Scenario: Verify functionality of Desired Frequency as Monthly with Schedule Base type as Reporting period
     When I click on "Edit" in the page details
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2322,7 +2317,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:6" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
-  @35041 @SelectDesiredFrequencyAsMonthlyWithSchdeuleBaseAsCalendar @mahadev
+  @35041 @SelectDesiredFrequencyAsMonthlyWithSchdeuleBaseAsCalendar @mahadev @buglogged101912
   Scenario: Verify while creating schedule user should be allowed to select the desired frequency as monthly with schdeule base as calendar
     When I click on "Edit" in the page details
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2411,7 +2406,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Grant Name                                   | Award Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @51110 @validateSubRecipientCannotEditSchedule
+  @51110 @validateSubRecipientCannotEditSchedule1
   Scenario Outline: Verify If Subaward is Send to Sub-recipient for Edit action than external user should not have access to modify Schedule.
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2488,7 +2483,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Grant Name                                   | Award Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @45729 @progressReportAnnuallyWithLessThan365DateError @jitendra
+  @45729 @progressReportAnnuallyWithLessThan365DateError @jitendra @buglogged101912
   Scenario: Verify if annually frequency is selected and schedule dates are less than year it show validation message.
     When I click on "Edit" in the page details
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2500,7 +2495,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see the following messages in the page details contains:
       | The time between Schedule Start Date and Schedule End Date must be greater than or equal to 365 days if Annually frequency is selected. |
 
-  @45731 @progressReportMonthyWithLessThan28DaysDateError @jitendra
+  @45731 @progressReportMonthyWithLessThan28DaysDateError @jitendra @buglogged101912
   Scenario: Verify if Monthly frequency is selected and schedule period is less than month than Validation message is shown.
     When I click on "Edit" in the page details
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2512,7 +2507,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I see the following messages in the page details contains:
       | The time between Schedule Start Date and Schedule End Date must be greater than or equal to 28 days if Monthly frequency is selected. |
 
-  @45736 @SelectDesiredFrequencyAsBiMonthlyBasedOnGivenDate @jitendra
+  @45736 @SelectDesiredFrequencyAsBiMonthlyBasedOnGivenDate @jitendra @buglogged101912
   Scenario: Verify functionality of Desired Frequency as Bi Monthly with Schedule Base type as Reporting period.
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
@@ -2522,7 +2517,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:8" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
-  @45727 @SelectDesiredFrequencyAsSemiAnnuallyBasedOnGivenDate @jitendra
+  @45727 @SelectDesiredFrequencyAsSemiAnnuallyBasedOnGivenDate @jitendra @buglogged101912
   Scenario: Verify the functionality of Desired Frequency as Semi-Annually with Schedule Base type as Reporting period.
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
@@ -2533,7 +2528,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I expand nested table containing column value "Progress Report"
     Then I see total records count "Total Records:3" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
-  @45734 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @jitendra
+  @45734 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod1 @jitendra @buglogged101912
   Scenario: Verify Reporting Period End Date is same as the Schedule End Date.
     When I click on "Edit" in the page details
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2549,7 +2544,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I get the value from row "last row" for column name "Reporting Period End Date" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
     Then I verify that the Schedule end date is matching with Reporting Period End Date
 
-  @55315 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @jitendra
+  @55315 @SelectDesiredFrequencyAsMonthlywithScheduleBaseAsReportingPeriod @jitendra @buglogged101912
   Scenario: Verify Reporting Period Start Date is same as the Schedule Start Date.
     When I click on "Edit" in the page details
     And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -2654,7 +2649,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Grant Name                                   | Award Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @34933 @SelectDesiredFrequencyAsAnnuallyBasedOnGivenDate @jitendra
+  @34933 @SelectDesiredFrequencyAsAnnuallyBasedOnGivenDate @jitendra @buglogged101912
   Scenario: Verify the functionality of Desired Frequency as Annually with Schedule Base type as Reporting period.
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
