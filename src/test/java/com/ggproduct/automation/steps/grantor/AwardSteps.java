@@ -66,7 +66,7 @@ public class AwardSteps {
         I.amPerforming().waitFor().makeThreadSleep(5000);
         WebElement row = I.amPerforming().getElementReference().of(By.xpath("//div[@id='" + tableId + "']//table//tbody//tr"));
         Map<String, Integer> columnMapping = govgrants.perform().flexTable().constructColumnMapping(row, Collections.singleton(colName));
-        By specificColumnValue = By.xpath("//div[@id='ActiveGrants']//th//span[text()='"+colName+"']/ancestor::thead/following-sibling::tbody/tr[not(contains(@ng-if,'noRecords'))]//td["+columnMapping.get(colName)+"]/span/span");
+        By specificColumnValue = By.xpath("//div[@id='GrantorActiveGrantsgrid']//th//span[text()='"+colName+"']/ancestor::thead/following-sibling::tbody/tr[not(contains(@ng-if,'noRecords'))]//td["+columnMapping.get(colName)+"]//span/field[@field-Name='TotalAwardedAmount__c']");
         I.amPerforming().waitFor().ElementListToBePresent(specificColumnValue);
         List<Elements> rowValues = I.amPerforming().getElementReference().forListOfElements().of(specificColumnValue);
         double total = rowValues.stream().mapToDouble(

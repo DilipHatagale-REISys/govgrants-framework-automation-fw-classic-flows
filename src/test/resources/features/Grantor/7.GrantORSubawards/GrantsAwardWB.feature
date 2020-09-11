@@ -7,7 +7,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I pause execution for "3" seconds
-    Then I can see top right button "New" in flex table with id "GrantorActiveGrantsgrid"
+    Then I can see top right button "New" in flex table with id "---subAwardFromFDM:-:grantsTableId---"
     Examples:
       | User |
       | PM   |
@@ -39,13 +39,13 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    Then I softly see value "Draft" for title "Status" inside table "flexGridRecipientActiveGrants"
+    Then I softly see value "Draft" for title "Status" inside table "---subAwardFromFDM:-:RecipientGrantsTableId---"
     And I click toggle button to select "Grants - All"
-    Then I softly see value "Draft" for title "Status" inside table "flexGridRecipientActiveGrants"
+    Then I softly see value "Draft" for title "Status" inside table "---subAwardFromFDM:-:RecipientGrantsTableId---"
     And I click toggle button to select "Grants - Rejected"
-    Then I softly do not see value "Active" for title "Status" inside table "flexGridRecipientActiveGrants"
+    Then I softly do not see value "Active" for title "Status" inside table "---subAwardFromFDM:-:RecipientGrantsTableId---"
 
-  @66740 @documentattacmentatgrant @jitendra
+  @66740 @documentattacmentatgrant @jitendra @buglogged94779
   Scenario: To verify that the document can be added in the Supporting Document checklist table in the Grant Attachment tab in the Draft state
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -81,7 +81,7 @@ Feature: Validate all scenarios of grants and award without background
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    Then  I cannot see top right button "New" in flex table with id "GrantorActiveGrantsgrid"
+    Then  I cannot see top right button "New" in flex table with id "---subAwardFromFDM:-:grantsTableId---"
     Examples:
       | User |
       | FO   |
@@ -250,8 +250,8 @@ Feature: Validate all scenarios of grants and award without background
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Awarded Budget | Cash Match | Nqon-Cash Match |
-      | Construction    | 1000           | 100        | 100             |
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -417,7 +417,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Budget" sub tab
-    When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountsTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
@@ -802,6 +802,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I enter "Grant_Creation_Title_Error" values from "Award_Field_Values.xlsx"
+    And I clear the value from field "fieldProjectTitle__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
       | Grant Title is Required to save |
@@ -815,7 +816,7 @@ Feature: Validate all scenarios of grants and award without background
     And I clear the value from field "ProjectPeriodEndDate__c"
     Then I softly see the following messages in the page details :
       | Project Period End Date is Required to save. |
-    When I enter value "0" into field "ProjectPeriodStartDate__c"
+    When I enter value "3650" into field "ProjectPeriodEndDate__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
       | Project Period Start Date is Required to save. |
@@ -920,7 +921,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     Then I softly see field "Subrecipient Match Required?" as "Yes"
-    Then I softly see field "Required Match %" as "10%"
+    Then I softly see field "Required Match %" as "10.00%"
     Then I softly see field "Program Income Allowed?" as "Yes"
     Then I softly see field "Advance Payment Allowed?" as "Yes"
     Then I softly see field "Is Detailed Budget Required on the Subaward?" as "No"
@@ -966,7 +967,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "{SavedValue:Automation Runtime Execution Award}" inside table
     Then I softly see status in Progress-bar is "Created" and is "green"
 
-  @65681 @65683 @verifyTermsAndConditions @mahadev
+  @65681 @65683 @verifyTermsAndConditions @mahadev @buglogged102180
   Scenario: Verify Award owner can Associate Terms and Conditions on Subaward Terms Tab | Verify Associated Mandatory Terms and Conditions are not Editable by award owner on Subaward
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1016,8 +1017,8 @@ Feature: Validate all scenarios of grants and award without background
       | {SavedValue:fundingAccount} | 1000        |
     When I click on "Add Line Items" icon for "Administrative and legal expenses" inside flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" without waiting for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
-      | Title        | Narrative     | Subaward Budget | Cash Match | Non-Cash Match |
-      | Extra Salary | The narrative | 1000            | 100        | 100            |
+      | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 1000         | 100        | 100            |
     When I close "Subaward Budget Category" modal by clicking the top right x button
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
@@ -1086,8 +1087,8 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Budget" sub tab
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" without waiting for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
-      | Title        | Narrative     | Subaward Budget | Cash Match | Non-Cash Match |
-      | Extra Salary | The narrative | 1000            | 100        | 100            |
+      | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 1000         | 100        | 100            |
     When I close "Add Line Items" modal by clicking the top right x button
     Then I softly see value "$1,000.00" for title "Subaward  Budget" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
     Then I softly see value "$100.00" for title "Cash Match" against the value "Construction" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
@@ -1098,8 +1099,8 @@ Feature: Validate all scenarios of grants and award without background
     When I click on "Accept" in the page details
     When I click on "Add Line Items" icon for "Project inspection fees" inside flex table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" without waiting for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
-      | Title        | Narrative     | Subaward Budget | Cash Match | Non-Cash Match |
-      | Extra Salary | The narrative | 10000           | 100        | 100            |
+      | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 10000        | 100        | 100            |
     When I close "Add Line Items" modal by clicking the top right x button
     Then I softly see value "$10,000.00" for title "Subaward  Budget" against the value "Project inspection fees" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
     Then I softly see value "$100.00" for title "Cash Match" against the value "Project inspection fees" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
@@ -1155,11 +1156,11 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "GrantorActiveGrantsgrid" without waiting for record
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "flexGridRelatedAwards1" without waiting for record
     And I save the field value having link labeled "Grant  ID" as "grantID"
-    And I softly see "{SavedValue:PM Username}" is present after mouse hover for active subaward
+    And I softly see "Nakul Admin" is present after mouse hover for active subaward
     And I mouse hover to link contains "{SavedValue:grantID}"
     Then I softly see "Grant" shown inside mini page layout on hover
     Then I softly see "SAN DIEGO ELECTRICAL TRAINING TRUST" shown inside mini page layout on hover
@@ -1175,14 +1176,14 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "GrantorActiveGrantsgrid" without waiting for record
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "flexGridRelatedAwards1" without waiting for record
     And I mouse hover to link contains "{SavedValue:grantID}"
     And I click "SAN DIEGO ELECTRICAL TRAINING TRUST" link present on hovered tooltip
     Then I softly see page title contains as "SAN DIEGO ELECTRICAL TRAINING TRUST"
 
-  @53967 @NoIfAreExpenseDetailRequiredonReimbursements @jitendra @smoke
+  @53967 @NoIfAreExpenseDetailRequiredonReimbursements @jitendra @smoke @buglogged102077
   Scenario Outline: Verify that If Are Expense Details Required on Reimbursements? field is No then user should see only edit action at Reimbursement Payment request Budget category table.
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1381,7 +1382,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "GrantorActiveGrantsgrid" without waiting for record
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "flexGridRelatedAwards1" without waiting for record
     Given I navigate to "Management" sub tab
@@ -1400,7 +1401,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "GrantorActiveGrantsgrid" without waiting for record
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "flexGridRelatedAwards1" without waiting for record
     Given I navigate to "Management" sub tab
@@ -1432,7 +1433,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "GrantorActiveGrantsgrid" without waiting for record
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "flexGridRelatedAwards1" without waiting for record
     Given I navigate to "Management" sub tab
@@ -1451,7 +1452,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "GrantorActiveGrantsgrid" without waiting for record
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "flexGridRelatedAwards1" without waiting for record
     Given I navigate to "Management" sub tab
@@ -1491,10 +1492,10 @@ Feature: Validate all scenarios of grants and award without background
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
-    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardStandAlone:-:sRBudgetCategoryTableId---" without waiting for record
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardFromFDM:-:SubAwardBudgetTableId---" without waiting for record
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
-      | Title        | Narrative     | Subaward Budget | Cash Match | Non-Cash Match |
-      | Extra Salary | The narrative | 1000            | 100        | 100            |
+      | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 1000         | 100        | 100            |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
@@ -1708,7 +1709,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Budget" sub tab
-    When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountsTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
@@ -1730,7 +1731,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    And I perform quick search for "{SavedValue:Automation Runtime Direct Award}"
+    When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside table
     And I navigate to "Attachments" sub tab
     Then I cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
@@ -1749,7 +1750,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    And I perform quick search for "{SavedValue:Automation Runtime Direct Award}"
+    When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside table
     And I navigate to "Attachments" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
@@ -1815,7 +1816,8 @@ Feature: Validate all scenarios of grants and award without background
     When I enter in modal "Progress Report Error" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     Then I see the following messages in the page details contains:
-      | Schedule Start date cannot be before Budget Period Start Date. |
+      #| Schedule Start date cannot be before Budget Period Start Date. |
+      | Schedule End date cannot be after Project Period End Date. |
 
   @67690 @pendingTaskToPMAfterSubmitToApprover @jitendra
   Scenario Outline: Validate that pending task generates for the award owner (PM) profile after subaward is submitted for approval in pending task (assigned to me and assigned by me)
@@ -1834,7 +1836,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     And I navigate to "Budget" sub tab
-    When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountsTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
@@ -1974,6 +1976,7 @@ Feature: Validate all scenarios of grants and award without background
       | Title                           | Start Date | End Date |
       | Automation Permanent Focus Area | 2          | 339      |
     And I click on "Submit for Approval" in the page details
+    And I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details contains:
       | Budget Tab - At least one focus area must be in place at all times during the budget period. Adjust the focus area dates accordingly. |
 
@@ -2005,7 +2008,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I perform quick search for "{SavedValue:Automation Runtime Award}"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     Then I softly see value "{SavedValue:Automation Runtime Award}" for title "Grant Title" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
 
   @70806 @71417 @jitendra @SetRedirectionThresholdtO15
@@ -2480,15 +2483,15 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Closed"
-    When I click on "View" icon for "{SavedValue:CloseoutID}" inside flex table with id "GrantorActiveGrantsgrid" without waiting for record
+    When I click on "View" icon for "{SavedValue:CloseoutID}" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
     And I navigate to "Budget" sub tab
     Then I softly see field "Amount Awarded to Date" as "{SavedValue:amtAwardToDate}"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Closed"
-    Then I softly see value "Closed/Compeleted" for title "Status" inside table "GrantorActiveGrantsgrid"
-    Then I softly do not see value "Activated" for title "Status" inside table "GrantorActiveGrantsgrid"
+    Then I softly see value "Closed/Compeleted" for title "Status" inside table "---subAwardFromFDM:-:grantsTableId---"
+    Then I softly do not see value "Activated" for title "Status" inside table "---subAwardFromFDM:-:grantsTableId---"
     Examples:
       | Award Name                                      | Grant Name                                      |
       | {SavedValue:Automation Runtime Execution Award} | {SavedValue:Automation Runtime Execution Award} |
@@ -2496,7 +2499,7 @@ Feature: Validate all scenarios of grants and award without background
   @65909 @checkAawrdIsPresentUnderAnotherPMuSER @jitendra
   Scenario:  Verify that other internal users of organization(ex-Community Health & Equity) are not able to view draft grants with the different organization(Ex-Test Automation Organization).
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
-    When I login to "As a Grantor" app as "SIMON PM" user
+    When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
@@ -2546,7 +2549,7 @@ Feature: Validate all scenarios of grants and award without background
       | Description | Required  | Applies To | Status |
       | Automation  | Mandatory | Award      | Active |
     And I navigate to "Budget" sub tab
-    When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:fundingAccountsTableId---" by clicking "Edit" :
+    When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
@@ -2700,7 +2703,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I perform quick search for "{SavedValue:Automation Runtime Award}"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     Then I softly see value "{SavedValue:Automation Runtime Award}" for title "Grant Title" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     And I navigate to "Requests" sub tab
@@ -2714,7 +2717,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
-    And I perform quick search for "{SavedValue:Automation Runtime Award}"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     Then I softly see value "{SavedValue:Automation Runtime Award}" for title "Grant Title" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     And I navigate to "Requests" sub tab

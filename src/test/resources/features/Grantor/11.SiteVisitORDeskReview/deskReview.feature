@@ -291,17 +291,17 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
-      | Title                               | Description            | Status      | Due Date | Assigned To                 |
+      | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To                 |
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To                 |
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     And I collapse nested table containing column value "Automation Finding"
     Then I softly see field "Status" as "Sent to Subrecipient"
@@ -550,10 +550,10 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "<Desk Review Name>" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "Delete" icon for "<Desk Review Name>" inside table
-    Then I do not see values "{SavedValue:Automation Runtime Award Desk Review}" and "Title" inside table
+    Then I do not see values "<Desk Review Name>" and "Title" inside table
     Examples:
-      | Desk Review Name                                  |
-      | {SavedValue:Automation Runtime Award Desk Review} |
+      | Desk Review Name                           |
+      | {SavedValue:Automation Runtime Award Desk} |
 
   @55365 @55363 @SendBackToOnwerDeskReviewUnderMonitoringTab @deepika
   Scenario: Validate whether the approver sendback to owner, the record owner will get a pending task
@@ -1042,17 +1042,17 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
-      | Title                               | Description            | Status      | Due Date | Assigned To                 |
+      | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     When I collapse nested table containing column value "Automation Observation"
     And I expand nested table containing column value "Automation Concern"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To                 |
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     When I collapse nested table containing column value "Automation Concern"
     And I expand nested table containing column value "Automation Finding"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
-      | Title                           | Description            | Status      | Due Date | Assigned To                 |
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
       | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
     And I collapse nested table containing column value "Automation Finding"
     Then I softly can see top right button "Submit to Grantor" in page detail
@@ -1106,7 +1106,7 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
-    Then I softly can see row level action button "Delete" against "{SavedValue:Automation Runtime Award Desk Review}" in flex table with id "---deskreview:-:managementInitiateDRtableid---"
+    Then I softly can see row level action button "Delete" against "{SavedValue:Automation Runtime Award Desk}" in flex table with id "---deskreview:-:managementInitiateDRtableid---"
     When I click on "Delete" icon for "Record Id" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
     And I perform quick search for "Record Id" in "---deskreview:-:managementInitiateDRtableid---" panel
     Then I softly see "No Records Found" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
@@ -1223,7 +1223,7 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Reports and Outcomes" sub tab
     And I expand nested table containing column value "Automation Observation"
     When I enter the following values into flex table with id "---deskreview:-:deskReviewCorrectiveTableId---" by clicking "New" :
-      | Title                               | Description            | Status      | Due Date | Assigned To                 |
+      | Title                               | Description            | Status      | Due Date | Assigned To                |
       | Automation Observation Subrecipient | Automation Description | In-Progress | -10      | {SavedValue:SPI3 Username} |
     When I collapse nested table containing column value "Automation Observation"
     Then I softly see the following messages in the page details contains:
@@ -1240,8 +1240,8 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
-    When I perform quick search for "Record Id" in "---deskreview:-:managementInitiateDRtableid---" panel
-    Then I softly see "Record Id" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award Desk}" in "---deskreview:-:managementInitiateDRtableid---" panel
+    Then I softly see "{SavedValue:Automation Runtime Award Desk}" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
 
   @56368 @viewCreatedDeskReview @meenakshi
   Scenario: User will be able to view the list of all Site Visit / Desk Review created for Awards under Monitoring tab - Desk Review

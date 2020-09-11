@@ -203,8 +203,7 @@ Feature: Validate all scenarios in the Site Visit
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside table
-    Given I click on "Send to Subrecipient" in the page details
+    And I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
 
   @51093 @51094 @siteVisitCorrectiveActionsBySubrecipientAndSubmitToGrantor @smoke
@@ -337,14 +336,14 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "<Site Visit Name>" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "View" icon for "<Site Visit Name>" inside table
+    And I click on "Start" icon for "<Site Visit Name>" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Given I click on "Send to Subrecipient" in the page details
     And I navigate to "Reports and Outcomes" tab
     And I expand nested table containing column value "Automation Observation"
     Then I do not see value "New" for title "Automation Observation" inside table "---sitevisits:-:correctiveTableId---"
     Examples:
-      | Site Visit Name                                  |
-      | {SavedValue:Automation Runtime Award Site Visit} |
+      | Site Visit Name                            |
+      | {SavedValue:Automation Runtime Site Visit} |
 
   @39159 @siteVisitDeleteAccesstoOwner @deepika
   Scenario Outline: Verify that record owner can delete created state site visit from Award level
@@ -354,8 +353,8 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Delete" icon for "<Site Visit Name>" inside table
     Then I do not see values "<Site Visit Name>" and "Title" inside table
     Examples:
-      | Site Visit Name                                  |
-      | {SavedValue:Automation Runtime Award Site Visit} |
+      | Site Visit Name                            |
+      | {SavedValue:Automation Runtime Site Visit} |
 
   @39169 @reportsAndOutcomesEditAccess @deepika
   Scenario: Verify that upon conduct,  Reports And Outcomes tab are editable to the internal user for an award  level site visit
