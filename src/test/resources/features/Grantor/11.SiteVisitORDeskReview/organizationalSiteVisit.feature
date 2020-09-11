@@ -80,7 +80,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
     And I enter "Fiscal" values from "Organizational_SiteVisit_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    Then I see field "Monitoring Type" as "Fiscal"
+    Then I see "Fiscal" text enter in field "MonitoringType__c"
 
   @54290 @monitoringTypeSiteVisitProgram @deepika
   Scenario: Validate the Monitoring type 'Program' for Organizational Site Visit
@@ -88,7 +88,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
     And I enter "Program" values from "Organizational_SiteVisit_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    Then I see field "Monitoring Type" as "Program"
+    Then I see "Program" text enter in field "MonitoringType__c"
 
   @54426 @orgSiteVisitTypeApplication @deepika
   Scenario: Validate the Site Visit type Application

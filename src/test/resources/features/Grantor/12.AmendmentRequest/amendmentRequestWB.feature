@@ -1,7 +1,7 @@
 @amendmentRequests @grantor-regression @grantor-parallel-regression
 Feature: Amendment Request scenarios without background
 
-  @54853 @ValidateRevisedBudgetAmountBalanceUpdatedOnAdvancePaymentRequest @mahadev @smoke
+  @54853 @ValidateRevisedBudgetAmountBalanceUpdatedOnAdvancePaymentRequest @mahadev @smoke @buglogged101406
   Scenario Outline: Verify that as per 'Revised Award Budget', "Balance" amount is updated on advance payment request
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
     When I login to "As a Grantor" app as "dynamicUser" user
