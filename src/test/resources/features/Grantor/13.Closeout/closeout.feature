@@ -518,7 +518,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Closeout Effective Date" as "07/20/2023"
     Then I softly see field "Closeout Activities Due Date" as "08/12/2023"
     #76488
-    Then I softly see value "FA-ST-13" for title "Funding Account" inside table "---closeout:-:closeoutFundingAccountsTableId---"
+    Then I softly see value "---AUTOEnvData:-:fundingAccount---" for title "Funding Account" inside table "---closeout:-:closeoutFundingAccountsTableId---"
     And I softly see value "$1,000.00" for title "Encumbrance" inside table "---closeout:-:closeoutFundingAccountsTableId---"
     And I softly see value "$0.00" for title "Spent" inside table "---closeout:-:closeoutFundingAccountsTableId---"
     And I softly see value "$1,000.00" for title "Encumbrance Balance" inside table "---closeout:-:closeoutFundingAccountsTableId---"

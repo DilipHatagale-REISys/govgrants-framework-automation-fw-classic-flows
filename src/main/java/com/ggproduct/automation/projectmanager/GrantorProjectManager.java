@@ -587,6 +587,25 @@ public class GrantorProjectManager extends ProjectManager {
         }
     }
 
+    public boolean isFieldDateGreaterThanOrLessThanExpectedDate(String fieldLabel1, String lessOrGreater, String fieldLabel2) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        Date actualEndDate = sdf.parse(fieldLabel1);
+        Date actualStartDate = sdf.parse(fieldLabel2);
+        if (lessOrGreater.equalsIgnoreCase("less")) {
+            if (actualEndDate.before(actualStartDate)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if (actualEndDate.after(actualStartDate)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
     /**
      * @param flextableId - Table Id
      * @author Keerti Munde
