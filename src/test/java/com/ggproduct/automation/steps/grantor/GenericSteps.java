@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class GenericSteps {
     private GrantorProjectManager grantorProjectManager;
-    private GrantorWebServices  grantorWebServices;
+    private GrantorWebServices grantorWebServices;
 
     public GenericSteps(GrantorProjectManager grantorProjectManager, GrantorWebServices grantorWebServices) {
         this.grantorProjectManager = grantorProjectManager;
@@ -423,6 +423,16 @@ public class GenericSteps {
         }
     }
 
+    @Description("Check the Application Due Date is Less/greater than today's Date")
+    @Then("^I (softly see|see) field \"([^\"]*)\" contains date (less|greater) than \"([^\"]*)\" date$")
+    public void isFieldDateGreaterThanOrLessThanExpectedDate(String usage, String fieldLabel1, String lessORgreater, String fieldLabel2) throws ParseException {
+        if (usage.contains("softly")) {
+            I.amPerforming().assertionsTo().assertThat(grantorProjectManager.isFieldDateGreaterThanOrLessThanExpectedDate(fieldLabel1, lessORgreater, fieldLabel2)).isTrue();
+        } else {
+            Assert.assertTrue(grantorProjectManager.isFieldDateGreaterThanOrLessThanExpectedDate(fieldLabel1, lessORgreater, fieldLabel2));
+        }
+    }
+
     @Description("To click on Submit Review modal button of Grantor Review")
     @And("^I click on modal button Submit Review$")
     public void iClickOnModalButtonSubmitReview() {
@@ -461,6 +471,7 @@ public class GenericSteps {
     public void initializeData() {
         grantorProjectManager.initData();
     }
+
     @And("I delete all rows inside flex table with id {string}")
     public void performDeleteActionForAllRows(String flexTableId) {
         grantorProjectManager.clickAllDeleteButtonsInsideFlexTable(flexTableId);
@@ -468,7 +479,7 @@ public class GenericSteps {
 
     @And("I clear all the filter from the table id {string}")
     public void iClearAllTheFilterFromTheTableId(String filterTableId) {
-        By clearAll = By.xpath("//*[@id='"+filterTableId+"']//*[@title='Clear All']//i");
+        By clearAll = By.xpath("//*[@id='" + filterTableId + "']//*[@title='Clear All']//i");
         I.amPerforming().click().on(clearAll);
     }
 
@@ -492,7 +503,7 @@ public class GenericSteps {
     }
 
     @Given("I reviewed the application {string}")
-    public void reviewedApplication(String applicationName){
+    public void reviewedApplication(String applicationName) {
         grantorWebServices.reviewedApplication(applicationName);
     }
 
@@ -508,18 +519,18 @@ public class GenericSteps {
 
     @And("I published {string} type announcement having name {string} and properties {string}")
     public void iPublishedTypeAnnouncementHavingNameAndProperties(String annType, String annName, String filter) {
-        String newAnnName = annName+I.amPerforming().addOnsTo().getRandomNumber();
-        I.amPerforming().propertiesFileOperationsTo().saveValue(annName,newAnnName);
+        String newAnnName = annName + I.amPerforming().addOnsTo().getRandomNumber();
+        I.amPerforming().propertiesFileOperationsTo().saveValue(annName, newAnnName);
         annName = newAnnName;
-        grantorWebServices.publishAnnouncment(annType,annName,filter);
+        grantorWebServices.publishAnnouncment(annType, annName, filter);
     }
 
     @And("I activated standalone subaward {string} with properties {string}")
     public void iActivatedStandaloneSubawardWithProperties(String grantName, String filter) {
-        String newGrantName = grantName+I.amPerforming().addOnsTo().getRandomNumber();
-        I.amPerforming().propertiesFileOperationsTo().saveValue(grantName,newGrantName);
+        String newGrantName = grantName + I.amPerforming().addOnsTo().getRandomNumber();
+        I.amPerforming().propertiesFileOperationsTo().saveValue(grantName, newGrantName);
         grantName = newGrantName;
-        grantorWebServices.activateSubaward(grantName,filter);
+        grantorWebServices.activateSubaward(grantName, filter);
     }
 
     @And("I click on submit review")
@@ -542,7 +553,7 @@ public class GenericSteps {
     }
 
     @And("I upload the attachment {string} of type {string} from computer")
-    public void uploadAttachmentFromComputer(String fileName, String fileClassificationType){
+    public void uploadAttachmentFromComputer(String fileName, String fileClassificationType) {
         By classificationType = By.xpath("//select[@title='Classification' or @name='Classification']");
         By filePath = By.xpath("//label[contains(@id,'file')]/../input");
         String defaultFilePath = System.getProperty("user.dir") + "/src/main/resources/";
@@ -554,7 +565,7 @@ public class GenericSteps {
     @And("I enter value {string} in email body")
     public void iEnterValueIntoEmailBody(String enterValue) {
         By emailBody = By.xpath("//body[contains(@id,'accountInvitation')]");
-           I.amPerforming().textInput().in(emailBody, enterValue);
+        I.amPerforming().textInput().in(emailBody, enterValue);
     }
 
     @Then("^I (softly see|softly cannot see|cannot see|see) column \"([^\"]*)\" inside row \"([^\"]*)\" at position \"([^\"]*)\" contains text \"([^\"]*)\"$")
@@ -564,6 +575,6 @@ public class GenericSteps {
 
     @And("^I (see|softly see|do not see|softly do not see) field \"([^\"]*)\" as \"([^\"]*)\" in \"([^\"]*)\" pageblock$")
     public void iSeeFieldStatusInPageBlock(String usage, String fieldName, String fieldValue, String pageblockName) {
-        grantorProjectManager.seeFieldStatusInPageBlock(usage,fieldName,fieldValue,pageblockName);
+        grantorProjectManager.seeFieldStatusInPageBlock(usage, fieldName, fieldValue, pageblockName);
     }
 }
