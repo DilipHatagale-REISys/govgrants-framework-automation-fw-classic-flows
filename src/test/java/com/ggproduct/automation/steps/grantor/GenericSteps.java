@@ -405,11 +405,11 @@ public class GenericSteps {
         List<Elements> listOfLoc = I.amPerforming().getElementReference().forListOfElements().of(listOfsUsers);
         int expectedIndex = 0;
         for (int i = 0; i < listOfLoc.size(); i++) {
+            expectedIndex = expectedIndex + 1;
             if (listOfLoc.get(i).getText().trim().equalsIgnoreCase(againstThisString)) {
-                expectedIndex = expectedIndex + 1;
+                break;
             }
         }
-
         I.amPerforming().assertionsTo().assertThat(I.amPerforming().actionToGet().text(By.xpath("//div[@id='chevronBarId']//ul[2]//li[" + expectedIndex + "]//a")).trim()).isEqualToIgnoringCase(seeThisString);
     }
 
