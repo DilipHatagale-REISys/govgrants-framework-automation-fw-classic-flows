@@ -205,10 +205,10 @@ public class InternalOrganizatioSteps {
         internalOrganizationPage.assertRowLevelActionVisibilityOfFlexTable(usage, iconName, columnName);
     }
 
-    @Then("^I (softly see|see) \"([^\"]*)\" inside selectbox field \"([^\"]*)\"$")
+   /* @Then("^I (softly see|see) \"([^\"]*)\" inside selectbox field \"([^\"]*)\"$")
     public void assertValueInsideSelectDropdownValues(String usage, String dropDownValue, String fieldApiName) {
         internalOrganizationPage.assertValueInsideSelectDropdownAtPageDetail(usage, dropDownValue, fieldApiName);
-    }
+    }*/
 
     @Then("^I (softly see|softly cannot see) \"([^\"]*)\" modal button$")
     public void assertModalButton(String usage, String btn) {

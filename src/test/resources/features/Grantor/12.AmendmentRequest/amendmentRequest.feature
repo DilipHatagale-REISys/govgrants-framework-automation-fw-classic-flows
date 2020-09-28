@@ -56,8 +56,8 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Remove" icon for "<Objectives>" inside flex table with id "---amendment:-:goalsAndObjectivesTableId---" without waiting for record
     Then I do not see value "<Objectives>" for title "Title" inside table "---amendment:-:goalsAndObjectivesTableId---"
     Examples:
-      | Objectives                     |
-      | Automation Permanent Objective |
+      | Objectives                      |
+      | Automation Permanent Objective2 |
 
   @53200 @addAttachmentToSOWAmendmentRequest
   Scenario: Add attachment to Amendment Request
@@ -127,7 +127,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Acknowledge" in the page details
     Then I see that "Amendment Request" is in "Acknowledged" status
 
-  @53203 @97561 @submitForApprovalSOWAmendmentRequest
+  @53203 @97561 @97383 @submitForApprovalSOWAmendmentRequest @monu
   Scenario: Submit Amendment Request for Approval
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -150,6 +150,8 @@ Feature: Validate all scenarios in the Amendment Request
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    #97383 #monu
+    Then I softly see field "Amendment Types" as "Scope of Work Change"
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -337,7 +339,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Amend Subaward" in the page details
     Then I see that "{SavedValue:Automation Runtime Award}" is in "Pending Activation" status
 
-  @53207 @activateSubawardSOWAmendmentRequest @scopeOfWorkHappyPath @wip
+  @53207 @97980 @activateSubawardSOWAmendmentRequest @scopeOfWorkHappyPath
   Scenario: Activate SOW Amendment Request
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -350,26 +352,25 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Save" in the page details
     When I click on top right button "Associate" in flex table with id "---amendment:-:keyOutcomesTableId---"
     And I enter values into fields
-      | Value                                   | Field             |
-      | Automation Permanent KPI for Regression | fieldMasterKPI__c |
-      | 10                                      | fieldTarget__c    |
+      | Value                                    | Field             |
+      | Automation Permanent KPI for Regression2 | fieldMasterKPI__c |
+      | 10                                       | fieldTarget__c    |
     When I click modal button "Save"
-    When I close "Grantor Amendment KPIs" modal by clicking the top right x button
+    When I close "Associate" modal by clicking the top right x button
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
       | Role               | Name                      | Description                 |
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
-    When I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Terms and Conditions"
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    And I click on "Acknowledge" in the page details
+    Then I softly see field "Amendment Types" as "Scope of Work Change"
+    And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -377,13 +378,6 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I get the "EGMS ID"
     And I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    When I am on "INTERNAL" portal
-    And I login to "As a Grantor" app as "PM" user
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -397,9 +391,96 @@ Feature: Validate all scenarios in the Amendment Request
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - Approved"
+    And I perform quick search for "Record Id" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    And I click on "Amend Subaward" in the page details
+    #97980 #monu
+    Then I can see top right button "Activate" in page detail
+    Then I can see top right button "Delete" in page detail
+    Then I softly see status in Progress-bar is "Pending Activation" and is "Green"
+    When I click on "Activate" in the page details
+    And I navigate to "Overview" sub tab
+    Then I softly see field "Version Number" as "2"
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Budget Period Number" as "BP01"
+    Then I see status in Progress-bar is "Activated" and is "Green"
+
+  @101511 @ValidateIncreasedTargetValueOfAmendmentRequest-SOWAmendmentRequest @monu
+  Scenario Outline: Verify Increased Target value of Associated KPI at Amendment request should displayed at progress report
+    Given I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    When I click on "Edit" in the page details
+    And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I click on top right button "Associate" in flex table with id "---amendment:-:goalsAndObjectivesTableId---"
+    When I perform quick search for "<Objectives>" in "---amendment:-:objectivesTableId---" panel
+    And I click "Associate" after selection of "<Objectives>" in the table "---amendment:-:objectivesTableId---"
+    Then I see that "<Objectives>" has been added in flextable with Id "---amendment:-:goalsAndObjectivesTableId---"
+    And I pause execution for "50" seconds
+    And I edit the following rows inline in flex table with id "---amendment:-:AmendmentKPITableId---" by clicking "Edit" :
+      | EGMS ID                                  | Target |
+      | Automation Permanent KPI for Regression2 | 11     |
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---amendment:-:approversTableId---" by clicking "Edit" :
+      | Role               | Name                      | Description                 |
+      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
+      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I click on "Submit for Approval" in the page details
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - Approved"
+    And I perform quick search for "Record Id" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Activated" and is "Green"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
+    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Progress Reports" content inside "Reporting" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:progressReportFlexTableId---" panel
+    When I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:progressReportFlexTableId---" without waiting for record
+    When I navigate to "Performance" sub tab
+    Then I softly see value "11" for title "Target" against the value "Automation Permanent KPI for Regression2" inside table "---amendment:-:RecipientPerformanceKPITableId---"
+
+    Examples:
+      | Objectives                      |
+      | Automation Permanent Objective2 |
 
   @53208 @66582 @53209 @creationOfBPCAmendmentRequest @editionOfBPCAmendmentRequest
   Scenario: Edition of Budget Period Change
@@ -681,7 +762,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    When I click on "Add Line Items" icon for "f" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I click on "Add Line Items" icon for "Equipment" inside flex table with id "---amendment:-:budgetChangeTableId---"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
       | Extra Salary | The narrative | 1000           |
@@ -955,7 +1036,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I softly see value "$500.00" for title "Difference" against the value "Equipment" inside table "---amendment:-:grantorBudgetChangeTableId---"
     Then I softly see field "Requested Change in Budget" as "$1,000.00"
 
-  @57139 @awardOwnerActivateAmendedSubAward @jitendra
+  @57139 @102773 @awardOwnerActivateAmendedSubAward @jitendra
   Scenario: Verify that award owner can active the Amended sub-award
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -1018,7 +1099,18 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "View" icon for "Approved" inside flex table with id "---amendment:-:amendmentRequestTableId---" without waiting for record
     When I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Activated" and is "green"
+    Then I softly see status in Progress-bar is "Activated" and is "green"
+    #102773 #monu
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I get the "EGMS ID"
+    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    Then I softly see field "Status" as "Activated"
 
   @57141 @differenceFieldAfterRevisedEncumberenceAmount @jitendra @smoke
   Scenario: Verify Difference Field is getting Updated once Revised Encumbrance amount is entered by award owner.
