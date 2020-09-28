@@ -294,13 +294,13 @@ public class InternalOrganizationPage extends GranteeProjectManager {
      *
      * @param dropDownValue
      */
-    public void assertValueInsideSelectDropdownAtPageDetail(String usage, String dropDownValue, String fieldApiName) {
+    /*public void assertValueInsideSelectDropdownAtPageDetail(String usage, String dropDownValue, String fieldApiName) {
         if (usage.equalsIgnoreCase("softlt see")) {
             I.amPerforming().assertionsTo().assertThat(isValuePresentInsideSelectDropdownPickList(dropDownValue, fieldApiName)).isTrue();
         } else if (usage.equalsIgnoreCase("see")) {
             Assert.assertTrue(isValuePresentInsideSelectDropdownPickList(dropDownValue, fieldApiName));
         }
-    }
+    }*/
 
     /**
      * return true/false if modal button is getting displayed/not displayed
@@ -1039,7 +1039,7 @@ public class InternalOrganizationPage extends GranteeProjectManager {
      * @param fieldApiName
      * @return
      */
-    private boolean isValuePresentInsideSelectDropdownPickList(String dropDownValue, String fieldApiName) {
+   /* private boolean isValuePresentInsideSelectDropdownPickList(String dropDownValue, String fieldApiName) {
         String[] exp = null;
         if (dropDownValue.contains(":")) {
             exp = dropDownValue.split(":");
@@ -1057,7 +1057,7 @@ public class InternalOrganizationPage extends GranteeProjectManager {
         } else {
             return false;
         }
-    }
+    }*/
 
     /**
      * Return true if snapshot saving content inside snapshot history page block
