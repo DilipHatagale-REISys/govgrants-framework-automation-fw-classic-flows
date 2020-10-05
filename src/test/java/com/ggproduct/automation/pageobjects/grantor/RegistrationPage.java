@@ -13,8 +13,6 @@ import java.util.stream.Collectors;
 public class RegistrationPage extends ProjectManager {
     public String name;
     public By privacyPolicyText, captch;
-    public By actualmMailText;
-    public By actualmMailSubjectText;
     public By newPassword;
     public By confirmNewPassword;
     public By changePasswordBtn;
@@ -25,8 +23,6 @@ public class RegistrationPage extends ProjectManager {
     public RegistrationPage() {
         privacyPolicyText = By.xpath("//div[contains(@class, 'help-desk-panel-body panel-body')]");
         captch = By.xpath("//iframe[contains(@src, 'www.google.com/recaptcha')]");
-        actualmMailText = By.xpath("//div[@id='mailmillieu']//div//center");
-        actualmMailSubjectText = By.xpath("//div[@id='mailhaut']//div");
         newPassword = By.xpath("//input[@id='newpassword']");
         confirmNewPassword = By.xpath("//input[@id='confirmpassword']");
         changePasswordBtn = By.xpath("//button[@id='password-button']");
@@ -130,20 +126,10 @@ public class RegistrationPage extends ProjectManager {
                 .isEqualToNormalizingWhitespace(expectedString);
     }
 
-    public void assertMailTexMatches(String expectedMailText) {
-        I.amPerforming().assertionsTo().assertThat(I.amPerforming().actionToGet().text(actualmMailText))
-                .isEqualToNormalizingWhitespace(expectedMailText);
-    }
-
-    public void assertMailSubjectTexMatches(String subjectText) {
-        I.amPerforming().assertionsTo().assertThat(I.amPerforming().actionToGet().text(actualmMailSubjectText))
-                .isEqualToNormalizingWhitespace(subjectText);
-    }
-
     public void setPasswordForTheUser() {
-        String passwordText="SALESFORCE2020";
-        I.amPerforming().textInput().in(newPassword,passwordText);
-        I.amPerforming().textInput().in(confirmNewPassword,passwordText);
+        String passwordText = "SALESFORCE2020";
+        I.amPerforming().textInput().in(newPassword, passwordText);
+        I.amPerforming().textInput().in(confirmNewPassword, passwordText);
         I.amPerforming().click().on(changePasswordBtn);
     }
 }

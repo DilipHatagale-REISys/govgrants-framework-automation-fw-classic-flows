@@ -23,9 +23,14 @@ Feature: Validate all scenarios for program
       | Program flextable Header  | Program                                          |
       | Internal Programs - Draft | {SavedValue:Automation Runtime Internal Program} |
 
-  @34503 @66389 @35985 @75815 @38247 @75816 @75817 @75812 @75813 @75910 @75911 @75814 @updateFieldsValidationCheck @jitendra @skipOnJenkins
+  @34503 @66389 @105898 @35985 @75815 @38247 @75816 @75817 @75812 @75813 @75910 @75911 @75814 @updateFieldsValidationCheck @jitendra @skipOnJenkins
   Scenario: To verify that the user is able to modified created internal program settings and view the added setting by the creating a direct grant.
     Then I softly see status in Progress-bar is "Created" and is "Green"
+    #105898 #monu
+    Then I softly see field "Focus Area Required?" as "Yes"
+    And I softly see field "KPI" as "Yes"
+    And I softly see field "Objectives Required?" as "Yes"
+    #66389
     And I click on "Edit" in the page details
     And I enter "Edition1" values from "Program_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -499,6 +504,23 @@ Feature: Validate all scenarios for program
       | Contact                   |
       | {SavedValue:EXE Username} |
 
+  @105880 @ValidateDeletionOfAssociatedContact
+  Scenario Outline: Verify user is able to delete associated contact
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    And I refresh the page
+    Then I softly see that "<Contact>" has been added in flextable with Id "---program:-:contactsTableId---"
+    And I click on "Remove" icon for "<Contact>" inside flex table with id "---program:-:contactsTableId---" without waiting for record
+    Then I softly see the following messages in the page details contains:
+      | Record removed successfully. |
+    Then I softly see "No records found" inside flex table with id "---program:-:contactsTableId---"
+
+    Examples:
+      | Contact                   |
+      | {SavedValue:EXE Username} |
+
   @34740 @programApproverSelection
   Scenario: Validate the assignment of Approvers for the Internal Program
     When I navigate to "Responsibilities" sub tab
@@ -699,6 +721,31 @@ Feature: Validate all scenarios for program
     Then I softly see the following messages in the page details :
       | Setup Tab - SME Review: At least one form is required for this review step.                                   |
       | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
+
+  @106079 @106078 @105941 @ValidateDeletionOfSupportingDocuments @monu
+  Scenario: Validate user is able to delete the attachment checklist for the Internal Program
+    When I navigate to "Setup" sub tab
+    #105941 #monu
+    Then I softly see value "Grantor Application Forms" for title "Package Name" inside table "---program:-:ProgramBusinessFormTableId---"
+    Then I softly see value "Organization Desk Review" for title "Package Name" inside table "---program:-:ProgramBusinessFormTableId---"
+    Then I softly see value "Grantor Progress Report Forms" for title "Package Name" inside table "---program:-:ProgramBusinessFormTableId---"
+    Then I softly see value "Grantor Site Visit Forms" for title "Package Name" inside table "---program:-:ProgramBusinessFormTableId---"
+    When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Template" modal by clicking the top right x button
+    Then I softly see that "Active" has been added in flextable with Id "---program:-:checklistTableId---"
+    #106078 #monu
+    When I click on "Edit" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
+    When I enter value "Automation test" into field "Description__c"
+    Then I softly see that "Automation test" has been added in flextable with Id "---program:-:checklistTableId---"
+    #106079 #monu
+    When I click on "Delete" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    Then I softly see "No records found" inside flex table with id "---program:-:checklistTableId---"
 
   @76114 @75990 @75996 @75994 @prescreenReviewPanel
   Scenario: To validate system generated validation message for Pre-screen review,when review panel categories has not associated with Pre-screen review form in setup tab in planning phase
