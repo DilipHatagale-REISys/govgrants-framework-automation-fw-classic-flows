@@ -45,17 +45,6 @@ public class HomePage extends GrantorProjectManager {
     }
 
     /**
-     * check out to YopMail
-     *
-     * @param mailid
-     */
-    public void ckeckoutYopMail(String mailid) {
-        I.amPerforming().browserOperationsTo().navigateToUrl("http://www.yopmail.com/en/");
-        I.amPerforming().textInput().in(By.xpath("//input[@id='login']"), mailid);
-        I.amPerforming().click().on(By.xpath("//input[@value='Check Inbox' and @type='submit']"));
-    }
-
-    /**
      * @param tabName - Main tab name
      * @param tableID - pending task table ID
      * @return - count of total records available in pending task

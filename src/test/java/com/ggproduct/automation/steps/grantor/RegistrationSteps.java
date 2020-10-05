@@ -52,16 +52,6 @@ public class RegistrationSteps {
         registrationPage.assertCaptchaDisplayedOnPage(true);
     }
 
-    @Then("I see the mail text is as follows :")
-    public void verifyCorrectMailText(String mailText) {
-        registrationPage.assertMailTexMatches(mailText);
-    }
-
-    @Then("I see the mail subject is as follows :")
-    public void iSeeTheMailSubjectIsAsFollows(String subjectText) {
-        registrationPage.assertMailSubjectTexMatches(subjectText);
-    }
-
     @Then("I set password for the user")
     public void iSetPasswordForTheUser() {
         registrationPage.setPasswordForTheUser();

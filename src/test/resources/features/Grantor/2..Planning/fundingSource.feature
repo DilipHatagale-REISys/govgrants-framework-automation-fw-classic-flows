@@ -12,6 +12,33 @@ Feature: Validate all scenarios in Funding Source
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
+  @105208 @105224 @ValidateDatesOfFundingSourceAndFundingAccount @monu
+  Scenario: verify start date and end date of funding account should be same or less than funding source date
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
+    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "Start Date" as "SDATE"
+    And I save the field labeled "End Date" as "EDATE"
+    And I save the field labeled "Title" as "FundingSourceTitle"
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
+    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    When I enter value "{SavedValue:SDATE}" into field "fieldStartDate__c"
+    When I enter value "{SavedValue:EDATE}" into field "fieldEndDate__c"
+    And I click on "Save" in the page details
+    When I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Active" and is "green"
+    #105224 #monu
+    And I save the field labeled "Funding Source" as "FUNDINGSOURCE"
+    And I click "{SavedValue:FUNDINGSOURCE}" lookup link
+    Then I see the header is "Internal Funding Source" in the page details
+    Then I see the sub-header is "{SavedValue:FundingSourceTitle}" in the page details
+
   @51035 @editionOfFundingSource
   Scenario: Edition of Funding Source
     When I login to "As a Grantor" app as "EXE" user

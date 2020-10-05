@@ -35,7 +35,7 @@ Feature: Validate all scenarios in Focus Area
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---focusarea:-:FocusAreaFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
-    Then I see "Other" has been added in "Attachments" flex table
+    Then I see "Other" has been added in "Attachment" flex table
     Examples:
       | User  |
       | ADMIN |
