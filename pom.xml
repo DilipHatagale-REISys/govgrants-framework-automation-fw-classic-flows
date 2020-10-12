@@ -3,23 +3,24 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>com.testing</groupId>
-		<artifactId>blaze-parent</artifactId>
-		<version>1.0.0</version>
-	</parent>
-
+    <parent>
+        <groupId>com.github.testing-blaze</groupId>
+        <artifactId>blaze-epic</artifactId>
+        <version>1.0.1</version>
+    </parent>
+    
 	<groupId>rei.saas.automation</groupId>
 	<artifactId>product-project</artifactId>
 	<packaging>jar</packaging>
 	<name>REI SAAS Automation - Product Project</name>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.testing</groupId>
-			<artifactId>blaze-operations</artifactId>
-			<version>1.0.1</version>
-		</dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.testing-blaze/blaze-core -->
+        <dependency>
+            <groupId>com.github.testing-blaze</groupId>
+            <artifactId>blaze-core</artifactId>
+            <version>1.0.2</version>
+        </dependency>
 		<dependency>
 			<groupId>rei.saas.automation</groupId>
 			<artifactId>govgrants-library</artifactId>
@@ -28,10 +29,6 @@
 	</dependencies>
 
 	<repositories>
-		<repository>
-			<id>testing.blaze</id>
-			<url>http://nexus.reisys.com:8081/nexus/content/repositories/testing.blaze</url>
-		</repository>
 		<repository>
 			<id>saasbusinesslayer.automation</id>
 			<url>http://nexus.reisys.com:8081/nexus/content/repositories/saasbusinesslayer.automation</url>
