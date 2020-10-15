@@ -793,3 +793,7 @@ Feature: Validate all scenarios in the home tab
     And I click "Send" button in modal
     Then I see the following messages in the page details :
       | Email Sent Successfully |
+
+#    @testScenarios
+#    Scenario: Self healing testing
+#      When I login to portal

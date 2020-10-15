@@ -318,7 +318,7 @@ Feature: Leads related scenarios
       | GRANTEE EXE |
 
   @62830 @validateVisibilityOfEditButtonToDifferentUsersForLeads-NotYetQualified
-  Scenario: Validate Edit button should not be displayed to other users who didnot created the record on page details for Leads Not Yet Qualified
+  Scenario: Validate Edit button should not be displayed to other users who did not created the record on page details for Leads Not Yet Qualified
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
@@ -2123,7 +2123,7 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click search icon for look up field "Qualifying Organization Lookup (New Window)" with clearing
+    When I click search icon for look up field "Agency Lookup (New Window)" with clearing
     Then I see modal box with body "Organization" is displayed
 
   @63041 @validateTableColumnOnLookupModalWithBlankData  @positive
@@ -2152,7 +2152,7 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click search icon for look up field "Qualifying Organization Lookup (New Window)" with clearing
+    When I click search icon for look up field "Agency Lookup (New Window)" with clearing
     Then I softly see "Organization Name" in table header on lookup Modal
     Then I softly see "Code" in table header on lookup Modal
 
@@ -2182,7 +2182,7 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click search icon for look up field "Qualifying Organization Lookup (New Window)" with clearing
+    When I click search icon for look up field "Agency Lookup (New Window)" with clearing
     Then I softly see lookup modal bottom fields "Show" displayed
     Then I softly see lookup modal bottom fields "Total records" displayed
     Then I softly see lookup modal bottom fields "Page" displayed
@@ -2213,8 +2213,8 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I enter value "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" into field "fieldAgency__c"
-    Then I see value "Secretaria Auxiliar de Salud Familiar y Servicios Integrados" inside lookup field "fieldAgency__c"
+    When I enter value "Test Automation Organization" into field "fieldAgency__c"
+    Then I see value "Test Automation Organization" inside lookup field "fieldAgency__c"
 
   @63041 @validateOrganizationSelectionWithValidData  @positive
   Scenario: Validate lookup field contains expected organization after selecting it from look up modal
@@ -2242,9 +2242,9 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click search icon for look up field "Qualifying Organization Lookup (New Window)" without clearing
-    When I click on "Select" icon for "Direccion General" inside flex table with id "{grantee_tableId:OrganizationModal}"
-    Then I see value "Direccion General" inside lookup field "fieldAgency__c"
+    When I click search icon for look up field "Agency Lookup (New Window)" without clearing
+    When I click on "Select" icon for "Children’s Health Insurance Program" inside flex table with id "{grantee_tableId:OrganizationModal}"
+    Then I see value "Children’s Health Insurance Program" inside lookup field "fieldAgency__c"
 
   @63041 @validateBottomFieldsOfLookupModalWithValidData  @positive
   Scenario: Validate lookup modal contains total record field after entering valid data inside lookup search box and clicking on search icon
@@ -2272,7 +2272,7 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click search icon for look up field "Qualifying Organization Lookup (New Window)" without clearing
+    When I click search icon for look up field "Agency Lookup (New Window)" without clearing
     Then I see lookup modal bottom fields "Total records" displayed
 
   @63041 @validateOrganizationOnLookupModalWithValidData  @positive
@@ -2301,8 +2301,8 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click search icon for look up field "Qualifying Organization Lookup (New Window)" without clearing
-    Then I see value "Direccion General" for title "Organization Name" inside table "{grantee_tableId:OrganizationModal}"
+    When I click search icon for look up field "Agency Lookup (New Window)" without clearing
+    Then I see value "Children’s Health Insurance Program" for title "Organization Name" inside table "{grantee_tableId:OrganizationModal}"
 
   @63041 @validateOrganizationOnLookupModalWithPartialData  @positive
   Scenario: Validate lookup modal contains expected organization inside table after entering partial data inside lookup search box
@@ -2330,9 +2330,9 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click search icon for look up field "Qualifying Organization Lookup (New Window)" with clearing
-    When I perform quick search for "Secretaria Auxiliar de Promocion" in "{grantee_tableId:OrganizationModal}" panel
-    Then I see value "Secretaria Auxiliar de Promocion de la Salud" for title "Organization Name" inside table "{grantee_tableId:OrganizationModal}"
+    When I click search icon for look up field "Agency Lookup (New Window)" with clearing
+    When I perform quick search for "Children’s Health" in "{grantee_tableId:OrganizationModal}" panel
+    Then I see value "Children’s Health Insurance Program" for title "Organization Name" inside table "{grantee_tableId:OrganizationModal}"
 
   @63041 @validateBottomFieldsOfLookupModalWithPartialData  @positive
   Scenario:  Validate lookup modal contains total record field after entering partial data inside lookup search box and clicking on search icon
@@ -2360,8 +2360,8 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click search icon for look up field "Qualifying Organization Lookup (New Window)" with clearing
-    When I perform quick search for "Secretaria Auxiliar de Promocion" in "{grantee_tableId:OrganizationModal}" panel
+    When I click search icon for look up field "Agency Lookup (New Window)" with clearing
+    When I perform quick search for "Children’s Health" in "{grantee_tableId:OrganizationModal}" panel
     Then I softly see "Organization Name" in table header on lookup Modal
     Then I softly see "Code" in table header on lookup Modal
     Then I softly see lookup modal bottom fields "Total records" displayed
@@ -2392,7 +2392,7 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:QualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:QualifiedLeads}" panel
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:QualifiedLeads}"
-    When I click search icon for look up field "Qualifying Organization Lookup (New Window)" with clearing
+    When I click search icon for look up field "Agency Lookup (New Window)" with clearing
     When I perform quick search for "Invalid lead" in "{grantee_tableId:OrganizationModal}" panel
     Then I see "No Records Found" inside flex table with id "{grantee_tableId:OrganizationModal}"
 
@@ -2481,9 +2481,12 @@ Feature: Leads related scenarios
     When I enter value "--None--" into field "fieldImpact__c"
     And I click on "Save" in the page details
     Then I softly see the following messages in the page details contains:
-      | Relevance is Required to save under Overview.     |
-      | Impact is Required to save under Overview.        |
-      | Justification is Required to save under Overview. |
+     # | Relevance is Required to save under Overview.     |
+     # | Impact is Required to save under Overview.        |
+     # | Justification is Required to save under Overview. |
+      | Relevance is required to save under Overview.     |
+      | Impact is required to save under Overview.        |
+      | Justification is required to save under Overview. |
 
   @63084 @VerifyValidateButtonVisibilityForPMAndEXEUser  @positive
   Scenario Outline:  Validate PM and EXE user id getting validate button inside qualified record detail page
@@ -2540,7 +2543,8 @@ Feature: Leads related scenarios
     When I click on "Save" in the page details
     And I click on "Validate" in the page details
     Then I see the following messages in the page details contains:
-      | The lead has been validated successfully. You may now convert the lead to an opportunity |
+      #| The lead has been validated successfully. You may now convert the lead to an opportunity |
+      | The Lead has been validated successfully. You may now convert the Lead to an Opportunity. |
 
   @63227 @validateOpportunityStatusAfterConvertToOpportunity  @positive
   Scenario Outline: Validate status of opportunity after converting it to opportunity
@@ -2564,7 +2568,8 @@ Feature: Leads related scenarios
     When I click on "Save" in the page details
     And I click on "Convert to Opportunity" in the page details
     Then I softly see field "Status" as "Draft"
-    Then I softly see status in Progress-bar is "Draft" and is "Green"
+    #Then I softly see status in Progress-bar is "Draft" and is "Green"
+    Then I softly see status in Progress-bar is "Created" and is "Green"
     Then I can see top right button "Validate" in page detail
     Then I can see top right button "Edit" in page detail
     Then I can see top right button "Submit for Approval" in page detail
@@ -2604,6 +2609,7 @@ Feature: Leads related scenarios
     And I click on "Convert to Opportunity" in the page details
     Then I see field "Status" as "Draft"
 
+    #need to change functionality
   @63227 @validateConvertOpportunityToLeadByDifferentOrganizationUsers  @positive
   Scenario: Validate one user of organizaion1 is qualifying lead and the same qualified lead can be converted by another user of organization2
     Given I login to "As a Grantee" app as "GRANTEE PM" user
@@ -2632,6 +2638,7 @@ Feature: Leads related scenarios
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     And I click on "Qualify Lead" in the page details
+    #This Lead has been qualified by an agency unit within your hierarchy. View this Lead by using the Qualified Leads link in the navigation panel.
     When I enter value "2 - Low" into field "fieldRelevance__c"
     When I enter value "2 - Low" into field "fieldImpact__c"
     When I enter value "Test Justification For Automation" into field "fieldJustification__c"
@@ -2639,6 +2646,7 @@ Feature: Leads related scenarios
     And I click on "Convert to Opportunity" in the page details
     Then I see field "Status" as "Draft"
 
+  #need to change functionality
   @63227 @verifyValidationMessageComingWhileConvertingQualifiedLeadwithSameOrganizationUser @positive
   Scenario: Validate message coming while converting already qualified lead to opportunity with same organization user
     Given I login to "As a Grantee" app as "GRANTEE PM" user
@@ -2720,7 +2728,7 @@ Feature: Leads related scenarios
       | Overview   |
       | Financials |
       | History    |
-    Then I softly see field "Qualifying Organization" as "Direccion General"
+    Then I softly see field "Qualifying Organization" as "Children’s Health Insurance Program"
     Then I softly see field "Status" as "Qualified Lead"
 
   @63186 @validateNewButtonDisplayedForSpecificUser-NotYetQualifiedLeads @smoke   @positive
@@ -2748,7 +2756,8 @@ Feature: Leads related scenarios
       | GRANTEE FD |
       | GRANTEE FO |
 
-  @63186 @validateNewButtonIsDisplayedForSpecificUser-NotYetQualifiedLeads @BugLogged71173  @positive
+    #need to change functionality
+  @63186 @validateNewButtonIsDisplayedForSpecificUser-NotYetQualifiedLeads  @positive
   Scenario: Validate New top level button is displayed at Not Yet Qualified table
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
@@ -2766,7 +2775,8 @@ Feature: Leads related scenarios
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     Then I see "--None--:Discretionary:Other:Earmark:Continuation:Mandatory" inside selectbox field "fieldOpportunityCategory__c"
 
-  @63186 @validateCategoryOfFundingOrganizationField @buglogged71538
+    #need to change functionality
+  @63186 @validateCategoryOfFundingOrganizationField
   Scenario: Verify validation message coming for description fields for opportunity category
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     When I navigate to "Opportunities" tab
@@ -2788,10 +2798,14 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     When I enter "LeadsCreation" values from "Field_Values.xlsx"
-    And I navigate to "Overview" sub tab
+    #And I navigate to "Overview" sub tab
     When I enter opportunity value "OP-" into field "fieldOpportunityNumber__c"
     And I enter value "<enterValue>" into field "fieldOpportunityTitle__c"
     And I click on "Save and Continue" in the page details
+    When I enter value "Other" into field "fieldOpportunityCategory__c"
+    When I enter value "Other" into field "fieldFundingInstrumentType__c"
+    When I enter value "Education" into field "fieldCategoryOfFundingActivity__c"
+    And I click on "Save" in the page details
     Then I see field "Opportunity Title" as "<requiredValue>"
     Examples:
       | enterValue                                                                                                                                                                                                                                                           | requiredValue                                                                                                                                                                                                                                                   |
@@ -2815,8 +2829,10 @@ Feature: Leads related scenarios
     When I enter value "-20000" into field "fieldAwardFloor__c"
     And I click on "Save" in the page details
     Then  I see the following messages in the page details :
-      | The Award Ceiling cannot be less than the Award Floor                                                                    |
-      | Financials tab - Negative values are not allowed for Estimated Total Program Funding, Award Ceiling, Award Floor fields. |
+      #| The Award Ceiling cannot be less than the Award Floor                                                                    |
+      #| Financials tab - Negative values are not allowed for Estimated Total Program Funding, Award Ceiling, Award Floor fields. |
+      | The Award Ceiling cannot be less than the Award Floor                |
+      | Financials tab : Provide the positive values in the $ amount fields. |
 
   @63186 @validateFormatOfEnteredValueAtFields @positive
   Scenario: Verify entered numeric values should get formatted with comma after saving record
@@ -2985,16 +3001,14 @@ Feature: Leads related scenarios
     And I click on top right button "New" in flex table with id "{grantee_tableId:LeadsNotYetQualified}"
     And I click modal button "Save and Continue"
     Then I see the following messages in the page details :
-      | Funding Organization is Required to save under Overview.                   |
-      | Opportunity Number is Required to save under Overview.                     |
-      | Opportunity Title is Required to save under Overview.                      |
-      | Opportunity Category is Required to save under Overview.                   |
-      | Application Due Date is Required to save under Overview.                   |
-      | Funding Instrument Type is Required to save under Overview.                |
-      | Eligible Applicants is Required to save under Overview.                    |
-      | Lead Description is Required to save under Overview.                       |
-      | Grantor Contact Information is Required to save under Overview.            |
-      | Cost Sharing or Matching Requirement is Required to save under Financials. |
+      | Funding Organization is required to save.                 |
+      | Opportunity Number is required to save.                   |
+      | Opportunity Title is required to save.                    |
+      | Opportunity Category is required to save.                 |
+      | Application Due Date is Required to save under Overview.  |
+      | Eligible Applicants is required to save.                  |
+      | Lead Description is required to save.                     |
+      | Cost Sharing or Matching Requirement is required to save. |
 
   @63186 @validateFundingOrganizationLookupSearchField  @positive
   Scenario: Verify user is able to search with federal organization create lead with Non federal organization with source as Federal
@@ -3155,6 +3169,7 @@ Feature: Leads related scenarios
     When I refresh the page
     Then I see table with header "Attachments" contains records "AttachmentTesting.pdf"
 
+    #need to change functionality
   @63201 @validateErrorMessageWhileAdditionOfAttachment
   Scenario: Verify user is able to get validation message while adding attchment
     Given I login to "As a Grantee" app as "GRANTEE PM" user
@@ -3183,6 +3198,7 @@ Feature: Leads related scenarios
       | Please choose a Document for upload.   |
       | Please provide Attachment Description. |
 
+    #need to change functionality
   @63201 @validateAttachmentTypeValues  @positive
   Scenario: Verify user is able to see expected values inside Type fields on attchment modal
     Given I login to "As a Grantee" app as "GRANTEE PM" user
@@ -3226,8 +3242,12 @@ Feature: Leads related scenarios
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside table
     When I navigate to "Attachments" sub tab
-    And I add notes records
-    And I close "Add Notes" modal by clicking the top right x button
+    And I click on top right button "Add" in flex table with id "{grantee_tableId:LeadsAttachmentTableId}"
+    When I enter value "Notes Record" into field "Title"
+    When I enter value "Automation Notes" into field "Body"
+    And I click on top right button "Save" in flex table with id "{grantee_tableId:LeadsAttachmentTableId}"
+    #And I add notes records
+    #And I close "Add Notes" modal by clicking the top right x button
     Then I see table with header "Notes" contains records "Notes Record"
 
   @63201 @validateErrorMessageWhileAdditionOfNotes
@@ -3251,11 +3271,16 @@ Feature: Leads related scenarios
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside table
     When I navigate to "Attachments" sub tab
     When I click on "Add" button inside attachments page block
-    When I click modal button "Save"
-    When I pause execution for "3" seconds
+    And I click on top right button "Add" in flex table with id "{grantee_tableId:LeadsAttachmentTableId}"
+    And I click on top right button "Save" in flex table with id "{grantee_tableId:LeadsAttachmentTableId}"
+    #When I click modal button "Save"
+    #When I pause execution for "3" seconds
+    #Then I see the following messages in the page details :
+    #  | Please enter Required fields |
     Then I see the following messages in the page details :
-      | Please enter Required fields |
+      | Required fields are missing : Title |
 
+    #need to change functionality
   @63201 @validateDeletionOfAttachmentRecord  @positive
   Scenario: Verify user is able to delete added record attchment
     Given I login to "As a Grantee" app as "GRANTEE PM" user
@@ -3302,10 +3327,12 @@ Feature: Leads related scenarios
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside table
     When I navigate to "Attachments" sub tab
-    And I add notes records
-    And I close "Add Notes" modal by clicking the top right x button
-    When I click on "Delete" icon for "Notes Record" inside table
-    Then I see confirmation box with body "Record deleted successfully." is displayed
+    And I click on top right button "Add" in flex table with id "{grantee_tableId:LeadsAttachmentTableId}"
+    When I enter value "Notes Record" into field "Title"
+    When I enter value "Automation Notes" into field "Body"
+    And I click on top right button "Save" in flex table with id "{grantee_tableId:LeadsAttachmentTableId}"
+    When I click on "Delete" icon for "Notes Record" inside table with table id "{grantee_tableId:LeadsAttachmentTableId}" without processing
+    Then I see confirmation box with body "Do you want to delete? Once it is deleted it cannot be restored." is displayed
 
   @63201 @validateErrorMessageForAwardCeilingAndAwardFloorFields @positive
   Scenario: Verify user is getting validation message while entering award ceiling value is less than award floor value on lead creation
@@ -3475,7 +3502,7 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "Delete" icon for "{SavedValue:Automation Runtime Lead}" inside table with table id "{grantee_tableId:LeadsNotYetQualified}" without processing
-    Then I see confirmation box with body "Are you sure you want to permanently delete the lead?" is displayed
+    Then I see confirmation box with body "Are you sure you want to permanently delete the draft lead?" is displayed
 
   @63172 @validateRecordDeletionOfCreatedLead @positive
   Scenario: Verify record has been deleted while clicking on delete icon from table

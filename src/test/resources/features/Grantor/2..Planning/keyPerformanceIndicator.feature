@@ -178,3 +178,56 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime KPI}" inside table
     Then I see status in Progress-bar is "Inactive" and is "Green"
+
+  @105456 @VerifyActiveStrategicPlan @monu
+  Scenario: Validate user is able to see activated strategic plan
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Planning" tab
+    When I navigate to "Strategic Plans" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Strategic Plans - All"
+    When I perform quick search for "Automation Permanent Strategic Plan" in "---strategicplan:-:StrategicPlansTableId---" panel
+    Then I see value "Active" for title "Status" against the value "{SavedValue:egmsid}" inside table "---strategicplan:-:StrategicPlansTableId---"
+
+  @106645 @VerifyRelatedObjectiveDetails @smoke
+  Scenario: Validate user is able to see related objective
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Planning" tab
+    When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
+    And I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
+    And I enter "Creation" values from "KPI_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "KPI_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Active" and is "Green"
+    And I save the field labeled "Title" as "KPINAME"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Strategic Plans" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Strategic Plans - Draft"
+    And I click on top right button "New" in flex table with id "---strategicplan:-:StrategicPlansTableId---"
+    And I enter "StrategicPlanCreation" values from "StrategicPlan_Field_Values.xlsx"
+    And I click modal button "Save and Close"
+    When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
+    And I click on "Save" in the page details
+    And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
+    When I enter value "Execution Strategic Goal" into field "fieldStrategyTitle__c"
+    When I click modal button "Save and Close"
+    When I click on "Save" in the page details
+    When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
+    When I enter in modal value "Execution Objective" into field "StrategyTitle__c"
+    When I click modal button "Save and Close"
+    And I click on "Save" in the page details
+    When I navigate to "Related Log" sub tab
+    And I click on top right button "Associate" in flex table with id "---strategicplan:-:ObjectivesKPITableId---"
+    When I perform quick search for "{SavedValue:KPINAME}" in "---strategicplan:-:ListOfActiveKPITableId---" panel
+    When I click "Associate" after selection of "{SavedValue:KPINAME}" in the table "---strategicplan:-:ListOfActiveKPITableId---"
+    Then I softly see that "{SavedValue:KPINAME}" has been added in flextable with Id "---strategicplan:-:ObjectivesKPITableId---"
+    And I navigate to "Planning" tab
+    When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Active"
+    When I perform quick search for "{SavedValue:KPINAME}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    And I click on "View" icon for "{SavedValue:KPINAME}" inside table
+    When I navigate to "Related Log" sub tab
+    Then I softly see value "Execution Objective" for title "Title" inside table "---keyperformanceindicator:-:ObjectiveTableId---"

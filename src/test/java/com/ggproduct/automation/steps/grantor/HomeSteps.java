@@ -56,4 +56,10 @@ public  class HomeSteps {
     public void completeProcessOnYopmailPortal(String emailId) {
         homePage.performOperationOnYopmail(emailId);
     }
+
+    /*@When("I login to portal")
+    public void iLoginToPortal() {
+        I.amPerforming().textInput().in(ByUsing.healingWebIdName("loginPage_userName"), TestSetupController.usersController.getUserName("Admin"));
+        I.amPerforming().textInput().in(ByUsing.healingWebXpathName("loginPage_password"),TestSetupController.usersController.getPassword("Admin"));
+    }*/
 }

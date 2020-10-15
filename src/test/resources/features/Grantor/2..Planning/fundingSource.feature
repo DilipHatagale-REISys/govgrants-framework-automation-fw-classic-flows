@@ -211,3 +211,39 @@ Feature: Validate all scenarios in Funding Source
     Examples:
       | Funding Source                                 |
       | {SavedValue:Automation Runtime Funding Source} |
+
+  @105225 @ValidateAppropriationAmountOnFundingSource @monu
+  Scenario: verify appropriation amount on Active funding source is sum of all active funding accounts
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
+    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "Start Date" as "SDATE"
+    And I save the field labeled "End Date" as "EDATE"
+    And I save the field labeled "Title" as "FundingSourceTitle"
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
+    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter value "1000" into field "AppropriationBalance__c"
+    When I click modal button "Save and Continue"
+    When I enter value "{SavedValue:SDATE}" into field "fieldStartDate__c"
+    When I enter value "{SavedValue:EDATE}" into field "fieldEndDate__c"
+    And I click on "Save" in the page details
+    When I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Active" and is "green"
+    And I save the field labeled "Funding Source" as "FUNDINGSOURCE"
+    And I click "{SavedValue:FUNDINGSOURCE}" lookup link
+    Then I see the header is "Internal Funding Source" in the page details
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
+    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter value "1500" into field "AppropriationBalance__c"
+    When I click modal button "Save and Continue"
+    When I enter value "{SavedValue:SDATE}" into field "fieldStartDate__c"
+    When I enter value "{SavedValue:EDATE}" into field "fieldEndDate__c"
+    And I click on "Save" in the page details
+    When I click on "Activate" in the page details
+    And I click "{SavedValue:FUNDINGSOURCE}" lookup link
+    Then I softly see field "Appropriation Amount" as "$2,500.00"

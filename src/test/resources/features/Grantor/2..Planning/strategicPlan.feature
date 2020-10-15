@@ -27,6 +27,18 @@ Feature: Validate all scenarios in Strategic Plan
     And I upload attachment "Attachment.pdf" of type "Strategic Plan" from computer
     Then I softly see "Strategic Plan" has been added in "Strategic Plan Files" flex table
 
+  @105447 @verifyDeletionOfStrategicPlan @monu
+  Scenario: Validate user is able to delete strategic plan
+    And I save the field labeled "EGMS ID" as "egmsid"
+    And I navigate to "Planning" tab
+    When I navigate to "Strategic Plans" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Strategic Plans - Draft"
+    And I perform quick search for "{SavedValue:egmsid}" in "---strategicplan:-:StrategicPlansTableId---" panel
+    And I click on "Delete" icon for "{SavedValue:egmsid}" inside flex table with id "---strategicplan:-:StrategicPlansTableId---" without waiting for record
+    Then I softly see the following messages in the page details contains:
+      | Record removed successfully. |
+    Then I softly see "No records found" inside flex table with id "---strategicplan:-:StrategicPlansTableId---"
+
   @51045 @editionOfStrategicGoal
   Scenario: Edition of Strategic Goal inside a Strategic Plan by User - Admin/EXE/PM
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
@@ -72,7 +84,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I click modal button "Save and Close"
     And I click on "Save" in the page details
 
-  @51048 @editionOfObjective
+  @51048 @editionOfObjective @monu
   Scenario: Edition of Objective inside a Strategic Goal by User - Admin/EXE/PM
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
@@ -90,6 +102,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I click on "Edit" in the page details
     When I enter in modal value "Execution Strategic Objective" into field "StrategyDescription__c"
     When I click on "Save" in the page details
+    Then I softly see field "Description" as "Execution Strategic Objective"
 
   @51049 @additionOfAttachmentToObjective
   Scenario: Addition of Attachment to Objective inside a Strategic Goal by User - Admin/EXE/PM
