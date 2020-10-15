@@ -10,6 +10,7 @@ Feature: Validate all scenarios for program
     When I enter "Creation" values from "Program_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
     And I click on "Save" in the page details
 
   @34730 @programListView
@@ -19,6 +20,20 @@ Feature: Validate all scenarios for program
     And I click toggle button to select "<Program flextable Header>"
     And I perform quick search for "<Program>"
     Then I see that "<Program>" has been added in flextable with Id "---program:-:programsTableId---"
+    Examples:
+      | Program flextable Header  | Program                                          |
+      | Internal Programs - Draft | {SavedValue:Automation Runtime Internal Program} |
+
+  @105872 @VerifyDeletionOfCreatedProgram @monu
+  Scenario Outline: Verifying if the owner of program is ablr to delete created program
+    When I navigate to "Planning" tab
+    And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "<Program flextable Header>"
+    And I perform quick search for "<Program>"
+    And I click on "Delete" icon for "<Program>" inside flex table with id "---program:-:programsTableId---" without waiting for record
+    Then I see the text "Record deleted successfully."
+    And I perform quick search for "<Program>"
+    Then I softly see "No Records Found" inside flex table with id "---program:-:programsTableId---"
     Examples:
       | Program flextable Header  | Program                                          |
       | Internal Programs - Draft | {SavedValue:Automation Runtime Internal Program} |
@@ -584,6 +599,60 @@ Feature: Validate all scenarios for program
       | Title                           |
       | Automation Permanent Focus Area |
 
+  @106094 @VerifyDeletionOfAssociatedFocusArea @monu
+  Scenario Outline: Validate user is able to delete associated focus area for the Internal Program
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I click "Add" after selection of "<Title>" in the table "---program:-:associateFocusAreaTableId---"
+    Then I softly see that "<Title>" has been added in flextable with Id "---program:-:focusAreaTableId---"
+    And I click on "Remove" icon for "<Title>" inside flex table with id "---program:-:focusAreaTableId---" without waiting for record
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    Then I softly see "No records found" inside flex table with id "---program:-:focusAreaTableId---"
+
+    Examples:
+      | Title                           |
+      | Automation Permanent Focus Area |
+
+  @105920 @VerifyErrorMessageForFocusArea @monu
+  Scenario: Validate user is able to see error message for focus area after making program detail changes
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    And I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
+    When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
+    And I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
+      | Responsibility     | Name                      | Description                 |
+      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
+      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Template" modal by clicking the top right x button
+    And I click on "Edit" in the page details
+    And I navigate to "Overview" sub tab
+    When I enter value "No" into field "fieldFocusAreaRequired__c"
+    And I click on "Save" in the page details
+    And I click on "Submit For Approval" in the page details
+    Then I softly see the following messages in the page details :
+      | Setup Tab - Remove all the Focus Areas associated with this program if the Focus Area Required is "No". |
+
   @34737 @76116 @76117 @76113 @76115 @75894 @75888 @75891 @programObjectiveAssociation @skipOnJenkins
   Scenario Outline: Validate the Association of Objective to the Internal Program
     When I navigate to "Setup" sub tab
@@ -645,6 +714,21 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
+  @106288 @VerifyDeletionOfAssociatedProgramObjective @monu
+  Scenario Outline: Validate user is able to delete associated objective from program
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    Then I softly see that "<Objective>" has been added in flextable with Id "---program:-:objectivesTableId---"
+    And I click on "Remove" icon for "<Objective>" inside flex table with id "---program:-:objectivesTableId---" without waiting for record
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    Then I softly see "No records found" inside flex table with id "---program:-:objectivesTableId---"
+
+    Examples:
+      | Objective                      |
+      | Automation Permanent Objective |
+
   @34738 @75991 @75993 @75895 @75896 @75909 @75912 @75913 @programKPIAssociation
   Scenario Outline: Validate the association of KPI
     When I navigate to "Setup" sub tab
@@ -683,6 +767,22 @@ Feature: Validate all scenarios for program
     And I enter advance filter values inside id "advfProgramRelatedReviewPanelCategories"
       | Section Header | contains | TestInvalidPanel |
     Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanel---"
+    Examples:
+      | EGMS Id                                 |
+      | Automation Permanent KPI for Regression |
+
+  @106096 @verifyDeletionOfAssociatedProgramKPI @monu
+  Scenario Outline: Validate user is able to delete associated kpi from program
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I perform quick search for "<EGMS Id>" in "---program:-:associateKPITableId---" panel
+    When I click "Add" after selection of "<EGMS Id>" in the table "---program:-:associateKPITableId---"
+    Then I softly see that "<EGMS Id>" has been added in flextable with Id "---program:-:kpiTableId---"
+    And I click on "Remove" icon for "<EGMS Id>" inside flex table with id "---program:-:kpiTableId---" without waiting for record
+    Then I softly see the following messages in the page details contains:
+      | Record deleted successfully. |
+    Then I softly see "No records found" inside flex table with id "---program:-:kpiTableId---"
+
     Examples:
       | EGMS Id                                 |
       | Automation Permanent KPI for Regression |
@@ -747,6 +847,19 @@ Feature: Validate all scenarios for program
       | Record deleted successfully. |
     Then I softly see "No records found" inside flex table with id "---program:-:checklistTableId---"
 
+  @106083 @VerifyViewOfAddedLinkAtSupportingDocument @monu @skipOnJenkins
+  Scenario: Validate user is able to download uploaded document by clicking on view link
+    When I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Template" modal by clicking the top right x button
+    Then I softly see that "Active" has been added in flextable with Id "---program:-:checklistTableId---"
+    And I click in table hyperlink containing value "View"
+    Then I see "Sub Tab" in downloaded xls or csv file "govgrants"
+
   @76114 @75990 @75996 @75994 @prescreenReviewPanel
   Scenario: To validate system generated validation message for Pre-screen review,when review panel categories has not associated with Pre-screen review form in setup tab in planning phase
     When I navigate to "Setup" sub tab
@@ -780,7 +893,7 @@ Feature: Validate all scenarios for program
     Then I softly see the following messages in the page details :
       | Setup Tab - Management Review - Management Review: At least one section must be added to this form. |
 
-  @34750 @submittingProgramForApproval
+  @34750 @106291 @submittingProgramForApproval
   Scenario: Validate the submission of Program for Approval
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
@@ -817,6 +930,8 @@ Feature: Validate all scenarios for program
     And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
+    #106291 #monu
+    Then I softly cannot see top right button "Edit" in page detail
 
   @34754 @programApproval @smoke
   Scenario: Validate the approval of Internal Program
@@ -868,6 +983,54 @@ Feature: Validate all scenarios for program
     And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
+
+  @106336 @programRejection @smoke @monu
+  Scenario: Validate user should be able to reject program
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I pause execution for "2" seconds
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
+    When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
+      | Responsibility     | Name                      | Description                 |
+      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
+      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Template" modal by clicking the top right x button
+    And I navigate to "Attachments" sub tab
+    And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    And I upload attachment "Attachment.pdf" of type "Program Artifacts" from computer
+    And I pause execution for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    And I "Reject" in the approval decision
+    Then I can see the message "Successfully disapproved" in the approval decision
+    Then I softly see field "Status" as "Rejected"
+    Then I softly see status in Progress-bar is "Rejected" and is "Red"
 
   @53689 @verifyRelatedLogsTableForFocusAreaForActiveProgram @mahadev
   Scenario Outline: Verify related log table for focus area for Active Program
@@ -3137,7 +3300,7 @@ Feature: Validate all scenarios for program
       | Automation Permanent Objective |
 
   @81230 @validatingPreScreenReviewFormQuestions @meenakshi
-  Scenario: To verify,review question displayed by default for all review panel categories for Prescreen review form in prescreen review step of planning phase
+  Scenario Outline: To verify,review question displayed by default for all review panel categories for Prescreen review form in prescreen review step of planning phase
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -3174,8 +3337,12 @@ Feature: Validate all scenarios for program
     Then I softly see "Type" in flex table header "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly see "Max Score" in flex table header "---program:-:programReviewPanelQuestionsTableId---"
 
+    Examples:
+      | Focus Area                      | Program Name                                     |
+      | Automation Permanent Focus Area | {SavedValue:Automation Runtime Internal Program} |
+
   @81231 @validatingComplainceReviewQuestionsInSMEReviewForEXEUser @meenakshi
-  Scenario: To verify,review question displayed by default for all review panel categories for Compliance Review review form in SME review step of planning phase
+  Scenario Outline: To verify,review question displayed by default for all review panel categories for Compliance Review review form in SME review step of planning phase
     And I re-login as "As a Grantor" user on "EXE" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -3222,6 +3389,10 @@ Feature: Validate all scenarios for program
     Then I softly see "Question" in flex table header "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly see "Type" in flex table header "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly see "Max Score" in flex table header "---program:-:programReviewPanelQuestionsTableId---"
+
+    Examples:
+      | Focus Area                      | Program Name                                     |
+      | Automation Permanent Focus Area | {SavedValue:Automation Runtime Internal Program} |
 
   @77347 @77349 @77348 @validatingMaximumScoreSMEReviewFormQuestions @meenakshi
   Scenario Outline: To validate system generated validation message, When Max score:0, for all review questions under the Capability review panel categories and  Weight is present, in program review form of SME review steps in planning phase
@@ -4690,3 +4861,193 @@ Feature: Validate all scenarios for program
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
+
+  @106332 @106322 @106319 @106317 @verifyActivationOfAmendedProgram @monu
+  Scenario Outline: Verify user is able to activate the amended internal program
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
+    When I click "Add" after selection of "<Focus Area>" in the table "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
+    When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
+      | Responsibility     | Name                      | Description                 |
+      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
+      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    And I click on "Submit For Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    When I perform quick search for "<Program Name>" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "<Program Name>" inside flex table with id "---program:-:programsTableId---" without waiting for record
+    And I click on "Activate" in the page details
+    #106317 #monu
+    Then I softly see status in Progress-bar is "Active" and is "green"
+    And I click on "Amend Program" in the page details
+    #106322 #monu
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    #106319 #monu
+    Then I softly see field "Status" as "Being Amended"
+    And I click on "Submit For Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    When I perform quick search for "<Program Name>" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "<Program Name>" inside flex table with id "---program:-:programsTableId---" without waiting for record
+    Then I softly see status in Progress-bar is "Approved" and is "green"
+    And I click on "Activate" in the page details
+    Then I softly see status in Progress-bar is "Active" and is "green"
+
+    Examples:
+      | Focus Area                      | Program Name                                     |
+      | Automation Permanent Focus Area | {SavedValue:Automation Runtime Internal Program} |
+
+  @106313 @verifyTaskCreationForProgramActivation @monu
+  Scenario Outline: Verify user is able to see created task to activate program inside pending tasks
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
+    When I click "Add" after selection of "<Focus Area>" in the table "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
+    When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
+    When I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
+      | Responsibility     | Name                      | Description                 |
+      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
+      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    And I click on "Submit For Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---program:-:pendingTaskTableId---"
+    Then I softly see value "Activate Internal Program" for title "Type" inside table "---program:-:pendingTaskTableId---"
+
+    Examples:
+      | Focus Area                      |
+      | Automation Permanent Focus Area |
+
+  @105969 @VerifyAllActiveFocusArea @monu
+  Scenario: Validate user is able to see all active focus area on associate modal
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    And I check "All" boxes in flex table with id "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Add" in flex table with id "---program:-:associateFocusAreaTableId---"
+    Then I see value "Active" for title "Status" against the value "Automation Permanent Focus Area2" inside table "---program:-:focusAreaTableId---"
+    Then I see value "Active" for title "Status" against the value "Automation Permanent Focus Area" inside table "---program:-:focusAreaTableId---"
+
+  @106339 @VerifyEmailNotificationForProgramApproval @monu
+  Scenario: Validate respective user should get an email notification for program approval
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I close "Contacts" modal by clicking the top right x button
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
+    When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    And I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
+    When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
+    And I navigate to "Responsibilities" sub tab
+    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
+      | Responsibility     | Name                      | Description                 |
+      | Program Approver   | {SavedValue:PO Username}  | Automation Test Description |
+      | Executive Approver | {SavedValue:FD Username}  | Automation Test Description |
+    When I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Template" modal by clicking the top right x button
+    And I pause execution for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    And I pause execution for "5" seconds
+    And I logout
+    And I checkout to yopmail with mailid "automationpo@yopmail.com"
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Program #{SavedValue:ProgramEGMSID} has been Created andWaiting for Your Approval
+      """
+    When I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "FD" user
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    Then I softly see value "Approve Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:pendingTaskTableId---"
+    And I checkout to yopmail with mailid "automationfd@yopmail.com"
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Program #{SavedValue:ProgramEGMSID} has been Created andWaiting for Your Approval
+      """

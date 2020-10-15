@@ -144,3 +144,87 @@ Feature: Validate all scenarios in Focus Area
     When I perform quick search for "{SavedValue:Automation Runtime Focus Area}" in "---focusarea:-:focusAreaTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Focus Area}" inside table
     Then I see status in Progress-bar is "Closed" and is "Green"
+
+  @106643 @109276 @VerifyAssociatedFocusAreaAtRlatedGrantRecord @monu
+  Scenario: Validate user should be able to see associated focus area at grant record for program
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Planning" tab
+    When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Focus Areas - All"
+    When I perform quick search for "Automation Permanent Focus Area" in "---focusarea:-:focusAreaTableId---" panel
+    And I click on "View" icon for "Automation Permanent Focus Area" inside table
+    #109276 #monu
+    And I navigate to "Related Log" sub tab
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---focusarea:-:ActiveGrantsTableIdFocusArea---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
+    And I navigate to "Subawards" sub tab
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---focusarea:-:GrantsSubAwardsTableIdFocusArea---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
+    And I navigate to "Budget" sub tab
+    When I perform quick search for "Automation Permanent Focus Area" in "---focusarea:-:SubAwardFocusAreaTableId---" panel
+    Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---focusarea:-:SubAwardFocusAreaTableId---"
+
+  @106615 @VerifyCorrespondingAnnouncement @monu
+  Scenario: Validate user should be able to see related announcement associated with program
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "Automation Permanent Internal Program" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "Automation Permanent Internal Program" inside table
+    And I navigate to "Related Log" sub tab
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---program:-:AnnouncementTableId---" panel
+    Then I softly see value "{SavedValue:Automation Runtime FDM Announcement}" for title "Title" inside table "---program:-:AnnouncementTableId---"
+
+  @109436 @ValidateEditOfBusinessForm @monu
+  Scenario Outline: Validate expected user is able to edit business form on internal program
+    When I login to "As a Grantor" app as "<userType>" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "{SavedValue:ProgramEGMSID}" inside table
+    When I navigate to "Setup" sub tab
+    Then I softly can see row level action button "Edit" against "Grantor Application Forms" in flex table with id "---program:-:ProgramBusinessFormTableId---"
+    Then I softly can see row level action button "Edit" against "Organization Desk Review" in flex table with id "---program:-:ProgramBusinessFormTableId---"
+    Then I softly can see row level action button "Edit" against "Grantor Progress Report Forms" in flex table with id "---program:-:ProgramBusinessFormTableId---"
+
+    Examples:
+      | userType |
+      | ADMIN    |
+      | PM       |
+
+  @109641 @109606 @ValidateDeletionOfReviewerFromInternalProgram @monu
+  Scenario: Validate user is able to delete associated Reviewer at internal program
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    When I navigate to "Setup" sub tab
+    And I expand nested table containing column value "Pre-Screen Review"
+    #109606 #monu
+    When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
+      | Reviewer                 |
+      | {SavedValue:PM Username} |
+    Then I see the following messages in the page details contains:
+      | Saved Successfully! |
+    Then I softly see value "{SavedValue:PM Username}" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
+    And I click on "Delete" icon for "{SavedValue:PM Username}" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    Then I softly see the text "Record deleted successfully."
