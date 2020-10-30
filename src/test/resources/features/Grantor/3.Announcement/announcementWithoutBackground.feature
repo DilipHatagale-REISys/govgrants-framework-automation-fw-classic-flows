@@ -430,9 +430,9 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see the following messages in the page details :
       | There are no errors with the review step templates. |
     When I enter the following values into flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Add" :
-      | Reviewer |
-      | David FO |
-    Then I softly see value "Automation PM" for title "Reviewer" inside table "---announcement:-:AnnouncementReviewPanel---"
+      | Reviewer                 |
+      | {SavedValue:PM Username} |
+    Then I softly see value "{SavedValue:PM Username}" for title "Reviewer" inside table "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see value "donald_pm@ggp.test7.atm.automation" for title "Email" inside table "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see value "Test Automation Organization" for title "Organization Name" inside table "---announcement:-:AnnouncementReviewPanel---"
     And I click on "Remove from Form" icon for "Automation PM" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record

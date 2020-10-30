@@ -3639,11 +3639,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Send to Subrecipient" in page detail
     Then I softly can see top right button "Submit for Approval" in page detail
-    When I navigate to "Attachments" sub tab
-    And I upload document "Award_Field_Values.xlsx" of type "Digitally Signed Original"
-    Then I softly see "Award_Field_Values.xlsx" has been added in "Digital Signature Document" flex table
-    And I click on "Delete" icon for "Award_Field_Values.xlsx" inside flex table with id "---subAwardStandAlone:-:digiSignDivTableId---" without waiting for record
-    Then I softly see "No Records" inside flex table with id "---subAwardStandAlone:-:digiSignDivTableId---"
     Examples:
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |

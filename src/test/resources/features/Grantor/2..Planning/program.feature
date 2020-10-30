@@ -121,18 +121,18 @@ Feature: Validate all scenarios for program
     And I navigate to "Setup" sub tab
     And I expand nested table containing column value "Pre-Screen Review"
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
-      | Reviewer |
-      | David FO |
-    Then I softly see value "David FO" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
+      | Reviewer                 |
+      | {SavedValue:PM Username} |
+    Then I softly see value "{SavedValue:PM Username}" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
     And I click on parallel menu button in flex table title "Reviewers"
     And I select "Download as PDF" from dropdown
     And I download the file
     Then I softly see following details in "govgrants" pdf file:
-      | Detail   | Page Number |
-      | David FO | 1           |
+      | Detail                   | Page Number |
+      | {SavedValue:PM Username} | 1           |
     And I switch to parent tab
-    And I click on "Delete" icon for "David FO" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
-    Then I softly do not see value "David FO" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
+    And I click on "Delete" icon for "{SavedValue:PM Username}" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    Then I softly do not see value "{SavedValue:PM Username}" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
     And I refresh the page
     And I expand nested table containing column value "Management Review"
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
@@ -512,7 +512,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     And I refresh the page
     Then I see that "<Contact>" has been added in flextable with Id "---program:-:contactsTableId---"
     Examples:
@@ -524,7 +524,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     And I refresh the page
     Then I softly see that "<Contact>" has been added in flextable with Id "---program:-:contactsTableId---"
     And I click on "Remove" icon for "<Contact>" inside flex table with id "---program:-:contactsTableId---" without waiting for record
@@ -557,11 +557,11 @@ Feature: Validate all scenarios for program
     Then I softly see value "Completeness" for title "Section Header" inside table "---program:-:programReviewPanel---"
     And I close "Review Form" modal by clicking the top right x button
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
-      | Reviewer |
-      | David FO |
-    Then I softly see value "David FO" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
-    Then I softly see value "david.fo@yopmail.com.invalid" for title "Email" inside table "---program:-:reviewStepTableId---"
-    Then I softly see value "Department of Health" for title "Organization Name" inside table "---program:-:reviewStepTableId---"
+      | Reviewer                 |
+      | {SavedValue:PM Username} |
+    Then I softly see value "{SavedValue:PM Username}" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "donald_pm@ggp.test7.atm.automation" for title "Email" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "Test Automation Organization" for title "Organization Name" inside table "---program:-:reviewStepTableId---"
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     Then I softly see value "Fiscal Review" for title "Form Name" inside table "---program:-:reviewStepTableId---"
@@ -584,12 +584,12 @@ Feature: Validate all scenarios for program
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
-      | Reviewer |
-      | David FO |
-    Then I softly see value "David FO" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
-    Then I softly see value "david.fo@yopmail.com.invalid" for title "Email" inside table "---program:-:reviewStepTableId---"
-    Then I softly see value "Department of Health" for title "Organization Name" inside table "---program:-:reviewStepTableId---"
-    And I click on "Delete" icon for "David FO" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+      | Reviewer                 |
+      | {SavedValue:PM Username} |
+    Then I softly see value "{SavedValue:PM Username}" for title "Reviewer" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "donald_pm@ggp.test7.atm.automation" for title "Email" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "Test Automation Organization" for title "Organization Name" inside table "---program:-:reviewStepTableId---"
+    And I click on "Delete" icon for "{SavedValue:PM Username}" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
     And I select "Download as PDF" from parallel lines dropdown of "Review Forms"
@@ -622,7 +622,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -700,11 +700,11 @@ Feature: Validate all scenarios for program
     Then I softly see the following messages in the page details :
       | Setup Tab - SME Review - Compliance Review: At least one section must be added to this form. |
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
-      | Reviewer |
-      | David FO |
+      | Reviewer                 |
+      | {SavedValue:PM Username} |
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
-      | Reviewer |
-      | Sarah PM |
+      | Reviewer                 |
+      | {SavedValue:PO Username} |
     Then I softly see the following messages in the page details :
       | Saved successfully. |
     And I select "Download as PDF" from parallel lines dropdown of "Reviewers"
@@ -743,11 +743,11 @@ Feature: Validate all scenarios for program
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
-      | Reviewer |
-      | David FO |
+      | Reviewer                 |
+      | {SavedValue:PM Username} |
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
-      | Reviewer |
-      | Sarah PM |
+      | Reviewer                 |
+      | {SavedValue:PO Username} |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
@@ -893,7 +893,7 @@ Feature: Validate all scenarios for program
     Then I softly see the following messages in the page details :
       | Setup Tab - Management Review - Management Review: At least one section must be added to this form. |
 
-  @34750 @106291 @submittingProgramForApproval
+  @34750 @106291 @110156 @110141 @submittingProgramForApproval @monu
   Scenario: Validate the submission of Program for Approval
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
@@ -901,7 +901,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -924,14 +924,20 @@ Feature: Validate all scenarios for program
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     When I close "Upload Template" modal by clicking the top right x button
+    #110141 #monu
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Program Artifacts" from computer
+    Then I softly see "Attachment.pdf" has been added in "Program Files" flex table
     And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
     #106291 #monu
     Then I softly cannot see top right button "Edit" in page detail
+    #110156 #monu
+    And I navigate to "History" sub tab
+    Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
+    Then I softly see value "Created" for title "Old Value" inside table "History"
 
   @34754 @programApproval @smoke
   Scenario: Validate the approval of Internal Program
@@ -941,7 +947,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -992,7 +998,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -1040,7 +1046,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -1096,7 +1102,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -1121,7 +1127,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -1180,7 +1186,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1235,7 +1241,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -1271,7 +1277,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -1313,7 +1319,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -1359,7 +1365,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1399,7 +1405,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1463,7 +1469,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1571,7 +1577,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1652,7 +1658,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1712,7 +1718,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -1764,7 +1770,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1828,7 +1834,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1896,7 +1902,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -1928,7 +1934,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1989,7 +1995,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2024,7 +2030,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2069,7 +2075,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2114,7 +2120,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2160,7 +2166,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -2192,7 +2198,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2256,7 +2262,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2315,7 +2321,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2359,7 +2365,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2390,7 +2396,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2433,7 +2439,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2462,7 +2468,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2491,7 +2497,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2523,7 +2529,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2555,7 +2561,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2592,7 +2598,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2629,7 +2635,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2666,7 +2672,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2704,7 +2710,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -2740,7 +2746,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2784,7 +2790,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2856,7 +2862,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2932,7 +2938,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3008,7 +3014,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3083,7 +3089,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3141,7 +3147,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3181,7 +3187,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3283,7 +3289,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3402,7 +3408,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3481,7 +3487,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -3528,7 +3534,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -3576,7 +3582,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -3628,7 +3634,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3671,7 +3677,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3744,7 +3750,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3804,7 +3810,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3836,7 +3842,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3863,7 +3869,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3907,7 +3913,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3963,7 +3969,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4002,7 +4008,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4035,7 +4041,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4076,7 +4082,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4137,7 +4143,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4196,7 +4202,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4260,7 +4266,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4302,7 +4308,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4353,7 +4359,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4380,7 +4386,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4409,7 +4415,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4462,7 +4468,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4490,7 +4496,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4528,7 +4534,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4587,7 +4593,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4624,7 +4630,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -4797,7 +4803,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4870,7 +4876,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -4944,7 +4950,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -5001,7 +5007,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -5014,9 +5020,9 @@ Feature: Validate all scenarios for program
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     And I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PO Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:FD Username}  | Automation Test Description |
+      | Responsibility     | Name                     | Description                 |
+      | Program Approver   | {SavedValue:PO Username} | Automation Test Description |
+      | Executive Approver | {SavedValue:FD Username} | Automation Test Description |
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
       | Description                 | Required  | Applies To  | Status |
@@ -5051,3 +5057,66 @@ Feature: Validate all scenarios for program
       """
       Sandbox: Notification: Program #{SavedValue:ProgramEGMSID} has been Created andWaiting for Your Approval
       """
+
+  @109790 @VerifyValidationMessageForReviewFormWeightLessThan100%  @monu
+  Scenario: validate user is able to see validation message when review form weight is les than 100%
+    And I navigate to "Setup" sub tab
+    And I click on "Edit" icon for "Pre-Screen Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    When I enter value "30" into field "Weight__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I expand nested table containing column value "Pre-Screen Review"
+    And I click on "Edit" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    When I enter value "70" into field "Weight__c"
+    When I enter value "1" into field "MinimumNumberOfReviewers__c"
+    When I enter value "Checked" into field "Required__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. it is currently 70.00%. |
+
+  @109651 @VerifyValidationMessageForReviewFormStepWeightLessThan100%  @monu
+  Scenario: validate user is able to see validation message when step weight is les than 100%
+    And I navigate to "Setup" sub tab
+    And I click on "Edit" icon for "SME Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    When I enter value "70" into field "Weight__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - The total Review Step weight must equal 100%. it is currently 95.00%. |
+    And I refresh the page
+    And I click on "Edit" icon for "SME Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    When I enter value "85" into field "Weight__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - The total Review Step weight must equal 100%. it is currently 110.00%. |
+
+  @109794 @VerifyValidationMessageForReviewFormWeightGreaterThan100%  @monu
+  Scenario: validate user is able to see validation message when review form weight is greater than 100%
+    And I navigate to "Setup" sub tab
+    And I click on "Edit" icon for "SME Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    When I enter value "75" into field "Weight__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I expand nested table containing column value "SME Review"
+    And I click on "Edit" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
+    When I enter value "30" into field "Weight__c"
+    When I enter value "1" into field "MinimumNumberOfReviewers__c"
+    When I enter value "Checked" into field "Required__c"
+    And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. it is currently 130.00% |
+
+  @109646 @VerifyAdditionOfNewReviewList  @monu
+  Scenario: validate user is able to add new Review list for created internal program
+    And I navigate to "Setup" sub tab
+    And I click on top right button "New" in flex table with id "---program:-:reviewStepTableId---"
+    And I enter value "4" into field "StepNumber__c"
+    And I enter value "Automation Review" into field "Name"
+    And I enter value "Automation Description" into field "Description__c"
+    And I enter value "0" into field "Weight__c"
+    And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
+    Then I softly see value "4" for title "Step Order" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "Automation Review" for title "Step Name" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "Automation Description" for title "Description" inside table "---program:-:reviewStepTableId---"
+    Then I softly see value "0.00%" for title "Step Weight (%)" inside table "---program:-:reviewStepTableId---"

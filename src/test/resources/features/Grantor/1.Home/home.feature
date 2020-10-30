@@ -352,15 +352,19 @@ Feature: Validate all scenarios in the home tab
     When I click on "Delete" icon for "New IDC" inside flex table with id "---home:-:indirectRateFlextableId---" without waiting for record
     Then I do not see values "New IDC" and "Title" inside table
 
-  @56883 @56912 @adminOrPMEditAccessToOwnOrgInternalOrganizationPageHeader @bug-77017
+  @56883 @56912 @adminOrPMEditAccessToOwnOrgInternalOrganizationPageHeader
   Scenario Outline: Validate whether Users with Admin/ PM profiles can edit their own organizations and Internal organization page has Header
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    #56883 #monu
     Then I softly can see row level action button "Edit" against "Test Automation Organization" in flex table with id "---home:-:internalOrganizationId---"
-    When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
-    Then I softly see that "Internal Organization" is in "Active" status
+    #56912 #monu
+    When I click on "Edit" icon for "Test Automation Organization" inside table without waiting for record
+    When I enter value "Virginia" into field "fieldBillingCity"
+    And I click on "Save" in the page details
+    Then I softly see field "City" as "Virginia"
     Examples:
       | User  |
       | ADMIN |
@@ -373,7 +377,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     Then I cannot see row level action button "Edit" against "Test Automation Organization" in flex table with id "---home:-:internalOrganizationId---"
 
-  @57340 @thirdPartyVerification @nonFunctional
+  @57340 @thirdPartyVerification @nonFunctional @wip
   Scenario Outline: Verifying if the Internal Users has Edit access to Subrecipient Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -440,7 +444,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---home:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---home:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -574,7 +578,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Contacts" modal by clicking the top right x button
+    When I close "Associate Contacts" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel

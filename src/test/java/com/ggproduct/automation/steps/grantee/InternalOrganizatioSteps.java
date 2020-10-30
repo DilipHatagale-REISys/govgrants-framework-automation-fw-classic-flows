@@ -1,10 +1,10 @@
 package com.ggproduct.automation.steps.grantee;
 
 import com.ggproduct.automation.pageobjects.grantee.InternalOrganizationPage;
+import com.testingblaze.register.I;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import com.testingblaze.register.I;
 
 public class InternalOrganizatioSteps {
     InternalOrganizationPage internalOrganizationPage;
@@ -31,11 +31,6 @@ public class InternalOrganizatioSteps {
     @When("I hovering mouse on table id {string} with table row level icon {string} for column value {string}")
     public void hoveringMouseOnRowLevelActionIcon(String flexTableId, String iconName, String uniqueColumnValues) {
         internalOrganizationPage.mouseHoverAtTableRowLevelIcon(flexTableId, iconName, uniqueColumnValues);
-    }
-
-    @When("^I hovering mouse on help text icon inside page block detail \"([^\"]*)\"$")
-    public void getHelpTextIconsAtPageBlockDetail(String pageBlockDetailTitle) {
-        internalOrganizationPage.mouseHoverAtPageBlockFieldsIcon(pageBlockDetailTitle);
     }
 
     @When("^I close alertbox$")

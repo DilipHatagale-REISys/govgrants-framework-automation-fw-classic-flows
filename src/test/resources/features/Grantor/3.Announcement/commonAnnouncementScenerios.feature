@@ -195,11 +195,12 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I click on "Complete Review" in the page details
     Then I see status in Progress-bar is "Reviewed" and is "green"
 
-  @35003 @announcementAddAttachmentFA @wip
+  @35003 @announcementAddAttachmentFA
   Scenario: Validate the attachment for an Announcement
     Given I navigate to "Attachments" sub tab
-    When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Funding Opportunity Announcement"
-    Then I see "Funding Opportunity Announcement" has been added in "Attachments" flex table
+    And I click on top right button "Add Files" in flex table with id "---announcement:-:AnnouncementAttachmentTableId---"
+    And I upload attachment "Attachment.pdf" of type "Funding Opportunity Announcement" from computer
+    Then I softly see "Funding Opportunity Announcement" has been added in "Announcement Files" flex table
 
   @52414 @reviewStepsBeforeSubmitForApprovalFA
   Scenario: Validate the Review steps of Announcement before submit for Approval

@@ -2167,7 +2167,8 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save and Continue" in the page details
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---orgRiskAssessment:-:awardRiskAssessmentTableId---"
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "AGENCY DETAILS" from computer
+    And I upload attachment "Attachment.pdf" of type "AGENCY DETAILS" from computer
+    Then I softly see "AGENCY DETAILS" has been added in "Risk Assessment Files" flex table
 
   @60218 @taskNotCreatedForFOWhenPMSendbacktoOwnerOfRiskAssessment @deepika
   Scenario: To validate  task is not created for Fiscal Approver when progress approver Sends back the Risk Assessment to Owner.
@@ -2852,7 +2853,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "History" sub tab
     Then I see snapshot with name containing "Subaward Risk Assessment" as name
 
-  @61384 @addButtonAvailabilityafterSubmitforApproval @deepika
+  @61384 @addButtonAvailabilityafterSubmitforApproval @deepika @buglogged112015
   Scenario: Validate the add button on attachments flextable is not available for Risk Assessment Owner once submitted for Approval
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -2880,7 +2881,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
     When I navigate to "Attachments" sub tab
-    Then I cannot see top right button "Add" for "Attachments" flex table
+    Then I softly cannot see top right button "Add Files" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
 
   @66869 @RAChangedtoYellowAfterRAisApproved @keerti
   Scenario: Validate the moderate level of Risk Assessment, that changes to yellow color as per the provided Assessment once Risk Assessment is approved
@@ -3000,7 +3001,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---orgRiskAssessment:-:awardRiskAssessmentTableId---"
     When I upload attachment "Attachment.pdf" of type "AGENCY DETAILS" from computer
-    Then I softly see value "Attachment.pdf" for title "Title" inside table "---orgRiskAssessment:-:awardRiskAssessmentTableId---"
+    Then I softly see "AGENCY DETAILS" has been added in "Risk Assessment Files" flex table
 
   @58825 @monitoringTabListViewsOfRiskAssessment @deepika
   Scenario: Monitoring Tab List Views for all Award level risk assessments in the internal portal

@@ -82,6 +82,26 @@ Feature: Validate all scenarios in Funding Source
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
+  @105223 @ValidateErrorMessageForFundingAccountEndDate @smoke
+  Scenario: Verify user is able to see error message for end date while entering end date greater than funding source end date
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
+    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
+    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
+    When I enter value "4650" into field "EndDate__c"
+    When I click on "Save" in the page details
+    When I click on "Activate" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Overview Tab - Funding account dates should be within funding source dates. |
+
   @51038 @editionOfFundingAccount
   Scenario: Edition of Funding Account
     When I login to "As a Grantor" app as "EXE" user
