@@ -19,6 +19,9 @@ Automation Permanent Strategic Goal2 -> Automation Permanent Objective2
 -Internal Program -
 ->Automation Permanent Internal Program
 
+-Risk Assessment Organization
+->Automation Permanent Organization for Risk Assessment
+
 # List of All APIs used in project
 
 # Type of Users

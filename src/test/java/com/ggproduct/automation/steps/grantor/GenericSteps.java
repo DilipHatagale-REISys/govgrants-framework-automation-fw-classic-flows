@@ -539,13 +539,6 @@ public class GenericSteps {
         I.amPerforming().click().on(submit_button);
     }
 
-    /*
-    @And("I save the contact name as {string}")
-    public void iSaveTheContactNameAs(String contactName) {
-        String newContactName = I.amPerforming().propertiesFileOperationsTo().getValue(contactName) + " Contact";
-        I.amPerforming().propertiesFileOperationsTo().saveValue(contactName,newContactName);
-    }*/
-
     @And("I click on Menu icon present on top right corner of the page")
     public void iClickOnMenuIconPresentOnTopRightCornerOfThePage() {
         By menu = By.xpath("//*[contains(@class,'overview-header')]//*[@title='Menu' or (contains(@class,'menu') and (@class='bars'))]");

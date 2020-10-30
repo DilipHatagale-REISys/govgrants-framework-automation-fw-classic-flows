@@ -53,7 +53,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
       | ADMIN |
       | EXE   |
 
-  @34736 @kpiHappyPath @smoke
+  @34736 @kpiHappyPath @smoke @buglogged96621
   Scenario Outline: Happy Path of KPI
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab

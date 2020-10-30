@@ -69,7 +69,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---" without waiting for record
     Then I softly cannot see top right button "Edit" in page detail
     When I navigate to "Attachments" sub tab
-    Then I softly cannot see top right button "Add" for "Attachments" flex table
+    Then I softly cannot see top right button "Add Files" in flex table with id "---subAwardStandAlone:-:OrganizationRiskAssesmentFilesTableId---"
 
   @61983 @completedTaskOnceOrgRAIsCreated @deepika
   Scenario: Validate whether SPI user is able to view the Completed task once Org Risk Assessment is Created
@@ -97,7 +97,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Save" in the page details
     Then I can see top right button "Submit" in page detail
 
-  @61980 @addingAnAttachmentToOrgRA @deepika
+  @61980 @addingAnAttachmentToOrgRA @deepika @buglogged112066
   Scenario: Validate whether SPI user can Add an attachment to Risk Assessment
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
@@ -107,10 +107,9 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I click on "Save" in the page details
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentFileTableId---"
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "AGENCY DETAILS" from computer
-    Then I softly see value "Announcement_Field_Values.xlsx" for title "Title" inside table "---orgRiskAssessment:-:orgRiskAssessmentFileTableId---"
-    Then I softly see value "AGENCY DETAILS" for title "Classification" inside table "---orgRiskAssessment:-:orgRiskAssessmentFileTableId---"
-#
+    And I upload attachment "Attachment.pdf" of type "AGENCY DETAILS" from computer
+    Then I softly see "AGENCY DETAILS" has been added in "Organization Risk Assessment Files" flex table
+
   @62197 @pendingTaskCreatedForGrantor @deepika
   Scenario: Validate whether pending task is created for grantor when Authorized Signatory requested for Revision
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record

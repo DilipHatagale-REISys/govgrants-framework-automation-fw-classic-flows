@@ -36,7 +36,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I perform quick search for "{SavedValue:egmsid}" in "---strategicplan:-:StrategicPlansTableId---" panel
     And I click on "Delete" icon for "{SavedValue:egmsid}" inside flex table with id "---strategicplan:-:StrategicPlansTableId---" without waiting for record
     Then I softly see the following messages in the page details contains:
-      | Record removed successfully. |
+      | Record deleted successfully. |
     Then I softly see "No records found" inside flex table with id "---strategicplan:-:StrategicPlansTableId---"
 
   @51045 @editionOfStrategicGoal
@@ -68,10 +68,11 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     Then I see "Strategic Goal" has been added in "Strategic Goal Files" flex table
 
-  @51047 @creationOfObjective
+  @51047 @105394 @creationOfObjective
   Scenario: Creation of Objective inside a Strategic Goal by User - Admin/EXE/PM
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "Strategic ID"
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter value "Execution Strategic Goal" into field "fieldStrategyTitle__c"
     When I click modal button "Save and Close"
@@ -79,10 +80,22 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Edit" in the page details
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "Strategic Goals ID"
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
     When I enter value "Execution Strategic Objective" into field "StrategyTitle__c"
     When I click modal button "Save and Close"
     And I click on "Save" in the page details
+    Then I softly see field "Strategic Plan Status" as "Draft"
+    #105394 #monu
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Strategic Plans" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Strategic Plans - Draft"
+    When I perform quick search for "{SavedValue:Strategic ID}" in "---strategicplan:-:StrategicPlansTableId---" panel
+    When I click on "View" icon for "{SavedValue:Strategic ID}" inside flex table with id "---strategicplan:-:StrategicPlansTableId---"
+    Then I softly cannot see top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
+    When I click on "View" icon for "{SavedValue:Strategic Goals ID}" inside flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
+    Then I softly cannot see top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
 
   @51048 @editionOfObjective @monu
   Scenario: Edition of Objective inside a Strategic Goal by User - Admin/EXE/PM
@@ -119,7 +132,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I navigate to "Attachments" sub tab
     And I click on top right button "Add Files" in flex table with id "---strategicplan:-:flexGridGrantorObjectiveFiles---"
     And I upload attachment "Attachment.pdf" of type "Strategic Plan" from computer
-    Then I see "Strategic Objective" has been added in "Attachments" flex table
+    Then I see "Strategic Plan" has been added in "Objective Files" flex table
 
   @34724 @associatingKPIToObjective @smoke
   Scenario: Associating KPI to Objective inside a Strategic Goal by User - Admin/EXE/PM

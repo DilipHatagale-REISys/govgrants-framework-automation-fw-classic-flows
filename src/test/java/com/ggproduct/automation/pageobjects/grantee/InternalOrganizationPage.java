@@ -434,15 +434,6 @@ public class InternalOrganizationPage extends GranteeProjectManager {
     }
 
     /**
-     * hover on help text icon inside page block details with field name
-     *
-     * @param pageBlockDetailTitle
-     */
-    public void mouseHoverAtPageBlockFieldsIcon(String pageBlockDetailTitle) {
-        I.amPerforming().scroll().toMoveToElement(By.xpath("//span[contains(text(),'" + pageBlockDetailTitle + "')]/..//span[contains(@class,'fa-info')]"));
-    }
-
-    /**
      * get any item from bottom menu at page details
      *
      * @param options

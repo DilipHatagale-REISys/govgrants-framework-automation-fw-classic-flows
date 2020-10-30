@@ -27,8 +27,8 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
-    And I perform quick search for "{SavedValue:Automation Runtime Direct Award}"
-    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside flex table with id "---activeGrantsTableId:-:activeGrantsTableId---"
     And I navigate to "Attachments" sub tab
     Then I can see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
 
@@ -1732,7 +1732,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
     When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside table
+    When I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I navigate to "Attachments" sub tab
     Then I cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
 
