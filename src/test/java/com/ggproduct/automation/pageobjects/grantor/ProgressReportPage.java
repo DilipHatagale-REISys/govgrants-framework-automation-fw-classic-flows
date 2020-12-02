@@ -164,25 +164,6 @@ public class ProgressReportPage extends GrantorProjectManager {
         }
     }
 
-    public Boolean isFieldEditable(String fieldAPIName) {
-        boolean flag = true;
-        try {
-            if (I.amPerforming().checkToSee().isDisplayed(By.xpath("//field[@field-name='" + fieldAPIName + "']/input")))
-                flag = true;
-        } catch (Exception e) {
-            flag = false;
-        }
-        return flag;
-    }
-
-    public void assertFieldIsEditableOrNot(String fieldAPIName, boolean isSoftly) {
-        if (isSoftly) {
-            I.amPerforming().assertionsTo().assertThat(isFieldEditable(fieldAPIName)).isFalse();
-        } else {
-            Assert.assertFalse(isFieldEditable(fieldAPIName));
-        }
-    }
-
     public Boolean isCheckboxFieldEditable(String fieldLabel) {
         try {
             I.amPerforming().checkToSee().isDisplayed(By.xpath("//span[@class='customLabelstyle' and text()='"+fieldLabel+"']/ancestor::dl[1]//dd//input[@type='checkbox' and @disabled='true']"));
