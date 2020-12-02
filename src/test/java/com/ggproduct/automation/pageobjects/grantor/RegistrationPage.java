@@ -54,19 +54,6 @@ public class RegistrationPage extends ProjectManager {
         I.amPerforming().textInput().in(getField, enterValue);
     }
 
-    public void verifyTextOfTextArea(String text, String fieldName) {
-        boolean flag = false;
-        try {
-            By fieldWrapperLocator = By.xpath("//div[@id='field" + fieldName + "' or @id='" + fieldName + "']//input[not(contains(@type,'hidden'))] | //div[@id='field" + fieldName + "' or @id='" + fieldName + "']//textarea |//div[@id='field" + fieldName + "' or @id='" + fieldName + "']//select");
-            String givenText = I.amPerforming().actionToGet().attribute(fieldWrapperLocator, "value");
-            if (givenText.equals(text)) {
-                flag = true;
-            }
-        } catch (Exception e) {
-        }
-        I.amPerforming().assertionsTo().assertThat(flag).isTrue();
-    }
-
     public void clickOfficeTypeButton(String officeType, String buttonName) {
         try {
             I.amPerforming().waitFor().ElementToBeClickable(getOfficeTypeButtonLocator(officeType, buttonName));

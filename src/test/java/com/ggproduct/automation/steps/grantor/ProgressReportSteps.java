@@ -76,11 +76,6 @@ public class ProgressReportSteps {
         progressReportPage.assertReportedDateField(usage.contains("softly"));
     }
 
-    @Then("^I (softly see|see) field \"([^\"]*)\" is not editable$")
-    public void iSeeFieldIsNotEditable(String usage, String fieldAPIName) {
-        progressReportPage.assertFieldIsEditableOrNot(fieldAPIName, usage.contains("softly"));
-    }
-
     @Description("To verify checkbox field is editable")
     @Then("^I (softly see|see) checkbox field \"([^\"]*)\" is editable$")
     public void iSeeCheckboxFieldIsEditable(String usage, String fieldLabel) {

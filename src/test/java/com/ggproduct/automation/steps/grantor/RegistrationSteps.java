@@ -25,11 +25,6 @@ public class RegistrationSteps {
         registrationPage.enterValueIntoFieldAtOldForms(enterValue, labelName);
     }
 
-    @Then("I see {string} text enter in field {string}")
-    public void iSeeTextEnterInField(String text, String fieldName) {
-        registrationPage.verifyTextOfTextArea(text, fieldName);
-    }
-
     @And("^I click on \"([^\"]*)\" button$")
     public void iClickOnButton(String buttonName) {
         registrationPage.clickCenterButton(buttonName);

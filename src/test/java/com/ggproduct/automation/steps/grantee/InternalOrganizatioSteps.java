@@ -28,11 +28,6 @@ public class InternalOrganizatioSteps {
         internalOrganizationPage.getHelpTextAtPageBlockOrInsideTable(tableId, toolTipId);
     }
 
-    @When("I hovering mouse on table id {string} with table row level icon {string} for column value {string}")
-    public void hoveringMouseOnRowLevelActionIcon(String flexTableId, String iconName, String uniqueColumnValues) {
-        internalOrganizationPage.mouseHoverAtTableRowLevelIcon(flexTableId, iconName, uniqueColumnValues);
-    }
-
     @When("^I close alertbox$")
     public void closeAlertBox() {
         internalOrganizationPage.closeAlertBoxFromPage();
@@ -41,11 +36,6 @@ public class InternalOrganizatioSteps {
     @When("^I enter opportunity value \"([^\"]*)\" into field \"([^\"]*)\"$")
     public void inputValue(String fieldValue, String fieldApiName) {
         internalOrganizationPage.enterValueForOpportunityNumber(fieldValue, fieldApiName);
-    }
-
-    @And("^I click on \"([^\"]*)\" column header inside table with id \"([^\"]*)\"$")
-    public void ClickOnSpecificTableHeaderColumn(String titleName, String tableId) {
-        internalOrganizationPage.performClickOnSpecificTableColumnHeader(tableId, titleName);
     }
 
     @And("^I click on page navigation arrow \"([^\"]*)\" for table id \"([^\"]*)\"$")
@@ -165,11 +155,6 @@ public class InternalOrganizatioSteps {
         internalOrganizationPage.assertCurrentDate(savedValue);
     }
 
-    @Then("^I (see|do not see|softly see|softly do not see) fields \"([^\"]*)\" is in edit mode$")
-    public void assertEditModeOfFields(String usage, String text) {
-        internalOrganizationPage.assertEditModeOfPageDetailsFields(usage, text);
-    }
-
     @Then("^I (see|softly see) fields \"([^\"]*)\" is not visible$")
     public void assertVisibilityOfFields(String usage, String text) {
         internalOrganizationPage.assertVisibilityOfPageDetailsFields(usage, text);
@@ -199,11 +184,6 @@ public class InternalOrganizatioSteps {
     public void getHelpTextAtEditIconsInsideFlexTable(String usage, String iconName, String columnName) {
         internalOrganizationPage.assertRowLevelActionVisibilityOfFlexTable(usage, iconName, columnName);
     }
-
-   /* @Then("^I (softly see|see) \"([^\"]*)\" inside selectbox field \"([^\"]*)\"$")
-    public void assertValueInsideSelectDropdownValues(String usage, String dropDownValue, String fieldApiName) {
-        internalOrganizationPage.assertValueInsideSelectDropdownAtPageDetail(usage, dropDownValue, fieldApiName);
-    }*/
 
     @Then("^I (softly see|softly cannot see) \"([^\"]*)\" modal button$")
     public void assertModalButton(String usage, String btn) {
@@ -283,10 +263,5 @@ public class InternalOrganizatioSteps {
     @Then("^I softly see column \"([^\"]*)\" according to date \"([^\"]*)\" inside flex table with id \"([^\"]*)\"$")
     public void iSoftlySeeColumnAsWithValueInsideFlexTableWithId(String columnName, String savedDate, String tableId) {
         internalOrganizationPage.assertDateAccortingToNumberOfDaysPassed(columnName, savedDate, tableId);
-    }
-
-    @Then("^I (see|softly see) \"([^\"]*)\" opens in overLay window$")
-    public void assertEditOpensInOverLayWindow(String usage, String titleName) {
-        internalOrganizationPage.asserTextInOverLayIframe(usage, titleName);
     }
 }

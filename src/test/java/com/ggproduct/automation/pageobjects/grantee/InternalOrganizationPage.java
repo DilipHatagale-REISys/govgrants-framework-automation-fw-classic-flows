@@ -234,21 +234,6 @@ public class InternalOrganizationPage extends GranteeProjectManager {
     }
 
     /**
-     * assert true/false if fields displayed/not displayed in edit mode
-     */
-    public void assertEditModeOfPageDetailsFields(String usage, String fieldApiName) {
-        if (usage.equalsIgnoreCase("see")) {
-            Assert.assertTrue(isFieldsIsInEditModeAtPAgeDetails(fieldApiName));
-        } else if (usage.equalsIgnoreCase("do not see")) {
-            Assert.assertFalse(isFieldsIsInEditModeAtPAgeDetails(fieldApiName));
-        } else if (usage.equalsIgnoreCase("softly see")) {
-            I.amPerforming().assertionsTo().assertThat(isFieldsIsInEditModeAtPAgeDetails(fieldApiName)).isTrue();
-        } else if (usage.equalsIgnoreCase("softly do not see")) {
-            I.amPerforming().assertionsTo().assertThat(isFieldsIsInEditModeAtPAgeDetails(fieldApiName)).isFalse();
-        }
-    }
-
-    /**
      * assert true/false if fields displayed/not displayed
      */
     public void assertVisibilityOfPageDetailsFields(String usage, String fieldApiName) {
@@ -422,15 +407,6 @@ public class InternalOrganizationPage extends GranteeProjectManager {
      */
     public void getHelpTextAtPageBlockOrInsideTable(String tableId, String toolTipId) {
         I.amPerforming().scroll().toMoveToElement(By.xpath("//div[@id='" + tableId + "']//a[@id='" + toolTipId + "']//span[contains(@class,'fa-info')]"));
-    }
-
-    /**
-     * hover on table row level icon
-     *
-     * @param flexTableId,iconName,uniqueColumnValues
-     */
-    public void mouseHoverAtTableRowLevelIcon(String flexTableId, String iconName, String... uniqueColumnValues) {
-        I.amPerforming().scroll().toMoveToElement(govgrants.perform().flexTable().getTableActionIcon(flexTableId, iconName, uniqueColumnValues));
     }
 
     /**
@@ -699,19 +675,6 @@ public class InternalOrganizationPage extends GranteeProjectManager {
         Assert.assertTrue(assertDateAccordingProvidedDate(columnName, savedDate, tableId));
     }
 
-    /**
-     * assert if correct title is displayed in overlay iframe window
-     *
-     * @param titleName
-     */
-    public void asserTextInOverLayIframe(String usage, String titleName) {
-        if (usage.equalsIgnoreCase("see")) {
-            Assert.assertTrue(isSpecificOverlayDisplayed(titleName));
-        } else if (usage.equalsIgnoreCase("softly see")) {
-            I.amPerforming().assertionsTo().assertThat(isSpecificOverlayDisplayed(titleName)).isTrue();
-        }
-    }
-
     /*********
      * "Local Methods with complete functionality - private"
      *****************/
@@ -924,24 +887,6 @@ public class InternalOrganizationPage extends GranteeProjectManager {
             if (valuesFound.equals(text)) {
                 flag = true;
             }
-        }
-        return flag;
-    }
-
-    /**
-     * validate if fields is in edit mode is displayed at page details
-     *
-     * @return: true if it is displayed
-     */
-    private boolean isFieldsIsInEditModeAtPAgeDetails(String fieldApiName) {
-        By fieldsAtPageDetails = By.xpath("//div[@id='" + fieldApiName + "']//div[contains(@class,'field-value')]//label//following-sibling::span[1]|//*[@field-name='" + fieldApiName + "']//span[contains(@class,'requiredField h-line-left')]");
-        boolean flag = false;
-        try {
-            if (I.amPerforming().actionToGet().attribute(fieldsAtPageDetails, "id").toLowerCase().contains("j_id0") | I.amPerforming().checkToSee().isDisplayed(fieldsAtPageDetails)) {
-                flag = true;
-            }
-        } catch (Exception e) {
-            flag = false;
         }
         return flag;
     }
@@ -1340,37 +1285,5 @@ public class InternalOrganizationPage extends GranteeProjectManager {
         } catch (Exception e) {
         }
         return flag;
-    }
-
-    /**
-     * return true if overlay open up with the required title
-     *
-     * @param titleName
-     * @return
-     */
-    private boolean isSpecificOverlayDisplayed(String titleName) {
-        I.amPerforming().switchTo().parentFrame();
-        govgrants.perform().mainPage().waitForNavigationLogoToDisappear();
-        boolean flag = false;
-        if (I.amPerforming().checkToSee().isDisplayed(getOverLayTitle(titleName))) {
-            flag = true;
-        }
-        return flag;
-    }
-
-    /**
-     * get webelemnt with title inside overlay iframe
-     *
-     * @param titleName
-     * @return
-     */
-    private WebElement getOverLayTitle(String titleName) {
-        return I.amPerforming().getElementReference().of(By.xpath(
-                "//iframe[contains(@ng-src,'apex') or contains(@src,'apex')]//ancestor::div[contains(@class,'modal-content')][1]//p[text()='"
-                        + titleName
-                        + "']|//iframe[contains(@ng-src,'apex') or contains(@src,'apex')]//ancestor::div[contains(@class,'modal-content')][1]//p[text()='"
-                        + titleName
-                        + "']| //iframe[contains(@ng-src,'apex') or contains(@src,'apex')]//ancestor::div[contains(@class,'modal-content')][1]//div[contains(text(),'"
-                        + titleName + "')]"));
     }
 }
