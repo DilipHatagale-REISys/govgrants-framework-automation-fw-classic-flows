@@ -134,17 +134,6 @@ public class InternalOrganizationPage extends GranteeProjectManager {
     }
 
     /**
-     * assert true if mentioned help text displayed
-     */
-    public void assertHelpTextAtPageBlock(String helptext, String usage) {
-        if (usage.equalsIgnoreCase("see")) {
-            Assert.assertTrue(govgrants.perform().pageDetails().isHelpTextDisplayed(helptext));
-        } else if (usage.equalsIgnoreCase("softly see")) {
-            I.amPerforming().assertionsTo().assertThat(govgrants.perform().pageDetails().isHelpTextDisplayed(helptext)).isTrue();
-        }
-    }
-
-    /**
      * assert true if draft programs is displayed as flex table title
      */
     public void assertFlexTableIsDisplayedWithTitle(String tableTitle) {

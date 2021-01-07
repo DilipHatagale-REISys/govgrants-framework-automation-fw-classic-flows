@@ -46,9 +46,8 @@ Feature: Validate all scenarios for program
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Add" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I close "Associate" modal by clicking the top right x button
-    When I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Responsibility     | Name                      | Description                 |
@@ -70,7 +69,7 @@ Feature: Validate all scenarios for program
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
     When I perform quick search for "<Program Name>" in "---program:-:ExternalNGOProgramTableId---" panel
-    And I click on "View" icon for "<Program Name>" inside flex table with id "---program:-:programsTableId---" without waiting for record
+    And I click on "View" icon for "<Program Name>" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     And I click on "Activate" in the page details
     Then I softly see status in Progress-bar is "Active" and is "green"
 
@@ -133,9 +132,9 @@ Feature: Validate all scenarios for program
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Add" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I close "Associate" modal by clicking the top right x button
-    And I click on "Remove" icon for "{SavedValue:EXE Username}" inside flex table with id "---program:-:ExternalNGOProgramContactTableId---"
+    And I click on "Remove" icon for "NGO Contact" inside flex table with id "---program:-:ExternalNGOProgramContactTableId---"
     Then I softly see "Record deleted successfully." inside flex table with id "---program:-:ExternalNGOProgramContactTableId---"
 
   @111264 @111183 @VerifyTaskCreationForNGOProgramActivation @monu
@@ -154,9 +153,8 @@ Feature: Validate all scenarios for program
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Add" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I close "Associate" modal by clicking the top right x button
-    When I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Responsibility     | Name                      | Description                 |
@@ -165,7 +163,6 @@ Feature: Validate all scenarios for program
     And I click on "Submit For Approval" in the page details
     #111183 #monu
     When I "Approve" in the approval decision
-    Then I can see the message "Successfully approved" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -193,7 +190,7 @@ Feature: Validate all scenarios for program
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Add" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I close "Associate" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" sub tab
@@ -228,7 +225,7 @@ Feature: Validate all scenarios for program
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Add" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I close "Associate" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" sub tab
@@ -263,7 +260,7 @@ Feature: Validate all scenarios for program
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Add" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I close "Associate" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" sub tab
@@ -295,7 +292,7 @@ Feature: Validate all scenarios for program
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I click "Add" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I close "Associate" modal by clicking the top right x button
     When I navigate to "Setup" sub tab
     When I navigate to "Responsibilities" sub tab

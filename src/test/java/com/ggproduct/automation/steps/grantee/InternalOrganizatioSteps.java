@@ -90,11 +90,6 @@ public class InternalOrganizatioSteps {
         internalOrganizationPage.assertTakeSnapshotFunctionalityWorkingCorrectly(text);
     }
 
-    @Then("^I (see|softly see) \"([^\"]*)\" shown as help text$")
-    public void assertHelpText(String helpText, String usage) {
-        internalOrganizationPage.assertHelpTextAtPageBlock(helpText, usage);
-    }
-
     @Then("^I (see|softly see) field \"([^\"]*)\" contains todays date (withTime|withoutTime)$")
     public void iSeeFieldContainsTodayDate(String usage, String savedValue, String usage2) {
         internalOrganizationPage.assertCurrentDateWithTime(usage, savedValue, usage2.contains("without"));
