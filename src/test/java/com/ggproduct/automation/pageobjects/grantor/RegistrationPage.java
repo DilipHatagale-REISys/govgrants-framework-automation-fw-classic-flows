@@ -35,13 +35,6 @@ public class RegistrationPage extends ProjectManager {
 
     /******* "Key Methods with complete functionality - public" *****************/
 
-    public void beginRegistration(String officeType) {
-        navigateToProductReciepientPortal("SUBPORTAL");
-        clickSignInLink("Register");
-        clickRegistrationType(officeType);
-        clickOfficeTypeButton(officeType, "Begin Registration");
-    }
-
     /**
      * enter values in the fields at old form layout
      *
@@ -102,10 +95,6 @@ public class RegistrationPage extends ProjectManager {
 
     public By getOfficeTypeButtonsLocator(String officeType) {
         return By.xpath("//div[contains(@class, 'panel-default') and .//text()[" + I.amPerforming().sanityOfXpathTo().equals(".", officeType) + "]]//a[contains(@class, 'customBtn')]");
-    }
-
-    public void clickCenterButton(String buttonName) {
-        I.amPerforming().click().on(By.xpath("//a[contains(@class, 'customBtn')][" + I.amPerforming().sanityOfXpathTo().equals("text()", buttonName) + "]"));
     }
 
     public void assertTextMatches(String expectedString) {

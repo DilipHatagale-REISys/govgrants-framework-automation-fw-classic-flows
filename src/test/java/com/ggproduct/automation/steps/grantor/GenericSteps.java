@@ -387,17 +387,6 @@ public class GenericSteps {
         I.amPerforming().click().on(By.xpath("//*[" + I.amPerforming().sanityOfXpathTo().translate(flextTableHeader) + "]//ancestor::div[(@id and @class='ng-scope')]//button[text()='" + buttonName + "' or @title='" + buttonName + "']"));
     }
 
-    @And("^I edit the notes$")
-    public void iEditTheNotes() {
-        I.amPerforming().click().on(By.xpath("//div[contains(@id,'toggleNotes')]//a[@title='Edit']"));
-        By notesTitle = By.xpath("//div[@id='addAtt']//label[text()='Title']/..//input");
-        By notesDescriptionPath = By.xpath("//div[@id='addAtt']//label[text()='Description']/..//textarea");
-        I.amPerforming().textInput().toClear(notesDescriptionPath);
-        I.amPerforming().textInput().toClear(notesTitle);
-        I.amPerforming().textInput().in(notesTitle, "Updated Notes Record");
-        I.amPerforming().textInput().in(notesDescriptionPath, "Updated Automation Notes");
-    }
-
     @Description("Check the users status against value in Approval History table inside Hsitory Tab")
     @Then("I see {string} against {string} in approval history")
     public void seeStatusOfRecordInApprovalHistory(String seeThisString, String againstThisString) {

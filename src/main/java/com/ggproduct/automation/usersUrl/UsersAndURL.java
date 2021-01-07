@@ -106,7 +106,7 @@ public class UsersAndURL implements UsersController {
                 password = "test72018";
                 break;
             case "ADMIN":
-                password = "GoProduct@123456";
+                password = "GoProduct@12345";
                 break;
             case "FD":
                 password = "GoProduct@12";

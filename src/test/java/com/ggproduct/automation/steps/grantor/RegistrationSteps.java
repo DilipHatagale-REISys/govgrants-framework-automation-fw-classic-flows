@@ -15,19 +15,9 @@ public class RegistrationSteps {
         this.registrationPage = registrationPage;
     }
 
-    @When("^I begin \"([^\"]*)\" registration$")
-    public void startRegistration(String officeType) {
-        registrationPage.beginRegistration(officeType);
-    }
-
     @When("^I enter value as \"([^\"]*)\" into \"([^\"]*)\" on old form$")
     public void enterValueIntoFieldAtDynamicFormsLayout(String enterValue, String labelName) {
         registrationPage.enterValueIntoFieldAtOldForms(enterValue, labelName);
-    }
-
-    @And("^I click on \"([^\"]*)\" button$")
-    public void iClickOnButton(String buttonName) {
-        registrationPage.clickCenterButton(buttonName);
     }
 
     @Then("I see the privacy policy text is as follows :")
