@@ -536,8 +536,7 @@ Feature: Validate all scenarios for program
   Scenario Outline: Associate contact on program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     And I refresh the page
     Then I see that "<Contact>" has been added in flextable with Id "---program:-:contactsTableId---"
     Examples:
@@ -548,8 +547,7 @@ Feature: Validate all scenarios for program
   Scenario Outline: Verify user is able to delete associated contact
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     And I refresh the page
     Then I softly see that "<Contact>" has been added in flextable with Id "---program:-:contactsTableId---"
     And I click on "Remove" icon for "<Contact>" inside flex table with id "---program:-:contactsTableId---" without waiting for record
@@ -564,10 +562,14 @@ Feature: Validate all scenarios for program
   @34740 @programApproverSelection
   Scenario: Validate the assignment of Approvers for the Internal Program
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name                      | Description                 |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:PM Username}" into field "Name__c"
+    When I enter value "NA" into field "ProgramRole__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
+    When I enter value "NA" into field "ProgramRole__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
     Then I see that "{SavedValue:EXE Username}" has been added in flextable with Id "---program:-:approverTableId---"
 
   @34616 @76118 @75992 @75821 @75830 @75831 @75836 @75832 @75840 @75841 @programFocusAreaAssociation @skipOnJenkins
@@ -646,8 +648,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -659,10 +660,12 @@ Feature: Validate all scenarios for program
     And I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     And I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:PM Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
       | Description                 | Required  | Applies To  | Status |
@@ -844,8 +847,11 @@ Feature: Validate all scenarios for program
     And I click on "Delete" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details :
-      | Setup Tab - SME Review: At least one form is required for this review step.                                   |
-      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
+      | Setup Tab - SME Review: At least one form is required for this review step.                                                                         |
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%.                                       |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted. |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Eligibility section because it is weighted.  |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: The total section weight must equal 100% or 0%. It is currently 120%.                                   |
 
   @106079 @106078 @105941 @ValidateDeletionOfSupportingDocuments @monu
   Scenario: Validate user is able to delete the attachment checklist for the Internal Program
@@ -904,7 +910,9 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details :
-      | Setup Tab - Pre-Screen Review - Pre-Screen: At least one section must be added to this form. |
+      | Setup Tab - SME Review: At least one form is required for this review step.                                   |
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: At least one section must be added to this form.                  |
 
   @75995 @managementreviewReviewPanel
   Scenario: To validate system generated validation message for management review,when review panel categories has not associated with management form in setup tab in planning phase
@@ -925,8 +933,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -938,10 +945,12 @@ Feature: Validate all scenarios for program
     And I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     And I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:PM Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
       | Description                 | Required  | Applies To  | Status |
@@ -971,8 +980,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -985,10 +993,12 @@ Feature: Validate all scenarios for program
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:PM Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
       | Description                 | Required  | Applies To  | Status |
@@ -1022,8 +1032,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -1036,10 +1045,12 @@ Feature: Validate all scenarios for program
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:PM Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
       | Description                 | Required  | Applies To  | Status |
@@ -1070,8 +1081,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -1084,10 +1094,12 @@ Feature: Validate all scenarios for program
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:PM Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -1127,8 +1139,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -1152,8 +1163,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -1165,10 +1175,12 @@ Feature: Validate all scenarios for program
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:PM Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -1211,8 +1223,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1266,8 +1277,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -1278,13 +1288,14 @@ Feature: Validate all scenarios for program
     Then I softly see "No Records Found" inside flex table with id "ProgramReviewStepTemplatesFlexToggle"
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Pre-Screen Review: At least one form is required for this review step |
+      | Setup Tab - Pre-Screen Review: At least one form is required for this review step. |
     And I expand nested table containing column value "Management Review"
     And I click on "Delete" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
     Then I softly see "No Records Found" inside flex table with id "ProgramReviewStepTemplatesFlexToggle"
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Management Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0% |
+      | Setup Tab - Management Review: At least one form is required for this review step.                                   |
+      | Setup Tab - Management Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
 
   @76339 @ValidateErrorMessageForComplianceReviewForm @monu
   Scenario: To validate system generated error message,for compliance review form, If Review Panel Categories not associated with review question in SME review step of setup tab in planing
@@ -1302,8 +1313,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -1326,7 +1336,7 @@ Feature: Validate all scenarios for program
     Then I softly see the following messages in the page details contains:
       | Setup Tab - SME Review - Compliance Review: A weighted form must contain weighted sections. |
 
-  @76480 @76481 @76482 @ManagementReviewPanelCategoryReviewFormWeight @keerti
+  @76480 @76481 @76482 @ManagementReviewPanelCategoryReviewFormWeight @keerti @kjhefuwehfiuqwefh
   Scenario: To validate system generated error message , When Total section Weight is more than 100% for all Review Panel Categories in management review form for management review step in planning phase
   | To validate system generated error message , When Total section Weight is less than 100% for all Review Panel Categories in management review form for management review step in planning phase
   | To validate system generated error message ,When management review form Weight : 0% & total section weight : 100 % for all review panel categories for management review step in planning phase
@@ -1344,8 +1354,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -1360,7 +1369,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%, it is currently 120%. |
+      | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%. It is currently 120%. |
     And I click on "Review Form" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header             | Section Weight (%) |
@@ -1369,7 +1378,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%, it is currently 90%. |
+      | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%. It is currently 90%. |
     And I click on "Edit" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
     When I enter value "0" into field "Weight__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
@@ -1381,7 +1390,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Management Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
+      | Setup Tab - Management Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
 
   @76478 @PrescreenReviewPanelCategoriesWithoutAssociated @keerti
   Scenario Outline: To validate system generated error message,for Prescreen Review form, If Review Panel Categories not associated with review question in  Prescreening review step of setup tab in planing
@@ -1390,8 +1399,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1430,8 +1438,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1470,7 +1477,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%, it is currently 120%. |
+      | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%. It is currently 120%. |
     And I click on "Review Form" icon for "Program review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -1480,7 +1487,8 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%, it is currently 90%. |
+      | Setup Tab - SME Review - Program Review: A score cannot be associated to a question in the Impact section because it does not have a weight. |
+      | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%. It is currently 90%.                                |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -1494,8 +1502,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1602,8 +1609,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1683,8 +1689,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1743,8 +1748,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -1795,8 +1799,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1859,8 +1862,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -1927,8 +1929,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -1959,8 +1960,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2020,8 +2020,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2055,8 +2054,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2086,9 +2084,10 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Capability section because it is weighted |
-      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Approach section because it is weighted   |
-      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Impact section because it is weighted     |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Capability section because it is weighted. |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Approach section because it is weighted.   |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Impact section because it is weighted.     |
+      | Setup Tab - SME Review - Compliance Review: A weighted form must contain weighted sections.                                                    |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2100,8 +2099,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2145,8 +2143,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2169,8 +2166,8 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Strategic Alignment section because it is weighted.        |
       | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Return on Investment (ROI) section because it is weighted. |
+      | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Strategic Alignment section because it is weighted.        |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2191,8 +2188,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -2212,7 +2208,6 @@ Feature: Validate all scenarios for program
       | Setup Tab - Management Review - Management Review: A score cannot be associated to a question in the Strategic Alignment section because it does not have a weight.        |
       | Setup Tab - Management Review - Management Review: A weighted form must contain weighted sections.                                                                         |
 
-
   @77290 @77289 @77292 @77291  @PDFAdditionModificationDeletionInApproach @keerti @skipOnJenkins
   Scenario Outline: To verify user allow to download PDF for review question in Approach of Review Panel Categories in Program review form for SME review step in planning phase
   | To verify user able to add new review question with success message in Approach of Review Panel Categories in Program review form for SME review step in planning phase
@@ -2223,8 +2218,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2287,8 +2281,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2346,8 +2339,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2363,7 +2355,7 @@ Feature: Validate all scenarios for program
     When I enter value "Unchecked" into field "Required__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | You cannot associate a weight to an optional panel : |
+      | You cannot associate a weight to an optional panel |
     And I expand nested table containing column value "SME Review"
     And I click on "Edit" icon for "Compliance Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
     When I enter value "40" into field "Weight__c"
@@ -2371,14 +2363,14 @@ Feature: Validate all scenarios for program
     When I enter value "Unchecked" into field "Required__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | You cannot associate a weight to an optional panel : |
+      | You cannot associate a weight to an optional panel |
     And I click on "Edit" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
     When I enter value "40" into field "Weight__c"
     When I enter value "0" into field "MinimumNumberOfReviewers__c"
     When I enter value "Unchecked" into field "Required__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | You cannot associate a weight to an optional panel : |
+      | You cannot associate a weight to an optional panel |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2390,8 +2382,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2407,7 +2398,7 @@ Feature: Validate all scenarios for program
     When I enter value "Unchecked" into field "Required__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
     Then I see the following messages in the page details contains:
-      | You cannot associate a weight to an optional panel : |
+      | You cannot associate a weight to an optional panel |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2421,8 +2412,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2438,14 +2428,14 @@ Feature: Validate all scenarios for program
     When I enter value "Unchecked" into field "Required__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Reviewers are not required for optional panels : |
+      | Reviewers are not required for optional panels |
     And I click on "Edit" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
     When I enter value "30" into field "Weight__c"
     When I enter value "1" into field "MinimumNumberOfReviewers__c"
     When I enter value "Unchecked" into field "Required__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Reviewers are not required for optional panels : |
+      | Reviewers are not required for optional panels |
     And I click on "Edit" icon for "Program Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
     When I enter value "50" into field "Weight__c"
     When I enter value "1" into field "MinimumNumberOfReviewers__c"
@@ -2464,8 +2454,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2481,7 +2470,7 @@ Feature: Validate all scenarios for program
     When I enter value "Checked" into field "Required__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
     Then I see the following messages in the page details contains:
-      | For required panel the Minimum Number of Reviews should be greater than zero. : |
+      | For required panel the Minimum Number of Reviews should be greater than zero. |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2493,8 +2482,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2510,7 +2498,7 @@ Feature: Validate all scenarios for program
     When I enter value "Unchecked" into field "Required__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
     Then I see the following messages in the page details contains:
-      | Reviewers are not required for optional panels : |
+      | Reviewers are not required for optional panels |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2522,8 +2510,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2542,7 +2529,8 @@ Feature: Validate all scenarios for program
       | Saved Successfully! |
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Management Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
+      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
+      | Setup Tab - Management Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2554,8 +2542,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2574,7 +2561,8 @@ Feature: Validate all scenarios for program
       | Saved Successfully! |
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Management Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
+      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
+      | Setup Tab - Management Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2586,8 +2574,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2611,7 +2598,8 @@ Feature: Validate all scenarios for program
       | Saved Successfully! |
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - SME Review - Compliance Review: A weighted form must contain weighted sections. |
+      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
+      | Setup Tab - SME Review - Compliance Review: A weighted form must contain weighted sections.                          |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2623,8 +2611,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2648,7 +2635,8 @@ Feature: Validate all scenarios for program
       | Saved Successfully! |
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
+      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
+      | Setup Tab - SME Review - Compliance Review: A weighted form must contain weighted sections.                          |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2660,8 +2648,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2685,7 +2672,7 @@ Feature: Validate all scenarios for program
       | Saved Successfully! |
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
+      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2697,8 +2684,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2714,7 +2700,7 @@ Feature: Validate all scenarios for program
     When I enter value "Unchecked" into field "Required__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Reviewers are not required for optional panels : |
+      | Reviewers are not required for optional panels |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2735,8 +2721,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -2762,7 +2747,9 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 130.00%.                             |
       | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Permits section because it is weighted. |
+      | Setup Tab - SME Review - Compliance Review: The total section weight must equal 100% or 0%. It is currently 30%.                               |
 
   @77417 @validatingValidationMsgUnderCompletenessReviewPanelCategories @keerti
   Scenario Outline: To validate system generated validation message, When Max score:0, for all review questions under the Completeness review panel categories and  Weight is present, in prescreening Review form of prescreening review steps in planning phase
@@ -2771,11 +2758,10 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Management Review | 40              |
@@ -2797,11 +2783,11 @@ Feature: Validate all scenarios for program
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question | Type   | Max Score |
       | 1              | Test 1   | Yes/No | 0         |
-    And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted. |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: The total section weight must equal 100% or 0%. It is currently 30%.                                    |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2815,8 +2801,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2849,7 +2834,7 @@ Feature: Validate all scenarios for program
     When I enter value "UnChecked" into field "Required__c"
     And I click on top right button "Save" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Reviewers are not required for optional panels : |
+      | Reviewers are not required for optional panels |
     And I refresh the page
     And I expand nested table containing column value "Pre-Screen Review"
     And I click on "Edit" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
@@ -2861,7 +2846,10 @@ Feature: Validate all scenarios for program
       | Saved Successfully! |
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
+      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%.                                  |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score cannot be associated to a question in the Completeness section because it does not have a weight. |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Eligibility section because it is weighted.    |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: The total section weight must equal 100% or 0%. It is currently 50%.                                      |
     And I refresh the page
     And I expand nested table containing column value "Pre-Screen Review"
     And I click on "Edit" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
@@ -2873,7 +2861,10 @@ Feature: Validate all scenarios for program
       | Saved Successfully! |
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
+      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%.                                  |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score cannot be associated to a question in the Completeness section because it does not have a weight. |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Eligibility section because it is weighted.    |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: The total section weight must equal 100% or 0%. It is currently 50%.                                      |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2887,8 +2878,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2913,7 +2903,9 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 80.00%.                          |
       | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Impact section because it is weighted. |
+      | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%. It is currently 135%.                             |
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I click on "Edit" icon for "Program Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
@@ -2931,7 +2923,10 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 80.00%.                            |
       | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Approach section because it is weighted. |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Impact section because it is weighted.   |
+      | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%. It is currently 135%.                               |
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I click on "Edit" icon for "Program Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
@@ -2949,7 +2944,11 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 80.00%.                              |
       | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Capability section because it is weighted. |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Approach section because it is weighted.   |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Impact section because it is weighted.     |
+      | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%. It is currently 135%.                                 |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2963,8 +2962,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -2989,7 +2987,12 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 60.00%.                                 |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Capability section because it is weighted.    |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Approach section because it is weighted.      |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Impact section because it is weighted.        |
       | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Program Income section because it is weighted. |
+      | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%. It is currently 135%.                                    |
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I click on "Edit" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
@@ -3007,7 +3010,13 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Match section because it is weighted. |
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 60.00%.                                 |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Capability section because it is weighted.    |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Approach section because it is weighted.      |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Impact section because it is weighted.        |
+      | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Match section because it is weighted.          |
+      | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Program Income section because it is weighted. |
+      | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%. It is currently 135%.                                    |
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I click on "Edit" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
@@ -3025,7 +3034,14 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Budget section because it is weighted. |
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 60.00%.                                 |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Capability section because it is weighted.    |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Approach section because it is weighted.      |
+      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Impact section because it is weighted.        |
+      | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Budget section because it is weighted.         |
+      | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Match section because it is weighted.          |
+      | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Program Income section because it is weighted. |
+      | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%. It is currently 135%.                                    |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -3039,8 +3055,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3065,7 +3080,8 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Schedule section because it is weighted. |
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 130.00%. |
+      | Setup Tab - SME Review - Compliance Review: A weighted form must contain weighted sections.                        |
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I click on "Edit" icon for "Compliance Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
@@ -3083,7 +3099,8 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Environment section because it is weighted. |
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 130.00%. |
+      | Setup Tab - SME Review - Compliance Review: A weighted form must contain weighted sections.                        |
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I click on "Edit" icon for "Compliance Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
@@ -3101,7 +3118,8 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Permits section because it is weighted |
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 130.00%. |
+      | Setup Tab - SME Review - Compliance Review: A weighted form must contain weighted sections.                        |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -3114,11 +3132,10 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
-    When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
       | Management Review | 50              |
@@ -3143,6 +3160,7 @@ Feature: Validate all scenarios for program
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted. |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: The total section weight must equal 100% or 0%. It is currently 60%.                                    |
     And I refresh the page
     And I expand nested table containing column value "Pre-Screen Review"
     And I click on "Edit" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
@@ -3160,7 +3178,8 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Eligibility section because it is weighted. |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted. |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Eligibility section because it is weighted.  |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -3172,8 +3191,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3212,8 +3230,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3314,8 +3331,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3433,8 +3449,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3489,9 +3504,11 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 80.00%.                              |
       | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Capability section because it is weighted. |
       | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Approach section because it is weighted.   |
       | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Impact section because it is weighted.     |
+      | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%. It is currently 90%.                                  |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -3512,8 +3529,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -3541,7 +3557,9 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 80.00%.                        |
       | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Match section because it is weighted. |
+      | Setup Tab - SME Review - Fiscal Review: The total section weight must equal 100% or 0%. It is currently 115%.                            |
 
   @77404 @validatingSMEReviewFormQuestions-ForProgramIncomeReviewPanel @monu
   Scenario: To validate system generated validation message, When Max score:0, for all review questions under the Program Income review panel categories and  Weight is present, in program review form of SME review steps in planning phase
@@ -3559,8 +3577,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -3589,6 +3606,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 150.00%.                                |
       | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Program Income section because it is weighted. |
 
   @77405 @77406 @validatingSMEReviewFormQuestions @meenakshi
@@ -3607,8 +3625,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -3649,8 +3666,10 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Schedule section because it is weighted.    |
-      | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Environment section because it is weighted. |
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 130.00%.                                   |
+      | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Schedule section because it is weighted.      |
+      | Setup Tab - SME Review - Compliance Review: A score cannot be associated to a question in the Environment section because it does not have a weight. |
+      | Setup Tab - SME Review - Compliance Review: The total section weight must equal 100% or 0%. It is currently 30%.                                     |
 
   @77408 @validatingMaxScoreZeroForEligiblityInPreScreenReviewFormQuestions @meenakshi
   Scenario Outline: To validate system generated validation message, When Max score:0, for all review questions under the Eligibility review panel categories and  Weight is present, in prescreening Review form of prescreening review steps in planning phase
@@ -3659,8 +3678,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3702,8 +3720,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3775,8 +3792,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3835,8 +3851,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3867,8 +3882,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3894,8 +3908,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3938,8 +3951,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -3994,8 +4006,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4033,8 +4044,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4066,8 +4076,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4107,8 +4116,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4168,8 +4176,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4227,8 +4234,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4291,8 +4297,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4333,8 +4338,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4384,8 +4388,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4411,8 +4414,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4440,8 +4442,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4493,8 +4494,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4521,8 +4521,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4559,8 +4558,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4618,8 +4616,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4655,8 +4652,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     When I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Step Name         | Step Weight (%) |
@@ -4828,8 +4824,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I click "Add" after selection of "<Objective>" in the table "---program:-:associateObjectivesTableId---"
@@ -4901,8 +4896,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -4914,10 +4908,12 @@ Feature: Validate all scenarios for program
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:PM Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -4975,8 +4971,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -4988,10 +4983,12 @@ Feature: Validate all scenarios for program
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:PM Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -5032,8 +5029,7 @@ Feature: Validate all scenarios for program
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate Contacts" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -5046,10 +5042,12 @@ Feature: Validate all scenarios for program
     And I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     And I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name                     | Description                 |
-      | Program Approver   | {SavedValue:PO Username} | Automation Test Description |
-      | Executive Approver | {SavedValue:FD Username} | Automation Test Description |
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:PM Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
+    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
+    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
       | Description                 | Required  | Applies To  | Status |
