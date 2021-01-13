@@ -46,15 +46,14 @@ Feature: Validate all scenarios for program
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
-    When I click "Add" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
-    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
-    When I enter value "{SavedValue:PM Username}" into field "Name__c"
-    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
-    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
-    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
-    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
     #111182 #monu
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
@@ -134,8 +133,7 @@ Feature: Validate all scenarios for program
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
-    When I click "Add" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     And I click on "Remove" icon for "NGO Contact" inside flex table with id "---program:-:ExternalNGOProgramContactTableId---"
     Then I softly see "Record deleted successfully." inside flex table with id "---program:-:ExternalNGOProgramContactTableId---"
 
@@ -155,15 +153,14 @@ Feature: Validate all scenarios for program
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
-    When I click "Add" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
-    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
-    When I enter value "{SavedValue:PM Username}" into field "Name__c"
-    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
-    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
-    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
-    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
     #111183 #monu
     When I "Approve" in the approval decision
@@ -194,16 +191,14 @@ Feature: Validate all scenarios for program
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
-    When I click "Add" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate" modal by clicking the top right x button
-    When I navigate to "Setup" sub tab
+    When I click "Associate" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
-    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
-    When I enter value "{SavedValue:PM Username}" into field "Name__c"
-    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
-    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
-    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
-    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -231,16 +226,14 @@ Feature: Validate all scenarios for program
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
-    When I click "Add" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate" modal by clicking the top right x button
-    When I navigate to "Setup" sub tab
+    When I click "Associate" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
-    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
-    When I enter value "{SavedValue:PM Username}" into field "Name__c"
-    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
-    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
-    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
-    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
     When I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -268,16 +261,14 @@ Feature: Validate all scenarios for program
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
-    When I click "Add" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate" modal by clicking the top right x button
-    When I navigate to "Setup" sub tab
+    When I click "Associate" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
-    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
-    When I enter value "{SavedValue:PM Username}" into field "Name__c"
-    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
-    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
-    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
-    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
     When I select radio button "Forward" in the approval decision
     And I select user "{SavedValue:EXE Username}" in the approval decision
@@ -302,18 +293,16 @@ Feature: Validate all scenarios for program
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
-    When I click "Add" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
-    When I close "Associate" modal by clicking the top right x button
-    When I navigate to "Setup" sub tab
+    When I click "Associate" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
-    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
-    When I enter value "{SavedValue:PM Username}" into field "Name__c"
-    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
-    When I click on top right button "New" in flex table with id "---program:-:approverTableId---"
-    When I enter value "{SavedValue:EXE Username}" into field "Name__c"
-    When I click on top right button "Save" in flex table with id "---program:-:approverTableId---"
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
     When I "Send to Owner" in the approval decision
     Then I softly see field "Status" as "Created"
-    And I softly see the following messages in the page details contains:
-      | Successfully sent to Owner. It may take few minutes to process record. |
+#    And I softly see the following messages in the page details contains:
+#      | Successfully sent to Owner. It may take few minutes to process record. |

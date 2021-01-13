@@ -61,7 +61,7 @@ Feature: Validate all scenarios in Funding Source
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     Then I see "Other" has been added in "Funding Source Files" flex table
@@ -182,6 +182,8 @@ Feature: Validate all scenarios in Funding Source
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
+    When I enter value "0" into field "fieldStartDate__c"
+    When I enter value "3650" into field "fieldEndDate__c"
     And I click on "Save" in the page details
     When I click on "Edit" in the page details
     And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
@@ -210,6 +212,8 @@ Feature: Validate all scenarios in Funding Source
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
     And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
+    When I enter value "0" into field "fieldStartDate__c"
+    When I enter value "3650" into field "fieldEndDate__c"
     And I click on "Save" in the page details
     When I click on "Edit" in the page details
     And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
