@@ -32,7 +32,7 @@ Feature: Validate all scenarios in Focus Area
     When I enter value "Automation Runtime Focus Area" into field "Title__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---focusarea:-:FocusAreaFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     Then I see "Other" has been added in "Focus Area Files" flex table
@@ -199,7 +199,6 @@ Feature: Validate all scenarios in Focus Area
     Then I softly can see row level action button "Edit" against "Grantor Application Forms" in flex table with id "---program:-:ProgramBusinessFormTableId---"
     Then I softly can see row level action button "Edit" against "Organization Desk Review" in flex table with id "---program:-:ProgramBusinessFormTableId---"
     Then I softly can see row level action button "Edit" against "Grantor Progress Report Forms" in flex table with id "---program:-:ProgramBusinessFormTableId---"
-
     Examples:
       | userType |
       | ADMIN    |

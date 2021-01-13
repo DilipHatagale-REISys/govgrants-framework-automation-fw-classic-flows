@@ -8,7 +8,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click toggle button to select "Strategic Plans - Draft"
     And I click on top right button "New" in flex table with id "---strategicplan:-:StrategicPlansTableId---"
     And I enter "StrategicPlanCreation" values from "StrategicPlan_Field_Values.xlsx"
-    And I click modal button "Save and Close"
+    And I click modal button "Save and Continue"
 
   @50954 @50955 @33798 @50956 @editionOfStrategicPlan
   Scenario: Edition of Strategic Plan by user - Admin/EXE/PM
@@ -18,11 +18,11 @@ Feature: Validate all scenarios in Strategic Plan
     Then I softly see that "Status" is in "Draft" status
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter value "Execution Strategic Goal" into field "fieldStrategyTitle__c"
-    When I click modal button "Save and Close"
+    When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I click on "Back To Strategic Plan" in the page details
     Then I softly see that "Execution Strategic Goal" has been added in flextable with Id "---strategicplan:-:strategicGoalObjectivesTableId---"
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---strategicplan:-:strategicGoalObjectivesAttTableId---"
     And I upload attachment "Attachment.pdf" of type "Strategic Plan" from computer
     Then I softly see "Strategic Plan" has been added in "Strategic Plan Files" flex table
@@ -45,7 +45,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter value "Execution Strategic Goal" into field "fieldStrategyTitle__c"
-    When I click modal button "Save and Close"
+    When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I click on "Edit" in the page details
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
@@ -58,11 +58,11 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter value "Execution Strategic Goal" into field "fieldStrategyTitle__c"
-    When I click modal button "Save and Close"
+    When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I click on "Edit" in the page details
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---strategicplan:-:flexGridGrantorStrategicGoalFiles---"
     And I upload attachment "Attachment.pdf" of type "Strategic Goal" from computer
     And I click on "Save" in the page details
@@ -75,7 +75,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I save the field labeled "EGMS ID" as "Strategic ID"
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter value "Execution Strategic Goal" into field "fieldStrategyTitle__c"
-    When I click modal button "Save and Close"
+    When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I click on "Edit" in the page details
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
@@ -83,7 +83,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I save the field labeled "EGMS ID" as "Strategic Goals ID"
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
     When I enter value "Execution Strategic Objective" into field "StrategyTitle__c"
-    When I click modal button "Save and Close"
+    When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     Then I softly see field "Strategic Plan Status" as "Draft"
     #105394 #monu
@@ -103,14 +103,14 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter value "Execution Strategic Goal" into field "fieldStrategyTitle__c"
-    When I click modal button "Save and Close"
+    When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I click on "Edit" in the page details
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
     When I enter value "Execution Strategic Objective" into field "StrategyTitle__c"
-    When I click modal button "Save and Close"
+    When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I click on "Edit" in the page details
     When I enter in modal value "Execution Strategic Objective" into field "StrategyDescription__c"
@@ -123,13 +123,13 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter value "Execution Strategic Goal" into field "fieldStrategyTitle__c"
-    When I click modal button "Save and Close"
+    When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
     When I enter value "Execution Strategic Objective" into field "StrategyTitle__c"
-    When I click modal button "Save and Close"
+    When I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---strategicplan:-:flexGridGrantorObjectiveFiles---"
     And I upload attachment "Attachment.pdf" of type "Strategic Plan" from computer
     Then I see "Strategic Plan" has been added in "Objective Files" flex table
@@ -140,11 +140,11 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter value "Execution Strategic Goal" into field "fieldStrategyTitle__c"
-    When I click modal button "Save and Close"
+    When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
     When I enter in modal value "Execution Objective" into field "StrategyTitle__c"
-    When I click modal button "Save and Close"
+    When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I navigate to "Related Log" sub tab
     And I click on top right button "Associate" in flex table with id "---strategicplan:-:ObjectivesKPITableId---"

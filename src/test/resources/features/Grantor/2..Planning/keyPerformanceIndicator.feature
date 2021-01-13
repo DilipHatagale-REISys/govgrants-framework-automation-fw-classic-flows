@@ -44,7 +44,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     And I enter "Creation" values from "KPI_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---keyperformanceindicator:-:GrantorKPIFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     Then I see "Other" has been added in "KPI Files" flex table
@@ -64,7 +64,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "KPI_Field_Values.xlsx"
     And I click on "Save" in the page details
-    And I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---keyperformanceindicator:-:GrantorKPIFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     And I click on "Activate" in the page details
@@ -79,7 +79,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Planning" tab
     And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
-    Then  I can see top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
+    Then  I cannot see top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
 
   @52625 @userFOEditKPI
   Scenario: Negative Case-Verfiy that PM user cannot Edit the record
@@ -186,11 +186,11 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I navigate to "Strategic Plans" content inside "Setup" subheader on left panel
     And I click toggle button to select "Strategic Plans - All"
     When I perform quick search for "Automation Permanent Strategic Plan" in "---strategicplan:-:StrategicPlansTableId---" panel
-    Then I see value "Active" for title "Status" against the value "{SavedValue:egmsid}" inside table "---strategicplan:-:StrategicPlansTableId---"
+    Then I see value "Active" for title "Status" against the value "Automation Permanent Strategic Plan" inside table "---strategicplan:-:StrategicPlansTableId---"
 
   @106645 @VerifyRelatedObjectiveDetails @smoke
   Scenario: Validate user is able to see related objective
-    Given I login to "As a Grantor" app as "dynamicUser" user
+    Given I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
     And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
@@ -208,16 +208,16 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     And I click toggle button to select "Strategic Plans - Draft"
     And I click on top right button "New" in flex table with id "---strategicplan:-:StrategicPlansTableId---"
     And I enter "StrategicPlanCreation" values from "StrategicPlan_Field_Values.xlsx"
-    And I click modal button "Save and Close"
+    And I click modal button "Save and Continue"
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
     When I enter value "Execution Strategic Goal" into field "fieldStrategyTitle__c"
-    When I click modal button "Save and Close"
+    When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
     When I enter in modal value "Execution Objective" into field "StrategyTitle__c"
-    When I click modal button "Save and Close"
+    When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I navigate to "Related Log" sub tab
     And I click on top right button "Associate" in flex table with id "---strategicplan:-:ObjectivesKPITableId---"
@@ -226,7 +226,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     Then I softly see that "{SavedValue:KPINAME}" has been added in flextable with Id "---strategicplan:-:ObjectivesKPITableId---"
     And I navigate to "Planning" tab
     When I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
-    And I click toggle button to select "Key Performance Indicators (KPI) - Active"
+    And I click toggle button to select "Key Performance Indicators (KPI) -Active"
     When I perform quick search for "{SavedValue:KPINAME}" in "---keyperformanceindicator:-:kpiTableId---" panel
     And I click on "View" icon for "{SavedValue:KPINAME}" inside table
     When I navigate to "Related Log" sub tab
