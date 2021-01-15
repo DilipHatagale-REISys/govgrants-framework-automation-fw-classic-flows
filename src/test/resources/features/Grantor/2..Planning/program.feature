@@ -572,7 +572,7 @@ Feature: Validate all scenarios for program
   Scenario Outline: Validate the association of Focus Area for the Internal Program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
-    When I click "Add" after selection of "<Title>" in the table "---program:-:associateFocusAreaTableId---"
+    When I click "Associate" after selection of "<Title>" in the table "---program:-:associateFocusAreaTableId---"
     Then I softly see that "<Title>" has been added in flextable with Id "---program:-:focusAreaTableId---"
     And I expand nested table containing column value "Pre-Screen Review"
     And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
@@ -757,7 +757,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "<EGMS Id>" in "---program:-:associateKPITableId---" panel
-    When I click "Add" after selection of "<EGMS Id>" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "<EGMS Id>" in the table "---program:-:associateKPITableId---"
     Then I softly see that "<EGMS Id>" has been added in flextable with Id "---program:-:kpiTableId---"
     And I expand nested table containing column value "Management Review"
     When I enter the following values into flex table with id "---program:-:reviewFormTableId---" by clicking "New" :
@@ -799,7 +799,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "<EGMS Id>" in "---program:-:associateKPITableId---" panel
-    When I click "Add" after selection of "<EGMS Id>" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "<EGMS Id>" in the table "---program:-:associateKPITableId---"
     Then I softly see that "<EGMS Id>" has been added in flextable with Id "---program:-:kpiTableId---"
     And I click on "Remove" icon for "<EGMS Id>" inside flex table with id "---program:-:kpiTableId---" without waiting for record
     Then I softly see the following messages in the page details contains:
@@ -953,7 +953,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Program Artifacts" from computer
-    Then I softly see "Attachment.pdf" has been added in "Program Files" flex table
+    Then I softly see "Program Artifacts" has been added in "Program Files" flex table
     And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
@@ -1059,7 +1059,6 @@ Feature: Validate all scenarios for program
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
-    When I "Approve" in the approval decision
     And I "Reject" in the approval decision
     Then I can see the message "Successfully disapproved" in the approval decision
     Then I softly see field "Status" as "Rejected"
@@ -3339,7 +3338,7 @@ Feature: Validate all scenarios for program
 
   @81230 @validatingPreScreenReviewFormQuestions @meenakshi
   Scenario Outline: To verify,review question displayed by default for all review panel categories for Prescreen review form in prescreen review step of planning phase
-    When I login to "As a Grantor" app as "EXE" user
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Internal Programs - All"
@@ -3381,7 +3380,7 @@ Feature: Validate all scenarios for program
 
   @81231 @validatingComplainceReviewQuestionsInSMEReviewForEXEUser @meenakshi
   Scenario Outline: To verify,review question displayed by default for all review panel categories for Compliance Review review form in SME review step of planning phase
-    And I re-login as "As a Grantor" user on "EXE" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Internal Programs - All"
@@ -3469,7 +3468,6 @@ Feature: Validate all scenarios for program
     Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
     #77348
     And I perform quick search for "Approach" in "---program:-:programReviewPanel---" panel
-    And I expand nested table containing column value "Approach"
     And I click on "Edit" icon for "Approach" inside flex table with id "---program:-:programReviewPanel---" without waiting for record
     When I enter value "30" into field "Weight__c"
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
@@ -3481,7 +3479,6 @@ Feature: Validate all scenarios for program
     Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
     #77349
     And I perform quick search for "Impact" in "---program:-:programReviewPanel---" panel
-    And I expand nested table containing column value "Impact"
     And I click on "Edit" icon for "Impact" inside flex table with id "---program:-:programReviewPanel---" without waiting for record
     When I enter value "30" into field "Weight__c"
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
@@ -3643,7 +3640,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
     #77406
     And I perform quick search for "Environment" in "---program:-:programReviewPanel---" panel
-    And I expand nested table containing column value "Environment"
+    #And I expand nested table containing column value "Environment"
     And I click on "Edit" icon for "Environment" inside flex table with id "---program:-:programReviewPanel---" without waiting for record
     When I enter value "30" into field "Weight__c"
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
@@ -5008,7 +5005,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     And I check "All" boxes in flex table with id "---program:-:associateFocusAreaTableId---"
-    And I click on top right button "Add" in flex table with id "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:associateFocusAreaTableId---"
     Then I see value "Active" for title "Status" against the value "Automation Permanent Focus Area2" inside table "---program:-:focusAreaTableId---"
     Then I see value "Active" for title "Status" against the value "Automation Permanent Focus Area" inside table "---program:-:focusAreaTableId---"
 
@@ -5023,14 +5020,14 @@ Feature: Validate all scenarios for program
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
     When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
     When I close "Associate Objectives" modal by clicking the top right x button
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     And I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
-    When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
+    When I click "Associate" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
       | Name                     | Program |

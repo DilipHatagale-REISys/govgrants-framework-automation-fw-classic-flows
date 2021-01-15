@@ -47,7 +47,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @56717 @56716 @56718 @internalContactsViewCreateEdit @smoke
+  @56717 @56716 @56718 @internalContactsViewCreateEdit @smoke @buglogged101030
   Scenario Outline: Validate that Internal contacts are accessible across agencies and can be create, Edit and view access to Contacts by any Internal users
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -61,6 +61,8 @@ Feature: Validate all scenarios in the home tab
     Then I softly can see row level action button "View" against "{SavedValue:Automation Runtime Contact}" in flex table with id "flexTableRandomID"
     And I click on "View" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---" without waiting for record
     Then I softly see field "Organization" as "Test Automation Organization"
+    And I refresh the page
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:internalContactTableId---" panel
     Then I softly can see row level action button "Edit" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:internalContactTableId---"
     Examples:
       | User  |
@@ -77,7 +79,8 @@ Feature: Validate all scenarios in the home tab
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
     And I save the contact name as "Automation Runtime Contact"
-    Then I softly see values "{SavedValue:Automation Runtime Contact}" and "New" inside table
+    Then I see value "{SavedValue:Automation Runtime Contact}" for title "Full Name" inside table "---home:-:reviewersTableId---"
+    Then I see value "New" for title "Status" inside table "---home:-:reviewersTableId---"
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     Then I softly can see row level action button "View" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:reviewersTableId---"
     Examples:
@@ -122,7 +125,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56725 @56724 @56726 @termsandConditionsViewCreateAdminEdit @bug-69291 @smoke
+  @56725 @56724 @56726 @termsandConditionsViewCreateAdminEdit @smoke
   Scenario Outline: Verifying all Internal Users has View, Create and Edit access to Terms and Conditions
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Planning" tab
@@ -130,7 +133,7 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:termsAndConditionsTableId---"
     And I enter "Creation" values from "TermsandConditions_Field_Values.xlsx"
     When I click modal button "Save"
-    When I close "New" modal by clicking the top right x button
+    When I close "Create Terms and Conditions" modal by clicking the top right x button
     When I perform quick search for "TC-598383" in "---home:-:termsAndConditionsTableId---" panel
     Then I softly see value "Active" for title "Status" against the value "TC-598383" inside table "---home:-:termsAndConditionsTableId---"
     Then I softly can see row level action button "View" against "TC-598383" in flex table with id "---home:-:termsAndConditionsTableId---"
@@ -221,7 +224,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56719 @56734 @subrecipientContactsCreateEdit @smoke
+  @56719 @56734 @subrecipientContactsCreateEdit @smoke @buglogged101030
   Scenario Outline: Verifying if the Internal Users has create and Edit access to Subrecipient Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -271,7 +274,6 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "New" in flex table with id "---home:-:additionalAddressTableId---"
     And I enter "AdditionalAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close "New" modal by clicking the top right x button
     Then I softly see that "Internal Organization" is in "Active" status
     When I perform quick search for "Billing Address" in "---home:-:additionalAddressTableId---" panel
     And I click on "Edit" icon for "Billing Address" inside flex table with id "---home:-:additionalAddressTableId---" without waiting for record
@@ -319,7 +321,7 @@ Feature: Validate all scenarios in the home tab
     Then I see "No Records Found" inside flex table with id "---home:-:relatedContactsTableId---"
 
   @56740 @56741 @56742 @dunsNumberCreationEditionAndDeletion @smoke @bug-69292
-  Scenario Outline: Validate whether ADMIN and DA users can Create, Edit and delete the DUNS Number
+  Scenario: Validate whether ADMIN and DA users can Create, Edit and delete the DUNS Number
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
@@ -334,9 +336,6 @@ Feature: Validate all scenarios in the home tab
     Then I softly see values "138047990" and "HernNdon" inside table
     When I click on "delete" icon for "138047990" inside flex table with id "---home:-:dunsTableId---" without waiting for record
     Then I softly do not see values "138047990" and "DUNSNumber" inside table
-    Examples:
-      | User |
-      | PM   |
 
   @56743 @deleteIndirectCostRate
   Scenario: Validate whether ADMIN and DA users can delete the Indirect Cost Rates
@@ -455,10 +454,12 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Associate" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
@@ -488,7 +489,7 @@ Feature: Validate all scenarios in the home tab
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Application" and properties "default"
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI3" user
+    When I login as "SPI3" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Not Yet Qualified Opportunities - Open"
@@ -517,7 +518,7 @@ Feature: Validate all scenarios in the home tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---" without waiting for record
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -588,10 +589,12 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
     When I click "Associate" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
-      | Responsibility     | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Home" tab
@@ -616,7 +619,7 @@ Feature: Validate all scenarios in the home tab
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I get the "EGMS ID"
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
     When I navigate to "Home" tab
     And I click on "My_Workspace_File"
@@ -648,7 +651,7 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Related Log" sub tab
     Then I can see page block "Internal Programs"
     Then I can see page block "Announcements"
-    Then I can see page block "Active Applications"
+    Then I can see page block "Applications"
     Then I can see page block "Active Grants"
     Examples:
       | User  |
@@ -682,11 +685,13 @@ Feature: Validate all scenarios in the home tab
     When I click modal button "Save and Continue"
     And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Site Visit |
+      | {SavedValue:PM Username} | Step 1     |
+    When I enter the following values into flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                      | Site Visit |
+      | {SavedValue:EXE Username} | Step 2     |
     And I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
@@ -702,7 +707,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Record Id" in "---home:-:externalPendingTasktableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---home:-:externalPendingTasktableId---"
 
-  @62106 @indUserEditProfile @deepika
+  @62106 @indUserEditProfile @deepika @buglogged123790
   Scenario: Verify whether the Individual Sub Profile Users can view their own contact information under Overview Tab
     Given I am on "SUBPORTAL" portal
     When I login as "IND" user
