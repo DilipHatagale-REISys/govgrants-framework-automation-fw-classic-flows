@@ -35,8 +35,6 @@ Feature: Validate all scenarios in Strategic Plan
     And I click toggle button to select "Strategic Plans - Draft"
     And I perform quick search for "{SavedValue:egmsid}" in "---strategicplan:-:StrategicPlansTableId---" panel
     And I click on "Delete" icon for "{SavedValue:egmsid}" inside flex table with id "---strategicplan:-:StrategicPlansTableId---" without waiting for record
-    Then I softly see the following messages in the page details contains:
-      | Record deleted successfully. |
     Then I softly see "No records found" inside flex table with id "---strategicplan:-:StrategicPlansTableId---"
 
   @51045 @editionOfStrategicGoal
@@ -113,7 +111,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I click on "Edit" in the page details
-    When I enter in modal value "Execution Strategic Objective" into field "StrategyDescription__c"
+    When I enter value "Execution Strategic Objective" into field "StrategyDescription__c"
     When I click on "Save" in the page details
     Then I softly see field "Description" as "Execution Strategic Objective"
 
@@ -149,7 +147,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I navigate to "Related Log" sub tab
     And I click on top right button "Associate" in flex table with id "---strategicplan:-:ObjectivesKPITableId---"
     When I perform quick search for "Automation Permanent KPI for Regression" in "---strategicplan:-:ListOfActiveKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI for Regression" in the table "---strategicplan:-:ListOfActiveKPITableId---"
+    When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---strategicplan:-:ListOfActiveKPITableId---"
     Then I see that "Automation Permanent KPI for Regression" has been added in flextable with Id "---strategicplan:-:ObjectivesKPITableId---"
 
     #marking as notFunctional as we can not activate multiple strategic plan for one organization
@@ -200,4 +198,4 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     When I click on "Activate" in the page details
     Then I see the following messages in the page details contains:
-      | Overview Tab - Strategic Plan must at least have a goal. |
+      | Overview Tab - At least one goal should be there for Strategic Plan. |
