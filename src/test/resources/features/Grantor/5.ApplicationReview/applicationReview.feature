@@ -285,9 +285,12 @@ Feature: Validate all scenarios in the Application Review
       | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
     Then I softly see that "Recommended" has been added in flextable with Id "flexGridFundingDecisionMemoApplications"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "Edit" :
-      | Responsibility     | Name                      | Description                 |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+#    And I edit the following rows inline in flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "Edit" :
+#      | Responsibility     | Name                      | Description                 |
+#      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
+      | Name                       | Program |
+      | {{SavedValue:EXE Username} | Step 1  |
     Then I softly see that "{SavedValue:EXE Username}" has been added in flextable with Id "flexGridGrantorReviewStepRolesandResponsibilities"
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
@@ -2228,14 +2231,14 @@ Feature: Validate all scenarios in the Application Review
     And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---announcement:-:reviewStepTableId---"
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer                 |
+      | Reviewer                  |
       | {SavedValue:SPI Username} |
     And I click on "Assign" icon for "{SavedValue:SPI Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     Then I softly see the following messages in the page details contains:
-      | You cannot assign a user to review their own application.|
+      | You cannot assign a user to review their own application. |
     And I wait for "2" seconds
     When I close "Assign Applications" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
@@ -2253,7 +2256,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     #79745
     Then I softly see the following messages in the page details contains:
-      | Record(s) successfully sent to Reviewer.|
+      | Record(s) successfully sent to Reviewer. |
     And I wait for "2" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
@@ -2276,7 +2279,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     And I click on "Next Review Step" in the page details
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer                 |
+      | Reviewer                  |
       | {SavedValue:SPI Username} |
     And I click on "Assign" icon for "{SavedValue:SPI Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
@@ -2284,7 +2287,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     #80152
     Then I softly see the following messages in the page details contains:
-      | You cannot assign a user to review their own application.|
+      | You cannot assign a user to review their own application. |
     And I wait for "2" seconds
     When I close "Assign Applications" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
@@ -2386,7 +2389,7 @@ Feature: Validate all scenarios in the Application Review
       | Management Review | 5           |
     Then I softly see that "5" has been added in flextable with Id "---applicationReview:-:formTableId---"
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer                 |
+      | Reviewer                  |
       | {SavedValue:SPI Username} |
     Then I softly see that "{SavedValue:SPI Username}" has been added in flextable with Id "---applicationReview:-:reviewersTableId---"
     And I click on "Assign" icon for "{SavedValue:SPI Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
@@ -2395,7 +2398,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     #80153
     Then I softly see the following messages in the page details contains:
-      | You cannot assign a user to review their own application.|
+      | You cannot assign a user to review their own application. |
     And I wait for "2" seconds
     When I close "Assign Applications" modal by clicking the top right x button
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
@@ -2424,7 +2427,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     Then I softly see the following messages in the page details contains:
       | Cannot promote <Announcement Name> because it does not meet the minimum review requirements: |
-      |  Management Review has 0 out of 1 complete reviews                                                                                                                                |
+      | Management Review has 0 out of 1 complete reviews                                            |
     #79982
     And I click on "Funding Decision Memo" in the page details
     Then I softly see field "Status" as "Created"
@@ -2491,9 +2494,12 @@ Feature: Validate all scenarios in the Application Review
       | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
     Then I softly see that "Recommended" has been added in flextable with Id "flexGridFundingDecisionMemoApplications"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "Edit" :
-      | Responsibility     | Name                      | Description                 |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+#    And I edit the following rows inline in flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "Edit" :
+#      | Responsibility     | Name                      | Description                 |
+#      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
+      | Name                       | Program |
+      | {{SavedValue:EXE Username} | Step 1  |
     Then I softly see that "{SavedValue:EXE Username}" has been added in flextable with Id "flexGridGrantorReviewStepRolesandResponsibilities"
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
