@@ -53,10 +53,7 @@ public class InternalOrganizatioSteps {
         internalOrganizationPage.getValueFromTotalRecord(fieldKey, text, tableId);
     }
 
-    @And("^I click on \"([^\"]*)\" in the page details without processing$")
-    public void iClickOnInThePageDetailsWithoutProcessing(String buttonName) {
-        internalOrganizationPage.performClickOnPageDetailsButtonsWithoutProcessing(buttonName);
-    }
+ 
 
     @And("^I save sum of \"([^\"]*)\" field inside \"([^\"]*)\"$")
     public void assertOverAllTotalCellValueAtNumberOfAwardsColumn(String fieldApiName, String tableId) {

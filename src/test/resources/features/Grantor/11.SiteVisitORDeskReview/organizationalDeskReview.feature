@@ -835,7 +835,7 @@ Feature: Validate all scenarios in Organizational Desk Review
 
   @55998 @UploadsupportingDocumentChecklistFromWorkSpace @deepika
   Scenario: User will be able to review the supporting document checklist submitted by the subrecipient
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I upload attachment "InternalOrganization_Field_Values.xlsx" from workspace
     Then I see "InternalOrganization_Field_Values.xlsx" has been added in "Attachment" flex table
 
@@ -849,7 +849,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Save" in the page details
     Given I navigate to "Overview" sub tab
     Then I softly see field "Created Date" is not editable
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" from workspace
     Then I softly see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
 

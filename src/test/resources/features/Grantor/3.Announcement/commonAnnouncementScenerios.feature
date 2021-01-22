@@ -23,7 +23,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I perform quick search for "Record Id" in "---announcement:-:annoucementTableId---" panel
     Then I softly do not see values "Record Id" and "Announcement Name" inside table
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Formula Announcements - All"
+    And I click toggle button to select "All Formula Announcements"
     And I perform quick search for "Record id" in "---announcement:-:formulaAnnouncementTableId---" panel
     When  I click on "View" icon for "Record id" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     Then I softly see field "Subrecipient Match (%)" as "10.00%"
@@ -197,7 +197,7 @@ Feature: Validate all common scenarios in the  Announcement tab
 
   @35003 @announcementAddAttachmentFA
   Scenario: Validate the attachment for an Announcement
-    Given I navigate to "Attachments" sub tab
+    Given I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---announcement:-:AnnouncementAttachmentTableId---"
     And I upload attachment "Attachment.pdf" of type "Funding Opportunity Announcement" from computer
     Then I softly see "Funding Opportunity Announcement" has been added in "Announcement Files" flex table

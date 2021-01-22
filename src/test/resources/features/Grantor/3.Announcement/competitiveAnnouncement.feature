@@ -329,7 +329,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Preview" icon for "Organization Desk Review" inside flex table with id "---announcement:-:businessFormlistTableId---" without waiting for record
     Then I softly see field "Package Name" as "Organization Desk Review"
     And I close "Preview Package" modal by clicking the top right x button
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     When I add notes records
     And I close "Add Notes" modal by clicking the top right x button
     Then I softly see table with header "Notes" contains records "Notes Record"
@@ -784,7 +784,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I perform quick search for "Record id" in "---announcement:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record id" inside flex table with id "---announcement:-:pendingTaskTableId---"
     # This is bug. @74799
-    #When I navigate to "Attachments" sub tab
+    #When I navigate to "Files" sub tab
     #When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Funding Opportunity Announcement"
     #Then I softly see "Funding Opportunity Announcement" has been added in "Attachments" flex table
     Then I softly cannot see top right button "Edit" in page detail

@@ -206,7 +206,7 @@ Feature: Application Intake scenarios without background
     When I click on "Qualify" in the page details
     Then I softly can see top right button "Create Application" in page detail
 
-  @71104 @72578 @72624 @77151 @77152 @71107 @71109 @71108 @unpublishedAnnouncementCannotSubmitApplication @deepika @buglogged113216
+  @71104 @72578 @72624 @77151 @77152 @71107 @71109 @71108 @unpublishedAnnouncementCannotSubmitApplication @deepika @buglogged113216 @buglogged113230
   Scenario: Validate once the Announcement is published and Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit Application
   Validate whether the Applicant will be able to view qualify button on the same funding opportunity after republish
   Validate whether the Applicant will be able to create a New Application from the republish announcement and oppurtunity |Validate whether the Applicant will be able to Submit the New Application from the republish announcement and oppurtunity
@@ -238,7 +238,7 @@ Feature: Application Intake scenarios without background
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "Record Id" inside table
     And I click on "Unpublish" in the page details
-    And I save the field labeled "EGMS ID" as "unpublished"
+    And I save the field labeled "EGMS ID" as "Under Revision"
     Then I softly see status in Progress-bar is "Created" and is "green"
     And I pause execution for "2" seconds
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -522,7 +522,7 @@ Feature: Application Intake scenarios without background
     Then I softly cannot see row level action button "Delete" against "{SavedValue:Automation Runtime Announcement Application Review}" in flex table with id "---applicationIntake:-:recipientApplications---"
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationIntake:-:recipientApplications---"
     And I navigate to "Budget" sub tab
-    Given I expand nested table containing column value "BP01"
+    And I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 100    | 100        | 100            | 100            |
@@ -545,7 +545,7 @@ Feature: Application Intake scenarios without background
     When I click on "Back" in the page details
     When I click on "Submit Application" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - Requested Amount should be greater than or equal to the Subaward Floor Amount. |
+      | Overview Tab - Requested Amount should be greater than or equal to Subaward Floor Amount. Adjust the requested budget in Budget period section on Budget tab. |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -783,7 +783,7 @@ Feature: Application Intake scenarios without background
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "<userType>" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
@@ -808,9 +808,9 @@ Feature: Application Intake scenarios without background
     And I save the field containing "Type" as "Formula"
     Then I see value "$2,000" for title "Allocated Amount" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---applicationIntake:-:formulaAllocatedAmountTableId---"
     Examples:
-      | User |
-      | SPI3 |
-      | SPA  |
+      | User | userType        |
+      | SPI3 | Automation SPI3 |
+      | SPA  | Automation SPA  |
 
   @73516 @73517 @supportingDocValidationOnApplication @deepika @needSupportingDocuSupportInAPI
   Scenario: Validate whether User will be able to attach any document if the supporting document details mentioned in the Announcement
@@ -973,7 +973,7 @@ Feature: Application Intake scenarios without background
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Directed Announcements - All"
+    And I click toggle button to select "All Directed Announcements"
     And I perform quick search for "{SavedValue:Automation Runtime Directed Announcement}" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Directed Announcement}" inside flex table with id "ActiveFundingOpportunities"
     And I get the "EGMS ID"
@@ -1014,7 +1014,7 @@ Feature: Application Intake scenarios without background
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Formula Announcements - All"
+    And I click toggle button to select "All Formula Announcements"
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "ActiveFundingOpportunitiesFormula" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "ActiveFundingOpportunitiesFormula"
     When I get the "EGMS ID"
@@ -1222,7 +1222,7 @@ Feature: Application Intake scenarios without background
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Files" sub tab
-    And I pause execution for "50" seconds
+    And I pause execution for "5" seconds
     Then I softly see "No Records Found" inside flex table with id "flexGridApplicationChecklists"
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"

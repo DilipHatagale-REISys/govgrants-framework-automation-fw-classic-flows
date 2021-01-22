@@ -788,7 +788,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---progressreport:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:activeGrantsTableId---" without waiting for record
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---progressreport:-:grantChecklistsTableId---" by clicking "Add" :
       | Description | Required  | Applies To      | Status |
       | Automation  | Mandatory | Progress Report | Active |
@@ -903,7 +903,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I edit the following rows inline in flex table with id "---progressreport:-:grantChecklistsTableId---" by clicking "Edit" :
       | Description | Required |
       | Automation  | Optional |
@@ -1145,7 +1145,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     When I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:activeGrantsTableId---" without waiting for record
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I edit the following rows inline in flex table with id "---progressreport:-:grantChecklistsTableId---" by clicking "Edit" :
       | Description | Required |
       | Automation  | Optional |
@@ -2648,7 +2648,7 @@ Feature: Validate scenarios in Progress Report without background
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---progressreport:-:AmendmentAttachmentTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     And I click on "Send to Subrecipient" in the page details
@@ -2754,7 +2754,7 @@ Feature: Validate scenarios in Progress Report without background
       | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
       | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---progressreport:-:AmendmentAttachmentTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     And I click on "Send to Subrecipient" in the page details

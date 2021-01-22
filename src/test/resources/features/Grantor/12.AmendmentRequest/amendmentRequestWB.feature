@@ -2771,7 +2771,7 @@ Feature: Amendment Request scenarios without background
       | Saved Successfully! |
     Then I softly see value "Other" for title "Project Role" inside table "---amendment:-:RecipientKeyPersonalTableId---"
     #100459 #monu
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---amendment:-:RecipientAttachmentTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     And I pause execution for "5" seconds

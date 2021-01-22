@@ -63,14 +63,7 @@ public class InternalOrganizationPage extends GranteeProjectManager {
         I.amPerforming().click().on(govgrants.perform().flexTable().getSpecificElementFromTableHeader(tableId, titleName));
     }
 
-    /**
-     * perform click table header column with table id and title name
-     *
-     * @param buttonName
-     */
-    public void performClickOnPageDetailsButtonsWithoutProcessing(String buttonName) {
-        I.amPerforming().click().on(govgrants.perform().pageDetails().getAnyTopRightButton(buttonName));
-    }
+  
 
     /**
      * click on textarea and enter values for description field inside edit attachment modal

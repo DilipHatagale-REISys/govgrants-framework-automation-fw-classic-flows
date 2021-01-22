@@ -1,7 +1,7 @@
 @createTestData
 Feature: Validate creation of data in new Org
 
-  @automationPermanentFocusArea               
+  @automationPermanentFocusArea
   Scenario: Validate the creation and Activation of Permanent Focus Area
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
@@ -11,7 +11,7 @@ Feature: Validate creation of data in new Org
     When I click modal button "Save and Continue"
     When I enter value "Automation Test Description" into field "Description__c"
     And I click on "Save" in the page details
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
@@ -26,12 +26,12 @@ Feature: Validate creation of data in new Org
     When I click modal button "Save and Continue"
     When I enter value "Automation Test Description" into field "Description__c"
     And I click on "Save" in the page details
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
     When I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @automationPermanentFundingAccount        
+  @automationPermanentFundingAccount
   Scenario: Validate the creation and Activation of Permanent Funding Account
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
@@ -50,7 +50,7 @@ Feature: Validate creation of data in new Org
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @automationPermanentKPIForRegression    
+  @automationPermanentKPIForRegression
   Scenario: Validate the creation and Activation of Permanent KPI
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
@@ -164,7 +164,7 @@ Feature: Validate creation of data in new Org
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---"
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     When I close "Upload Template" modal by clicking the top right x button
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts"
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -489,7 +489,7 @@ Feature: Validate creation of data in new Org
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -501,7 +501,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name                      | Project Role             | Is Key Contact |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "Green"
 
@@ -530,7 +530,7 @@ Feature: Validate creation of data in new Org
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "PermanentRecordSetup_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -542,7 +542,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name                      | Project Role             | Is Key Contact |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Then I see status in Progress-bar is "Submitted" and is "Green"
 
@@ -563,7 +563,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
       | Name                      | Project Role             | Is Key Contact |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked        |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     When I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
@@ -573,7 +573,7 @@ Feature: Validate creation of data in new Org
     When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
     When I enter "Form Fields 1" values from "PermanentRecordSetup_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -614,7 +614,10 @@ Feature: Validate creation of data in new Org
     And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
-    And I click on "Submit" in the page details
+    And I wait for "6" seconds
+    When I click on "Submit" in the page details without processing
+    When I click alert button "OK"
+    And I wait for "5" seconds
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -663,7 +666,10 @@ Feature: Validate creation of data in new Org
     And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
-    And I click on "Submit" in the page details
+    And I wait for "6" seconds
+    When I click on "Submit" in the page details without processing
+    When I click alert button "OK"
+    And I wait for "5" seconds
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -671,7 +677,10 @@ Feature: Validate creation of data in new Org
     And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
-    And I click on "Submit" in the page details
+    And I wait for "6" seconds
+    When I click on "Submit" in the page details without processing
+    When I click alert button "OK"
+    And I wait for "5" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -679,7 +688,10 @@ Feature: Validate creation of data in new Org
     And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
-    And I click on "Submit" in the page details
+    And I wait for "6" seconds
+    When I click on "Submit" in the page details without processing
+    When I click alert button "OK"
+    And I wait for "5" seconds
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -711,7 +723,10 @@ Feature: Validate creation of data in new Org
     And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
-    And I click on "Submit" in the page details
+    And I wait for "6" seconds
+    When I click on "Submit" in the page details without processing
+    When I click alert button "OK"
+    And I wait for "5" seconds
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -808,7 +823,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name                      | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Role               | Name                      | Description                 |
@@ -961,7 +976,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name                      | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Role               | Name                      | Description                 |
@@ -1114,7 +1129,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name                      | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI Username} | Project Director/Manager | Checked          |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
       | Role               | Name                      | Description                 |

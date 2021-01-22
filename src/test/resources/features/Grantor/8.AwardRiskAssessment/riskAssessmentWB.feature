@@ -17,7 +17,7 @@ Feature: Risk Assessment scenarios without background
     When I click on "Save" in the page details
     And I navigate to "Management" sub tab
     Then I softly cannot see page block "Subaward Risk Assessments"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
    # @bug-69368
 #    Then I softly see value "Not Applicable" for title "Template Link" against the value "Automation" inside table "flexGridAwardChecklists"
     Then I softly see "Note Description" has been added in "Notes" flex table

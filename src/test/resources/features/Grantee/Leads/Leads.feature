@@ -1323,7 +1323,7 @@ Feature: Leads related scenarios
     And I click toggle button to select "Leads Not Yet Qualified - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     Then I see the following top right buttons in table named "Attachments" :
       | Add |
     Then I see the following top right buttons in table named "Notes" :
@@ -1361,7 +1361,7 @@ Feature: Leads related scenarios
     And I pause execution for "2" seconds
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:LeadsNotYetQualified}"
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I softly see the text containing :
       | Attachments |
       | Notes       |
@@ -3163,7 +3163,7 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside table
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I upload attachment "AttachmentTesting.pdf" of type "FOA Documents"
     When I pause execution for "3" seconds
     When I refresh the page
@@ -3189,7 +3189,7 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside table
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I click on "AddAttachments" button inside attachments page block
     And I pause execution for "3" seconds
     When I click modal button "Save"
@@ -3218,7 +3218,7 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside table
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I click on "AddAttachments" button inside attachments page block
     Then I see "FOA Documents:RFA Documents:Program Related Documents:Other" inside Type selectbox
 
@@ -3241,7 +3241,7 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside table
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I click on top right button "Add" in flex table with id "{grantee_tableId:LeadsAttachmentTableId}"
     When I enter value "Notes Record" into field "Title"
     When I enter value "Automation Notes" into field "Body"
@@ -3269,7 +3269,7 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside table
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I click on "Add" button inside attachments page block
     And I click on top right button "Add" in flex table with id "{grantee_tableId:LeadsAttachmentTableId}"
     And I click on top right button "Save" in flex table with id "{grantee_tableId:LeadsAttachmentTableId}"
@@ -3300,7 +3300,7 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside table
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I upload attachment "AttachmentTesting.pdf" of type "FOA Documents"
     When I pause execution for "3" seconds
     When I click on "Delete" icon for "AttachmentTesting.pdf" inside table
@@ -3326,7 +3326,7 @@ Feature: Leads related scenarios
     When I navigate to "{grantee_sidebar:NotyetQualifiedLead}" content inside "{grantee_sidebar:LeadsSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:LeadsNotYetQualified}" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside table
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I click on top right button "Add" in flex table with id "{grantee_tableId:LeadsAttachmentTableId}"
     When I enter value "Notes Record" into field "Title"
     When I enter value "Automation Notes" into field "Body"

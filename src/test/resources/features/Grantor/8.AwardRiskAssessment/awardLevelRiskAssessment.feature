@@ -2165,7 +2165,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---orgRiskAssessment:-:awardRiskAssessmentTableId---"
     And I upload attachment "Attachment.pdf" of type "AGENCY DETAILS" from computer
     Then I softly see "AGENCY DETAILS" has been added in "Risk Assessment Files" flex table
@@ -2880,7 +2880,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
     When I click on "Submit for Approval" in the page details
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add Files" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
 
   @66869 @RAChangedtoYellowAfterRAisApproved @keerti
@@ -2998,7 +2998,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---orgRiskAssessment:-:awardRiskAssessmentTableId---"
     When I upload attachment "Attachment.pdf" of type "AGENCY DETAILS" from computer
     Then I softly see "AGENCY DETAILS" has been added in "Risk Assessment Files" flex table

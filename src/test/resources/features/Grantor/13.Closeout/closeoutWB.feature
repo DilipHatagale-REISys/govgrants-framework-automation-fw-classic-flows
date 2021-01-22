@@ -354,7 +354,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see "Open Items" sub tab at view detail page
     Then I softly can see "Checklist" sub tab at view detail page
     Then I softly can see "Responsibilities" sub tab at view detail page
-    Then I softly can see "Attachments" sub tab at view detail page
+    Then I softly can see "Files" sub tab at view detail page
     Then I softly can see "History" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
     When I navigate to "Responsibilities" sub tab
@@ -567,7 +567,7 @@ Feature: Validate all scenarios in Closeout
     And I click toggle button to select "Project Period Closeouts - All"
     And I perform quick search for "{SavedValue:closeoutID}" in "ProjectPeriodCloseoutGrantor" panel
     And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "ProjectPeriodCloseoutGrantor"
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add Files" in flex table with id "---closeout:-:CloseoutDetailsTableId---"
 
   @95599 @95609 @95607 @VerifySubrecipientAbleToAddAttachmentForTerminationCloseoutRequest-EXEUser @monu
@@ -601,7 +601,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---closeout:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---closeout:-:pendingTaskTableId---"
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     Then I softly can see top right button "Add Files" in flex table with id "---closeout:-:ExternalCloseoutDetailsTableId---"
     And I click on top right button "Add Files" in flex table with id "---closeout:-:ExternalCloseoutDetailsTableId---"
     And I upload attachment "Attachment.pdf" of type "Federal Closeout Document" from computer

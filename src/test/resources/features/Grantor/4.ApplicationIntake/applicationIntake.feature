@@ -229,7 +229,7 @@ Feature: Validate all scenarios in the Application Intake
     When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---applicationIntake:-:ApplicationAttachmentTableId---"
     And I upload attachment "Attachment.pdf" of type "General Assurances" from computer
-    Then I softly see "Attachment.pdf" has been added in "Supporting Documents Checklist" flex table
+    Then I softly see "General Assurances" has been added in "Supporting Documents Checklist" flex table
     And I add notes records
     And I close modal by clicking the top right x button
     Then I softly see value "Notes Record" for title "Title" inside table "---applicationIntake:-:ApplicationNotesTableId---"

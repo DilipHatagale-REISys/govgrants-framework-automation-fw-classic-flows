@@ -397,7 +397,7 @@ Feature: Pre-Application scenarios without background
     When I click toggle button to select "Pre-Applications - All"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-Application}" in "RecipientPreApplications" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-Application}" inside flex table with id "RecipientPreApplications"
-    Then I softly see that "{SavedValue:Automation Runtime Announcement for Pre-Application}" is in "Draft" status
+    Then I softly see that "{SavedValue:Automation Runtime Announcement for Pre-Application}" is in "Created" status
 
   @72625 @errorMessageOfPreApplicationDueDate @deepika
   Scenario: Validate whether system generates an error message when Pre Application Due Date is greater than Application Due Date while submitting information
@@ -567,7 +567,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Save" in the page details
     When  I navigate to "Overview" sub tab
     When I navigate to "Budget" sub tab
-    Then I softly see "Focus Area" page block displayed
+    Then I softly see "Focus Areas" page block displayed
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
@@ -703,7 +703,7 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-Application}" in "---preApplication:-:recipientPreApplicationsTableId---" panel
     Then I see total records count "Total Records: 1" in flex table "---preApplication:-:recipientPreApplicationsTableId---"
 
-  @77449 @77450 @77451 @77452 @77453 @77454 @77455 @unpublishedAnnouncementCannotSubmitpreApplication @deepika @buglogged113216
+  @77449 @77450 @77451 @77452 @77453 @77454 @77455 @unpublishedAnnouncementCannotSubmitpreApplication @deepika @buglogged113216 @buglogged113230
   Scenario: Validate whether User will be able to view the submit to grantor button if the application due date changes to the future date
   Validate once the Announcement is published and Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit to Grantor Button
   Validate whether the Applicant will be able to view qualify button of pre-application on the same funding opportunity after republish
@@ -836,12 +836,12 @@ Feature: Pre-Application scenarios without background
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
-    Then I softly see field "Match Required?" as "Yes"
+    Then I softly see field "Match Required?" as "No"
     And I navigate to "Budget" sub tab
-    Then I softly can see page block "Focus Area"
+    Then I softly can see page block "Focus Areas"
     Given I expand nested table containing column value "BP01"
     Then I softly see all values "$0.00" under column "Total Match" inside flextable with id "---preApplication:-:budgetCategoryGridTableId---"
-    And I softly see all values "$0.00" under column "Other Leverage" inside flextable with id "---preApplication:-:budgetCategoryGridTableId---"
+    Then I softly see all values "$0.00" under column "Other Leverage" inside flextable with id "---preApplication:-:budgetCategoryGridTableId---"
 
   @77656 @snapshotHistoryPreApplication @deepika @skipOnJenkins
   Scenario: Validate whether SPI user will be able to take the snapshot on page when the pre-application is in draft status and is saved under snapshot history

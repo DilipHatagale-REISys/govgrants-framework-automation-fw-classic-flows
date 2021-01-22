@@ -208,7 +208,7 @@ Feature: Applications related scenarios
     Then I softly can see "Overview" sub tab at view detail page
     Then I softly can see "Evaluation" sub tab at view detail page
     Then I softly can see "Responsibilities" sub tab at view detail page
-    Then I softly can see "Attachments" sub tab at view detail page
+    Then I softly can see "Files" sub tab at view detail page
     Then I softly can see "History" sub tab at view detail page
 
   @63216 @TejalMarch2020 @ValidateOverviewTabPageLayout   @positive
@@ -645,7 +645,7 @@ Feature: Applications related scenarios
     And I click toggle button to select "Applications - All"
     And I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:Application}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:Application}"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I softly see the text containing :
       | Application Files |
       | Notes             |
@@ -795,7 +795,7 @@ Feature: Applications related scenarios
     Then I softly can see top right button "Associate Focus Area" in flex table with id "{grantee_tableId:BudgetPeriodDetailsTableIdApplication}"
     When I navigate to "Responsibilities" sub tab
     Then I softly can see top right button "New" in flex table with id "{grantee_tableId:ApplicationPeerReview}"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     Then I see the following top right buttons in table named "Attachments" :
       | Add Files |
     Then I see the following top right buttons in table named "Notes" :
@@ -1419,7 +1419,7 @@ Feature: Applications related scenarios
     Then I softly can see "Budget" sub tab at view detail page
     Then I softly can see "Checklist" sub tab at view detail page
     Then I softly can see "Responsibilities" sub tab at view detail page
-    Then I softly can see "Attachments" sub tab at view detail page
+    Then I softly can see "Files" sub tab at view detail page
     Then I softly can see "History" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
     Then I softly see status in Progress-bar is "Created" and is "Green"
@@ -1840,7 +1840,7 @@ Feature: Applications related scenarios
     And I click toggle button to select "Applications - All"
     And I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:Application}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:Application}"
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     Then I softly see the text containing :
       | Application Files |
       | Notes             |
@@ -1924,7 +1924,7 @@ Feature: Applications related scenarios
     And I click toggle button to select "Applications - All"
     And I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:Application}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:Application}"
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I add notes records
     And I close modal by clicking the top right x button
     Then I softly see table with header "Notes" contains records "Automation Notes"
@@ -1933,7 +1933,7 @@ Feature: Applications related scenarios
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:Application}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:Application}"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     Then I softly see table with header "Notes" contains records "Automation Notes"
     Examples:
       | userType      |

@@ -215,7 +215,7 @@ Feature: Payment Request scenarios without background
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |
     When I close "Add Line Items" modal by clicking the top right x button
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     #steps need to be added for supportive document
     Then I see that "Automation" has been added in flextable with Id "---paymentRequest:-:checklistTableId---"
     Examples:
@@ -245,7 +245,7 @@ Feature: Payment Request scenarios without background
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |
     When I close "Add Line Items" modal by clicking the top right x button
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     Then I see "No Records Found" inside flex table with id "---paymentRequest:-:checklistTableId---"
     Examples:
       | Award Name                            | Grant Name                            |
@@ -269,7 +269,7 @@ Feature: Payment Request scenarios without background
     And I click modal button "Save and Continue"
     When I enter "No Program Income_Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     #after bug fix steps need to modify bug 94779
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Invoice"
     Then I see "Announcement_Field_Values.xlsx" has been added in "Attachment" flex table
@@ -292,7 +292,7 @@ Feature: Payment Request scenarios without background
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     Then I see "No Records Found" inside flex table with id "---paymentRequest:-:checklistTableId---"
     Examples:
       | Award Name                            |
@@ -316,7 +316,7 @@ Feature: Payment Request scenarios without background
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     #steps needs to be added for suppporting document after bug fix 94779
     Then I see that "Automation" has been added in flextable with Id "---paymentRequest:-:checklistTableId---"
     Examples:
@@ -782,7 +782,7 @@ Feature: Payment Request scenarios without background
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     #steps need to be modify after bug fix 94779
     When I upload attachment "Announcement_Field_Values.xlsx" of type "Invoice"
     And I pause execution for "2" seconds

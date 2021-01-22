@@ -97,7 +97,7 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
     And I click on "View" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     Then I softly see value "Grantor Site Visit Forms" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
     Then I softly see value "Grantor Progress Report Forms" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
     Then I softly see value "Organization Desk Review" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"

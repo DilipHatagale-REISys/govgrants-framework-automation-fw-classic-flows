@@ -29,7 +29,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click toggle button to select "Grants - All"
     When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside flex table with id "---activeGrantsTableId:-:activeGrantsTableId---"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     Then I can see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
 
   @71423 @71439 @71438 @jitendra @statusOfAllAndDraft
@@ -55,7 +55,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click modal button "Continue"
     And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" by clicking "Add" :
       | Description | Required  | Applies To | Status |
       | Automation  | Mandatory | Award      | Active |
@@ -1117,7 +1117,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     Then I softly see value "Organization Desk Review" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
     Then I softly see value "Grantor Site Visit Forms" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
     Then I softly see value "Grantor Progress Report Forms" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
@@ -1733,7 +1733,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click toggle button to select "Grants - All"
     When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
 
   @69453 @verifySupportingDocumentNotAddedByFOUser @aashish
@@ -1752,7 +1752,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click toggle button to select "Grants - All"
     When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside table
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
     When I re-login to "As a Grantor" app as "{SavedValue:PM Username}" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1760,7 +1760,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click toggle button to select "Grants - All"
     And I perform quick search for "{SavedValue:Automation Runtime Direct Award}"
     And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside table
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
 
   @67809 @createGrantADMIN @aashish
@@ -1989,7 +1989,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - All"
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     Then I softly see value "Grantor Site Visit Forms" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
     Then I softly see value "Grantor Progress Report Forms" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
     Then I softly see value "Organization Desk Review" for title "Package Name" inside table "---subAwardStandAlone:-:grantpkagestableid---"
@@ -2544,7 +2544,7 @@ Feature: Validate all scenarios of grants and award without background
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" by clicking "Add" :
       | Description | Required  | Applies To | Status |
       | Automation  | Mandatory | Award      | Active |
@@ -2687,7 +2687,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     When I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     When I click on "Upload Template" icon for "Mandatory" inside flex table with id "---announcement:-:annChecklist---" without waiting for record
     And I click modal button "Save"
     Then I softly see the following messages in the page details :
