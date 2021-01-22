@@ -1019,7 +1019,7 @@ Feature: Pre-Applications related scenarios
     Then I softly can see "Setup" sub tab at view detail page
     Then I softly can see "Budget" sub tab at view detail page
     Then I softly can see "Responsibilities" sub tab at view detail page
-    Then I softly can see "Attachments" sub tab at view detail page
+    Then I softly can see "Files" sub tab at view detail page
     Then I softly can see "History" sub tab at view detail page
 
   @63674 @TejalMarch2020 @ValidateHeaderSectionInPre-ApplicationDetailsPage   @positive
@@ -1187,7 +1187,7 @@ Feature: Pre-Applications related scenarios
       | Peer Reviewers |
       | Approvers      |
       | Owner          |
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I softly see the text containing :
       | Pre-Application Files |
       | Notes                 |
@@ -2590,7 +2590,7 @@ Feature: Pre-Applications related scenarios
     And  I pause execution for "2" seconds
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I add notes records
     And I close modal by clicking the top right x button
     Then I softly see row level action icon "Edit" against "Automation Notes" in Attachment and Notes Table
@@ -2665,7 +2665,7 @@ Feature: Pre-Applications related scenarios
     And  I pause execution for "2" seconds
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I add notes records
     And I close modal by clicking the top right x button
     And I pause execution for "2" seconds
@@ -2677,7 +2677,7 @@ Feature: Pre-Applications related scenarios
     And  I pause execution for "2" seconds
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     Then I softly do not see row level action icon "Edit" against "Automation Notes" in Attachment and Notes Table
     Then I softly do not see row level action icon "Delete" against "Automation Notes" in Attachment and Notes Table
     Examples:
@@ -2757,7 +2757,7 @@ Feature: Pre-Applications related scenarios
     And  I pause execution for "2" seconds
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I add notes records
     And I close modal by clicking the top right x button
     When I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
@@ -2768,7 +2768,7 @@ Feature: Pre-Applications related scenarios
     And  I pause execution for "2" seconds
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     When I click on "View" icon for "Automation Notes" inside table
     Then I see table with header "Notes" contains records "Notes Record"
     Examples:
@@ -2848,7 +2848,7 @@ Feature: Pre-Applications related scenarios
     And  I pause execution for "2" seconds
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     When I upload attachment "AttachmentTesting.pdf" of type "Other"
     When I pause execution for "3" seconds
     Then I softly see row level action icon "Edit" against "Other" in Attachment and Notes Table
@@ -2922,7 +2922,7 @@ Feature: Pre-Applications related scenarios
     And I click toggle button to select "Pre-Application - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     When I upload attachment "AttachmentTesting.pdf" of type "Other"
     When I pause execution for "3" seconds
     When I re-login to "As a Grantee" app as "<userType>" user on "INTERNAL" portal
@@ -2932,7 +2932,7 @@ Feature: Pre-Applications related scenarios
     And I click toggle button to select "Pre-Application - All"
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     Then I softly do not see row level action icon "Edit" against "Other" in Attachment and Notes Table
     Then I softly do not see row level action icon "Delete" against "Other" in Attachment and Notes Table
     Examples:
@@ -3740,7 +3740,7 @@ Feature: Pre-Applications related scenarios
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     When I click on "AddAttachments" button inside attachments page block
     And I close modal by clicking the top right x button
     Then I see the following top right buttons in table named "Attachments" :
@@ -3818,7 +3818,7 @@ Feature: Pre-Applications related scenarios
     When I navigate to "{grantee_sidebar:PreApplicationLinkName}" content inside "{grantee_sidebar:ApplicationSubheaderName}" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Lead}" in "{grantee_tableId:PreApplication}" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Lead}" inside flex table with id "{grantee_tableId:PreApplication}"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     When I upload attachment "AttachmentTesting.pdf" of type "Other"
     When I pause execution for "3" seconds
     Then I softly see table with header "Attachments" contains records "AttachmentTesting.pdf"
@@ -10258,7 +10258,7 @@ Feature: Pre-Applications related scenarios
     And I navigate to "Budget" sub tab
     And I expand nested table containing column value "Projects" inside nested table containing "BP01"
     Then I softly can see row level action button "Edit" against "$0.00" in flex table with id "{grantee_tableId:BudgetPeriodDetailsFromBudgetTab}"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     Then I see the following top right buttons in table named "Pre-Application Files" :
       | Add Files |
     Then I see the following top right buttons in table named "Notes" :

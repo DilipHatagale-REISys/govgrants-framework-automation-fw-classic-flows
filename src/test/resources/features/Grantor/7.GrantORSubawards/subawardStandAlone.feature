@@ -973,7 +973,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" by clicking "Add" :
       | Description | Required  | Applies To | Status |
       | Automation  | Mandatory | Closeout   | Active |

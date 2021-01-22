@@ -52,7 +52,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click toggle button to select "Grants - All"
     When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:grantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I see value "Progress Report" for title "Package Type" inside table "---subAwardFromFDM:-:grantPackagesTableId---"
 
   @awardApproverSelection

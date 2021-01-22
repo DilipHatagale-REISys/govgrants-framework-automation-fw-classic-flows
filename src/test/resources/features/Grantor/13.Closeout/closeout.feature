@@ -126,7 +126,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see "Open Items" sub tab at view detail page
     Then I softly can see "Checklist" sub tab at view detail page
     Then I softly can see "Responsibilities" sub tab at view detail page
-    Then I softly can see "Attachments" sub tab at view detail page
+    Then I softly can see "Files" sub tab at view detail page
     Then I softly can see "History" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
     When I navigate to "Responsibilities" sub tab
@@ -309,7 +309,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Has the subrecipient completed all corrective actions for any open findings/concerns?" as "Yes"
     Then I softly see field "Has the funding organization reviewed and accepted all corrective actions?" as "Yes"
     Then I softly see field "Comments" as "Automation test description"
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
       | Description                 | Required  | Status |
       | Automation test description | Mandatory | Active |
@@ -367,7 +367,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see that "Program Reviewer" has been added in flextable with Id "---closeout:-:closeoutPeerReviewTableId---"
     Then I softly see that "Automation Test Description" has been added in flextable with Id "---closeout:-:closeoutPeerReviewTableId---"
     #89223
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
       | Description                 | Required  | Status |
       | Automation test description | Mandatory | Active |
@@ -489,7 +489,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see "Open Items" sub tab at view detail page
     Then I softly can see "Checklist" sub tab at view detail page
     Then I softly can see "Responsibilities" sub tab at view detail page
-    Then I softly can see "Attachments" sub tab at view detail page
+    Then I softly can see "Files" sub tab at view detail page
     Then I softly can see "History" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
     #40644
@@ -538,7 +538,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see "Overview" sub tab at view detail page
     Then I softly can see "Open Items" sub tab at view detail page
     Then I softly can see "Checklist" sub tab at view detail page
-    Then I softly can see "Attachments" sub tab at view detail page
+    Then I softly can see "Files" sub tab at view detail page
     Then I softly can see "History" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "Green"
@@ -649,7 +649,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see "Open Items" sub tab at view detail page
     Then I softly can see "Checklist" sub tab at view detail page
     Then I softly can see "Responsibilities" sub tab at view detail page
-    Then I softly can see "Attachments" sub tab at view detail page
+    Then I softly can see "Files" sub tab at view detail page
     Then I softly can see "History" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
 
@@ -769,7 +769,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see "Open Items" sub tab at view detail page
     Then I softly can see "Checklist" sub tab at view detail page
     Then I softly can see "Responsibilities" sub tab at view detail page
-    Then I softly can see "Attachments" sub tab at view detail page
+    Then I softly can see "Files" sub tab at view detail page
     Then I softly can see "History" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
     #93255 #monu
@@ -1137,7 +1137,7 @@ Feature: Validate all scenarios in Closeout
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
       | Description                 | Required  | Status |
       | Automation test description | Mandatory | Active |
@@ -1154,7 +1154,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---closeout:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---closeout:-:pendingTaskTableId---"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I click on "Attach" icon for "Automation test description" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" with wait for record
     Then I softly see "Upload Document" opens in overLay window
     When I upload file "AttachmentTesting.pdf" into library
@@ -1175,7 +1175,7 @@ Feature: Validate all scenarios in Closeout
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "CloseoutID"
     When I click on "Save" in the page details
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     Then I softly can see top right button "Add Files" in flex table with id "---closeout:-:CloseoutDetailsTableId---"
     Then I softly see "Title" in flex table header "---closeout:-:CloseoutDetailsTableId---"
     Then I softly see "Classification" in flex table header "---closeout:-:CloseoutDetailsTableId---"
@@ -1190,7 +1190,7 @@ Feature: Validate all scenarios in Closeout
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
       | Description                 | Required  | Status |
       | Automation test description | Mandatory | Active |

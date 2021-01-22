@@ -116,7 +116,7 @@ Feature: Validate all scenarios in the Site Visit
       | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
       | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
     When I save the field labeled "EGMS ID" as "EGMSID"
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" by clicking "Add" :
       | Description | Required  | Status |
       | Automation  | Mandatory | Active |
@@ -1044,7 +1044,7 @@ Feature: Validate all scenarios in the Site Visit
 
   @60834 @AdditionOfAttachmentForAwardSiteVisits @keerti
   Scenario: Validating addition of attachment to Award Site Visits
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" by clicking "Add" :
       | Description                 | Required  | Status |
       | Automation test description | Mandatory | Active |
@@ -1163,7 +1163,7 @@ Feature: Validate all scenarios in the Site Visit
 
   @61178 @addAttachmentToSiteVisit @deepika
   Scenario: Validate whether PM will be able to add any specific docuements required along with the supporting documents details under the attachments section
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---sitevisits:-:siteVisitSupportingDocumentChecklist---" by clicking "Add" :
       | Description | Required  | Status |
       | Automation  | Mandatory | Active |

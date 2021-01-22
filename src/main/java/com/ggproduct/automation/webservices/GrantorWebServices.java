@@ -258,7 +258,7 @@ public class GrantorWebServices extends ProjectWebServices {
     }
 
     private void reviewApplicationPostCall(JsonObject jsonObject, String applicationName) {
-        String finalEndPoint = endPoint + "/services/apexrest/reviewApplication/v3?AppId=" + getIdOf("Application__c", applicationName);
+        String finalEndPoint = endPoint + "/services/apexrest/CreateFDM/v2?AppId=" + getIdOf("Application__c", applicationName);
         Response response = I.amPerforming().restHttp().postCall(jsonObject, null,
                 finalEndPoint, "Authorization", "Bearer " + tokenString, null);
         assertStatusCode(response);

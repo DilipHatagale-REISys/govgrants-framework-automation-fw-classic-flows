@@ -10,7 +10,7 @@ Feature: Validate all registration related scenarios
     When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
     When I enter value as "1234" into "Vendor ID" on old form
     When I click on "Save and Continue" in the page details
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I upload attachment "AttachmentTesting.pdf" of type "Parent/Child Legal Documents"
     And I pause execution for "3" seconds
     And I refresh the page
@@ -293,7 +293,7 @@ Feature: Validate all registration related scenarios
     Then I softly can see "Overview" sub tab at view detail page
     Then I softly can see "User Profile" sub tab at view detail page
     Then I softly can see "Collab" sub tab at view detail page
-    Then I softly can see "Attachments" sub tab at view detail page
+    Then I softly can see "Files" sub tab at view detail page
 
   @82796 @83035 @verifyConfirmationMessage-Individual @meenakshi
   Scenario:To validate Confirmation Message, after clicking Submit button on Catcha page of Individual registration process

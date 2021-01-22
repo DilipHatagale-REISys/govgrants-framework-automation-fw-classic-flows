@@ -68,7 +68,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---" without waiting for record
     Then I softly cannot see top right button "Edit" in page detail
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add Files" in flex table with id "---subAwardStandAlone:-:OrganizationRiskAssesmentFilesTableId---"
 
   @61983 @completedTaskOnceOrgRAIsCreated @deepika
@@ -105,7 +105,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Assessment" sub tab
     And I enter "OrgAssessmentValues" values from "RiskAssessment_Field_Values.xlsx"
     And I click on "Save" in the page details
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentFileTableId---"
     And I upload attachment "Attachment.pdf" of type "AGENCY DETAILS" from computer
     Then I softly see "AGENCY DETAILS" has been added in "Organization Risk Assessment Files" flex table
@@ -452,7 +452,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "View" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:activeOrgTableID---" without waiting for record
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Active" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     Then I see top right button "Add" for "Attachments" flex table
 
   @62304 @EffectiveDatAandExpirationDatesForOrgLRAIsInCraetedStatus @keerti

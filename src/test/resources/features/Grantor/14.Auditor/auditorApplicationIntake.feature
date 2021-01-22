@@ -114,7 +114,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -171,7 +171,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     When I click toggle button to select "Applications - All"
     And I perform quick search for "<Application Name>" in "---applicationIntake:-:recipientApplications---" panel
     When I click on "View" icon for "<Application Name>" inside table
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add" in flex table with id "Attachments"
     Then I softly cannot see top right button "Add" in flex table with id "Notes"
     Examples:
@@ -199,7 +199,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
-    When I navigate to "Attachments" sub tab
+    When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---auditor:-:PreApplicationTableId---"
     When I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
@@ -230,7 +230,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
     And I get the "EGMS ID"
-    And I navigate to "Attachments" sub tab
+    And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
