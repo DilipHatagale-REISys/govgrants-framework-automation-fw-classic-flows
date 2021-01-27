@@ -94,11 +94,15 @@ Feature: Validate all scenarios in the Competitive Announcement tab
   Scenario: To verify system allow to download PDF for Peer Reviewers section in Responsibility tab of announcement
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Owner" for title "Responsibility" against the value "{SavedValue:EXE Username}" inside table "---announcement:-:announcementOwner---"
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -345,7 +349,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Please enter Required fields |
     And I click on top right button "Add Files" in flex table with id "---program:-:AnnouncementAttachmentTableId---"
     And I upload attachment "Attachment.pdf" of type "Funding Opportunity Announcement" from computer
-    Then I softly see "Attachment.pdf" has been added in "Announcement Files" flex table
     Then I softly see "Funding Opportunity Announcement" has been added in "Announcement Files" flex table
     When I click on "Download" icon under attachment flex table
     Then I softly verify that the file "Attachment.pdf" is downloaded
@@ -492,8 +495,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Then I softly see value "{SavedValue:fundingAccount}" for title "Funding Account" inside table "---announcement:-:fundingAccountsTableId---"
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
@@ -562,16 +565,20 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I refresh the page
     Then I softly do not see value "TestFirst TestLast" for title "Name" inside table "---announcement:-:contactTableId---"
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     When I click on advance filter "#advfAnnouncementBudgetCategory" of table id "---announcement:-:approversTableId---"
     When I enter advance filter values inside id "advfAnnouncementBudgetCategory"
       | Responsibility | equals to | Program Approver |
@@ -745,15 +752,15 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     And I click on "Remove" icon for "{SavedValue:fundingAccount}" inside flex table with id "---announcement:-:fundingAccountsTableId---" with wait for record
     Then I softly see the following messages in the page details :
       | Record removed successfully. |
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
@@ -763,16 +770,20 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I refresh the page
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
@@ -984,8 +995,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
@@ -998,16 +1009,20 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I refresh the page
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
@@ -1204,8 +1219,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
@@ -1215,16 +1230,20 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I refresh the page
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
@@ -1418,8 +1437,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
@@ -1429,16 +1448,20 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I refresh the page
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
@@ -1608,8 +1631,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
@@ -1619,16 +1642,20 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I refresh the page
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
@@ -1794,8 +1821,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
@@ -1805,16 +1832,20 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I refresh the page
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
@@ -1970,8 +2001,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
@@ -1981,16 +2012,20 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I refresh the page
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
@@ -2186,8 +2221,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     And I click on parallel menu button in flex table title "Funding Accounts"
     And I select "Download as PDF" from parallel lines dropdown of "Funding Accounts"
@@ -2201,11 +2236,15 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     And I refresh the page
     And I click on parallel menu button in flex table title "Approvers"
     And I select "Download as PDF" from parallel lines dropdown of "Approvers"

@@ -323,7 +323,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Directed Announcements - Draft"
+    And I click toggle button to select "Draft Directed Announcements"
     And I click on top right button "New" in flex table with id "---announcement:-:annoucementTableId---"
     And I enter "DirectedAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -386,7 +386,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Directed Announcements - Draft"
+    When I click toggle button to select "Draft Directed Announcements"
     And I perform quick search for "Record Id" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "Record Id" inside flex table with id "ActiveFundingOpportunities" without waiting for record
     Given I click on "Complete Review" in the page details
@@ -521,7 +521,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Directed" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Directed Announcements - Draft"
+    When I click toggle button to select "Draft Directed Announcements"
     And I perform quick search for "Record id" in "ActiveFundingOpportunities" panel
     When I click on "View" icon for "Record id" inside table
     And I click on "Publish" in the page details
@@ -532,7 +532,7 @@ Feature: Validate sanity testing of Complete Business Flow
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Formula Announcements - Draft"
+    And I click toggle button to select "Draft Formula Announcements"
     And I click on top right button "New" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
     And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -587,7 +587,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Formula Announcements - Draft"
+    And I click toggle button to select "Draft Formula Announcements"
     When I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "ActiveFundingOpportunitiesFormula" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside table
     Given I click on "Complete Review" in the page details
@@ -734,7 +734,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Formula Announcements - Draft"
+    When I click toggle button to select "Draft Formula Announcements"
     And I perform quick search for "Record Id" in "ActiveFundingOpportunitiesFormula" panel
     When I click on "View" icon for "Record id" inside table
     And I click on "Publish" in the page details

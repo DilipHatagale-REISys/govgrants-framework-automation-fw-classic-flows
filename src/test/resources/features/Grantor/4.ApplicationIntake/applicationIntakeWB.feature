@@ -1216,13 +1216,14 @@ Feature: Application Intake scenarios without background
     And I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-      | Construction  | 10000  | 10000      | 10000          | 10000          |
+      | Construction  | 100    | 100        | 100            | 100            |
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Files" sub tab
     And I pause execution for "5" seconds
+    #77044
     Then I softly see "No Records Found" inside flex table with id "flexGridApplicationChecklists"
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
@@ -1237,9 +1238,9 @@ Feature: Application Intake scenarios without background
       | Name                       | Project Role             | Is Key Contact |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
-    And I pause execution for "50" seconds
+    And I pause execution for "5" seconds
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - Requested Amount should be less than or equal to the Subaward Cieling Amount. |
+      | Overview Tab - Requested Amount should be greater than or equal to Subaward Floor Amount. Adjust the requested budget in Budget period section on Budget tab. |
 
   @77046 @77045 @77047 @77048 @budgetGridColumnValidation @deepika
   Scenario: Validate the SPI cannot view the Goals and Objectives page block when it is set as No while Announcement creation| Validate the SPI cannot view the Work Plan required page block when it is set as No while Announcement creation

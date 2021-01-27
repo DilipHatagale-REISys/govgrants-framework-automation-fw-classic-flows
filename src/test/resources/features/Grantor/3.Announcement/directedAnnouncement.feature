@@ -5,7 +5,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Directed Announcements - Draft"
+    And I click toggle button to select "Draft Directed Announcements"
     And I click on top right button "New" in flex table with id "---announcement:-:annoucementTableId---"
     And I enter "DirectedAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -21,8 +21,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
@@ -40,7 +40,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     #Then I see "No Records Found" inside flex table with id "---announcement:-:announcementBudgetCategory---"
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I perform quick search for "Automation Permanent Focus Area" in "---announcement:-:AnnouncementServiceArea1TableId---" panel
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---announcement:-:AnnouncementServiceArea1TableId---"
@@ -55,7 +55,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | EGMS ID | Equals to | 00099 |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I click on advance filter "#advfAnnouncementGranteeStrategicGoalsObjectives" of table id "---announcement:-:objectivesTableId---"
     When I enter advance filter values inside id "advfAnnouncementGranteeStrategicGoalsObjectives"
       | Title | Equals to | 00099 |
@@ -64,24 +64,28 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST1" in "---announcement:-:directedAddInviteApplicantTableId---" panel
     Then I softly do not see value "SAN DIEGO ELECTRICAL TRAINING TRUST1" for title "Organization" inside table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
-    Then I softly see value "RG-000042" for title "Agency Code" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
-    Then I softly see value "953072483" for title "EIN" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
-    Then I softly see value "148549041" for title "DUNS" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
+    Then I softly see value "RG-000003" for title "Agency Code" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
+    Then I softly see value "234567891" for title "EIN" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
+    Then I softly see value "123456788" for title "DUNS" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
     And I click on "Remove" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
-    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name                      | Responsibility   | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username}  | Fiscal Reviewer  | Review Financial details | 10       | No                   |
@@ -144,7 +148,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Directed Announcements - Draft"
+    When I click toggle button to select "Draft Directed Announcements"
     And I perform quick search for "{SavedValue:Automation Runtime Directed Announcement}" in "---announcement:-:annoucementTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Directed Announcement}" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
     Then I softly see field "Status" as "Reviewed"
@@ -274,7 +278,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Submit For Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted For Approval" and is "green"
     And I navigate to "Directed" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Directed Announcements - Draft"
+    When I click toggle button to select "Draft Directed Announcements"
     When I perform quick search for "Record id" in "---announcement:-:annoucementTableId---" panel
     Then I softly cannot see row level action button "Delete" against "Record id" in flex table with id "---announcement:-:annoucementTableId---"
     Examples:
@@ -288,8 +292,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
@@ -299,21 +303,25 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I refresh the page
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
-    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
@@ -335,7 +343,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Directed Announcements - Draft"
+    When I click toggle button to select "Draft Directed Announcements"
     And I perform quick search for "{SavedValue:Automation Runtime Directed Announcement}" in "---announcement:-:annoucementTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Directed Announcement}" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
     Given I click on "Complete Review" in the page details
@@ -462,8 +470,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
@@ -476,7 +484,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | BP01               | 50         | 500      |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     When I click on advance filter "#advfAnnouncementKeyOutcomes" of table id "---announcement:-:kpiflextableid---"
     When I enter advance filter values inside id "advfAnnouncementKeyOutcomes"
@@ -484,18 +492,22 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:kpiflextableid---"
     And I refresh the page
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
-    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
@@ -517,7 +529,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Directed Announcements - Draft"
+    When I click toggle button to select "Draft Directed Announcements"
     And I perform quick search for "{SavedValue:Automation Runtime Directed Announcement}" in "---announcement:-:annoucementTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Directed Announcement}" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
     Given I click on "Complete Review" in the page details
@@ -668,8 +680,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
@@ -682,21 +694,25 @@ Feature: Validate all scenarios in the directed Announcement tab
       | BP01               | 50         | 500      |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
-    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
@@ -718,7 +734,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Directed Announcements - Draft"
+    When I click toggle button to select "Draft Directed Announcements"
     And I perform quick search for "{SavedValue:Automation Runtime Directed Announcement}" in "---announcement:-:annoucementTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Directed Announcement}" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
     Given I click on "Complete Review" in the page details
@@ -857,8 +873,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
@@ -871,21 +887,25 @@ Feature: Validate all scenarios in the directed Announcement tab
       | BP01               | 50         | 500      |
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
-    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
@@ -907,7 +927,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
-    When I click toggle button to select "Directed Announcements - Draft"
+    When I click toggle button to select "Draft Directed Announcements"
     And I perform quick search for "{SavedValue:Automation Runtime Directed Announcement}" in "---announcement:-:annoucementTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Directed Announcement}" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
     Given I click on "Complete Review" in the page details
@@ -1056,7 +1076,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Edit" in the page details
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST1" in "---announcement:-:directedAddInviteApplicantTableId---" panel
-    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     And I click on parallel menu button in flex table title "Invited Applicants"

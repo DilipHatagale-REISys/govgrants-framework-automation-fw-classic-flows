@@ -122,7 +122,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly cannot see top right button "Create Pre-Application" in page detail
 
-  @71115 @71114 @preappDueDateValidation @deepika
+  @71115 @71114 @preappDueDateValidation @deepika  @buglogged113230
   Scenario: Validate whether User will be able to submit the pre- application on the last date for submission.
   Validate once the Announcement is published and Pre-Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit to Grantor on pre-application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for PreApp and App" and properties "TODAY_PREAPP_DUE_DATE"
@@ -284,7 +284,7 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-Application}" in "---preApplication:-:notYetQualifiedTable---" panel
     Then I softly do not see "{SavedValue:Automation Runtime Announcement for Pre-Application}" has been added in "---preApplication:-:notYetQualifiedTable---" flex table
 
-  @72576 @75866 @75865 @preApplicationSubmittedToGrantorPendingTask
+  @72576 @75866 @75865 @preApplicationSubmittedToGrantorPendingTask @buglogged125701
   Scenario: Validate whether user can change the pre-application due date while creating the pre-application
   Validate whether pre-application title field is editable while creating the pre-application | Validate whether the Announcement owner receives an email notification when the pre-application is submitted to grantor |
   Validate whether the external user recieves an email notification when the pre-application is accepted by the grantor
@@ -307,6 +307,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly see field "Pre-Application Due Date" is not editable
     And I click on "Create Pre-Application" in the page details
+    Then I softly see fields "Title_c" is in edit mode
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     Given I click on "Edit" in the page details
@@ -324,6 +325,7 @@ Feature: Pre-Application scenarios without background
     And I get the "EGMS ID"
     And I save the field containing "EGMS ID" as "preappID"
     When I click on "Submit to Grantor" in the page details
+    #buglogged125701
     And I pause execution for "200" seconds
     Then I softly can see mail notification for "INTERNAL" user with following subject:
       | Pre-Application Submitted for Announcement {SavedValue:AnnId} by SAN DIEGO ELECTRICAL TRAINING TRUST |
@@ -333,8 +335,13 @@ Feature: Pre-Application scenarios without background
     When I perform quick search for "{SavedValue:preappID}" in "---preApplication:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:preappID}" inside table
     When I click on "Accept" in the page details
-    #bug
-#    And I pause execution for "150" seconds
+    And I pause execution for "150" seconds
+    And I checkout to yopmail with mailid "Automationspi3@yopmail.com"
+    And I refresh the page
+    Then I see the mail subject is as follows :
+      """
+      Pre-Application {SavedValue:Automation Runtime Announcement for Pre-Application} {SavedValue:AnnId} has been Accepted
+      """
 #    Then I softly can see mail notification for "EXTERNAL" user with following subject:
 #      | Pre-Application {SavedValue:Automation Runtime Announcement for Pre-Application} {SavedValue:AnnId} has been Accepted |
 
@@ -670,7 +677,7 @@ Feature: Pre-Application scenarios without background
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     And I refresh the page
     When I click on "Submit to Grantor" in the page details
-    And I pause execution for "20" seconds
+    And I pause execution for "2" seconds
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Requested Amount should be greater than or equal to the Subaward Floor Amount. Adjust the requested budget in Budget period section on Budget tab. |
       | Budget Tab - Enter budget details for the first budget period before submitting the Pre-Application to the Grantor.                                             |

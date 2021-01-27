@@ -230,8 +230,9 @@ Feature: Validate all scenarios in the Application Intake
     And I click on top right button "Add Files" in flex table with id "---applicationIntake:-:ApplicationAttachmentTableId---"
     And I upload attachment "Attachment.pdf" of type "General Assurances" from computer
     Then I softly see "General Assurances" has been added in "Supporting Documents Checklist" flex table
-    And I add notes records
-    And I close modal by clicking the top right x button
+    When I enter the following values into flex table with id "---applicationIntake:-:ApplicationNotesTableId---" by clicking "Add" :
+      | Title        | Description      |
+      | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---applicationIntake:-:ApplicationNotesTableId---"
 
   @73521 @70526 @snapshotAfterApplicationIsSubmitted @deepika @skipOnJenkins
@@ -292,7 +293,7 @@ Feature: Validate all scenarios in the Application Intake
     When I click "Add" after selection of "Automation SPA" in the table "---applicationIntake:-:associateNewContactsTableId---"
     And I refresh the page
     When I perform quick search for "Automation SPA" in "---applicationReview:-:flexGridAppContactTableId---" panel
-    Then I see "Automation SPA" has been added in "---applicationReview:-:flexGridAppContactTableId---" flex table
+    Then I softly see value "Automation SPA" for title "Name" inside table "---applicationReview:-:flexGridAppContactTableId---"
 
   @73944 @73945 @71409 @73947 @73950 @73948 @73949 @maxAppValidationError @deepika
   Scenario: Validate whether User  will be able to view the following error message "Reached the Maximum number of Applications" when the limit has been reached.
@@ -352,7 +353,7 @@ Feature: Validate all scenarios in the Application Intake
     And I save the value from row "1" for column name "Funding Opportunity Id" as "oppId" from flex table "---applicationIntake:-:convertedToApplicationTableID---"
     And I click on advance filter "#advfcae" of table id "---applicationIntake:-:convertedToApplicationTableID---"
     And I enter advance filter values inside id "---applicationIntake:-:convertedToApplicationTableID---"
-      | Funding Opportunity Id | Contains | Inception |
+      | Funding Opportunity Id | Contains | Auto Demo |
     Then I softly see "No records found" inside flex table with id "---applicationIntake:-:convertedToApplicationTableID---"
     And I refresh the page
     And I click on advance filter "#advfcae" of table id "---applicationIntake:-:convertedToApplicationTableID---"

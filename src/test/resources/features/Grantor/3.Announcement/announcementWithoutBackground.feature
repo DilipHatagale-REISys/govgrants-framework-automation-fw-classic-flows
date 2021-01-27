@@ -23,7 +23,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Formula Announcements - Draft"
+    And I click toggle button to select "Draft Formula Announcements"
     And I click on top right button "New" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
     And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -120,7 +120,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I download the file
     And I pause execution for "10" seconds
     And I softly see "Published Competitive Announcements" on page "1" of "govgrants" pdf file
-
 
   @70999 @73627 @73632 @70997 @70980 @71010 @71011 @71012 @70998 @71022 @71023 @71037 @71027 @validationForErrorMessageOfPreApplication @aashish
   Scenario: To validate system generated error message when Pre Application Due Date is greater than Application Due Date while submitting information
@@ -461,11 +460,15 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter "Pre-Application Modal" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     And I click on advance filter "#advfGrantorAnnouncementRolesandResponsibilities" of table id "---announcement:-:approversTableId---"
     And I enter advance filter values inside id "advfGrantorAnnouncementRolesandResponsibilities"
       | Responsibility | equals to | Program Reviewer |
