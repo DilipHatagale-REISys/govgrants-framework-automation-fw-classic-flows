@@ -122,7 +122,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly cannot see top right button "Create Pre-Application" in page detail
 
-  @71115 @71114 @preappDueDateValidation @deepika
+  @71115 @71114 @preappDueDateValidation @deepika  @buglogged113230
   Scenario: Validate whether User will be able to submit the pre- application on the last date for submission.
   Validate once the Announcement is published and Pre-Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit to Grantor on pre-application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for PreApp and App" and properties "TODAY_PREAPP_DUE_DATE"
