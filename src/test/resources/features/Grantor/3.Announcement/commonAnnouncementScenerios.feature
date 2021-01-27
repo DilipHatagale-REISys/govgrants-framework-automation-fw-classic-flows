@@ -5,7 +5,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Formula Announcements - Draft"
+    And I click toggle button to select "Draft Formula Announcements"
     And I click on top right button "New" in flex table with id "---announcement:-:formulaAnnouncementTableId---"
     And I enter "FormulaAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
@@ -19,7 +19,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     Then I softly see status in Progress-bar is "Created" and is "green"
     When I navigate to "Announcements" tab
     And I navigate to "Directed" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Directed Announcements - Draft" in "---announcement:-:annoucementTableId---"
+    And I click toggle button to select "Draft Directed Announcements" in "---announcement:-:annoucementTableId---"
     When I perform quick search for "Record Id" in "---announcement:-:annoucementTableId---" panel
     Then I softly do not see values "Record Id" and "Announcement Name" inside table
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -58,7 +58,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I navigate to "Overview" sub tab
     Then I softly see field "Description" as "Automation test description"
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
-    When I click "Add" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     Then I softly see that "{SavedValue:EXE Username}" has been added in flextable with Id "---announcement:-:contactTableId---"
     And I refresh the page
     And I perform quick search for "{SavedValue:EXE Username}" in "---announcement:-:contactTableId---" panel
@@ -67,7 +67,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     Then I softly do not see values "Record Id" and "{SavedValue:EXE Username}" inside table
     When I navigate to "Overview" sub tab
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
-    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
@@ -76,8 +76,8 @@ Feature: Validate all common scenarios in the  Announcement tab
     Then I softly see that "SAN DIEGO ELECTRICAL TRAINING TRUST" has been added in flextable with Id "---announcement:-:formulaInvitedApplicatsTableId---"
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
-    When I close "Associate" modal by clicking the top right x button
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     When I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Pre-Encumbrance |
@@ -114,14 +114,14 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate the association of objective to the Announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     Then I see that "Automation Permanent Objective2" has been added in flextable with Id "---announcement:-:objectivesTableId---"
 
   @52409 @announcementObjectiveDissociationFA
   Scenario: Validate the dissociation of objective to the Announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Add" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I click on "Remove" icon for "Automation Permanent Objective2" inside flex table with id "---announcement:-:objectivesTableId---" without waiting for record
     Then I do not see value "Automation Permanent Objective2" for title "EGMS ID" inside table "---announcement:-:objectivesTableId---"
 
@@ -139,11 +139,15 @@ Feature: Validate all common scenarios in the  Announcement tab
   @52411 @announcementApproverSelectionFA
   Scenario: Validate the assignment of Approvers for the Announcement
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
-      | Role               | Name           | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
     Then I see that "{SavedValue:EXE Username}" has been added in flextable with Id "---announcement:-:approversTableId---"
 
   @34232 @announcementReviewerAssignmentFA @aa
@@ -189,7 +193,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Formula Announcements - Draft"
+    And I click toggle button to select "Draft Formula Announcements"
     When I perform quick search for "Record id" in "---announcement:-:formulaAnnouncementTableId---" panel
     And I click on "View" icon for "Record id" inside table
     When I click on "Complete Review" in the page details

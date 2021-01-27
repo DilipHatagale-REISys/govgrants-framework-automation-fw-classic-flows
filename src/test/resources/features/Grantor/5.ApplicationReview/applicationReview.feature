@@ -1157,8 +1157,8 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "{SavedValue:ApplicationEGMSID}" in "---applicationReview:-:completedTaskTableId---" panel
-    Then I softly see value "{SavedValue:ApplicationEGMSID}" for title "EGMS ID" inside table "---applicationReview:-:completedTaskTableId---"
+    And I perform quick search for "{SavedValue:ApplicationEGMSID}" in "---applicationReview:-:PhaseRespectivecompletedTaskTableId---" panel
+    Then I softly see value "{SavedValue:ApplicationEGMSID}" for title "EGMS ID" inside table "---applicationReview:-:PhaseRespectivecompletedTaskTableId---"
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
@@ -1275,8 +1275,8 @@ Feature: Validate all scenarios in the Application Review
     And I wait for "5" seconds
     And I navigate to "Applications" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record ID" in "---applicationReview:-:completedTaskTableId---" panel
-    Then I softly see value "Record ID" for title "EGMS ID" inside table "---applicationReview:-:completedTaskTableId---"
+    And I perform quick search for "Record ID" in "---applicationReview:-:PhaseRespectivecompletedTaskTableId---" panel
+    Then I softly see value "Record ID" for title "EGMS ID" inside table "---applicationReview:-:PhaseRespectivecompletedTaskTableId---"
     Examples:
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
@@ -1879,9 +1879,9 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "{SavedValue:ApplicationEGMSID}" in "---applicationReview:-:completedTaskTableId---" panel
-    Then I softly see value "{SavedValue:ApplicationEGMSID}" for title "EGMS ID" inside table "---applicationReview:-:completedTaskTableId---"
-    Then I softly see value "Completed" for title "Status" inside table "{applicationReview:completedTaskTableId}"
+    And I perform quick search for "{SavedValue:ApplicationEGMSID}" in "---applicationReview:-:PhaseRespectivecompletedTaskTableId---" panel
+    Then I softly see value "{SavedValue:ApplicationEGMSID}" for title "EGMS ID" inside table "---applicationReview:-:PhaseRespectivecompletedTaskTableId---"
+    Then I softly see value "Completed" for title "Status" inside table "---applicationReview:-:PhaseRespectivecompletedTaskTableId---"
     Examples:
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
@@ -2022,11 +2022,11 @@ Feature: Validate all scenarios in the Application Review
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record ID" in "---applicationReview:-:completedTaskTableId---" panel
-    Then I softly see value "Record ID" for title "EGMS ID" inside table "---applicationReview:-:completedTaskTableId---"
-    Then I softly see value "Completed" for title "Status" inside table "{applicationReview:completedTaskTableId}"
-    Then I softly see value "Automation PM" for title "Assigned By" inside table "{applicationReview:completedTaskTableId}"
-    Then I softly see value "Application Review" for title "Type" inside table "{applicationReview:completedTaskTableId}"
+    And I perform quick search for "Record ID" in "---applicationReview:-:PhaseRespectivecompletedTaskTableId---" panel
+    Then I softly see value "Record ID" for title "EGMS ID" inside table "---applicationReview:-:PhaseRespectivecompletedTaskTableId---"
+    Then I softly see value "Completed" for title "Status" inside table "{applicationReview:PhaseRespectivecompletedTaskTableId}"
+    Then I softly see value "Automation PM" for title "Assigned By" inside table "{applicationReview:PhaseRespectivecompletedTaskTableId}"
+    Then I softly see value "Application Review" for title "Type" inside table "{applicationReview:PhaseRespectivecompletedTaskTableId}"
     Examples:
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
@@ -2118,6 +2118,7 @@ Feature: Validate all scenarios in the Application Review
     And I perform quick search for "{SavedValue:PM Username}" in "---applicationReview:-:panelAppTableId---" panel
     And I check "{SavedValue:PM Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I close "Assign Reviewers" modal by clicking the top right x button
     When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "{SavedValue:FO Username}" in "---applicationReview:-:panelAppTableId---" panel
@@ -2129,6 +2130,7 @@ Feature: Validate all scenarios in the Application Review
     And I perform quick search for "{SavedValue:EXE Username}" in "---applicationReview:-:panelAppTableId---" panel
     And I check "{SavedValue:EXE Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
+    When I close "Assign Reviewers" modal by clicking the top right x button
     And I pause execution for "5" seconds
     And I check "All" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I pause execution for "2" seconds
@@ -2575,9 +2577,9 @@ Feature: Validate all scenarios in the Application Review
     #79673
     And I navigate to "Applications" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record ID" in "---applicationReview:-:completedTaskTableId---" panel
-    Then I softly see value "Record ID" for title "EGMS ID" inside table "---applicationReview:-:completedTaskTableId---"
-    Then I softly see value "Completed" for title "Status" inside table "{applicationReview:completedTaskTableId}"
+    And I perform quick search for "Record ID" in "---applicationReview:-:PhaseRespectivecompletedTaskTableId---" panel
+    Then I softly see value "Record ID" for title "EGMS ID" inside table "---applicationReview:-:PhaseRespectivecompletedTaskTableId---"
+    Then I softly see value "Completed" for title "Status" inside table "---applicationReview:-:PhaseRespectivecompletedTaskTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -2663,9 +2665,9 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Applications" tab
     #79961
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record ID" in "---applicationReview:-:completedTaskTableId---" panel
-    Then I softly see value "Record ID" for title "EGMS ID" inside table "---applicationReview:-:completedTaskTableId---"
-    Then I softly see value "Completed" for title "Status" inside table "{applicationReview:completedTaskTableId}"
+    And I perform quick search for "Record ID" in "---applicationReview:-:PhaseRespectivecompletedTaskTableId---" panel
+    Then I softly see value "Record ID" for title "EGMS ID" inside table "---applicationReview:-:PhaseRespectivecompletedTaskTableId---"
+    Then I softly see value "Completed" for title "Status" inside table "---applicationReview:-:PhaseRespectivecompletedTaskTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel

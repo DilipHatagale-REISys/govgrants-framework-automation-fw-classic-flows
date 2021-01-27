@@ -28,7 +28,7 @@ Feature: Validate all scenarios in the Pre-Application
       | Project Director/Manager |
       | Authorized Signatory     |
 
-  @67065 @67077 @contactsAtPreApplicationFromSameOrganization @jitendra
+  @67065 @67077 @contactsAtPreApplicationFromSameOrganization @jitendra @buglogged67919
   Scenario: To verify that the contacts appearing in the Associate button in Contact table of preapplication is of the Same organisation |To validate that the new contact can be associated in the contact table in SPI user profile Preapplication
     When I navigate to "Overview" sub tab
     And I click table top right button "Associate" in flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
@@ -64,7 +64,7 @@ Feature: Validate all scenarios in the Pre-Application
     Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:focusAreaAssociateTableId---"
     And I close modal by clicking the top right x button
     And I expand nested table containing column value "BP01"
-    Then I see "Focus Area :" inside rows of enhanced grid id "---program:-:enhancedGridTableId---"
+    Then I softly see "Focus Area :" inside rows of enhanced grid id "---preApplication:-:SubRecipientBudgetPeriodTableId---"
     When I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 1000       | 5000           | 100            |
@@ -188,7 +188,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---preApplication:-:SubRecipientBudgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
     When I click on "Submit to Grantor" in the page details

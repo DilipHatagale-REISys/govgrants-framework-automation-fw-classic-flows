@@ -6,7 +6,7 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
     Given I login to "As a Grantor" app as "AUDITOR" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Formula Announcements - Draft"
+    And I click toggle button to select "Draft Formula Announcements"
     Then I softly cannot see top right button "New" in flex table with id "ActiveFundingOpportunitiesFormula"
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -14,7 +14,7 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
     Then I softly cannot see top right button "New" in flex table with id "ActiveFundingOpportunitiesCompitive"
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Directed Announcements - Draft"
+    And I click toggle button to select "Draft Directed Announcements"
     Then I softly cannot see top right button "New" in flex table with id "ActiveFundingOpportunities"
 
   @69160 @otherUsersCanCreateAnnouncement
@@ -22,7 +22,7 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Formula Announcements - Draft"
+    And I click toggle button to select "Draft Formula Announcements"
     Then I softly can see top right button "New" in flex table with id "ActiveFundingOpportunitiesFormula"
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -30,7 +30,7 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
     Then I softly can see top right button "New" in flex table with id "ActiveFundingOpportunitiesCompitive"
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Directed Announcements - Draft"
+    And I click toggle button to select "Draft Directed Announcements"
     Then I softly can see top right button "New" in flex table with id "ActiveFundingOpportunities"
     Examples:
       | User  |
