@@ -22,6 +22,9 @@ Automation Permanent Strategic Goal2 -> Automation Permanent Objective2
 -Risk Assessment Organization
 ->Automation Permanent Organization for Risk Assessment
 
+-Announcement - One announce should be created with passed status
+-> Automation Competitive Past Announcement
+
 # List of All APIs used in project
 
 # Type of Users

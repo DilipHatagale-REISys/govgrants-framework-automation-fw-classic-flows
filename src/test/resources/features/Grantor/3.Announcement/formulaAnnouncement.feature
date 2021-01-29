@@ -205,7 +205,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | BP01               | 50         | 150      |
     And I click on "Submit For Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - Application Due Date cannot be in the past.                               |
       | Overview Tab - The question submission deadline must be before the Application due date. |
       | Overview Tab - The answer submission deadline must be before the Application due date.   |
     And I click on "Edit" in the page details
@@ -407,7 +406,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     And I click on "Submit For Approval" in the page details
     Then I see the following messages in the page details :
-      | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates.|
+      | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
 
   @announcementApprovalFA @announcementPendingTaskPostApprovalFA @announcementCompletedTaskPostApprovalFA
   Scenario: Validate that after approval of an Announcement task get added to its completed task table. || Validate the approval of an Announcement||Validate that after approval of an Announcement task get deleted from pending task table.
@@ -798,7 +797,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Send to Owner" in the approval decision
-    Then I softly see status in Progress-bar is "Crated" and is "green"
+    Then I softly see status in Progress-bar is "Created" and is "green"
     When I navigate to "History" sub tab
     Then I softly see that "Announcement" is in "Draft" status
     When I navigate to "Announcements" tab

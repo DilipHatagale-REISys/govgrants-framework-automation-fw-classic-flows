@@ -50,7 +50,15 @@ Feature: Validate all common scenarios in the  Announcement tab
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Then I see the following messages in the page details :
-      | Overview Tab - Enter description for the Announcement. |
+      | Financial Tab - Enter Subaward Ceiling amount before submitting this Announcement.                                    |
+      | Financial Tab - Enter the Estimated Funding Amount.                                                                   |
+      | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
+      | Financial Tab - Enter at least one Budget Period.                                                                     |
+      | Overview Tab - Enter the Description.                                                                                 |
+      | Overview Tab - You must invite at least one applicant before submitting this Announcement.                            |
+      | Overview Tab - Provide the Application Due Date.                                                                      |
+      | Overview Tab - Select applicant types.                                                                                |
+      | Responsibilities - At least one approver is required                                                                  |
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -59,7 +67,7 @@ Feature: Validate all common scenarios in the  Announcement tab
     Then I softly see field "Description" as "Automation test description"
     And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
-    Then I softly see that "{SavedValue:EXE Username}" has been added in flextable with Id "---announcement:-:contactTableId---"
+    Then I softly see value "{SavedValue:EXE Username}" for title "Name" inside table "---announcement:-:contactTableId---"
     And I refresh the page
     And I perform quick search for "{SavedValue:EXE Username}" in "---announcement:-:contactTableId---" panel
     Then I softly see value "{SavedValue:EXE Username}" for title "Name" inside table "---announcement:-:contactTableId---"
@@ -107,7 +115,7 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate the association of Focus Area to Announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
-    When I click "Add" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
     Then I see that "Automation Permanent Focus Area2" has been added in flextable with Id "---announcement:-:AnnouncementServiceArea1TableId---"
 
   @34775 @announcementObjectiveAssociationFA
@@ -154,7 +162,7 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate the assignment of Reviewer for the Announcement
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
-      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 20       | No                   |
     Then I see that "{SavedValue:FO Username}" has been added in flextable with Id "---announcement:-:reviewersTableId---"
 
@@ -162,7 +170,7 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate the Reviewer initiation for the Announcement
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
-      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
@@ -172,7 +180,7 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate the review for the Announcement
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:reviewersTableId---" by clicking "New" :
-      | Name          | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
