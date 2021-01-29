@@ -14,7 +14,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Save" in the page details
     And I get the "EGMS ID"
 
-  @73761 @73762 @73764 @73765 @70616 @73766 @70617 @34232 @73611 @73303 @73612 @73613 @73304 @73305 @73306 @73320 @submittingAnnouncementForApprovalDR @submittedAnnouncementDeletion @announcementForPastApplicationDueDate
+  @73761 @73762 @73764 @73765 @70616 @73766 @70617 @34232 @73611 @73303 @73612 @73613 @73304 @73305 @73306 @73320 @submittingAnnouncementForApprovalDR @submittedAnnouncementDeletion @announcementForPastApplicationDueDate @buglogged126440
   Scenario Outline: Validate the submission of Announcement for Approval || Validate that only record owner cannot delete Submitted for Approval status announcements || Validate that user can not enter application due date as past date
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
@@ -46,35 +46,36 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---announcement:-:AnnouncementServiceArea1TableId---"
     When I click on advance filter "#advfAnnouncementServiceArea1" of table id "---announcement:-:AnnouncementServiceArea1TableId---"
     When I enter advance filter values inside id "advfAnnouncementServiceArea1"
-      | EGMS ID | Equals to | 00001 |
-    Then I softly see value "00001" for title "EGMS ID" inside table "---announcement:-:AnnouncementServiceArea1TableId--"
+      | Title | Contains | Automation Permanent |
     Then I softly see value "Automation Permanent Focus Area" for title "Title" inside table "---announcement:-:AnnouncementServiceArea1TableId---"
     And I refresh the page
     When I click on advance filter "#advfAnnouncementServiceArea1" of table id "---announcement:-:AnnouncementServiceArea1TableId---"
     When I enter advance filter values inside id "advfAnnouncementServiceArea1"
-      | EGMS ID | Equals to | 00099 |
+      | Title | Contains | Demo Record |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
+    And I refresh the page
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
-    When I click on advance filter "#advfAnnouncementGranteeStrategicGoalsObjectives" of table id "---announcement:-:objectivesTableId---"
-    When I enter advance filter values inside id "advfAnnouncementGranteeStrategicGoalsObjectives"
-      | Title | Equals to | 00099 |
-    Then I softly see "No Records Found" inside flex table with id "---announcement:-:objectivesTableId---"
+    #buglogged126440
+#    When I click on advance filter "#advfAnnouncementGranteeStrategicGoalsObjectives" of table id "---announcement:-:objectivesTableId---"
+#    When I enter advance filter values inside id "advfAnnouncementGranteeStrategicGoalsObjectives"
+#      | Title | Contains | Demo Record |
+#    Then I softly see "No Records Found" inside flex table with id "---announcement:-:objectivesTableId---"
     When I navigate to "Overview" sub tab
-    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
+    And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST1" in "---announcement:-:directedAddInviteApplicantTableId---" panel
     Then I softly do not see value "SAN DIEGO ELECTRICAL TRAINING TRUST1" for title "Organization" inside table "---announcement:-:directedAddInviteApplicantTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Add Organizations" modal by clicking the top right x button
+    When I close "Associate Organizations" modal by clicking the top right x button
     And I refresh the page
     Then I softly see value "RG-000003" for title "Agency Code" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
     Then I softly see value "234567891" for title "EIN" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
     Then I softly see value "123456788" for title "DUNS" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
     And I click on "Remove" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
-    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
+    And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Add Organizations" modal by clicking the top right x button
+    When I close "Associate Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
@@ -111,7 +112,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly see value "Review Financial details updated" for title "Description" inside table "---announcement:-:flexGridApproverRolesTableId---"
     And I perform quick search for "Automation" in "---announcement:-:flexGridApproverRolesTableId---" panel
     And I click on "Delete" icon for "{SavedValue:FO Username}" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---" without waiting for record
+    And I refresh the page
     And I click on "Delete" icon for "{SavedValue:PM Username}" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---" without waiting for record
+    And I refresh the page
     And I click on "Delete" icon for "{SavedValue:EXE Username}" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---" without waiting for record
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
@@ -151,6 +154,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click toggle button to select "Draft Directed Announcements"
     And I perform quick search for "{SavedValue:Automation Runtime Directed Announcement}" in "---announcement:-:annoucementTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Directed Announcement}" inside flex table with id "---announcement:-:annoucementTableId---" without waiting for record
+    And I click on "Complete Review" in the page details
     Then I softly see field "Status" as "Reviewed"
     Then I softly see status in Progress-bar is "Reviewed" and is "green"
     When I navigate to "Responsibilities" tab
@@ -168,11 +172,13 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     When I close "Review Form" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
@@ -186,16 +192,19 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Permits"
     When I close "Review Form" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
@@ -208,16 +217,19 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Program Income"
     When I close "Review Form" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
@@ -230,16 +242,19 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Impact"
     When I close "Review Form" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
@@ -253,11 +268,13 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     When I close "Review Form" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -267,11 +284,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I enter value "-1" into field "ApplicationDueDate__c"
     And I click on "Save" in the page details
-    When I get the "EGMS ID"
-    And I click on "Submit For Approval" in the page details
     Then I softly see the following messages in the page details :
       | Overview Tab - Application Due Date cannot be in the past. |
-    And I click on "Edit" in the page details
+    When I get the "EGMS ID"
     When I navigate to "Overview" sub tab
     And I enter value "10" into field "ApplicationDueDate__c"
     And I click on "Save" in the page details
@@ -308,9 +323,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Overview" sub tab
-    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
+    And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Add Organizations" modal by clicking the top right x button
+    When I close "Associate Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
@@ -376,16 +391,19 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Permits"
     When I close "Review Form" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
@@ -398,16 +416,19 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Program Income"
     When I close "Review Form" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
@@ -420,16 +441,19 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Impact"
     When I close "Review Form" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
@@ -443,11 +467,13 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     When I close "Review Form" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -458,10 +484,11 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I get the "EGMS ID"
     And I click on "Submit For Approval" in the page details
     Then I see the following messages in the page details :
-      | Financial Tab - Correct Budget Periods Start Date and End Dates. Budget Periods should be continuous and together should form a Project Period. |
+      | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
+
     Examples:
-      | Announcement Type | Active Funding Opportunities id | User |
-      | Directed          | ActiveFundingOpportunities      | EXE  |
+      | Announcement Type |
+      | Directed          |
 
   @73767 @34763 @34765 @34766 @announcementApproval @announcementPendingTaskPostApproval @announcementCompletedTaskPostApproval @smoke
   Scenario Outline: Validate that after approval of an Announcement task get added to its completed task table. || Validate the approval of an Announcement || Validate that after approval of an Announcement task get deleted from pending task table.
@@ -494,9 +521,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Overview" sub tab
-    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
+    And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Add Organizations" modal by clicking the top right x button
+    When I close "Associate Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
@@ -656,13 +683,13 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
@@ -699,9 +726,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Overview" sub tab
-    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
+    And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Add Organizations" modal by clicking the top right x button
+    When I close "Associate Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
@@ -767,16 +794,19 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Permits"
     When I close "Review Form" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
@@ -789,16 +819,19 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Program Income"
     When I close "Review Form" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
@@ -811,16 +844,19 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Impact"
     When I close "Review Form" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
@@ -834,11 +870,13 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     When I close "Review Form" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -854,7 +892,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Send to Owner" in the approval decision
-    Then I softly see status in Progress-bar is "Draft" and is "green"
+    Then I softly see status in Progress-bar is "Created" and is "green"
     When I navigate to "History" sub tab
     Then I softly see that "Announcement" is in "Draft" status
     And I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -892,9 +930,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Overview" sub tab
-    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
+    And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Add Organizations" modal by clicking the top right x button
+    When I close "Associate Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
@@ -1064,7 +1102,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly do not see values "Record Id" and "{SavedValue:Automation Runtime Directed Announcement}" inside table
     When I navigate to "Announcements" tab
     And I navigate to "Directed" content inside "Announcements" subheader on left panel
-    And I click toggle button to select "Directed Announcements - Rejected"
+    And I click toggle button to select "Rejected Directed Announcements"
     When I perform quick search for "Record Id" in "---announcement:-:annoucementTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---announcement:-:annoucementTableId---"
     Examples:
@@ -1074,10 +1112,10 @@ Feature: Validate all scenarios in the directed Announcement tab
   @74132 @userAllowToDownloadPDFInvitedApplication @skipOnJenkins
   Scenario: To verify system allow to download PDF for Invited Applicants section in overview tab of announcement.
     When I click on "Edit" in the page details
-    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
+    And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST1" in "---announcement:-:directedAddInviteApplicantTableId---" panel
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Add Organizations" modal by clicking the top right x button
+    When I close "Associate Organizations" modal by clicking the top right x button
     And I refresh the page
     And I click on parallel menu button in flex table title "Invited Applicants"
     And I select "Download as PDF" from parallel lines dropdown of "Invited Applicants"

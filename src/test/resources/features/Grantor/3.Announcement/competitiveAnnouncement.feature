@@ -136,7 +136,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
   Scenario: To verify system allow to download PDF for Related Focus Area section in setup tab of announcement
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
-    When I click "Add" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
     And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -151,7 +151,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
   @70551 @70552 @73405 @73389 @73406 @73387 @70800 @70885 @71595 @72646 @72641 @73537 @userCanViewAddAndDeleteFocusArea @aashish
   Scenario: To Verify that user is able to remove associated focus areas While creating the Announcement | To verify PM can remove non relevant Budget categories from specific Budget Type in Announcement based on the need.
     When I navigate to "Announcements" tab
-    And I click toggle button to select "Announcements - Published"
+    And I click toggle button to select "Published Announcements"
     Then I softly see value "Published" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -168,27 +168,29 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "Grantor Site Visit Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     Then I softly see value "Site Visit" for title "Package Type" inside table "---announcement:-:businessFormlistTableId---"
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
-    When I click "Add" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
     Then I softly see that "Automation Permanent Focus Area2" has been added in flextable with Id "---announcement:-:AnnouncementServiceArea1TableId---"
     And I click on "View" icon for "Automation Permanent Focus Area2" inside flex table with id "---announcement:-:AnnouncementServiceArea1TableId---" without waiting for record
     Then I softly see field "GAT Title" as "Automation Permanent Focus Area2"
-    And I click on "Delete" icon for "Automation Permanent Focus Area2" inside flex table with id "---announcement:-:AnnouncementServiceArea1TableId---" without waiting for record
-    Then I softly see confirmation box with body "Record deleted successfully." is displayed
+    And I refresh the page
+    And I click on "Remove" icon for "Automation Permanent Focus Area2" inside flex table with id "---announcement:-:AnnouncementServiceArea1TableId---" without waiting for record
+    Then I softly see the following messages in the page details :
+      | Record deleted successfully. |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     Then I softly see the following messages in the page details :
       | Budget period added successfully. |
-    And I save the value from row "2" for column name "Start Date" as "startDate" from flex table "---announcement:-:budgetPeriodTableId---"
-    And I save the value from row "2" for column name "End Date" as "endDate" from flex table "---announcement:-:budgetPeriodTableId---"
+    And I save the value from row "1" for column name "Start Date" as "startDate" from flex table "---announcement:-:budgetPeriodTableId---"
+    And I save the value from row "1" for column name "End Date" as "endDate" from flex table "---announcement:-:budgetPeriodTableId---"
     Then I softly do not see value "{SavedValue:startDate}" for title "Start Date" inside table "---announcement:-:budgetPeriodTableId---"
     Then I softly do not see value "{SavedValue:endDate}" for title "End Date" inside table "---announcement:-:budgetPeriodTableId---"
-    And I click on "Remove" icon for "BP02" inside flex table with id "---announcement:-:budgetPeriodTableId---"
+    #And I click on "Remove" icon for "BP02" inside flex table with id "---announcement:-:budgetPeriodTableId---"
     And I click on "Remove" icon for "BP01" inside flex table with id "---announcement:-:budgetPeriodTableId---"
     Then I softly do not see value "BP01" for title "Budget Period Name" inside table "---announcement:-:budgetPeriodTableId---"
-    And I click on "Remove" icon for "Administrative and legal expenses" inside flex table with id "---announcement:-:announcementBudgetCategory---" without waiting for record
+    And I click on "Remove" icon for "Travel" inside flex table with id "---announcement:-:announcementBudgetCategory---" without waiting for record
     Then I softly see the following messages in the page details :
-      | Record deleted successfully. |
-    Then I softly do not see value "Administrative and legal expenses" for title "Name" inside table "---announcement:-:announcementBudgetCategory---"
+      | Record removed successfully. |
+    Then I softly do not see value "Travel" for title "Name" inside table "---announcement:-:announcementBudgetCategory---"
     And I enter value "2000" into field "---announcement:-:subawardfloor---"
     And I enter value "3000" into field "---announcement:-:subawardceiling---"
     And I click on "Save" in the page details
@@ -202,30 +204,29 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "$6,000.00" for title "New Value" inside table "History"
     Then I softly see value "$3,000.00" for title "Old Value" inside table "History"
     And I navigate to "Financials" sub tab
-    And I perform quick search for "Site work" in "---announcement:-:announcementBudgetCategory---" panel
-    Then I softly see value "Site work" for title "Name" inside table "---announcement:-:announcementBudgetCategory---"
+    And I perform quick search for "Construction" in "---announcement:-:announcementBudgetCategory---" panel
+    Then I softly see value "Construction" for title "Name" inside table "---announcement:-:announcementBudgetCategory---"
     And I navigate to "Overview" sub tab
     And I click on "Edit" in the page details
     And I enter value "www.google.com" into field "LinkforAdditionalInformation__c"
     And I click on "Save" in the page details
     Then I softly see field "Link For Additional Information" as "www.google.com"
-    When I click on top right button "Associate" in flex table with id "---announcment:-:relatedAnnouncementTableId---"
+    And I refresh the page
+    When I click on top right button "Associate" in flex table with id "---announcement:-:relatedAnnouncementTableId---"
     And I check "All" boxes in flex table with id "---announcement:-:associateForRelated---"
     And I click on top right button "Associate" in flex table with id "---announcement:-:associateForRelated---"
-    And I close "Associate" modal by clicking the top right x button
-    And I save the value from row "1" for column name "Program Number" as "prNum" from flex table "---announcment:-:relatedAnnouncementTableId---"
-    And I click on advance filter "#advfRelatedAnnouncementCFDANumbersGrantor" of table id "---announcment:-:relatedAnnouncementTableId---"
+    And I save the value from row "1" for column name "Program Number" as "prNum" from flex table "---announcement:-:relatedAnnouncementTableId---"
+    And I click on advance filter "#advfRelatedAnnouncementCFDANumbersGrantor" of table id "---announcement:-:relatedAnnouncementTableId---"
     And I enter advance filter values inside id "advfRelatedAnnouncementCFDANumbersGrantor"
       | Program Number | Contains | {SavedValue:prNum} |
-    Then I softly see value "{SavedValue:prNum}" for title "Program Number" inside table "---announcment:-:relatedAnnouncementTableId---"
+    Then I softly see value "{SavedValue:prNum}" for title "Program Number" inside table "---announcement:-:relatedAnnouncementTableId---"
 
   @70290 @70298 @70302 @70799 @73227 @userAllowToEnterDataInQualityAndAvailibility @aashish @smoke
   Scenario: To Verify that user able to see Text fields after select Q&A Availability  as "Yes"  And  user can enter and save all required fields while creating Announcement
   | To Validate system generated validation message for  Q&A Availability section when "Question Deadline Date",and "Response Deadline date" is greater then Application Due Date.
     When I navigate to "Announcements" tab
-    And I click toggle button to select "Announcements - Draft"
+    And I click toggle button to select "Draft Announcements"
     Then I softly see value "Created" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
-    Then I softly see value "Reviewed" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
     Then I softly see value "Submitted for Approval" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -256,17 +257,15 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Then I softly see the following messages in the page details :
-      | Financial Tab - Enter Subaward Ceiling amount before submitting this Announcement.                                                              |
-      | Financial Tab - Enter Estimated Funding Amount.                                                                                                 |
-      | Financial Tab - Correct Budget Periods Start Date and End Dates. Budget Periods should be continuous and together should form a Project Period. |
-      | Financial Tab - Enter at least one Budget Period.                                                                                               |
-      | Overview Tab - Enter description for the Announcement.                                                                                          |
-      | Overview Tab - Select applicant types.                                                                                                          |
-      | Responsibilities Tab - An Executive Approver must exist to submit this Announcement.                                                            |
-      | Responsibilities Tab - A Fiscal Approver must exist to submit this Announcement.                                                                |
-      | Responsibilities Tab - A Program Approver must exist to submit this Announcement.                                                               |
-      | Overview Tab: The Question submission deadline cannot be greater than Application due date.                                                     |
-      | Overview Tab: The Answer submission deadline cannot be greater than Application due date.                                                       |
+      | Financial Tab - Enter Subaward Ceiling amount before submitting this Announcement.                                    |
+      | Financial Tab - Enter the Estimated Funding Amount.                                                                   |
+      | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
+      | Financial Tab - Enter at least one Budget Period.                                                                     |
+      | Overview Tab - Enter the Description.                                                                                 |
+      | Overview Tab - Select applicant types.                                                                                |
+      | Overview Tab - The question submission deadline must be before the Application due date.                              |
+      | Overview Tab - The answer submission deadline must be before the Application due date.                                |
+      | Responsibilities - At least one approver is required                                                                  |
     And I click on "Edit" in the page details
     And I enter value "20" into field "fieldApplicationDueDate__c"
     And I enter value "15" into field "QSubmissionDeadline__c"
@@ -275,16 +274,14 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Submit For Approval" in the page details
     And I pause execution for "10" seconds
     Then I softly see the following messages in the page details :
-      | Financial Tab - Enter Subaward Ceiling amount before submitting this Announcement.                                                              |
-      | Financial Tab - Enter Estimated Funding Amount.                                                                                                 |
-      | Financial Tab - Correct Budget Periods Start Date and End Dates. Budget Periods should be continuous and together should form a Project Period. |
-      | Financial Tab - Enter at least one Budget Period.                                                                                               |
-      | Overview Tab - Enter description for the Announcement.                                                                                          |
-      | Overview Tab - Select applicant types.                                                                                                          |
-      | Responsibilities Tab - An Executive Approver must exist to submit this Announcement.                                                            |
-      | Responsibilities Tab - A Fiscal Approver must exist to submit this Announcement.                                                                |
-      | Responsibilities Tab - A Program Approver must exist to submit this Announcement.                                                               |
-      | Overview Tab: The Answer submission deadline cannot be earlier than Question submission deadline.                                               |
+      | Financial Tab - Enter Subaward Ceiling amount before submitting this Announcement.                                    |
+      | Financial Tab - Enter the Estimated Funding Amount.                                                                   |
+      | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
+      | Financial Tab - Enter at least one Budget Period.                                                                     |
+      | Overview Tab - Enter the Description.                                                                                 |
+      | Overview Tab - Select applicant types.                                                                                |
+      | Overview Tab - The response deadline cannot be earlier than the question deadline.                                    |
+      | Responsibilities - At least one approver is required                                                                  |
 
   @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @70506 @71951 @73408 @userDeleteSupportingDocument @aashish
   Scenario: To Verify that user can delete supporting document checklist While creating the Announcement |
@@ -292,8 +289,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
   To Verify that user can preview business forms while creating Announcement|
   To Verify that user can Edit buisness forms while ctreating Announcement
     When I navigate to "Announcements" tab
-    And I click toggle button to select "Announcements - Closed and Archived"
-    And I perform quick search for "Automation Competitive Past Announcement" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click toggle button to select "Closed and Archived Announcements"
+    And I perform quick search for "Automation Competitive Past Announcement" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
     Then I softly see value "Closed" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
     When I click on "View" icon for "Automation Competitive Past Announcement" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Closed" and is "green"
@@ -309,7 +306,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Edit" icon for "Grantor Application Forms" inside flex table with id "---announcement:-:businessFormlistTableId---" without waiting for record
     And I enter value "Grantor Application Forms" into field "fieldPackageConfig__c"
     And I click modal button "Save"
-    And I close "Edit Package" modal by clicking the top right x button
+    #And I close "Edit Package" modal by clicking the top right x button
     Then I softly see value "Grantor Application Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     When I enter the following values into flex table with id "---announcement:-:annChecklist---" by clicking "Add" :
       | Description                 | Required  | Applies To | Status |
@@ -334,17 +331,18 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see field "Package Name" as "Organization Desk Review"
     And I close "Preview Package" modal by clicking the top right x button
     And I navigate to "Files" sub tab
-    When I add notes records
-    And I close "Add Notes" modal by clicking the top right x button
-    Then I softly see table with header "Notes" contains records "Notes Record"
-    And I edit the notes
-    And I click modal button "Save"
-    And I close "Edit Notes" modal by clicking the top right x button
-    Then I softly see table with header "Notes" contains records "Updated Notes Record"
-    Then I softly see table with header "Notes" contains records "Updated Automation Notes"
-    And I click on top right button "Add" in notes flex table having header "Notes"
-    And I enter title in Notes
-    And I click modal button "Save"
+    When I enter the following values into flex table with id "---announcement:-:AnnouncementNotestableId---" by clicking "Add" :
+      | Title        | Description      |
+      | Notes Record | Automation Notes |
+    Then I softly see value "Notes Record" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
+    And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementNotestableId---" by clicking "Edit" :
+      | Title         | Description       |
+      | Notes Record1 | Automation Notes1 |
+    Then I softly see value "Notes Record1" for title "Title" inside table "---announcement:-:AnnouncementNotestableId---"
+    Then I softly see value "Automation Notes1" for title "Description" inside table "---announcement:-:AnnouncementNotestableId---"
+    And I click on top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
+    And I enter value "Notes Record1" into field "Title"
+    And I click on top right button "Save" in flex table with id "---announcement:-:AnnouncementNotestableId---"
     Then I softly see the following messages in the page details :
       | Please enter Required fields |
     And I click on top right button "Add Files" in flex table with id "---program:-:AnnouncementAttachmentTableId---"
@@ -353,7 +351,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Download" icon under attachment flex table
     Then I softly verify that the file "Attachment.pdf" is downloaded
     And I click on "Delete" icon under attachment flex table
-    Then I softly do not see "Attachment.pdf" has been added in "Announcement Files" flex table
+    Then I softly do not see "Funding Opportunity Announcement" has been added in "Announcement Files" flex table
 
   @70483 @userDeleteSupportingDocumentViewHyperlink @aashish @wip
   Scenario: To Verify that user can view Template Link in supporting document checklist While creating the Announcement
@@ -378,22 +376,24 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Edit" in the page details
     And I enter value "1/25/2030" into field "fieldApplicationDueDate__c"
     And I click on "Save" in the page details
+    And I save the field labeled "Application Due Date" as "AppDueDate"
     And I click on "Edit" in the page details
     And I enter value "1/26/2030" into field "fieldApplicationDueDate__c"
     And I click on "Save" in the page details
+    And I save the field labeled "Application Due Date" as "AppDueDate1"
     And I navigate to "History" sub tab
-    Then I softly see value "2030-01-25" for title "Old Value" inside table "History"
-    Then I softly see value "2030-01-26" for title "New Value" inside table "History"
+    Then I softly see value "{SavedValue:AppDueDate}" for title "Old Value" inside table "History"
+    Then I softly see value "{SavedValue:AppDueDate1}" for title "New Value" inside table "History"
     And I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date   |
       | BP01               | 03/13/2030 | 04/13/2030 |
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
-    Then I softly see value "4/14/2030" for title "Start Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
-    Then I softly see value "4/13/2031" for title "End Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
+    Then I softly see value "04/14/2030" for title "Start Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
+    Then I softly see value "04/13/2031" for title "End Date" against the value "BP02" inside table "---announcement:-:budgetPeriodTableId---"
 
-  @70563 @70556 @70554 @70606 @70718 @73545 @73547 @73564 @73566 @userCanViewAndDeleteKPI @aashish
+  @70563 @70556 @70554 @70606 @70718 @73545 @73547 @73564 @73566 @userCanViewAndDeleteKPI @aashish @buglogged126440
   Scenario: To  Verify that after associating objectives, related KPIs should be automatically populate while  creating the Announcement
   | To Verify that user is able to view Objective While creating the Announcement | Verify KPIs search and filter fuctionality
     When I navigate to "Announcements" tab
@@ -424,6 +424,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I navigate to "Setup" sub tab
     And I perform quick search for "Automation Permanent Objective" in "---announcement:-:objectivesTableId---" panel
     Then I softly see value "Automation Permanent Objective" for title "Title" inside table "---announcement:-:objectivesTableId---"
+    #buglogged126440 #73547
     When I click on advance filter "#advfAnnouncementGranteeStrategicGoalsObjectives" of table id "---announcement:-:objectivesTableId---"
     When I enter advance filter values inside id "advfAnnouncementGranteeStrategicGoalsObjectives"
       | Title | Contains | Automation Permanent Objective |
@@ -465,7 +466,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I click on top right button "Associate" in flex table with id "---announcement:-:relatedAnnouncementTableId---"
     And I click "Associate" after selection of "Wildlife Services" in the table "---announcement:-:associateForRelated---"
-    And I close modal by clicking the top right x button
     And I perform quick search for "Wildlife Services" in "---announcement:-:relatedAnnouncementTableId---" panel
     Then I softly see value "Wildlife Services" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId---"
     Then I softly see value "Federal" for title "Type" inside table "---announcement:-:relatedAnnouncementTableId---"
@@ -476,10 +476,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter advance filter values inside id "advfRelatedAnnouncementCFDANumbersGrantor"
       | Program Title | Contains | Calfire |
     Then I see "No Records Found" inside flex table with id "---progressReport:-:relatedAnnouncementTableId---"
-    And I perform quick search for "Wildlife Services" in "---announcement:-:relatedAnnouncementTableId---" panel
-    And I click on "View" icon for "Wildlife Services" inside flex table with id "---announcement:-:relatedAnnouncementTableId---" without waiting for record
-    Then I softly see field "Non-Federal Program" as "Wildlife Services"
-    And I pause execution for "2" seconds
+    And I refresh the page
+    And I perform quick search for "Automation Permanent NGO Program" in "---announcement:-:relatedAnnouncementTableId---" panel
+    And I click on "View" icon for "Automation Permanent NGO Program" inside flex table with id "---announcement:-:relatedAnnouncementTableId---" without waiting for record
+    Then I softly see field "Non-Federal Program" as "Automation Permanent NGO Program"
     Then I softly see status in Progress-bar is "Active" and is "green"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -1277,15 +1277,18 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Section Header | Section Weight (%) |
       | Eligibility    | 50                 |
       | Completeness   | 50                 |
+    And I pause execution for "2" seconds
     And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     When I close "Review Form" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
@@ -1295,20 +1298,24 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Schedule       | 30                 |
       | Environment    | 30                 |
       | Permits        | 40                 |
+    And I pause execution for "2" seconds
     And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Permits"
     When I close "Review Form" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
@@ -1321,16 +1328,19 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Program Income"
     When I close "Review Form" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
@@ -1343,16 +1353,19 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Impact"
     When I close "Review Form" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
@@ -1362,15 +1375,18 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Section Header             | Section Weight (%) |
       | Return on Investment (ROI) | 50                 |
       | Strategic Alignment        | 50                 |
+    And I pause execution for "2" seconds
     And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
     When I close "Review Form" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
@@ -1385,22 +1401,22 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | End Date |
-      | BP03               | 550      |
+      | BP02               | 550      |
     And I click on "Save" in the page details
-    And I save the value from row "2" for column name "Start Date" as "startDate" from flex table "---announcement:-:budgetPeriodTableId---"
-    And I save the value from row "3" for column name "End Date" as "endDate" from flex table "---announcement:-:budgetPeriodTableId---"
+    And I save the value from row "1" for column name "Start Date" as "startDate" from flex table "---announcement:-:budgetPeriodTableId---"
+    And I save the value from row "2" for column name "End Date" as "endDate" from flex table "---announcement:-:budgetPeriodTableId---"
     Then I softly see field "Estimated Project Period Start Date" as "{SavedValue:startDate}"
     Then I softly see field "Estimated Project Period End Date" as "{SavedValue:endDate}"
-    And I click on "Remove" icon for "BP03" inside flex table with id "---announcement:-:budgetPeriodTableId---" without waiting for record
+    And I click on "Remove" icon for "BP02" inside flex table with id "---announcement:-:budgetPeriodTableId---" without waiting for record
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date |
-      | BP03               | 250        |
+      | BP02               | 250        |
     And I click on top right button "Save" in flex table with id "---announcement:-:budgetPeriodTableId---"
     Then I softly see the following messages in the page details :
       | Budget Period dates should not overlap. Adjust the end date of BP02 and start date of BP03 to proceed further. |
     And I click on "Remove" icon for "BP02" inside flex table with id "---announcement:-:budgetPeriodTableId---" without waiting for record
-    And I click on "Remove" icon for "BP03" inside flex table with id "---announcement:-:budgetPeriodTableId---" without waiting for record
+    #And I click on "Remove" icon for "BP03" inside flex table with id "---announcement:-:budgetPeriodTableId---" without waiting for record
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -1411,13 +1427,13 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I "Approve" in the approval decision
     When I navigate to "History" sub tab
     Then I softly see value "Approved" for title "Status" inside table "History"
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
@@ -1802,7 +1818,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Send to Owner" in the approval decision
-    Then I softly see status in Progress-bar is "Draft" and is "green"
+    Then I softly see status in Progress-bar is "Created" and is "green"
     When I navigate to "History" sub tab
     Then I softly see that "Announcement" is in "Draft" status
     And I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal

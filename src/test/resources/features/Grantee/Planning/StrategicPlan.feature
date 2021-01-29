@@ -336,7 +336,7 @@ Feature: Strategic Plan related scenarios
     Then I see the header is "Strategic Goal" in the page details
     Then I see the sub-header is "Automation St Goal" in the page details
 
-  @62318 @validateStrategicPlan @validateCratedYearAndMonthRO @positive
+  @62318 @validateStrategicPlan @validateCreatedYearAndMonthRO @positive
   Scenario: Verify Created Month and Year always Read Only in edit mode
     Given I login to "As a Grantee" app as "GRANTEE PM" user
     And I navigate to "Planning" tab
