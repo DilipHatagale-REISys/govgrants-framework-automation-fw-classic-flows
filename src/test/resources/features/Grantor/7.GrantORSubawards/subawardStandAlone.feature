@@ -119,10 +119,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "egmsId"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -137,11 +139,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
   @51137 @65397 @allApproverSelection
   Scenario: Validate the assignment of Approvers for the award | To verify that approvers can be added in the subaward phase when login by award owner as a PM
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Responsibility     | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see that "{SavedValue:EXE Username}" has been added in flextable with Id "---subAwardStandAlone:-:awardApproversTableId---"
@@ -153,7 +159,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
@@ -187,10 +193,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -212,11 +220,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
@@ -246,7 +258,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -279,10 +291,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -304,11 +318,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
@@ -353,7 +371,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -385,10 +403,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -435,7 +455,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -467,10 +487,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -492,11 +514,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -523,13 +549,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -547,7 +573,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -579,10 +605,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -604,11 +632,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -651,7 +683,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -684,10 +716,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -709,11 +743,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -734,13 +772,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -818,7 +856,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     When I navigate to "Budget" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -851,10 +889,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -881,11 +921,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -911,12 +955,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -924,6 +962,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     Then I can see the message "Successfully Approved" in the approval decision
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -932,7 +976,6 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    And I softly can see "Actuals" sub tab at view detail page
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -950,8 +993,10 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     Then I softly cannot see top right button "Edit" in page detail
     Then I softly can see top right button "Activate" in page detail
-    Then I softly can see top right button "View NOGA" in page detail
-    Then I softly can see top right button "Send for Signature" in page detail
+    Then I softly can see "Actuals" sub tab at view detail page
+    #As this functionality is discarded 66012 66013
+    #Then I softly can see top right button "View NOGA" in page detail
+    #Then I softly can see top right button "Send for Signature" in page detail
     And I navigate to "Management" sub tab
     Then I softly cannot see top right button "New" for "---deskreview:-:managementInitiateDRtableid---" flex table
     And I click on "Activate" in the page details
@@ -963,7 +1008,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    Then I softly see value "{SavedValue:Record Id}" for title "Active Subaward" against the value "<Grant Name>" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
+    Then I softly see value "Record Id" for title "Active Subaward" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Overview" sub tab
     And I save Todays Date
@@ -976,12 +1021,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Files" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" by clicking "Add" :
       | Description | Required  | Applies To | Status |
-      | Automation  | Mandatory | Closeout   | Active |
+      | Automation  | Mandatory | Award      | Active |
     When I click on "Upload Template" icon for "Automation" inside flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---" without waiting for record
     And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
     When I close "Upload Template" modal by clicking the top right x button
     Then I softly see value "View" for title "Template Link" inside table "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
     And I click on Link containing value "View" in flex table id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
+    #need to check with download functionality
     Then I softly see page title contains as "FileDownload"
     Examples:
       | Award Name                                   | Grant Name                                   |
@@ -1040,7 +1086,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -1073,10 +1119,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1103,11 +1151,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I navigate to "History" sub tab
@@ -1144,13 +1196,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1215,7 +1267,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -1260,11 +1312,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -1285,13 +1341,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1324,14 +1380,14 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Management" sub tab
     And I click on "Edit" icon for "{SavedValue:subawardID}" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Examples:
@@ -1345,7 +1401,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -1377,10 +1433,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1395,11 +1453,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -1425,13 +1487,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1474,7 +1536,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -1506,10 +1568,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1537,7 +1601,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -1578,11 +1642,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -1615,7 +1683,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -1660,11 +1728,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -1713,7 +1785,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -1745,10 +1817,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1775,11 +1849,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -1806,13 +1884,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1860,7 +1938,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -1884,12 +1962,20 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
+    And I navigate to "Management" sub tab
+    When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                      | Risk Assessment |
+      | {SavedValue:FO Username}  | Step 2          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1916,11 +2002,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -1947,13 +2037,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -2141,7 +2231,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -2170,10 +2260,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2200,11 +2292,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -2338,7 +2434,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -2370,10 +2466,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -2414,7 +2512,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -2446,10 +2544,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -2567,7 +2667,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -2595,10 +2695,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -2620,11 +2722,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -2668,7 +2774,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -2700,10 +2806,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -2725,11 +2833,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
@@ -2769,7 +2881,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -2802,10 +2914,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2832,11 +2946,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -2883,7 +3001,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -2915,10 +3033,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -2940,11 +3060,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -2968,12 +3092,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Submit for Approval" in the page details
     Then I softly cannot see top right button "Edit" in page detail
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    And I "Approve" in the approval decision
+#    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+#    And I navigate to "Grants" tab
+#    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+#    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+#    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+#    And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2992,7 +3116,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -3024,10 +3148,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -3049,16 +3175,26 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     When I get the "EGMS ID"
     When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I navigate to "Grants" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -3077,7 +3213,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -3110,10 +3246,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -3135,11 +3273,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -3248,7 +3390,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -3280,10 +3422,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -3311,11 +3455,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
     When I get the "EGMS ID"
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     And I click on "Send to Subrecipient" in the page details
     And I pause execution for "3" seconds
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -3355,8 +3503,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     When I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account1" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
@@ -3389,10 +3537,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -3419,11 +3569,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
       | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
@@ -3442,8 +3596,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     When I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account1" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -3475,10 +3629,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -3505,11 +3661,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "egmsId"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
@@ -3542,8 +3702,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     When I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account1" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -3575,10 +3735,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -3605,11 +3767,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
       | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
@@ -3650,8 +3816,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     When I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account1" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -3683,10 +3849,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -3713,11 +3881,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
       | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
@@ -3758,8 +3930,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     When I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account1" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -3791,10 +3963,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -3822,11 +3996,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
       | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
@@ -3897,8 +4075,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     When I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account1" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -3930,10 +4108,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -3961,11 +4141,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -4003,8 +4187,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     When I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account1" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -4037,10 +4221,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see field "Status" as "Created"
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     Then I see value "{SavedValue:FO Username}" for title "Name" inside table "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -4068,11 +4254,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
       | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
@@ -4125,6 +4315,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -4151,8 +4347,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     When I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account1" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -4185,10 +4381,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     Then I softly see field "Status" as "Created"
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     Then I see value "{SavedValue:FO Username}" for title "Name" inside table "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
@@ -4211,11 +4409,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
       | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
@@ -4263,12 +4465,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    And I "Approve" in the approval decision
+#    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+#    And I navigate to "Grants" tab
+#    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+#    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+#    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+#    And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -4285,7 +4487,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -4317,10 +4519,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -4342,11 +4546,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -4366,6 +4574,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -4407,7 +4621,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -4439,10 +4653,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -4464,11 +4680,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -4504,7 +4724,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -4536,10 +4756,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -4561,11 +4783,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -4607,10 +4833,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "egmsId"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     Then I softly can see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
     And I click on "Submit for Approval" in the page details
     And I navigate to "Responsibilities" sub tab
@@ -4625,7 +4853,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -4658,10 +4886,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -4683,11 +4913,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
@@ -4712,7 +4946,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -4745,10 +4979,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -4770,11 +5006,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -4801,7 +5041,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -4834,10 +5074,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -4859,11 +5101,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -4891,7 +5137,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -4924,10 +5170,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -4949,11 +5197,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     And I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
@@ -5007,7 +5259,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Add" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -5040,10 +5292,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -5065,11 +5319,15 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "Edit" :
-      | Role               | Name                      | Description                 |
-      | Program Approver   | {SavedValue:PM Username}  | Automation Test Description |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver    | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:FO Username} | Step 3 |
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
