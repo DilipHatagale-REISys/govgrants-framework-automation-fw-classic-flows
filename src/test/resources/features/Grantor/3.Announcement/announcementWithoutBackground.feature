@@ -311,7 +311,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Form Name      | Form Weight (%) |
       | Fiscal Review  | 20              |
       | Program Review | 20              |
-    And I pause execution for "2" seconds
+    And I pause execution for "3" seconds
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 40.00%. |
@@ -319,7 +319,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Form Name      | Form Weight (%) |
       | Fiscal Review  | 0               |
       | Program Review | 0               |
-    And I pause execution for "2" seconds
+    And I pause execution for "3" seconds
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
@@ -327,18 +327,18 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Form Name      | Form Weight (%) |
       | Fiscal Review  | 60              |
       | Program Review | 40              |
-    And I pause execution for "2" seconds
+    And I pause execution for "3" seconds
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | There are no errors with the review step templates. |
     And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Name      | Form Weight (%) |
       | Program Review | 70              |
-    And I pause execution for "2" seconds
+    And I pause execution for "3" seconds
     And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Weight (%) | Form Name           |
       | 70.00%          | Program Review Form |
-    And I pause execution for "2" seconds
+    And I pause execution for "3" seconds
     Then I softly see value "Program Review Form" for title "Form Name" inside table "---announcement:-:AnnouncementReviewPanel---"
     And I click on "Delete" icon for "Program Review Form" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     Then I softly see the following messages in the page details :
@@ -351,24 +351,24 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Weight (%) | Section Header         |
       | 10%                | Program Income updated |
+    And I pause execution for "3" seconds
     Then I softly see value "Program Income updated" for title "Section Header" inside table "---announcement:-:reviewPanelTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Weight (%) | Section Header |
       | 10%                | Program Income |
-    And I pause execution for "2" seconds
+    And I pause execution for "3" seconds
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
       | Budget         | 50                 |
       | Match          | 60                 |
       | Program Income | 70                 |
-    And I pause execution for "2" seconds
+    And I pause execution for "3" seconds
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I close modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | Setup Tab - SME Review - Fiscal Review: The total section weight must equal 100% or 0%. It is currently 180%. |
-  #Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 60.00%.
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -389,7 +389,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Budget         | 25                 |
       | Match          | 25                 |
       | Program Income | 50                 |
-    And I pause execution for "2" seconds
+    And I pause execution for "3" seconds
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I close modal by clicking the top right x button
@@ -403,7 +403,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Section Header             | Section Weight (%) |
       | Return on Investment (ROI) | 50                 |
       | Strategic Alignment        | 30                 |
-    And I pause execution for "2" seconds
+    And I pause execution for "3" seconds
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I close modal by clicking the top right x button
@@ -417,15 +417,18 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
       | Section Weight (%) | Section Header   |
       | 15%                | Capability Forms |
+    And I pause execution for "3" seconds
     Then I softly see value "Capability Forms" for title "Section Header" inside table "---announcement:-:reviewPanelTableId---"
     And I expand nested table containing column value "1"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question             | Max Score |
       | 1              | Review form question | 50        |
+    And I pause execution for "3" seconds
     Then I softly see value "Review form question" for title "Question" inside table "---announcement:-:reviewPanelQuestionsTableId---"
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "Edit" :
       | Question Order | Question                    | Type | Max Score |
       | 1              | Review form question Edited | Date | 40        |
+    And I pause execution for "3" seconds
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     Then I softly see value "Review form question Edited" for title "Question" inside table "---announcement:-:reviewPanelQuestionsTableId---"
@@ -463,11 +466,14 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see "Email" in flex table header "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see "Organization Name" in flex table header "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see "# of Applications Assigned" in flex table header "---announcement:-:AnnouncementReviewPanel---"
+    And I refresh the page
+    And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Name         | Form Weight (%) |
       | Fiscal Review     | 25              |
       | Program Review    | 25              |
       | Compliance Review | 50              |
+    And I pause execution for "2" seconds
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I refresh the page
@@ -478,14 +484,36 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Schedule       | 50                 |
       | Environment    | 25                 |
       | Permits        | 25                 |
+    And I pause execution for "2" seconds
+    And I expand nested table containing column value "Schedule"
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
+    And I collapse nested table containing column value "Schedule"
+    And I expand nested table containing column value "Environment"
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
+    And I collapse nested table containing column value "Environment"
+    And I expand nested table containing column value "Permits"
+    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
+      | Question Order | Question  | Type    | Max Score |
+      | 1              | Question1 | Written | 100       |
+    And I pause execution for "2" seconds
+    And I collapse nested table containing column value "Permits"
+    When I close "Review Form" modal by clicking the top right x button
+    And I refresh the page
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
-      | There are no errors with the review step templates. |
+      | There are no errors with the review step templates.|
+    And I expand nested table containing column value "SME Review"
     When I enter the following values into flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Add" :
       | Reviewer                 |
       | {SavedValue:PM Username} |
     Then I softly see value "{SavedValue:PM Username}" for title "Reviewer" inside table "---announcement:-:AnnouncementReviewPanel---"
-    Then I softly see value "donald_pm@ggp.test7.atm.automation" for title "Email" inside table "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see value "govgrantsuat@yopmail.com" for title "Email" inside table "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see value "Test Automation Organization" for title "Organization Name" inside table "---announcement:-:AnnouncementReviewPanel---"
     And I click on "Remove from Form" icon for "Automation PM" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     Then I softly see the following messages in the page details :

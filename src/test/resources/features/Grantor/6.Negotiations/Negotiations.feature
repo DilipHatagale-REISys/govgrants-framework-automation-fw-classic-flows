@@ -282,6 +282,13 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
     When I click on "Submit to Grantor" in the page details
+    And I checkout to yopmail with mailid "automationspi3@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      An Application Negotiation Request for Application {SavedValue:EGMSID} has been Requested
+      """
     #bug
 #    And I pause execution for "120" seconds
 #    Then I softly can see mail notification for "EXTERNAL" user with following subject:
@@ -648,7 +655,7 @@ Feature: Validate all scenarios in Negotiations
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     Then I cannot see top right button "Send to Subrecipient" in page detail
 
-  @62669 @AddedAttachmentForNegotiations @keerti @bug-94779
+  @62669 @AddedAttachmentForNegotiations @keerti @buglogged127516
   Scenario: Validate the Addition of  attachment to Negotiations
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab

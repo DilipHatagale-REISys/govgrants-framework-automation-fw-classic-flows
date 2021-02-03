@@ -40,12 +40,6 @@ public class ProgressReportSteps {
         );
     }
 
-    @Description("To click on any hyperlink inside page details")
-    @And("^I click on hyperlink containing value \"([^\"]*)\"$")
-    public void iClickOnHyperlinkContainingValue(String linkName) {
-        progressReportPage.clickOnLink(linkName);
-    }
-
     @Description("To compare date field with todays date")
     @Then("^I (softly see|see) field \"([^\"]*)\" is getting updated with todays date$")
     public void iSeeFieldIsGettingUpdatedWithTodaysDate(String usage, String fieldLabel) {
