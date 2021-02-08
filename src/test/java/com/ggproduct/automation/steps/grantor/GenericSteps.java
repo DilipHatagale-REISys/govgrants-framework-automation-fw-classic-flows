@@ -320,20 +320,6 @@ public class GenericSteps {
         I.amPerforming().click().on(By.xpath("//div[@id='ModalDivID']//button[contains(text(),'" + buttonName + "')]"));
     }
 
-    @Then("I see that approver is not present after searching in dropdown")
-    public void iSeeThatApproverIsNotPresentAfterSearchingInDropdown() {
-        WebElement ll = I.amPerforming().getElementReference().of(By.xpath("//div[@id='select2-drop' and contains(@style,'block')]//li"));
-        Assert.assertTrue(ll.getText().equalsIgnoreCase("No matches found"));
-    }
-
-    @And("I search {string} approver in flex table with id {string}")
-    public void iSearchApproverInFlexTaableWithId(String user, String flexTableDivId) {
-        I.amPerforming().getElementReference().of((By.xpath("//div[@id='" + flexTableDivId + "']//td")));
-        govgrants.perform().flexTable().clickTableActionIcon(flexTableDivId, "Edit");
-        I.amPerforming().click().on(By.xpath("//*[@id='" + flexTableDivId + "']//td[1]//span[@class='select2-chosen']"));
-        I.amPerforming().textInput().in(By.xpath("//div[@id='select2-drop']//input[@class='select2-input']"), user);
-    }
-
     @Then("^I (softly verify|verify) that All the following projects roles are available in picklist :$")
     public void iVerifyThatAllProjectsRolesAreAvailableInPicklist(String usage, List<String> projectRoles) {
         grantorProjectManager.compareContactListEquality(usage, projectRoles);
