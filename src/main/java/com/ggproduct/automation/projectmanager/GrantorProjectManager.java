@@ -506,7 +506,7 @@ public class GrantorProjectManager extends ProjectManager {
     }
 
     public void validateModalEnlargeAndGrantDetails(String usage) {
-        By modalEnlarge = By.xpath("//div[@id='editDiv']/div[2]");
+        By modalEnlarge = By.xpath("//div[@id='editDiv']/div/div[2]");
         List<String> ids = List.of(
                 "LaverageAllowed__c",
                 "IsProgramIncomeAnticipated__c",
@@ -515,7 +515,6 @@ public class GrantorProjectManager extends ProjectManager {
                 "IsGoalsRequired__c",
                 "KPIsRequired__c",
                 "RiskAssessmentRequired__c",
-                "WBSRequired__c",
                 "IsBuildUpFunctionality__c",
                 "AreExpensesBuildIUpLevel__c",
                 "IsMatchRequired__c",

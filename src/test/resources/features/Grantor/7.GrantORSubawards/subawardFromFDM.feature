@@ -286,7 +286,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @67671 @doNotSeeSubawardButtonAfterRejectingByEXE @jitendra
+  @67671 @validateUsershouldAllowedToUseMoneyMoreThanPreEncumbranceAmount @jitendra
   Scenario Outline: Validate User is allowed to utilize money greater than Pre En-cumbrance Balance but less than available Balance
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -556,20 +556,25 @@ Feature: Validate all scenarios in the award created from FDM
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
-    #nnd to check email
-    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
-    And I pause execution for "180" seconds
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    And I checkout to yopmail with mailid "govgrantsuat@yopmail.com"
+    And I pause execution for "5" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Subaward {SavedValue:SubawardID} has been created for the Grant.
+      Sandbox: Notification: Subaward {SavedValue:SubawardID} has been Assigned forApproval.
       """
     Examples:
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @66938 @67698 @doNotSeeSubawardButtonAfterRejectingByEXE @jitendra @smoke
-  Scenario Outline: To Validate that if FDM is rejected by EXE user, subaward button in Action column cannot be seen for the Application. in Recommended Application table.
+  @67698 @validateEmailNotificationToAwardOwnerAfterAwardSubmission @monu @smoke
+  Scenario Outline: To Validate that email is getting generated for award owner once user submit subaward for approval
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -680,34 +685,19 @@ Feature: Validate all scenarios in the award created from FDM
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
-    And I pause execution for "100" seconds
-    And I softly can see mail notification for "EXTERNAL" user with following subject:
-      | FW: Notification: Subaward <award id> has been Assigned for Program Approval. |
-    When I "Approve" in the approval decision
-#    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-#    When I navigate to "Grants" tab
-#    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-#    When I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
-#    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---" without waiting for record
-#    When I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    When I navigate to "Grants" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---subAwardFromFDM:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardFromFDM:-:pendingTaskTableId---" without waiting for record
-    When I "Disapprove" in the approval decision
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Applications" tab
-    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
-    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
-    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---" without waiting for record
-    Then I softly cannot see row level action button "Create Subaward" against "{SavedValue:Automation Runtime FDM Announcement}" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
+    And I pause execution for "5" seconds
+    And I checkout to yopmail with mailid "govgrantsuat@yopmail.com"
+    And I pause execution for "5" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Subaward <award id> has been Assigned forApproval.
+      """
     Examples:
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @38222 @50994 @65418 @65420 @awardApprovalAndSendToRecipientAfterApproval @buglogged101436
+  @38222 @50994 @65418 @65420 @awardApprovalAndSendToRecipientAfterApproval @ErrorMessageForTargetFields
   Scenario Outline: Validate award approval and send to subrecipient after approval | validate submit for approval button displayed
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"
@@ -753,13 +743,6 @@ Feature: Validate all scenarios in the award created from FDM
     When I enter the following values into flex table with id "---subAwardFromFDM:-:riskAssessmentApproverTableId---" by clicking "New" :
       | Name                     | Risk Assessment |
       | {SavedValue:FO Username} | Step 2          |
-    And I click on "Submit for Approval" in the page details
-    Then I softly see the following messages in the page details contains:
-      | Performance Tab - Enter Target values. |
-    When I navigate to "Performance" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 10     |
     And I click on "Submit for Approval" in the page details
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -829,6 +812,13 @@ Feature: Validate all scenarios in the award created from FDM
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly can see top right button "Submit for Approval" in page detail
+    And I click on "Submit for Approval" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Performance Tab - Enter Target values. |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
+      | Title                                   | Target |
+      | Automation Permanent KPI for Regression | 10     |
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
     When I "Approve" in the approval decision
@@ -1290,7 +1280,8 @@ Feature: Validate all scenarios in the award created from FDM
     And I save the field labeled "Internal Organization" as "InternalOrg"
     And I save the field labeled "Program ID" as "ProgramID"
     And I save the field labeled "KPI's Required?" as "KPI"
-    And I save the field labeled "Work Plan Required?" as "WPR"
+    #@64570 this functionality is disabled now
+    #And I save the field labeled "Work Plan Required?" as "WPR"
     And I save the field labeled "Program Income Allowed?" as "PIA"
     And I save the field labeled "Focus Area Required?" as "FAR"
     And I save the field labeled "Estimated Project Period Start Date" as "PPSD"
@@ -1304,7 +1295,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Overview" sub tab
-    Then I softly see field "Work Plan Required?" as "{SavedValue:WPR}"
+    # @64570 this functionality is disabled now
+    #Then I softly see field "Work Plan Required?" as "{SavedValue:WPR}"
     Then I softly see field "Focus Area Required?" as "{SavedValue:FAR}"
     Then I softly see field "Project Period Start Date" as "{SavedValue:PPSD}"
     Then I softly see field "Program Income Allowed?" as "{SavedValue:PIA}"
@@ -1375,13 +1367,13 @@ Feature: Validate all scenarios in the award created from FDM
       | Grant Name                                       | Award Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @64790 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti
+  @64790 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti @buglogged127817
   Scenario Outline: Verify Objectives field value Performance tab Subaward overview is same as announcement Objectives table setup Tab.
     When I navigate to "Announcements" tab
     When I perform quick search for "<Grant Name>" in "ActiveFundingOpportunitiesAll" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Setup" sub tab
-    When I perform quick search for "Automation Permanent Objective" in "AnnouncementGranteeStrategicGoalsObjectives" panel
+    When I perform quick search for "Automation Permanent Objective" in "---announcement:-:objectivesTableId---" panel
     And I click on "View" icon for "Automation Permanent Objective" inside table
     And I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Grants" tab
@@ -1390,10 +1382,10 @@ Feature: Validate all scenarios in the award created from FDM
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
-    When I perform quick search for "<Award Name>" in "flexGridRelatedAwards1" panel
+    When I perform quick search for "<Award Name>" in "---subAwardFromFDM:-:subawardsTableId---" panel
     And I click on "View" icon for "<Award Name>" inside table
     When I navigate to "Performance" sub tab
-    Then I see value "{SavedValue:EGMSID}" for title "EGMS ID" inside table "GrantorAwardGoalsObjectives"
+    Then I see value "{SavedValue:EGMSID}" for title "EGMS ID" inside table "---subAwardFromFDM:-:objectivesTableId---"
     Examples:
       | Grant Name                                       | Award Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
@@ -1586,7 +1578,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @64793 @VerifyObjectivesFieldValueOnPerformanceTab  @keerti
+  @64793 @VerifViewPermissionOfGrantToSubRecipientUser-Draft  @keerti
   Scenario: Verify SR user is not able to view the grant whose status is draft.
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
