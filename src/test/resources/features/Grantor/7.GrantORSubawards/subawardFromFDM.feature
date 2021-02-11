@@ -12,6 +12,7 @@ Feature: Validate all scenarios in the award created from FDM
     When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---" without waiting for record
     And I click on "Create Subaward" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I pause execution for "5" seconds
     And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
@@ -681,6 +682,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:subawardsTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "award id"
     Given I click on "Complete Review" in the page details
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
@@ -691,7 +693,7 @@ Feature: Validate all scenarios in the award created from FDM
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Subaward <award id> has been Assigned forApproval.
+      Sandbox: Notification: Subaward {SavedValue:award id} has been Assigned forApproval.
       """
     Examples:
       | Award Name                                       | Grant Name                                       |
@@ -971,7 +973,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @67557 @PRFrequencyNotEnterAndSubmitForApprove @jitendra @buglogged101430
+  @67557 @PRFrequencyNotEnterAndSubmitForApprove @jitendra
   Scenario Outline: To validate that if frequency column is not set in the payment requests schedule Table  by the Grantor (Internal user pm profile ) and Submit for approval button is clicked the validation message must appear.
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Award_Field_Values.xlsx"

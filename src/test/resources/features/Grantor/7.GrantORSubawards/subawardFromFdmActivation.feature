@@ -55,7 +55,7 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
     And I click on advance filter "#advfAnnouncementActiveGrants" of table id "---announcement:-:annChecklist---"
     And I enter advance filter values inside id "advfAnnouncementActiveGrants"
       | EGMS ID | Contains | Invalid |
-    Then I softly see "No Records Found" inside flex table with id "---subAwardFromFDM:-:relatedloggrant---" without waiting for record
+    Then I softly see "No Records Found" inside flex table with id "---subAwardFromFDM:-:relatedloggrant---"
     And I refresh the page
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardFromFDM:-:relatedloggrant---"
     And I click on advance filter "#advfAnnouncementActiveGrants" of table id "---announcement:-:annChecklist---"
