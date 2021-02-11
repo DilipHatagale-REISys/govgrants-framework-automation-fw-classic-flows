@@ -117,11 +117,6 @@ public class InternalOrganizatioSteps {
         internalOrganizationPage.assertNewTabOpenedOnActionsClick(usage);
     }
 
-    @Then("^I (see|do not see|softly see|softly do not see) content of expected column \"([^\"]*)\" is in \"([^\"]*)\" order of table id \"([^\"]*)\"$")
-    public void assertContentOfColumnInExpectedOrder(String usuage, String titleName, String order, String tableId) {
-        internalOrganizationPage.assertSortingOrderOfColumnContent(usuage, titleName, order, tableId);
-    }
-
     @Then("^I (see|do not see|softly see|softly do not see) content of expected Flex table column \"([^\"]*)\" is in \"([^\"]*)\" order of table id \"([^\"]*)\"$")
     public void assertContentOfFlexTableColumnInExpectedOrder(String usuage, String titleName, String order, String tableId) {
         internalOrganizationPage.assertSortingOrderOfFlexTableColumnContent(usuage, titleName, order, tableId);

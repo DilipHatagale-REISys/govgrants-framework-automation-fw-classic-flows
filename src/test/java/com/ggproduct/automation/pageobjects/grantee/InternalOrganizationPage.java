@@ -495,21 +495,6 @@ public class InternalOrganizationPage extends GranteeProjectManager {
     /**
      * return true if content of owner organisation lookup modal is in ascending order
      */
-    public void assertSortingOrderOfColumnContent(String usage, String titleName, String order, String tableId) {
-        if (usage.equalsIgnoreCase("see")) {
-            Assert.assertTrue(isContentOfColumnInExepctedOrder(titleName, order, tableId));
-        } else if (usage.equalsIgnoreCase("do not see")) {
-            Assert.assertFalse(isContentOfColumnInExepctedOrder(titleName, order, tableId));
-        } else if (usage.equalsIgnoreCase("softly see")) {
-            Assert.assertTrue(isContentOfColumnInExepctedOrder(titleName, order, tableId));
-        } else if (usage.equalsIgnoreCase("softly do not see")) {
-            Assert.assertFalse(isContentOfColumnInExepctedOrder(titleName, order, tableId));
-        }
-    }
-
-    /**
-     * return true if content of owner organisation lookup modal is in ascending order
-     */
     public void assertSortingOrderOfFlexTableColumnContent(String usage, String titleName, String order, String tableId) {
         if (usage.equalsIgnoreCase("see")) {
             Assert.assertTrue(isContentOfFlexTableColumnInExepctedOrder(titleName, order, tableId));
@@ -798,24 +783,6 @@ public class InternalOrganizationPage extends GranteeProjectManager {
         if (I.amPerforming().switchTo().getWindowsHandlers().size() > 1)
             myNewTabFound = true;
         return myNewTabFound;
-    }
-
-    /**
-     * return true if content appears in Ascending/Descending order for look up modal
-     *
-     * @return
-     */
-    private boolean isContentOfColumnInExepctedOrder(String columnName, String order, String tableId) {
-        boolean flag = false;
-        WebElement sortArrow = I.amPerforming().getElementReference().of(By.xpath("//div[@id='" + tableId + "']//tr//th//span[contains(text(),'" + columnName + "')]/../following-sibling::span/i[contains(@class,'arrow')]|//div[@id='" + tableId + "']//tr//th//span[contains(text(),'" + columnName + "')]//following-sibling::span[contains(@class,'arrow')]"));
-        if (sortArrow.getAttribute("class").contains("arrow-up")) {
-            I.amPerforming().checkToSee().isTableSorted(govgrants.perform().flexTable().getTableSpecificColumnValues(columnName, tableId), order);
-            flag = true;
-        } else if (sortArrow.getAttribute("class").contains("arrow-down")) {
-            I.amPerforming().checkToSee().isTableSorted(govgrants.perform().flexTable().getTableSpecificColumnValues(columnName, tableId), order);
-            flag = true;
-        }
-        return flag;
     }
 
     /**
