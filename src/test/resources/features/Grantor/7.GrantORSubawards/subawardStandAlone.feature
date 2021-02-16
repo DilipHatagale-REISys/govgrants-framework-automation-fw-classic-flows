@@ -5214,8 +5214,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     And I click toggle button to select "Grants - Pending"
-    When I perform quick search for "<Grant Name>" in "---subAwardFromFDM:-:RecipientGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:RecipientGrantsTableId---" without waiting for record
+    When I perform quick search for "<Grant Name>" in "---subAwardFromFDM:-:RecipientGrantsTableIdSPA---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:RecipientGrantsTableIdSPA---" without waiting for record
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:RecipientSubAwardTableId---" without waiting for record
     Then I softly can see top right button "Edit" in page detail

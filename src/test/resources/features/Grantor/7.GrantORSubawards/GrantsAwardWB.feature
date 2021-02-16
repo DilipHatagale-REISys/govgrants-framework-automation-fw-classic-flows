@@ -596,7 +596,7 @@ Feature: Validate all scenarios of grants and award without background
     And I save the field labeled "Announcement ID" as "Announcement ID"
     And I click "{SavedValue:Announcement ID}" lookup link
     And I navigate to "Financials" sub tab
-    Then I see value "$0.00" for title "Spent" against the value "{SavedValue:fundingAccount}" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
+    Then I see value "$0.00" for title "Spent" against the value "{SavedValue:fundingAccount}" inside table "---announcement:-:fundingAccountsTableId---"
     Examples:
       | Award Name                                       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
@@ -1108,9 +1108,9 @@ Feature: Validate all scenarios of grants and award without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 1000         | 100        | 100            |
+    Then I softly see value "$1,000.00" for title "Subaward Budget" against the value "Extra Salary" inside table "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
+    Then I softly see value "$100.00" for title "Cash Match" against the value "Extra Salary" inside table "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
     When I close "RecipientAwardBudgetCategoryFlexTable" modal by clicking the top right x button
-    Then I softly see value "$1,000.00" for title "Subaward  Budget" against the value "Extra Salary" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
-    Then I softly see value "$100.00" for title "Cash Match" against the value "Extra Salary" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
     When I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1120,9 +1120,8 @@ Feature: Validate all scenarios of grants and award without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10000        | 100        | 100            |
-    When I close "RecipientAwardBudgetCategoryFlexTable" modal by clicking the top right x button
-    Then I softly see value "$10,000.00" for title "Subaward  Budget" against the value "Project inspection fees" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
-    Then I softly see value "$100.00" for title "Cash Match" against the value "Project inspection fees" inside table "---subAwardStandAlone:-:sRBudgetCategoryTableId---"
+    Then I softly see value "$10,000.00" for title "Subaward Budget" against the value "Project inspection fees" inside table "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
+    Then I softly see value "$100.00" for title "Cash Match" against the value "Project inspection fees" inside table "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
     Examples:
       | Award Name                                      | Grant Name                                      |
       | {SavedValue:Automation Runtime Execution Award} | {SavedValue:Automation Runtime Execution Award} |
@@ -1396,7 +1395,7 @@ Feature: Validate all scenarios of grants and award without background
     And I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     When I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     And I navigate to "Actuals" sub tab
-    Then I can see row level action button "Edit" against "Reimbursement" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    Then I softly can see row level action button "Edit" against "Reimbursement" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     Examples:
       | Award Name                                      | Grant Name                                      |
       | {SavedValue:Automation Runtime Execution Award} | {SavedValue:Automation Runtime Execution Award} |
@@ -1673,8 +1672,8 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Execution Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Execution Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime Execution Award}" in "---subAwardStandAlone:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Execution Award}" inside flex table with id "---subAwardStandAlone:-:recipientsSubawardTableId---" without waiting for record
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:recipientAwardAmendmentRequestTableId---"
     When I enter "Budget_Redirection" values from "AmendmentRequest_Field_Values.xlsx"
@@ -1971,8 +1970,8 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "Record Id" in "---subAwardFromFDM:-:PhasePendingTasksByTableId---" panel
     Then I see value "Record ID" for title "EGMS ID" inside table "---subAwardFromFDM:-:PhasePendingTasksByTableId---"
     Examples:
-      | Award Name                                           | Grant Name                                           |
-      | {SavedValue:Automation Runtime Announcement for FDM} | {SavedValue:Automation Runtime Announcement for FDM} |
+      | Award Name                                       | Grant Name                                       |
+      | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
   @65409 @FocusAreaStartAndEndDate
   Scenario: To verify the action on adding a focus area start and end date in between the budget period date in the budget tab of subaward phase in the award owner profile PM User category
@@ -2120,7 +2119,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:RecipientassociatedContactsTableId---" by clicking "Edit" :
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Responsibilities" sub tab
@@ -2455,7 +2454,7 @@ Feature: Validate all scenarios of grants and award without background
       | Extra Salary | The narrative | 500        | 1        | Feet        | 0                 | 0               | 0                        | 100        | 100            |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -2466,10 +2465,15 @@ Feature: Validate all scenarios of grants and award without background
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 500                   |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement |
+      | {SavedValue:FO Username} | Step 1        |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     When I click on "Mark As Paid" in the page details
@@ -3027,7 +3031,7 @@ Feature: Validate all scenarios of grants and award without background
 
   @64787 @validateUploadedDocumentAtTemplateLink @skipOnJenkins
   Scenario Outline: Verify that uploaded document at supporting document checklist getting displayed on template link
-     When I login to "As a Grantor" app as "dynamicUser" user
+    When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"

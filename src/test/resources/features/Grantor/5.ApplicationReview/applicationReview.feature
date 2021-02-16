@@ -97,7 +97,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @51062 @75229 @51063 @51064 @51061 @51060 @51059 @51058 @64948 @51057 @51056 @64949 @51054 @51055 @51053 @51052
+  @51062 @75229 @51063 @51064 @51061 @51060 @51059 @51058 @64948 @51057 @51056 @64949 @51054 @51055 @51053 @51052 @buglogged125748
   Scenario Outline: Enter Due in Days for all review forms in Management review
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -1213,7 +1213,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "Submit" in the page details without processing
     When I click alert button "OK"
     And I wait for "5" seconds
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
@@ -1224,7 +1224,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "Submit" in the page details without processing
     When I click alert button "OK"
     And I wait for "5" seconds
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
@@ -2545,7 +2545,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "Submit" in the page details without processing
     When I click alert button "OK"
     And I wait for "5" seconds
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
@@ -2563,7 +2563,7 @@ Feature: Validate all scenarios in the Application Review
     When I click on "Submit" in the page details without processing
     When I click alert button "OK"
     And I wait for "5" seconds
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel

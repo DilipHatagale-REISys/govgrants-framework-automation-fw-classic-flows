@@ -56,7 +56,7 @@ Feature: Validate all scenarios in Payment Request
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -95,7 +95,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 100        | 100            |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -110,9 +110,9 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 0                     |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement |
+      | {SavedValue:FO Username} | Step 1        |
     Then I softly see that "{SavedValue:FO Username}" has been added in flextable with Id "---paymentRequest:-:approversTableId---"
     And I refresh the page
     When I click on "Submit for Approval" in the page details
@@ -137,7 +137,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -152,11 +152,16 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 20                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
     Examples:
@@ -179,7 +184,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 20         | 1        | Feet        | 10                |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -191,9 +196,9 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | 10                | Automation Test Description |
     When I close "Disallow Amount" modal by clicking the top right x button
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                      | Description                 |
-      | Fiscal Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                      | Reimbursement  |
+      | {SavedValue:EXE Username} | Step 1         |
     And I navigate to "Financials" sub tab
     When I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
@@ -223,7 +228,7 @@ Feature: Validate all scenarios in Payment Request
     When I close "Add Line Items" modal by clicking the top right x button
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -233,9 +238,9 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     And I click on "Send Back to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -270,7 +275,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -280,11 +285,16 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     And I click on "Submit for Approval" in the page details
     Then I softly cannot see top right button "Edit" in page detail
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Send to Owner" in the approval decision
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
 
@@ -304,7 +314,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 200                      | 100        | 100            |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -438,7 +448,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -448,15 +458,20 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     And I pause execution for "2" seconds
     Then I see status in Progress-bar is "Approved" and is "Green"
 
-  @53981 @sendBackAdvancePaymentRequest @mahadev @buglogged101142
+  @53981 @sendBackAdvancePaymentRequest @mahadev
   Scenario: Validate confirmation message after sending back of advance payment request to owner
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -470,7 +485,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -480,15 +495,22 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Send to Owner" in the approval decision
-    Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
+    #As per discussion with sarat changing validation point
+    Then I softly see field "Status" as "Submitted to Grantor"
+    #Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
 
-  @53982 @forwardAdvancePaymentRequest @mahadev @buglogged101142
+  @53982 @forwardAdvancePaymentRequest @mahadev
   Scenario: validate approver can forward advance payment request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -502,7 +524,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -512,13 +534,20 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
-    Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
+    #As per discussion with sarat changing validation point
+    Then I softly see field "Status" as "Submitted for Approval"
+    #Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
 
   @53983 @rejectAdvancePaymentRequest @mahadev
   Scenario: validate Rejection of an advance payment request by approver
@@ -534,7 +563,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -544,13 +573,21 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Disapprove" in the approval decision
-    Then I can see the message "Successfully disapproved" in the approval decision
+    #As per discussion with sarat changing validation point
+    Then I softly see field "Status" as "Rejected"
+    Then I softly see status in Progress-bar is "Rejected" and is "Red"
+    #Then I can see the message "Successfully disapproved" in the approval decision
 
   @53985 @53984 @advancePaymentRequestShouldNotReceiveToEXE/PM  @mahadev
   Scenario: Advance Payment Request should not receive to Program Approver/Executive Approver
@@ -571,7 +608,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I softly see "No Records Found" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -613,7 +650,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
     Then I softly cannot see top right button "Edit" in page detail
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -623,11 +660,16 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -670,7 +712,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -678,9 +720,9 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     Then I softly see field "Program Income This action" as "$1,000.00"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                      | Description                 |
-      | Fiscal Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                      | Reimbursement  |
+      | {SavedValue:EXE Username} | Step 1         |
     And I navigate to "Financials" sub tab
     When I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
@@ -708,7 +750,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -718,11 +760,16 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Disapprove" in the approval decision
     Then I cannot see top right button "Mark as Paid" in page detail
 
@@ -742,7 +789,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -752,9 +799,9 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     When I click on "Submit for Approval" in the page details
     Then I cannot see top right button "Edit" in page detail
 
@@ -772,7 +819,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -782,9 +829,9 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     When I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
 
@@ -814,7 +861,7 @@ Feature: Validate all scenarios in Payment Request
     And I refresh the page
     Then I see "Receipt" has been added in "Attachment" flex table
 
-  @54412 @uploadAttachmentFromWorkspaceAdvancePR @mahadev @bugged-66960
+  @54412 @uploadAttachmentFromWorkspaceAdvancePR @mahadev
   Scenario: verify that user can uploaded document from workspace for Advance Payment Request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -826,7 +873,7 @@ Feature: Validate all scenarios in Payment Request
     And I upload attachment "Doubts.txt" from workspace
     Then I see "Doubts.txt" has been added in "Attachment" flex table
 
-  @54416 @uploadAttachmentFromWorkspaceReimbursementPR @mahadev @bug-94779
+  @54416 @uploadAttachmentFromWorkspaceReimbursementPR @mahadev @bug-94779 @buglogged70508
   Scenario: verify that user can upload document from workspace for Reimbursement Payment Request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -853,7 +900,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -879,7 +926,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -889,11 +936,16 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 20                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -923,7 +975,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -947,7 +999,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -976,7 +1028,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -986,12 +1038,20 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    Then I can see the message "Successfully Approved" in the approval decision
+    #As per discussion with sarat changing validation point
+    Then I softly see field "Status" as "Approved"
+    Then I softly see status in Progress-bar is "Approved" and is "Green"
+    #Then I can see the message "Successfully Approved" in the approval decision
 
   @54324 @validateSuccesfulReassignedmessageOnReimbursementPR @mahadev
   Scenario: Validate succesfully reassigned message on Reimbursement Payment Request
@@ -1009,7 +1069,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1019,12 +1079,19 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement |
+      | {SavedValue:FO Username} | Step 1        |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
-    Then I can see the message "Successfully Re-Assigned" in the approval decision
+    #As per discussion with sarat changing validation point
+    Then I softly see field "Status" as "Submitted for Approval"
+    #Then I can see the message "Successfully Re-Assigned" in the approval decision
 
   @54325 @validateRejectedMessageOnReimbursementPR @mahadev
   Scenario: Validate succesfully rejected message on Reimbursement Payment Request
@@ -1042,7 +1109,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1052,14 +1119,22 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Disapprove" in the approval decision
-    Then I can see the message "Successfully disapproved" in the approval decision
+    #As per discussion with sarat changing validation point
+    Then I softly see field "Status" as "Rejected"
+    Then I softly see status in Progress-bar is "Rejected" and is "Red"
+    #Then I can see the message "Successfully disapproved" in the approval decision
 
-  @54326 @validateSendBackMessageOnReimbursementPR @mahadev @buglogged101142
+  @54326 @validateSendBackMessageOnReimbursementPR @mahadev
   Scenario: Validate succesfully send back payment request message on Reimbursement Payment Request
     When I navigate to "Actuals" sub tab
     And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1075,7 +1150,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1085,12 +1160,19 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Send to Owner" in the approval decision
-    Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
+    #As per discussion with sarat changing validation point
+    Then I softly see field "Status" as "Submitted to Grantor"
+    #Then I can see the message "Successfully sent to Owner. It may take few mintues to process record." in the approval decision
 
   @54368 @validateReimbursementPRSendBackToSubReceipient @mahadev
   Scenario: Validate task is getting created for SPI user after send back reimbursement payment request to subreceipient
@@ -1108,7 +1190,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1135,7 +1217,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1179,7 +1261,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1201,7 +1283,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1211,9 +1293,9 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 20                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
@@ -1237,7 +1319,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1257,7 +1339,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1267,9 +1349,9 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1305,7 +1387,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 20         | 1        | Feet        |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1336,7 +1418,7 @@ Feature: Validate all scenarios in Payment Request
     When I close "Add Line Items" modal by clicking the top right x button
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1346,9 +1428,9 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 10                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     And I click on "Send Back to Subrecipient" in the page details
     And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
     And I pause execution for "180" seconds
@@ -1421,7 +1503,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1450,7 +1532,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1460,9 +1542,9 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     When I click on "Submit for Approval" in the page details
     And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
     And I pause execution for "180" seconds
@@ -1488,7 +1570,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1503,9 +1585,9 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 20                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1541,7 +1623,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1556,9 +1638,9 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 20                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
@@ -1588,7 +1670,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1598,10 +1680,15 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
     And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
     And I pause execution for "180" seconds
@@ -1626,7 +1713,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1636,10 +1723,15 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
     And I pause execution for "180" seconds
@@ -1664,7 +1756,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1674,10 +1766,15 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Send to Owner" in the approval decision
     And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
     And I pause execution for "180" seconds
@@ -1703,7 +1800,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1718,10 +1815,15 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 20                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Send to Owner" in the approval decision
     And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
     And I pause execution for "180" seconds
@@ -1750,7 +1852,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1765,10 +1867,15 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 20                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
     And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
     And I pause execution for "180" seconds
@@ -1798,7 +1905,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1813,10 +1920,15 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 20                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Disapprove" in the approval decision
     And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
     And I pause execution for "180" seconds
@@ -1844,7 +1956,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1854,10 +1966,15 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Disapprove" in the approval decision
     And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
     And I pause execution for "180" seconds
@@ -1883,7 +2000,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Files" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1893,11 +2010,16 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Send to Owner" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1921,7 +2043,7 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Files" sub tab
     When I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1946,7 +2068,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1994,7 +2116,7 @@ Feature: Validate all scenarios in Payment Request
       | Budget Category | Advance Requested This Action |
       | Equipment       | 10                            |
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -2004,11 +2126,16 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     And I refresh the page
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -2044,7 +2171,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -2054,10 +2181,15 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Advance Requested This Action |
       | {SavedValue:fundingAccount} | 10                            |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2081,7 +2213,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -2096,10 +2228,15 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 20                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Send to Owner" in the approval decision
     When I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2125,7 +2262,7 @@ Feature: Validate all scenarios in Payment Request
       | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -2140,11 +2277,16 @@ Feature: Validate all scenarios in Payment Request
       | Funding Account             | Net Spent This Action |
       | {SavedValue:fundingAccount} | 20                    |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:approversTableId---" by clicking "Edit" :
-      | Responsibility  | Name                     | Description                 |
-      | Fiscal Approver | {SavedValue:FO Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                     | Reimbursement  |
+      | {SavedValue:FO Username} | Step 1         |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab

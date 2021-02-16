@@ -409,6 +409,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I close modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 60.00%.       |
       | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%. It is currently 80%. |
     And I pause execution for "3" seconds
     And I refresh the page
@@ -507,7 +508,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I refresh the page
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
-      | There are no errors with the review step templates.|
+      | There are no errors with the review step templates. |
     And I expand nested table containing column value "SME Review"
     When I enter the following values into flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Add" :
       | Reviewer                 |
@@ -519,7 +520,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
 
-  @70861 @70858 @profileNotAllowedToCreateAnnouncement @aashish @buglogged126616
+  @70861 @70858 @profileNotAllowedToCreateAnnouncement @aashish
   Scenario Outline: Verify user having FO/FD Profile are not allowed to create announcements
     When I login to "As a Grantor" app as "<users>" user
     And I navigate to "Announcements" tab

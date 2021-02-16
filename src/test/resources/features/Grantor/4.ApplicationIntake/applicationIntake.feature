@@ -352,12 +352,12 @@ Feature: Validate all scenarios in the Application Intake
     Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "---applicationIntake:-:convertedToApplicationTableID---"
     And I save the value from row "1" for column name "Funding Opportunity Id" as "oppId" from flex table "---applicationIntake:-:convertedToApplicationTableID---"
     And I click on advance filter "#advfcae" of table id "---applicationIntake:-:convertedToApplicationTableID---"
-    And I enter advance filter values inside id "---applicationIntake:-:convertedToApplicationTableID---"
+    And I enter advance filter values inside id "advfcae"
       | Funding Opportunity Id | Contains | Auto Demo |
     Then I softly see "No records found" inside flex table with id "---applicationIntake:-:convertedToApplicationTableID---"
     And I refresh the page
     And I click on advance filter "#advfcae" of table id "---applicationIntake:-:convertedToApplicationTableID---"
-    And I enter advance filter values inside id "---applicationIntake:-:convertedToApplicationTableID---"
+    And I enter advance filter values inside id "advfcae"
       | Funding Opportunity Id | Contains | {SavedValue:oppId} |
     Then I softly see value "{SavedValue:Automation Runtime Announcement Application}" for title "Title" inside table "---applicationIntake:-:convertedToApplicationTableID---"
     And I refresh the page

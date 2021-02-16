@@ -224,7 +224,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
     And I click on "Submit For Approval" in the page details
-    Then I softly see the following messages in the page details contains:
+    Then I see the following messages in the page details :
       | Overview Tab - The question submission deadline must be before the Application due date. |
       | Overview Tab - The answer submission deadline must be before the Application due date.   |
     And I click on "Edit" in the page details
@@ -853,7 +853,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Send to Owner" in the approval decision
-    Then I softly see status in Progress-bar is "Draft" and is "green"
+    #Then I softly see status in Progress-bar is "Draft" and is "green"
     When I navigate to "History" sub tab
     Then I softly see that "Announcement" is in "Draft" status
     When I navigate to "Announcements" tab
@@ -925,15 +925,18 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Section Header | Section Weight (%) |
       | Eligibility    | 50                 |
       | Completeness   | 50                 |
+    And I pause execution for "3" seconds
     And I expand nested table containing column value "Eligibility"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "3" seconds
     And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "3" seconds
     When I close "Review Form" modal by clicking the top right x button
     When I collapse nested table containing column value "Pre-Screen Review"
     And I expand nested table containing column value "SME Review"
@@ -943,20 +946,24 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Schedule       | 30                 |
       | Environment    | 30                 |
       | Permits        | 40                 |
+    And I pause execution for "3" seconds
     And I expand nested table containing column value "Schedule"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "3" seconds
     And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "3" seconds
     And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "3" seconds
     And I collapse nested table containing column value "Permits"
     When I close "Review Form" modal by clicking the top right x button
     When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
@@ -965,20 +972,24 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Budget         | 30                 |
       | Match          | 40                 |
       | Program Income | 30                 |
+    And I pause execution for "3" seconds
     And I expand nested table containing column value "Budget"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "3" seconds
     And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "3" seconds
     And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "3" seconds
     And I collapse nested table containing column value "Program Income"
     When I close "Review Form" modal by clicking the top right x button
     When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
@@ -987,20 +998,24 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Capability     | 30                 |
       | Approach       | 30                 |
       | Impact         | 40                 |
+    And I pause execution for "3" seconds
     And I expand nested table containing column value "Capability"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "3" seconds
     And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "3" seconds
     And I collapse nested table containing column value "Approach"
     And I expand nested table containing column value "Impact"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "3" seconds
     And I collapse nested table containing column value "Impact"
     When I close "Review Form" modal by clicking the top right x button
     When I collapse nested table containing column value "SME Review"
@@ -1010,15 +1025,18 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Section Header             | Section Weight (%) |
       | Return on Investment (ROI) | 50                 |
       | Strategic Alignment        | 50                 |
+    And I pause execution for "3" seconds
     And I expand nested table containing column value "Return on Investment (ROI)"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "3" seconds
     And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
+    And I pause execution for "3" seconds
     When I close "Review Form" modal by clicking the top right x button
     When I collapse nested table containing column value "Management Review"
     And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"

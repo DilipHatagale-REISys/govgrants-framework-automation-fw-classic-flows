@@ -655,7 +655,7 @@ Feature: Validate all scenarios in Negotiations
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     Then I cannot see top right button "Send to Subrecipient" in page detail
 
-  @62669 @AddedAttachmentForNegotiations @keerti @buglogged127516
+  @62669 @AddedAttachmentForNegotiations @keerti
   Scenario: Validate the Addition of  attachment to Negotiations
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -667,9 +667,10 @@ Feature: Validate all scenarios in Negotiations
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I click on "Save" in the page details
     When I navigate to "Files" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" from workspace
-    And I pause execution for "1" seconds
-    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
+    And I click on top right button "Add Files" in flex table with id "GrantorApplicationFilesgrid"
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "General Assurances" from computer
+    When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "GrantorApplicationFilesgrid"
+    Then I see value "{SavedValue:AttachedFile}" for title "Title" inside table "GrantorApplicationFilesgrid"
 
   @62667 @RecordOwnerCanViewSnapshotAfterNegotiationIsInSubmittedToGrantor @keerti @skipOnJenkins
   Scenario: Validate Record Owner user is able to view the Snapshot after Negotiation  is in "Submitted to Grantor" status

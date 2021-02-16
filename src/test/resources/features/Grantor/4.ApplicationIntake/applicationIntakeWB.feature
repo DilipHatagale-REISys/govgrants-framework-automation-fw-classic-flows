@@ -757,7 +757,7 @@ Feature: Application Intake scenarios without background
       | SPI3 |
       | SPA  |
 
-  @73367 @spiUserCanViewAllocatedAmountOnceSubmittedToGrantor @deepika
+  @73367 @spiUserCanViewAllocatedAmountOnceSubmittedToGrantor @deepika @buglogged129432
   Scenario Outline: Validate whether SPI & SPA user were able to view the allocated amount once the Oppurtunity is Converted to Application when Announcement is of type - Formula
     Given I published "Formula" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     When I am on "SUBPORTAL" portal
@@ -832,9 +832,8 @@ Feature: Application Intake scenarios without background
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-      #This is a bug - @73498 #IssueisResolveNeedtocheckforthisscenario #checktagabove
-#    When I perform quick search for "Automation Permanent Focus Area2" in "---applicationI ntake:-:focusAreaTableAppId---" panel
-#    Then I softly see that "Automation Permanent Focus Area2" has been added in flextable with Id "---applicationIntake:-:focusAreaTableAppId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---applicationIntake:-:focusAreaTableId---" panel
+    Then I softly see that "Automation Permanent Focus Area" has been added in flextable with Id "---applicationIntake:-:focusAreaTableId---"
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
@@ -857,6 +856,7 @@ Feature: Application Intake scenarios without background
       | Name                       | Project Role             | Is Key Contact |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
+    #IssueisResolveNeedtocheckforthisscenario #checktagabove
     Then I softly see the following messages in the page details contains:
       | Attachments Tab - Each mandatory item listed in the checklist must be completed before submitting this Application. |
     When I navigate to "Files" sub tab
@@ -1302,7 +1302,6 @@ Feature: Application Intake scenarios without background
     When I click on "View" icon for "TEST APP from Announcement 2 for Automation API" inside flex table with id "---applicationIntake:-:recipientApplications---" without waiting for record
     When I click on "Submit Application" in the page details
     Then I softly see the following messages in the page details contains:
-      | This application cannot be submitted. The application due date has passed. |
       | An Application cannot be submitted after the Application Due Date.         |
 
   @77657 @snapshotHistoryApplication @deepika @skipOnJenkins
