@@ -79,6 +79,7 @@ Feature: Validate all scenarios in the home tab
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
     And I save the contact name as "Automation Runtime Contact"
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     Then I see value "{SavedValue:Automation Runtime Contact}" for title "Full Name" inside table "---home:-:reviewersTableId---"
     Then I see value "New" for title "Status" inside table "---home:-:reviewersTableId---"
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
@@ -272,7 +273,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     And I click on top right button "New" in flex table with id "---home:-:additionalAddressTableId---"
-    And I enter "AdditionalAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
+    And I enter "AdditioanlAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
     Then I softly see that "Internal Organization" is in "Active" status
     When I perform quick search for "Billing Address" in "---home:-:additionalAddressTableId---" panel
@@ -320,7 +321,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:relatedContactsTableId---" panel
     Then I see "No Records Found" inside flex table with id "---home:-:relatedContactsTableId---"
 
-  @56740 @56741 @56742 @dunsNumberCreationEditionAndDeletion @smoke @bug-69292
+  @56740 @56741 @56742 @dunsNumberCreationEditionAndDeletion @smoke
   Scenario: Validate whether ADMIN and DA users can Create, Edit and delete the DUNS Number
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
@@ -596,34 +597,37 @@ Feature: Validate all scenarios in the home tab
       | Name                      | Program |
       | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Home" tab
     And I navigate to "Reassign" content inside "My Tasks" subheader on left panel
     When I reassign task to "{SavedValue:EXE Username}"
-    When I perform quick search for "Record Id" in "TaskReassignment" panel
-    And I click "Reassign Selected" after selection of "Approve Program" in the table "TaskReassignment"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "GrantorTaskReassignment" panel
+    When I click "Reassign Selected" after selection of "{SavedValue:ProgramEGMSID}" in the table "GrantorTaskReassignment"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---home:-:internalHomePendingTaskTableId---" panel
     Then I see that "Approve Program" has been added in flextable with Id "---home:-:internalHomePendingTaskTableId---"
 
-# Files tab and Collab are rendered if the Chatter setting is enabled.Both are dependant on each other and if the chatter is disabled, the files and collab are not rendered. We are disabling the chatter on Automation to avoid conenct API's issues.
-  @59016 @validateFilesOnHome @deepika @bug-66960 @wip
+  @59016 @validateFilesOnHome @deepika
   Scenario: Addition of Attachment to Focus Area by User - Admin/EXE/PM
     When I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
     When I navigate to "Focus Areas" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---focusarea:-:focusAreaTableId---"
-    When I enter value "{SavedValue:EXE Username}cution Focus Area" into field "Title__c"
-    When I click modal button "Save and Continue"
+    When I enter value "Automation Runtime Focus Area" into field "Title__c"
+    And I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents"
+    And I click on top right button "Add Files" in flex table with id "GrantorFocusAreaFilesgrid"
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Supporting Documents" from computer
+    When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "GrantorFocusAreaFilesgrid"
     When I navigate to "Home" tab
     And I click on "My_Workspace_File"
-    Then I see "Record Id" has been added in My Workspace Files
+    And I select value inside table "WorkSpaceFilesFlexToggle" is "All"
+    Then I see value "{SavedValue:AttachedFile}" for title "Title" inside table "WorkSpaceFilesFlexToggle"
 
   @62102 @pageBlockSections @deepika
   Scenario Outline: Verify whether the Overview Tab has the sections: Related Contacts and Indirect rates
@@ -727,7 +731,7 @@ Feature: Validate all scenarios in the home tab
     And I click modal button "Save and Close"
     Then I see the text containing "title"
 
-  @62254 @PerformGlobalSearchOnHomeTab @keerti @bug-72220
+  @62254 @PerformGlobalSearchOnHomeTab @keerti
   Scenario: Verify Global search on Home Tab
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
