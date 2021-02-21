@@ -81,7 +81,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Then I softly cannot see top right button "New" in flex table with id "---home:-:internalContactTableId---"
     When I perform quick search for "Automation FO" in "---home:-:internalContactTableId---" panel
     Then I softly cannot see row level action button "Edit" against "True" in flex table with id "---home:-:internalContactTableId---"
-    Then I softly see "Full Name" in flex table header "---home:-:internalContactTableId---"
+    Then I softly see "Name" in flex table header "---home:-:internalContactTableId---"
     Then I softly see "Organization" in flex table header "---home:-:internalContactTableId---"
     Then I softly see "Email" in flex table header "---home:-:internalContactTableId---"
     Then I softly see "Phone" in flex table header "---home:-:internalContactTableId---"
@@ -92,7 +92,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
       | User    |
       | AUDITOR |
 
-  @69126 @auditorCanViewCreatedContact
+  @69126 @auditorCanViewCreatedContact @buglogged101030
   Scenario: Validate Auditor should have view / read  only access to record.
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Home" tab
@@ -111,14 +111,14 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Then I softly see field "Organization" as "Test Automation Organization"
 
   @69144 @69132 @69128 @auditorCannotSendInvitationCanViewSMEReviewersContactDetails
-  Scenario Outline: Verify Auditor  Cannot create SME conatct and do not have access to send invitation (Bulk or single clicking paper aeroplane icon)/ Verify Auditor can view / read  only access to SME Reviewers Contact details
+  Scenario Outline: Verify Auditor Cannot create SME conatct and do not have access to send invitation (Bulk or single clicking paper aeroplane icon)/ Verify Auditor can view / read  only access to SME Reviewers Contact details
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     Then I softly cannot see top right button "New" in flex table with id "---home:-:reviewersTableId---"
-    When I perform quick search for "Test User" in "---home:-:reviewersTableId---" panel
-    Then I softly can see row level action button "View" against "Test User" in flex table with id "---home:-:reviewersTableId---"
-    Then I softly cannot see row level action button "Send Invitation" against "Test User" in flex table with id "---home:-:reviewersTableId---"
+    When I perform quick search for "Test User A" in "---home:-:reviewersTableId---" panel
+    Then I softly can see row level action button "View" against "Test User A" in flex table with id "---home:-:reviewersTableId---"
+    Then I softly cannot see row level action button "Send Invitation" against "Test User A" in flex table with id "---home:-:reviewersTableId---"
     Examples:
       | User    |
       | AUDITOR |
@@ -147,7 +147,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedToMe---"
     Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedByMe---"
 
-  @69142 @auditorCannotCreateEditSubrecipientContact @smoke
+  @69142 @auditorCannotCreateEditSubrecipientContact @smoke @buglogged101030
   Scenario: Validate Auditor cannot Create/Edit any subrecipient contact user
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Home" tab
@@ -156,6 +156,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
     When I click modal button "Save"
     And I save the contact name as "Automation Runtime Contact"
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:internalContactTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---"
     Then I softly see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---"

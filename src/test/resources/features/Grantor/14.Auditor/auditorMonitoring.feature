@@ -126,9 +126,9 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     Given I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---auditor:-:sitevisitMonitoringTableId---" panel
-    Then I can see row level action button "View" against "{SavedValue:Automation Runtime Award Site Visit}" in flex table with id "---auditor:-:sitevisitMonitoringTableId---"
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---auditor:-:sitevisitMonitoringTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Site Visit}" in "---auditor:-:sitevisitMonitoringTableId---" panel
+    Then I can see row level action button "View" against "{SavedValue:Automation Runtime Site Visit}" in flex table with id "---auditor:-:sitevisitMonitoringTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Site Visit}" inside flex table with id "---auditor:-:sitevisitMonitoringTableId---"
     Then I softly cannot see top right button "Accept and Close" in page detail
 
   @70076 @69870 @auditorCannotCreateDeleteAwardLevelDeskReview
@@ -162,16 +162,16 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     Given I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
-    When I perform quick search for "{SavedValue:Automation Runtime Award Desk Review}" in "---auditor:-:deskreviewMonitoringTableId---" panel
-    Then I softly cannot see row level action button "Delete" against "{SavedValue:Automation Runtime Award Desk Review}" in flex table with id "---auditor:-:deskreviewMonitoringTableId---"
-    Then I can see row level action button "View" against "{SavedValue:Automation Runtime Award Desk Review}" in flex table with id "---auditor:-:sitevisitMonitoringTableId---"
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---auditor:-:deskreviewMonitoringTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Award Desk}" in "---auditor:-:deskreviewMonitoringTableId---" panel
+    Then I softly cannot see row level action button "Delete" against "{SavedValue:Automation Runtime Award Desk}" in flex table with id "---auditor:-:deskreviewMonitoringTableId---"
+    Then I softly can see row level action button "View" against "{SavedValue:Automation Runtime Award Desk}" in flex table with id "---auditor:-:deskreviewMonitoringTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk}" inside flex table with id "---auditor:-:deskreviewMonitoringTableId---"
     Then I softly cannot see top right button "Accept and Close" in page detail
     Examples:
       | User    |
       | AUDITOR |
 
-  @69872 @69979 @auditorCannotCreateAwardLevelRiskAssessment @buglogged94976
+  @69872 @69979 @auditorCannotCreateAwardLevelRiskAssessment
   Scenario Outline: Validate Auditor should not be able to Create Award Level Risk Assessment/ Validate whether Auditor can View the active Risk assessment from Monitoring Tab
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I login to "As a Grantor" app as "dynamicUser" user
@@ -196,10 +196,12 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -232,7 +234,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
       | User    |
       | AUDITOR |
 
-  @69986 @69985 @auditorCannotSendBackProgressReporttoSubrecipient
+  @69986 @69985 @auditorCannotSendBackProgressReportToSubrecipient
   Scenario: Validate Auditor should not be  able to Send back progress report to S/R | Validate Auditor should have view / read  only access to the progress report record
     Given I activated standalone subaward "Automation Runtime award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
@@ -290,11 +292,13 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
-    Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "Edit" :
-      | Role             | Name                     | Description                 |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Site Visit |
+      | {SavedValue:PM Username} | Step 1     |
+    When I enter the following values into flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Site Visit |
+      | {SavedValue:FO Username} | Step 2     |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
@@ -335,7 +339,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
@@ -368,11 +372,18 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I click on "Save" in the page details
     When I get the "EGMS ID"
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "Edit" :
-      | Responsibility   | Name                     | Description                 |
-      | Fiscal Approver  | {SavedValue:FO Username} | Automation Test Description |
-      | Program Approver | {SavedValue:PM Username} | Automation Test Description |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
     And I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---"
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -384,10 +395,10 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Draft"
-    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside table
+    When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside table
     When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
+    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     When I navigate to "Responsibilities" sub tab
     And I get the "EGMS ID"
     And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :

@@ -44,3 +44,45 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
     Examples:
       | Award Name                            |
       | {SavedValue:Automation Runtime award} |
+
+  @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal-SPI3 @mahadev
+  Scenario Outline: Verify when Batch is run then User Notified field gets Updated at External Portal
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I delete the record "<Award Name>" from the object "Payment Request"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "<User>" user
+    When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I navigate to "Terms" sub tab
+    When I expand nested table containing column value "Payment Request"
+    Then I can see "1" record value is checked for field name "TaskCreated__c"
+    Examples:
+      | Award Name                            | Grant Name                            | User |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | SPA  |
+
+  @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal-SPA @mahadev
+  Scenario Outline: Verify when Batch is run then User Notified field gets Updated at External Portal
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I delete the record "<Award Name>" from the object "Payment Request"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "<User>" user
+    When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I navigate to "Terms" sub tab
+    When I expand nested table containing column value "Payment Request"
+    Then I can see "1" record value is checked for field name "TaskCreated__c"
+    Examples:
+      | Award Name                            | Grant Name                            | User |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | SPA  |

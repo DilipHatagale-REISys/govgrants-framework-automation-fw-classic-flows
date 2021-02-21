@@ -142,7 +142,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
 
   @69301 @auditorCannotAddAttachmentsAndNotes
   Scenario Outline: Verify User with Auditor profile has no ability to add attachments and notes.
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "PRE_APPLICATION_YES"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Application" and properties "default"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
@@ -165,18 +165,19 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
-    When I re-login to "As a Grantor" app as "<User>" user on "Internal" portal
+    When I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
-    And I perform quick search for "<Application Name>" in "---applicationIntake:-:recipientApplications---" panel
+    And I perform quick search for "<Application Name>" in "---auditor:-:applicationTableId---" panel
     When I click on "View" icon for "<Application Name>" inside table
     And I navigate to "Files" sub tab
-    Then I softly cannot see top right button "Add" in flex table with id "Attachments"
+    Then I softly cannot see top right button "Add Files" in flex table with id "Attachments"
     Then I softly cannot see top right button "Add" in flex table with id "Notes"
     Examples:
-      | Application Name                                         | User    |
-      | {SavedValue:Automation Runtime Announcement Application} | Auditor |
+      | Application Name                                             | User    |
+      | {SavedValue:Automation Runtime Announcement for Application} | Auditor |
 
   @69941 @69940 @audiorPreApplicationToApplication
   Scenario Outline: Validate Auditor should have view / read  only access to submitted pre-application| Validate Auditor should not be  able to Review/Accept/Reject Preapplication
@@ -241,7 +242,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     Given I click on "Back" in the page details
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
-      | Name                      | Project Role             | Is Key Contact |
+      | Name                       | Project Role             | Is Key Contact |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
     Given I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal

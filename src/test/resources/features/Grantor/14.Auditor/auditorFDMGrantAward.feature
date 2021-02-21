@@ -24,7 +24,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
     When I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I navigate to "Subawards" sub tab
     And I perform quick search for "{SavedValue:Automation Runtime award}" in "---subAwardStandAlone:-:subawardsTableId---" panel
-    Then I softly cannot see row level action button "Edit" against Value "{SavedValue:Automation Runtime award}" inside "---subAwardStandAlone:-:subawardsTableId---" flex table
+    Then I softly cannot see row level action button "Edit" against "{SavedValue:Automation Runtime award}" in flex table with id "---subAwardStandAlone:-:subawardsTableId---"
 
   @69170 @auditorCanViewActiveGrantAward
   Scenario: Validate Auditor should have view / read  only access to Active Grant/Award
@@ -109,7 +109,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
       | Form Name  | Due in Days |
       | Pre-Screen | 5           |
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer      |
+      | Reviewer                 |
       | {SavedValue:FO Username} |
     And I click on "Assign" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
@@ -146,7 +146,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
       | Fiscal Review     | 5           |
       | Compliance Review | 5           |
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer       |
+      | Reviewer                  |
       | {SavedValue:EXE Username} |
       | {SavedValue:FO Username}  |
       | {SavedValue:PM Username}  |
@@ -220,7 +220,7 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
       | Form Name         | Due in Days |
       | Management Review | 5           |
     When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
-      | Reviewer      |
+      | Reviewer                 |
       | {SavedValue:FO Username} |
     And I click on "Assign" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
@@ -262,9 +262,9 @@ Feature: Validate all scenarios for Auditor Profile in Grant/Award
       | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
       | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
     When I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "Edit" :
-      | Responsibility     | Name           | Description                 |
-      | Executive Approver | {SavedValue:EXE Username} | Automation Test Description |
+    When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
+      | Name                      | FDM    |
+      | {SavedValue:EXE Username} | Step 1 |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     When I navigate to "Applications" tab
