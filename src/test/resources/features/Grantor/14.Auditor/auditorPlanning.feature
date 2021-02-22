@@ -108,7 +108,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     Then I softly cannot see top right button "Activate" in page detail
     Examples:
       | User    | FundingSource                         |
-      | AUDITOR | Automation Permanent Funding Account1 |
+      | AUDITOR | Automation Permanent Funding Source 1 |
 
   @67846 @auditorCanViewActiveFundingSource
   Scenario Outline: Validate Auditor should have view / read  only access to Active Funding Source
@@ -120,7 +120,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     Then I softly can see row level action button "View" against "<FundingSource>" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     Examples:
       | User    | FundingSource                         |
-      | AUDITOR | Automation Permanent Funding Account1 |
+      | AUDITOR | Automation Permanent Funding Source 1 |
 
 
   @67847 @auditorCannotCreateKPI @deepika
@@ -159,7 +159,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | EXE   |
       | ADMIN |
 
-  @67850 @auditorCannotCreateEditActivateOrDeactivateStrategicPlan
+  @67850 @auditorCannotCreateEditActivateOrDeactivateStrategicPlan @buglogged130515
   Scenario Outline: Validate Auditor should not be  able to  Create/Edit/Activate/Deactivate Strategic plan
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab

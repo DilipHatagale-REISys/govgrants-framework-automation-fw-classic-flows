@@ -192,7 +192,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @54496 @ValidateActiveSuppportingDocumentChecklistOnReimbursementPR @mahadev @bug-94779
+  @54496 @ValidateActiveSuppportingDocumentChecklistOnReimbursementPR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is displayed on reimbursement payment request
     And I activated standalone subaward "Automation Runtime Award" with properties "NO_PROGRAM_INCOME_ANTICIPATE"
     And I am on "SUBPORTAL" portal
@@ -251,7 +251,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @54415 @ValidateUserCanAttachDocumentTypeInvoiceOnReimbursementPR @mahadev @bug-94779
+  @54415 @ValidateUserCanAttachDocumentTypeInvoiceOnReimbursementPR @mahadev
   Scenario Outline: validate user can add active supporting document for Reimbursement payment request as type Invoice
     And I activated standalone subaward "Automation Runtime Award" with properties "NO_PROGRAM_INCOME_ANTICIPATE"
     And I am on "SUBPORTAL" portal
@@ -270,9 +270,10 @@ Feature: Payment Request scenarios without background
     When I enter "No Program Income_Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Files" sub tab
-    #after bug fix steps need to modify bug 94779
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Invoice"
-    Then I see "Announcement_Field_Values.xlsx" has been added in "Attachment" flex table
+    And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Invoice" from computer
+    When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
+    Then I see value "{SavedValue:AttachedFile}" for title "Title" inside table "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
@@ -298,7 +299,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            |
       | {SavedValue:Automation Runtime Award} |
 
-  @54495 @ValidateActiveSuppportingDocumentChecklistOnAdvancePR @mahadev @bug-94779
+  @54495 @ValidateActiveSuppportingDocumentChecklistOnAdvancePR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is displayed on advance payment request
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -317,7 +318,11 @@ Feature: Payment Request scenarios without background
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Files" sub tab
-    #steps needs to be added for suppporting document after bug fix 94779
+    When I navigate to "Files" sub tab
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    When I upload file "Program_Field_Values.xlsx" into library
+    And I click modal button "Save"
+    When I close "Upload Document" modal by clicking the top right x button
     Then I see that "Automation" has been added in flextable with Id "---paymentRequest:-:checklistTableId---"
     Examples:
       | Award Name                            | Grant Name                            |
@@ -374,13 +379,20 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
+    When I navigate to "Files" sub tab
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    When I upload file "Program_Field_Values.xlsx" into library
+    And I click modal button "Save"
+    When I close "Upload Document" modal by clicking the top right x button
+    And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @54503 @ValidateMandatorySuppportingDocumentChecklistOnAdvancePR @mahadev @bug-94779
+  @54503 @ValidateMandatorySuppportingDocumentChecklistOnAdvancePR @mahadev
   Scenario Outline: validate mandatory Suppporting Document Checklist should  display error message on advance PR if attachment not added
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -402,9 +414,16 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
+    When I navigate to "Files" sub tab
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    When I upload file "Program_Field_Values.xlsx" into library
+    And I click modal button "Save"
+    When I close "Upload Document" modal by clicking the top right x button
+    And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
     When I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details contains:
-      | Attachments Tab - Each mandatory item listed in the checklist must be completed before submitting this Payment Request. |
+      | Files Tab - Complete each mandatory item listed in the checklist before submitting this Payment Request. |
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
@@ -464,6 +483,13 @@ Feature: Payment Request scenarios without background
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
     When I get the "EGMS ID"
+    When I navigate to "Files" sub tab
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    When I upload file "Program_Field_Values.xlsx" into library
+    And I click modal button "Save"
+    When I close "Upload Document" modal by clicking the top right x button
+    And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -523,6 +549,13 @@ Feature: Payment Request scenarios without background
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
     When I get the "EGMS ID"
+    When I navigate to "Files" sub tab
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    When I upload file "Program_Field_Values.xlsx" into library
+    And I click modal button "Save"
+    When I close "Upload Document" modal by clicking the top right x button
+    And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -593,8 +626,8 @@ Feature: Payment Request scenarios without background
       | {SavedValue:fundingAccount} | 20                    |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                     | Reimbursement  |
-      | {SavedValue:FO Username} | Step 1         |
+      | Name                     | Reimbursement |
+      | {SavedValue:FO Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -653,8 +686,8 @@ Feature: Payment Request scenarios without background
       | {SavedValue:fundingAccount} | 20                    |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                     | Reimbursement  |
-      | {SavedValue:FO Username} | Step 1         |
+      | Name                     | Reimbursement |
+      | {SavedValue:FO Username} | Step 1        |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -733,6 +766,13 @@ Feature: Payment Request scenarios without background
     And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
+    When I navigate to "Files" sub tab
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    When I upload file "Program_Field_Values.xlsx" into library
+    And I click modal button "Save"
+    When I close "Upload Document" modal by clicking the top right x button
+    And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
     Examples:
@@ -786,7 +826,7 @@ Feature: Payment Request scenarios without background
       | SPI3       |
       | SPA        |
 
-  @51068 @ReimbursementPaymentRequestAddAttachment @bug-94779
+  @51068 @ReimbursementPaymentRequestAddAttachment @buglogged129945
   Scenario Outline: Validate the attachment for Reimbursement Payment Request
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -803,10 +843,10 @@ Feature: Payment Request scenarios without background
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Files" sub tab
-    #steps need to be modify after bug fix 94779
-    When I upload attachment "Announcement_Field_Values.xlsx" of type "Invoice"
-    And I pause execution for "2" seconds
-    Then I see "Invoice" has been added in "Attachment" flex table
+    And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
+    And I upload attachment "Announcement_Field_Values.xlsx" of type "Invoice" from computer
+    When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
+    Then I softly see value "{SavedValue:AttachedFile}" for title "Title" inside table "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
     Examples:
       | User |
       | SPI3 |
@@ -833,27 +873,6 @@ Feature: Payment Request scenarios without background
       | User |
       | SPI3 |
       | SPA  |
-
-  @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal @mahadev
-  Scenario Outline: Verify when Batch is run then User Notified field gets Updated at External Portal
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
-    And I am on "SUBPORTAL" portal
-    And I login to "Grants Portal" app as "<User>" user
-    When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
-    And I navigate to "Terms" sub tab
-    When I expand nested table containing column value "Payment Request"
-    Then I can see "1" record value is checked for field name "TaskCreated__c"
-    Examples:
-      | Award Name                            | Grant Name                            | User |
-      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | SPI3 |
-      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | SPA  |
 
   @55809 @PRReimbursement2ndIsFinalPayment1stPRShouldShowValidMsg @jitendra @smoke
   Scenario Outline: Verify that once final payment request is approved then Created status Payment should show validation message on Submit to Grantor Button.
@@ -910,8 +929,8 @@ Feature: Payment Request scenarios without background
       | {SavedValue:fundingAccount} | 10                    |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                     | Reimbursement  |
-      | {SavedValue:FO Username} | Step 1         |
+      | Name                     | Reimbursement |
+      | {SavedValue:FO Username} | Step 1        |
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -931,16 +950,16 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "$30.00" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
     And I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details contains:
-      | Overview Tab - This Payment Request cannot be submitted to the Grantor because a payment request marked as the Final payment request has been approved |
+      | This Payment Request cannot be submitted to the Grantor. Payment request marked as the Final payment request has been approved |
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @55304 @validateProgressReportSchedulesOnActiveAwardAfterEditingSchedules @mahadev
+  @55304 @validateProgressReportSchedulesOnActiveAwardAfterEditingSchedules @mahadev @buglogged129966
   Scenario Outline: Validate progress report schedules getting updated on active award after editing schedule
     And I activated standalone subaward "Automation Runtime Award" with properties "NO_ADVANCE_PERMISSION"
     And I am on "INTERNAL" portal
-    And I login to "As a publishGrantor" app as "dynamicUser" user
+    And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1007,7 +1026,7 @@ Feature: Payment Request scenarios without background
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
     When I enter "Progress Report Error" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    Then I see the text containing :
+    Then I softly see the following messages in the page details contains:
       | Schedule Start date cannot be before Budget Period Start Date. |
     Examples:
       | Grant Name                            |
@@ -1051,8 +1070,8 @@ Feature: Payment Request scenarios without background
       | {SavedValue:fundingAccount} | 30                    |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
-      | Name                     | Reimbursement  |
-      | {SavedValue:FO Username} | Step 1         |
+      | Name                     | Reimbursement |
+      | {SavedValue:FO Username} | Step 1        |
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab

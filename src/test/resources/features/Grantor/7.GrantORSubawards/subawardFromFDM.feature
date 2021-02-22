@@ -92,7 +92,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 10         | 10             |
-    Given I navigate to "Performance" sub tab
+    And I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
       | Automation Permanent KPI for Regression | 10     |
