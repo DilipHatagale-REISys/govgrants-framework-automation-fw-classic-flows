@@ -13,7 +13,7 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
     When I navigate to "Requests" sub tab
     Then I cannot see top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
 
-  @69176 @auditorCannotViewOverriddenCloseout
+  @69176 @auditorCannotViewOverriddenCloseout @buglogged129814
   Scenario: Validate Auditor cannot have view access to "Submitted for Approval Status" Closeout Record
     Given I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -64,6 +64,11 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
       | Name                      | Reimbursement |
       | {SavedValue:EXE Username} | Step 1        |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---"
     When I "Approve" in the approval decision
     When I click on "Mark As Paid" in the page details
     And I enter "Paid Details" values from "PaymentRequest_Field_Values.xlsx"

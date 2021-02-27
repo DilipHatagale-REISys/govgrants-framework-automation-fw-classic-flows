@@ -103,13 +103,10 @@ public class UsersAndURL implements UsersController {
         String password;
         switch (userLevel.toUpperCase()) {
             case "ADMIN":
-                password = "GoProduct@12345";
-                break;
-            case "IND":
-                password = "GoProduct@12";
+                password = "GoProduct@12345678";
                 break;
             default:
-                password = "SALESFORCE2021";
+                password = "SALESFORCE2022";
         }
         return password;
     }
