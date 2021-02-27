@@ -69,7 +69,7 @@ Feature: Validate all scenarios in Closeout
     And I click on "Acknowledge" in the page details
     Then I softly see status in Progress-bar is "Acknowledged by Subrecipient" and is "green"
 
-  @50979 @50978 @86715 @overrideCloseoutAndSubmitForApproval @smoke
+  @50979 @50978 @86715 @overrideCloseoutAndSubmitForApproval @smoke @buglogged129814
   Scenario Outline: Grant owner overrides the Closeout and is submitted for approval
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -330,6 +330,7 @@ Feature: Validate all scenarios in Closeout
       | Description                 | Required  | Status |
       | Automation test description | Mandatory | Active |
     Then I softly see value "Automation test description" for title "Description" inside table "---closeout:-:closeoutSupportingDocumentChecklist---"
+    And I pause execution for "4" seconds
     When I enter the following values into flex table with id "---closeout:-:closeoutNotesTableId---" by clicking "Add" :
       | Title        | Description      |
       | Notes Record | Automation Notes |
@@ -416,9 +417,9 @@ Feature: Validate all scenarios in Closeout
     And I click on top right button "Add Files" in flex table with id "---closeout:-:closeoutFilesTableId---"
     When I upload file "ParentChild.txt" present in the flex table "---closeout:-:closeoutAddFileTableId---" from library
     Then I softly see value "ParentChild.txt" for title "Title" inside table "---closeout:-:closeoutFilesTableId---"
-    Then I softly can see row level action button "Download" against "data.xlsx" in flex table with id "---closeout:-:closeoutFilesTableId---"
-    Then I softly can see row level action button "View" against "data.xlsx" in flex table with id "---closeout:-:closeoutFilesTableId---"
-    Then I softly can see row level action button "Delete" against "data.xlsx" in flex table with id "---closeout:-:closeoutFilesTableId---"
+    Then I softly can see row level action button "Download" against "ParentChild.xlsx" in flex table with id "---closeout:-:closeoutFilesTableId---"
+    Then I softly can see row level action button "View" against "ParentChild.xlsx" in flex table with id "---closeout:-:closeoutFilesTableId---"
+    Then I softly can see row level action button "Delete" against "ParentChild.xlsx" in flex table with id "---closeout:-:closeoutFilesTableId---"
     #88734
     When I navigate to "Checklist" sub tab
     And I enter value "Yes" into field "fieldChecklistQuestionPick7__c"

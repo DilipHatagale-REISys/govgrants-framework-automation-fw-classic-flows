@@ -482,9 +482,12 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Program Title | Contains | Calfire |
     Then I see "No Records Found" inside flex table with id "---announcement:-:relatedAnnouncementTableId---"
     And I refresh the page
-    And I perform quick search for "Automation Permanent NGO Program" in "---announcement:-:relatedAnnouncementTableId---" panel
+    And I click on top right button "Associate" in flex table with id "---announcement:-:relatedAnnouncementTableId---"
+    And I perform quick search for "Automation Permanent NGO Program" in "---announcement:-:associateForRelated---" panel
+    And I click "Associate" after selection of "Automation Permanent NGO Program" in the table "---announcement:-:associateForRelated---"
     And I click on "View" icon for "Automation Permanent NGO Program" inside flex table with id "---announcement:-:relatedAnnouncementTableId---" without waiting for record
-    Then I softly see field "Non-Federal Program" as "Automation Permanent NGO Program"
+    Then I see the header is "NGO Program" in the page details
+    Then I see the sub-header is "Automation Permanent NGO Program" in the page details
     Then I softly see status in Progress-bar is "Active" and is "green"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel

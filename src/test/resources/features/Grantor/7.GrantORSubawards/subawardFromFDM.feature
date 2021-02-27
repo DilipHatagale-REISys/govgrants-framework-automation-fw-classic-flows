@@ -59,7 +59,7 @@ Feature: Validate all scenarios in the award created from FDM
   @awardApproverSelection
   Scenario: Validate the assignment of Approvers for the award
     When I navigate to "Responsibilities" sub tab
-    And I pause execution for "50" seconds
+    And I pause execution for "5" seconds
     When I enter the following values into flex table with id "---subAwardFromFDM:-:awardApproverTableId---" by clicking "New" :
       | Name                     | Award  |
       | {SavedValue:PM Username} | Step 1 |

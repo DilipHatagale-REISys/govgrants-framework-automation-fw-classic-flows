@@ -130,7 +130,7 @@ Feature: Validate all scenarios in Closeout
     And I get the "EGMS ID"
     #93795
     And I checkout to yopmail with mailid "govgrantsuat@yopmail.com"
-    And I pause execution for "20" seconds
+    And I pause execution for "5" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """

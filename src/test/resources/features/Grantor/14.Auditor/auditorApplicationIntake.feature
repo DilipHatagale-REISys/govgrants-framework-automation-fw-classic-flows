@@ -173,8 +173,8 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I perform quick search for "<Application Name>" in "---auditor:-:applicationTableId---" panel
     When I click on "View" icon for "<Application Name>" inside table
     And I navigate to "Files" sub tab
-    Then I softly cannot see top right button "Add Files" in flex table with id "Attachments"
-    Then I softly cannot see top right button "Add" in flex table with id "Notes"
+    Then I softly cannot see top right button "Add Files" in flex table with id "GrantorApplicationFilesgrid"
+    Then I softly cannot see top right button "Add" in flex table with id "GrantorApplicationNotesgrid"
     Examples:
       | Application Name                                             | User    |
       | {SavedValue:Automation Runtime Announcement for Application} | Auditor |

@@ -4,11 +4,11 @@
 ->Automation Permanent Funding Account1
 
 -Focus Area- 
-->Automation Permanent Focus Area
-->Automation Permanent Focus Area2
+->Automation Permanent Focus Area -- In Active state
+->Automation Permanent Focus Area2 -- In Active state
 
 -Strategic Plan-
-->Automation Permanent Strategic Plan
+->Automation Permanent Strategic Plan   -- In Active state
 Automation Permanent Strategic Goal -> Automation Permanent Objective
 Automation Permanent Strategic Goal2 -> Automation Permanent Objective2
 

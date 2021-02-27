@@ -33,22 +33,26 @@ Feature: Validate all scenarios in Desk Review
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---deskreview:-:deskReviewContactsTableId---"
     Then I softly see that "{SavedValue:EXE Username}" has been added in flextable with Id "---deskreview:-:participantsTableId---"
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     Then I softly see that "{SavedValue:EXE Username}" has been added in flextable with Id "---deskreview:-:approverDeskReviewTableId---"
-    Given I navigate to "Overview" sub tab
+    And I navigate to "Overview" sub tab
     Then I softly see field "Created Date" is not editable
 
   @51014 @51015 @66147 @75859 @73739 @notifySubrecipientPendingTaskDeskReview @smoke @bugged
   Scenario: Notify Subrecipient about the respective POC from the applicant organization will receive a pending task about the Desk Review
   Validate the external user will receive an email notification when the desk review is in notified status
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     And I save the field labeled "EGMS ID" as "DeskReviewId"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -77,10 +81,12 @@ Feature: Validate all scenarios in Desk Review
   @51016 @51017 @conductAddingOutcomeDeskReview
   Scenario: Conduct and Adding outcomes to Desk Review
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---deskreview:-:deskReviewContactsTableId---"
@@ -112,10 +118,12 @@ Feature: Validate all scenarios in Desk Review
   @51018 @51019 @66481 @66468 @66483 @66472 @formFillingSubmittingForApprovalDeskReview @smoke
   Scenario: Filling up of form and Submitting Desk Review for approval in Desk Review | To verify that program review form can be filled successfully in reports and outcomes tab | Validate Notified status and pending task after submitting for approval
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -161,10 +169,12 @@ Feature: Validate all scenarios in Desk Review
   @51020 @66145 @66269 @approvalOfDeskReview
   Scenario: Approval of Desk Review | Validate Non award owner does not have permission to Submit the Desk Review for Approval |Validate whether user is able to view the Completed task once approved under Monitoring Tab
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -228,10 +238,12 @@ Feature: Validate all scenarios in Desk Review
   Scenario: Send Desk Review to Subrecipient, Corrective Actions and Submit to Grantor by Subrecipient |Validate whether pending task is created for Program approver under Home Tab when the award owner submits the Desk Review for approval
   Validate when the desk review is submitted by the Subrecipient to grantor, the internal user recieves an email notification
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -332,10 +344,12 @@ Feature: Validate all scenarios in Desk Review
   Scenario: Validate whether the approver will be able to SendBack to Owner |Validate Pending task is not created to fiscal approver when program approver performs send to the owner.
   Verify when the FO user Send Back to owner during approval process of desk review, the record owner recieves an email notification
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -394,10 +408,12 @@ Feature: Validate all scenarios in Desk Review
   @55280 @55281 @approverForwardUserReceivePendingTaskDeskReview @deepika
   Scenario: Validate when the approver forward Site Visit to other user, the Pending Task will be created to the User
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -451,10 +467,12 @@ Feature: Validate all scenarios in Desk Review
   @55282 @deskReviewWithoutFormFilling @deepika @smoke
   Scenario: User will not be able to submit the Desk Review for approval without completed forms
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -481,10 +499,12 @@ Feature: Validate all scenarios in Desk Review
   @55283 @55284 @viewSendToSubrecipientButtonDeskReview @deepika
   Scenario:  Validate the Infomation send to the subrecipients and user will not be able to submit to Grantor without adding corrective actions to findings
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -558,10 +578,12 @@ Feature: Validate all scenarios in Desk Review
   @55365 @55363 @SendBackToOnwerDeskReviewUnderMonitoringTab @deepika
   Scenario: Validate whether the approver sendback to owner, the record owner will get a pending task
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -614,10 +636,12 @@ Feature: Validate all scenarios in Desk Review
   @55366 @detailsOnDeskReviewBeforeNotification @deepika
   Scenario: Verify user is not able to delete desk review record if it is not in Created state (Negative TC)
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -637,10 +661,12 @@ Feature: Validate all scenarios in Desk Review
   @55369 @submittedToGrantorOptionallySendBackToSubrecipientDeskReview @deepika
   Scenario: Verify other than record owner can FO user would be able to conduct created desk review
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -658,10 +684,12 @@ Feature: Validate all scenarios in Desk Review
   @55368 @55801 @55804 @reportsAndOutcomesEditAccessDeskReview @deepika
   Scenario: User will be able to view the Notify and conduct button and upon conduct, Reports And Outcomes tab are editable to the internal user for an award level desk review
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---deskreview:-:deskReviewContactsTableId---"
@@ -701,10 +729,12 @@ Feature: Validate all scenarios in Desk Review
   @55866 @55874 @subrecipientCannotSeeReportAndOutcomesWhenInNotifiedStatusDR @deepika
   Scenario: Recipients will not be able to create / edit the Outcomes and the Applicant is not able to view the report or outcomes while in the Notified status.
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -723,10 +753,12 @@ Feature: Validate all scenarios in Desk Review
   @56017 @62112 @peerReviewIntiationfFDeskReview @deepika @smoke
   Scenario: Validate whether user is to able to initiate the peer review on their process for Desk Review
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -767,10 +799,12 @@ Feature: Validate all scenarios in Desk Review
   @56015 @sendBacktoOwnerReceivePendingTaskdv @deepika @smoke
   Scenario: Validate the supporting document checklist submitted by the subrecipient and record sent back to Recipients when outcomes are not properly addressed and recipients receive a pending task
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -824,10 +858,12 @@ Feature: Validate all scenarios in Desk Review
   @56040 @56367 @submittingForApprovalButtonDeskReview @deepika
   Scenario: Validate whether the  User will be able to view the Submit for Approval button and approver will be able to view the Pending task under Monitoring
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -868,10 +904,12 @@ Feature: Validate all scenarios in Desk Review
   @61053 @FieldHistoryUpdatePostAwardLevelDeskReviewIsSendBackToOwnerByProgramApprover @Keerti
   Scenario: To Validate field history update post Award level Desk Review is send back to owner by program approver.
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -916,10 +954,12 @@ Feature: Validate all scenarios in Desk Review
   @61054 @FieldHistoryUpdatePostAwardLevelDeskReviewIsSendBackToOwnerByProgramApprover @Keerti
   Scenario: To Validate field history update post Award level Desk Review is send back to owner by program approver.
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -971,10 +1011,12 @@ Feature: Validate all scenarios in Desk Review
   Scenario: Validate whether record Owner is able to view the Accept and Close Button and User view the Snapshot after Desk Review is Submitted for Approval status also after Accepted and Closed |Subrecipient can view Closed Desk Review
   Validate whether the approver receives an email notification to approve the desk review| Validate whether external user will receive an email notification when desk review is accepted and closed.
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -1114,10 +1156,12 @@ Feature: Validate all scenarios in Desk Review
   @65245 @historyOfDeskReviewsendbacktoOwner @deepika
   Scenario: Validate History Field is getting Updated at Award owner End when Desk Review status is Submitted to Grantor.
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
@@ -1161,10 +1205,12 @@ Feature: Validate all scenarios in Desk Review
   @65246 @69407 @corerctiveActionsDueDateDeskReview @deepika
   Scenario: Validate Desk Review Submit to Grantor and Corrective Actions By Subrecipient
     Given I navigate to "Responsibilities" sub tab
-    And I edit the following rows inline in flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "Edit" :
-      | Role             | Name                      | Description                 |
-      | Program Approver | {SavedValue:EXE Username} | Automation Test Description |
-      | Fiscal Approver  | {SavedValue:FO Username}  | Automation Test Description |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
     When I get the "EGMS ID"
     Given I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
