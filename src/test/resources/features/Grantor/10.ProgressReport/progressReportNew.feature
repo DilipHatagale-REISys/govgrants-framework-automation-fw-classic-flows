@@ -281,7 +281,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @61450 @61449 @62251 @validateApprovedPRAfterBPCAmendmentIsCarryForwarded @jitendra
+  @61450 @61449 @62251 @validateApprovedPRAfterBPCAmendmentIsCarryForwarded @jitendra @buglogged137546
   Scenario Outline: Validate Approved Progress reports is not carried forward after BPC Amendment
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "SUBPORTAL" portal
@@ -333,7 +333,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I perform quick search for "<Grant Name>" in "---progressReport:-:activeGrantsTableId---" panel
     When I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:activeGrantsTableId---" without waiting for record
     And I navigate to "Subawards" sub tab
-    When I click on "View" icon for "<Award Name>" inside flex table with id "---progressreport:-:RecipientSubAwardTableId---" without waiting for record
+    When I click on "View" icon for "<Award Name>" inside flex table with id "---progressreport:-:subawardsTableId---" without waiting for record
     And I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"

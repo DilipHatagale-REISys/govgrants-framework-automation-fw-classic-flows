@@ -58,14 +58,14 @@ Feature: Validate all scenarios in the Site Visit
     And I save the field labeled "EGMS ID" as "SiteVisitId"
     Then I softly see field "Status" as "Notified"
     Then I softly see status in Progress-bar is "Notified" and is "green"
-    And I checkout to yopmail with mailid "grantorinternalpm@yopmail.com"
-    And I pause execution for "180" seconds
-    Then I refresh the page
-    And I see the mail subject is as follows :
+    And I checkout to yopmail with mailid "automationspi3@yopmail.com"
+    And I pause execution for "3" seconds
+    And I refresh the page
+    Then I see the mail subject is as follows :
       """
       Sandbox: Notification: Site Visit for {SavedValue:SiteVisitId} has been scheduled
       """
-    Then I refresh the page
+    And I refresh the page
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Monitoring" tab

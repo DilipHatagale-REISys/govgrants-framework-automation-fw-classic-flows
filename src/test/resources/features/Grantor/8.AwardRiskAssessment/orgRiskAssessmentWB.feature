@@ -43,6 +43,7 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
+    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
@@ -93,8 +94,8 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
       | {SavedValue:FO Username} | Step 3 |
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name       | Project Role             | Is Key Personnel |
-      | Patrick sa | Project Director/Manager | Checked          |
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     And I refresh the page
     When I get the "EGMS ID"
     And I click on "Send to Subrecipient" in the page details
@@ -112,6 +113,8 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I navigate to "Terms" sub tab
+    When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -119,13 +122,13 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -149,8 +152,8 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     Then I see the following messages in the page details contains:
       | Your Organization does not have an active Risk Assessment. Create and activate a Risk Assessment as the Subaward cannot be accepted without an active Risk Assessment. |
     Examples:
-      | Award Name                           | Grant Name                           |
-      | Automation Award for Risk Assessment | Automation Award for Risk Assessment |
+      | Award Name                                                | Grant Name                                                |
+      | {SavedValue:Automation Runtime Award for Risk Assessment} | {SavedValue:Automation Runtime Award for Risk Assessment} |
 
   @64385 @scopeofWorkAmendmentWhenORAIsExpired
   Scenario: Validate when Org Risk Assessment is expired and user is able to activate newly created award post performing amendment of type - Scope Of Work

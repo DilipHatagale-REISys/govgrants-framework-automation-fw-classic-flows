@@ -612,12 +612,27 @@ public class GrantorPayloads {
                 return quarterlyProgressReportAward(json);
             case "PROGRESS_REPORT_SEMI_ANNUALLY":
                 return semiAnnuallyProgressReportAward(json);
+            case "NO_OBJECTIVE":
+                return noObjectives(json);
             case "USER":
                 return createStandaloneAwardUsingUser(json, user);
             default:
                 return json;
         }
     }
+
+    private JsonObject noObjectives(JsonObject json) {
+        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+
+        grant.addProperty("IsGoalsRequired","No");
+        grant.addProperty("IsBuildUpFunctionality","Yes");
+        grant.addProperty("WBSRequired","No");
+        newA.add(grant);
+        json.add("Grant",newA);
+        return json;
+    }
+
     private JsonObject createStandaloneAwardUsingUser(JsonObject json, String user) {
         JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
         JsonArray newA = new JsonArray();

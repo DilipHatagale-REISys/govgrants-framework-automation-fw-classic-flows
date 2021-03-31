@@ -12,7 +12,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---"
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -361,6 +361,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
+    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button

@@ -87,11 +87,6 @@ public class InternalOrganizatioSteps {
         internalOrganizationPage.assertTakeSnapshotFunctionalityWorkingCorrectly(text);
     }
 
-    @Then("^I (see|softly see) field \"([^\"]*)\" contains todays date (withTime|withoutTime)$")
-    public void iSeeFieldContainsTodayDate(String usage, String savedValue, String usage2) {
-        internalOrganizationPage.assertCurrentDateWithTime(usage, savedValue, usage2.contains("without"));
-    }
-
     @Then("^I see table is refreshing$")
     public void assertInternalOrganizationTableRefresh() {
         internalOrganizationPage.asserTableRefreshOnRefreshOptionClick();
@@ -190,11 +185,6 @@ public class InternalOrganizatioSteps {
     @Then("^I (softly see|see) \"([^\"]*)\" value inside tableid \"([^\"]*)\" as \"([^\"]*)\"$")
     public void iSoftlySeeTotalRecordValueInsideTableidAs(String usage, String text, String tableId, String fieldKey) {
         internalOrganizationPage.assertValuesOfTotalRecordField(text, tableId, fieldKey, usage.contains("softly"));
-    }
-
-    @Then("^I (softly see|softly do not see) \"([^\"]*)\" inside auto search result$")
-    public void assertItemInsideAutoSearch(String usage, String itemName) {
-        internalOrganizationPage.assertSpecificItemsInsideAutoSearchResult(usage, itemName);
     }
 
     @Then("^I see Task Creation Date with \"([^\"]*)\" and Task Completion Date with \"([^\"]*)\" inside flex table \"([^\"]*)\"$")

@@ -33,7 +33,8 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Fiscal" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
-    Then I see "Fiscal" text enter in field "MonitoringType__c"
+    When I click on "Save" in the page details
+    Then I softly see field "Monitoring Type" as "Fiscal"
 
   @54295 @monitoringTypeProgramDR @deepika
   Scenario: Validate the Monitoring type 'Program' for Organizational Desk Review
@@ -217,11 +218,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---orgLevelDeskReview:-:homePhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:homePhasePendingTasks---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
@@ -242,6 +238,10 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     When I navigate to "Responsibilities" sub tab
@@ -283,12 +283,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---orgLevelDeskReview:-:homePhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:homePhasePendingTasks---"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
@@ -308,6 +302,10 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -379,12 +377,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---orgLevelDeskReview:-:homePhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:homePhasePendingTasks---"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
@@ -404,6 +396,10 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -480,12 +476,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---orgLevelDeskReview:-:homePhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:homePhasePendingTasks---"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
@@ -505,6 +495,10 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
     Then I softly can see top right button "Submit for Approval" in page detail
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -549,12 +543,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---orgLevelDeskReview:-:homePhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:homePhasePendingTasks---"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
@@ -574,6 +562,10 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -631,11 +623,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---orgLevelDeskReview:-:homePhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:homePhasePendingTasks---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
@@ -656,6 +643,10 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -773,7 +764,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Then I softly cannot see "Reports and Outcomes" sub tab at view detail page
     Then I softly see field "Status" as "Notified"
     And I checkout to yopmail with mailid "automation.SPI3@yopmail.com"
-    And I pause execution for "120" seconds
+    And I pause execution for "5" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -902,11 +893,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---orgLevelDeskReview:-:homePhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:homePhasePendingTasks---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
@@ -927,6 +913,10 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
     When I click on "Submit for Approval" in the page details
     And I click on "Menu" in the page details
     And I select "Take Snapshot" from dropdown
@@ -959,11 +949,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---orgLevelDeskReview:-:homePhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:homePhasePendingTasks---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
@@ -984,6 +969,10 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1041,11 +1030,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---orgLevelDeskReview:-:homePhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:homePhasePendingTasks---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
@@ -1066,6 +1050,10 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
     Then I softly can see top right button "Submit for Approval" in page detail
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -1106,11 +1094,6 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Home" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---orgLevelDeskReview:-:homePhasePendingTasks---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:homePhasePendingTasks---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
@@ -1131,6 +1114,10 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Finding     | Automation Description | Finding     |
       | Automation Concern     | Automation Description | Concern     |
       | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab

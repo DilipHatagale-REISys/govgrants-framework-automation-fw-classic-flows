@@ -85,7 +85,7 @@ Feature: Amendment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:recipientAwardsTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -2553,6 +2553,7 @@ Feature: Amendment Request scenarios without background
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
+    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
@@ -4836,6 +4837,7 @@ Feature: Amendment Request scenarios without background
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
+    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button

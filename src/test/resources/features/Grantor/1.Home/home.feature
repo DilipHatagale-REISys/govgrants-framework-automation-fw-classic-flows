@@ -47,7 +47,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @56717 @56716 @56718 @internalContactsViewCreateEdit @smoke @buglogged101030
+  @56717 @56716 @56718 @internalContactsViewCreateEdit @smoke
   Scenario Outline: Validate that Internal contacts are accessible across agencies and can be create, Edit and view access to Contacts by any Internal users
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -225,7 +225,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56719 @56734 @subrecipientContactsCreateEdit @smoke @buglogged101030
+  @56719 @56734 @subrecipientContactsCreateEdit @smoke
   Scenario Outline: Verifying if the Internal Users has create and Edit access to Subrecipient Contact
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab

@@ -92,7 +92,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
       | User    |
       | AUDITOR |
 
-  @69126 @auditorCanViewCreatedContact @buglogged101030
+  @69126 @auditorCanViewCreatedContact
   Scenario: Validate Auditor should have view / read  only access to record.
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Home" tab
@@ -147,7 +147,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedToMe---"
     Then I softly see "No Records Found" inside flex table with id "---home:-:completedAssignedByMe---"
 
-  @69142 @auditorCannotCreateEditSubrecipientContact @smoke @buglogged101030
+  @69142 @auditorCannotCreateEditSubrecipientContact @smoke
   Scenario: Validate Auditor cannot Create/Edit any subrecipient contact user
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Home" tab
@@ -169,7 +169,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:subrecipientcontactTableId---" panel
     Then I softly cannot see row level action button "Edit" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:subrecipientcontactTableId---"
 
-  @69143 @auditorViewSubrecipientContacts @buglogged101030
+  @69143 @auditorViewSubrecipientContacts
   Scenario: Validate Auditor should have view / read  only access to subrecipient contacts
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Home" tab

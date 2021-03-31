@@ -378,7 +378,7 @@ Feature: Validate all scenarios in Payment Request
   @53841 @CreationOfAdvancePaymentRequest @mahadev
   Scenario: Advance Payment Request creation
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -388,7 +388,7 @@ Feature: Validate all scenarios in Payment Request
   @53844 @53841 @CreateAndEditAdvancePaymentRequestBySPIUser @mahadev
   Scenario: edition of advance payment request
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
@@ -401,7 +401,7 @@ Feature: Validate all scenarios in Payment Request
   @53969 @advancePaymentRequestSubmitToGrantorBySPI @mahadev
   Scenario: verify that advance payment request should be able to submit by SPI user
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -412,6 +412,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -429,7 +430,7 @@ Feature: Validate all scenarios in Payment Request
     When I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -442,7 +443,7 @@ Feature: Validate all scenarios in Payment Request
   @53980 @captureConfirmationMessageAfterApprovingAdvancePR @mahadev
   Scenario: Capture confirmation message after approving advance payment request
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -454,6 +455,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -486,7 +488,7 @@ Feature: Validate all scenarios in Payment Request
   @53981 @sendBackAdvancePaymentRequest @mahadev
   Scenario: Validate confirmation message after sending back of advance payment request to owner
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -498,6 +500,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -532,7 +535,7 @@ Feature: Validate all scenarios in Payment Request
   @53982 @forwardAdvancePaymentRequest @mahadev
   Scenario: validate approver can forward advance payment request
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -544,6 +547,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -578,7 +582,7 @@ Feature: Validate all scenarios in Payment Request
   @53983 @rejectAdvancePaymentRequest @mahadev
   Scenario: validate Rejection of an advance payment request by approver
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -590,6 +594,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -625,7 +630,7 @@ Feature: Validate all scenarios in Payment Request
   @53985 @53984 @advancePaymentRequestShouldNotReceiveToEXE/PM  @mahadev
   Scenario: Advance Payment Request should not receive to Program Approver/Executive Approver
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -637,6 +642,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -657,7 +663,7 @@ Feature: Validate all scenarios in Payment Request
   @54175 @54177 @validateErrorOnEnteringAdvanceRequestedAmountGreaterThanBalance @mahadev
   Scenario: Advance Payment Request should not receive to Program Approver
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -678,7 +684,7 @@ Feature: Validate all scenarios in Payment Request
   @38839 @54585 @approvalOfAdvancePaymentRequestByForwardedUser @mahadev
   Scenario: Advance Payment request should not be editable after submitting to grantor | Validate advance payment request approval by forwarded user
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -690,6 +696,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -786,7 +793,7 @@ Feature: Validate all scenarios in Payment Request
   @54589 @validatePaidButtonNotDisplayedAfterRejectingAdvancePR @mahadev
   Scenario: Validate the paid button not displayed on advance Payment request after rejection
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -798,6 +805,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -862,7 +870,7 @@ Feature: Validate all scenarios in Payment Request
   @38743 @validateFiscalUserCanAddAdvanceRequestActionAdvancePR @mahadev
   Scenario: validate Validate the paid button not displayed on advance Payment request after rejection
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -874,6 +882,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -899,7 +908,7 @@ Feature: Validate all scenarios in Payment Request
   @54406 @uploadAttachmentOfTypeInvoiceAdvancePR @mahadev
   Scenario: verify that uploaded document will reflect on  attachment section of type Invoice for advance payment request
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -913,7 +922,7 @@ Feature: Validate all scenarios in Payment Request
   @54409 @uploadAttachmentOfTypeInvoiceAdvancePR1 @mahadev
   Scenario: verify that uploaded document will reflect on  attachment section of type Invoice for advance payment request
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -927,7 +936,7 @@ Feature: Validate all scenarios in Payment Request
   @54412 @uploadAttachmentFromWorkspaceAdvancePR @mahadev
   Scenario: verify that user can uploaded document from workspace for Advance Payment Request
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -955,7 +964,7 @@ Feature: Validate all scenarios in Payment Request
   @54685 @validateProgramIncomeTrackingFieldOnAdvancePaymentRequestGrantorSide @mahadev
   Scenario: Validate Program Income Tracking field on payment request at grantor side gets updated after submitting payment request to grantor
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -967,6 +976,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -1041,7 +1051,7 @@ Feature: Validate all scenarios in Payment Request
   @54741 @validateFOUserNotAbleToDisallowAmountInAdvancePR @mahadev
   Scenario: Validate FO User not able to disallow amount in Advance Payment Request
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -1053,6 +1063,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -1290,7 +1301,7 @@ Feature: Validate all scenarios in Payment Request
   @54367 @validateAdvancePRSendBackToSubReceipient @mahadev
   Scenario: Validate task is getting created for SPI user after send back advance payment request to subreceipient
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -1302,6 +1313,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -1324,7 +1336,7 @@ Feature: Validate all scenarios in Payment Request
   @54594 @validateThatUserCanDeleteOnlyCreatedStatusPR @mahadev
   Scenario: Validate task is getting created for SPI user after send back advance payment request to subreceipient
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
@@ -1341,7 +1353,7 @@ Feature: Validate all scenarios in Payment Request
   @54647 @validatePendingTaskAdvancePRFOUser @mahadev
   Scenario: Validate task is getting created for fiscal user after submitting advance payment request
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -1353,6 +1365,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -1426,7 +1439,7 @@ Feature: Validate all scenarios in Payment Request
   @54649 @pendingTaskForAdvancePaymentRequestAfterSubmitForApproval @jitendra
   Scenario: Verify that on submitting for approval, user is able to check pending task for Payment Request (Advance)
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -1438,6 +1451,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -1468,7 +1482,7 @@ Feature: Validate all scenarios in Payment Request
   @55687 @verifyOnAdvancePaymentRequestUserCannotSeeFinalPaymentRequestField @mahadev
   Scenario: Verify that on Advance payment request user can not see final payment request field
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -1548,7 +1562,7 @@ Feature: Validate all scenarios in Payment Request
   @55626 @advancePaymentRequestSubmitToGrantorBySPIEmailNotification @jitendra
   Scenario: Verify that on submit to grantor , user is able to check  email notifications Payment Request (Advance)
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -1560,6 +1574,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -1602,7 +1617,7 @@ Feature: Validate all scenarios in Payment Request
   @55630 @validateAdvancePRSendBackToSubReceipientEmailNotification @jitendra
   Scenario: Verify that on Send Back to subrecipient , user is able to check email(Advance)
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -1615,6 +1630,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -1638,7 +1654,7 @@ Feature: Validate all scenarios in Payment Request
   @55628 @approvalOfAdvancePaymentRequestEmailNotification @jitendra
   Scenario: Verify that on submitting for approval , user is able to check email (Advance)
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -1651,6 +1667,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -1782,7 +1799,7 @@ Feature: Validate all scenarios in Payment Request
   @55635 @forwardedEmailNotificationAdvancePR @jitendra
   Scenario: Verify that on Forward , user will receive email notifications for Payment Request (Advance)
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -1796,6 +1813,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -1833,7 +1851,7 @@ Feature: Validate all scenarios in Payment Request
   @55632 @approvalOfPREmailNotificationAdvance @jitendra
   Scenario: Verify that after approval of advance PR , user can check email notifications for Advance Payment request.
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -1846,6 +1864,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -1883,7 +1902,7 @@ Feature: Validate all scenarios in Payment Request
   @55634 @sendToOwnerEmailNotificationAdvance @jitendra
   Scenario: Verify that on Send to Owner , user is able to check  email notifications Payment Request (Advance)
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -1896,6 +1915,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -2090,7 +2110,7 @@ Feature: Validate all scenarios in Payment Request
   @55633 @rejectEmailNotificationAdvance @jitendra
   Scenario: Verify that on Reject, user is able to check  email notifications Payment Request (Advance)
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -2103,6 +2123,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -2141,7 +2162,7 @@ Feature: Validate all scenarios in Payment Request
   @55404 @advancePRSentBackToOwner @jitendra @buglogged101132
   Scenario: Verify that Payment Approval can send back Payment request to Owner (Advance)
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -2153,6 +2174,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     And I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -2189,7 +2211,7 @@ Feature: Validate all scenarios in Payment Request
   @57516 @advancePRErrorMsgAfterSubmitToApproval @jitendra
   Scenario: Verify If Payment Approval is not selected by FO user it should show validation error message.(Advance Payment Request)
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -2201,6 +2223,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     And I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -2248,7 +2271,7 @@ Feature: Validate all scenarios in Payment Request
   @55405 @advanceMultiplePRErrorMsgOnSecondPR @jitendra
   Scenario Outline:Verify if Multiple Payment are initiated then it will show validation error with respect to sub-award
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -2260,6 +2283,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 20                            |
     And I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -2270,7 +2294,7 @@ Feature: Validate all scenarios in Payment Request
     And I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request2" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -2285,6 +2309,7 @@ Feature: Validate all scenarios in Payment Request
       | Equipment       | 10                            |
     And I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -2333,7 +2358,7 @@ Feature: Validate all scenarios in Payment Request
   @38836 @validateForwardedAdvancePRShownToAssignedUser @mahadev
   Scenario: Validate the Payment Request forwarded is shown to the assigned user
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -2346,6 +2371,7 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button

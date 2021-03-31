@@ -1441,13 +1441,14 @@ Feature: Validate all scenarios in the Amendment Request
     When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -1525,7 +1526,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:recipientAwardsTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "PaymentRequestEdition" values from "AmendmentRequest_Field_Values.xlsx"
@@ -1537,6 +1538,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -1867,7 +1869,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---amendment:-:recipientAwardsTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "PaymentRequestEdition" values from "AmendmentRequest_Field_Values.xlsx"
@@ -2050,13 +2052,14 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "PaymentRequestEdition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -2214,7 +2217,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "Activated" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "PaymentRequestEdition" values from "AmendmentRequest_Field_Values.xlsx"
@@ -2222,6 +2225,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button

@@ -32,7 +32,7 @@ Feature: Payment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -59,7 +59,7 @@ Feature: Payment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -82,7 +82,7 @@ Feature: Payment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
@@ -289,7 +289,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
@@ -312,7 +312,7 @@ Feature: Payment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -320,6 +320,7 @@ Feature: Payment Request scenarios without background
     And I navigate to "Files" sub tab
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -370,7 +371,7 @@ Feature: Payment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -381,6 +382,7 @@ Feature: Payment Request scenarios without background
       | Construction    | 10                            |
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -405,7 +407,7 @@ Feature: Payment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -416,6 +418,7 @@ Feature: Payment Request scenarios without background
       | Construction    | 10                            |
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -450,7 +453,7 @@ Feature: Payment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -473,7 +476,7 @@ Feature: Payment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -485,6 +488,7 @@ Feature: Payment Request scenarios without background
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -539,7 +543,7 @@ Feature: Payment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -551,6 +555,7 @@ Feature: Payment Request scenarios without background
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
@@ -729,7 +734,7 @@ Feature: Payment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -757,7 +762,7 @@ Feature: Payment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
     When I enter value "Automation Runtime Payment Request" into field "Title__c"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
@@ -768,6 +773,7 @@ Feature: Payment Request scenarios without background
       | Construction    | 10                            |
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
     And I click modal button "Save"
     When I close "Upload Document" modal by clicking the top right x button
