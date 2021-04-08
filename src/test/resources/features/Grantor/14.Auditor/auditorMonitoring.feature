@@ -2,7 +2,7 @@
 Feature: Validate all scenarios for Auditor Profile in Monitoring module
 
   @69178 @auditorPaymentRequest
-  Scenario Outline: Validate Auditor should have view / read  only access to advances Paid Payment Request under Monitoring Tab
+  Scenario: Validate Auditor should have view / read  only access to advances Paid Payment Request under Monitoring Tab
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
@@ -23,12 +23,9 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I click toggle button to select "Advances - All"
     When I perform quick search for "Created" in "---auditor:-:paymentrequestAdvancesTableId---" panel
     Then I see values "Created" and "Advance" inside table
-    Examples:
-      | User    |
-      | AUDITOR |
 
   @69179 @69942 @auditorOrgRiskAssessment @smoke
-  Scenario Outline: Validate Auditor should have view / read  only access to Organizational Risk Assessment |Validate Auditor should not be  able to Provide revision access
+  Scenario: Validate Auditor should have view / read  only access to Organizational Risk Assessment |Validate Auditor should not be  able to Provide revision access
     Given I delete the record "Automation Permanent Organization for Risk Assessment" from the object "ORGANIZATION RISKASSESSMENT"
     When I create a risk assessment record for organization "Automation Permanent Organization for Risk Assessment"
     Given I am on "SUBPORTAL" portal
@@ -58,9 +55,6 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I click on "View" icon for "Active" inside flex table with id "---auditor:-:orgRiskAssessmentTableId---"
     Then I softly see status in Progress-bar is "Active" and is "green"
     Then I softly cannot see top right button "Provide Access" in flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    Examples:
-      | User    |
-      | AUDITOR |
 
   @69180 @auditorMonitoringSchedule
   Scenario Outline: Validate Auditor should have view Monitoring Scheduled Activities of award

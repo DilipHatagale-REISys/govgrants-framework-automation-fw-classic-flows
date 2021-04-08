@@ -217,8 +217,10 @@ public class GrantorPayloads {
         JsonObject awardServiceArea = new JsonObject();
         JsonArray awardServiceAreaArray = new JsonArray();
         awardServiceArea.addProperty("ServiceArea",map.get("Automation Permanent Focus Area"));
-        awardServiceArea.add("GATStartDate",JsonNull.INSTANCE);
-        awardServiceArea.add("GATEndDate",JsonNull.INSTANCE);
+        awardServiceArea.addProperty("GATStartDate", I.amPerforming()
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(50, DateTimeFormatter.ofPattern("yyyy-MM-dd")) );
+        awardServiceArea.addProperty("GATEndDate",I.amPerforming()
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         awardServiceAreaArray.add(awardServiceArea);
         parent.add("AwardServiceArea",awardServiceAreaArray);
 
@@ -256,7 +258,7 @@ public class GrantorPayloads {
         JsonObject paymentRequest = new JsonObject();
         paymentRequest.addProperty("SubmissionTitle","Payment Request Schedule");
         paymentRequest.addProperty("CalReportingStartDate", I.amPerforming()
-                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(50, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         paymentRequest.addProperty("CalReportingEndDate", I.amPerforming()
                 .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         paymentRequest.addProperty("Frequency","Bi-Monthly");
@@ -268,7 +270,7 @@ public class GrantorPayloads {
         JsonObject progressReport = new JsonObject();
         progressReport.addProperty("SubmissionTitle","Progress Report Schedule");
         progressReport.addProperty("CalReportingStartDate", I.amPerforming()
-                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(0, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(50, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         progressReport.addProperty("CalReportingEndDate", I.amPerforming()
                 .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(150, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         progressReport.addProperty("Frequency","Bi-Monthly");

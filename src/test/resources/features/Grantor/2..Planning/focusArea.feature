@@ -23,7 +23,7 @@ Feature: Validate all scenarios in Focus Area
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @50961 @addAttachmentToFocusArea
+  @50961 @addAttachmentToFocusArea @buglogged139175
   Scenario Outline: Addition of Attachment to Focus Area by User - Admin/EXE/PM
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Planning" tab

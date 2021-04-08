@@ -9,7 +9,7 @@ Feature: Validate all scenarios for program
     And I click toggle button to select "Internal Programs - Draft"
     And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
     When I enter "Creation" values from "Program_Field_Values.xlsx"
-    When I enter value "Department of Health" into field "fieldAccount__c"
+    When I enter value "Department of Health" into field "Account__cparentCustomLookup"
     And I click modal button "Save and Continue"
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "ProgramEGMSID"
@@ -19,7 +19,7 @@ Feature: Validate all scenarios for program
     And I click toggle button to select "Internal Programs - Draft"
     And I perform quick search for "{SavedValue:Automation Runtime Internal Program}"
     And I click on "Edit" icon for "{SavedValue:Automation Runtime Internal Program}" inside flex table with id "---program:-:programsTableId---" without waiting for record
-    When I enter value "Children’s Health Insurance Program" into field "fieldAccount__c"
+    When I enter value "Children’s Health Insurance Program" into field "Account__cparentCustomLookup"
     And I click on "Save" in the page details
     Then I softly see field "Internal Organization" as "Children’s Health Insurance Program"
 
@@ -30,7 +30,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Strategic Plans" content inside "Setup" subheader on left panel
     Then I softly cannot see top right button "New" in flex table with id "---strategicplan:-:StrategicPlansTableId---"
 
-  @111272 @111182 @111191 @VerifyActivationOfNGOProgram @monu
+  @111272 @111182 @111191 @VerifyActivationOfNGOProgram @monu @buglogged138933
   Scenario Outline: Verifying record owner is able to activate NGO program
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -117,7 +117,7 @@ Feature: Validate all scenarios for program
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
     Then I cannot see top right button "New" in flex table with id "---program:-:ExternalNGOProgramTableId---"
 
-  @111167 @VerifyDeletionOfAssociatedContactAtNGOProgram @monu @wip
+  @111167 @VerifyDeletionOfAssociatedContactAtNGOProgram @monu @wip @buglogged138933
   Scenario: Verifying user is able to delete associated contacts from NGO program
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -137,7 +137,7 @@ Feature: Validate all scenarios for program
     And I click on "Remove" icon for "NGO Contact" inside flex table with id "---program:-:ExternalNGOProgramContactTableId---"
     Then I softly see "Record deleted successfully." inside flex table with id "---program:-:ExternalNGOProgramContactTableId---"
 
-  @111264 @111183 @VerifyTaskCreationForNGOProgramActivation @monu
+  @111264 @111183 @VerifyTaskCreationForNGOProgramActivation @monu @buglogged138933
   Scenario: Verifying record owner should receive generated task inside pending for Program activation after approval of program
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -175,7 +175,7 @@ Feature: Validate all scenarios for program
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     Then I softly see value "Activate NGO Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:pendingTaskTableId---"
 
-  @111226 @VerifyProgramNotEditableAfterSubmission @monu
+  @111226 @VerifyProgramNotEditableAfterSubmission @monu @buglogged138933
   Scenario Outline: Verifying NGO Program record is not editable once program is submitted for approval
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -210,7 +210,7 @@ Feature: Validate all scenarios for program
       | Program Name                                     |
       | {SavedValue:Automation Runtime Internal Program} |
 
-  @111416 @VerifyRejectionOfNGOProgram @monu
+  @111416 @VerifyRejectionOfNGOProgram @monu @buglogged138933
   Scenario: Verifying Executive approver is able to reject NGO Program
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -245,7 +245,7 @@ Feature: Validate all scenarios for program
     Then I can see the message "Successfully disapproved" in the approval decision
     Then I softly see status in Progress-bar is "Rejected" and is "Red"
 
-  @111514 @VerifyForwardOfNGOProgram @monu
+  @111514 @VerifyForwardOfNGOProgram @monu @buglogged138933
   Scenario: Verifying user is able to forward NGO Program to another user during Approval process
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -277,7 +277,7 @@ Feature: Validate all scenarios for program
     And I softly see the following messages in the page details contains:
       | Successfully Re-Assigned |
 
-  @111515 @VerifySendBackFunctionalityForNGOProgram @monu
+  @111515 @VerifySendBackFunctionalityForNGOProgram @monu @buglogged138933
   Scenario: Verifying user is able to send back NGO Program to owner
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab

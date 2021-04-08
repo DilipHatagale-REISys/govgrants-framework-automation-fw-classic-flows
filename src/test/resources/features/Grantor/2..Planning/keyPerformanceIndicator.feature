@@ -34,7 +34,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
       | ADMIN |
       | EXE   |
 
-  @51026 @addAttachmentToKPI
+  @51026 @addAttachmentToKPI @buglogged139175
   Scenario Outline: Addition of Attachment to KPI
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
@@ -212,7 +212,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"
-    When I enter value "Execution Strategic Goal" into field "fieldStrategyTitle__c"
+    When I enter in modal value "Execution Strategic Goal" into field "fieldStrategyTitle__c"
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"

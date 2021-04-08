@@ -36,7 +36,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
-    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
