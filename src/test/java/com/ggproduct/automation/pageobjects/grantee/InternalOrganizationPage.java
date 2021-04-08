@@ -134,59 +134,6 @@ public class InternalOrganizationPage extends GranteeProjectManager {
     }
 
     /**
-     * assert current date on leads detail page for application due date
-     */
-    public void assertCurrentDateWithTime(String usage, String savedValue, boolean timeCheck) {
-        if (usage.contains("see")) {
-            Assert.assertTrue(assertLastModifiedDateAsTodaysDateWithTimeAndWithoutTime(savedValue, timeCheck));
-        } else if (usage.contains("softly see")) {
-            I.amPerforming().assertionsTo().assertThat(assertLastModifiedDateAsTodaysDateWithTimeAndWithoutTime(savedValue, timeCheck)).isTrue();
-        }
-    }
-
-    /**
-     * assert true if last modified date is showing current date on contact edit
-     */
-    public boolean assertLastModifiedDateAsTodaysDateWithTimeAndWithoutTime(String savedValue, boolean timeCheck) {
-        boolean result = false;
-        if (!timeCheck) {
-            String cdate = I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat((DateTimeFormatter.ofPattern("MM/dd/yyyy h:mm a")));
-            String[] currentsplit = (cdate.split(":", 2));
-            String[] arrCSplit = currentsplit[1].split("\\s");
-            int date = Integer.parseInt(arrCSplit[0]) + 5;
-            System.out.println("This is Date:-" + date);
-            for (int i = 10; i > 0; i--) {
-                date = date - 1;
-                String ddate;
-                if (date <= 9) {
-                    String sdate = "0" + String.valueOf(date);
-                    ddate = currentsplit[0] + ":" + sdate + " " + arrCSplit[1];
-                } else {
-                    ddate = currentsplit[0] + ":" + date + " " + arrCSplit[1];
-                }
-
-                System.out.println("This is the the ddate:-" + ddate + " Compare with" + savedValue);
-                if (ddate.equals(savedValue)) {
-                    result = true;
-                    System.out.println("True Condition");
-                    break;
-                } else {
-                    System.out.println("False Condition");
-                    result = false;
-                }
-            }
-        } else if (timeCheck) {
-            String dateWithoutTime = I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
-            if (dateWithoutTime.equals(savedValue)) {
-                result = true;
-                System.out.println("Date without time coming with True Condition");
-            }
-        }
-        Assert.assertTrue(result);
-        return result;
-    }
-
-    /**
      * it will save the summed value of expected column of budget period table
      */
     public void isExpectedSumOfAwardBudgetAtTableDisplayed(String fieldApiName, String tableId) {
@@ -444,19 +391,6 @@ public class InternalOrganizationPage extends GranteeProjectManager {
             Assert.assertTrue(isNumberOfPagesInsideTableDisplayed(tableId, text));
         } else if (usage.equalsIgnoreCase("softly do not see")) {
             Assert.assertFalse(isNumberOfPagesInsideTableDisplayed(tableId, text));
-        }
-    }
-
-    /**
-     * assert if specified item is displayed inside result of auto search
-     *
-     * @param itemName
-     */
-    public void assertSpecificItemsInsideAutoSearchResult(String usage, String itemName) {
-        if (usage.equalsIgnoreCase("softly see")) {
-            I.amPerforming().assertionsTo().assertThat(isSearchedValuePresentAutoSearchResult(itemName)).isTrue();
-        } else if (usage.equalsIgnoreCase("softly do not see")) {
-            I.amPerforming().assertionsTo().assertThat(isSearchedValuePresentAutoSearchResult(itemName)).isFalse();
         }
     }
 
@@ -993,24 +927,6 @@ public class InternalOrganizationPage extends GranteeProjectManager {
         int fieldValue1 = Integer.parseInt(uiContent.replaceAll("[\\D]", ""));
         if (String.valueOf(fieldValue1).equalsIgnoreCase(fieldKey)) {
             flag = true;
-        }
-        return flag;
-    }
-
-    /**
-     * return trur/false if specified item is displayed/not displayed
-     *
-     * @param itemName
-     * @return
-     */
-    public boolean isSearchedValuePresentAutoSearchResult(String itemName) {
-        boolean flag = false;
-        List<Elements> listViewOptions = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[contains(@class,'select2-search')]/following-sibling::ul//li//span|//div[contains(@class,'select2-search')]/following-sibling::ul//li"));
-        for (Elements we : listViewOptions) {
-            if (we.getText().contains(itemName)) {
-                flag = true;
-                break;
-            }
         }
         return flag;
     }

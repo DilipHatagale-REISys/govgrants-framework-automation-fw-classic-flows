@@ -158,15 +158,15 @@ public class ProgressReportPage extends GrantorProjectManager {
      */
     public void assertReportedDateField(boolean isSoftly) {
         if (isSoftly) {
-            I.amPerforming().assertionsTo().assertThat(I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy"))).isEqualTo(I.amPerforming().propertiesFileOperationsTo().getValue("ReportedDate"));
+            I.amPerforming().assertionsTo().assertThat(I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy"))).isEqualTo(I.amPerforming().propertiesFileOperationsTo().getValue("ReportedDate"));
         } else {
-            Assert.assertEquals(I.amPerforming().propertiesFileOperationsTo().getValue("ReportedDate"), I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
+            Assert.assertEquals(I.amPerforming().propertiesFileOperationsTo().getValue("ReportedDate"), I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("MM/dd/yyyy")));
         }
     }
 
     public Boolean isCheckboxFieldEditable(String fieldLabel) {
         try {
-            I.amPerforming().checkToSee().isDisplayed(By.xpath("//span[@class='customLabelstyle' and text()='"+fieldLabel+"']/ancestor::dl[1]//dd//input[@type='checkbox' and @disabled='true']"));
+            I.amPerforming().checkToSee().isDisplayed(By.xpath("//span[@class='customLabelstyle' and text()='" + fieldLabel + "']/ancestor::dl[1]//dd//input[@type='checkbox' and @disabled='true']"));
             return false;
         } catch (Exception e) {
         }

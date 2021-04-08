@@ -7,7 +7,7 @@ Feature: Validate all scenarios in Funding Source
     When I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
-    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
@@ -18,7 +18,7 @@ Feature: Validate all scenarios in Funding Source
     And I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
-    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -26,7 +26,7 @@ Feature: Validate all scenarios in Funding Source
     And I save the field labeled "End Date" as "EDATE"
     And I save the field labeled "Title" as "FundingSourceTitle"
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
-    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     When I enter value "{SavedValue:SDATE}" into field "fieldStartDate__c"
     When I enter value "{SavedValue:EDATE}" into field "fieldEndDate__c"
@@ -45,19 +45,19 @@ Feature: Validate all scenarios in Funding Source
     And I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
-    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @51036 @addAttachmentToFundingSource
+  @51036 @addAttachmentToFundingSource @buglogged139175
   Scenario: Addition of Attachment to Funding Source
     When I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
-    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -72,12 +72,12 @@ Feature: Validate all scenarios in Funding Source
     And I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
-    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
-    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
@@ -88,7 +88,7 @@ Feature: Validate all scenarios in Funding Source
     And I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
-    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -108,7 +108,7 @@ Feature: Validate all scenarios in Funding Source
     And I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
-    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -125,7 +125,7 @@ Feature: Validate all scenarios in Funding Source
     When I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
-    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -154,7 +154,7 @@ Feature: Validate all scenarios in Funding Source
     And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click toggle button to select "Internal Funding Sources - Draft"
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
-    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -174,7 +174,7 @@ Feature: Validate all scenarios in Funding Source
     When I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
-    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -204,7 +204,7 @@ Feature: Validate all scenarios in Funding Source
     And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click toggle button to select "Internal Funding Sources - Draft"
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
-    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -242,7 +242,7 @@ Feature: Validate all scenarios in Funding Source
     And I navigate to "Planning" tab
     When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
     And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
-    When I enter "Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
