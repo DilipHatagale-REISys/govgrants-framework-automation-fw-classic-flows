@@ -32,10 +32,10 @@ public class RegistrationSteps {
                 .containsExactlyInAnyOrderElementsOf(expectedOfficeTypes);
     }
 
-    @Then("^I see the ReCaptcha input box")
+   /* @Then("^I see the ReCaptcha input box")
     public void verifyReCaptchIsVisible() {
         registrationPage.assertCaptchaDisplayedOnPage(true);
-    }
+    }*/
 
     @Then("I set password for the user")
     public void iSetPasswordForTheUser() {
