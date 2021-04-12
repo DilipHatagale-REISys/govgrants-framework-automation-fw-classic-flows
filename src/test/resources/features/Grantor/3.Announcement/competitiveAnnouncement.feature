@@ -2438,3 +2438,153 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I select "Download as PDF" from parallel lines dropdown of "Field History"
     When I download the file
     Then I see "Field History" on page "1" of "govgrants" pdf file
+
+  @139848 @Verify2StepApprovalAtApproverSection_CompetitiveAnnouncement-RnRFunctionality @monu
+  Scenario: verify that user can add two step approver on announcement
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
+    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Pre-Encumbrance |
+      | {SavedValue:fundingAccount} | 100             |
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    When I refresh the page
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 2       |
+    Then I softly see "Saved Successfully!" inside flex table with id "---announcement:-:approversTableId---"
+
+  @139849 @VerifyErrorMessageWhileSkippingStepsAtApproverSection_CompetitiveAnnouncement-RnRFunctionality @monu
+  Scenario: Verify validation when user skip an Approval Step at announcement level
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
+    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Pre-Encumbrance |
+      | {SavedValue:fundingAccount} | 100             |
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    When I refresh the page
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 3       |
+    When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
+      | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
+      | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"
+    When I get the "EGMS ID"
+    When I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
+    And I click on "Save" in the page details
+    And I click on "Submit For Approval" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Responsibilities - You cannot skip an Approval Step. |
+
+  @139850 @VerifyVisibilityOfNewButtonAtApproverSection_CompetitiveAnnouncement-RnRFunctionality @monu
+  Scenario: verify New button not displayed in approver section when announcement is submitted for approval
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
+    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Pre-Encumbrance |
+      | {SavedValue:fundingAccount} | 100             |
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    When I refresh the page
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 2       |
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"
+    When I get the "EGMS ID"
+    When I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
+    And I click on "Save" in the page details
+    And I click on "Submit For Approval" in the page details
+    When I navigate to "Responsibilities" sub tab
+    Then I softly cannot see top right button "New" for "---announcement:-:approversTableId---" flex table
+
+  @139871 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUserAtAnnouncement-RnRFunctionality @monu
+  Scenario: Validate announcement owner cant add same steps for while assigning approvers for announcement
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
+    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Pre-Encumbrance |
+      | {SavedValue:fundingAccount} | 100             |
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    When I refresh the page
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 1       |
+    And I click on "Save" in the page details
+    Then I softly see "You cannot specify the same step for multiple users for Announcement." inside flex table with id "---announcement:-:approversTableId---"

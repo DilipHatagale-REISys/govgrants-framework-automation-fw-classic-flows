@@ -7,10 +7,10 @@ Feature: Validate all scenarios in Strategic Plan
     When I navigate to "Strategic Plans" content inside "Setup" subheader on left panel
     And I click toggle button to select "Strategic Plans - Draft"
     And I click on top right button "New" in flex table with id "---strategicplan:-:StrategicPlansTableId---"
-    And I enter "StrategicPlanCreation" values from "StrategicPlan_Field_Values.xlsx"
+    And I enter in modal "StrategicPlanCreation" values from "StrategicPlan_Field_Values.xlsx"
     And I click modal button "Save and Continue"
 
-  @50954 @50955 @33798 @50956 @editionOfStrategicPlan
+  @50954 @50955 @33798 @50956 @editionOfStrategicPlan @buglogged138910
   Scenario: Edition of Strategic Plan by user - Admin/EXE/PM
     Then I softly see that "Status" is in "Draft" status
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
@@ -50,7 +50,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     Then I see field "Strategic Plan Status" as "Draft"
 
-  @51046 @addAttachmentToStrategicGoal
+  @51046 @addAttachmentToStrategicGoal @buglogged138910
   Scenario: Addition of Attachment to Strategic Goal inside a Strategic Plan by User - Admin/EXE/PM
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
@@ -80,7 +80,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "Strategic Goals ID"
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
-    When I enter value "Execution Strategic Objective" into field "StrategyTitle__c"
+    When I enter in modal value "Execution Strategic Objective" into field "StrategyTitle__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     Then I softly see field "Strategic Plan Status" as "Draft"
@@ -107,11 +107,11 @@ Feature: Validate all scenarios in Strategic Plan
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
-    When I enter value "Execution Strategic Objective" into field "StrategyTitle__c"
+    When I enter in modal value "Execution Strategic Objective" into field "StrategyTitle__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I click on "Edit" in the page details
-    When I enter value "Execution Strategic Objective" into field "StrategyDescription__c"
+    When I enter in modal value "Execution Strategic Objective" into field "StrategyDescription__c"
     When I click on "Save" in the page details
     Then I softly see field "Description" as "Execution Strategic Objective"
 
@@ -124,7 +124,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalRelatedObjectivesTableId---"
-    When I enter value "Execution Strategic Objective" into field "StrategyTitle__c"
+    When I enter in modal value "Execution Strategic Objective" into field "StrategyTitle__c"
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I navigate to "Files" sub tab

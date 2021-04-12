@@ -5388,3 +5388,125 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
+  @139359 @Verify1StepApprovalAtAward-RnRFunctnality @monu
+  Scenario: Verify user is able to approve the award on step 1 approver
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close "Edit Payment Request Schedule" modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I get the "EGMS ID"
+    When I navigate to "Terms" sub tab
+    When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I click on "Submit for Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Approved" and is "Green"
+
+  @139362 @Verify2StepApprovalAtAward-RnRFunctnality @monu
+  Scenario: Verify user is able add two step approver on award
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  |
+      | {SavedValue:PM Username} | Step 1 |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                      | Award  |
+      | {SavedValue:EXE Username} | Step 2 |
+    Then I softly see "Saved Successfully!" inside flex table with id "---subAwardStandAlone:-:awardApproversTableId---"
+
+  @139361 @VerifyErrorMessageWhileSkippingApproverStepAtAward-RnRFunctnality @monu
+  Scenario: Verify validation is displayed when user skip approver step on subaward
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
+      | Title                           | Start Date | End Date |
+      | Automation Permanent Focus Area | 0          | 3650     |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Encumbrance |
+      | {SavedValue:fundingAccount} | 1000        |
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
+      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Construction    | 1000           | 100        | 100            |
+    When I navigate to "Performance" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                                 | Target |
+      | Automation Permanent KPI for Regression | 10     |
+    And I navigate to "Terms" sub tab
+    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
+    And I click modal button "Save"
+    When I close "Edit Payment Request Schedule" modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
+      | Name                       | Project Role             | Is Key Personnel |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     |
+      | {SavedValue:PM Username} |
+    Then I softly see "Saved Successfully!" inside flex table with id "---subAwardStandAlone:-:awardApproversTableId---"
+    When I get the "EGMS ID"
+    When I navigate to "Terms" sub tab
+    When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
+    And I click on "Submit for Approval" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Responsibilities - At least one approver is required |

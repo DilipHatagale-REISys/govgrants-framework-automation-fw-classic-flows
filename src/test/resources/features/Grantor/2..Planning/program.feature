@@ -7,7 +7,7 @@ Feature: Validate all scenarios for program
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Internal Programs - Draft"
     And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
-    When I enter "Creation" values from "Program_Field_Values.xlsx"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "ProgramEGMSID"
@@ -810,7 +810,7 @@ Feature: Validate all scenarios for program
       | EGMS Id                                 |
       | Automation Permanent KPI for Regression |
 
-  @34745 @75997 @76112 @76119 @38242 @programAttachmentChecklist
+  @34745 @75997 @76112 @76119 @38242 @programAttachmentChecklist @needToCheckErrorMessage
   Scenario: Validate the attachment checklist for the Internal Program
     When I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
@@ -918,7 +918,7 @@ Feature: Validate all scenarios for program
     Then I softly see the following messages in the page details :
       | Setup Tab - Management Review - Management Review: At least one section must be added to this form. |
 
-  @34750 @106291 @110156 @110141 @submittingProgramForApproval @monu
+  @34750 @106291 @110156 @110141 @submittingProgramForApproval @monu @buglogged138910
   Scenario: Validate the submission of Program for Approval
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
@@ -2037,7 +2037,7 @@ Feature: Validate all scenarios for program
       | Objective                      |
       | Automation Permanent Objective |
 
-  @76477 @ValidatingProgramReviewFormWithoutQuestion @keerti
+  @76477 @ValidatingProgramReviewFormWithoutQuestion @keerti @needToCheckErrorMessage
   Scenario Outline: To validate system generated error message,for Program Review form, If Review Panel Categories not associated with review question in SME review step of setup tab in planing
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
@@ -3357,7 +3357,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "Yes/No" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I refresh the page
-    And I expand nested table containing column value "SME Review"
+    And I expand nested table containing column value "Pre-Screen Review"
     And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I perform quick search for "Completeness" in "---program:-:programReviewPanel---" panel
     And I expand nested table containing column value "Completeness"

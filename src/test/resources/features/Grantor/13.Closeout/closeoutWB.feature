@@ -71,7 +71,7 @@ Feature: Validate all scenarios in Closeout
       | Award Name                                      | Grant Name                                      |
       | {SavedValue:Automation Runtime Amendment Award} | {SavedValue:Automation Runtime Amendment Award} |
 
-  @93524 @ValidateSiteVisitInOpenItemsForCloseout @meenakshi
+  @93524 @ValidateSiteVisitInOpenItemsForCloseout @meenakshi @buglogged138236
   Scenario Outline: Verify user can view pending site visits/ desk reviews in Open Items for closeout Request
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -166,7 +166,7 @@ Feature: Validate all scenarios in Closeout
     And I click on "Acknowledge" in the page details
     #76492
     And I checkout to yopmail with mailid "govgrantsuat@yopmail.com"
-    And I pause execution for "5" seconds
+    And I pause execution for "60" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -175,8 +175,6 @@ Feature: Validate all scenarios in Closeout
     Then I refresh the page
     And I am on "INTERNAL" portal
     When I login to "As a Grantor" app as "EXE" user
-    And I click on "Acknowledge" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Closeout" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
@@ -472,11 +470,11 @@ Feature: Validate all scenarios in Closeout
     And I enter value "checked" into field "fieldAggreement__c"
     When I click on "Save" in the page details
     When I click on "Acknowledge" in the page details without processing
-    Then I softly see confirmation box with body "Are you sure you are ready to acknowledge the Closeout Request? You are agreeing to complete any Open Items by the Closeout Due Date." is displayed
+    Then I softly see confirmation box with body "You are agreeing to complete any Open Items by the Closeout Due Date. Are you sure you are ready to acknowledge the Closeout Request?" is displayed
     When I click modal button "No"
     Then I softly see field "Status" as "Sent to Subrecipient"
 
-  @76489 @ValidateApprovedCloseoutInsideApprovalHistory-TerminationCloseoutRequest-EXEUser @monu
+  @76489 @ValidateApprovedCloseoutInsideApprovalHistory-TerminationCloseoutRequest-EXEUser @monu @buglogged140761
   Scenario: Validate user is able to see Approved status of closeout request in chevron diagram and inside Approval history table with EXE user
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user"
     When I login to "As a Grantor" app as "EXE" user
@@ -581,7 +579,7 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add Files" in flex table with id "---closeout:-:CloseoutDetailsTableId---"
 
-  @95599 @95609 @95607 @VerifySubrecipientAbleToAddAttachmentForTerminationCloseoutRequest-EXEUser @monu
+  @95599 @95609 @95607 @VerifySubrecipientAbleToAddAttachmentForTerminationCloseoutRequest-EXEUser @monu @buglogged139175
   Scenario: Validate subrecipient user is able to see Add files button on under closeout details while creating termination closeout request
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user"
     When I login to "As a Grantor" app as "EXE" user
@@ -631,7 +629,7 @@ Feature: Validate all scenarios in Closeout
     Then I see the following messages in the page details :
       | File {SavedValue:AttachedFile} deleted successfully. |
 
-  @96201 @96202 @VerifyCloseoutDeobligatedAmountForCloseout-Scheduled @monu @done
+  @96201 @96202 @VerifyCloseoutDeobligatedAmountForCloseout-Scheduled @monu @buglogged140762
   Scenario: Validate user can see closeout deobligated amount for created scheduled closeout request
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Award for closeout}" from the object "Closeout"
@@ -647,10 +645,10 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Requests" sub tab
     #96202 #monu
     Then I softly see value "Created" for title "Status" inside table "---closeout:-:RequestTabCloseoutRequestTableId---"
-    Then I can see row level action button "Delete" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
-    Then I can see row level action button "View" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
+    Then I softly can see row level action button "Delete" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
+    Then I softly can see row level action button "View" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
     When I click on "View" icon for "Scheduled" inside flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
-    And I pause execution for "10" seconds
+    And I pause execution for "30" seconds
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Send To Subrecipient" in page detail
     Then I softly can see top right button "Override" in page detail
@@ -710,7 +708,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "Acknowledgement" for title "Changed Field" inside table "History"
     Then I softly see value "{SavedValue:closeoutID}" for title "EGMS ID" inside table "History"
 
-  @93539 @verifyValidationMessageForOverrideJustification @monu
+  @93539 @verifyValidationMessageForOverrideJustification @monu @buglogged138236
   Scenario: Validate error message for Override justification
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -788,6 +786,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     And I click on "Acknowledge" in the page details
     Then I softly see status in Progress-bar is "Acknowledged by Subrecipient" and is "green"
+    And I pause execution for "30" seconds
     Then I softly see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "DynamicUser" user on "INTERNAL" portal
     And I navigate to "Closeout" tab

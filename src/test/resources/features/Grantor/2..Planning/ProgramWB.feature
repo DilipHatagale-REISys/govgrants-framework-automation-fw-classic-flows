@@ -8,8 +8,8 @@ Feature: Validate all scenarios for program
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Internal Programs - Draft"
     And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
-    When I enter "Creation" values from "Program_Field_Values.xlsx"
-    When I enter value "Department of Health" into field "Account__cparentCustomLookup"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    When I enter in modal value "Department of Health" into field "fieldAccount__c"
     And I click modal button "Save and Continue"
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "ProgramEGMSID"
@@ -19,7 +19,7 @@ Feature: Validate all scenarios for program
     And I click toggle button to select "Internal Programs - Draft"
     And I perform quick search for "{SavedValue:Automation Runtime Internal Program}"
     And I click on "Edit" icon for "{SavedValue:Automation Runtime Internal Program}" inside flex table with id "---program:-:programsTableId---" without waiting for record
-    When I enter value "Children’s Health Insurance Program" into field "Account__cparentCustomLookup"
+    When I enter value "Children’s Health Insurance Program" into field "fieldAccount__c"
     And I click on "Save" in the page details
     Then I softly see field "Internal Organization" as "Children’s Health Insurance Program"
 

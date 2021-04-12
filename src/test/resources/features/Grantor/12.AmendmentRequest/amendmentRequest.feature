@@ -2682,7 +2682,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I refresh the page
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Responsibilities - You cannot skip any Approval Step.|
+      | Responsibilities - You cannot skip any Approval Step. |
 
   @138063 @Verify1StepAddApproverAt_SOWAmendmentRequest-RnRFunctionality @monu
   Scenario: Verify that user is able to add one step approver on approvers section for new created amendment type scope of work
@@ -2700,4 +2700,28 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
+    Then I softly see "Saved Successfully!" inside flex table with id "---amendment:-:approversTableId---"
+
+  @138353 @Verify3StepApprovalAt_SOWAmendmentRequest-RnRFunctionality @monu
+  Scenario: Verify user can add three step approver when amendment  request  scope of work change
+    Given I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    When I click on "Edit" in the page details
+    And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "AmendmentId"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 2            |
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 3            |
     Then I softly see "Saved Successfully!" inside flex table with id "---amendment:-:approversTableId---"

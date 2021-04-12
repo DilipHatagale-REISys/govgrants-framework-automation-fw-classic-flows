@@ -193,7 +193,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56732 @subrecipientOrganizationEdition @smoke
+  @56732 @subrecipientOrganizationEdition @smoke @buglogged140750
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Subrecipient Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -301,7 +301,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
-    And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
+    And I enter in modal "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
     And I close "Create Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
@@ -359,7 +359,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     When I click on top right button "New" in flex table with id "---home:-:indirectRateFlextableId---"
-    When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---home:-:indirectRateFlextableId---" by clicking "New" :
       | Title             | Date From | Date To | Approved Indirect Cost Rate(%) | Indirect Cost Rate Type | Budget Categories |
       | Pre-Screen Review | 0         | 1       | 20                             | Final                   | Personnel         |
     #functionality changed to inline edit
@@ -688,7 +688,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
     Then I cannot see row level action button "Edit" against "{user:fullName}" in flex table with id "---home:-:indActiveAccountId---"
 
-  @62105 @externalUserhomePendingTask @deepika
+  @62105 @externalUserhomePendingTask @deepika @Buglogged138236
   Scenario: The Pending Task on the left Navigation shows Pending Tasks that are created for Subrecipient Users
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"

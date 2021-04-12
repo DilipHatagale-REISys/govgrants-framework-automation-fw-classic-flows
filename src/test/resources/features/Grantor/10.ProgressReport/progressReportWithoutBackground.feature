@@ -5482,7 +5482,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            |
       | {SavedValue:Automation Runtime Award} |
 
-  @138938 @@VerifyUserShouldNotBeAbleToAddSameStepForMultipleUserAtProgressReport-RnRFunctionality @monu
+  @138938 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUserAtProgressReport-RnRFunctionality @monu
   Scenario Outline: Validate user cant assign same step for multiple users for progress report while defining approvers on program record
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
