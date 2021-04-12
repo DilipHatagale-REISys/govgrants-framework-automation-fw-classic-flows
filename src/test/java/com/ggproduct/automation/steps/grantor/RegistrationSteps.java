@@ -2,7 +2,6 @@ package com.ggproduct.automation.steps.grantor;
 
 import com.ggproduct.automation.pageobjects.grantor.RegistrationPage;
 import com.testingblaze.register.I;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 

@@ -1111,7 +1111,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @79960 @79961 @verifingCompletedTaskForPrescreenManagementReview @keerti
+  @79960 @79961 @verifyingCompletedTaskForPrescreenManagementReview @keerti
   Scenario Outline: To verify the tasks will be displayed on completed tasks for the reviewer, when reviewer submit Reviews form successfully,for prescreen review step in  Application phase
   | To verify the tasks will be displayed on completed tasks for the reviewer, when reviewer submit Reviews form successfully,for management review step in  Application phase
     And I login to "As a Grantor" app as "dynamicUser" user
@@ -1159,6 +1159,7 @@ Feature: Validate all scenarios in the Application Review
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:ApplicationEGMSID}" in "---applicationReview:-:PhaseRespectivecompletedTaskTableId---" panel
     Then I softly see value "{SavedValue:ApplicationEGMSID}" for title "EGMS ID" inside table "---applicationReview:-:PhaseRespectivecompletedTaskTableId---"
+    And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
@@ -2589,8 +2590,8 @@ Feature: Validate all scenarios in the Application Review
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     #79962- TThe success message automatically disappears within a fraction of seconds in the page, unable to validate the success message
-    #When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
-    #And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
+    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     #Then I softly see the following messages in the page details contains:
      # | Selected Applications have been promoted. |
     And I wait for "2" seconds
@@ -2679,8 +2680,8 @@ Feature: Validate all scenarios in the Application Review
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
     Then I softly can see top right button "Funding Decision Memo" in page detail
     #79963- The success message automatically disappears within a fraction of seconds in the page, unable to validate the success message
-    #When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
-    #And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
+    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
+    And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     #Then I softly see the following messages in the page details contains:
      # | Selected applications have been added to the Funding Decision Memo. |
     And I wait for "2" seconds

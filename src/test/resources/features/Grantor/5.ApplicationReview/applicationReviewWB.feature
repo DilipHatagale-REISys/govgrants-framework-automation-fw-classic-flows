@@ -2696,7 +2696,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I perform quick search for "Record Id" in "---applicationReview:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record ID" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
     When I "Send to Owner" in the approval decision
-    #As this msg is coming at same time of page refress
+    #As this msg is coming at same time of page refresh
     Then I softly see the following messages in the page details contains:
       | Successfully sent to Owner. It may take few minutes to process record |
 

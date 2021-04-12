@@ -71,14 +71,14 @@ Feature: Validate all scenarios in the Pre-Application
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
 
-  @53155 @PreApplicationAttachmentChecklistCA
+  @53155 @PreApplicationAttachmentChecklistCA  @buglogged138910
   Scenario: Validate the attachment checklist of the PreApplication
     When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     Then I see "Other" has been added in "Supporting Documents Checklist" flex table
 
-  @70466 @53160 @70467 @submitPreApplication @smoke @deepika
+  @70466 @53160 @70467 @submitPreApplication @smoke @deepika @buglogged138910
   Scenario: Submitting an pre application to Grantor |To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on pre-application
   Validate whether SPI user can view the edit button once pre - application has been submitted to Grantor |  Validate whether the user can submit the Pre Application Submission before the due date
     Given I click on "Edit" in the page details
@@ -96,7 +96,7 @@ Feature: Validate all scenarios in the Pre-Application
     Then I softly see status in Progress-bar is "Submitted" and is "green"
     Then I softly cannot see top right button "Edit" in page detail
 
-  @34150 @70524 @70250 @70249 @75584 @70247 @70251 @53162 @34023 @preApplicationToApplication @deepika
+  @34150 @70524 @70250 @70249 @75584 @70247 @70251 @53162 @34023 @preApplicationToApplication @deepika @buglogged138910
   Scenario Outline: Validate Grantor accept the submitted pre-application and converted it to application | Validate the subrecipient users able to create application from the approved Pre Application
   Validate Announcement owner will be able to view the Accept and Reject button |Validate the subrecipient users able to create application from the approved Pre Application
   Validate Announcement Owner will be able to view the pending task under announcement tab after every pre application submission happens. |Validate pre-application is converted to Application |Verify whether PM, FO,EXE internal user is able to view Accepted Pre Application
@@ -216,7 +216,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I download the file
     Then I see "Submitted to Grantor" on page "1" of "govgrants" pdf file
 
-  @34155 @75585 @34025 @preApplicationRejectionByGrantor @deepika
+  @34155 @75585 @34025 @preApplicationRejectionByGrantor @deepika @buglogged138910
   Scenario Outline: Validate when Grantor Rejects the submitted pre-application then the status of Pre-Application status will be in rejected status
   Validate other than Record Owner PM, FO user will not able to Reject submitted Pre-Application | Validate the SPI user can view the rejected pre-applications under Pre-Applications - Submitted table list
     Given I click on "Edit" in the page details

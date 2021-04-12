@@ -93,7 +93,7 @@ Feature: Validate all scenarios in Funding Source
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
-    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
     When I enter value "4650" into field "EndDate__c"
@@ -113,7 +113,7 @@ Feature: Validate all scenarios in Funding Source
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
-    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -130,7 +130,7 @@ Feature: Validate all scenarios in Funding Source
     When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
-    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -160,7 +160,7 @@ Feature: Validate all scenarios in Funding Source
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
-    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -180,7 +180,7 @@ Feature: Validate all scenarios in Funding Source
     And I click on "Save" in the page details
     And I navigate to "Overview" sub tab
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
-    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     When I enter value "0" into field "fieldStartDate__c"
     When I enter value "3650" into field "fieldEndDate__c"
@@ -210,7 +210,7 @@ Feature: Validate all scenarios in Funding Source
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
-    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     When I enter value "0" into field "fieldStartDate__c"
     When I enter value "3650" into field "fieldEndDate__c"
@@ -250,7 +250,7 @@ Feature: Validate all scenarios in Funding Source
     And I save the field labeled "End Date" as "EDATE"
     And I save the field labeled "Title" as "FundingSourceTitle"
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
-    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I enter value "1000" into field "AppropriationBalance__c"
     When I click modal button "Save and Continue"
     When I enter value "{SavedValue:SDATE}" into field "fieldStartDate__c"
@@ -262,7 +262,7 @@ Feature: Validate all scenarios in Funding Source
     And I click "{SavedValue:FUNDINGSOURCE}" lookup link
     Then I see the header is "Internal Funding Source" in the page details
     When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
-    And I enter "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I enter value "1500" into field "AppropriationBalance__c"
     When I click modal button "Save and Continue"
     When I enter value "{SavedValue:SDATE}" into field "fieldStartDate__c"
