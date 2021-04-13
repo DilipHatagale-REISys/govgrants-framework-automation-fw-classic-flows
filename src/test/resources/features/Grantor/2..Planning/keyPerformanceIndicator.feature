@@ -200,7 +200,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
     When I enter "Edition" values from "KPI_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Activate" in the page details
-    Then I see status in Progress-bar is "Active" and is "Green"
+    Then I softly see status in Progress-bar is "Active" and is "Green"
     And I save the field labeled "Title" as "KPINAME"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab

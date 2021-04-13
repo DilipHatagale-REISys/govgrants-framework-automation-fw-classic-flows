@@ -747,7 +747,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see the following messages in the page details contains:
       | Overview Tab - Provide Justification for overriding open items to closure and proceeding with the closeout. |
 
-  @96511 @validateVisibilityOfEditAndOverrideButtonWithNonAwardOwner @monu
+  @96511 @validateVisibilityOfEditAndOverrideButtonWithNonAwardOwner @monu @buglogged141297
   Scenario: Verify non award owner cannot override or edit pending items of closeout request
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user"
     When I login to "As a Grantor" app as "EXE" user
@@ -786,7 +786,6 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     And I click on "Acknowledge" in the page details
     Then I softly see status in Progress-bar is "Acknowledged by Subrecipient" and is "green"
-    And I pause execution for "30" seconds
     Then I softly see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "DynamicUser" user on "INTERNAL" portal
     And I navigate to "Closeout" tab

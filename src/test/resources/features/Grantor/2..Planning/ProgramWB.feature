@@ -306,3 +306,23 @@ Feature: Validate all scenarios for program
     Then I softly see field "Status" as "Created"
 #    And I softly see the following messages in the page details contains:
 #      | Successfully sent to Owner. It may take few minutes to process record. |
+
+  @140943 @Verify1StepApprovalAtNGOProgram-RnRFunctionality @monu
+  Scenario: Validate user can add step1 as an approver for created NGO Program
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click on top right button "New" in flex table with id "---program:-:ExternalNGOProgramTableId---"
+    When I enter "NGOCreation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    And I enter "NGOEdit" values from "Program_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
+    Then I softly see "Saved Successfully!" inside flex table with id "---program:-:approverTableId---"
