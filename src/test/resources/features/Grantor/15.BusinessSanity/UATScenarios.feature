@@ -117,6 +117,7 @@ Feature: Validate sanity testing of Complete UAT Business Flow
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
+    And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                     | Announcement |
@@ -314,8 +315,8 @@ Feature: Validate sanity testing of Complete UAT Business Flow
     And I login as "SPI3" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside table
+    And I perform quick search for "Record Id" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "Record Id" inside table
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
     When I click modal button "Save and Continue"
@@ -325,3 +326,156 @@ Feature: Validate sanity testing of Complete UAT Business Flow
     Examples:
       | Announcement Type |
       | Competitive       |
+
+  @138501 @VerifyCreationOfApplicationWithSPIUser_Application @monu
+  Scenario: Validate External (Subrecipient) user should able to create Application
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    Then I softly see field "Status" as "Created"
+    Then I softly see status in Progress-bar is "Created" and is "Green"
+
+  @138919 @VerifyDeletionOfKPI_KPI @monu
+  Scenario: Validate user (record owner) should able to delete KPI
+    Given I am on "INTERNAL" portal
+    Given I login as "EXE" user
+    When I navigate to "Planning" tab
+    And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
+    When I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
+    When I enter "Creation" values from "KPI_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) -All"
+    When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    And I click on "Delete" icon for "{SavedValue:Automation Runtime KPI}" inside table
+    Then I softly see "Record deleted successfully." inside flex table with id "---keyperformanceindicator:-:kpiTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    Then I softly see "No records found" inside flex table with id "---keyperformanceindicator:-:kpiTableId---"
+
+  @138954 @VerifyVisibilityOfKPIToAllUsers_KPI @monu
+  Scenario Outline: Validate user (all users) should able to View KPI
+    Given I am on "INTERNAL" portal
+    Given I login as "EXE" user
+    When I navigate to "Planning" tab
+    And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) - Draft"
+    When I click on top right button "New" in flex table with id "---keyperformanceindicator:-:kpiTableId---"
+    When I enter "Creation" values from "KPI_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "KPIEGMSID"
+    When I re-login to "As a Grantor" app as "<userType>" user on "INTERNAL" portal
+    When I navigate to "Planning" tab
+    And I navigate to "Key Performance Indicators (KPI)" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Key Performance Indicators (KPI) -All"
+    When I perform quick search for "{SavedValue:Automation Runtime KPI}" in "---keyperformanceindicator:-:kpiTableId---" panel
+    Then I softly see value "{SavedValue:KPIEGMSID}" for title "EGMS ID" inside table "---keyperformanceindicator:-:kpiTableId---"
+    Examples:
+      | userType |
+      | EXE      |
+      | PO       |
+      | FO       |
+      | FD       |
+      | PM       |
+
+  @141094 @141331 @141371 @VerifyCreationOfPackage @monu
+  Scenario: Validate user should able to create Package
+  |Validate user should able to associate forms in the Package|
+    Given I am on "INTERNAL" portal
+    Given I login as "PM" user
+    When I navigate to "Planning" tab
+    And I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
+    When I click on top right button "New Package" in flex table with id "---UATRelatedTableID:-:GrantorPackagesTableId---"
+    When I enter in modal "UATPackageCreation" values from "UATAnnouncement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I save the field labeled "Package Name" as "PackageName"
+    When I click on top right button "Associate" in flex table with id "---UATRelatedTableID:-:PackageAssociateFormsTableId---"
+    When I click "Add Forms" after selection of "SF 424: Other Attachments Form" in the table "---UATRelatedTableID:-:PackageAddFormsTableId---"
+    Then I softly see "Forms added succesfully." inside flex table with id "---UATRelatedTableID:-:PackageAddFormsTableId---"
+    And I close "Associate Forms" modal by clicking the top right x button
+    And I close "Create Packages" modal by clicking the top right x button
+    And I perform quick search for "{SavedValue:PackageName}" in "---UATRelatedTableID:-:GrantorPackagesTableId---" panel
+    Then I softly see value "{SavedValue:PackageName}" for title "Package Name" inside table "---UATRelatedTableID:-:GrantorPackagesTableId---"
+    And I click on "View" icon for "{SavedValue:PackageName}" inside flex table with id "---UATRelatedTableID:-:GrantorPackagesTableId---" without waiting for record
+    #141371
+    And I check "SF 424: Other Attachments Form" boxes in flex table with id "---UATRelatedTableID:-:PackageAssociateFormsTableId---"
+    When I click on top right button "Remove Selected Forms" in flex table with id "---UATRelatedTableID:-:PackageAssociateFormsTableId---"
+    Then I softly see "Selected forms successfully deleted." inside flex table with id "---UATRelatedTableID:-:PackageAssociateFormsTableId---"
+    And I close "View" modal by clicking the top right x button
+    And I perform quick search for "{SavedValue:PackageName}" in "---UATRelatedTableID:-:GrantorPackagesTableId---" panel
+    And I click on "View" icon for "{SavedValue:PackageName}" inside flex table with id "---UATRelatedTableID:-:GrantorPackagesTableId---" without waiting for record
+    And I perform quick search for "SF 424: Other Attachments Form" in "---UATRelatedTableID:-:PackageAssociateFormsTableId---" panel
+    Then I softly see "No Records Found" inside flex table with id "---UATRelatedTableID:-:PackageAssociateFormsTableId---"
+
+  @141385 @141287 @141390 @141387 @VerifyCreationOfTermsAndCondition @monu
+  Scenario: Validate user is able to create Terms and Conditions
+  |Validate user should able to Edit Terms and Condtions|
+  |Validate that user should able to View Terms and Conditions|
+    Given I am on "INTERNAL" portal
+    Given I login as "Admin" user
+    When I navigate to "Planning" tab
+    And I navigate to "Terms and Conditions" content inside "Setup" subheader on left panel
+    When I click on top right button "New" in flex table with id "---UATRelatedTableID:-:GrantorTermsAndConditionTableId---"
+    When I enter in modal "UATTermsConditionCreation" values from "UATAnnouncement_Field_Values.xlsx"
+    And I click modal button "Save"
+    And I save the field labeled "EGMS ID" as "Terms&ConditionID"
+    And I close "Create Terms and Conditions" modal by clicking the top right x button
+    And I perform quick search for "{SavedValue:Terms&ConditionID}" in "---UATRelatedTableID:-:GrantorTermsAndConditionTableId---" panel
+    Then I softly see value "{SavedValue:Terms&ConditionID}" for title "EGMS ID" inside table "---UATRelatedTableID:-:GrantorTermsAndConditionTableId---"
+    #141387
+    And I click on "Edit" icon for "{SavedValue:Terms&ConditionID}" inside flex table with id "---UATRelatedTableID:-:GrantorTermsAndConditionTableId---" without waiting for record
+    And I enter in modal value "Automation Description" into field "fieldDescription__c"
+    And I click modal button "Save"
+    Then I softly see field "Description" as "Automation Description"
+    #141390
+    And I close "Edit" modal by clicking the top right x button
+    And I perform quick search for "{SavedValue:Terms&ConditionID}" in "---UATRelatedTableID:-:GrantorTermsAndConditionTableId---" panel
+    And I click on "View" icon for "{SavedValue:Terms&ConditionID}" inside flex table with id "---UATRelatedTableID:-:GrantorTermsAndConditionTableId---" without waiting for record
+    Then I softly see field "Details" as "Automation Description"
+
+  @141422 @VerifySendBackFunctionalityForProgram @monu
+  Scenario: Validate that Approver user should able to send back the program
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "UATProgramCreation" values from "UATAnnouncement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "UATProgramEdition" values from "UATAnnouncement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I pause execution for "2" seconds
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
+    When I click "Associate" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
+    And I click on "Submit For Approval" in the page details
+    When I "Send to Owner" in the approval decision
+    Then I softly see field "Status" as "Created"
