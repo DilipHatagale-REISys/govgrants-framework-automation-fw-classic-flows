@@ -579,7 +579,7 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add Files" in flex table with id "---closeout:-:CloseoutDetailsTableId---"
 
-  @95599 @95609 @95607 @VerifySubrecipientAbleToAddAttachmentForTerminationCloseoutRequest-EXEUser @monu @buglogged139175
+  @95599 @95609 @95607 @VerifySubrecipientAbleToAddAttachmentForTerminationCloseoutRequest-EXEUser @monu
   Scenario: Validate subrecipient user is able to see Add files button on under closeout details while creating termination closeout request
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user"
     When I login to "As a Grantor" app as "EXE" user
@@ -617,7 +617,7 @@ Feature: Validate all scenarios in Closeout
     And I click on top right button "Add Files" in flex table with id "---closeout:-:ExternalCloseoutDetailsTableId---"
     And I upload attachment "Attachment.pdf" of type "Federal Closeout Document" from computer
     When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---closeout:-:ExternalCloseoutDetailsTableId---"
-    Then I see value "{SavedValue:AttachedFile}" for title "Title" inside table "---closeout:-:ExternalCloseoutDetailsTableId---"
+    Then I softly see value "{SavedValue:AttachedFile}" for title "Title" inside table "---closeout:-:ExternalCloseoutDetailsTableId---"
     #95609 #monu
     And I click on "Edit" icon for "{SavedValue:AttachedFile}" inside flex table with id "---closeout:-:ExternalCloseoutDetailsTableId---"
     When I select Classification as "Other" at upload file modal
@@ -786,7 +786,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     And I click on "Acknowledge" in the page details
     Then I softly see status in Progress-bar is "Acknowledged by Subrecipient" and is "green"
-    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I softly see field "Status" as "Acknowledged by Subrecipient"
     When I re-login to "As a Grantor" app as "DynamicUser" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
@@ -846,7 +846,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see top right button "Override" in page detail
     When I click on "Edit" in the page details
 
-  @96735 @VerifyApprovalDecisionFieldsAndButtons-Scheduled @monu
+  @96735 @VerifyApprovalDecisionFieldsAndButtons-Scheduled @monu @buglogged141587
   Scenario: Validate user can see approval decision fields and button at approval decision box
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Award for closeout}" from the object "Closeout"
@@ -893,7 +893,7 @@ Feature: Validate all scenarios in Closeout
     Then I can see the comment box in the approval decision
     Then I can see user "{SavedValue:EXE Username}" in the user lookup in the approval decision
 
-  @96200 @VerifyEditDeleteActionIconsAtAdhocCloseout
+  @96200 @VerifyEditDeleteActionIconsAtAdhocCloseout @buglogged141617
   Scenario: Validate user other than owner is not able to see Edit and delete row level icon
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
     When I login to "As a Grantor" app as "PO" user

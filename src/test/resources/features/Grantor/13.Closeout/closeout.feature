@@ -80,7 +80,7 @@ Feature: Validate all scenarios in Closeout
     And I save the field labeled "EGMS ID" as "closeoutID"
     When I click on "Save" in the page details
     Given I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI3" user
+    When I login as "SPI3" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
@@ -286,7 +286,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see that the saved value "{SavedValue:SubrecipientOrganization}" and "{SavedValue:CloseoutSubrecipientOrganization}" are equal
     Then I softly see that the saved value "{SavedValue:FundingOrganization}" and "{SavedValue:CloseoutFundingOrganization}" are equal
 
-  @40636 @40747 @ChecklistSupportingDocumentNotes @Keerti
+  @40636 @40747 @ChecklistSupportingDocumentNotes @Keerti @buglogged141573
   Scenario: Verifying the Checklist of Closeout Request/ Validate the Supporting Document Checklist Section / Validate the user can add the Notes for Closeout Requests
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -336,18 +336,19 @@ Feature: Validate all scenarios in Closeout
       | Notes Record | Automation Notes |
     Then I softly see value "Notes Record" for title "Title" inside table "---closeout:-:closeoutNotesTableId---"
 
-  @40729 @87356 @VerifyErrorMessageForCloseoutRequest @monu
+  @40729 @87356 @VerifyErrorMessageForCloseoutRequest @monu @buglogged141598
   Scenario: Validate user should get error message on closeout request for Type and Reason fields
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-     #87356
+    #87356
     Then I softly see "Create Closeout Request" opens in overLay window
     And I click modal button "Save and Continue"
-    Then I see the following messages in the page details contains:
+    #40729
+    Then I softly see the following messages in the page details contains:
       | Type is required to save.   |
       | Reason is required to save. |
 
-  @40065 @87352 @40608 @89221 @89222 @89223 @89224 @89225 @89226 @89229 @89227 @88734 @88735 @88736 @88737 @88738 @88739 @ValidatingCloseoutRequest @meenakshi
+  @40065 @87352 @40608 @89221 @89222 @89223 @89224 @89225 @89226 @89229 @89227 @88734 @88735 @88736 @88737 @88738 @88739 @ValidatingCloseoutRequest @meenakshi @buglogged141573
   Scenario: To verify the PM user should be able to create the Closeout Request
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -463,7 +464,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Has the subrecipient completed all corrective actions for any open findings/concerns?" as "Yes"
     Then I softly see field "Has the funding organization reviewed and accepted all corrective actions?" as "Yes"
 
-  @89228 @ValidatingDownloadBehaviour
+  @89228 @ValidatingDownloadBehaviour @buglogged141573
   Scenario: To verify the PM user should be able to create the Closeout Request
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -500,11 +501,11 @@ Feature: Validate all scenarios in Closeout
     And I click on top right button "Add Files" in flex table with id "---closeout:-:closeoutFilesTableId---"
     When I upload attachment "Permanent Records.xlsx" of type "Other" from computer
     When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---closeout:-:closeoutFilesTableId---"
-    Then I see value "{SavedValue:AttachedFile}" for title "Title" inside table "---closeout:-:closeoutFilesTableId---"
+    Then I softly see value "{SavedValue:AttachedFile}" for title "Title" inside table "---closeout:-:closeoutFilesTableId---"
     And I click on "Download" icon for "{SavedValue:AttachedFile}" inside flex table with id "---closeout:-:closeoutFilesTableId---" with wait for record
     Then I softly verify that the file "{SavedValue:AttachedFile}" is downloaded
 
-  @87353 @86713 @40071 @93106 @40644 @86714 @76488 @42103 @87351 @76487 @86716 @86712 @87346 @ValidatingSentToSubrecipientInCloseoutRequest @meenakshi
+  @87353 @86713 @40071 @93106 @40644 @86714 @76488 @42103 @87351 @76487 @86716 @86712 @87346 @ValidatingSentToSubrecipientInCloseoutRequest @meenakshi @buglogged141586
   Scenario: To validate status : Sent to Subrecipient in closeout request section when closeout request is Sent to Subrecipient by an internal user
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -681,7 +682,7 @@ Feature: Validate all scenarios in Closeout
     #87350
     When I click on "Override" in the page details
     Then I softly see the following messages in the page details :
-      | Overview Tab - Provide justification for overriding open items to closure and proceeding with the closeout. |
+      | Overview Tab - Provide Justification for overriding open items to closure and proceed with the closeout. |
     When I click on "Edit" in the page details
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
@@ -874,8 +875,8 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Requests" sub tab
     Then I softly see value "{SavedValue:closeoutID}" for title "EGMS ID" inside table "---closeout:-:closeoutTableId---"
 
-  @93258 @42108 @VerifyExpectedStatusOfCloseoutRequest-Overridden  @monu
-  Scenario: Validate user is able to edit fields values of created closeout
+  @93258 @42108 @VerifyExpectedStatusOfCloseoutRequest-Overridden  @monu @buglogged141587
+  Scenario: verify Status change as Submit for Approval after clicking submit for Approval button for closeout request
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
     When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
@@ -975,7 +976,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see column "Date" inside row "2" at position "1" contains text "Step : Step 1"
     Then I softly see column "Overall Status" inside row "2" at position "1" contains text "Approved"
 
-  @40759 @VerifyExpectedValueInsideFieldHistoryPageBlockOfCloseoutRequest @monu
+  @40759 @VerifyExpectedValueInsideFieldHistoryPageBlockOfCloseoutRequest @monu @buglogged141586
   Scenario: Validate expected New value and Old value inside Field History page block for closeout request
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -1050,7 +1051,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "Overridden" for title "New Value" inside table "History"
     Then I softly see value "Submitted To Grantor" for title "Old Value" inside table "History"
 
-  @87355 @VerifyCloseoutRequestWithMultipleStatusInListVIew @monu
+  @87355 @VerifyCloseoutRequestWithMultipleStatusInListVIew @monu @buglogged141586
   Scenario: Validate user should be able to see Created, Send to sub-recipient, Overridden, Submitted to grantor status of closeout request inside closeout request list view
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -1199,7 +1200,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see the following messages in the page details contains:
       | Reason is required to save. |
 
-  @95522 @VerifyAttachmentUploadBySubrecipientForAdhocCloseoutRequest @monu
+  @95522 @VerifyAttachmentUploadBySubrecipientForAdhocCloseoutRequest @monu @buglogged141573
   Scenario: Validate sub-recipient user should be able to upload attachment while creating adhoc closeout request
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -1257,7 +1258,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see "File Extension" in flex table header "---closeout:-:CloseoutDetailsTableId---"
     Then I softly see "Description" in flex table header "---closeout:-:CloseoutDetailsTableId---"
 
-  @95671 @VerifyUserCanAcknowledgeCloseoutRequest @monu
+  @95671 @VerifyUserCanAcknowledgeCloseoutRequest @monu @buglogged141573
   Scenario: Validate user can acknowledge closeout request without uploading attachment
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -1421,12 +1422,80 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see top right button "Edit" in page detail
     Then I softly cannot see top right button "Override" in page detail
     And I click on "Acknowledge" in the page details
-    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I softly see field "Status" as "Acknowledged by Subrecipient"
     #93582 #monu
-    Then I see status in Progress-bar is "Created" and is "Green"
     Then I softly see status in Progress-bar is "Acknowledged by Subrecipient" and is "green"
     #################################################################
     And I click on hyperlink containing value "{SavedValue:GrantID}"
     And I navigate to "Requests" sub tab
     And I click on "View" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:RecipientCloseoutRequestTableId---"
     Then I softly cannot see top right button "Override" in page detail
+
+  @140329 @Verify1StepApprovalForAdhocCloseoutRequest-RnRFuntionality @monu
+  Scenario: Verify user is able to add step 1 approver for adhoc closeout request
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+      | Name                     | Closeout |
+      | {SavedValue:PM Username} | Step 1   |
+    Then I softly see "Saved Successfully!" inside flex table with id "---closeout:-:closeoutApproverTableId---"
+
+  @140331 @141540 @verifyAdditionOfApproverAtCloseoutRequestAfterOverriden-RnRFuntionality @monu
+  Scenario: Verify user is able to add approver on closeout request after it is overriden
+  |Verify user is able to add approver on closeout request before it is overridden|
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    And I click on "Send To Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---closeout:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I click on "Edit" in the page details
+    And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
+    And I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:EGMSID}" in "---closeout:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    Then I softly can see top right button "Edit" in page detail
+    Then I softly can see top right button "Override" in page detail
+    #141540
+    When I navigate to "Responsibilities" sub tab
+    Then I softly can see top right button "New" in flex table with id "---closeout:-:closeoutApproverTableId---"
+    #140331
+    And I click on "Override" in the page details
+    Then I softly see field "Status" as "Overridden"
+    When I navigate to "Responsibilities" sub tab
+    Then I softly can see top right button "New" in flex table with id "---closeout:-:closeoutApproverTableId---"
+
+  @141537 @Verify2StepApprovalForAdhocCloseoutRequest-RnRFuntionality @monu
+  Scenario: Verify user is able to add step 2 approver for closeout request
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+      | Name                     | Closeout |
+      | {SavedValue:PM Username} | Step 1   |
+    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+      | Name                     | Closeout |
+      | {SavedValue:FO Username} | Step 1   |
+    Then I softly see "Saved Successfully!" inside flex table with id "---closeout:-:closeoutApproverTableId---"
