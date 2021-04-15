@@ -1045,7 +1045,7 @@ Feature: Validate scenarios in Progress Report without background
       | Grant Name                            | Award Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @59565 @validateSupportingDocumentUploadedIsReflectingUnderAttachmentsTable @mahadev
+  @59565 @validateSupportingDocumentUploadedIsReflectingUnderAttachmentsTable @mahadev @skipOnJenkins
   Scenario Outline: Validate document uploaded at supporting  document checklist table is getting reflected at Attachments table also in progress report
     And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     When I am on "INTERNAL" portal
@@ -1074,9 +1074,12 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Save" in the page details
     When I navigate to "Forms and Files" sub tab
     When I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
-    When I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "---progressReport:-:progressReportChecklistsTableId---"
+    When I choose the file "sample.pdf" to upload for "Checklist" of type "---progressReport:-:progressReportChecklistsTableId---"
     When I close "Upload Document" modal by clicking the top right x button
-    Then I see "Program_Field_Values.xlsx" has been added in "Attachments" flex table
+    And I pause execution for "30" seconds
+    And I click on hyperlink containing value "View"
+    Then I see "A Simple PDF File" on page "1" of "govgrants" pdf file
+    #Then I see "Program_Field_Values.xlsx" has been added in "Attachments" flex table
     Examples:
       | Award Name                            |
       | {SavedValue:Automation Runtime Award} |
@@ -2355,7 +2358,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @60880 @validateFiscalApprovercannotApproveProgressReportWhenFinalprogressreportAlreadyApproved @mahadev @buglogged135132
+  @60880 @validateFiscalApprovercannotApproveProgressReportWhenFinalprogressreportAlreadyApproved @mahadev
   Scenario Outline: Validate Fiscal Approver cannot Approve the Progress report when Final progress report request is already approved
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -2448,8 +2451,8 @@ Feature: Validate scenarios in Progress Report without background
     And I "Approve" in the approval decision
     Then I can see the message "<Error Message>" in the approval decision
     Examples:
-      | Award Name                            | Grant Name                            | Error Message                                                                                                                                                              |
-      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | This Progress Report cannot be approved because a report marked as the Final report has been approved. Send Back to Owner will allow the Owner to notify the Subrecipient. |
+      | Award Name                            | Grant Name                            | Error Message                                                                                                                                                        |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | Progress Report cannot be approved because a report marked as the Final report has been approved.Send Back to Owner will allow the Owner to notify the Subrecipient. |
 
   @60919 @fundingorgOnPROverviewTab @jitendra
   Scenario: Validate on Progress report Funding Organization field at Report Overview table under Overview tab is same as Award
@@ -2556,7 +2559,7 @@ Feature: Validate scenarios in Progress Report without background
     And I navigate to "Overview" sub tab
     Then I see field "Organization Name" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
 
-  @60879 @validateProgramApprovercannotApprovePRWhenFinalPRAlreadyApproved @mahadev @smoke
+  @60879 @validateProgramApprovercannotApprovePRWhenFinalPRAlreadyApproved @mahadev @smoke @buglogged135383
   Scenario Outline: Validate Program approver is not allowed to approve the pending progress report if another Final Progress report is approved
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -2789,7 +2792,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            | Error Message                                                                                                                                                                                                       |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | Any approval decision on the Progress Report cannot be made at this time because a report marked as the Final Report has already been approved. Send Back to Owner will allow the owner to notify the Subrecipient. |
 
-  @62779 @PercentagePeriodAtPRAfterPaymentRequest @jitendra @buglogged135464
+  @62779 @PercentagePeriodAtPRAfterPaymentRequest @jitendra
   Scenario Outline: Verify Submitted for approval report Percentage of Budget Remaining field remains the same on Progress report when the Payment request type is Reimbursement with Approved Status.
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -2879,6 +2882,11 @@ Feature: Validate scenarios in Progress Report without background
       | {SavedValue:FO Username} | Step 1  |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -3707,7 +3715,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "<Grant Name>" in "---progressReport:-:recipientActiveGrantId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientActiveGrantId---" without waiting for record
     When I navigate to "Management" sub tab
-    Then I softly see value "Force Closed" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
+    Then I softly see value "Force Closed" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientGrantProgressReportTableId---"
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---progressReport:-:recipientActiveGrantId---" panel
@@ -3805,7 +3813,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "<Grant Name>" in "---progressReport:-:recipientActiveGrantId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:recipientActiveGrantId---" without waiting for record
     When I navigate to "Management" sub tab
-    Then I see value "Force Closed" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
+    Then I see value "Force Closed" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientGrantProgressReportTableId---"
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
@@ -3911,8 +3919,8 @@ Feature: Validate scenarios in Progress Report without background
   @63110  @validateSubmittedForApprovalPRStatusAfterCloseoutApproval @mahadev
   Scenario Outline: Verify Progress report with Submitted for approval status changed to  Force Closed when closeout request is approved with type as Termination by award owner
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
-    When I am on "INTERNAL" portal
-    And I login to "As a Grantor" app as "PM" user
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     When I delete the record "<Award Name>" from the object "Progress Report"
@@ -3944,7 +3952,6 @@ Feature: Validate scenarios in Progress Report without background
     And I refresh the page
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "<Grant Name>" in "---progressReport:-:activeGrantsTableId---" panel
     When I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:activeGrantsTableId---" without waiting for record
@@ -4366,7 +4373,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "<Award Name>" in "---progressReport:-:recipientAwardsTableId---" panel
     And I click on "View" icon for "<Award Name>" inside flex table with id "---progressReport:-:recipientAwardsTableId---" without waiting for record
     When I navigate to "Performance" sub tab
-    And I click on "View" icon for "Record Id" inside flex table with id "---progressReport:-:recipientAwardProgressReportTableId---" without waiting for record
+    And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:recipientAwardProgressReportTableId---" without waiting for record
     Then I see status in Progress-bar is "Force Closed" and is "Red"
     Examples:
       | Award Name                            | Grant Name                            |
@@ -4441,7 +4448,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62765 @62777 @62774 @VerifyYTDExpendituresFieldAfterPRSubmittedForReview  @keerti @buglogged135464
+  @62765 @62777 @62774 @VerifyYTDExpendituresFieldAfterPRSubmittedForReview  @keerti
   Scenario Outline: Verify Submitted for review report YTD Expenditures field remains the same on Progress report at Award Owner end when the Payment request type is Reimbursement with Approved Status.
   Verify Submitted to Grantor report YTD Expenditures field remains the same on Progress report at Award Owner end when the Payment request type is Reimbursement with Approved Status. | Verify YTD Expenditures field get updated on Progress report at SR user end when the Payment request type is Reimbursement with Approved Status.
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
@@ -4509,6 +4516,11 @@ Feature: Validate scenarios in Progress Report without background
       | {SavedValue:FO Username} | Step 1  |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -4522,6 +4534,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "ReimbursmentPaymentRequest"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
@@ -4551,8 +4564,8 @@ Feature: Validate scenarios in Progress Report without background
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:ReimbursmentPaymentRequest}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ReimbursmentPaymentRequest}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -4579,7 +4592,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62778 @VerifyRemainingBudgetFieldAfterPRSubmittedForReview  @jitendra @buglogged135464
+  @62778 @VerifyRemainingBudgetFieldAfterPRSubmittedForReview  @jitendra
   Scenario Outline: Verify Reviewed report Remaining Budget field is getting updated on Progress report at Award Owner user end when the Payment request type is Reimbursement with Approved Status.
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -4646,6 +4659,11 @@ Feature: Validate scenarios in Progress Report without background
       | {SavedValue:FO Username} | Step 1  |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -4659,6 +4677,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "ReimbursmentPaymentRequest"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
@@ -4688,8 +4707,8 @@ Feature: Validate scenarios in Progress Report without background
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:ReimbursmentPaymentRequest}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ReimbursmentPaymentRequest}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -4705,7 +4724,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62780 @62767 @VerifyYTDExpendituresFieldAfterPRApproved @keerti @buglogged135464
+  @62780 @62767 @VerifyYTDExpendituresFieldAfterPRApproved @keerti
   Scenario Outline: Verify Approved report YTD Expenditures field remains the same on Progress report at SR user end when the Payment request type is Reimbursement with Approved Status.
   Verify Remaining Budget field get updated on Progress report at SR user end when the Payment request type is Reimbursement with Approved Status.
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
@@ -4773,6 +4792,11 @@ Feature: Validate scenarios in Progress Report without background
       | {SavedValue:FO Username} | Step 1  |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -4786,6 +4810,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "ReimbursmentPaymentRequest"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
@@ -4815,8 +4840,8 @@ Feature: Validate scenarios in Progress Report without background
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:ReimbursmentPaymentRequest}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ReimbursmentPaymentRequest}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -4843,7 +4868,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62763 @validatePercentageOfBudgetFieldDecreased  @mahadev @buglogged135464
+  @62763 @validatePercentageOfBudgetFieldDecreased  @mahadev
   Scenario Outline: Verify Percentage of Budget Remaining field get decrease on Progress report at SR user end when the Payment request type is Reimbursement with Approved Status
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -4899,6 +4924,11 @@ Feature: Validate scenarios in Progress Report without background
       | {SavedValue:FO Username} | Step 1  |
     When I get the "EGMS ID"
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -4912,6 +4942,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "ReimbursmentPaymentRequest"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
@@ -4941,8 +4972,8 @@ Feature: Validate scenarios in Progress Report without background
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:ReimbursmentPaymentRequest}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ReimbursmentPaymentRequest}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -4985,6 +5016,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "ReimbursmentPaymentRequest"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
@@ -5014,8 +5046,8 @@ Feature: Validate scenarios in Progress Report without background
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:ReimbursmentPaymentRequest}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ReimbursmentPaymentRequest}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -5031,7 +5063,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62769 @62772 @validatePercentageOfBudgetAndRemainingBudgetFieldSameAfterAdvPRApproved   @mahadev @buglogged135464
+  @62769 @62772 @validatePercentageOfBudgetAndRemainingBudgetFieldSameAfterAdvPRApproved   @mahadev
   Scenario Outline: Verify (Percentage of Budget Remaining | Remaining Budget) field remains the same on Progress report at SR user end when the Payment request type is Advance with Approved Status
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -5085,6 +5117,11 @@ Feature: Validate scenarios in Progress Report without background
       | Name                     | Advance |
       | {SavedValue:FO Username} | Step 1  |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -5101,7 +5138,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62773 @62770 @62915 @validateAwardedBudgetFieldSameAfterAdvPRApproved   @mahadev @buglogged135464
+  @62773 @62770 @62915 @validateAwardedBudgetFieldSameAfterAdvPRApproved  @mahadev
   Scenario Outline: Verify (Remaining Budget field |Awarded Budget field | YTD Expenditures) remains the same on Progress report at SR user end when the Payment request type is Advance with Approved Status
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -5153,6 +5190,11 @@ Feature: Validate scenarios in Progress Report without background
       | Name                     | Advance |
       | {SavedValue:FO Username} | Step 1  |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -5205,6 +5247,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click modal button "Save and Continue"
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "ReimbursmentPaymentRequest"
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
@@ -5234,8 +5277,8 @@ Feature: Validate scenarios in Progress Report without background
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:ReimbursmentPaymentRequest}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:ReimbursmentPaymentRequest}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -5252,7 +5295,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62918 @62919 @validateFieldSameAfterAdvPRApproved   @mahadev @buglogged135464
+  @62918 @62919 @validateFieldSameAfterAdvPRApproved   @mahadev
   Scenario Outline: Verify (Remaining Budget |Awarded Budget ) fields remains the same on Progress report at award owner end when advance PR is approved
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -5315,6 +5358,11 @@ Feature: Validate scenarios in Progress Report without background
       | Name                     | Advance |
       | {SavedValue:FO Username} | Step 1  |
     When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -5331,9 +5379,9 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @45741 @validateReportFrequencyField   @jitendra
+  @45741 @validateReportFrequencyField  @jitendra
   Scenario: Validate on Progress report, Report Frequency field at Report Overview table under Overview tab is same as Award
-    Given I activated standalone subaward "Automation Runtime Award" with properties "PROGRESS_REPORT_QUARTERLY"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "PROGRESS_REPORT_MONTHLY"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     Given I am on "SUBPORTAL" portal
