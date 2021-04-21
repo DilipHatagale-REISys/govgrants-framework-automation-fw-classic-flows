@@ -45,7 +45,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click toggle button to select "Grants - Rejected"
     Then I softly see value "Terminated" for title "Status" inside table "---subAwardFromFDM:-:RecipientGrantsTableId---"
 
-  @66740 @documentattacmentatgrant @jitendra @buglogged94779
+  @66740 @documentattacmentatgrant @jitendra
   Scenario: To verify that the document can be added in the Supporting Document checklist table in the Grant Attachment tab in the Draft state
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -76,7 +76,7 @@ Feature: Validate all scenarios of grants and award without background
     And I get the "EGMS ID"
     Then I see status in Progress-bar is "Created" and is "Green"
 
-  @68058 @cannotCreateGrantFOUser @jitendra @buglogged127960
+  @68058 @cannotCreateGrantFOUser @jitendra
   Scenario Outline: validate that FO user cannot create Direct Grant
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
@@ -259,6 +259,7 @@ Feature: Validate all scenarios of grants and award without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
@@ -441,10 +442,12 @@ Feature: Validate all scenarios of grants and award without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
     And I enter in modal "Payment Request Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     And I enter in modal "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
@@ -617,7 +620,7 @@ Feature: Validate all scenarios of grants and award without background
     And I get the "EGMS ID"
     And I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    Then I softly see value "True" for title "Mandatory" against the value "Term" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
+    Then I softly see value "True" for title "Mandatory" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
     Then I softly cannot see row level action button "Delete" against "Term" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
 
   @65780 @65800 @65814 @65804 @66751 @66745 @StatusNotStartedSentToSubrecipient @jitendra @smoke
@@ -819,43 +822,43 @@ Feature: Validate all scenarios of grants and award without background
     And I clear the value from field "fieldProjectTitle__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | Grant Title is required to save. |
+      | *Grant Title is required to save. |
     And I clear the value from field "GrantAbbreviation__c"
     When I enter value "{SavedValue:Automation Runtime Execution Award}" into field "fieldProjectTitle__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | Grant Abbreviation is required to save. |
+      | *Grant Abbreviation is required to save. |
     When I enter value "GA" into field "GrantAbbreviation__c"
     And I clear the value from field "ProjectPeriodEndDate__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | Project Period End Date is Required to save. |
+      | *Project Period End Date is Required to save. |
     When I enter value "3650" into field "ProjectPeriodEndDate__c"
     And I clear the value from field "ProjectPeriodStartDate__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | Project Period Start Date is Required to save. |
+      | *Project Period Start Date is Required to save. |
     And I clear the value from field "ExternalOrganization__c"
     When I enter value "3650" into field "ProjectPeriodEndDate__c"
     When I enter value "0" into field "ProjectPeriodStartDate__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | Funding Organization is required to save. |
+      | *Funding Organization is required to save. |
     And I clear the value from field "Program__c"
     When I enter value "Test Automation Organization" into field "ExternalOrganization__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | Internal Program is required to save. |
+      | *Internal Program is required to save. |
     When I enter value "Automation Permanent Internal Program" into field "Program__c"
     When I enter value "--None--" into field "BudgetCategoryPackage__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | Budget Category Type is required to save. |
+      | *Budget Category Type is required to save. |
     And I clear the value from field "InternalOrganization__c"
     When I enter value "Construction" into field "BudgetCategoryPackage__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | Subrecipient Organization is required to save. |
+      | *Subrecipient Organization is required to save. |
 
   @64424 @VerifyRequiredMatch%Filed @keerti
   Scenario: Verify If you select Subrecipient Match Required setting as Yes and award owner did not enter Required Match % field then it should show validation message.
@@ -962,7 +965,7 @@ Feature: Validate all scenarios of grants and award without background
     And I enter value "Automation" into field "GrantDescription__c"
     And I click on "Save" in the page details
     And I click on "Edit" in the page details
-    Then I see field dropdown "fieldGrantType__c" contains values "Project Grant,Formula Grant,Block Grant"
+    Then I see field dropdown "fieldGrantType__c" contains values "--None--,Project Grant,Formula Grant,Block Grant"
 
   @65602 @verifySubtabNavigation @mahadev
   Scenario: Verify when Award owner click on edit action at sub award it should navigate to subawards Tab with Progress bar status as Created
@@ -982,7 +985,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "{SavedValue:Automation Runtime Execution Award}" inside table
     Then I softly see status in Progress-bar is "Created" and is "green"
 
-  @65681 @65683 @verifyTermsAndConditions @mahadev
+  @65681 @65683 @verifyTermsAndConditions @mahadev @buglogged142219
   Scenario: Verify Award owner can Associate Terms and Conditions on Subaward Terms Tab | Verify Associated Mandatory Terms and Conditions are not Editable by award owner on Subaward
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -999,7 +1002,7 @@ Feature: Validate all scenarios of grants and award without background
     And I refresh the page
     Then I softly cannot see row level action button "Edit" against "Test T&C" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    When I click "Associate" after selection of "TC-0001" in the table "---subAwardStandAlone:-:grantTermConditionPopUp---"
+    When I click "Associate" after selection of "Automation Permanent Terms and Conditions" in the table "---subAwardStandAlone:-:grantTermConditionPopUp---"
     And I close modal by clicking the top right x button
     Then I softly see value "Automation Permanent Terms and Conditions" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
 
@@ -1040,6 +1043,7 @@ Feature: Validate all scenarios of grants and award without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
@@ -1110,7 +1114,7 @@ Feature: Validate all scenarios of grants and award without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 1000         | 100        | 100            |
-    Then I softly see value "$1,000.00" for title "Subaward Budget" against the value "Extra Salary" inside table "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
+    Then I softly see value "$1,000.00" for title "Award Budget" against the value "Extra Salary" inside table "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
     Then I softly see value "$100.00" for title "Cash Match" against the value "Extra Salary" inside table "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
     When I close "RecipientAwardBudgetCategoryFlexTable" modal by clicking the top right x button
     When I navigate to "Grants" tab
@@ -1122,7 +1126,7 @@ Feature: Validate all scenarios of grants and award without background
     When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
       | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
       | Extra Salary | The narrative | 10000        | 100        | 100            |
-    Then I softly see value "$10,000.00" for title "Subaward Budget" against the value "Project inspection fees" inside table "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
+    Then I softly see value "$10,000.00" for title "Award Budget" against the value "Project inspection fees" inside table "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
     Then I softly see value "$100.00" for title "Cash Match" against the value "Project inspection fees" inside table "---subAwardStandAlone:-:RecipientAwardBudgetCategoryTableId---"
     Examples:
       | Award Name                                      | Grant Name                                      |
@@ -1145,7 +1149,7 @@ Feature: Validate all scenarios of grants and award without background
       | Grant Name                            |
       | {SavedValue:Automation Runtime Award} |
 
-  @66224 @66210 @67895 @validateSourceNdInstructionField  @mahadev
+  @66224 @66210 @67895 @validateSourceNdInstructionField  @mahadev @buglogged138236
   Scenario: To verify that if source and instruction field  unfilled in site visit review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation error must be thrown.
   | @67895 Validate BP number from subaward is updating the BP number on Grant upon activation of Subaward
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
@@ -1241,6 +1245,7 @@ Feature: Validate all scenarios of grants and award without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
@@ -1403,7 +1408,7 @@ Feature: Validate all scenarios of grants and award without background
       | Award Name                                      | Grant Name                                      |
       | {SavedValue:Automation Runtime Execution Award} | {SavedValue:Automation Runtime Execution Award} |
 
-  @66219 @validateInstructionField  @mahadev
+  @66219 @validateInstructionField  @mahadev @buglogged138236
   Scenario: To verify that if instruction field is left unfilled in site visit review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation error must be throw
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1422,7 +1427,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I see the following messages in the page details :
       | Instructions for Subrecipient is Required to save under Overview. |
 
-  @66215 @validateCreatedStatusSV  @mahadev
+  @66215 @validateCreatedStatusSV  @mahadev @buglogged138236
   Scenario: To verify that after the general information in the modal window of site visit is filled by the award owner the status change to created.
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1454,7 +1459,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Overview" sub tab
     Then I see textarea field "fieldGrantAwardDescription__c" is editable
 
-  @66416 @validateSourceInDeskReview  @mahadev
+  @66416 @validateSourceInDeskReview  @mahadev @buglogged142232
   Scenario: To verify that if source field in plan table is left unfilled in Desk review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation message  must be thrown
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1473,7 +1478,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I see the following messages in the page details :
       | Source is Required to save under Overview. |
 
-  @66410 @validateInstructionFieldInDeskReview  @mahadev
+  @66410 @validateInstructionFieldInDeskReview  @mahadev @buglogged142232
   Scenario: To verify that if instruction field is left unfilled in Desk review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation message must be thrown
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1529,6 +1534,7 @@ Feature: Validate all scenarios of grants and award without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
@@ -1680,7 +1686,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "{SavedValue:Automation Runtime Execution Award}" inside flex table with id "---subAwardStandAlone:-:recipientsSubawardTableId---" without waiting for record
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:recipientAwardAmendmentRequestTableId---"
-    When I enter "Budget_Redirection" values from "AmendmentRequest_Field_Values.xlsx"
+    When I enter in modal "Budget_Redirection" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     Then I see field "Budget Redirection Threshold" as "10.00%"
     Examples:
@@ -1770,7 +1776,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Files" sub tab
     Then I cannot see top right button "Add" in flex table with id "---subAwardStandAlone:-:flexGridGrantChecklistsTableId---"
 
-  @69453 @verifySupportingDocumentNotAddedByFOUser @aashish
+  @69453 @verifySupportingDocumentNotAddedByFOUser @aashish @buglogged142231
   Scenario: Validate that supporting document cannot be added by anyone except the award owner(Except FO user)
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -1871,10 +1877,12 @@ Feature: Validate all scenarios of grants and award without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
     And I enter in modal "Payment Request Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     And I enter in modal "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
@@ -2080,6 +2088,7 @@ Feature: Validate all scenarios of grants and award without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
@@ -2232,16 +2241,16 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Execution Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Execution Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:recipientAwardAmendmentRequestTableId---"
     When I enter "Budget_Redirection" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     Then I see field "Budget Redirection Threshold" as "15.00%"
     Examples:
-      | Award Name                                      | Grant Name                                      |
-      | {SavedValue:Automation Runtime Execution Award} | {SavedValue:Automation Runtime Execution Award} |
+      | Award Name                                   | Grant Name                                   |
+      | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
   @71370 @71430 @71434 @awardCloseInFilter @jitendra
   Scenario Outline: Validate that 'Amount Awarded' ($) value doesn't  get changed on the Grant post Grant is closed
@@ -2281,6 +2290,7 @@ Feature: Validate all scenarios of grants and award without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
@@ -2423,7 +2433,12 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Activate" in the page details
-    Then I see that "Subaward" is in "Activated" status
+    Then I softly see that "Subaward" is in "Activated" status
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside table
     And I navigate to "Budget" sub tab
     And I save the field labeled "Amount Awarded to Date" as "amtAwardToDate"
     Given I delete the record "<Award Name>" from the object "Closeout"
@@ -2616,10 +2631,12 @@ Feature: Validate all scenarios of grants and award without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
     And I enter in modal "Payment Request Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     And I enter in modal "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Progress Report Schedule" modal by clicking the top right x button
@@ -3074,6 +3091,7 @@ Feature: Validate all scenarios of grants and award without background
       | Automation Permanent KPI for Regression | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
     When I close "Edit Payment Request Schedule" modal by clicking the top right x button

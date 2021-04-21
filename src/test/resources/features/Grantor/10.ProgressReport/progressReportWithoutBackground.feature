@@ -919,6 +919,10 @@ Feature: Validate scenarios in Progress Report without background
     When I enter the following values into flex table with id "---progressreport:-:grantChecklistsTableId---" by clicking "Add" :
       | Description | Required  | Applies To      | Status |
       | Automation  | Mandatory | Progress Report | Active |
+    And I click on "Upload Template" icon for "Automation" inside flex table with id "---progressreport:-:grantChecklistsTableId---" with wait for record
+    When I upload file "AttachmentTesting.pdf" into library
+    And I click modal button "Save"
+    When I close "Upload Template" modal by clicking the top right x button
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI3" user
     And I delete the record "<Award Name>" from the object "Progress Report"
@@ -938,6 +942,9 @@ Feature: Validate scenarios in Progress Report without background
       | Title                                   | Actual | Reported Date |
       | Automation Permanent KPI for Regression | 7      | 7             |
     When I navigate to "Forms and Files" sub tab
+#    When I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+#    When I choose the file "sample.pdf" to upload for "Checklist" of type "---progressReport:-:progressReportChecklistsTableId---"
+#    When I close "Upload Document" modal by clicking the top right x button
     Then I see value "View" for title "Template Link" against the value "Active" inside table "---progressreport:-:ProgressReportChecklistTableId---"
     Examples:
       | Award Name                            |
@@ -1076,7 +1083,6 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
     When I choose the file "sample.pdf" to upload for "Checklist" of type "---progressReport:-:progressReportChecklistsTableId---"
     When I close "Upload Document" modal by clicking the top right x button
-    And I pause execution for "30" seconds
     And I click on hyperlink containing value "View"
     Then I see "A Simple PDF File" on page "1" of "govgrants" pdf file
     #Then I see "Program_Field_Values.xlsx" has been added in "Attachments" flex table

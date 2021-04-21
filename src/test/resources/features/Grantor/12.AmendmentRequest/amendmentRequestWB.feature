@@ -388,7 +388,9 @@ Feature: Amendment Request scenarios without background
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
-    Then I can see the message "Successfully Approved" in the approval decision
+    #As this will not displyed due to page refresh at same time
+    #Then I can see the message "Successfully Approved" in the approval decision
+    Then I see field "Status" as "Approved"
 
     Examples:
       | Award Name                                      | Grant Name                                      |
@@ -1444,7 +1446,7 @@ Feature: Amendment Request scenarios without background
       | Award Name                                      | Grant Name                                      |
       | {SavedValue:Automation Runtime Amendment Award} | {SavedValue:Automation Runtime Amendment Award} |
 
-  @61721 @SVCopiedToNewCreatedAwardForAmendmentTypBudgetPeriodChangeAmendment @keerti @smoke
+  @61721 @SVCopiedToNewCreatedAwardForAmendmentTypBudgetPeriodChangeAmendment @keerti @smoke @buglogged138236
   Scenario: Validate Site Visits is carry forwarded in created status to new created award when amendment type is Budget Period Change Amendment
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1532,7 +1534,7 @@ Feature: Amendment Request scenarios without background
     And I navigate to "Management" tab
     Then I see value "Created" for title "Status" against the value "{SavedValue:SiteVisitID}" inside table "---sitevisits:-:grantorSiteVisitsTableID---"
 
-  @61723 @68079 @SVcopiedToNewCreatedAwardForAmendmentTypeFundingChange @keerti @smoke
+  @61723 @68079 @SVcopiedToNewCreatedAwardForAmendmentTypeFundingChange @keerti @smoke @buglogged138236
   Scenario:Validate Site Visits is copied to new created award when amendment type - Funding Change
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1742,7 +1744,7 @@ Feature: Amendment Request scenarios without background
       | Automation Execution KPI | fieldMasterKPI__c |
       | 10                       | fieldTarget__c    |
     And I click modal button "Save"
-    When I close "Associate KPI" modal by clicking the top right x button
+    When I close "Grantor Amendment KPIs" modal by clicking the top right x button
     Then I softly see value "Automation Execution KPI" for title "Title" inside table "---amendment:-:AmendmentKPITableId---"
     And I click on "Edit" icon for "Automation Execution KPI" inside flex table with id "---amendment:-:AmendmentKPITableId---" without waiting for record
     And I enter value "20" into field "Target__c"
@@ -2157,7 +2159,7 @@ Feature: Amendment Request scenarios without background
 
   @97764 @ValidateActivationOfAmendmentRequestWithInternalUser-PeriodicRenewal @monu
   Scenario: Verify internal user is able to activate periodic renewal amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST_RISK_ASSESMENT_NO"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -2262,16 +2264,16 @@ Feature: Amendment Request scenarios without background
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I click on top right button "Associate" in flex table with id "---amendment:-:AmendmentFundingAccountTableId---"
-    When I perform quick search for "---AUTOEnvData:-:fundingAccount1--" in "---amendment:-:AssociateFundingAccountTableId---" panel
-    When I click "Add" after selection of "---AUTOEnvData:-:fundingAccount1--" in the table "---amendment:-:AssociateFundingAccountTableId---"
+    When I perform quick search for "---AUTOEnvData:-:fundingAccount1---" in "---amendment:-:AssociateFundingAccountTableId---" panel
+    When I click "Add" after selection of "---AUTOEnvData:-:fundingAccount1---" in the table "---amendment:-:AssociateFundingAccountTableId---"
     And I close "Associate Funding Accounts" modal by clicking the top right x button
-    Then I softly see value "---AUTOEnvData:-:fundingAccount1--" for title "Funding Account" inside table "---amendment:-:AmendmentFundingAccountTableId---"
-    And I click on "Edit" icon for "---AUTOEnvData:-:fundingAccount1--" inside flex table with id "---amendment:-:AmendmentFundingAccountTableId---" without waiting for record
+    Then I softly see value "---AUTOEnvData:-:fundingAccount1---" for title "Funding Account" inside table "---amendment:-:AmendmentFundingAccountTableId---"
+    And I click on "Edit" icon for "---AUTOEnvData:-:fundingAccount1---" inside flex table with id "---amendment:-:AmendmentFundingAccountTableId---" without waiting for record
     And I enter value "1000" into field "ActualEncumbrance__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:AmendmentFundingAccountTableId---"
     Then I softly see value "$1,000.00" for title "Revised Encumbrance" inside table "---amendment:-:AmendmentFundingAccountTableId---"
-    And I click on "Remove" icon for "---AUTOEnvData:-:fundingAccount1--" inside flex table with id "---amendment:-:AmendmentFundingAccountTableId---" without waiting for record
-    Then I softly do not see value "---AUTOEnvData:-:fundingAccount1--" for title "Funding Account" inside table "---amendment:-:AmendmentFundingAccountTableId---"
+    And I click on "Remove" icon for "---AUTOEnvData:-:fundingAccount1---" inside flex table with id "---amendment:-:AmendmentFundingAccountTableId---" without waiting for record
+    Then I softly do not see value "---AUTOEnvData:-:fundingAccount1---" for title "Funding Account" inside table "---amendment:-:AmendmentFundingAccountTableId---"
 
   @96668 @102294 @ValidateInternalUserIncreaseFundingAmount-PeriodicRenewal @monu
   Scenario: Verify internal user is able to increase funding amount for periodic renewal amendment request
@@ -2362,12 +2364,12 @@ Feature: Amendment Request scenarios without background
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     And I navigate to "Budget" sub tab
-    When I expand nested table containing column value "Fiscal Year(2020-2030)"
+    When I expand nested table containing column value "Fiscal Year(2021-2031)"
     Then I softly see value "$1,000.00" for title "Awarded Budget" against the value "Construction" inside table "---amendment:-:GrantsBudgetCategoriesTableId---"
     Then I softly see value "$100.00" for title "Cash Match" against the value "Construction" inside table "---amendment:-:GrantsBudgetCategoriesTableId---"
     And I navigate to "Actuals" sub tab
     And I refresh the page
-    When I expand nested table containing column value "Fiscal Year(2020-2030)"
+    When I expand nested table containing column value "Fiscal Year(2021-2031)"
     Then I softly see value "$1,000.00" for title "Awarded Budget" against the value "Construction" inside table "---amendment:-:GrantsActualBudgetPeriodTableId---"
     Then I softly see value "$100.00" for title "Cash Match" against the value "Construction" inside table "---amendment:-:GrantsActualBudgetPeriodTableId---"
 
@@ -2501,7 +2503,7 @@ Feature: Amendment Request scenarios without background
       | Automation Execution KPI | fieldMasterKPI__c |
       | 10                       | fieldTarget__c    |
     And I click modal button "Save"
-    When I close "Associate KPI" modal by clicking the top right x button
+    When I close "Grantor Amendment KPIs" modal by clicking the top right x button
     Then I softly see value "Automation Execution KPI" for title "Title" inside table "---amendment:-:RecipientKPITableId---"
 
   @99213 @99239 @99224 @99235 @VerifySubRecipientAbleToCreateAmendmentRequest-BudgetRedirection @monu
@@ -2861,7 +2863,7 @@ Feature: Amendment Request scenarios without background
     And I save the field labeled "Proposed Budget Period End Date" as "PBPED"
     Then I see field "{SavedValue:PBPED}" contains date greater than "{SavedValue:PBPSD}" date
 
-  @99269 @100037 @100459 @99261 @VerifyStatusInFieldHistoryTable-KPCAmendmentRequest @monu @buglogged138122
+  @99269 @100037 @100459 @99261 @VerifyStatusInFieldHistoryTable-KPCAmendmentRequest @monu
   Scenario: Validate status of key personal change Amendment request in field history table after submit to grantor
     Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
     Given I am on "SUBPORTAL" portal
@@ -2921,8 +2923,10 @@ Feature: Amendment Request scenarios without background
     And I select user "{SavedValue:EXE Username}" in the approval decision
     When I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
-    And I softly see the following messages in the page details contains:
-      | Successfully Re-Assigned |
+#    As Page refreshing same time so this msg getting disapper
+#    And I softly see the following messages in the page details contains:
+#      | Successfully Re-Assigned |
+    Then I softly see field "Status" as "Submitted for Approval"
 
   @100428 @100433 @100454 @VerifyTaskCreationForExecutiveApprover-KPCAmendmentRequest @monu
   Scenario: Validate Approval task is creating created for Executive approver once fiscal approved the amendment request
@@ -2980,7 +2984,7 @@ Feature: Amendment Request scenarios without background
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     And I navigate to "History" sub tab
-    And I see "{SavedValue:EXE Username}" against "Executive Approval" in approval history
+    And I see "{SavedValue:EXE Username}" against "Step 2" in approval history
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Approved"
     #100454 #monu
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -3204,6 +3208,7 @@ Feature: Amendment Request scenarios without background
     And I click on "Amend Subaward" in the page details
     And I save the field labeled "EGMS ID" as "NewSubAwardId"
     And I click on "Activate" in the page details
+    Given I delete the record "{SavedValue:Automation Runtime Award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     And I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -3278,6 +3283,7 @@ Feature: Amendment Request scenarios without background
     And I click on "Amend Subaward" in the page details
     And I save the field labeled "EGMS ID" as "NewSubAwardId"
     And I click on "Activate" in the page details
+    When I delete the record "{SavedValue:Automation Runtime Award}" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "{SavedValue:Automation Runtime award}" having object api name as "PaymentRequest__c"
     And I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -3333,7 +3339,7 @@ Feature: Amendment Request scenarios without background
     Then I softly see field "Status" as "Rejected"
     Then I softly see status in Progress-bar is "Rejected" and is "Red"
 
-  @99608 @99629 @verifyCreationOfAmendmentRequest-CFAmendmentRequest @monu
+  @99608 @99629 @verifyCreationOfAmendmentRequest-CFAmendmentRequest @monu @TaskCreated142379
   Scenario: Validate sub recipient user is able to create carry Forward Amendment Request
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -3442,7 +3448,7 @@ Feature: Amendment Request scenarios without background
     Then I softly see field "Status" as "Rejected"
     Then I softly see status in Progress-bar is "Rejected" and is "Red"
 
-  @99609 @verifySubmissionOfAmendmentRequest-CFAmendmentRequest @monu
+  @99609 @verifySubmissionOfAmendmentRequest-CFAmendmentRequest @monu @TaskCreated142379
   Scenario: Validate user is able to submit carry forward amendment request to grantor
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -3750,7 +3756,7 @@ Feature: Amendment Request scenarios without background
       | {SavedValue:Automation Runtime Site Visit} | {SavedValue:updatedBudgetPeriodDate} |
     Then I softly see value "{SavedValue:updatedBudgetPeriodDate}" for title "Site Review End Date" inside table "---sitevisits:-:grantorSiteVisitsTableID---"
 
-  @100784 @96203 @ValidateCreationOfSVWithExtendedBPDate-BudgetPeriodChange @monu @smoke
+  @100784 @96203 @ValidateCreationOfSVWithExtendedBPDate-BudgetPeriodChange @monu @smoke @buglogged138236
   Scenario:Validate Internal user is able to create Site Visits with extended budget period date
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -3972,6 +3978,7 @@ Feature: Amendment Request scenarios without background
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     And I save the field labeled "EGMS ID" as "amendedSubawardId"
+    Given I delete the record "{SavedValue:Automation Runtime Award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -4112,6 +4119,7 @@ Feature: Amendment Request scenarios without background
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     And I save the field labeled "EGMS ID" as "amendedSubawardId"
+    Given I delete the record "{SavedValue:Automation Runtime Award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -4331,6 +4339,7 @@ Feature: Amendment Request scenarios without background
     And I click on "Amend Subaward" in the page details
     And I save the field labeled "EGMS ID" as "NewSubAwardId"
     And I click on "Activate" in the page details
+    Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
@@ -4423,6 +4432,7 @@ Feature: Amendment Request scenarios without background
     And I click on "Amend Subaward" in the page details
     And I save the field labeled "EGMS ID" as "NewSubAwardId"
     And I click on "Activate" in the page details
+    Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab

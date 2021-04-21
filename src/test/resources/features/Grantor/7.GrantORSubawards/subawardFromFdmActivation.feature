@@ -9,7 +9,7 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
     Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}"
     And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
 
-  @50999 @51000 @awardSiteVisitAndDeskReview
+  @50999 @51000 @awardSiteVisitAndDeskReview @buglogged138236
   Scenario Outline: Validate award site visit and desk review creation
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -52,16 +52,16 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
     And I click on "View" icon for "<Grant Name>" inside flex table with id "ActiveFundingOpportunitiesCompitive" without waiting for record
     When I navigate to "Related Log" sub tab
     Then I softly see value "<Grant Name>" for title "Grant Title" inside table "---subAwardFromFDM:-:relatedloggrant---"
-    And I click on advance filter "#advfAnnouncementActiveGrants" of table id "---announcement:-:annChecklist---"
+    And I click on advance filter "#advfAnnouncementActiveGrants" of table id "---announcement:-:AnnouncementGrantsTableId---"
     And I enter advance filter values inside id "advfAnnouncementActiveGrants"
       | EGMS ID | Contains | Invalid |
-    Then I softly see "No Records Found" inside flex table with id "---subAwardFromFDM:-:relatedloggrant---"
+    Then I softly see "No Records Found" inside flex table with id "---announcement:-:AnnouncementGrantsTableId---"
     And I refresh the page
-    Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardFromFDM:-:relatedloggrant---"
-    And I click on advance filter "#advfAnnouncementActiveGrants" of table id "---announcement:-:annChecklist---"
+    Then I softly see value "Record Id" for title "Grant Title" inside table "---announcement:-:AnnouncementGrantsTableId---"
+    And I click on advance filter "#advfAnnouncementActiveGrants" of table id "---announcement:-:AnnouncementGrantsTableId---"
     And I enter advance filter values inside id "advfAnnouncementActiveGrants"
-      | EGMS ID | Contains | Record Id |
-    Then I softly see value "Record Id" for title "EGMS ID" inside table "---subAwardFromFDM:-:relatedloggrant---"
+      | EGMS ID | Contains | <Grant Name> |
+    Then I softly see value "<Grant Name>" for title "Grant Title" inside table "---subAwardFromFDM:-:relatedloggrant---"
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:relatedloggrant---" without waiting for record
     Then I softly see field "Subaward" as "<Grant Name>"
     Examples:

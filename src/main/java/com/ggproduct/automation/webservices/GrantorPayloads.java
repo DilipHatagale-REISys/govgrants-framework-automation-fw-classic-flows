@@ -606,6 +606,8 @@ public class GrantorPayloads {
                 return createAwarForAmendmentRequest(json);
             case "AMENDMENT_REQUEST_BUILDUP_MATCH_YES":
                 return createAwardForAmendmentRequestWithBuildUpAndMatchAsYes(json);
+            case "AMENDMENT_REQUEST_RISK_ASSESMENT_NO":
+                return createAwarForAmendmentRequestWithoutRiskAssessment(json);
             case "PROGRESS_REPORT_NOT_APPLICABLE":
                 return notapplicableProgressReportAward(json);
             case "PROGRESS_REPORT_MONTHLY":
@@ -682,6 +684,18 @@ public class GrantorPayloads {
         JsonArray newA = new JsonArray();
 
         grant.addProperty("RiskAssessment_Required","Yes");
+        grant.addProperty("IsMatchRequired","No");
+        grant.addProperty("IsBuildUpFunctionality","Yes");
+        grant.addProperty("WBSRequired","No");
+        newA.add(grant);
+        json.add("Grant",newA);
+        return json;
+    }
+
+    private JsonObject createAwarForAmendmentRequestWithoutRiskAssessment(JsonObject json) {
+        JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
+        JsonArray newA = new JsonArray();
+        grant.addProperty("RiskAssessment_Required","No");
         grant.addProperty("IsMatchRequired","No");
         grant.addProperty("IsBuildUpFunctionality","Yes");
         grant.addProperty("WBSRequired","No");

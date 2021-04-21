@@ -60,7 +60,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Objectives                      |
       | Automation Permanent Objective2 |
 
-  @53200 @addAttachmentToSOWAmendmentRequest @buglogged138122
+  @53200 @addAttachmentToSOWAmendmentRequest
   Scenario: Add attachment to Amendment Request
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -69,7 +69,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Save" in the page details
     When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---amendment:-:AmendmentAttachmentTableId---"
-    And I upload attachment "Attachment.pdf" of type "Terms and Conditions" from computer
+    And I upload attachment without random number "Attachment.pdf" of type "Terms and Conditions" from computer
     Then I softly see "Attachment.pdf" has been added in "Amendment Files" flex table
 
   @53199 @53201 @97292 @sendToSubrecipientToSOWAmendmentRequest
@@ -177,7 +177,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I navigate to "Responsibilities" sub tab
     Then I softly cannot see row level action button "Edit" against "Program Approver" in flex table with id "---amendment:-:approversTableId---"
 
-  @53204 @approvalOfSOWAmendmentRequest @buglogged138122
+  @53204 @approvalOfSOWAmendmentRequest
   Scenario: Approval of Amendment Request
     Given I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -207,7 +207,7 @@ Feature: Validate all scenarios in the Amendment Request
       | {SavedValue:FO Username} | Step 3            |
     When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---amendment:-:AmendmentAttachmentTableId---"
-    And I upload attachment "Attachment.pdf" of type "Terms and Conditions" from computer
+    And I upload attachment without random number "Attachment.pdf" of type "Terms and Conditions" from computer
     Then I softly see "Attachment.pdf" has been added in "Amendment Files" flex table
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -265,7 +265,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:SOWAMENDMENTREQUEST}" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:SOWAMENDMENTREQUEST}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    And I click on "Acknowledge" in the page details
+    And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -318,7 +318,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    And I click on "Acknowledge" in the page details
+    And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1071,7 +1071,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Revise" in the page details
     When I navigate to "Overview" sub tab
     Then I softly see value "$500.00" for title "Difference" against the value "Construction" inside table "---amendment:-:grantorBudgetChangeTableId---"
-    And I softly see value "$500.00" for title "Difference" against the value "Equipment" inside table "---amendment:-:grantorBudgetChangeTableId---"
+    And I softly see value "$500.00" for title "Difference" against the value "Site work" inside table "---amendment:-:grantorBudgetChangeTableId---"
     Then I softly see field "Requested Change in Budget" as "$1,000.00"
 
   @57139 @102773 @awardOwnerActivateAmendedSubAward @jitendra
@@ -1430,7 +1430,6 @@ Feature: Validate all scenarios in the Amendment Request
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardFromFDM:-:RecipientGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardFromFDM:-:RecipientGrantsTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
-    When I perform quick search for "Activated" in "---subAwardFromFDM:-:RecipientSubAwardTableId---" panel
     And I click on "View" icon for "Activated" inside flex table with id "---subAwardFromFDM:-:RecipientSubAwardTableId---" without waiting for record
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -1449,7 +1448,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
 
-  @57451 @verifyPaymentApproverApproveAdvancePaymentRequestActiveSubawardAfterFundingChangeAmendment @mahadev @buglogged138122
+  @57451 @verifyPaymentApproverApproveAdvancePaymentRequestActiveSubawardAfterFundingChangeAmendment @mahadev
   Scenario Outline: Verify Payment Request Approver can approve the Advance Payment Request created on Active subaward after Funding change amendment
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -1664,7 +1663,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Grant Name                            |
       | {SavedValue:Automation Runtime Award} |
 
-  @57366 @verifySubRecipientIsAbleToSeeAmendedBudgetPeriodOnAdvancePaymentRequest @mahadev
+  @57366 @verifySubRecipientIsAbleToSeeAmendedBudgetPeriodOnAdvancePaymentRequest @mahadev @buglogged142465
   Scenario Outline: Verify Sub-recipient user is able to see the amended Budget Period on Advance Payment Request
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -2059,7 +2058,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
 
-  @57365 @verifySubmissionOfReimbursmentPaymentRequest @jitendra
+  @57365 @verifySubmissionOfReimbursmentPaymentRequest @jitendra @buglogged142465
   Scenario: Verify user can submit Reimbursement Payment request to grantor after Budget Period Change Amendment is done on Subaward
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -2135,7 +2134,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
 
-  @57377 @68075 @verifyAmendedBudgetPeriodAtAdvancePRPage @jitendra
+  @57377 @68075 @verifyAmendedBudgetPeriodAtAdvancePRPage @jitendra @buglogged142465
   Scenario: Verify user can submit Advance Payment request to grantor after Budget Period Change Amendment is done on Subaward.
   |Validate that the Version number and Subaward type in Subaward Information table gets updated after amendment( Budget period)|
     When I navigate to "Management" sub tab
@@ -2682,7 +2681,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I refresh the page
     And I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
-      | Responsibilities - You cannot skip any Approval Step. |
+      | Responsibilities - You cannot skip an Approval Step. |
 
   @138063 @Verify1StepAddApproverAt_SOWAmendmentRequest-RnRFunctionality @monu
   Scenario: Verify that user is able to add one step approver on approvers section for new created amendment type scope of work
