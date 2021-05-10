@@ -1669,8 +1669,13 @@ Feature: Validate sanity testing of Complete Business Flow
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
+    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     When I click on "Mark As Paid" in the page details
-    And I enter "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
+    And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
     When I close "{SavedValue:EGMSID}" modal by clicking the top right x button
     Then I see status in Progress-bar is "Paid" and is "green"
@@ -1731,8 +1736,13 @@ Feature: Validate sanity testing of Complete Business Flow
     When I get the "EGMS ID"
     And I click on "Submit for Approval" in the page details
     When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
+    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     When I click on "Mark As Paid" in the page details
-    And I enter "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
+    And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
     When I close "{SavedValue:EGMSID}" modal by clicking the top right x button
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -1781,8 +1791,13 @@ Feature: Validate sanity testing of Complete Business Flow
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
+    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     When I click on "Mark As Paid" in the page details
-    And I enter "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
+    And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
     When I close "{SavedValue:EGMSID}" modal by clicking the top right x button
     Then I see status in Progress-bar is "Paid" and is "green"
@@ -1841,8 +1856,13 @@ Feature: Validate sanity testing of Complete Business Flow
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
-    And I click on "Mark As Paid" in the page details
-    And I enter "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
+    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
+    When I click on "Mark As Paid" in the page details
+    And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
     When I close "{SavedValue:EGMSID}" modal by clicking the top right x button
     Then I see status in Progress-bar is "Paid" and is "Green"
@@ -2514,8 +2534,13 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
+    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
     When I click on "Mark As Paid" in the page details
-    And I enter "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
+    And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
     When I close "{SavedValue:EGMSID}" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "DynamicUser" user on "INTERNAL" portal
