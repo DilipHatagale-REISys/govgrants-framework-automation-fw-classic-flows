@@ -373,3 +373,28 @@ Feature: Validate all scenarios for program
     And I click on "Submit For Approval" in the page details
     And I softly see the following messages in the page details contains:
       | Responsibilities - At least one approver is required |
+
+  @141801 @VerifyErrorMessageWhileSkippingStepsForNGOProgram-RnRFunctionality @monu
+  Scenario: Verify the validation message is displayed when user skip the approval steps on NGO program
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click on top right button "New" in flex table with id "---program:-:ExternalNGOProgramTableId---"
+    When I enter "NGOCreation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    And I enter "NGOEdit" values from "Program_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 4  |
+    And I click on "Submit For Approval" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Responsibilities - You cannot skip an Approval Step. |

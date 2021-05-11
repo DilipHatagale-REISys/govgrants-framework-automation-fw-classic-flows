@@ -416,17 +416,6 @@ public class InternalOrganizationPage extends GranteeProjectManager {
     }
 
     /**
-     * assert if new tab is opened or not on button/link/icon click
-     */
-    public void assertNewTabOpenedOnActionsClick(String usage) {
-        if (usage.equalsIgnoreCase("softly")) {
-            I.amPerforming().assertionsTo().assertThat(isNewTabOpened()).isTrue();
-        } else {
-            Assert.assertTrue(isNewTabOpened());
-        }
-    }
-
-    /**
      * return true if content of owner organisation lookup modal is in ascending order
      */
     public void assertSortingOrderOfFlexTableColumnContent(String usage, String titleName, String order, String tableId) {
@@ -705,18 +694,6 @@ public class InternalOrganizationPage extends GranteeProjectManager {
         } catch (Exception e) {
         }
         return flag;
-    }
-
-    /**
-     * Boolean status of lookuplink/button/icon opens in another tab
-     *
-     * @return
-     */
-    private Boolean isNewTabOpened() {
-        boolean myNewTabFound = false;
-        if (I.amPerforming().switchTo().getWindowsHandlers().size() > 1)
-            myNewTabFound = true;
-        return myNewTabFound;
     }
 
     /**

@@ -107,11 +107,6 @@ public class InternalOrganizatioSteps {
         internalOrganizationPage.AssertTotalRecordsCountInFlexTable(tableId);
     }
 
-    @Then("^I (see|softly see) new tab is opened$")
-    public void assertNewTabOpenOnEditClick(String usage) {
-        internalOrganizationPage.assertNewTabOpenedOnActionsClick(usage);
-    }
-
     @Then("^I (see|do not see|softly see|softly do not see) content of expected Flex table column \"([^\"]*)\" is in \"([^\"]*)\" order of table id \"([^\"]*)\"$")
     public void assertContentOfFlexTableColumnInExpectedOrder(String usuage, String titleName, String order, String tableId) {
         internalOrganizationPage.assertSortingOrderOfFlexTableColumnContent(usuage, titleName, order, tableId);
