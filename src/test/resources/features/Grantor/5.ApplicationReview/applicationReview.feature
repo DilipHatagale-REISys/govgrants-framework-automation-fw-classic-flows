@@ -314,7 +314,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
-  @65079 @73778 @73791 @@75228 @VerifyAwardOwnerCanInitiateReviewProcess @keerti @skipOnJenkins
+  @65079 @73778 @73791 @75228 @VerifyAwardOwnerCanInitiateReviewProcess @keerti @skipOnJenkins
   Scenario Outline: Verify Award owner can Initiate the Review Process.
   | To Verify that under related log tab , corresponding data is display about related submitted applications for announcement
     And I login to "As a Grantor" app as "dynamicUser" user

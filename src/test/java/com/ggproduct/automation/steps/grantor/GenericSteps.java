@@ -421,19 +421,6 @@ public class GenericSteps {
         }
     }
 
-    @And("I send the email under collab tab with following details:")
-    public void iSendTheEmailUnderCollabTabWithFollowingDetails(List<List<String>> emaiDetails) {
-        for (int i = 1; i < emaiDetails.size(); i++) {
-            List<String> ll = emaiDetails.get(i);
-            I.amPerforming().textInput().toClear(By.xpath("//*[@id='upload']/div[2]/div/div/div[1]/input"));
-            I.amPerforming().textInput().in(By.xpath("//*[@id='upload']/div[2]/div/div/div[1]/input"), ll.get(0));
-            I.amPerforming().textInput().toClear(By.xpath("//input[@id='inputPassword']"));
-            I.amPerforming().textInput().in(By.xpath("//input[@id='inputPassword']"), ll.get(1));
-            I.amPerforming().click().on(By.xpath("//div[@id='sendEmail']//*[text()='Send']"));
-        }
-
-    }
-
     @Then("^I (softly see|see) following details for email sent under collab:$")
     public void iSoftlySeeFollowingDetailsForEmailSentUnderCollab(String usage, List<List<String>> text) {
         for (int i = 0; i < text.size(); i++) {
