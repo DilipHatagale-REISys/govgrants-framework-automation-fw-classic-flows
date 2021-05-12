@@ -90,12 +90,6 @@ public class ProgressReportSteps {
         }
     }
 
-    @Description("To click on hyperlink containing some text + todays date")
-    @And("I click on hyperlink which contains todays date with text {string}")
-    public void iClickOnHyperlinkForSnapshotContainingValue(String linkName) {
-        progressReportPage.clickOnHyperLinkContainingDate(linkName);
-    }
-
     @Description("To compare two saved values")
     @Then("^I (see|softly see) value \"([^\"]*)\" is \"([^\"]*)\" the value \"([^\"]*)\"$")
     public void iSeeValueIsTheValue(String usage, String savedValue1, String compare, String savedValue2) {

@@ -196,15 +196,6 @@ public class ProgressReportPage extends GrantorProjectManager {
         }
     }
 
-    /**
-     * To click on link containging text + today's date
-     *
-     * @param linkName - link text
-     */
-    public void clickOnHyperLinkContainingDate(String linkName) {
-        clickOnLink(linkName + " " + I.amPerforming().dateOperationsToGet().currentDateInDesiredFormat(DateTimeFormatter.ofPattern("M/d/yyyy")));
-    }
-
     public boolean compareTwoFieldValues(String savedValue1, String compare, String savedValue2) {
         int value1 = Double.valueOf(I.amPerforming().propertiesFileOperationsTo().getValue("BudgetRemaining2").replaceAll("[^0-9.]", "")).intValue();
         int value2 = Double.valueOf(I.amPerforming().propertiesFileOperationsTo().getValue("BudgetRemaining1").replaceAll("[^0-9.]", "")).intValue();
