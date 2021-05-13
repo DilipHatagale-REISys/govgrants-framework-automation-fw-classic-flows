@@ -64,6 +64,14 @@ public class ProgressReportSteps {
         );
     }
 
+    @Description("To verify row level action button inside table")
+    @Then("^I (softly see|see) row level action button \"([^\"]*)\" inside \"([^\"]*)\" flex table$")
+    public void iCannotSeeRowLevelActionButtonAgainstValueInsideFlexTable(String usage, String buttonName, String tableId) {
+        progressReportPage.assertRowLevelActionButtonInsideFlexTableWithoutUniqueValue(buttonName, tableId,
+                usage.contains("softly")
+        );
+    }
+
     @Description("To verify reported date field contains todays date")
     @Then("^I (softly see|see) the Reported Date field contains todays date$")
     public void iSeeTheReportedDateFieldContainsTodaysDate(String usage) {

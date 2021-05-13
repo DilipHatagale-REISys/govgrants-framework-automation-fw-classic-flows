@@ -146,6 +146,21 @@ public class ProgressReportPage extends GrantorProjectManager {
         }
     }
 
+    public void assertRowLevelActionButtonInsideFlexTableWithoutUniqueValue(String buttonName, String tableId, boolean isSoftly) {
+        if (isSoftly) {
+            I.amPerforming().assertionsTo().assertThat(isRowLevelActionButtonDisplayedWithoutUniqueValue(buttonName, tableId)).isTrue();
+        } else {
+            Assert.assertTrue(isRowLevelActionButtonDisplayedWithoutUniqueValue(buttonName, tableId));
+        }
+    }
+
+    public Boolean isRowLevelActionButtonDisplayedWithoutUniqueValue(String buttonName, String tableId) {
+        if (I.amPerforming().checkToSee().isDisplayed(By.xpath("//div[@id='" + tableId + "']//td//a[contains(@title,'" + buttonName + "')]")))
+            return true;
+        else
+            return false;
+    }
+
     public void clickRowLevelActionIconUnderAttachmentFlexTable(String buttonName) {
         By downloadBtn = By.xpath("//div[contains(@id,'Attachments')]//a[@title='" + buttonName + "'] ");
         I.amPerforming().click().on(downloadBtn);
