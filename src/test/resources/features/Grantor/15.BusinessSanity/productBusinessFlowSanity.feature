@@ -1921,7 +1921,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I "Approve" in the approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
 
-  @72353 @siteVisitAcceptAndClose
+  @72353 @siteVisitAcceptAndClose @buglogged146819
   Scenario Outline: Validate once the Award level Site Visit is clicked on Accept and Close butted then sttaus changes to closed
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -2029,7 +2029,7 @@ Feature: Validate sanity testing of Complete Business Flow
       | Site Visit Name                                  |
       | {SavedValue:Automation Runtime Award Site Visit} |
 
-  @72354 @deskReviewAcceptAndClose
+  @72354 @deskReviewAcceptAndClose @buglogged146819
   Scenario: Validate once the Award level Desk Review is clicked on Accept and Close butted then status changes to closed
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -2134,7 +2134,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
 
-  @72355 @siteVisitAcceptAndCloseOrgLevel
+  @72355 @siteVisitAcceptAndCloseOrgLevel @buglogged146819
   Scenario: Validate once the Org Level Site Visit is clicked on Accept and Close butted then status changes to closed
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Intake" and properties "default"
     Given I am on "SUBPORTAL" portal
@@ -2281,7 +2281,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Accept And Close" in the page details
     Then I see status in Progress-bar is "Closed" and is "green"
 
-  @72357 @deskReviewAcceptAndCloseOrgLevel
+  @72357 @deskReviewAcceptAndCloseOrgLevel @buglogged146819
   Scenario: Validate once the Org level Desk Review is clicked on Accept and Close butted then status changes to closed
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
     Given I login to "As a Grantor" app as "dynamicUser" user

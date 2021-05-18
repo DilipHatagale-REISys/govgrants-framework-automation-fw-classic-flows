@@ -205,7 +205,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I navigate to "Management" tab
     Then I see value "In Progress" for title "Status" against the value "{SavedValue:DeskReviewID}" inside table "---deskreview:-:managementInitiateDRtableid---"
 
-  @66715 @approvedStatusSVCannotCarriedForwardToNewAward @deepika
+  @66715 @approvedStatusSVCannotCarriedForwardToNewAward @deepika @buglogged146819
   Scenario: Validate if site visit is in Approved status and amendment is done for base award, final state site visit should not be moved to newly created subaward after amendment.
     And I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "default"
     And I activated standalone subaward "Automation Runtime Award for Associate Amendment Request" with properties "default"
@@ -354,7 +354,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "Approved" in "---sitevisits:-:grantorSiteVisitsTableID---" panel
     Then I softly see value "In Progress" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---sitevisits:-:grantorSiteVisitsTableID---"
 
-  @66716 @approvedStatusDeskReviewCannotCarriedForwardToNewAward @deepika
+  @66716 @approvedStatusDeskReviewCannotCarriedForwardToNewAward @deepika @buglogged146819
   Scenario: Validate if desk review is in Approved status and amendment is done for base award, final state desk review should not be moved to newly created subaward after amendment.
     And I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "default"
     And I activated standalone subaward "Automation Runtime Award for Associate Amendment Request" with properties "default"
@@ -447,10 +447,10 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       | Title                           | End Date                             |
       | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     And I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
-    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:FO Username} | Step 2            |
     When I get the "EGMS ID"
@@ -517,7 +517,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Given I navigate to "Management" sub tab
     Then I can see top right button "Initiate Site Visit" in flex table with id "---sitevisits:-:InitiateSiteVisitTableId---"
 
-  @69443 @ValidateGrantFieldhistoryUpdated @aashish
+  @69443 @ValidateGrantFieldhistoryUpdated @aashish @buglogged150041
   Scenario: Validate that Grant field history gets updated after Budget period amendment
     And I activated standalone subaward "Automation Runtime Award for Amendment Request" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user

@@ -119,7 +119,7 @@ Feature: Validate all scenarios in Desk Review
       | Automation Observation | Automation Description | Observation |
     Then I softly see that "Automation Finding" has been added in flextable with Id "---deskreview:-:correctiveTableId---"
 
-  @51018 @51019 @66481 @66468 @66483 @66472 @formFillingSubmittingForApprovalDeskReview @smoke
+  @51018 @51019 @66481 @66468 @66483 @66472 @formFillingSubmittingForApprovalDeskReview @smoke @buglogged146819
   Scenario: Filling up of form and Submitting Desk Review for approval in Desk Review | To verify that program review form can be filled successfully in reports and outcomes tab | Validate Notified status and pending task after submitting for approval
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -170,7 +170,7 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "Record Id" in "---deskreview:-:homePendingTasksTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---deskreview:-:homePendingTasksTableId---"
 
-  @51020 @66145 @66269 @approvalOfDeskReview
+  @51020 @66145 @66269 @approvalOfDeskReview @buglogged146819
   Scenario: Approval of Desk Review | Validate Non award owner does not have permission to Submit the Desk Review for Approval |Validate whether user is able to view the Completed task once approved under Monitoring Tab
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -238,7 +238,7 @@ Feature: Validate all scenarios in Desk Review
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
 
-  @51021 @66557 @51022 @66549 @51023 @66146 @66485 @77256 @66550 @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient
+  @51021 @66557 @51022 @66549 @51023 @66146 @66485 @77256 @66550 @deskReviewSendToSubrecipientdAndCorrectiveActionsBySubrecipient @buglogged146819
   Scenario: Send Desk Review to Subrecipient, Corrective Actions and Submit to Grantor by Subrecipient |Validate whether pending task is created for Program approver under Home Tab when the award owner submits the Desk Review for approval
   Validate when the desk review is submitted by the Subrecipient to grantor, the internal user recieves an email notification
     Given I navigate to "Responsibilities" sub tab
@@ -338,7 +338,7 @@ Feature: Validate all scenarios in Desk Review
     Then I softly can see top right button "Send Back to Subrecipient" in page detail
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
 
-  @55279 @66469 @66148 @approverSendBackToUserDeskReview @deepika
+  @55279 @66469 @66148 @approverSendBackToUserDeskReview @deepika @buglogged146819
   Scenario: Validate whether the approver will be able to SendBack to Owner |Validate Pending task is not created to fiscal approver when program approver performs send to the owner.
   Verify when the FO user Send Back to owner during approval process of desk review, the record owner recieves an email notification
     Given I navigate to "Responsibilities" sub tab
@@ -403,7 +403,7 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "{SavedValue:dvID}" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     Then I softly do not see value "{SavedValue:dvID}" for title "EGMS ID" inside table "---deskreview:-:monitoringTabPhasePendingTasks---"
 
-  @55280 @55281 @approverForwardUserReceivePendingTaskDeskReview @deepika
+  @55280 @55281 @approverForwardUserReceivePendingTaskDeskReview @deepika @buglogged146819
   Scenario: Validate when the approver forward Site Visit to other user, the Pending Task will be created to the User
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -494,7 +494,7 @@ Feature: Validate all scenarios in Desk Review
     Then I see the following messages in the page details :
       | Reports and Outcomes Tab - Complete all data in the form. |
 
-  @55283 @55284 @viewSendToSubrecipientButtonDeskReview @deepika
+  @55283 @55284 @viewSendToSubrecipientButtonDeskReview @deepika @buglogged146819
   Scenario:  Validate the Infomation send to the subrecipients and user will not be able to submit to Grantor without adding corrective actions to findings
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -573,7 +573,7 @@ Feature: Validate all scenarios in Desk Review
       | Desk Review Name                           |
       | {SavedValue:Automation Runtime Award Desk} |
 
-  @55365 @55363 @SendBackToOnwerDeskReviewUnderMonitoringTab @deepika
+  @55365 @55363 @SendBackToOnwerDeskReviewUnderMonitoringTab @deepika @buglogged146819
   Scenario: Validate whether the approver sendback to owner, the record owner will get a pending task
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -679,7 +679,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I cannot see top right button "Conduct" in page detail
 
-  @55368 @55801 @55804 @reportsAndOutcomesEditAccessDeskReview @deepika
+  @55368 @55801 @55804 @reportsAndOutcomesEditAccessDeskReview @deepika @buglogged146819
   Scenario: User will be able to view the Notify and conduct button and upon conduct, Reports And Outcomes tab are editable to the internal user for an award level desk review
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -794,7 +794,7 @@ Feature: Validate all scenarios in Desk Review
     When I click on "Complete Review" in the page details
     Then I softly see status in Progress-bar is "In Progress" and is "green"
 
-  @56015 @sendBacktoOwnerReceivePendingTaskdv @deepika @smoke
+  @56015 @sendBacktoOwnerReceivePendingTaskdv @deepika @smoke @buglogged146819
   Scenario: Validate the supporting document checklist submitted by the subrecipient and record sent back to Recipients when outcomes are not properly addressed and recipients receive a pending task
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -853,7 +853,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I see status in Progress-bar is "In Progress" and is "green"
 
-  @56040 @56367 @submittingForApprovalButtonDeskReview @deepika
+  @56040 @56367 @submittingForApprovalButtonDeskReview @deepika @buglogged146819
   Scenario: Validate whether the  User will be able to view the Submit for Approval button and approver will be able to view the Pending task under Monitoring
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -899,7 +899,7 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
     Then I softly see that "Approve Desk Review" has been added in flextable with Id "---deskreview:-:monitoringTabPhasePendingTasks---"
 
-  @61053 @FieldHistoryUpdatePostAwardLevelDeskReviewIsSendBackToOwnerByProgramApprover @Keerti
+  @61053 @FieldHistoryUpdatePostAwardLevelDeskReviewIsSendBackToOwnerByProgramApprover @Keerti @buglogged146819
   Scenario: To Validate field history update post Award level Desk Review is send back to owner by program approver.
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -949,7 +949,7 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "{SavedValue:Record Id}" in "History" panel
     Then I see value "Created" for title "Old Value" inside table "History"
 
-  @61054 @FieldHistoryUpdatePostAwardLevelDeskReviewIsSendBackToOwnerByProgramApprover @Keerti
+  @61054 @FieldHistoryUpdatePostAwardLevelDeskReviewIsSendBackToOwnerByProgramApprover @Keerti @buglogged146819
   Scenario: To Validate field history update post Award level Desk Review is send back to owner by program approver.
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -1005,7 +1005,7 @@ Feature: Validate all scenarios in Desk Review
     When I perform quick search for "{SavedValue:Record Id}" in "History" panel
     Then I see value "Created" for title "Old Value" inside table "History"
 
-  @69411 @61057 @61055 @55370 @66139 @77253 @66274 @snapshotAfterSubmitForApprovalDeskReviewIsAcceptedAndClosed @Keerti @skipOnJenkins
+  @69411 @61057 @61055 @55370 @66139 @77253 @66274 @snapshotAfterSubmitForApprovalDeskReviewIsAcceptedAndClosed @Keerti @skipOnJenkins @buglogged146819
   Scenario: Validate whether record Owner is able to view the Accept and Close Button and User view the Snapshot after Desk Review is Submitted for Approval status also after Accepted and Closed |Subrecipient can view Closed Desk Review
   Validate whether the approver receives an email notification to approve the desk review| Validate whether external user will receive an email notification when desk review is accepted and closed.
     Given I navigate to "Responsibilities" sub tab
@@ -1151,7 +1151,7 @@ Feature: Validate all scenarios in Desk Review
     And I perform quick search for "Record Id" in "---deskreview:-:managementInitiateDRtableid---" panel
     Then I softly see "No Records Found" inside flex table with id "---deskreview:-:managementInitiateDRtableid---"
 
-  @65245 @historyOfDeskReviewsendbacktoOwner @deepika
+  @65245 @historyOfDeskReviewsendbacktoOwner @deepika @buglogged146819
   Scenario: Validate History Field is getting Updated at Award owner End when Desk Review status is Submitted to Grantor.
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -1200,7 +1200,7 @@ Feature: Validate all scenarios in Desk Review
     When I navigate to "History" sub tab
     Then I see value "In Progress" for title "New Value" inside table "History"
 
-  @65246 @69407 @corerctiveActionsDueDateDeskReview @deepika
+  @65246 @69407 @corerctiveActionsDueDateDeskReview @deepika @buglogged146819
   Scenario: Validate Desk Review Submit to Grantor and Corrective Actions By Subrecipient
     Given I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
@@ -1300,3 +1300,205 @@ Feature: Validate all scenarios in Desk Review
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Desk Review}" inside flex table with id "---deskreview:-:internalRelatedAwards1---"
     Given I navigate to "Management" sub tab
     Then I softly see value "{SavedValue:DeskReviewEGMSID}" for title "EGMS ID" inside table "---deskreview:-:managementInitiateDRtableid---"
+
+  @145608 @verifyRemovalOfAddedApproverFromDeskReview-RnRFuntionality @monu
+  Scenario: Verify the user can remove the added approver on approver section for Desk Review
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
+    And I click on "Notify" in the page details
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    When I click on "Conduct" in the page details
+    Then I softly see status in Progress-bar is "In Progress" and is "green"
+
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 1      |
+    And I click on "Remove" icon for "{SavedValue:FO Username}" inside flex table with id "---deskreview:-:approverDeskReviewTableId---" without waiting for record
+    Then I softly see the following messages in the page details :
+      | Record deleted successfully. |
+    Then I softly see "No Records Found" inside flex table with id "---deskreview:-:approverDeskReviewTableId---"
+
+  @145732 @145733 @Verify1StepApprovalForDeskReview-RnRFunctnality @Verify2StepApprovalForDeskReview-RnRFunctnality @monu
+  Scenario: Verify user is able to add two step approver on desk review
+  |Verify user is able to add step 1 approver on Desk review created|
+    #145733
+    Given I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 1      |
+    Then I softly see "Saved Successfully!" inside flex table with id "---deskreview:-:approverDeskReviewTableId---"
+    #145732
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
+    Then I softly see "Saved Successfully!" inside flex table with id "---deskreview:-:approverDeskReviewTableId---"
+
+  @145742 @Verify3StepApprovalForDeskReview-RnRFunctnality @monu @buglogged146819
+  Scenario: Verify user is able to add 3 step approver on Desk review and submit for approval
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
+    And I click on "Notify" in the page details
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    Given I click on "Conduct" in the page details
+    Then I softly see status in Progress-bar is "In Progress" and is "green"
+    And I navigate to "Reports and Outcomes" sub tab
+    When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I get the "EGMS ID"
+    Given I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 2      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 3      |
+    When I click on "Submit for Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+
+  @145748 @VerifyErrorMessageAtApproverSectionWhileSkippingAtDeskReview-RnRFunctionality @monu @buglogged146819
+  Scenario: Verify the validation is displayed when no approver is defined on desk review and submit for approval
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
+    And I click on "Notify" in the page details
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    Given I click on "Conduct" in the page details
+    Then I softly see status in Progress-bar is "In Progress" and is "green"
+    And I navigate to "Reports and Outcomes" sub tab
+    When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I click on "Submit for Approval" in the page details
+    And I softly see the following messages in the page details contains:
+      | Responsibilities - At least one approver is required |
+
+  @145878 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStepAtDeskReview-RnRFunctionality @monu @buglogged146819
+  Scenario: Verify validation when same approver is defined for different steps on Desk Review
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
+    And I click on "Notify" in the page details
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    Given I click on "Conduct" in the page details
+    Then I softly see status in Progress-bar is "In Progress" and is "green"
+    And I navigate to "Reports and Outcomes" sub tab
+    When I enter the following values into flex table with id "---deskreview:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---deskreview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I get the "EGMS ID"
+    Given I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 2      |
+    Then I softly see "You cannot specify the same user for multiple steps for Desk Review" inside flex table with id "---deskreview:-:approverDeskReviewTableId---"
+
+  @145879 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUserAtDeskReview-RnRFunctionality @monu
+  Scenario: Verify the validation when same steps are defined for different approver on Desk approver
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:participantsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---deskreview:-:deskReviewContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---deskreview:-:associateAwardDeskReviewTableId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---deskreview:-:awardDeskReviewTableId---"
+    And I refresh the page
+    And I click on "Notify" in the page details
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
+    Given I click on "Conduct" in the page details
+    Then I softly see status in Progress-bar is "In Progress" and is "green"
+    Given I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 1      |
+    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 1      |
+    Then I softly see "You cannot specify the same step for multiple users for Desk Review." inside flex table with id "---deskreview:-:approverDeskReviewTableId---"
