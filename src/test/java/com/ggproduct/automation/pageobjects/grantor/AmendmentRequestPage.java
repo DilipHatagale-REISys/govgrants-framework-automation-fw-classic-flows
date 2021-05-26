@@ -18,7 +18,7 @@ public class AmendmentRequestPage extends GrantorProjectManager {
         String requestedChangeInBudget = getFieldValueFromAPI(awardName, "GrantAwardName__c", "AmendmentRequest__c", "RequestedChangeInBudget__c");
         double awardBudgetInDouble = Double.parseDouble(awardBudget);
         double requestedChangeInBudgetDouble = Double.parseDouble(requestedChangeInBudget);
-        if (Double.parseDouble(requestedChangeInBudget) >= 0.0) {
+        if (Double.parseDouble(requestedChangeInBudget) <= 0.0) {
             return awardBudgetInDouble + requestedChangeInBudgetDouble;
         } else
             return awardBudgetInDouble - requestedChangeInBudgetDouble;

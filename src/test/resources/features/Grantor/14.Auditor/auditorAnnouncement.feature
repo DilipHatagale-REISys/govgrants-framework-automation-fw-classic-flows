@@ -38,7 +38,7 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
       | EXE   |
       | ADMIN |
 
-  @69161 @auditorProfileCannotEditAnnouncement
+  @69161 @auditorProfileCannotEditAnnouncement @buglogged151660
   Scenario Outline: Validate Auditor user should not be able to Edit Announcement
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
     When I login to "As a Grantor" app as "<User>" user
@@ -53,7 +53,7 @@ Feature: Validate all scenarios for Auditor Profile in Announcement Module
       | User    | Announcement                                             |
       | AUDITOR | {SavedValue:Automation Runtime Announcement Application} |
 
-  @69162 @auditorCompetitiveAnnouncement
+  @69162 @auditorCompetitiveAnnouncement @buglogged151660
   Scenario: Validate Auditor should not be able to Create/Edit/Review/Approve announcement
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
     When I login to "As a Grantor" app as "Auditor" user

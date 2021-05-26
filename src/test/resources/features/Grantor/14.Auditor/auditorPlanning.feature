@@ -159,7 +159,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
       | EXE   |
       | ADMIN |
 
-  @67850 @auditorCannotCreateEditActivateOrDeactivateStrategicPlan @buglogged130515
+  @67850 @auditorCannotCreateEditActivateOrDeactivateStrategicPlan
   Scenario Outline: Validate Auditor should not be  able to  Create/Edit/Activate/Deactivate Strategic plan
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab

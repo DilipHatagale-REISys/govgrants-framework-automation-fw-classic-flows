@@ -25,7 +25,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I perform quick search for "Record Id" in "---preApplication:-:preApplicationsGrantorTableId---" panel
     Then I softly see "No records found" inside flex table with id "---preApplication:-:preApplicationsGrantorTableId---"
 
-  @69163 @auditorCannotCreateNegotiation
+  @69163 @auditorCannotCreateNegotiation @buglogged151669
   Scenario: Validate Auditor should not be  able to  Create Negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -38,7 +38,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     Then I cannot see row level action button "Initiate Negotiation" against "{SavedValue:Automation Runtime FDM Announcement}" in flex table with id "---subAwardFromFDM:-:fdmTableId---"
 
-  @69164 @auditorCannotSend/CompleteNegotiations
+  @69164 @auditorCannotSend/CompleteNegotiations @buglogged151671
   Scenario: Validate Auditor should be able to View the record but shouldn't be able to Complete Negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
@@ -73,7 +73,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     Then I see "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
 
-  @69165 @auditorViewRecordCannotCreateSubawardFromApprovedFDM
+  @69165 @auditorViewRecordCannotCreateSubawardFromApprovedFDM @buglogged151669
   Scenario: Validate Auditor Can view the record but should not be  able to  Create Subaward From Approved FDM
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"

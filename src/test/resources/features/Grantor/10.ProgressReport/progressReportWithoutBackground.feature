@@ -374,7 +374,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @55397 @VerifyOnceBatchIsRunAndUserEditFrequencyThenSchedulesShouldBeGeneratedAccordingly  @mahadev @buglogged132322
+  @55397 @VerifyOnceBatchIsRunAndUserEditFrequencyThenSchedulesShouldBeGeneratedAccordingly  @mahadev
   Scenario Outline: Verify Once Batch is run and User edit the Frequency then the Schedule should be generated accordingly
     And I activated standalone subaward "Automation Runtime Award" with properties "PROGRESS_REPORT_QUARTERLY"
     When I am on "INTERNAL" portal
@@ -432,7 +432,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @55307 @58664 @updateOfSemiAnnualFrequencyOnModalBeforeClose @jitendra @bugloged101430
+  @55307 @58664 @updateOfSemiAnnualFrequencyOnModalBeforeClose @jitendra
   Scenario Outline: Validate User is allowed to change frequency as Annually, schedule base as calendar on progress report schedule when Progress report is submitted to Grantor
   Validate SPA user is not allowed to change the Progress report Schedule on Active subaward when status of Progress Report is  created
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
@@ -644,7 +644,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I see the following messages in the page details contains:
       | Performance Tab - Provide a value for Plans for Progress Report before submitting to Grantor. |
 
-  @59137 @58524 @NoPRSubmitToGrantorIfSupportDocIsMissing @jitendra @buglogged101665
+  @59137 @58524 @NoPRSubmitToGrantorIfSupportDocIsMissing @jitendra
   Scenario Outline: Validate Sub-recipient user is not allowed to submit progress report to grantor when Supporting document is missing under Forms and Attachments Tab.
   Validate User is allowed to change frequency as Quarterly, on progress report schedule when progress report status is Submitted to Approval on active award
     And I activated standalone subaward "Automation Runtime Award" with properties "PROGRESS_REPORT_QUARTERLY"
@@ -705,7 +705,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @59199 @59200 @NotModifySupportDocListAfterSubmitToGrantor @jitendra
+  @59199 @59200 @NotModifySupportDocListAfterSubmitToGrantor @jitendra @buglogged150945
   Scenario Outline: Validate SR User is not able to modify Supporting Documents Checklist table when Progress report is Submitted to Grantor | Validate SR User is able to modify Supporting Documents Checklist table when Progress report status is sent back to sub-recipient
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "INTERNAL" portal
@@ -1205,7 +1205,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            |
       | {SavedValue:Automation Runtime Award} |
 
-  @59673 @validateAwardOwnerCanNotUploadSupportingDocumentChecklist @mahadev @buglogged132399
+  @59673 @validateAwardOwnerCanNotUploadSupportingDocumentChecklist @mahadev
   Scenario Outline: Validate Internal User is not able to upload new supporting documents when Progress report status is submitted to Grantor
     And I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT"
     When I am on "INTERNAL" portal
@@ -1292,7 +1292,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "<Grant Name>" in "---progressreport:-:recipientActiveGrantTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressreport:-:recipientActiveGrantTableId---" with wait for record
     When I navigate to "Management" sub tab
-    And I click on "Edit" icon for "Record Id" inside flex table with id "---progressreport:-:recipientGrantProgressReportTableId---" without waiting for record
+    And I click on "View" icon for "Record Id" inside flex table with id "---progressreport:-:recipientGrantProgressReportTableId---" without waiting for record
     When I navigate to "Forms and Files" sub tab
     Then I see value "Mandatory" for title "Required" against the value "Active" inside table "---progressreport:-:progressReportChecklistsTableId---"
     Examples:

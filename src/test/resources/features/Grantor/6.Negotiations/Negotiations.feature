@@ -287,13 +287,14 @@ Feature: Validate all scenarios in Negotiations
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      An Application Negotiation Request for Application {SavedValue:EGMSID} has been Requested
+      Sandbox: Notification: An Application Negotiation Request for Application {SavedValue:EGMSID} has been Requested
       """
     #bug
 #    And I pause execution for "120" seconds
 #    Then I softly can see mail notification for "EXTERNAL" user with following subject:
 #      | An Application Negotiation Request for Application {SavedValue:EGMSID} has been Requested |
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    Given I am on "Internal" portal
+    And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:phasePendingTasksTableId---" panel
@@ -847,7 +848,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Due Date" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see the following messages in the page details :
-      | Due Date is Required to save under Negotiations. |
+      | Due Date is Required to save. |
 
   @66381 @66451 @createSubawardFromNegotiation @deepika @smoke
   Scenario: Validate whether User will be able to create draft award created from Complete Negotiation | Validate when Negotiation Request is completed and user clicks on Create Subaward then the sttaus changes to 'Converted to Award'

@@ -1149,7 +1149,7 @@ Feature: Validate all scenarios of grants and award without background
       | Grant Name                            |
       | {SavedValue:Automation Runtime Award} |
 
-  @66224 @66210 @67895 @validateSourceNdInstructionField  @mahadev @buglogged138236
+  @66224 @66210 @67895 @validateSourceNdInstructionField  @mahadev
   Scenario: To verify that if source and instruction field  unfilled in site visit review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation error must be thrown.
   | @67895 Validate BP number from subaward is updating the BP number on Grant upon activation of Subaward
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
@@ -1408,7 +1408,7 @@ Feature: Validate all scenarios of grants and award without background
       | Award Name                                      | Grant Name                                      |
       | {SavedValue:Automation Runtime Execution Award} | {SavedValue:Automation Runtime Execution Award} |
 
-  @66219 @validateInstructionField  @mahadev @buglogged138236
+  @66219 @validateInstructionField  @mahadev
   Scenario: To verify that if instruction field is left unfilled in site visit review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation error must be throw
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1427,7 +1427,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I see the following messages in the page details :
       | Instructions for Subrecipient is Required to save under Overview. |
 
-  @66215 @validateCreatedStatusSV  @mahadev @buglogged138236
+  @66215 @validateCreatedStatusSV  @mahadev
   Scenario: To verify that after the general information in the modal window of site visit is filled by the award owner the status change to created.
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1459,7 +1459,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Overview" sub tab
     Then I see textarea field "fieldGrantAwardDescription__c" is editable
 
-  @66416 @validateSourceInDeskReview  @mahadev @buglogged142232
+  @66416 @validateSourceInDeskReview  @mahadev
   Scenario: To verify that if source field in plan table is left unfilled in Desk review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation message  must be thrown
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1476,9 +1476,9 @@ Feature: Validate all scenarios of grants and award without background
     And I enter "SourceError" values from "DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see the following messages in the page details :
-      | Source is Required to save under Overview. |
+      | Source is Required to save. |
 
-  @66410 @validateInstructionFieldInDeskReview  @mahadev @buglogged142232
+  @66410 @validateInstructionFieldInDeskReview  @mahadev
   Scenario: To verify that if instruction field is left unfilled in Desk review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation message must be thrown
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user

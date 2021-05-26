@@ -222,7 +222,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @54499 @ValidateInActiveSuppportingDocumentChecklistOnReimbursementPR @mahadev @bug-94779
+  @54499 @ValidateInActiveSuppportingDocumentChecklistOnReimbursementPR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is not displayed on reimbursement payment request if selected as Inactive on grant
     And I activated standalone subaward "Automation Runtime Award" with properties "NO_PROGRAM_INCOME_ANTICIPATE"
     And I am on "SUBPORTAL" portal
@@ -318,7 +318,6 @@ Feature: Payment Request scenarios without background
     When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Files" sub tab
-    When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
     When I upload file "Program_Field_Values.xlsx" into library
@@ -655,7 +654,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @54712 @ValidateReimbursementApprovedAmountFieldOnPaymentRequestAfterReimbursementPRApproval @mahadev
+  @54712 @ValidateReimbursementApprovedAmountFieldOnPaymentRequestAfterReimbursementPRApproval @mahadev @buglogged151082
   Scenario Outline: validate Reimbursement balance on payment request at sub portal gets updated after Reimbursement payment request approval
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -956,12 +955,12 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "$30.00" inside flex table with id "---paymentRequest:-:paymentRequestTableId---" without waiting for record
     And I click on "Submit to Grantor" in the page details
     Then I see the following messages in the page details contains:
-      | This Payment Request cannot be submitted to the Grantor. Payment request marked as the Final payment request has been approved |
+      | The final Payment Request for this award has already been processed. You can not perform this operation. |
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @55304 @validateProgressReportSchedulesOnActiveAwardAfterEditingSchedules @mahadev @buglogged129966
+  @55304 @validateProgressReportSchedulesOnActiveAwardAfterEditingSchedules @mahadev
   Scenario Outline: Validate progress report schedules getting updated on active award after editing schedule
     And I activated standalone subaward "Automation Runtime Award" with properties "NO_ADVANCE_PERMISSION"
     And I am on "INTERNAL" portal
@@ -1038,7 +1037,7 @@ Feature: Payment Request scenarios without background
       | Grant Name                            |
       | {SavedValue:Automation Runtime Award} |
 
-  @55689 @canNotCreateAnotherPaymentRequestAfterFinalPaymentRequest @jitendra @buglogged129814
+  @55689 @canNotCreateAnotherPaymentRequestAfterFinalPaymentRequest @jitendra @needtocheckThisScenario
   Scenario Outline: Verify that once User select Is final Payment request option then User cannot create New Payment request.
     And I activated standalone subaward "Automation Runtime Award" with properties "NO_ADVANCE_PERMISSION"
     And I am on "SUBPORTAL" portal
@@ -1085,7 +1084,14 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    And I click on "Mark as Paid" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
+    And I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
+    When I click on "Mark As Paid" in the page details
+    And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
+    When I click modal button "Save"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel

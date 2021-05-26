@@ -513,7 +513,9 @@ Feature: Amendment Request scenarios without background
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
-    Then I can see the message "Successfully Approved" in the approval decision
+    # As Page getting refreshed while approving it.
+    #Then I can see the message "Successfully Approved" in the approval decision
+    Then I softly see field "Status" as "Approved"
 
     Examples:
       | Award Name                                      | Grant Name                                      |
@@ -634,7 +636,9 @@ Feature: Amendment Request scenarios without background
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
-    Then I can see the message "Successfully Approved" in the approval decision
+    # As Page getting refreshed while approving it.
+    Then I softly see field "Status" as "Approved"
+    #Then I can see the message "Successfully Approved" in the approval decision
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1446,7 +1450,7 @@ Feature: Amendment Request scenarios without background
       | Award Name                                      | Grant Name                                      |
       | {SavedValue:Automation Runtime Amendment Award} | {SavedValue:Automation Runtime Amendment Award} |
 
-  @61721 @SVCopiedToNewCreatedAwardForAmendmentTypBudgetPeriodChangeAmendment @keerti @smoke @buglogged138236
+  @61721 @SVCopiedToNewCreatedAwardForAmendmentTypBudgetPeriodChangeAmendment @keerti @smoke
   Scenario: Validate Site Visits is carry forwarded in created status to new created award when amendment type is Budget Period Change Amendment
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1534,7 +1538,7 @@ Feature: Amendment Request scenarios without background
     And I navigate to "Management" tab
     Then I see value "Created" for title "Status" against the value "{SavedValue:SiteVisitID}" inside table "---sitevisits:-:grantorSiteVisitsTableID---"
 
-  @61723 @68079 @SVcopiedToNewCreatedAwardForAmendmentTypeFundingChange @keerti @smoke @buglogged138236
+  @61723 @68079 @SVcopiedToNewCreatedAwardForAmendmentTypeFundingChange @keerti @smoke
   Scenario:Validate Site Visits is copied to new created award when amendment type - Funding Change
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1744,7 +1748,7 @@ Feature: Amendment Request scenarios without background
       | Automation Execution KPI | fieldMasterKPI__c |
       | 10                       | fieldTarget__c    |
     And I click modal button "Save"
-    When I close "Grantor Amendment KPIs" modal by clicking the top right x button
+    When I close "Associate KPI" modal by clicking the top right x button
     Then I softly see value "Automation Execution KPI" for title "Title" inside table "---amendment:-:AmendmentKPITableId---"
     And I click on "Edit" icon for "Automation Execution KPI" inside flex table with id "---amendment:-:AmendmentKPITableId---" without waiting for record
     And I enter value "20" into field "Target__c"
@@ -2060,7 +2064,7 @@ Feature: Amendment Request scenarios without background
     And I click on "Delete" in the page details
     Then I softly see that "{SavedValue:Automation Runtime Award}" is in "Submitted to Grantor" status
 
-  @101438 @ValidateTaskGeneratedBasedOnBPED-PeriodicRenewal @monu
+  @101438 @ValidateTaskGeneratedBasedOnBPED-PeriodicRenewal @monu @buglogged151363
   Scenario: Verify Risk assesment effective date expiration date is same as updated budget period end date od Periodic renewal amendment request
     And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
     When I am on "INTERNAL" portal
@@ -2275,7 +2279,7 @@ Feature: Amendment Request scenarios without background
     And I click on "Remove" icon for "---AUTOEnvData:-:fundingAccount1---" inside flex table with id "---amendment:-:AmendmentFundingAccountTableId---" without waiting for record
     Then I softly do not see value "---AUTOEnvData:-:fundingAccount1---" for title "Funding Account" inside table "---amendment:-:AmendmentFundingAccountTableId---"
 
-  @96668 @102294 @ValidateInternalUserIncreaseFundingAmount-PeriodicRenewal @monu
+  @96668 @102294 @ValidateInternalUserIncreaseFundingAmount-PeriodicRenewal @monu @buglogged151465
   Scenario: Verify internal user is able to increase funding amount for periodic renewal amendment request
     And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES"
     When I am on "INTERNAL" portal
@@ -3656,7 +3660,7 @@ Feature: Amendment Request scenarios without background
       | Award Name                                      | Grant Name                                      | Focus Area                       |
       | {SavedValue:Automation Runtime Amendment Award} | {SavedValue:Automation Runtime Amendment Award} | Automation Permanent Focus Area2 |
 
-  @101121 @SVReviewEndDateModificationAsPerNewBPEndDate-BPCAmendmentRequest @monu @buglogged103988 @buglogged138236 @buglogged132548
+  @101121 @SVReviewEndDateModificationAsPerNewBPEndDate-BPCAmendmentRequest @monu @buglogged103988 @buglogged151361
   Scenario: Validate user is able to modify Site Visits review end date is same as Budget period end date
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -3756,7 +3760,7 @@ Feature: Amendment Request scenarios without background
       | {SavedValue:Automation Runtime Site Visit} | {SavedValue:updatedBudgetPeriodDate} |
     Then I softly see value "{SavedValue:updatedBudgetPeriodDate}" for title "Site Review End Date" inside table "---sitevisits:-:grantorSiteVisitsTableID---"
 
-  @100784 @96203 @ValidateCreationOfSVWithExtendedBPDate-BudgetPeriodChange @monu @smoke @buglogged138236
+  @100784 @96203 @ValidateCreationOfSVWithExtendedBPDate-BudgetPeriodChange @monu @smoke
   Scenario:Validate Internal user is able to create Site Visits with extended budget period date
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
     When I login to "As a Grantor" app as "dynamicUser" user

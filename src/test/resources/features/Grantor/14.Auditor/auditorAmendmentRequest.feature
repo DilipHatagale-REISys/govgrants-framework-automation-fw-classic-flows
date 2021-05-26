@@ -54,5 +54,5 @@ Feature: Validate all scenarios for Auditor Profile in Amendment Request module
     And I navigate to "Grants" tab
     When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
     When I click toggle button to select "Amendment Requests - All"
-    And I perform quick search for "Sent to Subrecipient" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    And I perform quick search for "Funding Change" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
     Then I see values "Funding Change" and "State" inside table

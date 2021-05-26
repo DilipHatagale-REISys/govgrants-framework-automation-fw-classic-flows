@@ -69,7 +69,7 @@ Feature: Validate all scenarios in Closeout
     And I click on "Acknowledge" in the page details
     Then I softly see status in Progress-bar is "Acknowledged by Subrecipient" and is "green"
 
-  @50979 @50978 @86715 @overrideCloseoutAndSubmitForApproval @smoke @buglogged129814
+  @50979 @50978 @86715 @overrideCloseoutAndSubmitForApproval @smoke
   Scenario Outline: Grant owner overrides the Closeout and is submitted for approval
     When I navigate to "Requests" sub tab
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
@@ -119,7 +119,6 @@ Feature: Validate all scenarios in Closeout
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
-    #buglogged 129814
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
@@ -1502,7 +1501,7 @@ Feature: Validate all scenarios in Closeout
       | {SavedValue:PM Username} | Step 1   |
     When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
       | Name                     | Closeout |
-      | {SavedValue:FO Username} | Step 1   |
+      | {SavedValue:FO Username} | Step 2   |
     Then I softly see "Saved Successfully!" inside flex table with id "---closeout:-:closeoutApproverTableId---"
 
   @141552 @verifyUserNotAbleToSkipApproverAtAdhocCloseoutRequest-RnRFunctionality @monu
@@ -1573,7 +1572,7 @@ Feature: Validate all scenarios in Closeout
     When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
       | Name                     | Closeout |
       | {SavedValue:PM Username} | Step 2   |
-    Then I softly see "You cannot specify the same user for multiple steps for Announcement" inside flex table with id "---closeout:-:closeoutApproverTableId---"
+    Then I softly see "You cannot specify the same user for multiple steps for Closeout" inside flex table with id "---closeout:-:closeoutApproverTableId---"
 
   @141585 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUserAtAdhocCloseoutRequest-RnRFunctionality @monu
   Scenario: Verify the validation is displayed when different approver is selected for same step on closeout request
@@ -1610,4 +1609,4 @@ Feature: Validate all scenarios in Closeout
     When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
       | Name                     | Closeout |
       | {SavedValue:FO Username} | Step 1   |
-    Then I softly see "You cannot specify the same step for multiple users for Progress Report." inside flex table with id "---closeout:-:closeoutApproverTableId---"
+    Then I softly see "You cannot specify the same step for multiple users for Closeout." inside flex table with id "---closeout:-:closeoutApproverTableId---"

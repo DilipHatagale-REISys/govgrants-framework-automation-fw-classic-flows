@@ -19,7 +19,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly cannot see field "Pre-Application Due Date" inside page block
 
   @70369 @validationForSubrecipientMatch @smoke @aashish
-  Scenario: To Validate system generates validation message for  by keeping the "Subrecipient Match(%)" field as blank while creating Announcement
+  Scenario: To Validate system generates validation message for  by keeping the "Subrecipient Match(%)" field as blank while creating Announcement
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -33,7 +33,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | If you select Subrecipient Match Required setting as Yes then you need to set value for Required Match % |
 
   @70553 @70604 @validationForNoFocusAreaAndNOObjective @smoke @monu
-  Scenario: To Verify that If user selected focus area as NO then at announcement level then no other focus area are allowed to add while creating the Announcement
+  Scenario: To Verify thatIf user selected focus area as NO then at announcement level then no other focus area are allowed to add while creating the Announcement
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
@@ -605,7 +605,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Application Intake}" inside flex table with id "---preApplication:-:qualifiedOpprtunitesTableId---" without waiting for record
     Then I softly see field "EGMS ID" as "{SavedValue:egms id}"
 
-  @73857 @75635 @75624 @publishingExtendDatedButtonDisplay @buglogged95462
+  @73857 @75635 @75624 @publishingExtendDatedButtonDisplay @buglogged95462 @wip
   Scenario: To Verify that Extend Dates(Revise) button will be shown when Announcement status is Published  for announcement
     Given I published "Competitive" type announcement having name "Announcement Runtime for Announcement Extend" and properties "default"
     And I login to "As a Grantor" app as "PM" user
@@ -618,7 +618,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I navigate to "Collab" sub tab
     And I enter value "test @Sarah PM" in my feed section and share the post
     And I refresh the page
-    And I wait for "30" seconds
     And I enter value "testing collab @Sarah PM" in my feed section and share the post
     Then I softly see "Sarah PM" inside flex table with id "---announcement:-:myFeedTableId---"
     Then I softly see "test" inside flex table with id "---announcement:-:myFeedTableId---"
@@ -653,7 +652,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I download the file
     And I see "{SavedValue:Automation Announcement for pdf Tests}" on page "1" of "govgrants" pdf file
 
-  @75632 @75621 @searchFunctionalityForMessagesMyFeedInCollab @keerti @buglogged95462
+  @75632 @75621 @searchFunctionalityForMessagesMyFeedInCollab @keerti @buglogged95462 @wip
   Scenario: To verify search functionality for messages section in collab tab for announcement
   | To verify entered My Feed from the collab tab section of announcement is getting displayed on home phase.
     Given I published "Competitive" type announcement having name "Automation Runtime Competitive Announcement" and properties "default"

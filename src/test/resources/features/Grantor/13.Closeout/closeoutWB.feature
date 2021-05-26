@@ -71,7 +71,7 @@ Feature: Validate all scenarios in Closeout
       | Award Name                                      | Grant Name                                      |
       | {SavedValue:Automation Runtime Amendment Award} | {SavedValue:Automation Runtime Amendment Award} |
 
-  @93524 @ValidateSiteVisitInOpenItemsForCloseout @meenakshi @buglogged138236
+  @93524 @ValidateSiteVisitInOpenItemsForCloseout @meenakshi
   Scenario Outline: Verify user can view pending site visits/ desk reviews in Open Items for closeout Request
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -708,7 +708,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "Acknowledgement" for title "Changed Field" inside table "History"
     Then I softly see value "{SavedValue:closeoutID}" for title "EGMS ID" inside table "History"
 
-  @93539 @verifyValidationMessageForOverrideJustification @monu @buglogged138236
+  @93539 @verifyValidationMessageForOverrideJustification @monu
   Scenario: Validate error message for Override justification
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user

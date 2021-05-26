@@ -101,7 +101,7 @@ Feature: Application Intake scenarios without background
     Given I click on "Back" in the page details
     Then I cannot see top right button "Submit Application" in page detail
 
-  @70464 @userCannotQualifyApplicationSecondTime @deepika @bugged-83553 @wip @NotValid
+  @70464 @userCannotQualifyApplicationSecondTime @deepika @wip @NotValid
   Scenario: Validate whether user should not able to qualify the announcement again for once it is Qualified
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Intake" and properties "default"
     Given I am on "SUBPORTAL" portal
@@ -642,7 +642,7 @@ Feature: Application Intake scenarios without background
     And I select "Take Snapshot" from dropdown
     And I click on hyperlink containing value "Submission"
     When I download the file
-    Then I see "Submitted to Grantor" on page "1" of "govgrants" pdf file
+    Then I softly see "Submitted to Grantor" on page "1" of "govgrants" pdf file
 
   @33799 @createdANDQualifiedApplication @deepika
   Scenario: Validate whether SPI & SPA users are able to view the qualified and created Statuses
@@ -750,8 +750,8 @@ Feature: Application Intake scenarios without background
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for DueDateValidation}" in "---applicationIntake:-:convertedToApplicationTableID---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for DueDateValidation}" inside flex table with id "---applicationIntake:-:convertedToApplicationTableID---" without waiting for record
     And I save the field containing "Application Due Date" as "Date"
-    Then I see field "Application Due Date" contains date less than todays date
-    And I cannot see top right button "Create Application" in page detail
+    Then I softly see field "Application Due Date" contains date less than todays date
+    And I softly cannot see top right button "Create Application" in page detail
     Examples:
       | User |
       | SPI3 |
