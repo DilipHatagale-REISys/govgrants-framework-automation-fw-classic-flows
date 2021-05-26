@@ -1310,27 +1310,18 @@ Feature: Validate all scenarios in Desk Review
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---deskreview:-:awardDeskReviewTableId---"
     And I refresh the page
     And I click on "Notify" in the page details
-    Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---deskreview:-:monitoringTabPhasePendingTasks---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
+    When I click on "Conduct" in the page details
+    Then I softly see status in Progress-bar is "In Progress" and is "green"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
-    When I click on "Conduct" in the page details
-    Then I softly see status in Progress-bar is "In Progress" and is "green"
-
     And I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---deskreview:-:approverDeskReviewTableId---" by clicking "New" :
-      | Name                     | Desk Review |
-      | {SavedValue:FO Username} | Step 1      |
-    And I click on "Remove" icon for "{SavedValue:FO Username}" inside flex table with id "---deskreview:-:approverDeskReviewTableId---" without waiting for record
-    Then I softly see the following messages in the page details :
-      | Record deleted successfully. |
+    And I click on top right button "New" in flex table with id "---deskreview:-:approverDeskReviewTableId---"
+    And I select value "{SavedValue:FO Username}" into field "Name__c"
+    And I enter value "Step 1" into field "DeskReviewRole__c"
+    And I click on "Remove record" icon for "Step 1" inside table
     Then I softly see "No Records Found" inside flex table with id "---deskreview:-:approverDeskReviewTableId---"
 
   @145732 @145733 @Verify1StepApprovalForDeskReview-RnRFunctnality @Verify2StepApprovalForDeskReview-RnRFunctnality @monu

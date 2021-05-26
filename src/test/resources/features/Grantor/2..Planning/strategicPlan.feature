@@ -111,7 +111,7 @@ Feature: Validate all scenarios in Strategic Plan
     When I click modal button "Save and Continue"
     And I click on "Save" in the page details
     When I click on "Edit" in the page details
-    When I enter in modal value "Execution Strategic Objective" into field "StrategyDescription__c"
+    When I enter value "Execution Strategic Objective" into field "StrategyDescription__c"
     When I click on "Save" in the page details
     Then I softly see field "Description" as "Execution Strategic Objective"
 

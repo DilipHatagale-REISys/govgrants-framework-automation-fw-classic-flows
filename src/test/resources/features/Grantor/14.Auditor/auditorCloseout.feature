@@ -13,7 +13,7 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
     When I navigate to "Requests" sub tab
     Then I cannot see top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
 
-  @69176 @auditorCannotViewOverriddenCloseout @buglogged129814
+  @69176 @auditorCannotViewOverriddenCloseout
   Scenario: Validate Auditor cannot have view access to "Submitted for Approval Status" Closeout Record
     Given I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user

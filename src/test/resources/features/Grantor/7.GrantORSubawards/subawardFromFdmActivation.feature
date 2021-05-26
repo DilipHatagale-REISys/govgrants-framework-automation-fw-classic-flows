@@ -9,7 +9,7 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
     Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}"
     And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
 
-  @50999 @51000 @awardSiteVisitAndDeskReview @buglogged138236
+  @50999 @51000 @awardSiteVisitAndDeskReview
   Scenario Outline: Validate award site visit and desk review creation
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -81,7 +81,7 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @66096 @defaultPackageAssociateWithSubaward @aashish
+  @66096 @defaultPackageAssociateWithSubaward1 @aashish
   Scenario: : To Verify that the Default package associated with subaward should be displayed correctly |
   To verify that Initiate Desk review button appear on site visit table of management tab of Award owner after Subaward is activated
     Given I navigate to "Grants" tab

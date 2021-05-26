@@ -25,6 +25,8 @@ Automation Permanent Strategic Goal2 -> Automation Permanent Objective2
 -Announcement - One announce should be created with passed status
 -> Automation Competitive Past Announcement
 
+* Under 'Automation Permanent Internal Program' , add mandatory supporting document for Progress report and Payment Request. As we donot have support of supporting document in Existing API's
+
 # List of All APIs used in project
 
 # Type of Users

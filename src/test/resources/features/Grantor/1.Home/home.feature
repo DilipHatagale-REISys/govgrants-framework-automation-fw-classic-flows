@@ -351,7 +351,7 @@ Feature: Validate all scenarios in the home tab
     When I click on "delete" icon for "138047990" inside flex table with id "---home:-:dunsTableId---" without waiting for record
     Then I softly do not see values "138047990" and "DUNSNumber" inside table
 
-  @56743 @deleteIndirectCostRate
+  @56743 @deleteIndirectCostRate @buglogged151630
   Scenario: Validate whether ADMIN and DA users can delete the Indirect Cost Rates
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
@@ -362,7 +362,7 @@ Feature: Validate all scenarios in the home tab
     When I enter the following values into flex table with id "---home:-:indirectRateFlextableId---" by clicking "New" :
       | Title             | Date From | Date To | Approved Indirect Cost Rate(%) | Indirect Cost Rate Type | Budget Categories |
       | Pre-Screen Review | 0         | 1       | 20                             | Final                   | Personnel         |
-    #functionality changed to inline edit
+      #functionality changed to inline edit
     #And I enter "New IDC" values from "InternalOrganization_Field_Values.xlsx"
     #When I click modal button "Save"
     And I perform quick search for "New IDC" in "---home:-:indirectRateFlextableId---" panel
@@ -627,7 +627,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Record Id" in "---home:-:internalHomePendingTaskTableId---" panel
     Then I see that "Approve Program" has been added in flextable with Id "---home:-:internalHomePendingTaskTableId---"
 
-  @59016 @validateFilesOnHome @deepika @buglogged138122
+  @59016 @validateFilesOnHome @deepika
   Scenario: Addition of Attachment to Focus Area by User - Admin/EXE/PM
     When I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
