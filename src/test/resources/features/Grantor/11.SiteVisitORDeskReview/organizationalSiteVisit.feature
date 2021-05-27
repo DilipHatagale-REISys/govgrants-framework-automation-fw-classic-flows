@@ -1658,3 +1658,111 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     And I click on "Accept And Close" in the page details
     Then I softly see field "Status" as "Closed"
+
+  @147976 @Verify1StepApprovalForSiteVisitOrgLevel-RnRFuntionality @monu
+  Scenario: Verify user can add step1 approver on organization site visit created
+    Given I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
+    And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Site Visit |
+      | {SavedValue:PM Username} | Step 1     |
+    Then I softly see "Saved Successfully!" inside flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---"
+
+  @148023 @VerifyErrorMessageAtApproverSectionWhileSkippingForSiteVisitOrgLevel-RnRFunctnality @monu @buglogged146819
+  Scenario: Verify the validation is displayed when NA is defined for step on organization site visit
+    Given I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
+    And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
+    When I click "Associate" after selection of "{SavedValue:SPI3 Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
+    When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
+    Given I navigate to "Related Log" sub tab
+    When I perform quick search for "Record Id" in "---orgLevelSiteVisits:-:siteVisitsPanelId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:siteVisitsPanelId---"
+    And I navigate to "Reports and Outcomes" sub tab
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelSiteVisits:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I enter the following values into flex table with id "---orgLevelSiteVisits:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Site Visit |
+      | {SavedValue:PM Username} | NA         |
+    When I click on "Submit for Approval" in the page details
+    Then I see the following messages in the page details contains:
+      | Responsibilities - At least one approver is required |
+
+  @148043 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUserAtSiteVisitOrgLevel-RnRFunctionality @monu
+  Scenario: Verify validation user cannot add the same step for different approver on Organization site visit
+    Given I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
+    And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
+    When I click "Associate" after selection of "{SavedValue:SPI3 Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
+    When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Site Visit |
+      | {SavedValue:PM Username} | Step 1     |
+    When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Site Visit |
+      | {SavedValue:FO Username} | Step 1     |
+    Then I softly see "You cannot specify the same step for multiple users for Site Visit." inside flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---"
+
+  @148045 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStepAtSiteVisitOrgLevel-RnRFunctionality @monu
+  Scenario: Verify validation user cannot add the same approver for different step on Organization site visit
+    Given I navigate to "Related log" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"
+    And I enter "Creation" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "Organizational_SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateContactsId---"
+    When I click "Associate" after selection of "{SavedValue:SPI3 Username}" in the table "---orgLevelSiteVisits:-:siteVisitContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:associateApplicationId---"
+    When I click "Add" after selection of "{SavedValue:Automation Runtime Announcement for Site Visit}" in the table "---orgLevelSiteVisits:-:selectApplicationId---"
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Site Visit |
+      | {SavedValue:PM Username} | Step 1     |
+    When I enter the following values into flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Site Visit |
+      | {SavedValue:PM Username} | Step 2     |
+    Then I softly see "You cannot specify the same user for multiple steps for Site Visit" inside flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---"

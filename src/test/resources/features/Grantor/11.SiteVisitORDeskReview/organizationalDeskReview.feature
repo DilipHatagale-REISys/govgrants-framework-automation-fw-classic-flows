@@ -1240,3 +1240,239 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on submit review
     When I close "Site Visit Reviewers" modal by clicking the top right x button
     Then I cannot see top right button "Edit" in page detail
+
+  @148330 @VerifyErrorMessageAtApproverSectionWhileSkippingForDeskReviewOrgLevel-RnRFunctnality @monu
+  Scenario: Verify the validation is displayed when NA is defined for step on organization Desk Review
+    Given I navigate to "Related Log" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+    And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:deskReviewContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI3 Username}" in the table "---orgLevelDeskReview:-:associateContactsId---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
+    Given I navigate to "Related Log" sub tab
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:deskreviewPanelId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:deskreviewPanelId---"
+    And I navigate to "Reports and Outcomes" sub tab
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | NA          |
+    When I click on "Submit for Approval" in the page details
+    Then I see the following messages in the page details contains:
+      | Responsibilities - At least one approver is required |
+
+  @148342 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUserAtDeskReviewOrgLevel-RnRFunctionality @monu
+  Scenario: Verify validation user cannot add the same step for different approver on Organization Desk Review
+    Given I navigate to "Related Log" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+    And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:deskReviewContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI3 Username}" in the table "---orgLevelDeskReview:-:associateContactsId---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
+    Given I navigate to "Related Log" sub tab
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:deskreviewPanelId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:deskreviewPanelId---"
+    And I navigate to "Reports and Outcomes" sub tab
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 1      |
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 1      |
+    Then I softly see "You cannot specify the same step for multiple users for Desk Review." inside flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---"
+
+  @148325 @Verify3StepApprovalForDeskReviewOrgLevel-RnRFunctnality @monu
+  Scenario: Verify user is able to add three step approver for organization Desk Review and submit for approval
+    Given I navigate to "Related Log" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+    And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:deskReviewContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI3 Username}" in the table "---orgLevelDeskReview:-:associateContactsId---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
+    Given I navigate to "Related Log" sub tab
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:deskreviewPanelId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:deskreviewPanelId---"
+    And I navigate to "Reports and Outcomes" sub tab
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 1      |
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 2      |
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:FO Username} | Step 3      |
+    When I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+
+  @148344 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStepAtDeskReviewOrgLevel-RnRFunctionality @monu
+  Scenario: Verify validation user cannot add the same approver for different step on Organization Desk Review
+    Given I navigate to "Related Log" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+    And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:deskReviewContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI3 Username}" in the table "---orgLevelDeskReview:-:associateContactsId---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
+    Given I navigate to "Related Log" sub tab
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:deskreviewPanelId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:deskreviewPanelId---"
+    And I navigate to "Reports and Outcomes" sub tab
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 1      |
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 2      |
+    Then I softly see "You cannot specify the same user for multiple steps for Desk Review" inside flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---"
+
+  @148322 @148323 @Verify1StepApprovalForDeskReviewOrgLevel-RnRFunctnality @monu
+  Scenario: Verify user can add step1 approver on organization Desk Review created
+  |Verify user can add two step approver on organization Desk Review created|
+    Given I navigate to "Related Log" sub tab
+    And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
+    And I enter "Award" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "Organizational_DeskReview_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:deskReviewContactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:SPI3 Username}" in the table "---orgLevelDeskReview:-:associateContactsId---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    When I get the "EGMS ID"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Subrecipients" content inside "Organization" subheader on left panel
+    When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    When I click on "Approved Date" column header inside table with id "ActiveAccount"
+    And I click on "View" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table
+    Given I navigate to "Related Log" sub tab
+    When I perform quick search for "Record Id" in "---orgLevelDeskReview:-:deskreviewPanelId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:deskreviewPanelId---"
+    And I navigate to "Reports and Outcomes" sub tab
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---orgLevelDeskReview:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                     | Desk Review |
+      | {SavedValue:PM Username} | Step 1      |
+    Then I softly see "Saved Successfully!" inside flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---"
+    #148323
+    When I enter the following values into flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                      | Desk Review |
+      | {SavedValue:EXE Username} | Step 2      |
+    Then I softly see "Saved Successfully!" inside flex table with id "---orgLevelDeskReview:-:approverSiteVisitTableId---"
