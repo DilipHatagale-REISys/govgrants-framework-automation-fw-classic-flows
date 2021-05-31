@@ -2745,8 +2745,29 @@ Feature: Validate all scenarios in the Amendment Request
       | {SavedValue:FO Username} | Step 2            |
     Then I softly see "You cannot specify the same user for multiple steps for Amendment Request" inside flex table with id "---amendment:-:approversTableId---"
 
-  @149223 @Verify2StepApprovalProcess-TCAmendmentRequest-RnRFunctionality @monu
+  @149200 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUser-TCAmendmentRequest-RnRFunctionality @monu
+  Scenario: Verify user cannot add same step for different approver on terms and condition amendment
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "TermsAndConditions_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                    | Field               |
+      | Automation Justification | fieldTncComments__c |
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 1            |
+    Then I softly see "You cannot specify the same step for multiple users for Amendment Request" inside flex table with id "---amendment:-:approversTableId---"
+
+  @149223 @148946 @Verify2StepApprovalProcess-TCAmendmentRequest-RnRFunctionality @monu
   Scenario: Verify the user is able to add two step approver on  amendment terms and condition
+  |Verify user can add four step approver for Terms and Condition amendment|
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "TermsAndConditions_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -2764,6 +2785,33 @@ Feature: Validate all scenarios in the Amendment Request
       | Name                     | Amendment Request |
       | {SavedValue:FO Username} | Step 2            |
     Then I softly see "Saved Successfully!" inside flex table with id "---amendment:-:approversTableId---"
+    #148946
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 3            |
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:FD Username} | Step 4            |
+    Then I softly see "Saved Successfully!" inside flex table with id "---amendment:-:approversTableId---"
+
+  @148948 @verifyRemovalOfAddedApprover-TCAmendmentRequest-RnRFunctionality @monu
+  Scenario: To verify user can remove the added approver on terms and condition amendment
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "TermsAndConditions_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                    | Field               |
+      | Automation Justification | fieldTncComments__c |
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    When I navigate to "Responsibilities" sub tab
+    And I navigate to "Responsibilities" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:approversTableId---"
+    And I select value "{SavedValue:PM Username}" into field "Name__c"
+    And I enter value "Step 1" into field "AmendmentRequestRole__c"
+    And I click on "Remove record" icon for "Step 1" inside table
+    Then I softly see "No Records Found" inside flex table with id "---amendment:-:approversTableId---"
 
   @148947 @verifyUserNotAbleToSkipApprover-TCAmendmentRequest-RnRFunctionality @monu
   Scenario: Verify message when user skips an approval step on Terms and Condition amendment
