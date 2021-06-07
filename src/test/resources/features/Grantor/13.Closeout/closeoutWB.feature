@@ -413,6 +413,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Edit" in the page details
+    And I enter value "Automation Test Reason" into field "fieldReason__c"
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     Then I softly see field "Override Justification" as "Automation Test justification"
@@ -648,7 +649,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see row level action button "Delete" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
     Then I softly can see row level action button "View" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
     When I click on "View" icon for "Scheduled" inside flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
-    And I pause execution for "30" seconds
+    And I pause execution for "3" seconds
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Send To Subrecipient" in page detail
     Then I softly can see top right button "Override" in page detail
@@ -909,7 +910,7 @@ Feature: Validate all scenarios in Closeout
     And I save the field labeled "EGMS ID" as "closeoutRequestNo"
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I see status in Progress-bar is "Created" and is "Green"
+    Then I softly see status in Progress-bar is "Created" and is "Green"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -920,9 +921,10 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see row level action button "View" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
     Then I softly cannot see row level action button "Edit" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
 
-  @141925 @141947 @Verify1StepApprovalForScheduleCloseoutRequest-RnRFuntionality @monu
+  @141925 @141947 @154057 @Verify1StepApprovalForScheduleCloseoutRequest-RnRFuntionality @monu
   Scenario: Verify user is able to add one step approver for schedule closeout request
   |Verify user is able to add step 2 approver for schedule closeout request|
+  |Verify user is able to add four step approver on schedule closeout request|
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Award for closeout}" from the object "Closeout"
     When I create a post award record "Closeout" for the Award "{SavedValue:Automation Runtime Award for closeout}" having object api name as "Closeout"
@@ -946,9 +948,68 @@ Feature: Validate all scenarios in Closeout
       | Name                      | Closeout |
       | {SavedValue:EXE Username} | Step 2   |
     Then I softly see "Saved Successfully!" inside flex table with id "---closeout:-:closeoutApproverTableId---"
+    #154057
+    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+      | Name                     | Closeout |
+      | {SavedValue:FO Username} | Step 3   |
+    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+      | Name                     | Closeout |
+      | {SavedValue:FD Username} | Step 4   |
+    Then I softly see "Saved Successfully!" inside flex table with id "---closeout:-:closeoutApproverTableId---"
 
   @141949 @VerifyErrorMessageWhileSkippingStepsForScheduleCloseoutRequest-RnRFuntionality @monu
   Scenario: Verify the user is not able to skip approver step on schedule closeout request
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
+    Given I delete the record "{SavedValue:Automation Runtime Award for closeout}" from the object "Closeout"
+    When I create a post award record "Closeout" for the Award "{SavedValue:Automation Runtime Award for closeout}" having object api name as "Closeout"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Requests" sub tab
+    When I click on "View" icon for "Scheduled" inside flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
+    And I save the field labeled "EGMS ID" as "closeoutID"
+    Given I click on "Send To Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I click on "Edit" in the page details
+    And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I click on "Edit" in the page details
+    And I enter value "Automation Test Reason" into field "fieldReason__c"
+    And I enter value "Automation Test justification" into field "fieldJustification__c"
+    And I enter value "Automation Test Reason" into field "fieldReason__c"
+    When I click on "Save" in the page details
+    Then I softly see field "Override Justification" as "Automation Test justification"
+    When I navigate to "Checklist" sub tab
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I click on "Override" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+      | Name                     | Closeout |
+      | {SavedValue:PM Username} | Step 1   |
+    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+      | Name                      | Closeout |
+      | {SavedValue:EXE Username} | Step 4   |
+    And I refresh the page
+    And I click on "Submit for Approval" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Responsibilities - You cannot skip an Approval Step. |
+
+  @153657 @verifyUserNotAbleToSkipApproverAtScheduleCloseoutRequest-RnRFunctionality @monu
+  Scenario: Verify the validation message when approval step has <NA>  on schedule closeout request
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Award for closeout}" from the object "Closeout"
     When I create a post award record "Closeout" for the Award "{SavedValue:Automation Runtime Award for closeout}" having object api name as "Closeout"
@@ -982,17 +1043,127 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     Then I softly see field "Override Justification" as "Automation Test justification"
     When I navigate to "Checklist" sub tab
+    When I click on "Edit" in the page details
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Override" in the page details
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
       | Name                     | Closeout |
+      | {SavedValue:PM Username} | NA       |
+    And I refresh the page
+    And I click on "Submit for Approval" in the page details
+    And I softly see the following messages in the page details contains:
+      | Responsibilities - At least one approver is required |
+
+  @153659 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUserAtScheduleCloseoutRequest-RnRFunctionality @monu
+  Scenario: Verify validation displayed when same step is added for different approver for schedule closeout request
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
+    Given I delete the record "{SavedValue:Automation Runtime Award for closeout}" from the object "Closeout"
+    When I create a post award record "Closeout" for the Award "{SavedValue:Automation Runtime Award for closeout}" having object api name as "Closeout"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Requests" sub tab
+    When I click on "View" icon for "Scheduled" inside flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
+    And I save the field labeled "EGMS ID" as "closeoutID"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+      | Name                     | Closeout |
       | {SavedValue:PM Username} | Step 1   |
     When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
       | Name                      | Closeout |
-      | {SavedValue:EXE Username} | Step 4   |
-    And I refresh the page
-    And I click on "Submit for Approval" in the page details
-    Then I softly see the following messages in the page details contains:
-      | Responsibilities - You cannot skip an Approval Step. |
+      | {SavedValue:EXE Username} | Step 1   |
+    Then I softly see "You cannot specify the same step for multiple users for Closeout." inside flex table with id "---closeout:-:closeoutApproverTableId---"
+
+  @153658 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStepAtScheduleCloseoutRequest-RnRFunctionality @monu
+  Scenario: Verify validation displayed when same approver is added on different  step for schedule closeout request
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
+    Given I delete the record "{SavedValue:Automation Runtime Award for closeout}" from the object "Closeout"
+    When I create a post award record "Closeout" for the Award "{SavedValue:Automation Runtime Award for closeout}" having object api name as "Closeout"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Requests" sub tab
+    When I click on "View" icon for "Scheduled" inside flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
+    And I save the field labeled "EGMS ID" as "closeoutID"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+      | Name                     | Closeout |
+      | {SavedValue:PM Username} | Step 1   |
+    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+      | Name                     | Closeout |
+      | {SavedValue:PM Username} | Step 2   |
+    Then I softly see "You cannot specify the same user for multiple steps for Closeout" inside flex table with id "---closeout:-:closeoutApproverTableId---"
+
+  @153656 @Verify2StepApprovalForScheduleCloseoutRequest-RnRFuntionality @monu
+  Scenario: Verify user is able approve the schedule closeout request in two step approver
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
+    Given I delete the record "{SavedValue:Automation Runtime Award for closeout}" from the object "Closeout"
+    When I create a post award record "Closeout" for the Award "{SavedValue:Automation Runtime Award for closeout}" having object api name as "Closeout"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Requests" sub tab
+    When I click on "View" icon for "Scheduled" inside flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
+    And I save the field labeled "EGMS ID" as "closeoutID"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+      | Name                     | Closeout |
+      | {SavedValue:PM Username} | Step 1   |
+    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+      | Name                     | Closeout |
+      | {SavedValue:FO Username} | Step 2   |
+    Given I click on "Send To Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I click on "Edit" in the page details
+    And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I click on "Edit" in the page details
+    And I enter value "Automation Test Reason" into field "fieldReason__c"
+    And I enter value "Automation Test justification" into field "fieldJustification__c"
+    When I navigate to "Checklist" sub tab
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see field "Override Justification" as "Automation Test justification"
+    When I click on "Override" in the page details
+    Then I softly see field "Status" as "Overridden"
+    And I navigate to "Closeout" tab
+    When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
+    And I click toggle button to select "Project Period Closeouts - All"
+    When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:ProjectPeriodCloseoutTableId---" panel
+    And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:ProjectPeriodCloseoutTableId---"
+    When I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"

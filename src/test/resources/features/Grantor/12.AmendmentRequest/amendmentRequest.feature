@@ -1663,6 +1663,209 @@ Feature: Validate all scenarios in the Amendment Request
       | Grant Name                            |
       | {SavedValue:Automation Runtime Award} |
 
+  @151120 @VerifyErrorMessageAtApproverSectionWhileSkippingAt-FCAmendmentRequest-RnRFunctionality @monu
+  Scenario: Validate message ,when user give NA  on approval step on Funding change amendment
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 1100                        | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "{SavedValue:Automation Runtime Award}"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Awarded Budget |
+      | Extra Salary | The narrative | 100            |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "{SavedValue:fundingAccount}" inside flex table with id "---amendment:-:amendmentFundingAccountsTableId---" without waiting for record
+    When I enter Revised Encumbrance for award "{SavedValue:Automation Runtime Award}"
+    And I click on top right button "Save" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | NA                |
+    When I click on "Submit for Approval" in the page details
+    Then I see the following messages in the page details contains:
+      | Responsibilities - At least one approver is required |
+
+  @151122 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStep-FCAmendmentRequest-RnRFunctionality @monu
+  Scenario: Verify validation displayed when same approver is added on different  step for Funding change amendment
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 1100                        | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "{SavedValue:Automation Runtime Award}"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Awarded Budget |
+      | Extra Salary | The narrative | 1100           |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "{SavedValue:fundingAccount}" inside flex table with id "---amendment:-:amendmentFundingAccountsTableId---" without waiting for record
+    When I enter Revised Encumbrance for award "{SavedValue:Automation Runtime Award}"
+    And I click on top right button "Save" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 2            |
+    Then I softly see "You cannot specify the same user for multiple steps for Amendment Request" inside flex table with id "---amendment:-:fundingChangeApproversTableId---"
+
+  @151121 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUser-FCAmendmentRequest-RnRFunctionality @monu
+  Scenario: Verify user cannot add same step for different approver on Funding Change amendment
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 1100                        | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "{SavedValue:Automation Runtime Award}"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Awarded Budget |
+      | Extra Salary | The narrative | 1100           |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "{SavedValue:fundingAccount}" inside flex table with id "---amendment:-:amendmentFundingAccountsTableId---" without waiting for record
+    When I enter Revised Encumbrance for award "{SavedValue:Automation Runtime Award}"
+    And I click on top right button "Save" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 1            |
+    Then I softly see "You cannot specify the same step for multiple users for Amendment Request." inside flex table with id "---amendment:-:fundingChangeApproversTableId---"
+
+  @151131 @Verify3StepApprovalAt-FCAmendmentRequest-RnRFunctionality @monu
+  Scenario: Verify user is able to add three step approver for Funding change and forward it on step three
+    When I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter values into fields
+      | Value                       | Field                              |
+      | Automation Test Description | fieldFundingChangeJustification__c |
+      | 1100                        | fieldRequestedChangeInBudget__c    |
+    And I click on "Save" in the page details
+    And I get the updated budget end date by offset "0" for award "{SavedValue:Automation Runtime Award}"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
+    When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Awarded Budget |
+      | Extra Salary | The narrative | 1100           |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "{SavedValue:fundingAccount}" inside flex table with id "---amendment:-:amendmentFundingAccountsTableId---" without waiting for record
+    When I enter Revised Encumbrance for award "{SavedValue:Automation Runtime Award}"
+    And I click on top right button "Save" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:FO Username} | Step 2            |
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 3            |
+    And I click on "Submit for Approval" in the page details
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I select radio button "Forward" in the approval decision
+    And I select user "{SavedValue:PM Username}" in the approval decision
+    When I enter comment "Automation testing" in the approval decision
+    And I submit the approval in the approval decision without processing
+    Then I softly see field "Status" as "Submitted for Approval"
+
   @57366 @verifySubRecipientIsAbleToSeeAmendedBudgetPeriodOnAdvancePaymentRequest @mahadev @buglogged142465
   Scenario Outline: Verify Sub-recipient user is able to see the amended Budget Period on Advance Payment Request
     When I navigate to "Management" sub tab
@@ -2847,8 +3050,9 @@ Feature: Validate all scenarios in the Amendment Request
     Then I see the following messages in the page details contains:
       | Responsibilities - At least one approver is required |
 
-  @149400 @Verify4StepApprovalAtAmendmentRequest-BPCAmendmentRequest-RnRFuntionality @monu
+  @149400 @149405 @Verify4StepApprovalAtAmendmentRequest-BPCAmendmentRequest-RnRFuntionality @monu
   Scenario: Verify user can add four step approver for Budget Period Change  amendment
+  |Verify the user is able to add two step approver on  amendment Budget Period Change|
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -2872,6 +3076,9 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 2            |
+    #149405
+    Then I softly see "Saved Successfully!" inside flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    And I refresh the page
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:FO Username} | Step 3            |
@@ -2931,127 +3138,3 @@ Feature: Validate all scenarios in the Amendment Request
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 1            |
     Then I softly see "You cannot specify the same step for multiple users for Amendment Request." inside flex table with id "---amendment:-:fundingChangeApproversTableId---"
-
-  @149433 @VerifyInheritatedApproverAtBPCAmendmentRequestFromAward-RnRFunctionality @monu @needtocheck
-  Scenario Outline: Validate Approvers are getting inherited from award record to Budget period change amendment
-    Given I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I enter "Grant_Creation1" values from "Award_Field_Values.xlsx"
-    And I click modal button "Continue"
-    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
-    When I click modal button "Save and Continue"
-    And I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    And I get the "EGMS ID"
-    And I click on "Edit" in the page details
-    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    And I navigate to "Budget" sub tab
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account1" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
-      | Title                           | Start Date | End Date |
-      | Automation Permanent Focus Area | 0          | 3650     |
-    And I refresh the page
-    When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account             | Encumbrance |
-      | {SavedValue:fundingAccount} | 1000        |
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
-      | Construction    | 1000           | 100        | 100            |
-    When I navigate to "Performance" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
-    And I navigate to "Terms" sub tab
-    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
-    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
-    And I click modal button "Save"
-    When I close "Edit Payment Request Schedule" modal by clicking the top right x button
-    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
-    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
-    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
-    And I click modal button "Save"
-    When I close "Edit Progress Report Schedule" modal by clicking the top right x button
-    When I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name                       | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
-      | Name                     | Award  | Amendment Request |
-      | {SavedValue:PM Username} | Step 1 | Step 1            |
-    When I get the "EGMS ID"
-    And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    When I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    When I click on "Accept" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
-    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    When I navigate to "Terms" sub tab
-    When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    And I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    And I "Approve" in the approval decision
-    When I navigate to "Management" sub tab
-    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
-    When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
-    When I click on "Edit" in the page details
-    And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
-    When I click on "Edit" in the page details
-    And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "fieldNewBudgetPeriodEndDate__c"
-    And I click on "Save" in the page details
-    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
-      | Title                           | End Date                             |
-      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
-    And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "{SavedValue:AwardId}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "{SavedValue:AwardId}" inside table
-    And I click on "Accept after Approval" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside table without waiting for record
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    And I click on "Activate" in the page details
-    #When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Amendment Requests - All"
-    And I perform quick search for "{SavedValue:Automation Runtime Award for Risk Assessment}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Award for Risk Assessment}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
-    And I navigate to "Responsibilities" sub tab
-    Then I softly see value "{SavedValue:PM Username}" for title "Name" inside table "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
-    Then I softly see value "Step 1" for title "Amendment Request" inside table "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
-
-    Examples:
-      | Award Name                                                | Grant Name                                                |
-      | {SavedValue:Automation Runtime Award for Risk Assessment} | {SavedValue:Automation Runtime Award for Risk Assessment} |

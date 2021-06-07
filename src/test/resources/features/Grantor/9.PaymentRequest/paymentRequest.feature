@@ -2704,3 +2704,64 @@ Feature: Validate all scenarios in Payment Request
     And I enter value "Step 1" into field "AdvanceRole__c"
     And I click on "Remove record" icon for "Step 1" inside table
     Then I softly see "No Records Found" inside flex table with id "---paymentRequest:-:approversTableId---"
+
+  @152690 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStep-AdvancePaymentRequest-RnRFunctionality @monu
+  Scenario Outline:Verify validation displayed when same approver is added on different step for Advance Payment Request
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 20                            |
+    And I navigate to "Files" sub tab
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
+    When I upload file "Program_Field_Values.xlsx" into library
+    And I click modal button "Save"
+    When I close "Upload Document" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    And I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Runtime Payment Request2" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I navigate to "Files" sub tab
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
+    When I upload file "Program_Field_Values.xlsx" into library
+    And I click modal button "Save"
+    When I close "Upload Document" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:advanceFundingAccountTableId---" by clicking "Edit" :
+      | Funding Account             | Advance Requested This Action |
+      | {SavedValue:fundingAccount} | 10                            |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 1  |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:FO Username} | Step 2  |
+    Then I softly see "You cannot specify the same user for multiple steps for Advance" inside flex table with id "---amendment:-:approversTableId---"
+
+    Examples:
+      | Award Name                            |
+      | {SavedValue:Automation Runtime Award} |
