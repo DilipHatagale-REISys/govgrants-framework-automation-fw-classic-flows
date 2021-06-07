@@ -5267,7 +5267,7 @@ Feature: Validate all scenarios for program
       | {SavedValue:FD Username} | Step 4  |
     Then I softly see "Saved Successfully!" inside flex table with id "---program:-:approverTableId---"
 
-  @138465 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStepAtProgram-RnRFunctionality @monu @needToCheck
+  @138465 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStepAtProgram-RnRFunctionality @monu @buglogged154221
   Scenario: Validate program owner cant add same user for multiple steps  while assigning approvers for program on program record
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :

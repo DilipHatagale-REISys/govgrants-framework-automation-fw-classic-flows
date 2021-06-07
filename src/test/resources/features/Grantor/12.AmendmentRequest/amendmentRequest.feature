@@ -1800,7 +1800,7 @@ Feature: Validate all scenarios in the Amendment Request
       | {SavedValue:EXE Username} | Step 1            |
     Then I softly see "You cannot specify the same step for multiple users for Amendment Request." inside flex table with id "---amendment:-:fundingChangeApproversTableId---"
 
-  @151131 @Verify3StepApprovalAt-FCAmendmentRequest-RnRFunctionality @monu @wip
+  @151131 @Verify3StepApprovalAt-FCAmendmentRequest-RnRFunctionality @monu
   Scenario: Verify user is able to add three step approver for Funding change and forward it on step three
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -1825,7 +1825,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
-      | Extra Salary | The narrative | 2100           |
+      | Extra Salary | The narrative | 1100           |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
