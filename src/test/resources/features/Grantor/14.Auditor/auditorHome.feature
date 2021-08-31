@@ -7,7 +7,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     Then I softly cannot see top right button "New" in flex table with id "---home:-:internalOrganizationId---"
-    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    #When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     Then I softly cannot see row level action button "Edit" against "Test Automation Organization" in flex table with id "---home:-:internalOrganizationId---"
     Examples:
       | User    |
@@ -18,7 +18,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
+    #When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     Then I softly see that "Internal Organization" is in "Active" status
     Examples:
