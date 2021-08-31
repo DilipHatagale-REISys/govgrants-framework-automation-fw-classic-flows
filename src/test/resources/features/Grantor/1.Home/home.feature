@@ -6,8 +6,8 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     Then I softly can see row level action button "View" against "Test Automation Organization" in flex table with id "---home:-:internalOrganizationId---"
+    Then I softly can see row level action button "Edit" against "Test Automation Organization" in flex table with id "---home:-:internalOrganizationId---"
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     Then I softly see that "Internal Organization" is in "Active" status
     Examples:
@@ -15,6 +15,18 @@ Feature: Validate all scenarios in the home tab
       | ADMIN |
       | PM    |
       | EXE   |
+
+  @56709 @ValidateViewEditAccessOfInternalOrganization @smoke
+  Scenario Outline: Validate system allows Edit access to Internal Organizations to the ADMIN/DA
+    Given I login to "As a Grantor" app as "<User>" user
+    When I navigate to "Home" tab
+    And I navigate to "Internal" content inside "Organization" subheader on left panel
+    Then I softly can see row level action button "Edit" against "Test Automation Organization" in flex table with id "---home:-:internalOrganizationId---"
+    When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
+    Then I softly see that "Internal Organization" is in "Active" status
+    Examples:
+      | User  |
+      | ADMIN |
 
   @56712 @56713 @activeINDandsubrecipientOrganizationView
   Scenario Outline: Validate whether all users have view access to Subrecipient Organization and Active Individual Subrecipients
@@ -79,7 +91,7 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
+    #And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     Then I see value "{SavedValue:Automation Runtime Contact}" for title "Full Name" inside table "---home:-:reviewersTableId---"
@@ -100,11 +112,16 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
+    #And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
+    And I enter value "Test Automation Description" in email body
+    And I click "Send" button in modal
+    Then I see the following messages in the page details :
+      | Email Sent Successfully |
+
     Examples:
       | User  |
       | ADMIN |
@@ -119,7 +136,7 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
+    #And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
@@ -263,7 +280,7 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
+    #And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
     And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
@@ -279,7 +296,6 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     And I click on top right button "New" in flex table with id "---home:-:additionalAddressTableId---"
     And I enter "AdditioanlAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
@@ -298,7 +314,6 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
     And I enter in modal "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
@@ -322,7 +337,6 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
     And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
@@ -339,7 +353,6 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     When I enter the following values into flex table with id "---home:-:dunsTableId---" by clicking "New" :
       | DUNS Number | Entity Name as Registered       | Location |
@@ -356,7 +369,6 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     When I click on top right button "New" in flex table with id "---home:-:indirectRateFlextableId---"
     When I enter the following values into flex table with id "---home:-:indirectRateFlextableId---" by clicking "New" :
@@ -374,7 +386,6 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     #56883 #monu
     Then I softly can see row level action button "Edit" against "Test Automation Organization" in flex table with id "---home:-:internalOrganizationId---"
     #56912 #monu
@@ -391,7 +402,6 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "FO" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     Then I cannot see row level action button "Edit" against "Test Automation Organization" in flex table with id "---home:-:internalOrganizationId---"
 
   @57340 @thirdPartyVerification @nonFunctional @wip
@@ -423,7 +433,6 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     Then I see values "Test Automation Organization" and "Agency" inside table
     Examples:
       | User  |
@@ -651,7 +660,6 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside flex table with id "---home:-:internalOrganizationId---" with wait for record
     And I navigate to "Overview" sub tab
     Then I softly can see page block "Related Contacts"
@@ -667,7 +675,6 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside flex table with id "---home:-:internalOrganizationId---" with wait for record
     And I navigate to "Related Log" sub tab
     Then I can see page block "Internal Programs"
@@ -771,7 +778,6 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Test Automation Organization" in "---home:-:internalOrganizationId---" panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     When I navigate to "Planning" tab
     And I mouse hover to link contains "Test Automation Organization"
@@ -785,7 +791,7 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
+    #And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
@@ -809,7 +815,7 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
+    #And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
     And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     Then I softly see value "{SavedValue:Automation Runtime Contact}" for title "Full Name" inside table "---home:-:reviewersTableId---"
