@@ -323,9 +323,11 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Given I edit the following rows inline in flex table with id "---announcement:-:annChecklist---" by clicking "Edit" :
       | Required  | Description                   | Applies To | Status |
       | Mandatory | Automation test description02 | Award      | Active |
+    And I refresh the page
     Then I softly see value "Automation test description02" for title "Description" inside table "---announcement:-:annChecklist---"
     When I click on "Delete" icon for "Automation test description02" inside flex table with id "---announcement:-:annChecklist---" without waiting for record
-    And I softly do not see "Automation test description02" inside flex table with id "---announcement:-:annChecklist---"
+    And I perform quick search for "Automation test description02" in "---announcement:-:annChecklist---" panel
+    Then I softly do not see value "Automation test description02" for title "Description" inside table "---announcement:-:annChecklist---"
     And I navigate to "Setup" sub tab
     When I click on "Preview" icon for "Organization Desk Review" inside flex table with id "---announcement:-:businessFormlistTableId---" without waiting for record
     Then I softly see field "Package Name" as "Organization Desk Review"
@@ -348,6 +350,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see the following messages in the page details :
       | Required fields are missing : Title |
     And I pause execution for "2" seconds
+    And I refresh the page
     And I click on top right button "Add Files" in flex table with id "---announcement:-:AnnouncementAttachmentTableId---"
     And I upload attachment "Attachment.pdf" of type "Funding Opportunity Announcement" from computer
     When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---announcement:-:AnnouncementAttachmentTableId---"

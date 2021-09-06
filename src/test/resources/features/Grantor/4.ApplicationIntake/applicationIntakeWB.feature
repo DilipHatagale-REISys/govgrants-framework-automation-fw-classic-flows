@@ -39,7 +39,7 @@ Feature: Application Intake scenarios without background
     Then I softly see value "{SavedValue:Automation Runtime Announcement Application Review}" for title "Opportunity Name" inside table "---applicationIntake:-:qualifiedTableId---"
     When I enter advance filter values inside id "advfqae"
       | EGMS ID | Contains | Aatam123 |
-    Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
+    Then I softly see "No records found" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
     And I click toggle button to select "Qualified Opportunities - Open"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationIntake:-:qualifiedTableId---" panel
     Then I softly see value "{SavedValue:Automation Runtime Announcement Application Review}" for title "Opportunity Name" inside table "---applicationIntake:-:qualifiedTableId---"
@@ -49,7 +49,7 @@ Feature: Application Intake scenarios without background
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:reviewsTableId---" panel
-    Then I softly see "No Records Found" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    Then I softly see "No records found" inside flex table with id "---applicationReview:-:reviewsTableId---"
 
   @72579 @77380 @76374 @70258 @spaUsersCannotSubmitAnApplication @deepika
   Scenario: Validate the SPA users should not be able to Submit the Application | Validate whether SPI user can continue to proceed without providing application title while creating a application
@@ -155,6 +155,7 @@ Feature: Application Intake scenarios without background
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
+    Given I expand nested table containing column value "BP01"
     Then I softly see value "$1,300.00" for title "Total Project Cost" against the value "Construction" inside table "---applicationIntake:-:budgetPeriodTableId---"
 
   @70460 @70461 @goalsAndObjectivesInApplication @deepika
@@ -1112,6 +1113,7 @@ Feature: Application Intake scenarios without background
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 0          | 0              | 0              |
+    Given I expand nested table containing column value "BP01"
     Then I softly see value "$1,000.00" for title "Budget" against the value "Construction" inside table "---applicationIntake:-:budgetPeriodTableId---"
 
   @34322 @zeroBudgetRequestedAmount @deepika
@@ -1224,7 +1226,7 @@ Feature: Application Intake scenarios without background
     And I navigate to "Files" sub tab
     And I pause execution for "5" seconds
     #77044
-    Then I softly see "No Records Found" inside flex table with id "flexGridApplicationChecklists"
+    Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:supportedDocumentsTableId---"
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1302,7 +1304,7 @@ Feature: Application Intake scenarios without background
     When I click on "View" icon for "TEST APP from Announcement 2 for Automation API" inside flex table with id "---applicationIntake:-:recipientApplications---" without waiting for record
     When I click on "Submit Application" in the page details
     Then I softly see the following messages in the page details contains:
-      | An Application cannot be submitted after the Application Due Date.         |
+      | An Application cannot be submitted after the Application Due Date. |
 
   @77657 @snapshotHistoryApplication @deepika @skipOnJenkins
   Scenario: Validate whether SPI user will be able to take the snapshot on page when the Application is in Created status and is saved under snapshot history

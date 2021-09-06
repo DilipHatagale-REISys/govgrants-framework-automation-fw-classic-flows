@@ -116,7 +116,7 @@ Feature: Validate all scenarios in the Application Intake
     And I click on "Save" in the page details
     Given I click on "Back" in the page details
     And I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "flexGridAppContact" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---applicationReview:-:flexGridAppContactTableId---" by clicking "Edit" :
       | Name                       | Project Role             | Is Key Contact |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
@@ -224,7 +224,7 @@ Feature: Validate all scenarios in the Application Intake
       | Project Director/Manager |
       | Authorized Signatory     |
 
-  @70527 @applicationAttachmentAndNotes @deepika
+  @70527 @applicationAttachmentAndNotes @deepika  @buglogged169487
   Scenario: Validate whether user can add attachment checklist and Notes on the Application
     When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---applicationIntake:-:ApplicationAttachmentTableId---"

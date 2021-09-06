@@ -51,7 +51,7 @@ Feature: Validate all scenarios in Funding Source
     And I click on "Save" in the page details
     Then I see status in Progress-bar is "Created" and is "green"
 
-  @51036 @addAttachmentToFundingSource @buglogged139175
+  @51036 @addAttachmentToFundingSource
   Scenario: Addition of Attachment to Funding Source
     When I login to "As a Grantor" app as "EXE" user
     When I navigate to "Planning" tab
