@@ -491,19 +491,19 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I pause execution for "2" seconds
-    And I collapse nested table containing column value "Schedule"
+   # And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I pause execution for "2" seconds
-    And I collapse nested table containing column value "Environment"
+   # And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question  | Type    | Max Score |
       | 1              | Question1 | Written | 100       |
     And I pause execution for "2" seconds
-    And I collapse nested table containing column value "Permits"
+    #And I collapse nested table containing column value "Permits"
     When I close "Review Form" modal by clicking the top right x button
     And I refresh the page
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
@@ -578,10 +578,10 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on advance filter "#advfnyqae" of table id "---announcement:-:opportunityNotQtableId---"
     And I enter advance filter values inside id "advfnyqae"
       | EGMS ID | Contains | I am laughing |
-    Then I softly see "No Records Found" inside flex table with id "---announcement:-:opportunityNotQtableId---"
+    Then I softly see "No records found" inside flex table with id "---announcement:-:opportunityNotQtableId---"
     And I refresh the page
     And I click toggle button to select "Not Yet Qualified Opportunities - Closed"
-    Then I softly see "No Records Found" inside flex table with id "---announcement:-:opportunityNotQtableId---"
+    Then I softly see "No records found" inside flex table with id "---announcement:-:opportunityNotQtableId---"
     And I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "{SavedValue:annId}" in "---announcement:-:opportunityNotQtableId---" panel
     Then I softly see value "{SavedValue:annId}" for title "EGMS ID" inside table "---announcement:-:opportunityNotQtableId---"

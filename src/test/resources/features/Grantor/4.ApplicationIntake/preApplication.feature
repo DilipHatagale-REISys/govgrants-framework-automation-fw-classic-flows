@@ -79,7 +79,7 @@ Feature: Validate all scenarios in the Pre-Application
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     Then I see "Other" has been added in "Supporting Documents Checklist" flex table
 
-  @70466 @53160 @70467 @submitPreApplication @smoke @deepika
+  @70466 @53160 @70467 @submitPreApplication @smoke @deepika @buglogged169487
   Scenario: Submitting an pre application to Grantor |To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on pre-application
   Validate whether SPI user can view the edit button once pre - application has been submitted to Grantor |  Validate whether the user can submit the Pre Application Submission before the due date
     Given I click on "Edit" in the page details

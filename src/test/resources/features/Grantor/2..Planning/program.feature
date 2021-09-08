@@ -490,7 +490,7 @@ Feature: Validate all scenarios for program
     Then I softly see the following messages in the page details contains:
       | Record deleted successfully. |
     And I softly do not see value "2" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
-    And I collapse nested table containing column value "Eligibility"
+    #And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question | Type   | Max Score |
@@ -4139,7 +4139,7 @@ Feature: Validate all scenarios for program
       | Question Order | Max Score |
       | 1              | 100       |
       | 2              | 0         |
-    And I collapse nested table containing column value "Eligibility"
+   # And I collapse nested table containing column value "Eligibility"
     And I expand nested table containing column value "Completeness"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
       | Question Order | Max Score |
@@ -4259,7 +4259,7 @@ Feature: Validate all scenarios for program
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
       | Question Order | Max Score |
       | 1              | 100       |
-    And I collapse nested table containing column value "Environment"
+    #And I collapse nested table containing column value "Environment"
     And I expand nested table containing column value "Permits"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
       | Question Order | Max Score |
@@ -4364,7 +4364,7 @@ Feature: Validate all scenarios for program
       | 1              | 0         |
       | 2              | 0         |
       | 3              | 0         |
-    And I collapse nested table containing column value "Return on Investment (ROI)"
+   # And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
       | Question Order | Max Score |
@@ -4686,7 +4686,7 @@ Feature: Validate all scenarios for program
     And I softly see value "How much are similar projects typically awarded?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "Currency" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "0" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
-    And I collapse nested table containing column value "Budget"
+   # And I collapse nested table containing column value "Budget"
     And I expand nested table containing column value "Match"
     And I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "Does the application meet the match requirement outlined in the funding opportunity?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -4700,7 +4700,7 @@ Feature: Validate all scenarios for program
     And I softly see value "Does the application include leverage funds? Is documentation of the leverage included in the application?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "5" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
-    And I collapse nested table containing column value "Match"
+    #And I collapse nested table containing column value "Match"
     And I expand nested table containing column value "Program Income"
     And I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "Will program income be generated during this project?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -4725,7 +4725,7 @@ Feature: Validate all scenarios for program
     And I softly see value "Does the applicant have the capacity to successfully implement the project on schedule? Do recent past performance and/or resolution efforts on past monitoring/audit findings suggest the applicant has the capacity to implement the project successfully?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "25" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
-    And I collapse nested table containing column value "Capability"
+   # And I collapse nested table containing column value "Capability"
     And I expand nested table containing column value "Approach"
     And I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "Has the applicant provided a clear project narrative?" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -4784,7 +4784,7 @@ Feature: Validate all scenarios for program
     And I softly see value "Rate and describe overall value of the Project." for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "Written" for title "Type" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "30" for title "Max Score" inside table "---program:-:programReviewPanelQuestionsTableId---"
-    And I collapse nested table containing column value "Return on Investment (ROI)"
+   # And I collapse nested table containing column value "Return on Investment (ROI)"
     And I expand nested table containing column value "Strategic Alignment"
     And I softly see value "1" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I softly see value "Provide your assessment of project alignment with Agency Goals and Objectives." for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
@@ -4855,7 +4855,7 @@ Feature: Validate all scenarios for program
       | Record deleted successfully. |
     Then I softly do not see value "3" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
     #77104
-    And I collapse nested table containing column value "Schedule"
+   # And I collapse nested table containing column value "Schedule"
     And I expand nested table containing column value "Environment"
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question | Type   | Max Score |

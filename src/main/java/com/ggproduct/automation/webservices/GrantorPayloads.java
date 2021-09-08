@@ -310,6 +310,8 @@ public class GrantorPayloads {
                 return updateFocusAreaForAnnouncement(json,"No");
             case "NEGOTIATION":
                 return negotiationYesForAnnouncement(json);
+            case "NEGOTIATION_NO":
+                return negotiationNoForAnnouncement(json);
             case "PRE_APP_YES_FOCUS_AREA_NO":
                 return preAppYesFocusAreaNoAnnouncement(json);
             case "GOALS_YES":
@@ -436,6 +438,14 @@ public class GrantorPayloads {
         JsonObject negotiation = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
         negotiation.addProperty("IsNegotiationsAllowed","Yes");
+        pre.add(negotiation);
+        json.add("Announcement",pre);
+        return json;
+    }
+    private JsonObject negotiationNoForAnnouncement(JsonObject json) {
+        JsonObject negotiation = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        negotiation.addProperty("IsNegotiationsAllowed","No");
         pre.add(negotiation);
         json.add("Announcement",pre);
         return json;

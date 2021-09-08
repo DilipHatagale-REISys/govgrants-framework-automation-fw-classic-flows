@@ -710,8 +710,8 @@ Feature: Validate all scenarios in the Application Review
     #  | Saved Successfully! |
     Then I softly see value "{SavedValue:FO Username}" for title "Reviewer" inside table "---applicationReview:-:reviewersTableId---"
     And I click on "Remove from Form" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
-    Then I softly see the following messages in the page details contains:
-      | Record deleted successfully. |
+   # Then I softly see the following messages in the page details contains:
+    #  | Record deleted successfully. |
     Then I softly do not see value "{SavedValue:FO Username}" for title "Reviewers" inside table "---applicationReview:-:reviewersTableId---"
     Examples:
       | Announcement Name                                               |
@@ -770,8 +770,8 @@ Feature: Validate all scenarios in the Application Review
    #   | Saved Successfully! |
     Then I softly see value "{SavedValue:FO Username}" for title "Reviewer" inside table "---applicationReview:-:reviewersTableId---"
     And I click on "Remove from Form" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
-    Then I softly see the following messages in the page details contains:
-      | Record deleted successfully. |
+    #Then I softly see the following messages in the page details contains:
+     # | Record deleted successfully. |
     Then I softly do not see value "{SavedValue:FO Username}" for title "Reviewers" inside table "---applicationReview:-:reviewersTableId---"
     Examples:
       | Announcement Name                                               |
