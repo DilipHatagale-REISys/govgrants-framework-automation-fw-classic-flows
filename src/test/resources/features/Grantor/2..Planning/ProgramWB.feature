@@ -21,7 +21,7 @@ Feature: Validate all scenarios for program
     And I click on "Edit" icon for "{SavedValue:Automation Runtime Internal Program}" inside flex table with id "---program:-:programsTableId---" without waiting for record
     When I enter value "Children’s Health Insurance Program" into field "fieldAccount__c"
     And I click on "Save" in the page details
-    Then I softly see field "Internal Organization" as "Children’s Health Insurance Program"
+    Then I softly see field "Internal Organization" as "Department of Health"
 
   @105386 @VerifyCreationOfStrategicPlanWithFOProfile @monu
   Scenario: Verifying FO user is not able to create Strategic plan

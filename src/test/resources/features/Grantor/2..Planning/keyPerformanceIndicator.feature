@@ -34,7 +34,7 @@ Feature: Validate all scenarios in Key Performance Indicator(KPI)
       | ADMIN |
       | EXE   |
 
-  @51026 @addAttachmentToKPI @buglogged139175
+  @51029 @addAttachmentToKPI
   Scenario Outline: Addition of Attachment to KPI
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Planning" tab
