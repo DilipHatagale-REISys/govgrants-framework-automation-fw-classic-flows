@@ -4742,7 +4742,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     When I enter in modal "Progress Report Monthly" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close "Edit Progress Report Schedule" modal by clicking the top right x button
+    #When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I delete the record "<Award Name>" from the object "Progress Report"
     And I delete the record "<Award Name>" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c"
