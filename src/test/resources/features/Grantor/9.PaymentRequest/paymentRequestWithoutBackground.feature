@@ -1402,3 +1402,52 @@ Feature: Payment Request scenarios without background
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
+
+
+  @148788 @ValidateApproversaregettinginheritedfromawardrecordtoadvancepaymentrequest @vaibhav
+  Scenario Outline: Validate Approvers are getting inherited from award record to advance payment request
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "<Award Name>" in "---subAwardStandAlone:-:SubAwardTableId---" panel
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
+      | Name                     | Award  | Advance |
+      | {SavedValue:PM Username} | Step 1 | Step 1  |
+    And I refresh the page
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 10                            |
+    When I get the "EGMS ID"
+    And I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    Then I softly see value "{SavedValue:PM Username}" for title "Name" inside table "---paymentRequest:-:approversTableId---"
+    Then I softly see value "Step 1" for title "Advance" inside table "---paymentRequest:-:approversTableId---"
+
+    Examples:
+      | Award Name                            | Grant Name                            |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
