@@ -3316,13 +3316,6 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Start" icon for "{SavedValue:AmendmentId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
-    #149237
-   # When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    #And I navigate to "Grants" tab
-    #When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
-    #And I click toggle button to select "Amendment Requests - Approved"
-    #And I perform quick search for "{SavedValue:AmendmentId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
-    #When I click on "View" icon for "{SavedValue:AmendmentId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
     Then I softly cannot see top right button "New" in flex table with id "---amendment:-:approversTableId---"
 
@@ -3373,7 +3366,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
 
-  @152509 @ValidateUserCanAddOneStepApproverForReimbursementPaymentRequestAndApproveIt
+  @152509 @ValidateUserCanAddOneStepApproverForReimbursementPaymentRequestAndApproveIt @vaibhav
   Scenario Outline: Validate User Can Add One Step Approver For Reimbursement Payment Request And Approve It
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
