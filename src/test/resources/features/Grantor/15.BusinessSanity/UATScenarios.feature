@@ -504,7 +504,7 @@ Feature: Validate sanity testing of Complete UAT Business Flow
     And I click modal button "Save"
     Then I softly see field "Description" as "Automation Description"
     #141390
-    And I close "Edit" modal by clicking the top right x button
+    #And I close "Edit" modal by clicking the top right x button
     And I perform quick search for "{SavedValue:Terms&ConditionID}" in "---UATRelatedTableID:-:GrantorTermsAndConditionTableId---" panel
     And I click on "View" icon for "{SavedValue:Terms&ConditionID}" inside flex table with id "---UATRelatedTableID:-:GrantorTermsAndConditionTableId---" without waiting for record
     Then I softly see field "Details" as "Automation Description"

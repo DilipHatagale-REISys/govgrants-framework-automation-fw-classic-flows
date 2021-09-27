@@ -10,7 +10,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I enter in modal "StrategicPlanCreation" values from "StrategicPlan_Field_Values.xlsx"
     And I click modal button "Save and Continue"
 
-  @50954 @50955 @33798 @50956 @editionOfStrategicPlan @buglogged138910
+  @50954 @50955 @33798 @50956 @editionOfStrategicPlan
   Scenario: Edition of Strategic Plan by user - Admin/EXE/PM
     Then I softly see that "Status" is in "Draft" status
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
@@ -50,7 +50,7 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     Then I see field "Strategic Plan Status" as "Draft"
 
-  @51046 @addAttachmentToStrategicGoal @buglogged138910
+  @51046 @addAttachmentToStrategicGoal
   Scenario: Addition of Attachment to Strategic Goal inside a Strategic Plan by User - Admin/EXE/PM
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
