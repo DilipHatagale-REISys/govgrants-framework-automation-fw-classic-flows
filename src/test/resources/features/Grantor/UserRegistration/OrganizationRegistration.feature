@@ -364,7 +364,7 @@ Feature: Validate all registration related scenarios
     #83374
     And I enter value "automation.manager@yopmail.com" into field "fieldEmail"
     When I click on "Save" in the page details
-    When I close "Edit" modal by clicking the top right x button
+    #When I close "Edit" modal by clicking the top right x button
     Then I softly see value "(704) 777-7869" for title "Phone" inside table "---home:-:userContactsTableId---"
     Then I softly see value "automation.manager@yopmail.com" for title "Email" inside table "---home:-:userContactsTableId---"
     #83527
@@ -556,7 +556,7 @@ Feature: Validate all registration related scenarios
     And I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:userContactsTableId---" without waiting for record
     And I enter value "704-777-(7869)" into field "fieldPhone"
     When I click on "Save" in the page details
-    When I close "Edit" modal by clicking the top right x button
+    #When I close "Edit" modal by clicking the top right x button
     Then I softly see value "Invitation Sent" for title "Status" inside table "---home:-:userContactsTableId---"
     #80530 #monu
     And I click on "View" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:userContactsTableId---" without waiting for record
