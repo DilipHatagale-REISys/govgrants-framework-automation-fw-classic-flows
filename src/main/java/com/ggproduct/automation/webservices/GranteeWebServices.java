@@ -16,7 +16,7 @@ public class GranteeWebServices extends ProjectWebServices {
 
     /**
      * calls the API's to create the Grants Records
-     * needs o be parametrized:- Grant number, Award Type,Budget Period Start Date,Budget Period End Date,Amenment Type
+     * needs to be parametrized:- Grant number, Award Type,Budget Period Start Date,Budget Period End Date,Amendment Type
      *
      * @param
      * @param ppStartDate
