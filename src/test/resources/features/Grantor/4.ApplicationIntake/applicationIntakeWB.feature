@@ -811,7 +811,8 @@ Feature: Application Intake scenarios without background
     Examples:
       | User | userType        |
       | SPI3 | Automation SPI3 |
-      | SPA  | Automation SPA  |
+      #As per comment on bug 129432 discarding this test case for SPA user
+      #| SPA  | Automation SPA  |
 
   @73516 @73517 @supportingDocValidationOnApplication @deepika @needSupportingDocuSupportInAPI
   Scenario: Validate whether User will be able to attach any document if the supporting document details mentioned in the Announcement

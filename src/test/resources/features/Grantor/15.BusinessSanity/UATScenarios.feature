@@ -1,4 +1,4 @@
-@uatBusinessFlowSanity @product @grantor-regression
+@uatBusinessFlowSanity
 Feature: Validate sanity testing of Complete UAT Business Flow
 
   @138456 @VerifyDeactivationOfStrategicPlan @monu
