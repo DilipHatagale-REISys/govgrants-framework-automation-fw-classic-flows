@@ -68,7 +68,7 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
     And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close "Create Internal Contact" modal by clicking the top right x button
+    #And I close "Create Internal Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:internalContactTableId---" panel
     Then I softly can see row level action button "View" against "{SavedValue:Automation Runtime Contact}" in flex table with id "flexTableRandomID"
@@ -210,7 +210,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56732 @subrecipientOrganizationEdition @smoke @buglogged140750
+  @56732 @subrecipientOrganizationEdition @smoke
   Scenario Outline: Validate whether ADMIN and DA users can Edit the Subrecipient Organization
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -233,13 +233,13 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
     And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close "Create Internal Contact" modal by clicking the top right x button
+    #And I close "Create Internal Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "flexTableRandomID" panel
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "flexTableRandomID" without waiting for record
     And I enter "Edition1" values from "InternalContact_Field_Values.xlsx"
     And I click modal button "Save"
-    And I close "Edit" modal by clicking the top right x button
+    #And I close "Edit" modal by clicking the top right x button
     And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "flexTableRandomID" panel
     Then I see value "Active" for title "Status" inside table "flexTableRandomID"
     Examples:
@@ -257,7 +257,7 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
     When I click modal button "Save"
-    And I close "Create Subrecipient Contact" modal by clicking the top right x button
+    #And I close "Create Subrecipient Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:internalContactTableId---" panel
@@ -266,7 +266,7 @@ Feature: Validate all scenarios in the home tab
     And I click modal button "Edit"
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"
-    And I close "View Subrecipient Contacts" modal by clicking the top right x button
+    #And I close "View Subrecipient Contacts" modal by clicking the top right x button
     Then I softly see value "New" for title "Status" inside table "---home:-:internalContactTableId---"
     Examples:
       | User  |
@@ -300,13 +300,13 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "New" in flex table with id "---home:-:additionalAddressTableId---"
     And I enter "AdditioanlAddressesCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    And I close "New Additional Address" modal by clicking the top right x button
+    #And I close "New Additional Address" modal by clicking the top right x button
     Then I softly see that "Internal Organization" is in "Active" status
     When I perform quick search for "Billing Address" in "---home:-:additionalAddressTableId---" panel
     And I click on "Edit" icon for "Billing Address" inside flex table with id "---home:-:additionalAddressTableId---" without waiting for record
     And I enter "AdditioanlAddressesEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    And I close "Edit" modal by clicking the top right x button
+    #And I close "Edit" modal by clicking the top right x button
     Then I softly see that "Test Automation Organization" is in "Active" status
 
   @56739 @56907 @relatedContactsCreationEdition
@@ -318,14 +318,14 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
     And I enter in modal "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    And I close "Create Contact" modal by clicking the top right x button
+    #And I close "Create Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:relatedContactsTableId---" panel
     Then I softly can see row level action button "Edit" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:relatedContactsTableId---"
     And I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:relatedContactsTableId---" without waiting for record
     When I enter "RelatedContactsEdition" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close "Edit" modal by clicking the top right x button
+    #When I close "Edit" modal by clicking the top right x button
     Then I softly see that "Internal Organization" is in "Active" status
     Examples:
       | User |
@@ -341,7 +341,7 @@ Feature: Validate all scenarios in the home tab
     And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
     And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
-    And I close "Create Contact" modal by clicking the top right x button
+    #And I close "Create Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:relatedContactsTableId---" panel
     And I click on "Delete" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:relatedContactsTableId---" without waiting for record
@@ -381,7 +381,7 @@ Feature: Validate all scenarios in the home tab
     When I click on "Delete" icon for "New IDC" inside flex table with id "---home:-:indirectRateFlextableId---" without waiting for record
     Then I do not see values "New IDC" and "Title" inside table
 
-  @56883 @56912 @adminOrPMEditAccessToOwnOrgInternalOrganizationPageHeader @buglogged138597
+  @56883 @56912 @adminOrPMEditAccessToOwnOrgInternalOrganizationPageHeader
   Scenario Outline: Validate whether Users with Admin/ PM profiles can edit their own organizations and Internal organization page has Header
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
@@ -421,7 +421,7 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I perform quick search for "Teaching and Learning" in "---home:-:internalOrganizationId---" panel
+    #When I perform quick search for "Teaching and Learning" in "---home:-:internalOrganizationId---" panel
     And I expand nested table containing column value "Teaching and Learning"
     Then I see values "Career and College Transition Division" and "Division" inside table
     Examples:
@@ -663,7 +663,7 @@ Feature: Validate all scenarios in the home tab
     When I click on "View" icon for "Test Automation Organization" inside flex table with id "---home:-:internalOrganizationId---" with wait for record
     And I navigate to "Overview" sub tab
     Then I softly can see page block "Related Contacts"
-    And I softly can see page block "Indirect Cost Rates"
+    #And I softly can see page block "Indirect Cost Rates"
     Examples:
       | User  |
       | ADMIN |
@@ -695,7 +695,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "{user:fullName}" in "---home:-:indActiveAccountId---" panel
     Then I cannot see row level action button "Edit" against "{user:fullName}" in flex table with id "---home:-:indActiveAccountId---"
 
-  @62105 @externalUserhomePendingTask @deepika @Buglogged138236
+  @62105 @externalUserhomePendingTask @deepika
   Scenario: The Pending Task on the left Navigation shows Pending Tasks that are created for Subrecipient Users
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -769,7 +769,7 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Home" tab
     And I select "Programs" from dropdown for Global search
     And I perform quick search inside global search "{SavedValue:ProgramID}"
-    And I click toggle button to select "Internal Programs"
+    #And I click toggle button to select "Internal Programs"
     And I perform quick search for "{SavedValue:ProgramID}" in "Program__c" panel
     Then I see value "{SavedValue:ProgramID}" for title "EGMS ID" inside table "Program__c"
 

@@ -918,7 +918,7 @@ Feature: Validate all scenarios for program
     Then I softly see the following messages in the page details :
       | Setup Tab - Management Review - Management Review: At least one section must be added to this form. |
 
-  @34750 @106291 @110156 @110141 @submittingProgramForApproval @monu @buglogged138910
+  @34750 @106291 @110156 @110141 @submittingProgramForApproval @monu
   Scenario: Validate the submission of Program for Approval
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
@@ -965,7 +965,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
     Then I softly see value "Created" for title "Old Value" inside table "History"
 
-  @34754 @programApproval @smoke @buglogged138910
+  @34754 @programApproval @smoke
   Scenario: Validate the approval of Internal Program
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
@@ -1017,7 +1017,7 @@ Feature: Validate all scenarios for program
     When I "Approve" in the approval decision
     Then I see status in Progress-bar is "Approved" and is "green"
 
-  @106336 @programRejection @smoke @monu @buglogged138910
+  @106336 @programRejection @smoke @monu
   Scenario: Validate user should be able to reject program
     And I click on "Edit" in the page details
     When I enter "Edition" values from "Program_Field_Values.xlsx"
