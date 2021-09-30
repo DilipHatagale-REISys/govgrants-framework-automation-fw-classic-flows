@@ -525,7 +525,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on advance filter "#advfAnnouncementFundingAccountGrantor" of table id "---announcement:-:fundingAccountsTableId---"
     When I enter advance filter values inside id "advfAnnouncementFundingAccountGrantor"
       | Pre-Encumbrance | equals to | 3000 |
-    Then I softly see "No Records Found" inside flex table with id "---announcement:-:fundingAccountsTableId---"
+    Then I softly see "No records Found" inside flex table with id "---announcement:-:fundingAccountsTableId---"
     When I navigate to "History" sub tab
     And I select "Related Funding Account" from dropdown present on top right of flex table id "History"
     Then I softly see value "Pre-Encumbrance" for title "Changed Field" inside table "History"
@@ -570,7 +570,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "ab" for title "Title" inside table "---announcement:-:contactTableId---"
     When I enter advance filter values inside id "advfAnnouncementContacts"
       | Title | Contains | who am i |
-    Then I softly see "No Records Found" inside flex table with id "---announcement:-:contactTableId---"
+    Then I softly see "No records Found" inside flex table with id "---announcement:-:contactTableId---"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
@@ -595,7 +595,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Name                     | Announcement |
       | {SavedValue:FO Username} | Step 3       |
     When I click on advance filter "#advfAnnouncementBudgetCategory" of table id "---announcement:-:approversTableId---"
-    When I enter advance filter values inside id "advfAnnouncementBudgetCategory"
+    When I enter advance filter values inside id "#advfAnnouncementBudgetCategory"
       | Responsibility | equals to | Program Approver |
     Then I softly see value "Program Approver" for title "Responsibility" inside table "---announcement:-:approversTableId---"
     When I enter the following values into flex table with id "---announcement:-:ApproverRolesGrantorgridTableId---" by clicking "New" :
@@ -1092,7 +1092,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    When I close "Enter Review" modal by clicking the top right x button
+    #When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -1567,7 +1567,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    When I close "Enter Review" modal by clicking the top right x button
+  #  When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -1761,7 +1761,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    When I close "Enter Review" modal by clicking the top right x button
+ #   When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -1970,7 +1970,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    When I close "Enter Review" modal by clicking the top right x button
+ #   When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -2169,7 +2169,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    When I close "Enter Review" modal by clicking the top right x button
+#    When I close "Enter Review" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     And I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
@@ -2703,7 +2703,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Passed | ReviewComments__c |
     When I click modal button "Save"
     And I click on submit review
-    When I close "Enter Review" modal by clicking the top right x button
+  #  When I close "Enter Review" modal by clicking the top right x button
     Then I softly see value "submitted" for title "Status" inside table "---announcement:-:flexGridApproverRolesTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab

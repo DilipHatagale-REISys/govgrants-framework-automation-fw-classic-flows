@@ -41,9 +41,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
-    Then I softly see value "RG-000003" for title "Agency Code" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:formulaInvitedApplicatsTableId---"
-    Then I softly see value "234567891" for title "EIN" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:formulaInvitedApplicatsTableId---"
-    Then I softly see value "123456788" for title "DUNS" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:formulaInvitedApplicatsTableId---"
+    Then I softly see value "RG-000612" for title "Agency Code" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:formulaInvitedApplicatsTableId---"
+    Then I softly see value "223323432" for title "EIN" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:formulaInvitedApplicatsTableId---"
+    Then I softly see value "223323432" for title "DUNS" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:formulaInvitedApplicatsTableId---"
     And I click on "Remove" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" without waiting for record
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
     And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
