@@ -373,9 +373,11 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Assign" icon for "{SavedValue:FO Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
     When I perform quick search for "<Application Name>" in "---applicationReview:-:assignApplicationsTableId---" panel
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    And I refresh the page
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I pause execution for "5" seconds
+    Then I softly see "No Records Found" inside flex table with id "---applicationReview:-:appreviewsTableId---"
    # Then I see the following messages in the page details :
     #  | Please select the reviews to send. |
     Examples:

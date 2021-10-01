@@ -522,6 +522,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see value "govgrantsuat@yopmail.com" for title "Email" inside table "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see value "Test Automation Organization" for title "Organization Name" inside table "---announcement:-:AnnouncementReviewPanel---"
     And I click on "Remove from Form" icon for "Automation PM" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
+    Then I softly see "No Records Found" inside flex table with id "---announcement:-:AnnouncementReviewPanel---"
    # Then I softly see the following messages in the page details :
    #   | Record deleted successfully. |
 
@@ -564,7 +565,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on advance filter "#advfAnnoucementPackagesGrantor" of table id "---announcement:-:businessFormlistTableId---"
     And I enter advance filter values inside id "advfAnnoucementPackagesGrantor"
       | Name | Contains | Anything |
-    Then I softly see "No records found" inside flex table with id "---announcement:-:businessFormlistTableId---"
+    Then I softly see "No Records Found" inside flex table with id "---announcement:-:businessFormlistTableId---"
 
   @73854 @73855 @73852 @73853 @jitendra @filterNotYetQualifiedSPAUser
   Scenario:  To verify, filter functionality for Not Yet Qualified:All section for announcement by external user
