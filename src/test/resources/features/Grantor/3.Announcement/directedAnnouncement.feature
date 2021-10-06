@@ -68,9 +68,9 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Associate Organizations" modal by clicking the top right x button
     And I refresh the page
-    Then I softly see value "RG-000003" for title "Agency Code" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
-    Then I softly see value "234567891" for title "EIN" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
-    Then I softly see value "123456788" for title "DUNS" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
+    Then I softly see value "RG-000612" for title "Agency Code" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
+    Then I softly see value "223323432" for title "EIN" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
+    Then I softly see value "223323432" for title "DUNS" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
     And I click on "Remove" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
@@ -92,8 +92,8 @@ Feature: Validate all scenarios in the directed Announcement tab
       | {SavedValue:FO Username}  | Fiscal Reviewer  | Review Financial details | 10       | No                   |
       | {SavedValue:PM Username}  | Program Reviewer | Review Financial details | 11       | No                   |
       | {SavedValue:EXE Username} | Program Reviewer | Review Financial details | 11       | No                   |
-    Then I softly see the following messages in the page details :
-      | Saved Successfully! |
+   # Then I softly see the following messages in the page details :
+  #    | Saved Successfully! |
     Then I softly see value "{SavedValue:PM Username}" for title "Name" inside table "---announcement:-:flexGridApproverRolesTableId---"
     Then I softly see value "{SavedValue:EXE Username}" for title "Name" inside table "---announcement:-:flexGridApproverRolesTableId---"
     And I perform quick search for "{SavedValue:FO Username}" in "---announcement:-:flexGridApproverRolesTableId---" panel
@@ -116,14 +116,15 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on "Delete" icon for "{SavedValue:PM Username}" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---" without waiting for record
     And I refresh the page
     And I click on "Delete" icon for "{SavedValue:EXE Username}" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---" without waiting for record
-    Then I softly see the following messages in the page details :
-      | Record deleted successfully. |
+  #  Then I softly see the following messages in the page details :
+   #   | Record deleted successfully. |
     When I enter the following values into flex table with id "---announcement:-:flexGridApproverRolesTableId---" by clicking "New" :
       | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    And I refresh the page
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside flex table with id "---announcement:-:flexGridApproverRolesTableId---" without waiting for record
-    Then I softly see the following messages in the page details :
-      | Review Successfully Initiated. |
+    #Then I softly see the following messages in the page details :
+     # | Review Successfully Initiated. |
     Then I softly see value "Sent for Review" for title "Status" inside table "---announcement:-:flexGridApproverRolesTableId---"
     Then I softly see field "Status" as "Submitted for Review"
     Then I softly see status in Progress-bar is "Submitted for Review" and is "green"
@@ -146,7 +147,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on submit review
     Then I softly see the following messages in the page details :
       | Review has been submitted successfully. |
-    When I close "Enter Review" modal by clicking the top right x button
+#    When I close "Enter Review" modal by clicking the top right x button
     Then I softly see value "Submitted" for title "Status" inside table "---announcement:-:flexGridApproverRolesTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab

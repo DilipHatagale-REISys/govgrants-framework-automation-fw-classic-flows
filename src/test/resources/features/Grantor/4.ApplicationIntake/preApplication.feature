@@ -72,7 +72,7 @@ Feature: Validate all scenarios in the Pre-Application
    # Then I softly see the following messages in the page details contains:
     #  | Saved Successfully! |
 
-  @53155 @PreApplicationAttachmentChecklistCA
+  @53155 @PreApplicationAttachmentChecklistCA  @buglogged169487
   Scenario: Validate the attachment checklist of the PreApplication
     When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
@@ -218,7 +218,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I download the file
     Then I see "Submitted to Grantor" on page "1" of "govgrants" pdf file
 
-  @34155 @75585 @34025 @preApplicationRejectionByGrantor @deepika
+  @34155 @75585 @34025 @preApplicationRejectionByGrantor @deepika @buglogged169487
   Scenario Outline: Validate when Grantor Rejects the submitted pre-application then the status of Pre-Application status will be in rejected status
   Validate other than Record Owner PM, FO user will not able to Reject submitted Pre-Application | Validate the SPI user can view the rejected pre-applications under Pre-Applications - Submitted table list
     Given I click on "Edit" in the page details

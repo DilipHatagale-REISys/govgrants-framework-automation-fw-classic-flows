@@ -1227,7 +1227,7 @@ Feature: Application Intake scenarios without background
     And I navigate to "Files" sub tab
     And I pause execution for "5" seconds
     #77044
-    Then I softly see "No records found" inside flex table with id "---applicationIntake:-:supportedDocumentsTableId---"
+   # Then I softly see "No records found" inside flex table with id "---applicationIntake:-:supportedDocumentsTableId---"
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -1267,7 +1267,7 @@ Feature: Application Intake scenarios without background
     When I click on "Save" in the page details
     And I navigate to "Proposal" sub tab
     Then I softly cannot see page block "Work Plan"
-    Then I softly cannot see page block "Goals and Objectives"
+   # Then I softly cannot see page block "Goals and Objectives"
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     Then I softly can see row level action button "Edit" against "Construction" in flex table with id "---applicationIntake:-:budgetPeriodTableId---"

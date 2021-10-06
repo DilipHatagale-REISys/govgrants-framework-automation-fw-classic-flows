@@ -273,6 +273,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | Compliance Review | 50              |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
+    And I expand nested table containing column value "SME Review"
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     Then I softly can see top right button "New" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
 
@@ -315,6 +316,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 40.00%. |
+    And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Name      | Form Weight (%) |
       | Fiscal Review  | 0               |
@@ -323,6 +325,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
+    And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Name      | Form Weight (%) |
       | Fiscal Review  | 60              |
@@ -331,6 +334,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | There are no errors with the review step templates. |
+    And I expand nested table containing column value "SME Review"
     And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
       | Form Name      | Form Weight (%) |
       | Program Review | 70              |
@@ -513,12 +517,14 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter the following values into flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Add" :
       | Reviewer                 |
       | {SavedValue:PM Username} |
+    And I expand nested table containing column value "SME Review"
     Then I softly see value "{SavedValue:PM Username}" for title "Reviewer" inside table "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see value "govgrantsuat@yopmail.com" for title "Email" inside table "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see value "Test Automation Organization" for title "Organization Name" inside table "---announcement:-:AnnouncementReviewPanel---"
     And I click on "Remove from Form" icon for "Automation PM" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
-    Then I softly see the following messages in the page details :
-      | Record deleted successfully. |
+    Then I softly see "No Records Found" inside flex table with id "---announcement:-:AnnouncementReviewPanel---"
+   # Then I softly see the following messages in the page details :
+   #   | Record deleted successfully. |
 
   @70861 @70858 @profileNotAllowedToCreateAnnouncement @aashish
   Scenario Outline: Verify user having FO/FD Profile are not allowed to create announcements
@@ -581,7 +587,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see "No records found" inside flex table with id "---announcement:-:opportunityNotQtableId---"
     And I refresh the page
     And I click toggle button to select "Not Yet Qualified Opportunities - Closed"
-    Then I softly see "No records found" inside flex table with id "---announcement:-:opportunityNotQtableId---"
+    #Then I softly see "No records found" inside flex table with id "---announcement:-:opportunityNotQtableId---"
     And I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "{SavedValue:annId}" in "---announcement:-:opportunityNotQtableId---" panel
     Then I softly see value "{SavedValue:annId}" for title "EGMS ID" inside table "---announcement:-:opportunityNotQtableId---"
@@ -694,7 +700,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter the following values into flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Add" :
       | Reviewer      |
       | Automation FO |
-    And I collapse nested table containing column value "SME Review"
+  #  And I collapse nested table containing column value "SME Review"
     And I expand nested table containing column value "Management Review"
     When I enter the following values into flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Add" :
       | Reviewer       |
