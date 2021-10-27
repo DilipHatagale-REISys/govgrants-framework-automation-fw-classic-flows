@@ -692,7 +692,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Edition1" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see the following messages in the page details :
-      | Purpose is Required to save. |
+      | Purpose is Required to save under Overview. |
 
   @55798 @organizationalDeskReviewSource @deepika
   Scenario: Validate the Source of Desk Review Org level
@@ -703,7 +703,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I enter "Edition1" values from "Organizational_DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see the following messages in the page details :
-      | Source is Required to save. |
+      | Source is Required to save under Overview. |
 
   @55806 @55803 @54461 @notifyConductButtonDeskReviewOrgLevel @smoke @deepika
   Scenario: User will be able to view the Notify and Conduct button on the Desk Review to complete the action items
@@ -1212,7 +1212,7 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Name                     | Desk Review |
       | {SavedValue:PM Username} | Step 2      |
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateContactsId---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:participateassociateContactsId---"
     When I click "Associate" after selection of "{SavedValue:SPI3 Username}" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
     And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
     When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"

@@ -201,6 +201,7 @@ Feature: Validate all scenarios in Negotiations
       | Value                              | Field                |
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
+    And I pause execution for "5" seconds
     When I click on "Submit to Grantor" in the page details
     Then I softly cannot see top right button "Edit Negotiation" in page detail
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -287,7 +288,7 @@ Feature: Validate all scenarios in Negotiations
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: An Application Negotiation Request for Application {SavedValue:EGMSID} has been Requested
+      Sandbox: Notification: An Application Negotiation Request for Application {SavedValue:EGMSID} has been Reque
       """
     #bug
 #    And I pause execution for "120" seconds
@@ -848,7 +849,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Due Date" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see the following messages in the page details :
-      | Due Date is Required to save. |
+      | Due Date is required to save under Negotiations. |
 
   @66381 @66451 @createSubawardFromNegotiation @deepika @smoke
   Scenario: Validate whether User will be able to create draft award created from Complete Negotiation | Validate when Negotiation Request is completed and user clicks on Create Subaward then the sttaus changes to 'Converted to Award'

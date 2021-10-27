@@ -398,28 +398,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     Then I softly see field "Acknowledgement" as "I Agree"
 
-  @53969 @advancePaymentRequestSubmitToGrantorBySPI @mahadev
-  Scenario: verify that advance payment request should be able to submit by SPI user
-    When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Runtime Payment Request" into field "Title__c"
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Financials" sub tab
-    And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
-      | Budget Category | Advance Requested This Action |
-      | Construction    | 10                            |
-    When I navigate to "Files" sub tab
-    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
-    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
-    When I upload file "Program_Field_Values.xlsx" into library
-    And I click modal button "Save"
-    When I close "Upload Document" modal by clicking the top right x button
-    And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
-    And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
-    And I click on "Submit to Grantor" in the page details
-    Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
+
 
   @53971 @advancePaymentRequestSubmitToGrantorBySPA @mahadev
   Scenario Outline: verify that advance payment request should not be able to submit by SPA user
