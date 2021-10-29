@@ -112,7 +112,7 @@ public class UsersAndURL implements UsersController {
                 password = "SALESFORCE2023";
                 break;
             default:
-                password = "SALESFORCE2022";
+                password = "SALESFORCE2023";
         }
         return password;
     }
