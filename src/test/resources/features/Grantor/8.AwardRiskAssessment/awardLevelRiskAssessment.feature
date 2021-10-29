@@ -2969,7 +2969,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "History" sub tab
     Then I see snapshot with name containing "Subaward Risk Assessment" as name
 
-  @61384 @addButtonAvailabilityafterSubmitforApproval @deepika @buglogged112015
+  @61384 @addButtonAvailabilityafterSubmitforApproval @deepika
   Scenario: Validate the add button on attachments flextable is not available for Risk Assessment Owner once submitted for Approval
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -4878,7 +4878,7 @@ Feature: Validate all scenarios in the Risk Assessment
       | Award Name                                                | Grant Name                                                |
       | {SavedValue:Automation Runtime Award for Risk Assessment} | {SavedValue:Automation Runtime Award for Risk Assessment} |
 
-  @142086 @142072 @VerifyInheritatedApproverAtRiskAssessmentFromAward-RnRFunctionality @monu
+  @142086 @142072 @VerifyInheritatedApproverAtRiskAssessmentFromAward-RnRFunctionality @monu @buglogged-175563
   Scenario Outline: Verify approvers from sub award are inherited to subaward risk assessment
   |Validate the columns and table name in the Risk Assessment approver Section|
     Given I login to "As a Grantor" app as "dynamicUser" user

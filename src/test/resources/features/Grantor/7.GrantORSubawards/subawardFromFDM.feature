@@ -166,18 +166,20 @@ Feature: Validate all scenarios in the award created from FDM
 
   @67662 @deleteFSmultiple @jitendra
   Scenario: Validate review initiation and completion for the award | verify award acceptance
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
+ #   When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     And I click on "Remove" icon for "{SavedValue:fundingAccount}" inside flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" without waiting for record
-    Then I softly see the following messages in the page details contains:
-      | Record deleted successfully. |
+    Then I softly see "No Records Found" inside flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
+   # message disappear fraction of second
+    #  Then I softly see the following messages in the page details contains:
+   #   | Record deleted successfully. |
 
   @38219 @65402 @awardReviewInitiationAndCompletion @smoke
   Scenario Outline: Validate review initiation and completion for the award | verify award acceptance
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
+ #   When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
@@ -295,8 +297,8 @@ Feature: Validate all scenarios in the award created from FDM
 
   @67671 @validateUsershouldAllowedToUseMoneyMoreThanPreEncumbranceAmount @jitendra
   Scenario Outline: Validate User is allowed to utilize money greater than Pre En-cumbrance Balance but less than available Balance
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
+  #  When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
@@ -414,8 +416,8 @@ Feature: Validate all scenarios in the award created from FDM
 
   @67665 @67564 @validateEncumberanceGreaterAndLessValue @jitendra
   Scenario: Validate that the encumbrance value should not be less than budget value before Submitting for approval
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
+  #  When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
@@ -454,8 +456,8 @@ Feature: Validate all scenarios in the award created from FDM
 
   @67700 @emailNotificationAfterPMApproverSubaward @jitendra
   Scenario Outline: Validate that after program approver approves the subaward the mail generates for the Fiscal approver
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
+ #   When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
@@ -587,8 +589,8 @@ Feature: Validate all scenarios in the award created from FDM
 
   @67698 @validateEmailNotificationToAwardOwnerAfterAwardSubmission @monu @smoke
   Scenario Outline: To Validate that email is getting generated for award owner once user submit subaward for approval
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
+ #   When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
@@ -714,8 +716,8 @@ Feature: Validate all scenarios in the award created from FDM
 
   @38222 @50994 @65418 @65420 @awardApprovalAndSendToRecipientAfterApproval @ErrorMessageForTargetFields
   Scenario Outline: Validate award approval and send to subrecipient after approval | validate submit for approval button displayed
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
+  #  When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
@@ -868,8 +870,8 @@ Feature: Validate all scenarios in the award created from FDM
 
   @50997 @awardAcceptanceByRecipientAfterApproval @smoke
   Scenario Outline: Validate award acceptance by sub-recipient after approval
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
+  #  When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
@@ -992,8 +994,8 @@ Feature: Validate all scenarios in the award created from FDM
 
   @67557 @PRFrequencyNotEnterAndSubmitForApprove @jitendra
   Scenario Outline: To validate that if frequency column is not set in the payment requests schedule Table  by the Grantor (Internal user pm profile ) and Submit for approval button is clicked the validation message must appear.
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
+#    When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
@@ -1130,7 +1132,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     When I enter in modal "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
-    And I click modal button "Save"
+  #  And I click modal button "Save"
     Then I see field "Reporting Period Start Date" as "{SavedValue:ProjectPeriodStartDate}"
     Examples:
       | Grant Name                                       | Award Name                                       |
@@ -1155,7 +1157,7 @@ Feature: Validate all scenarios in the award created from FDM
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardFromFDM:-:progressReportSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     When I enter in modal "Progress Report Schedule_FDM" values from "Award_Field_Values.xlsx"
-    And I click modal button "Save"
+   # And I click modal button "Save"
     Then I see field "Reporting Period End Date" as "{SavedValue:ProjectPeriodEndDate}"
     Examples:
       | Grant Name                                       | Award Name                                       |
@@ -1440,8 +1442,8 @@ Feature: Validate all scenarios in the award created from FDM
 
   @65409  @verifyErrorMessageForFocusArea
   Scenario Outline: To verify the action on adding a focus area start and end end date in between the budget period date in the budget tab of subaward phase in the award owner profile PM User category
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
+ #   When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
@@ -1511,8 +1513,8 @@ Feature: Validate all scenarios in the award created from FDM
 
   @65412 @addFederalProgram @bug-94597
   Scenario Outline: To verify that federal program can be added from the award owner profile in overview tab after the sub award is accepted by the sub recipient
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
+  #  When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---subAwardFromFDM:-:associateContactTableId---"
@@ -1619,8 +1621,8 @@ Feature: Validate all scenarios in the award created from FDM
 
   @67250  @validateApplicationHyperlink
   Scenario: To verify that after clicking on the Application Hyperlink present application id of the Grant all table it redirects to the Application page with the progress bar showing Converted to award
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
+  #  When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -1640,8 +1642,8 @@ Feature: Validate all scenarios in the award created from FDM
 
   @67447 @validateFundingAccountLinkOnAward
   Scenario: To validate that after clicking on the Funding account hyperlink present Funding account column of Funding Account information table Directs to the Funding account page
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
+  #  When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Budget" sub tab
     And I click on hyperlink containing value "{SavedValue:fundingAccount}"
@@ -1649,8 +1651,8 @@ Feature: Validate all scenarios in the award created from FDM
 
   @67673 @validateFundingAccountEditActionNotDisplayed
   Scenario Outline: Validate that Funding account table is not editable after submitted for approval
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
+  #  When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
@@ -1745,8 +1747,8 @@ Feature: Validate all scenarios in the award created from FDM
 
   @67661 @71124 @71125 @71123 @addAnotherFundingAccountAfterSubawardAccepted @jitendra
   Scenario Outline: Validate that the new Funding account can be added before Approval by award-owner.
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Award_Field_Values.xlsx"
+  #  When I click on "Edit" in the page details
+    And I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I edit the following rows inline in flex table with id "---subAwardFromFDM:-:AwardFundingAccountTableId---" by clicking "Edit" :
