@@ -103,16 +103,43 @@ public class UsersAndURL implements UsersController {
         String password;
         switch (userLevel.toUpperCase()) {
             case "ADMIN":
-                password = "SALESFORCE2022";
+                password = "WelcomeDev@2022";
+                break;
+            case "PM":
+                password = "Automationpm@2022";
+                break;
+            case "SPI3":
+                password = "SPI3auto@2022";
+                break;
+            case "EXE":
+                password = "Automationexe@2022";
+                break;
+            case "FO":
+                password = "Automationfo@2022";
+                break;
+            case "PO":
+                password = "Poauto@2022";
+                break;
+            case "FD":
+                password = "Fdauto@2022";
+                break;
+            case "Auditor":
+                password = "Auditor@2022";
+                break;
+            case "SPA":
+                password = "SPAauto@123";
+                break;
+            case "SPI":
+                password = "SPIauto@123";
+                break;
+            case "IND":
+                password = "IND@2022";
                 break;
             case "SARAH PM":
                 password = "GoProduct@12345";
                 break;
-            case "IND":
-                password = "SALESFORCE2023";
-                break;
             default:
-                password = "SALESFORCE2023";
+                password = "SALESFORCE2022";
         }
         return password;
     }
@@ -143,7 +170,7 @@ public class UsersAndURL implements UsersController {
 
     private String getAUTOEnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
-        username.put("ADMIN", "nakul@admin.test8.automation");
+        username.put("ADMIN", "ayesha.husain@ggp.test8.automation");
         username.put("EXE", "test@gmaildemo.com.atm.automation");
         username.put("PM", "donald_pm@ggp.test7.atm.automation");
         username.put("FO", "auto.fm@auto.com.atm.automation");
@@ -151,9 +178,9 @@ public class UsersAndURL implements UsersController {
         username.put("PO", "automationpo@yopmail.com");
         username.put("SPI", "automation.spi@yopmail.com.automation");
         username.put("SPA", "automation.spa@yopmail.com.automation");
-        username.put("IND", "ind.automation@yopmail.com");
+        username.put("IND", "product.ucs.ind1@yopmail.com.automation");
         username.put("SA", "automationspi1@yopmail.com");  // need to check this user.
-        username.put("SPI3", "automationspi3@yopmail.com");
+        username.put("SPI3", "automationspi30@yopmail.com");
         username.put("AUDITOR", "automationauditor@yopmail.com");
 
         username.put("SARAH PM", "sarah.pm@ggp.test8.automation");

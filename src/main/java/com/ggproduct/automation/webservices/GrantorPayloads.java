@@ -337,6 +337,17 @@ public class GrantorPayloads {
         }
     }
 
+    private JsonObject updatePreApplicationAsYesNegotiationYesForAnnouncement(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("PreApplicationNeeded","Yes");
+        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
+
+    }
+
     private JsonObject updateMachRequiredToNoAnnouncement(JsonObject json) {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
