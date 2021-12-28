@@ -1131,3 +1131,58 @@ Feature: Validate all scenarios in Negotiations
     Then I can see top right button "Cancel" in page detail
     Then I can see top right button "Save" in page detail
 
+  @165881 @Verifythateditactionisnotdisplayedtoannouncementownerfor"Allowedit"columnwhenApplicationissenttosubrecipientandisinNegotiationInitiatedstate @sprint-3 @vrishali
+  Scenario: Verify that edit action is not displayed to announcement owner for "Allow edit" column  when Application is sent to subrecipient and is in Negotiation Initiated state
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    Then I softly see that "Initiate Negotiation" has been added in flextable with Id "---subAwardFromFDM:-:recommendedAppTableId---"
+    When I click on "Initiate Negotiation" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    Then I softly can see "Negotiations" sub tab at view detail page
+    And I navigate to "Negotiations" sub tab
+    When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
+    When I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
+    And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
+    And I navigate to "Negotiations" sub tab
+    Then I softly cannot see row level action button "Edit" against "Standard Assurances Form" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    Then I softly cannot see row level action button "Edit" against "Program Application Form" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+
+  @165880 @Verify-PMuserisnotabletoselectFiles:FormsinApplicationSectionsforRevisionmultipicklistwhenApplicationissenttoSubrecipientuserandinNegotiationInitiatedstate @sprint-3 @Vrishali
+  Scenario:Verify PM user is not able to select Files:Forms in Application Sections for Revision multi picklist when Application is sent to Subrecipient user and is in Negotiation Initiated state
+    Given I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    Then I softly see that "Initiate Negotiation" has been added in flextable with Id "---subAwardFromFDM:-:recommendedAppTableId---"
+    When I click on "Initiate Negotiation" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    Then I softly can see "Negotiations" sub tab at view detail page
+    And I navigate to "Negotiations" sub tab
+    When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
+    When I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
+    And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
+    Then I softly cannot see top right button "Edit Negotiation" in page detail
+    And I navigate to "Negotiations" sub tab
+    Then I softly see field "Application Sections for Revision" is not editable
