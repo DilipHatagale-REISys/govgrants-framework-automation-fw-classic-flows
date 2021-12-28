@@ -969,6 +969,7 @@ Feature: Validate all scenarios in Negotiations
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:grantsTableId---"
     And I navigate to "Overview" sub tab
     When I click on hyperlink containing value "{SavedValue:AnnID}"
+<<<<<<< Updated upstream
     Then I see status in Progress-bar is "Published" and is "green"
 
   @133262 @133251 @ValidatePMUserAllowEditSelectAtLeastOneFormErrorMessage @Sprint-3 @Vaibhav
@@ -1186,3 +1187,6 @@ Feature: Validate all scenarios in Negotiations
     Then I softly cannot see top right button "Edit Negotiation" in page detail
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Application Sections for Revision" is not editable
+=======
+    Then I see status in Progress-bar is "Published" and is "green"
+>>>>>>> Stashed changes
