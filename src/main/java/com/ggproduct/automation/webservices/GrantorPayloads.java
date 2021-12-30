@@ -529,7 +529,7 @@ public class GrantorPayloads {
                 .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         ann.addProperty("ApplicationDueDate",I.amPerforming()
                 .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        ann.addProperty("FocusAreaRequired","No");
+        ann.addProperty("FocusAreaRequired","Yes");
         ann.addProperty("IsGoalsRequired","No");
         ann.addProperty("KPIsRequired","No");
         ann.addProperty("WBSRequired","No");
@@ -547,9 +547,15 @@ public class GrantorPayloads {
         annA.add(ann);
         parent.add("Announcement",annA);
 
+      //  JsonObject serviceArea = new JsonObject();
+      //  JsonArray serviceAreaA = new JsonArray();
+      //  serviceArea.add("ServiceArea", JsonNull.INSTANCE);
+      //  serviceAreaA.add(serviceArea);
+      //  parent.add("AnnouncementServiceArea",serviceAreaA);
+
         JsonObject serviceArea = new JsonObject();
         JsonArray serviceAreaA = new JsonArray();
-        serviceArea.add("ServiceArea", JsonNull.INSTANCE);
+        serviceArea.addProperty("ServiceArea",ProjectWebServices.getIdOf("ServiceArea__c","Automation Permanent Focus Area"));
         serviceAreaA.add(serviceArea);
         parent.add("AnnouncementServiceArea",serviceAreaA);
 
@@ -567,11 +573,25 @@ public class GrantorPayloads {
         kpiGoalsObjectivesArrays.add(kpiGoalsObjectives);
         parent.add("KPIGoalsObjectives",kpiGoalsObjectivesArrays);
 
+      //  JsonObject kpiGoalsObjectives = new JsonObject();
+      //  JsonArray kpiGoalsObjectivesArrays = new JsonArray();
+      //  kpiGoalsObjectives.addProperty("StrategicPlan",ProjectWebServices.getIdOf("StrategicPlan__c","Automation Permanent Strategic Plan"));
+      //  kpiGoalsObjectivesArrays.add(kpiGoalsObjectives);
+      //  parent.add("KPIGoalsObjectives",kpiGoalsObjectivesArrays);
+
+
         JsonObject keyOutcome = new JsonObject();
         JsonArray keyOutcomeArray = new JsonArray();
         keyOutcome.add("MasterKPI",JsonNull.INSTANCE);
         keyOutcomeArray.add(keyOutcome);
         parent.add("KeyOutcome",keyOutcomeArray);
+
+     //   JsonObject keyOutcome = new JsonObject();
+     //   JsonArray keyOutcomeArray = new JsonArray();
+     //   keyOutcome.addProperty("MasterKPI",ProjectWebServices.getIdOf("MasterKPI__c","Automation Permanent KPI for Regression")); // KPI id
+     //   keyOutcome.addProperty("Target","10");
+     //   keyOutcomeArray.add(keyOutcome);
+     //   parent.add("KeyOutcome",keyOutcomeArray);
 
         JsonObject budgetPeriod = new JsonObject();
         JsonArray budgetPeriodArray = new JsonArray();
