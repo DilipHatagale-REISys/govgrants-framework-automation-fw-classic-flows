@@ -306,6 +306,8 @@ public class GrantorPayloads {
                 return updateRiskAssesmentAsNoForAnnouncement(json);
             case "PRE_APPLICATION_YES":
                 return updatePreApplicationAsYesForAnnouncement(json);
+            case "PRE_APPLICATION_NEGOTIATION_YES":
+                return updatePreApplicationAndNegotiationAsYesForAnnouncement(json);
             case "FOCUS_AREA_NO":
                 return updateFocusAreaForAnnouncement(json,"No");
             case "NEGOTIATION":
@@ -335,6 +337,16 @@ public class GrantorPayloads {
             default:
                 return json;
         }
+    }
+
+    private JsonObject updatePreApplicationAndNegotiationAsYesForAnnouncement(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("PreApplicationNeeded","Yes");
+        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
     }
 
     private JsonObject updatePreApplicationAsYesNegotiationYesForAnnouncement(JsonObject json) {
@@ -529,7 +541,7 @@ public class GrantorPayloads {
                 .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         ann.addProperty("ApplicationDueDate",I.amPerforming()
                 .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        ann.addProperty("FocusAreaRequired","No");
+        ann.addProperty("FocusAreaRequired","Yes");
         ann.addProperty("IsGoalsRequired","No");
         ann.addProperty("KPIsRequired","No");
         ann.addProperty("WBSRequired","No");
@@ -549,7 +561,7 @@ public class GrantorPayloads {
 
         JsonObject serviceArea = new JsonObject();
         JsonArray serviceAreaA = new JsonArray();
-        serviceArea.add("ServiceArea", JsonNull.INSTANCE);
+        serviceArea.addProperty("ServiceArea",ProjectWebServices.getIdOf("ServiceArea__c","Automation Permanent Focus Area"));
         serviceAreaA.add(serviceArea);
         parent.add("AnnouncementServiceArea",serviceAreaA);
 
@@ -567,11 +579,13 @@ public class GrantorPayloads {
         kpiGoalsObjectivesArrays.add(kpiGoalsObjectives);
         parent.add("KPIGoalsObjectives",kpiGoalsObjectivesArrays);
 
+
         JsonObject keyOutcome = new JsonObject();
         JsonArray keyOutcomeArray = new JsonArray();
         keyOutcome.add("MasterKPI",JsonNull.INSTANCE);
         keyOutcomeArray.add(keyOutcome);
         parent.add("KeyOutcome",keyOutcomeArray);
+
 
         JsonObject budgetPeriod = new JsonObject();
         JsonArray budgetPeriodArray = new JsonArray();

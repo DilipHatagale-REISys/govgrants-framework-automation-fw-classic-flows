@@ -162,7 +162,7 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Terms" sub tab
     Then I softly cannot see row level action button "Edit" against "Progress Report" in flex table with id "---progressreport:-:progressReportsScheduleId---"
 
-  @test @51118 @51119 @51121 @59678 @51122 @51123 @51125 @58887 @sendBacktoOwnerOfProgressReportbyFiscalApprover @smoke
+   @51118 @51119 @51121 @59678 @51122 @51123 @51125 @58887 @sendBacktoOwnerOfProgressReportbyFiscalApprover @smoke
   Scenario: To validate Progress Report send back to owner functionality by Fiscal approver. |  To validate progress report are not editable post submission of progress report to grantor.
   To validate  field history update post Progress Report is send back to owner by Fiscal approver.
     And I click on "Edit" in the page details

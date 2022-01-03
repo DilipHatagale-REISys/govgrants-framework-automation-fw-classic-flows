@@ -2,12 +2,12 @@
 Feature: Validate all scenarios of Subaward From FDM and activating an Award using API
 
   Background: Activating Subaward from FDM using API
-    When I login to "As a Grantor" app as "dynamicUser" user
     And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     Given I created award from approved FDM with announcement "{SavedValue:Automation Runtime FDM Announcement}"
     And I activate award from FDM having application name "{SavedValue:Automation Runtime FDM Announcement}"
+    When I login to "As a Grantor" app as "dynamicUser" user
 
   @50999 @51000 @awardSiteVisitAndDeskReview
   Scenario Outline: Validate award site visit and desk review creation
