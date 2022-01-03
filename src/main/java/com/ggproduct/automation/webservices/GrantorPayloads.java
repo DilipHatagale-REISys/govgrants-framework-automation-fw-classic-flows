@@ -306,6 +306,8 @@ public class GrantorPayloads {
                 return updateRiskAssesmentAsNoForAnnouncement(json);
             case "PRE_APPLICATION_YES":
                 return updatePreApplicationAsYesForAnnouncement(json);
+            case "PRE_APPLICATION_NEGOTIATION_YES":
+                return updatePreApplicationAndNegotiationAsYesForAnnouncement(json);
             case "FOCUS_AREA_NO":
                 return updateFocusAreaForAnnouncement(json,"No");
             case "NEGOTIATION":
@@ -335,6 +337,16 @@ public class GrantorPayloads {
             default:
                 return json;
         }
+    }
+
+    private JsonObject updatePreApplicationAndNegotiationAsYesForAnnouncement(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("PreApplicationNeeded","Yes");
+        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
     }
 
     private JsonObject updatePreApplicationAsYesNegotiationYesForAnnouncement(JsonObject json) {
@@ -547,12 +559,6 @@ public class GrantorPayloads {
         annA.add(ann);
         parent.add("Announcement",annA);
 
-      //  JsonObject serviceArea = new JsonObject();
-      //  JsonArray serviceAreaA = new JsonArray();
-      //  serviceArea.add("ServiceArea", JsonNull.INSTANCE);
-      //  serviceAreaA.add(serviceArea);
-      //  parent.add("AnnouncementServiceArea",serviceAreaA);
-
         JsonObject serviceArea = new JsonObject();
         JsonArray serviceAreaA = new JsonArray();
         serviceArea.addProperty("ServiceArea",ProjectWebServices.getIdOf("ServiceArea__c","Automation Permanent Focus Area"));
@@ -573,12 +579,6 @@ public class GrantorPayloads {
         kpiGoalsObjectivesArrays.add(kpiGoalsObjectives);
         parent.add("KPIGoalsObjectives",kpiGoalsObjectivesArrays);
 
-      //  JsonObject kpiGoalsObjectives = new JsonObject();
-      //  JsonArray kpiGoalsObjectivesArrays = new JsonArray();
-      //  kpiGoalsObjectives.addProperty("StrategicPlan",ProjectWebServices.getIdOf("StrategicPlan__c","Automation Permanent Strategic Plan"));
-      //  kpiGoalsObjectivesArrays.add(kpiGoalsObjectives);
-      //  parent.add("KPIGoalsObjectives",kpiGoalsObjectivesArrays);
-
 
         JsonObject keyOutcome = new JsonObject();
         JsonArray keyOutcomeArray = new JsonArray();
@@ -586,12 +586,6 @@ public class GrantorPayloads {
         keyOutcomeArray.add(keyOutcome);
         parent.add("KeyOutcome",keyOutcomeArray);
 
-     //   JsonObject keyOutcome = new JsonObject();
-     //   JsonArray keyOutcomeArray = new JsonArray();
-     //   keyOutcome.addProperty("MasterKPI",ProjectWebServices.getIdOf("MasterKPI__c","Automation Permanent KPI for Regression")); // KPI id
-     //   keyOutcome.addProperty("Target","10");
-     //   keyOutcomeArray.add(keyOutcome);
-     //   parent.add("KeyOutcome",keyOutcomeArray);
 
         JsonObject budgetPeriod = new JsonObject();
         JsonArray budgetPeriodArray = new JsonArray();
