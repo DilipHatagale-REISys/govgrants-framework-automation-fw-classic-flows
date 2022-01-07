@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         glue = {"setup","com.ggproduct.automation.steps","com.automation.rei.govgrantsSteps","com.testingblaze.actionsfactory.gherkin","com.testingblaze.register"},
         features = {"src/test/resources/features"},
         plugin = {"json:target/cucumber-report/cucumber.json","html:target/cucumber-html","com.testingblaze.controller.ReportingLogsPlugin"},
-        tags = {"@66071"},
+        tags = {"@vai"},
         monochrome = true
 )
 
