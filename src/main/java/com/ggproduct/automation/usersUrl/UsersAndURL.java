@@ -123,7 +123,7 @@ public class UsersAndURL implements UsersController {
             case "FD":
                 password = "Fdauto@2022";
                 break;
-            case "Auditor":
+            case "AUDITOR":
                 password = "Auditor@2022";
                 break;
             case "SPA":
@@ -178,7 +178,7 @@ public class UsersAndURL implements UsersController {
         username.put("PO", "automationpo@yopmail.com");
         username.put("SPI", "automation.spi@yopmail.com.automation");
         username.put("SPA", "automationspa@yopmail.com");
-        username.put("IND", "product.ucs.ind1@yopmail.com.automation");
+        username.put("IND", "ind.automation@yopmail.com");
         username.put("SA", "automationspi1@yopmail.com");  // need to check this user.
         username.put("SPI3", "automationspi30@yopmail.com");
         username.put("AUDITOR", "automationauditor@yopmail.com");

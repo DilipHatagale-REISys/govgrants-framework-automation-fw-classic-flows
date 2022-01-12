@@ -84,7 +84,7 @@ Feature: Validate creation of data in new Org
     And I click toggle button to select "Strategic Plans - Draft"
     And I click on top right button "New" in flex table with id "---strategicplan:-:StrategicPlansTableId---"
     And I enter "StrategicPlanCreation" values from "PermanentRecordSetup_Field_Values.xlsx"
-    And I click modal button "Save and Close"
+    And I click modal button "Save and Continue"
     When I enter value "Automation Test Description" into field "fieldStrategyDescription__c"
     And I click on "Save" in the page details
     And I click on top right button "New" in flex table with id "---strategicplan:-:strategicGoalObjectivesTableId---"

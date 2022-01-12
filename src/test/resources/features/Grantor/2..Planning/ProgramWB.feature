@@ -3,7 +3,7 @@ Feature: Validate all scenarios for program
 
   @109448 @VerifySelectionOfChildOrganization @monu
   Scenario: Verifying if the user is able to change or add child organization to created program
-    Given I login to "As a Grantor" app as "SARAH PM" user
+    Given I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Internal Programs - Draft"
@@ -398,3 +398,43 @@ Feature: Validate all scenarios for program
     And I click on "Submit For Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Responsibilities - You cannot skip an Approval Step. |
+
+  @169882 @169884 @169886 @169897 @169896 @169898 @ValidateusershouldabletoseenewGrantorPreapplicationformunderthesetuptabinInternalPrograms @sprint-7 @vaibhav
+  Scenario Outline: Validate user should able to see new Grantor Pre application form under the setup tab in Internal Programs
+    When I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation2" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
+    When I navigate to "Planning" tab
+    And I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I perform quick search for "{SavedValue:ProgramEGMSID}"
+    And I click on "Edit" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:programsTableId---" without waiting for record
+    And I navigate to "Setup" sub tab
+    When I perform quick search for "Grantor Pre-application Form" in "---program:-:businessFormTableId---" panel
+    Then I softly see value "Grantor Pre-application Form" for title "Package Name" inside table "---program:-:businessFormTableId---"
+     #169884
+    Then I softly can see row level action button "Preview" against "Grantor Pre-application Form" in flex table with id "---program:-:businessFormTableId---"
+     #169886
+    And I click on "Preview" icon for "Grantor Pre-application Form" inside flex table with id "---program:-:businessFormTableId---" without waiting for record
+    Then I softly see "Preview Package" opens in overLay window
+     #169897
+    Then I softly can see row level action button "Preview" against "Standard Pre-Application form" in flex table with id "---program:-:previewPackageTableId---"
+     #169896
+    And I pause execution for "10" seconds
+    When I hovering mouse on page block help text icon inside table "---program:-:previewPackageTableId---" with tooltip id "PreviewPackageFormstooltip"
+    Then I softly see "<new_helpText>" shown as help text
+     #169898
+    And I click on "Preview" icon for "Standard Pre-Application form" inside flex table with id "---program:-:previewPackageTableId---" without waiting for record
+    Then I see new tab is opened
+    Examples:
+      | User | new_helpText                                                 |
+      | PM   | Section Displays List of Forms Associated with this Package. |
+      | EXE  | Section Displays List of Forms Associated with this Package. |
