@@ -438,3 +438,13 @@ Feature: Validate all scenarios for program
       | User | new_helpText                                                 |
       | PM   | Section Displays List of Forms Associated with this Package. |
       | EXE  | Section Displays List of Forms Associated with this Package. |
+
+  @174411 @ValidateusershouldabletoseeGrantorPreApplicationforminPackages @sprint-7 @vaibhav
+  Scenario: Validate user should able to see Grantor Pre Application form in Packages
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Planning" tab
+    When I navigate to "Forms and Packages" content inside "Setup" subheader on left panel
+    When I perform quick search for "Pre-Application" in "---program:-:packagesTableId---" panel
+    Then I softly see value "Grantor Pre-application Form" for title "Package Name" inside table "---program:-:packagesTableId---"
+    And I expand nested table containing column value "Grantor Pre-application Form"
+    Then I softly see value "Standard Pre-Application form" for title "Display Name" inside table "---program:-:packagesTableId---"
