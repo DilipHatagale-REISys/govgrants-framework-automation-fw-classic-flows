@@ -767,11 +767,11 @@ Feature: Validate all scenarios for program
       | Automation Review | 1                                         | Checked   |
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
-    And I expand nested table containing column value "Management Review"
+   # And I expand nested table containing column value "Management Review"
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
       | Reviewer                 |
       | {SavedValue:PM Username} |
-    And I expand nested table containing column value "Management Review"
+  #  And I expand nested table containing column value "Management Review"
     When I enter the following values into flex table with id "---program:-:reviewStepTableId---" by clicking "Add" :
       | Reviewer                 |
       | {SavedValue:PO Username} |
@@ -783,8 +783,8 @@ Feature: Validate all scenarios for program
     When I enter the following values into flex table with id "---program:-:programReviewPanel---" by clicking "New" :
       | Section Order | Section Header    |
       | 3             | Automation Header |
-    Then I softly see the following messages in the page details :
-      | Saved successfully! |
+   # Then I softly see the following messages in the page details :
+    #  | Saved successfully! |
     And I perform quick search for "Return on Investment (ROI)" in "---program:-:programReviewPanel---" panel
     Then I softly see value "Return on Investment (ROI)" for title "Section Header" inside table "---program:-:programReviewPanel---"
     And I click on advance filter "#advfProgramRelatedReviewPanelCategories" of table id "---announcement:-:ReviewPanelCategoriesTableId---"
@@ -795,8 +795,8 @@ Feature: Validate all scenarios for program
       | Section Header | contains | TestInvalidPanel |
     Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanel---"
     Examples:
-      | EGMS Id                                 |
-      | Automation Permanent KPI for Regression |
+      | EGMS Id                  |
+      | Automation Permanent KPI |
 
   @106096 @verifyDeletionOfAssociatedProgramKPI @monu
   Scenario Outline: Validate user is able to delete associated kpi from program
