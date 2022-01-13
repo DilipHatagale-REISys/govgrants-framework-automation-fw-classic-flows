@@ -2395,7 +2395,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---home:-:internalHomePendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
@@ -2409,7 +2409,7 @@ Feature: Pre-Application scenarios without background
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
+    When I perform quick search for "Record Id" in "---negotiation:-:homePendingTasks---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---negotiation:-:homePendingTasks---"
     When I click on "Edit" in the page details
     Then I softly see fields "fieldTitle__c" is in edit mode
@@ -2440,7 +2440,7 @@ Feature: Pre-Application scenarios without background
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
-    When I save the field containing "Program Income Allowed?" as "Yes"
+    And I save the field containing "Program Income Allowed?" as "Yes"
     And I edit the following rows inline in flex table with id "---preApplication:-:preAppContactTableId---" by clicking "Edit" :
       | Name                       | Project Role             | Is Key Contact |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
@@ -2477,6 +2477,7 @@ Feature: Pre-Application scenarios without background
     And I enter "Edition_v" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Files and Forms" sub tab
+    And I pause execution for "3" seconds
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
     When I upload attachment "Permanent Records.xlsx" of type "Other" from computer
     And I navigate to "Overview" sub tab
