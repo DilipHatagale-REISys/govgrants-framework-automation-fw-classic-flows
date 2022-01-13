@@ -2417,7 +2417,7 @@ Feature: Pre-Application scenarios without background
     Then I softly see fields "fieldProjectGoal__c" is in edit mode
     Then I softly see fields "fieldProjectBeneficiaries__c" is in edit mode
     And I navigate to "Files and Forms" sub tab
-    Then I softly see fields "flexGridExternalPreApplicationFiles" is in edit mode
+    Then I softly can see top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
 
   @174727 @Thesubrecipientuserisabletosavedetails @Sprint-7 @Vrishali
   Scenario: Verify the subrecipient user is able to save details
