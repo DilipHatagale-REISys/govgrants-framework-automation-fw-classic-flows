@@ -119,9 +119,9 @@ Feature: Validate creation of data in new Org
     When I enter in modal value "Automation Permanent Objetives 2" into field "StrategyDescription__c"
     When I navigate to "Related Logs" sub tab
     And I click on top right button "Associate" in flex table with id "---strategicplan:-:ObjectivesKPITableId---"
-    When I perform quick search for "Automation Permanent KPI for Regression" in "---strategicplan:-:ListOfActiveKPITableId---" panel
-    When I click "Associate" after selection of "Automation Permanent KPI for Regression" in the table "---strategicplan:-:ListOfActiveKPITableId---"
-    Then I see that "Automation Permanent KPI for Regression" has been added in flextable with Id "---strategicplan:-:ObjectivesKPITableId---"
+    When I perform quick search for "Automation Permanent KPI" in "---strategicplan:-:ListOfActiveKPITableId---" panel
+    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---strategicplan:-:ListOfActiveKPITableId---"
+    Then I see that "Automation Permanent KPI" has been added in flextable with Id "---strategicplan:-:ObjectivesKPITableId---"
 
   @automationPermanentInternalProgram
   Scenario: Validate the activation of Internal Program
@@ -149,8 +149,8 @@ Feature: Validate creation of data in new Org
     When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
     When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
-    When I perform quick search for "Automation Permanent KPI for Regression" in "---program:-:associateKPITableId---" panel
-    When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---program:-:associateKPITableId---"
+    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
+    When I click "Add" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
     And I edit the following rows inline in flex table with id "---program:-:approverTableId---" by clicking "Edit" :
       | Responsibility     | Name                      | Description                 |
@@ -488,7 +488,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
@@ -529,7 +529,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Automation Permanent KPI  | 10     |
     And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "PermanentRecordSetup_Field_Values.xlsx"
@@ -572,7 +572,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Automation Permanent KPI  | 10     |
     And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
     When I enter "Form Fields 1" values from "PermanentRecordSetup_Field_Values.xlsx"
@@ -777,7 +777,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Automation Permanent KPI  | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter in modal "Payment Request Schedule" values from "PermanentRecordSetup_Field_Values.xlsx"
@@ -932,7 +932,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Automation Permanent KPI  | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter in modal "Payment Request Schedule" values from "PermanentRecordSetup_Field_Values.xlsx"
@@ -1087,7 +1087,7 @@ Feature: Validate creation of data in new Org
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter in modal "Payment Request Schedule" values from "PermanentRecordSetup_Field_Values.xlsx"

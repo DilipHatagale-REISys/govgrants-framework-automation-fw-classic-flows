@@ -35,8 +35,8 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
@@ -202,8 +202,8 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I edit the following rows inline in flex table with id "---amendment:-:recipientKeyOutComes---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 20     |
+      | Title                    | Target |
+      | Automation Permanent KPI | 20     |
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -297,8 +297,8 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I edit the following rows inline in flex table with id "---amendment:-:recipientKeyOutComes---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 20     |
+      | Title                    | Target |
+      | Automation Permanent KPI | 20     |
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -378,8 +378,8 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I edit the following rows inline in flex table with id "---amendment:-:recipientKeyOutComes---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 20     |
+      | Title                    | Target |
+      | Automation Permanent KPI | 20     |
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab

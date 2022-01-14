@@ -1719,7 +1719,7 @@ Feature: Amendment Request scenarios without background
       | Saved Successfully! |
     Then I softly see value "Principal Investigator" for title "Project Role" inside table "---amendment:-:RecipientKeyPersonalTableId---"
     #97056 #monu
-    And I click on "Edit" icon for "Automation Permanent KPI for Regression" inside flex table with id "---amendment:-:RecipientKPITableId---" without waiting for record
+    And I click on "Edit" icon for "Automation Permanent KPI" inside flex table with id "---amendment:-:RecipientKPITableId---" without waiting for record
     And I enter value "20" into field "Target__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:RecipientKPITableId---"
     And I softly see the following messages in the page details contains:
@@ -2550,8 +2550,8 @@ Feature: Amendment Request scenarios without background
     When I close "Subaward Budget Category" modal by clicking the top right x button
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
@@ -3995,8 +3995,8 @@ Feature: Amendment Request scenarios without background
     And I click on "Save" in the page details
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Actual | Reported Date |
-      | Automation Permanent KPI for Regression | -8     | 7             |
+      | Title                    | Actual | Reported Date |
+      | Automation Permanent KPI | -8     | 7             |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -4037,10 +4037,10 @@ Feature: Amendment Request scenarios without background
     When I click on "View" icon for "Record Id" inside flex table with id "---grantor_tableId:-:CompletedTaskAssignedToMeTableId---" without waiting for record
     Then I softly see field "Status" as "Approved"
     And I navigate to "Performance" sub tab
-    Then I see value "(8)" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:kpiTableId---"
+    Then I see value "(8)" for title "Actual" against the value "Automation Permanent KPI" inside table "---progressReport:-:kpiTableId---"
     And I click "{SavedValue:SubawardID}" lookup link
     And I navigate to "Performance" sub tab
-    Then I see value "(8)" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---amendment:-:InternalKPITableId---"
+    Then I see value "(8)" for title "Actual" against the value "Automation Permanent KPI" inside table "---amendment:-:InternalKPITableId---"
 
     Examples:
       | Award Name                            | Grant Name                            |
@@ -4136,8 +4136,8 @@ Feature: Amendment Request scenarios without background
     And I click on "Save" in the page details
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Actual | Reported Date |
-      | Automation Permanent KPI for Regression | 8      | 7             |
+      | Title                    | Actual | Reported Date |
+      | Automation Permanent KPI | 8      | 7             |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -4178,10 +4178,10 @@ Feature: Amendment Request scenarios without background
     When I click on "View" icon for "Record Id" inside flex table with id "---grantor_tableId:-:CompletedTaskAssignedToMeTableId---" without waiting for record
     Then I softly see field "Status" as "Approved"
     And I navigate to "Performance" sub tab
-    Then I softly see value "8" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---progressReport:-:kpiTableId---"
+    Then I softly see value "8" for title "Actual" against the value "Automation Permanent KPI" inside table "---progressReport:-:kpiTableId---"
     And I click "{SavedValue:SubawardID}" lookup link
     And I navigate to "Performance" sub tab
-    Then I softly see value "8" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---amendment:-:InternalKPITableId---"
+    Then I softly see value "8" for title "Actual" against the value "Automation Permanent KPI" inside table "---amendment:-:InternalKPITableId---"
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
@@ -4203,9 +4203,9 @@ Feature: Amendment Request scenarios without background
     And I click on "Save" in the page details
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Actual | Reported Date |
-      | Automation Permanent KPI for Regression | 10     | 7             |
-    Then I softly see value "10" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---amendment:-:RecipientPerformanceKPITableId---"
+      | Title                    | Actual | Reported Date |
+      | Automation Permanent KPI | 10     | 7             |
+    Then I softly see value "10" for title "Actual" against the value "Automation Permanent KPI" inside table "---amendment:-:RecipientPerformanceKPITableId---"
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -4287,8 +4287,8 @@ Feature: Amendment Request scenarios without background
     And I enter value "{SavedValue:PBPED}" into field "GATEndDate__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:FundingChangeFocusAreaTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:AmendmentKPITableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 11     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 11     |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
@@ -4351,7 +4351,7 @@ Feature: Amendment Request scenarios without background
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:progressReportFlexTableId---" panel
     When I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:progressReportFlexTableId---" without waiting for record
     When I navigate to "Performance" sub tab
-    Then I softly see value "11" for title "Target" against the value "Automation Permanent KPI for Regression" inside table "---amendment:-:RecipientPerformanceKPITableId---"
+    Then I softly see value "11" for title "Target" against the value "Automation Permanent KPI" inside table "---amendment:-:RecipientPerformanceKPITableId---"
 
   @101515 @ValidateDecreasedTargetValueOfAmendmentRequest-PeriodicRenewal @monu
   Scenario: Verify progress report should display with Updated decreased target value
@@ -4380,8 +4380,8 @@ Feature: Amendment Request scenarios without background
     And I enter value "{SavedValue:PBPED}" into field "GATEndDate__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:FundingChangeFocusAreaTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:AmendmentKPITableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 8      |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 8      |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
@@ -4444,7 +4444,7 @@ Feature: Amendment Request scenarios without background
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:progressReportFlexTableId---" panel
     When I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:progressReportFlexTableId---" without waiting for record
     When I navigate to "Performance" sub tab
-    Then I softly see value "8" for title "Target" against the value "Automation Permanent KPI for Regression" inside table "---amendment:-:RecipientPerformanceKPITableId---"
+    Then I softly see value "8" for title "Target" against the value "Automation Permanent KPI" inside table "---amendment:-:RecipientPerformanceKPITableId---"
 
   @101638 @ValidateDecreasedNegativeTargetValueOfAmendmentRequest-PeriodicRenewal @monu
   Scenario: Verify progress report should display with Updated decreased(negative) target value
@@ -4473,8 +4473,8 @@ Feature: Amendment Request scenarios without background
     And I enter value "{SavedValue:PBPED}" into field "GATEndDate__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:FundingChangeFocusAreaTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:AmendmentKPITableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | -8     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | -8     |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
@@ -4536,7 +4536,7 @@ Feature: Amendment Request scenarios without background
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:progressReportFlexTableId---" panel
     When I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:progressReportFlexTableId---" without waiting for record
     When I navigate to "Performance" sub tab
-    Then I softly see value "(8)" for title "Target" against the value "Automation Permanent KPI for Regression" inside table "---amendment:-:RecipientPerformanceKPITableId---"
+    Then I softly see value "(8)" for title "Target" against the value "Automation Permanent KPI" inside table "---amendment:-:RecipientPerformanceKPITableId---"
 
   @102780 @ValidatePreviousActualValueForAmendmentRequest-FundingChangeAmendmentRequest @monu
   Scenario Outline: Verify Previous Actual value is getting updated while creating funding change Amendment request
@@ -4555,9 +4555,9 @@ Feature: Amendment Request scenarios without background
     And I click on "Save" in the page details
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Actual | Reported Date |
-      | Automation Permanent KPI for Regression | 10     | 7             |
-    Then I see value "10" for title "Actual" against the value "Automation Permanent KPI for Regression" inside table "---amendment:-:RecipientPerformanceKPITableId---"
+      | Title                    | Actual | Reported Date |
+      | Automation Permanent KPI | 10     | 7             |
+    Then I see value "10" for title "Actual" against the value "Automation Permanent KPI" inside table "---amendment:-:RecipientPerformanceKPITableId---"
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -4841,8 +4841,8 @@ Feature: Amendment Request scenarios without background
     When I close "Subaward Budget Category" modal by clicking the top right x button
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
@@ -5339,8 +5339,8 @@ Feature: Amendment Request scenarios without background
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
@@ -5455,8 +5455,8 @@ Feature: Amendment Request scenarios without background
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
@@ -5770,8 +5770,8 @@ Feature: Amendment Request scenarios without background
     And I enter value "{SavedValue:PBPED}" into field "GATEndDate__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:FundingChangeFocusAreaTableId---"
     And I edit the following rows inline in flex table with id "---amendment:-:AmendmentKPITableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | -8     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | -8     |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
@@ -6295,8 +6295,8 @@ Feature: Amendment Request scenarios without background
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
@@ -6410,8 +6410,8 @@ Feature: Amendment Request scenarios without background
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"

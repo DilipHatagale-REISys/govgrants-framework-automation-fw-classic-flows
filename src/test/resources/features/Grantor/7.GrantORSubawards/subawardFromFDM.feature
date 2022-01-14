@@ -96,8 +96,8 @@ Feature: Validate all scenarios in the award created from FDM
       | Construction    | 1000           | 10         | 10             |
     And I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
@@ -194,8 +194,8 @@ Feature: Validate all scenarios in the award created from FDM
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Title                    | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
@@ -313,8 +313,8 @@ Feature: Validate all scenarios in the award created from FDM
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Title                    | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
@@ -427,8 +427,8 @@ Feature: Validate all scenarios in the award created from FDM
     #When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardFromFDM:-:GrantsRolesAndResponsibilitiesTableId---" by clicking "New" :
       | Name                     | Award  |
@@ -472,8 +472,8 @@ Feature: Validate all scenarios in the award created from FDM
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Title                    | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
@@ -605,8 +605,8 @@ Feature: Validate all scenarios in the award created from FDM
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Title                    | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
@@ -735,8 +735,8 @@ Feature: Validate all scenarios in the award created from FDM
     When I click "Associate" after selection of "Automation Permanent Objective2" in the table "SelectAwardGoals"
     Then I see that "Automation Permanent Objective2" has been added in flextable with Id "---subAwardFromFDM:-:objectivesTableId---"
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression |        |
+      | Title                     | Target |
+      | Automation Permanent KPIn |        |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
@@ -836,8 +836,8 @@ Feature: Validate all scenarios in the award created from FDM
       | Performance Tab - Enter Target values. |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Title                    | Target |
+      | Automation Permanent KPI | 10     |
     And I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
     When I "Approve" in the approval decision
@@ -897,8 +897,8 @@ Feature: Validate all scenarios in the award created from FDM
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Title                    | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
@@ -1010,8 +1010,8 @@ Feature: Validate all scenarios in the award created from FDM
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Title                    | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
@@ -1186,8 +1186,8 @@ Feature: Validate all scenarios in the award created from FDM
       | Construction    | 1000           | 10         | 10             |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
@@ -1458,8 +1458,8 @@ Feature: Validate all scenarios in the award created from FDM
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Title                    | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     When I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
@@ -1534,8 +1534,8 @@ Feature: Validate all scenarios in the award created from FDM
       | Construction    | 1000           | 10         | 10             |
     Given I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
@@ -1667,8 +1667,8 @@ Feature: Validate all scenarios in the award created from FDM
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Title                    | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
@@ -1775,8 +1775,8 @@ Feature: Validate all scenarios in the award created from FDM
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:kpiTableId---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Title                    | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardFromFDM:-:paymentRequestSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"

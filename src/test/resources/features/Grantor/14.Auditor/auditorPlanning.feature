@@ -145,7 +145,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     Then I softly cannot see top right button "Activate" in page detail
     Examples:
       | User    | KPI                                     |
-      | AUDITOR | Automation Permanent KPI for Regression |
+      | AUDITOR | Automation Permanent KPI |
 
   @67849 @otherUsersCanCreateKPI
   Scenario Outline: Verify that other than Auditor user other users EXE and ADMIN can create a KPI's

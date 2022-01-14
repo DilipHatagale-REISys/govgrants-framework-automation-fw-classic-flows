@@ -152,8 +152,8 @@ Feature: Validate all scenarios in the Pre-Application
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I get the "EGMS ID"
     And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
@@ -308,8 +308,8 @@ Feature: Validate all scenarios in the Pre-Application
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I get the "EGMS ID"
     And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"

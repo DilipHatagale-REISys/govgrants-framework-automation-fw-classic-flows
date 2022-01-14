@@ -246,7 +246,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
       | Title                                   | Actual | Reported Date |
-      | Automation Permanent KPI for Regression | 7      | 7             |
+      | Automation Permanent KPI  | 7      | 7             |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---"
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -348,7 +348,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Automation Permanent KPI  | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"

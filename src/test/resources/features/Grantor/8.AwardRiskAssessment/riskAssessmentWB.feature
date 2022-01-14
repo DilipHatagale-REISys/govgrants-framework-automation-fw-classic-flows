@@ -126,8 +126,8 @@ Feature: Risk Assessment scenarios without background
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     When I edit the following rows inline in flex table with id "---amendment:-:recipientKeyOutComes---" by clicking "Edit" :
-      | Title                                   | Target |
-      | Automation Permanent KPI for Regression | 20     |
+      | Title                    | Target |
+      | Automation Permanent KPI | 20     |
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -335,7 +335,7 @@ Feature: Risk Assessment scenarios without background
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request |
+      | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
@@ -439,7 +439,7 @@ Feature: Risk Assessment scenarios without background
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
-      | Name                     | Amendment Request |
+      | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 2            |
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |

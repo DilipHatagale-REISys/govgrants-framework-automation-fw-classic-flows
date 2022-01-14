@@ -84,9 +84,9 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Save" in the page details
     Given I click on top right button "Associate" in flex table with id "---amendment:-:keyOutcomesTableId---"
     And I enter values into fields
-      | Value                                   | Field             |
-      | Automation Permanent KPI for Regression | fieldMasterKPI__c |
-      | 10                                      | fieldTarget__c    |
+      | Value                    | Field             |
+      | Automation Permanent KPI | fieldMasterKPI__c |
+      | 10                       | fieldTarget__c    |
     Given I click modal button "Save"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
@@ -295,9 +295,9 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Save" in the page details
     Given I click on top right button "Associate" in flex table with id "---amendment:-:keyOutcomesTableId---"
     And I enter values into fields
-      | Value                                   | Field             |
-      | Automation Permanent KPI for Regression | fieldMasterKPI__c |
-      | 10                                      | fieldTarget__c    |
+      | Value                    | Field             |
+      | Automation Permanent KPI | fieldMasterKPI__c |
+      | 10                       | fieldTarget__c    |
     Given I click modal button "Save"
     When I close "Associate KPI" modal by clicking the top right x button
     When I navigate to "Responsibilities" sub tab
@@ -3168,7 +3168,7 @@ Feature: Validate all scenarios in the Amendment Request
 
   @151123 @151119 @Verify2StepApprovalProcess-FundingChangeAmendmentRequest-RnRFunctionality @monu
   Scenario: Verify the user is able to add two step approver on Funding change amendment
-    |Verify user can add four step approver for Funding change  amendment|
+  |Verify user can add four step approver for Funding change  amendment|
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
     When I enter "FundingChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
@@ -3221,7 +3221,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I refresh the page
     #151119
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name                     | Amendment Request |
+      | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 3            |
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
       | Name                     | Amendment Request |

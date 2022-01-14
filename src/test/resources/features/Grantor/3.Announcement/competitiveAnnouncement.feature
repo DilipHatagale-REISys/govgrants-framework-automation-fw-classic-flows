@@ -409,21 +409,21 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    And I perform quick search for "Automation Permanent KPI for Regression" in "---announcement:-:kpiflextableid---" panel
-    Then I softly see value "Automation Permanent KPI for Regression" for title "Title" inside table "---announcement:-:kpiflextableid---"
+    And I perform quick search for "Automation Permanent KPI" in "---announcement:-:kpiflextableid---" panel
+    Then I softly see value "Automation Permanent KPI" for title "Title" inside table "---announcement:-:kpiflextableid---"
     When I click on advance filter "#advfAnnouncementKeyOutcomes" of table id "---announcement:-:kpiflextableid---"
     When I enter advance filter values inside id "advfAnnouncementKeyOutcomes"
-      | Title | Contains | Automation Permanent KPI for Regression |
-    Then I softly see value "Automation Permanent KPI for Regression" for title "Title" inside table "---announcement:-:kpiflextableid---"
+      | Title | Contains | Automation Permanent KPI |
+    Then I softly see value "Automation Permanent KPI" for title "Title" inside table "---announcement:-:kpiflextableid---"
     Then I softly see value "KPI-0001" for title "EGMS ID" inside table "---announcement:-:kpiflextableid---"
-    When I click on "View" icon for "Automation Permanent KPI for Regression" inside flex table with id "---announcement:-:kpiflextableid---" without waiting for record
+    When I click on "View" icon for "Automation Permanent KPI" inside flex table with id "---announcement:-:kpiflextableid---" without waiting for record
     Then I see the header is "Key Performance Indicator" in the page details
-    Then I see the sub-header is "Automation Permanent KPI for Regression" in the page details
+    Then I see the sub-header is "Automation Permanent KPI" in the page details
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I navigate to "Setup" sub tab
-    When I click on "Remove" icon for "Automation Permanent KPI for Regression" inside flex table with id "---announcement:-:kpiflextableid---" without waiting for record
+    When I click on "Remove" icon for "Automation Permanent KPI" inside flex table with id "---announcement:-:kpiflextableid---" without waiting for record
     Then I softly see the following messages in the page details :
       | Record deleted successfully. |
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
