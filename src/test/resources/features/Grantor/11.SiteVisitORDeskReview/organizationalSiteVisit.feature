@@ -25,7 +25,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I navigate to "Proposal" sub tab
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | Automation Permanent KPI  | 10     |
     And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"

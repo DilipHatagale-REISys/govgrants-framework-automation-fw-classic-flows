@@ -146,9 +146,9 @@ Feature: Validate all scenarios in Strategic Plan
     And I click on "Save" in the page details
     When I navigate to "Related Log" sub tab
     And I click on top right button "Associate" in flex table with id "---strategicplan:-:ObjectivesKPITableId---"
-    When I perform quick search for "Automation Permanent KPI for Regression" in "---strategicplan:-:ListOfActiveKPITableId---" panel
-    When I click "Add" after selection of "Automation Permanent KPI for Regression" in the table "---strategicplan:-:ListOfActiveKPITableId---"
-    Then I see that "Automation Permanent KPI for Regression" has been added in flextable with Id "---strategicplan:-:ObjectivesKPITableId---"
+    When I perform quick search for "Automation Permanent KPI" in "---strategicplan:-:ListOfActiveKPITableId---" panel
+    When I click "Add" after selection of "Automation Permanent KPI" in the table "---strategicplan:-:ListOfActiveKPITableId---"
+    Then I see that "Automation Permanent KPI" has been added in flextable with Id "---strategicplan:-:ObjectivesKPITableId---"
 
     #marking as notFunctional as we can not activate multiple strategic plan for one organization
   @34721 @strategicPlanHappyPath @notFunctional @wip
@@ -183,7 +183,7 @@ Feature: Validate all scenarios in Strategic Plan
       | Actions               | Step 1      | Step 2         | Step 3             |
       | Attachment Navigation | Attachments | Add            | a1511000002nIxtAAE |
       | Attachment Details    | Attachment  | Strategic Plan |                    |
-    And I associate "1" records "Automation Permanent KPI for Regression"
+    And I associate "1" records "Automation Permanent KPI"
       | Actions     | Step 1       | Step 2    | Step 3                | Step 4    | Step 5     |
       | Associate 1 | Related Logs | Associate | KPIGoalsandObjectives | Associate | SelectKPIs |
     And I click on "Back To Strategic Goal" in the page details
