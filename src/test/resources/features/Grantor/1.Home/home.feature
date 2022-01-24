@@ -735,7 +735,7 @@ Feature: Validate all scenarios in the home tab
     When I perform quick search for "Record Id" in "---home:-:externalPendingTasktableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---home:-:externalPendingTasktableId---"
 
-  @62106 @indUserEditProfile @deepika @buglogged123790
+  @62106 @indUserEditProfile @deepika
   Scenario: Verify whether the Individual Sub Profile Users can view their own contact information under Overview Tab
     Given I am on "SUBPORTAL" portal
     When I login as "IND" user
