@@ -159,6 +159,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:internalContactTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---"
     Then I softly see field "Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    And I close modal by clicking the top right x button
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---"
     And I enter "Edition" values from "SubrecipientContact_Field_Values.xlsx"
     And I click modal button "Save"

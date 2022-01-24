@@ -171,7 +171,7 @@ Feature: Validate all scenarios in Focus Area
     Given I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-    And I click toggle button to select "Internal Programs - All"
+    And I click toggle button to select "Internal Programs - Active"
     When I perform quick search for "Automation Permanent Internal Program" in "---program:-:programsTableId---" panel
     And I click on "View" icon for "Automation Permanent Internal Program" inside table
     And I navigate to "Related Log" sub tab

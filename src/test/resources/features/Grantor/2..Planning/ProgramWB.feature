@@ -48,10 +48,10 @@ Feature: Validate all scenarios for program
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
     When I click "Associate" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                     | Program |
       | {SavedValue:PM Username} | Step 1  |
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                      | Program |
       | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
@@ -69,6 +69,7 @@ Feature: Validate all scenarios for program
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "All NGO Programs"
     When I perform quick search for "<Program Name>" in "---program:-:ExternalNGOProgramTableId---" panel
     And I click on "View" icon for "<Program Name>" inside flex table with id "---program:-:ExternalNGOProgramTableId---" without waiting for record
     And I click on "Activate" in the page details
@@ -155,10 +156,10 @@ Feature: Validate all scenarios for program
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
     When I click "Associate" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                     | Program |
       | {SavedValue:PM Username} | Step 1  |
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                      | Program |
       | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
@@ -193,10 +194,10 @@ Feature: Validate all scenarios for program
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
     When I click "Associate" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                     | Program |
       | {SavedValue:PM Username} | Step 1  |
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                      | Program |
       | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
@@ -228,10 +229,10 @@ Feature: Validate all scenarios for program
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
     When I click "Associate" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                     | Program |
       | {SavedValue:PM Username} | Step 1  |
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                      | Program |
       | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
@@ -263,10 +264,10 @@ Feature: Validate all scenarios for program
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
     When I click "Associate" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                     | Program |
       | {SavedValue:PM Username} | Step 1  |
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                      | Program |
       | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
@@ -274,7 +275,7 @@ Feature: Validate all scenarios for program
     And I select user "{SavedValue:EXE Username}" in the approval decision
     When I enter comment "Automation testing" in the approval decision
     And I submit the approval in the approval decision without processing
-    And I softly see the following messages in the page details contains:
+    Then I softly see the following messages in the page details contains:
       | Successfully Re-Assigned |
 
   @111515 @VerifySendBackFunctionalityForNGOProgram @monu @buglogged138933
@@ -295,10 +296,10 @@ Feature: Validate all scenarios for program
     And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
     When I click "Associate" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                     | Program |
       | {SavedValue:PM Username} | Step 1  |
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                      | Program |
       | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details

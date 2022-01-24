@@ -561,18 +561,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Actual Cash Match" as "$0.00"
     Then I softly see field "Actual Non-Cash Match" as "$0.00"
     Then I softly see field "Actual Total Match" as "$0.00"
-    When I click on "Send To Subrecipient" in the page details
-    Then I softly see field "Status" as "Sent To Subrecipient"
-    #76487
-    Then I softly see status in Progress-bar is "Sent To Subrecipient" and is "Green"
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
-    When I navigate to "Requests" sub tab
     #86714
-    And I click on "View" icon for "Sent To Subrecipient" inside flex table with id "---closeout:-:closeoutTableId---" without waiting for record
     When I click on "Edit" in the page details
     When I navigate to "Overview" sub tab
     And I enter value "07/20/2023" into field "fieldCloseoutDate__c"
@@ -586,6 +575,10 @@ Feature: Validate all scenarios in Closeout
     And I softly see value "$0.00" for title "Spent" inside table "---closeout:-:closeoutFundingAccountsTableId---"
     And I softly see value "$1,000.00" for title "Encumbrance Balance" inside table "---closeout:-:closeoutFundingAccountsTableId---"
     And I softly see value "$0.00" for title "Closeout Deobligation" inside table "---closeout:-:closeoutFundingAccountsTableId---"
+    When I click on "Send To Subrecipient" in the page details
+    Then I softly see field "Status" as "Sent To Subrecipient"
+    #76487
+    Then I softly see status in Progress-bar is "Sent To Subrecipient" and is "Green"
     #42103
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Home" tab
@@ -899,7 +892,9 @@ Feature: Validate all scenarios in Closeout
     When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
       | Name                     | Closeout |
       | {SavedValue:FO Username} | Step 2   |
+    And I refresh the page
     When I click on "Override" in the page details
+    And I refresh the page
     Then I softly see field "Status" as "Overridden"
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
@@ -980,7 +975,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see column "Date" inside row "2" at position "1" contains text "Step : Step 1"
     Then I softly see column "Overall Status" inside row "2" at position "1" contains text "Approved"
 
-  @40759 @VerifyExpectedValueInsideFieldHistoryPageBlockOfCloseoutRequest @monu @buglogged141586
+  @40759 @VerifyExpectedValueInsideFieldHistoryPageBlockOfCloseoutRequest @monu
   Scenario: Validate expected New value and Old value inside Field History page block for closeout request
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -1006,21 +1001,14 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Requests" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---closeout:-:closeoutTableId---" without waiting for record
     And I navigate to "Overview" sub tab
+    When I click on "Edit" in the page details
+    And I enter value "07/20/2023" into field "fieldCloseoutDate__c"
+    And I enter value "08/12/2023" into field "fieldCloseoutDueDateGrantor__c"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
     When I click on "Send To Subrecipient" in the page details
     Then I softly see field "Status" as "Sent To Subrecipient"
     Then I softly see status in Progress-bar is "Sent To Subrecipient" and is "Green"
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
-    When I navigate to "Requests" sub tab
-    And I click on "View" icon for "Sent To Subrecipient" inside flex table with id "---closeout:-:closeoutTableId---" without waiting for record
-    When I click on "Edit" in the page details
-    When I navigate to "Overview" sub tab
-    And I enter value "07/20/2023" into field "fieldCloseoutDate__c"
-    And I enter value "08/12/2023" into field "fieldCloseoutDueDateGrantor__c"
-    When I click on "Save" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Home" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1034,7 +1022,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Acknowledgement" as "checked"
     And I click on "Acknowledge" in the page details
     Then I softly see status in Progress-bar is "Acknowledged by Subrecipient" and is "Green"
-    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I softly see field "Status" as "Acknowledged by Subrecipient"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Closeout" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1081,7 +1069,11 @@ Feature: Validate all scenarios in Closeout
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
     When I navigate to "Requests" sub tab
     And I click on "View" icon for "Created" inside flex table with id "---closeout:-:closeoutTableId---" without waiting for record
-    And I navigate to "Overview" sub tab
+    When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
+    And I enter value "07/20/2023" into field "fieldCloseoutDate__c"
+    And I enter value "08/12/2023" into field "fieldCloseoutDueDateGrantor__c"
+    When I click on "Save" in the page details
     When I click on "Send To Subrecipient" in the page details
     Then I softly see field "Status" as "Sent To Subrecipient"
     And I navigate to "Closeout" tab
@@ -1089,18 +1081,6 @@ Feature: Validate all scenarios in Closeout
     And I click toggle button to select "Project Period Closeouts - Draft"
     And I perform quick search for "{SavedValue:closeoutID}" in "ProjectPeriodCloseoutGrantor" panel
     Then I softly see value "Sent to Subrecipient" for title "Status" inside table "ProjectPeriodCloseoutGrantor"
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
-    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
-    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
-    When I navigate to "Requests" sub tab
-    And I click on "View" icon for "Sent To Subrecipient" inside flex table with id "---closeout:-:closeoutTableId---" without waiting for record
-    When I click on "Edit" in the page details
-    When I navigate to "Overview" sub tab
-    And I enter value "07/20/2023" into field "fieldCloseoutDate__c"
-    And I enter value "08/12/2023" into field "fieldCloseoutDueDateGrantor__c"
-    When I click on "Save" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Home" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1187,11 +1167,11 @@ Feature: Validate all scenarios in Closeout
     When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I "Approve" in the approval decision
     And I checkout to yopmail with mailid "govgrantsuat@yopmail.com"
-    And I pause execution for "5" seconds
+    And I pause execution for "180" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Closeout Request {SavedValue:closeoutID} has beenapproved
+      Sandbox: Notification: Closeout Request {SavedValue:closeoutID} has been approved
       """
 
   @96255 @VerifySystemErrorMessageForReason @monu
