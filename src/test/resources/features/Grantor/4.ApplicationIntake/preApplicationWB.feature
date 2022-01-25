@@ -2815,3 +2815,222 @@ Feature: Pre-Application scenarios without background
     When I clear the value from field "fieldPreApplicationSectionsforRevision__c"
     Then I see multipicklist field "fieldPreApplicationSectionsforRevision__c" contains value "Files and Forms: Forms" under list "Pre-Application Sections for Revision - Available"
 
+  @174568 @Grantorpre-applicationformshoulddisplayalltypesofAnnouncement @Sprint-7 @Vrishali
+  Scenario Outline: Verify Grantor pre-application form should display all types of Announcement.
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I save the field labeled "Program Name" as "Automation Runtime Internal Program"
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    When I pause execution for "2" seconds
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
+    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 2  |
+    When I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Template" modal by clicking the top right x button
+    And I navigate to "Files" sub tab
+    And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    And I upload attachment "Attachment.pdf" of type "Program Artifacts" from computer
+    And I pause execution for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    Then I see status in Progress-bar is "Approved" and is "green"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - All"
+    When I perform quick search for "Record Id" in "---program:-:programsTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---program:-:programsTableId---"
+    And I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Active" and is "green"
+    And I navigate to "Announcements" tab
+    When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft <Announcement Type> Announcements"
+    And I click on top right button "New" in flex table with id "<TableId Type>"
+    And I enter values into fields
+      | Value                                               | Field                      |
+      | Automation Runtime <Announcement Type> Announcement | AnnouncementName__c        |
+      | {SavedValue:ProgramEGMSID}                          | Program__c                 |
+      | Construction                                        | Budget_Category_Package__c |
+    And I click modal button "Continue"
+    When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "<Announcement Type>" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft <Announcement Type> Announcements"
+    And I perform quick search for "Record Id" in "<TableId Type>" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "<TableId Type>" without waiting for record
+    And I navigate to "Setup" sub tab
+    And I perform quick search for "Grantor Pre-application Form" in "---announcement:-:businessFormlistTableId---" panel
+    Then I softly see value "Grantor Pre-application Form" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
+    Examples:
+      | Announcement Type | TableId Type                                        |
+      | Competitive       | ---announcement:-:competitiveAnnouncementTableId--- |
+      | Directed          | ---announcement:-:annoucementTableId---             |
+      | Formula           | ---announcement:-:formulaAnnouncementTableId---     |
+
+
+  @180699 @VerifyIfFormselectedforedit&usernotadded"Files&Forms:Forms"inApplicationsection,usershouldgeterroronsenttos/rclickatgrantorside. @Sprint-10 @Vrishali
+  Scenario: Verify If the Form is selected for edit, and user have not added the "Files and Forms: Forms" in the Application section, then user should get error on sent to s/r click at grantor side.
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-App}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-App}" inside table
+    And I save the field containing "Leverage Allowed?" as "Yes"
+    And I save the field containing "Maximum # Applications Allowed" as "1"
+    When I click on "Qualify" in the page details
+    And I click on "Create Pre-Application" in the page details
+    When I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    Given I click on "Edit" in the page details
+    And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Overview" sub tab
+    When I save the field containing "Program Income Allowed?" as "Yes"
+    And I edit the following rows inline in flex table with id "---preApplication:-:preAppContactTableId---" by clicking "Edit" :
+      | Name                       | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
+    And I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    Then I softly see field "Other Leverage" inside page block
+    And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 5000   | 5000       | 50             | 100            |
+    When I navigate to "Files and Forms" sub tab
+    And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
+    And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---home:-:internalHomePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
+    Then I softly can see top right button "Request Negotiation" in page detail
+    When I click on "Request Negotiation" in the page details
+    Then I softly can see "Negotiations" sub tab at view detail page
+    And I navigate to "Negotiations" sub tab
+    And I enter value "43707" into field "fieldRevisionDueDate__c"
+    And I enter value "Negotiation Explanation" into field "fieldExplanationOfRevisionsNeeded__c"
+    And I enter value "Overview Tab: Project Information" into field "fieldPreApplicationSectionsforRevision__c"
+    Then I softly can see page block "Explanation of Negotiations Needed"
+    When I click on "Save" in the page details
+    And I edit the following rows inline in flex table with id "---preApplication:-:negotiationFormTableId---" by clicking "Edit" :
+      | Form Name                     | Needs Negotiation |
+      | Standard Pre-Application form | Checked           |
+    When I click on "Send to Subrecipient" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Negotiations Tab - Select Form section for negotiation, because at least one form is selected for allowing edits. |
+
+  @180703 @Verifyuser(pre-applicationrecordownershouldeditsectionsformswhichinternaluserselectedwhilerequestingnegotiationforpre-application. @Sprint-10 @Vrishali
+  Scenario: Verify spi user (pre-application record owner)should edit only sections and the forms which internal user selected while requesting negotiation for the pre-application.
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    When I click toggle button to select "Not Yet Qualified Opportunities - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-App}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-App}" inside table
+    And I save the field containing "Leverage Allowed?" as "Yes"
+    And I save the field containing "Maximum # Applications Allowed" as "1"
+    When I click on "Qualify" in the page details
+    And I click on "Create Pre-Application" in the page details
+    When I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    And I get the "EGMS ID"
+    Given I click on "Edit" in the page details
+    And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Overview" sub tab
+    When I save the field containing "Program Income Allowed?" as "Yes"
+    And I edit the following rows inline in flex table with id "---preApplication:-:preAppContactTableId---" by clicking "Edit" :
+      | Name                       | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
+    And I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    Then I softly see field "Other Leverage" inside page block
+    And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 5000   | 5000       | 50             | 100            |
+    When I navigate to "Files and Forms" sub tab
+    And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
+    And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---home:-:internalHomePendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
+    Then I softly can see top right button "Request Negotiation" in page detail
+    When I click on "Request Negotiation" in the page details
+    Then I softly can see "Negotiations" sub tab at view detail page
+    And I navigate to "Negotiations" sub tab
+    When I enter "Negotiation_Edit" values from "PreApplication_Field_Values.xlsx"
+    And I edit the following rows inline in flex table with id "---preApplication:-:negotiationFormTableId---" by clicking "Edit" :
+      | Form Name                     | Needs Negotiation |
+      | Standard Pre-Application form | Checked           |
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I pause execution
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I navigate to "Home" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---home:-:externalPendingTasktableId---" panel
+    And I click on "Start" icon for "Record Id" inside table
+    When I navigate to "Files and Forms" sub tab
+    Then I softly can see row level action button "Edit" against "Standard Pre-Application form" in flex table with id "---preApplication:-:preAppFormTableId---"
