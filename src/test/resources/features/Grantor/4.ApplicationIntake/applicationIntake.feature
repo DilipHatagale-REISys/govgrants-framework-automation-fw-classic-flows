@@ -16,7 +16,7 @@ Feature: Validate all scenarios in the Application Intake
 
   @34044 @70332 @applicationCreation
   Scenario: Validate creation of an Application | Validate once application is in created status, the user can view the Submit Application Button in page details
-    Then I softly see status in Progress-bar is "Created" and is "Green"
+    Then I softly see status in Progress-bar is "Created" and is "green"
     Then I softly can see top right button "Submit Application" in page detail
 
   @34045 @applicationEdition
@@ -41,8 +41,13 @@ Feature: Validate all scenarios in the Application Intake
     When I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 100    | 100        | 100            | 100            |
-    Then I see the following messages in the page details contains:
-      | Saved Successfully! |
+    Then I see value "$100.00" for title "Budget" against the value "Construction" inside table "---applicationIntake:-:budgetPeriodTableId---"
+    Then I see value "$100.00" for title "Cash Match" against the value "Construction" inside table "---applicationIntake:-:budgetPeriodTableId---"
+    Then I see value "$100.00" for title "Non-Cash Match" against the value "Construction" inside table "---applicationIntake:-:budgetPeriodTableId---"
+    Then I see value "$100.00" for title "Other Leverage" against the value "Construction" inside table "---applicationIntake:-:budgetPeriodTableId---"
+
+    #Then I see the following messages in the page details contains:
+     # | Saved Successfully! |
 
   @50967 @addTargetToKPIInApplication
   Scenario: Addition of KPI target to an application
@@ -148,9 +153,11 @@ Feature: Validate all scenarios in the Application Intake
     And I navigate to "Budget" sub tab
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
    # Then I softly can see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
-   # When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
-    When I click "Remove" after selection of "Automation Permanent Focus Area" in the table "---applicationIntake:-:focusAreaFlexTableId---"
-    #73514 need to check
+    #When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
+    And I click on "Remove Focus Area" icon for "Automation Permanent Focus Area" inside table
+    When I click modal button "Yes"
+     # When I click "Remove" after selection of "Automation Permanent Focus Area" in the table "---applicationIntake:-:focusAreaFlexTableId---"
+      #73514 need to check
 #    Then I softly see the following messages in the page details :
 #      | Budget Tab - At least one focus area must be in place at all times. |
     When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"

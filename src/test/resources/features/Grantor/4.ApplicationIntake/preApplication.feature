@@ -28,7 +28,7 @@ Feature: Validate all scenarios in the Pre-Application
       | Project Director/Manager |
       | Authorized Signatory     |
 
-  @67065 @67077 @contactsAtPreApplicationFromSameOrganization @jitendra @buglogged67919
+  @67065 @67077 @contactsAtPreApplicationFromSameOrganization @jitendra
   Scenario: To verify that the contacts appearing in the Associate button in Contact table of preapplication is of the Same organisation |To validate that the new contact can be associated in the contact table in SPI user profile Preapplication
     When I navigate to "Overview" sub tab
     And I click table top right button "Associate" in flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
@@ -40,6 +40,7 @@ Feature: Validate all scenarios in the Pre-Application
     And I save the field labeled "Organization" as "orgName1"
     And I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Pre-Applications - All"
     And I perform quick search for "Record Id" in "---preApplication:-:recipientPreApplicationsTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---preApplication:-:recipientPreApplicationsTableId---"
     When I click on "View" icon for "Automation SPA" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
@@ -68,30 +69,40 @@ Feature: Validate all scenarios in the Pre-Application
     When I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 1000       | 5000           | 100            |
-   # as a message getting disaapeared in few second
-   # Then I softly see the following messages in the page details contains:
-    #  | Saved Successfully! |
+   Then I softly see value "$5,000.00" for title "Budget" against the value "Construction" inside table "---preApplication:-:SubRecipientBudgetPeriodTableId---"
+    Then I softly see value "$1,000.00" for title "Cash Match" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
+    Then I softly see value "$5,000.00" for title "Non-Cash Match" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
+    Then I softly see value "$100.00" for title "Other Leverage" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
 
-  @53155 @PreApplicationAttachmentChecklistCA  @buglogged169487
+  @53155 @PreApplicationAttachmentChecklistCA
   Scenario: Validate the attachment checklist of the PreApplication
-    When I navigate to "Files" sub tab
+    When I navigate to "Files and Forms" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     Then I see "Other" has been added in "Supporting Documents Checklist" flex table
 
-  @70466 @53160 @70467 @submitPreApplication @smoke @deepika @buglogged169487
+  @70466 @53160 @70467 @submitPreApplication @smoke @deepika
   Scenario: Submitting an pre application to Grantor |To verify that the budget field is editable for the Subrecipient (SPI User) under budget tab on pre-application
   Validate whether SPI user can view the edit button once pre - application has been submitted to Grantor |  Validate whether the user can submit the Pre Application Submission before the due date
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I navigate to "Overview" sub tab
+    When I save the field containing "Program Income Allowed?" as "Yes"
+    And I edit the following rows inline in flex table with id "---preApplication:-:preAppContactTableId---" by clicking "Edit" :
+      | Name                       | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
+    And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
-    Given I expand nested table containing column value "BP01"
     Then I softly see value "$10,150.00" for title "Total Project Cost" against the value "Construction" inside table "---preApplication:-:preApplicationAttachmentId---"
-    When I navigate to "Files" sub tab
+    When I navigate to "Files and Forms" sub tab
+    And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
+    And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
@@ -106,14 +117,24 @@ Feature: Validate all scenarios in the Pre-Application
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I navigate to "Overview" sub tab
+    When I save the field containing "Program Income Allowed?" as "Yes"
+    And I edit the following rows inline in flex table with id "---preApplication:-:preAppContactTableId---" by clicking "Edit" :
+      | Name                       | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
+    And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Files and Forms" sub tab
+    And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
+    And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
-    When I click on "Submit to Grantor" in the page details
+    And I click on "Submit to Grantor" in the page details
     Given I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     When I navigate to "Applications" tab
@@ -127,13 +148,11 @@ Feature: Validate all scenarios in the Pre-Application
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---preApplication:-:pendingTaskTableId---" panel
-    Then I softly see that "Record Id" has been added in flextable with Id "---preApplication:-:pendingTaskTableId---"
-    And I click on "Start" icon for "Record id" inside flex table with id "---preApplication:-:pendingTaskTableId---"
+    And I click on "Start" icon for "Record Id" inside table
     Then I softly can see top right button "Accept" in page detail
     Then I softly can see top right button "Reject" in page detail
     When I click on "Accept" in the page details
-    Given I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Pre-Applications - Submitted"
@@ -151,11 +170,12 @@ Feature: Validate all scenarios in the Pre-Application
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Proposal" sub tab
+    When I click on "Edit" in the page details
     When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                  | Target |
+     | EGMS ID                  | Target |
       | Automation Permanent KPI | 10     |
     And I get the "EGMS ID"
-    And I navigate to "Files" sub tab
+    And I navigate to "Files and Forms" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -224,11 +244,21 @@ Feature: Validate all scenarios in the Pre-Application
     Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I navigate to "Overview" sub tab
+    When I save the field containing "Program Income Allowed?" as "Yes"
+    And I edit the following rows inline in flex table with id "---preApplication:-:preAppContactTableId---" by clicking "Edit" :
+      | Name                       | Project Role             | Is Key Contact |
+      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
+    And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Files and Forms" sub tab
+    And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
+    And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
