@@ -3026,7 +3026,6 @@ Feature: Pre-Application scenarios without background
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I pause execution
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I navigate to "Home" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel

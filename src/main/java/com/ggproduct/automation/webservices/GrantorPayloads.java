@@ -743,7 +743,7 @@ public class GrantorPayloads {
         JsonObject grant = json.getAsJsonArray("Grant").get(0).getAsJsonObject();
         JsonArray newA = new JsonArray();
 
-        grant.addProperty("RiskAssessment_Required","Yes");
+        grant.addProperty("RiskAssessment_Required","No");
         grant.addProperty("IsMatchRequired","Yes");
         grant.addProperty("IsBuildUpFunctionality","Yes");
         grant.addProperty("WBSRequired","No");
@@ -941,7 +941,7 @@ public class GrantorPayloads {
 
         JsonObject keyOutcome = new JsonObject();
         JsonArray keyOutcomeArray = new JsonArray();
-        keyOutcome.addProperty("MasterKPI",ProjectWebServices.getIdOf("MasterKPI__c","Automation Permanent KPI for Regression")); // KPI id
+        keyOutcome.addProperty("MasterKPI",ProjectWebServices.getIdOf("MasterKPI__c","Automation Permanent KPI")); // KPI id
         keyOutcome.addProperty("Target","10");
         keyOutcomeArray.add(keyOutcome);
         parent.add("KeyOutcome",keyOutcomeArray);
