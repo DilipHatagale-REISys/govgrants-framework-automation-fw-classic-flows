@@ -40,7 +40,6 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on top right button "Associate" in flex table with id "---amendment:-:keyOutcomesTableId---"
     When I enter "KPI" values from "Award_Field_Values.xlsx"
     When I click modal button "Save"
-    When I close "Associate KPI" modal by clicking the top right x button
     Then I see that "Automation Permanent KPI for Regression2" has been added in flextable with Id "---amendment:-:keyOutcomesTableId---"
 
   @53197 @53198 @associationOfObjectiveToSOWAmendmentRequest @smoke
@@ -371,7 +370,6 @@ Feature: Validate all scenarios in the Amendment Request
       | Automation Permanent KPI for Regression2 | fieldMasterKPI__c |
       | 10                                       | fieldTarget__c    |
     When I click modal button "Save"
-    When I close "Associate KPI" modal by clicking the top right x button
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
@@ -1068,6 +1066,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I pause execution
     And I click on "Revise" in the page details
     When I navigate to "Overview" sub tab
     Then I softly see value "$500.00" for title "Difference" against the value "Construction" inside table "---amendment:-:grantorBudgetChangeTableId---"
@@ -1688,7 +1687,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
-      | Extra Salary | The narrative | 100            |
+      | Extra Salary | The narrative | 1100            |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
