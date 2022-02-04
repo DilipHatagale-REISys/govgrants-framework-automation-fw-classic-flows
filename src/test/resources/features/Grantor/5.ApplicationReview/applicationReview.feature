@@ -1,4 +1,4 @@
-@applicationReview @grantor-regression @grantor-parallel-regression @app
+@applicationReview @grantor-regression @grantor-parallel-regression @app @wip
 Feature: Validate all scenarios in the Application Review
 
   Background: Submit the application for Review
