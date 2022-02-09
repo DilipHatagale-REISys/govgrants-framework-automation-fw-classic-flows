@@ -1,4 +1,4 @@
-@preAplicationWB @grantor-regression @grantor-parallel-regression @app
+@preAplicationWB @grantor-regression @grantor-parallel-regression @app @regression
 Feature: Pre-Application scenarios without background
 
   @71921 @71411 @71412 @71410 @70252 @70254 @71925 @verifyCreateApplicationandQualifyButtons

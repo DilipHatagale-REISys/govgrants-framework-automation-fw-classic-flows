@@ -19,7 +19,7 @@ Automation Permanent Strategic Goal2 -> Automation Permanent Objective2
 -Internal Program -
 ->Automation Permanent Internal Program
 
--Risk Assessment Organization
+-Risk Assessment Organization (create organization with below name and add user SA while creating organization)
 ->Automation Permanent Organization for Risk Assessment
 
 -Announcement - One announce should be created with passed status

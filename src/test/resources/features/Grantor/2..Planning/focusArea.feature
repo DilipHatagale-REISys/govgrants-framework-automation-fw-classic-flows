@@ -1,4 +1,4 @@
-@focusArea @grantor-regression @grantor-parallel-regression @planning
+@focusArea @grantor-regression @grantor-parallel-regression @planning @regression
 Feature: Validate all scenarios in Focus Area
 
   @34512 @creationOfFocusArea @smoke @training

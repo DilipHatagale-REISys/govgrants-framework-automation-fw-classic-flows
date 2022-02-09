@@ -1,4 +1,4 @@
-@uatBusinessFlowSanity
+@uatBusinessFlowSanity @regression
 Feature: Validate sanity testing of Complete UAT Business Flow
 
   @138456 @VerifyDeactivationOfStrategicPlan @monu

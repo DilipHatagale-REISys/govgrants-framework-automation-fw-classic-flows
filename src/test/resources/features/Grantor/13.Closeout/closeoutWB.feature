@@ -1,4 +1,4 @@
-@closeout @grantor-regression @grantor-parallel-regression
+@closeout @grantor-regression @grantor-parallel-regression @regression
 Feature: Validate all scenarios in Closeout
 
   @87347 @87354 @ValidatingCloseoutRequestForEXEUser @meenakshi
