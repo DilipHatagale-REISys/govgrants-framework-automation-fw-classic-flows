@@ -1,4 +1,4 @@
-@negotiationWB @grantor-regression @grantor-parallel-regression
+@negotiationWB @grantor-regression @grantor-parallel-regression @regression
 Feature: Validate all scenarios in Negotiations
 
   @164572  @ValidateEXEUserAllowEditSelectAtLeastOneFormErrorMessage @Sprint-3 @Vaibhav

@@ -1,4 +1,4 @@
-@organizationRegistrationPage @userRegistration @parallel-regression @regression @grantor-regression
+@organizationRegistrationPage @userRegistration @parallel-regression @regression @grantor-regression @regression
 Feature: Validate all registration related scenarios
 
   @81962 @verifyDownloadOptionOpensInNewWindow-Organization @monu

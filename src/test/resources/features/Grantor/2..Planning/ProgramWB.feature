@@ -1,4 +1,4 @@
-@program @grantor-regression @grantor-parallel-regression @planning
+@program @grantor-regression @grantor-parallel-regression @planning @regression
 Feature: Validate all scenarios for program
 
   @109448 @VerifySelectionOfChildOrganization @monu

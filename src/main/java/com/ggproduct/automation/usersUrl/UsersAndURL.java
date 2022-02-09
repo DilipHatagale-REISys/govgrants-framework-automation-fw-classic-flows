@@ -102,44 +102,14 @@ public class UsersAndURL implements UsersController {
     private String getAUTOEnvironmentPassword(String userLevel) {
         String password;
         switch (userLevel.toUpperCase()) {
-            case "ADMIN":
-                password = "WelcomeDev@2022";
-                break;
-            case "PM":
-                password = "Automationpm@2022";
-                break;
-            case "SPI3":
-                password = "SPI3auto@2022";
-                break;
-            case "EXE":
-                password = "Automationexe@2022";
-                break;
-            case "FO":
-                password = "Automationfo@2022";
-                break;
-            case "PO":
-                password = "Poauto@2022";
-                break;
-            case "FD":
-                password = "Fdauto@2022";
-                break;
-            case "AUDITOR":
-                password = "Auditor@2022";
-                break;
-            case "SPA":
-                password = "SPAauto@123";
-                break;
             case "SPI":
-                password = "SPIauto@123";
-                break;
-            case "IND":
-                password = "IND@2022";
+                password = "Salesforce2023";
                 break;
             case "SARAH PM":
                 password = "GoProduct@12345";
                 break;
             default:
-                password = "SALESFORCE2022";
+                password = "Salesforce2022";
         }
         return password;
     }
@@ -170,14 +140,14 @@ public class UsersAndURL implements UsersController {
 
     private String getAUTOEnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
-        username.put("ADMIN", "ayesha.husain@ggp.test8.automation");
+        username.put("ADMIN", "govgrantsautomation@yopmail.com");
         username.put("EXE", "test@gmaildemo.com.atm.automation");
         username.put("PM", "donald_pm@ggp.test7.atm.automation");
         username.put("FO", "auto.fm@auto.com.atm.automation");
         username.put("FD", "automationfd@yopmail.com");
         username.put("PO", "automationpo@yopmail.com");
         username.put("SPI", "automation.spi@yopmail.com.automation");
-        username.put("SPA", "automationspa@yopmail.com");
+        username.put("SPA", "automation.spa@yopmail.com");
         username.put("IND", "ind.automation@yopmail.com");
         username.put("SA", "automationspi1@yopmail.com");  // need to check this user.
         username.put("SPI3", "automationspi30@yopmail.com");

@@ -1,4 +1,4 @@
-@amendmentRequests @grantor-regression @grantor-parallel-regression
+@amendmentRequests @grantor-regression @grantor-parallel-regression @regression
 Feature: Amendment Request scenarios without background
 
   @54853 @ValidateRevisedBudgetAmountBalanceUpdatedOnAdvancePaymentRequest @mahadev @smoke

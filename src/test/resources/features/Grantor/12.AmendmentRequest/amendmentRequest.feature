@@ -1,4 +1,4 @@
-@amendmentRequests @grantor-regression @grantor-parallel-regression @parallel-regression
+@amendmentRequests @grantor-regression @grantor-parallel-regression @parallel-regression @regression
 Feature: Validate all scenarios in the Amendment Request
 
   Background: Setup data
@@ -1066,7 +1066,6 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    And I pause execution
     And I click on "Revise" in the page details
     When I navigate to "Overview" sub tab
     Then I softly see value "$500.00" for title "Difference" against the value "Construction" inside table "---amendment:-:grantorBudgetChangeTableId---"

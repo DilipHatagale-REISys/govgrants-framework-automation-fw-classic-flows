@@ -1,4 +1,4 @@
-@organizationalSiteVisit @grantor-regression @grantor-parallel-regression @siteVisit
+@organizationalSiteVisit @grantor-regression @grantor-parallel-regression @siteVisit @regression
 Feature: Validate all scenarios in Organizational Site Visit
 
   Background: Creation of Organizational Site Visit
