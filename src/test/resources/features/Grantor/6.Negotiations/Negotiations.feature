@@ -1,4 +1,4 @@
-@negotiations @grantor-regression @grantor-parallel-regression @regression
+@negotiations @grantor-regression @grantor-parallel-regression @regression @wip
 Feature: Validate all scenarios in Negotiations
 
   Background: To setup data
@@ -1672,7 +1672,6 @@ Feature: Validate all scenarios in Negotiations
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:internalHomePendingTableId---" panel
     And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:internalHomePendingTableId---"
     When I click on "Complete Negotiation" in the page details
-    And I pause execution
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Negotiations" content inside "Applications" subheader on left panel
