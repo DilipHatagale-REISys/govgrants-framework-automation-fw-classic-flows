@@ -6996,3 +6996,730 @@ Feature: Validate all scenarios in the Application Review without background
       | Due Date                             | is required to save under Negotiations. |
       | Application Sections for Negotiation | is required to save under Negotiations. |
       | Details                              | is required to save under Negotiations. |
+
+  @134198 @ValidateannouncementownercannotpromotetheapplicationtothenextreviewstepifitisNegotiationrequested @Sprint-1 @vaibhav
+  Scenario:Validate announcement owner cannot promote the application to the next review step if it is Negotiation requested
+    And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "NEGOTIATION"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I get the "EGMS ID"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
+      | Form Name  | Due in Days |
+      | Pre-Screen | 5           |
+    When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
+      | Reviewer                 |
+      | {SavedValue:PM Username} |
+    And I click on "Assign" icon for "{SavedValue:PM Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:assignApplicationsTableId---" panel
+    And I check "{SavedValue:Automation Runtime Announcement Application Review}" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    And I refresh the page
+    And I save the value from row "1" for column name "EGMS ID" as "EGMSID" from flex table "---applicationReview:-:appTableId---"
+    When I check "{SavedValue:Automation Runtime Announcement Application Review}" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
+    And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    And I wait for "10" seconds
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---applicationReview:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
+    When I complete filling in the Review form with recommendation "Recommended"
+    And I click on "Save" in the page details
+    And I wait for "6" seconds
+    When I click on "Submit" in the page details without processing
+    When I click alert button "OK"
+    And I wait for "5" seconds
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:appTableId---" panel
+    Then I softly see value "Pending" for title "Decision Status" inside table "---applicationReview:-:appTableId---"
+    And I check "{SavedValue:Automation Runtime Announcement Application Review}" boxes in flex table with id "---applicationReview:-:appTableId---"
+    And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
+    Then I softly see the following messages in the page details contains:
+      | Selected application cannot be promotion |
+
+  @134195 @ValidateuserisnotabletorequestNegotiationagainapplicationfromthereviewstepwhereNegotiationisalreadyrequested @sprint-1 @vaibhav
+  Scenario: user is not able to request Negotiation again on an application (from the review step) where Negotiation is already requested
+    And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "NEGOTIATION"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:appTableId---" panel
+    Then I softly see value "Pending" for title "Decision Status" inside table "---applicationReview:-:appTableId---"
+    When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:appTableId---" panel
+    Then I softly cannot see row level action button "Request Negotiation" against "{SavedValue:Automation Runtime Announcement Application Review}" in flex table with id "---applicationReview:-:appTableId---"
+
+  @134200 @Validatemailisgeneratedtoallreviewersassignedtotheapplicationwithinthereviewstep @Sprint-1 @vaibhav
+  Scenario:Validate mail is generated to all reviewers assigned to the application within the review step
+    And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "NEGOTIATION"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I get the "EGMS ID"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
+      | Form Name  | Due in Days |
+      | Pre-Screen | 5           |
+    When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
+      | Reviewer                 |
+      | {SavedValue:PM Username} |
+    And I click on "Assign" icon for "{SavedValue:PM Username}" inside flex table with id "---applicationReview:-:reviewersTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:assignApplicationsTableId---" panel
+    And I check "{SavedValue:Automation Runtime Announcement Application Review}" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
+    And I refresh the page
+    And I save the value from row "1" for column name "EGMS ID" as "EGMSID" from flex table "---applicationReview:-:appTableId---"
+    When I check "{SavedValue:Automation Runtime Announcement Application Review}" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
+    And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    And I wait for "10" seconds
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID1"
+    Then I softly can see "Negotiations" sub tab at view detail page
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "120" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Application {SavedValue:EGMSID} is Assignedto you for Review
+      """
+
+    Then I see the mail text is as follows :
+      """
+       Hello Automation PM,
+       This email is to notify you that Application {SavedValue:EGMSID} is assigned to you for review.
+       Log in to EGMS and click here to start with the assigned review application task.
+       Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+       Thank you,
+       The EGMS Team.
+      """
+
+
+  @134201 @ValidatependingtaskandemailisgeneratedtoSubrecipientuserwhenannouncementrecordownerclickonSendtoSubrecipient @Sprint-1 @vaibhav
+  Scenario: Validate  pending task and email is generated to Subrecipient user  when announcement record owner click on Send to Subrecipient
+    And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "NEGOTIATION"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:appTableId---" panel
+    When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "fieldApplicationSectionsForRevision__c"
+    When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I pause execution for "5" seconds
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
+    Then I softly see value "{SavedValue:EGMSID}" for title "EGMS ID" inside table "---negotiation:-:homePendingTasks---"
+    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
+    And I pause execution for "120" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: An Application Negotiation Request forApplication {SavedValue:EGMSID} has been Requested
+      """
+
+    Then I see the mail text is as follows :
+      """
+      Hello Automation SPI3,
+      This email is to notify you that an Application Negotiation for Announcement {SavedValue:Automation Runtime Announcement Application Review} has been requested.
+      Log in to EGMS and click here to access the negotiation request.
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com , if you have any questions or need assistance with this task.
+      Thank you.
+      The EGMS Team
+      """
+
+
+  @134202 @ValidateapplicationrecordownercaneditsectionsandformswithintheapplicationwhentheapplicationisinnegotiationInitiatedstate @Sprint-1 @vaibhav
+  Scenario: Validate application record owner can edit sections and forms within the application when the application is in negotiation Initiated state
+    And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "NEGOTIATION"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:appTableId---" panel
+    When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "fieldApplicationSectionsForRevision__c"
+    When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I pause execution for "5" seconds
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
+    When I navigate to "Overview" sub tab
+    When I enter value "ProjectAbstract" into field "fieldProjectAbstract__c"
+    And I navigate to "Negotiations" sub tab
+    And I enter values into fields
+      | Value                              | Field                |
+      | Automation Negotiation Iniatiation | ApplicantResponse__c |
+    When I click on "Save" in the page details
+    When I navigate to "Files" sub tab
+    Then I softly can see row level action button "Edit" against "Standard Assurances Form" in flex table with id "---negotiation:-:filesFormsTableId---"
+    Then I softly can see row level action button "Edit" against "Program Application Form" in flex table with id "---negotiation:-:filesFormsTableId---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
+    When  I enter "Form_prog" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    When I click on "Back" in the page details
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
+    When  I enter "Form_stand" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    When I click on "Back" in the page details
+    When I navigate to "Overview" sub tab
+    Then I see "Project Information" page block displayed
+
+  @134206 @ValidateuserscanseetherevisiondetailsintheNegotiationstab @Sprint-1 @vaibhav
+  Scenario: Validate users can see the revision details in the Negotiations tab
+    And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "NEGOTIATION"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:appTableId---" panel
+    When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "fieldApplicationSectionsForRevision__c"
+    When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I pause execution for "5" seconds
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
+    And I navigate to "Negotiations" sub tab
+    And I save the field labeled "Due Date" as "DueDate"
+    Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
+    Then I softly see field "Application Sections for Revision" as "Overview: Project Information; Budget: Budget Details; Files: Forms"
+    Then I softly see field "Due Date" as "10/12/2141"
+
+  @134207 @ValidateapplicationrecordownercaneditsectionsandformswithintheapplicationwhentheapplicationisinnegotiationInitiatedstate @Sprint-1 @vaibhav
+  Scenario: Validate application record owner can edit sections and forms within the application when the application is in negotiation Initiated state
+    And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "NEGOTIATION"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:appTableId---" panel
+    When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "fieldApplicationSectionsForRevision__c"
+    When  I enter "Edit_2" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I pause execution for "5" seconds
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
+    When I navigate to "Overview" sub tab
+    When I enter value "ProjectAbstract" into field "fieldProjectAbstract__c"
+    And I navigate to "Negotiations" sub tab
+    And I enter values into fields
+      | Value                              | Field                |
+      | Automation Negotiation Iniatiation | ApplicantResponse__c |
+    When I click on "Save" in the page details
+    When I navigate to "Files" sub tab
+    Then I softly can see row level action button "Edit" against "Standard Assurances Form" in flex table with id "---negotiation:-:filesFormsTableId---"
+    Then I softly can see row level action button "Edit" against "Program Application Form" in flex table with id "---negotiation:-:filesFormsTableId---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
+    When  I enter "Form_prog" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    When I click on "Back" in the page details
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
+    When  I enter "Form_stand" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    When I click on "Back" in the page details
+    When I navigate to "Overview" sub tab
+    Then I see "Project Information" page block displayed
+    When I click on "Submit to Grantor" in the page details
+    And I navigate to "Negotiations" sub tab
+    Then I softly see field "Negotiation Request Status" as "Submitted to Grantor" in "Negotiation Request Details" pageblock
+
+  @134208 @134220 @134396 @134399 @Validateresubmittingtherevisedapplicationtheapplicationsectionsandformsshouldbelocked @Sprint-1 @vaibhav
+  Scenario: Validate  re-submitting the revised application, the application sections and forms should be locked
+    And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "NEGOTIATION"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:appTableId---" panel
+    When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "fieldApplicationSectionsForRevision__c"
+    When  I enter "Ed_Over" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I pause execution for "5" seconds
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
+    When I navigate to "Overview" sub tab
+    Then I softly see fields "fieldTitle__c" is in edit mode
+    Then I softly see fields "fieldGranteeProgramincome__c" is in edit mode
+    And I enter values into fields
+      | Value                       | Field                        |
+      | Automation Test Description | fieldTitle__c                |
+      | 100                         | fieldGranteeProgramincome__c |
+    And I navigate to "Negotiations" sub tab
+    And I enter values into fields
+      | Value                              | Field                |
+      | Automation Negotiation Iniatiation | ApplicantResponse__c |
+    When I click on "Save" in the page details
+    When I navigate to "Files" sub tab
+    Then I softly can see row level action button "Edit" against "Standard Assurances Form" in flex table with id "---negotiation:-:filesFormsTableId---"
+    Then I softly can see row level action button "Edit" against "Program Application Form" in flex table with id "---negotiation:-:filesFormsTableId---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
+    When  I enter "Form_prog" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    When I click on "Back" in the page details
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
+    When  I enter "Form_stand" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    When I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    And I navigate to "Negotiations" sub tab
+    #134399
+    Then I softly see field "Negotiation Request Status" as "Submitted to Grantor" in "Negotiation Request Details" pageblock
+    When I navigate to "Files" sub tab
+    Then I softly cannot see row level action button "Edit" against "Standard Assurances Form" in flex table with id "---negotiation:-:filesFormsTableId---"
+    Then I softly cannot see row level action button "Edit" against "Program Application Form" in flex table with id "---negotiation:-:filesFormsTableId---"
+    When I navigate to "Overview" sub tab
+    Then I softly see field "Estimated Program Income For Project Period" as "$100.00"
+    Then I softly see field "Application Title" as "Automation Test Description"
+    #134396
+    Then I softly see field "Status" as "Negotiation Submitted"
+    #134220
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:internalHomePendingTableId---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:internalHomePendingTableId---"
+    When I click on "Complete Negotiation" in the page details
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    And I refresh the page
+    And I pause execution for "10" seconds
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:appTableId---" panel
+    Then I softly see value "Pending" for title "Decision Status" inside table "---applicationReview:-:appTableId---"
+    Then I softly can see row level action button "Request Negotiation" against "{SavedValue:Automation Runtime Announcement Application Review}" in flex table with id "---applicationReview:-:appTableId---"
+
+  @134397 @ValidatebuttonsdisplayedtoapplicationrecordownerwhenapplicationisinNegotiationInitiatedstate @sprint-1 @vaibhav
+  Scenario: Verify buttons displayed to application record owner when application is in Negotiation Initiated state
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I enter "CompetitiveAnnouncement" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Continue"
+    When I enter "Creation Second Negotiation" values from "Announcement_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    And I save the field labeled "Announcement Name" as "Automation Runtime Competitive Announcement"
+    When I click on "Edit" in the page details
+    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
+    When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
+    When I close "Associate Funding Accounts" modal by clicking the top right x button
+    And I refresh the page
+    Given I edit the following rows inline in flex table with id "---announcement:-:fundingAccountsTableId---" by clicking "Edit" :
+      | Funding Account             | Pre-Encumbrance |
+      | {SavedValue:fundingAccount} | 100             |
+    When I navigate to "Financials" sub tab
+    And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
+    When I refresh the page
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:contactTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
+      | {SavedValue:PM Username} | Step 1       | Step 1 | Step 1 | Step 1            | Step 1               | Step 1          | Step 1     | Step 1   |
+    And I click on "Edit" in the page details
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "Justification__c"
+    When I get the "EGMS ID"
+    When I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Budget Period Name | Start Date | End Date |
+      | BP01               | 50         | 150      |
+    And I click on "Save" in the page details
+    And I click on "Submit For Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
+    And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    And I click on "Publish" in the page details
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I initiated an application review for application "{SavedValue:Automation Runtime Competitive Announcement}" on announcement "{SavedValue:Automation Runtime Competitive Announcement}" with properties "default"
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Competitive Announcement}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Competitive Announcement}" in "---applicationReview:-:appTableId---" panel
+    When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Competitive Announcement}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "fieldApplicationSectionsForRevision__c"
+    When  I enter "Ed_Over" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I pause execution for "5" seconds
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
+    When I navigate to "Overview" sub tab
+    Then I softly see fields "fieldTitle__c" is in edit mode
+    Then I softly see fields "fieldGranteeProgramincome__c" is in edit mode
+    And I enter values into fields
+      | Value                       | Field                        |
+      | Automation Test Description | fieldTitle__c                |
+      | 100                         | fieldGranteeProgramincome__c |
+    And I navigate to "Negotiations" sub tab
+    And I enter values into fields
+      | Value                              | Field                |
+      | Automation Negotiation Iniatiation | ApplicantResponse__c |
+    When I click on "Save" in the page details
+    Then I softly can see top right button "Submit to Grantor" in page detail
+    Then I softly can see top right button "Edit" in page detail
+
+  @134401 @ValidatependingtaskisremovedfromapplicationownerspendingtasklistwhenuserclickonSubmittoGrantorbutton   @Sprint-1 @vaibhav
+  Scenario: Validate pending task is removed from application owner's pending task list when user click on Submit to Grantor button
+    And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "NEGOTIATION"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:appTableId---" panel
+    When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "fieldApplicationSectionsForRevision__c"
+    When  I enter "Ed_Over" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I pause execution for "5" seconds
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
+    When I navigate to "Overview" sub tab
+    Then I softly see fields "fieldTitle__c" is in edit mode
+    Then I softly see fields "fieldGranteeProgramincome__c" is in edit mode
+    And I enter values into fields
+      | Value                       | Field                        |
+      | Automation Test Description | fieldTitle__c                |
+      | 100                         | fieldGranteeProgramincome__c |
+    And I navigate to "Negotiations" sub tab
+    And I enter values into fields
+      | Value                              | Field                |
+      | Automation Negotiation Iniatiation | ApplicantResponse__c |
+    When I click on "Save" in the page details
+    When I navigate to "Files" sub tab
+    Then I softly can see row level action button "Edit" against "Standard Assurances Form" in flex table with id "---negotiation:-:filesFormsTableId---"
+    Then I softly can see row level action button "Edit" against "Program Application Form" in flex table with id "---negotiation:-:filesFormsTableId---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
+    When  I enter "Form_prog" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    When I click on "Back" in the page details
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
+    When  I enter "Form_stand" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    When I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    And I navigate to "Negotiations" sub tab
+    Then I softly see field "Negotiation Request Status" as "Submitted to Grantor" in "Negotiation Request Details" pageblock
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
+    Then I softly do not see value "{SavedValue:EGMSID}" for title "EGMS ID" inside table "---negotiation:-:homePendingTasks---"
+
+  @134402 @134403 @134404 @134405 @134406 @ValidatebuttonsdisplayedtoannouncementrecordownerwhenapplicationisinNegotiationSubmittedstate @sprint-1 @vaibhav
+  Scenario: Validate buttons displayed to announcement record owner when application is in Negotiation Submitted state
+    And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "NEGOTIATION"
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:appTableId---" panel
+    When I click on "Request Negotiation" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:appTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "fieldApplicationSectionsForRevision__c"
+    When  I enter "Ed_Over" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I pause execution for "5" seconds
+    When I click on "Form Name" column header inside table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    And I enter value "Checked" into field "AllowEdit__c"
+    And I click on top right button "Save" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
+    When I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
+    When I navigate to "Overview" sub tab
+    Then I softly see fields "fieldTitle__c" is in edit mode
+    Then I softly see fields "fieldGranteeProgramincome__c" is in edit mode
+    And I enter values into fields
+      | Value                       | Field                        |
+      | Automation Test Description | fieldTitle__c                |
+      | 100                         | fieldGranteeProgramincome__c |
+    And I navigate to "Negotiations" sub tab
+    And I enter values into fields
+      | Value                              | Field                |
+      | Automation Negotiation Iniatiation | ApplicantResponse__c |
+    When I click on "Save" in the page details
+    When I navigate to "Files" sub tab
+    Then I softly can see row level action button "Edit" against "Standard Assurances Form" in flex table with id "---negotiation:-:filesFormsTableId---"
+    Then I softly can see row level action button "Edit" against "Program Application Form" in flex table with id "---negotiation:-:filesFormsTableId---"
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
+    When  I enter "Form_prog" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    When I click on "Back" in the page details
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
+    When  I enter "Form_stand" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    Then I softly see the following messages in the page details :
+      | Form saved successfully. |
+    When I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    And I navigate to "Negotiations" sub tab
+    Then I softly see field "Negotiation Request Status" as "Submitted to Grantor" in "Negotiation Request Details" pageblock
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:internalHomePendingTableId---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:internalHomePendingTableId---"
+    #134403
+    And I navigate to "Negotiations" sub tab
+    Then I softly see field "Negotiation Request Status" as "Submitted to Grantor" in "Negotiation Request Details" pageblock
+    #134404
+    Then I softly can see page block "Applicant Response"
+    Then I softly see field "Details" as "Automation Negotiation Iniatiation" in "Applicant Response" pageblock
+    #134402
+    Then I softly can see top right button "Complete Negotiation" in page detail
+    Then I softly can see top right button "Request Negotiations" in page detail
+    #134405
+    When I navigate to "Overview" sub tab
+    Then I softly see field "Estimated Program Income For Project Period" as "$100.00"
+    Then I softly see field "Application Title" as "Automation Test Description"
+    When I navigate to "Files" sub tab
+    Then I softly cannot see row level action button "Edit" against "Standard Assurances Form" in flex table with id "---negotiation:-:filesFormsTableId---"
+    Then I softly cannot see row level action button "Edit" against "Program Application Form" in flex table with id "---negotiation:-:filesFormsTableId---"
+    And I click on "View" icon for "Program Application Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
+    Then I softly cannot see top right button "Edit" in page detail
+    When I click on "Back" in the page details
+    And I click on "View" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
+    Then I softly cannot see top right button "Edit" in page detail
+    #134406
+    When I click on "Back" in the page details
+    When I click on "Request Negotiations" in the page details
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
+    Then I softly see field "Status" as "Negotiation Initiated"
