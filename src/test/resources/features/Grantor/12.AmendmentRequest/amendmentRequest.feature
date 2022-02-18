@@ -443,8 +443,8 @@ Feature: Validate all scenarios in the Amendment Request
     Then I see that "<Objectives>" has been added in flextable with Id "---amendment:-:goalsAndObjectivesTableId---"
     And I pause execution for "5" seconds
     And I edit the following rows inline in flex table with id "---amendment:-:AmendmentKPITableId---" by clicking "Edit" :
-      | EGMS ID                                  | Target |
-      | Automation Permanent KPI for Regression2 | 11     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 11     |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
@@ -1686,7 +1686,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Add Line Items" icon for "Construction" inside flex table with id "---amendment:-:budgetChangeTableId---"
     When I enter the following values into flex table with id "---amendment:-:amendmentLineItemsTableId---" by clicking "New" :
       | Title        | Narrative     | Awarded Budget |
-      | Extra Salary | The narrative | 1100            |
+      | Extra Salary | The narrative | 1100           |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -1832,7 +1832,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:fundingAccount}" inside flex table with id "---amendment:-:amendmentFundingAccountsTableId---" without waiting for record
+    When I click on "Edit" icon for "{SavedValue:fundingAccount1}" inside flex table with id "---amendment:-:amendmentFundingAccountsTableId---" without waiting for record
     When I enter Revised Encumbrance for award "{SavedValue:Automation Runtime Award}"
     And I click on top right button "Save" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
     When I navigate to "Responsibilities" sub tab
@@ -1846,6 +1846,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 3            |
     And I click on "Submit for Approval" in the page details
+    And I pause execution
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
