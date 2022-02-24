@@ -11,7 +11,6 @@ import io.cucumber.java.en.When;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
 public class CommonSteps {
     ProjectManager projectManager;
 
@@ -36,4 +35,5 @@ public class CommonSteps {
         projectManager.deletionApi(recordName, objectType);
     }
 
+   
 }
