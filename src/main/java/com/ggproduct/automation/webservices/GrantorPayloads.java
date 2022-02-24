@@ -36,7 +36,7 @@ public class GrantorPayloads {
 
         String ownerName = "Automation SPI3";
         String contactName = "Automation SPI3";
-        String kpiName = "Automation Permanent KPI for Regression";
+        String kpiName = "Automation Permanent KPI";
 
         JsonObject parent = new JsonObject();
 
