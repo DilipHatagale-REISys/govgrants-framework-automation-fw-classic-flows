@@ -332,6 +332,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" without waiting for record
     Then I softly can see top right button "Complete Review" in page detail
@@ -464,13 +465,13 @@ Feature: Validate all scenarios in the Risk Assessment
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1606,6 +1607,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" without waiting for record
     Then I softly cannot see top right button "Submit for Approval" in page detail
@@ -1912,11 +1914,12 @@ Feature: Validate all scenarios in the Risk Assessment
     And I enter a review as "Passed"
     When I click modal button "Save"
     And I click on submit review
-    When I close "Review" modal by clicking the top right x button
+  #  When I close "Review" modal by clicking the top right x button
     Then I softly cannot see top right button "Edit" in page detail
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" without waiting for record
     And I click on "Complete Review" in the page details
@@ -3692,6 +3695,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I save the field labeled "EGMS ID" as "RiskID"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
     And I perform quick search for "{SavedValue:RiskID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:RiskID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Responsibilities" sub tab
@@ -3726,6 +3730,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I save the field labeled "EGMS ID" as "RiskID"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
     And I perform quick search for "{SavedValue:RiskID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:RiskID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Responsibilities" sub tab
@@ -3843,6 +3848,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I save the field labeled "EGMS ID" as "RiskID"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
     And I perform quick search for "{SavedValue:RiskID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:RiskID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Responsibilities" sub tab
@@ -3955,6 +3961,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I save the field labeled "EGMS ID" as "RiskID"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
     And I perform quick search for "{SavedValue:RiskID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:RiskID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Responsibilities" sub tab
@@ -4101,6 +4108,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I save the field labeled "EGMS ID" as "RiskID"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
     And I perform quick search for "{SavedValue:RiskID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:RiskID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Responsibilities" sub tab
@@ -4241,6 +4249,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I save the field labeled "EGMS ID" as "RiskID"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
     And I perform quick search for "{SavedValue:RiskID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:RiskID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Responsibilities" sub tab
@@ -4363,6 +4372,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I save the field labeled "EGMS ID" as "RiskID"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
     And I perform quick search for "{SavedValue:RiskID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:RiskID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Responsibilities" sub tab
@@ -4484,6 +4494,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I save the field labeled "EGMS ID" as "RiskID"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
     And I perform quick search for "{SavedValue:RiskID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:RiskID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Responsibilities" sub tab
@@ -4596,6 +4607,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I save the field labeled "EGMS ID" as "RiskID"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
     And I perform quick search for "{SavedValue:RiskID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:RiskID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Responsibilities" sub tab
@@ -4721,6 +4733,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I save the field labeled "EGMS ID" as "RiskID"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
     And I perform quick search for "{SavedValue:RiskID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:RiskID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Responsibilities" sub tab
@@ -4866,6 +4879,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I save the field labeled "EGMS ID" as "RiskID"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
     And I perform quick search for "{SavedValue:RiskID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:RiskID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Responsibilities" sub tab
@@ -5045,6 +5059,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I save the field labeled "EGMS ID" as "RiskID"
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Risk Assessments - All"
     And I perform quick search for "{SavedValue:RiskID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "{SavedValue:RiskID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
     When I navigate to "Responsibilities" sub tab

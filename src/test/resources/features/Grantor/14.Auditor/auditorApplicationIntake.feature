@@ -200,7 +200,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Files and Forms" sub tab
     And I click on top right button "Add Files" in flex table with id "---auditor:-:PreApplicationTableId---"
     When I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details

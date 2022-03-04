@@ -227,6 +227,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -337,8 +341,8 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account1" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
       | Title                           | Start Date | End Date |
@@ -672,6 +676,10 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     When I get the "EGMS ID"
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     Given I click on "Submit to Grantor" in the page details
 #    Then I softly see the following messages in the page details contains:
 #      | Forms and Attachments Tab - Supporting Documents are missing. |
@@ -1453,6 +1461,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -1566,6 +1578,10 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     When I save the field labeled "EGMS ID" as "ProgresReport1"
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c,false"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -1685,6 +1701,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I create a post award record "ProgressReport" for the Award "<Award Name>" having object api name as "ProgressReports__c,false"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
@@ -1765,6 +1785,10 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     When I save the field labeled "EGMS ID" as "PR1EGMSID"
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1889,6 +1913,10 @@ Feature: Validate scenarios in Progress Report without background
     When I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1946,6 +1974,10 @@ Feature: Validate scenarios in Progress Report without background
     When I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2035,6 +2067,10 @@ Feature: Validate scenarios in Progress Report without background
     When I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2097,6 +2133,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2195,6 +2235,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2291,6 +2335,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2387,6 +2435,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2588,6 +2640,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2725,6 +2781,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2825,6 +2885,10 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Save" in the page details
     And I click on "Back" in the page details
     When I get the "EGMS ID"
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     Given I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2932,6 +2996,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -3062,6 +3130,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -3172,6 +3244,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -3455,6 +3531,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -3570,6 +3650,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -3660,6 +3744,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -3758,6 +3846,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -3848,6 +3940,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -3948,6 +4044,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -4040,6 +4140,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -4132,6 +4236,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -4236,6 +4344,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -5241,6 +5353,10 @@ Feature: Validate scenarios in Progress Report without background
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -5431,6 +5547,10 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Save" in the page details
     And I pause execution for "3" seconds
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -5477,6 +5597,10 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Save" in the page details
     And I pause execution for "3" seconds
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -5517,6 +5641,10 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Save" in the page details
     And I pause execution for "3" seconds
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -5560,6 +5688,10 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Save" in the page details
     And I pause execution for "3" seconds
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab

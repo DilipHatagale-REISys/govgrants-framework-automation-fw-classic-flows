@@ -1846,7 +1846,6 @@ Feature: Validate all scenarios in the Amendment Request
       | Name                      | Amendment Request |
       | {SavedValue:EXE Username} | Step 3            |
     And I click on "Submit for Approval" in the page details
-    And I pause execution
     And I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab

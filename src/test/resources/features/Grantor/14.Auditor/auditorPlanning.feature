@@ -107,8 +107,8 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     Then I softly cannot see top right button "New" for "---fundingsource:-:fundingAccountTableId---" flex table
     Then I softly cannot see top right button "Activate" in page detail
     Examples:
-      | User    | FundingSource                         |
-      | AUDITOR | Automation Permanent Funding Source 1 |
+      | User    | FundingSource                       |
+      | AUDITOR | Automation Permanent Funding Source |
 
   @67846 @auditorCanViewActiveFundingSource
   Scenario Outline: Validate Auditor should have view / read  only access to Active Funding Source
@@ -144,7 +144,7 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     And I click on "View" icon for "<KPI>" inside flex table with id "---keyperformanceindicator:-:kpiTableId---"
     Then I softly cannot see top right button "Activate" in page detail
     Examples:
-      | User    | KPI                                     |
+      | User    | KPI                      |
       | AUDITOR | Automation Permanent KPI |
 
   @67849 @otherUsersCanCreateKPI

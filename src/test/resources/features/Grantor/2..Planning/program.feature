@@ -5029,7 +5029,7 @@ Feature: Validate all scenarios for program
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "---program:-:pendingTaskTableId---"
-    Then I softly see value "Activate Internal Program" for title "Type" inside table "---program:-:pendingTaskTableId---"
+    Then I softly see value "Activate Internal Program" for title "Task Type" inside table "---program:-:pendingTaskTableId---"
 
     Examples:
       | Focus Area                      |
@@ -5089,7 +5089,7 @@ Feature: Validate all scenarios for program
     When I "Approve" in the approval decision
     And I pause execution for "5" seconds
     And I logout
-    And I checkout to yopmail with mailid "donald_pm@ggp.test7.atm.automation"
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     And I see the mail subject is as follows :
       """
       Sandbox: Notification: Program #{SavedValue:ProgramEGMSID} has been Created andWaiting for Your Approval
@@ -5100,7 +5100,7 @@ Feature: Validate all scenarios for program
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
     Then I softly see value "Approve Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:pendingTaskTableId---"
-    And I checkout to yopmail with mailid "test@gmaildemo.com.atm.automation"
+    And I checkout to yopmail with mailid "exe.automation@yopmail.com"
     And I see the mail subject is as follows :
       """
       Sandbox: Notification: Program #{SavedValue:ProgramEGMSID} has been Created andWaiting for Your Approval
