@@ -543,7 +543,7 @@ public class GrantorPayloads {
                 .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         ann.addProperty("FocusAreaRequired","Yes");
         ann.addProperty("IsGoalsRequired","No");
-        ann.addProperty("KPIsRequired","No");
+        ann.addProperty("KPIsRequired","Yes");
         ann.addProperty("WBSRequired","No");
         ann.addProperty("RiskAssessment_Required","Yes");
         ann.addProperty("AreExpensesBuildIUpLevel","No");
@@ -561,7 +561,8 @@ public class GrantorPayloads {
 
         JsonObject serviceArea = new JsonObject();
         JsonArray serviceAreaA = new JsonArray();
-        serviceArea.addProperty("ServiceArea",ProjectWebServices.getIdOf("ServiceArea__c","Automation Permanent Focus Area"));
+        serviceArea.add("ServiceArea",JsonNull.INSTANCE);
+     //   serviceArea.addProperty("ServiceArea",ProjectWebServices.getIdOf("ServiceArea__c","Automation Permanent Focus Area"));
         serviceAreaA.add(serviceArea);
         parent.add("AnnouncementServiceArea",serviceAreaA);
 

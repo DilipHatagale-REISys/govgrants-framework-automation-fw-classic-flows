@@ -1560,7 +1560,7 @@ Feature: Validate all scenarios in Payment Request
     And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     And I pause execution for "3" seconds
-    And I checkout to yopmail with mailid "govgrantsuat@yopmail.com"
+    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
     And I pause execution for "2" seconds
     Then I refresh the page
     And I see the mail subject is as follows :

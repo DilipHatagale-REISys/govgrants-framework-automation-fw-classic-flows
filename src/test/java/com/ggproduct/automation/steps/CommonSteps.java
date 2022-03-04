@@ -1,12 +1,19 @@
 package com.ggproduct.automation.steps;
 
+import com.automation.rei.handlers.govgrants;
 import com.ggproduct.automation.projectmanager.ProjectManager;
 import com.ggproduct.automation.webservices.ProjectWebServices;
+import com.testingblaze.register.I;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.springframework.context.annotation.Description;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -35,5 +42,23 @@ public class CommonSteps {
         projectManager.deletionApi(recordName, objectType);
     }
 
-   
+
+    @And("^I Click on \"([^\"]*)\" icon for \"([^\"]*)\" without tableid")
+    public void iClickIconWithOutTableId(String iconName, String recordName) {
+        projectManager.clickIconWithOutTableId(iconName, recordName);
+    }
+
+
+    @When("I close the tab")
+    public void closeCurrentTab() {
+        I.amPerforming().browserOperationsTo().closeBrowserOrTab();
+        I.amPerforming().switchTo().windowHandler(
+                I.amPerforming().switchTo().getWindowsHandlers().size() - 1
+        );
+    }
+
+    @Then("^I (softly see|do not see) the image \"([^\"]*)\" in page detail$")
+    public void validateImageinPageDetail(String usage, String imageName) {
+        projectManager.validateImage(usage, imageName);
+    }
 }

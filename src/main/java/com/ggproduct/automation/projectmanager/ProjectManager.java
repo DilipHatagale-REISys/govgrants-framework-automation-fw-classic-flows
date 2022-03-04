@@ -3,6 +3,7 @@ package com.ggproduct.automation.projectmanager;
 import com.automation.rei.handlers.govgrants;
 import com.ggproduct.automation.usersUrl.UsersAndURL;
 import com.ggproduct.automation.webservices.ProjectWebServices;
+import com.testingblaze.actionsfactory.api.ByUsing;
 import com.testingblaze.register.I;
 import com.testingblaze.report.LogLevel;
 import org.openqa.selenium.By;
@@ -61,5 +62,28 @@ public class ProjectManager extends ProjectWebServices {
         return By.xpath("//form//a[text()]"
                 + " | "
                 + "//form//input[@type='submit' and @value]");
+    }
+
+    public void clickIconWithOutTableId(String iconName, String recordName) {
+        I.amPerforming().click().on(By.xpath("//td//*[text()='"+recordName+"']//ancestor::tr[1]//td//*[@title='"+iconName+"']|//td[text()='"+recordName+"']//ancestor::tr[1]//td//*[@title='"+iconName+"']"));
+    }
+
+    public void validateImage(String usage, String imageName) {
+        if (usage.equalsIgnoreCase("softly see")) {
+            I.amPerforming().assertionsTo().assertThat(imageIsVisibleOrNot(imageName)).isTrue();
+        } else if (usage.equalsIgnoreCase("do not see")) {
+            I.amPerforming().assertionsTo().assertThat(imageIsVisibleOrNot(imageName)).isFalse();
+        }
+    }
+
+    private boolean imageIsVisibleOrNot(String imageName) {
+        boolean flag = false;
+        try {
+            if (I.amPerforming().checkToSee().isDisplayed(I.amPerforming().getElementReference().of(ByUsing.xpath("//img[contains(@title,'"+imageName+"')] | //img[contains(@alt,'"+imageName+"')]")))) {
+                flag = true;
+            }
+        } catch (Exception e) {
+        }
+        return flag;
     }
 }
