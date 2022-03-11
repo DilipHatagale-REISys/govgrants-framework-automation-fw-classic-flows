@@ -58,7 +58,7 @@ Feature: Validate all scenarios in the Site Visit
     And I save the field labeled "EGMS ID" as "SiteVisitId"
     Then I softly see field "Status" as "Notified"
     Then I softly see status in Progress-bar is "Notified" and is "green"
-    And I checkout to yopmail with mailid "automationspi3@yopmail.com"
+    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
     And I pause execution for "3" seconds
     And I refresh the page
     Then I see the mail subject is as follows :

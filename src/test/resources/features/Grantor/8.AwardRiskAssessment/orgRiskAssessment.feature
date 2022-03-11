@@ -453,7 +453,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Active" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     And I navigate to "Files" sub tab
-    Then I see top right button "Add" for "Attachments" flex table
+    Then I see top right button "Add" for "---orgRiskAssessment:-:orgriskSupportingDocTableId---" flex table
 
   @62304 @EffectiveDatAandExpirationDatesForOrgLRAIsInCraetedStatus @keerti
   Scenario: Valdiate the Effective Date and Expiration Dates are not populated when Org Risk Assessment is in Craeted Status
@@ -471,8 +471,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "View" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:activeOrgTableID---" without waiting for record
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
-    Then I softly see value "" for title "Effective Date" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    Then I softly see value "" for title "Expiration Date" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I softly see value "" for title "Effective From" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I softly see value "" for title "Effective Until" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @62303 @OrgLRAOnceActiveThenCreatedDateIsTodaysDate @deepika
   Scenario: Validate once the Org Level Risk Assessment is Active, then the Created Date is Today's date
@@ -1186,12 +1186,12 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Submit" in the page details
     And I navigate to "Overview" sub tab
     Then I see field "Effective Date" is getting updated with todays date
-    And I save the field labeled "Effective Date" as "EffectiveDate"
+    And I save the field labeled "Effective From" as "EffectiveDate"
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
-    Then I softly see value "{SavedValue:EffectiveDate}" for title "Effective Date" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I softly see value "{SavedValue:EffectiveDate}" for title "Effective From" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @63077 @VerifyTaskForNoPopUpWhenClickedOnRequestNewAssessment @keerti
   Scenario: Validate task is not created for Grantor when the SA user clicks as 'No' on pop up when clicked on Request New Assessment

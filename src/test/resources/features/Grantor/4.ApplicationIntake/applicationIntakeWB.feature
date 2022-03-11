@@ -181,7 +181,7 @@ Feature: Application Intake scenarios without background
       | Automation Permanent Objective | View    |
     When I navigate to "Overview" sub tab
     And I mouse hover to link contains "{SavedValue:oppurtunityId}"
-    And I click "PG-TAO-0001" link present on hovered tooltip
+    And I click "PG-TAO modified-0006" link present on hovered tooltip
     Then I softly see page title contains as "Automation Permanent Internal Program"
 
   @73755 @71110 @appdueDateValidation @deepika @smoke
