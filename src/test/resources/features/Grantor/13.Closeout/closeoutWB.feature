@@ -580,7 +580,7 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Files" sub tab
     Then I softly cannot see top right button "Add Files" in flex table with id "---closeout:-:CloseoutDetailsTableId---"
 
-  @95599 @95609 @95607 @VerifySubrecipientAbleToAddAttachmentForTerminationCloseoutRequest-EXEUser @monu @buglogged169487
+  @95599 @95609 @95607 @VerifySubrecipientAbleToAddAttachmentForTerminationCloseoutRequest-EXEUser @monu
   Scenario: Validate subrecipient user is able to see Add files button on under closeout details while creating termination closeout request
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "Automation EXE user"
     When I login to "As a Grantor" app as "EXE" user

@@ -847,9 +847,10 @@ Feature: Validate all scenarios for program
     And I refresh the page
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     # message disappear in fraction of second
-    Then I softly see the following messages in the page details :
-      | Setup Tab - SME Review: At least one form is required for this review step.                                   |
-      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
+   # Then I softly see the following messages in the page details :
+   #   | Setup Tab - SME Review: At least one form is required for this review step.                                   |
+   #   | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
+    Then I see "No Records Found" inside flex table with id "---program:-:reviewStepTableId---"
 
   @106079 @106078 @105941 @ValidateDeletionOfSupportingDocuments @monu
   Scenario: Validate user is able to delete the attachment checklist for the Internal Program
@@ -2978,7 +2979,7 @@ Feature: Validate all scenarios for program
     When I enter value "30" into field "Weight__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
-    And I expand nested table containing column value "Program Income"
+   # And I expand nested table containing column value "Program Income"
     And I click on "Edit" icon for "Program Income" inside flex table with id "---program:-:programReviewPanel---" without waiting for record
     When I enter value "60" into field "Weight__c"
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"

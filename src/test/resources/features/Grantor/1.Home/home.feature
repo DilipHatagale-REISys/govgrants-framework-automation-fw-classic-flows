@@ -71,7 +71,7 @@ Feature: Validate all scenarios in the home tab
     #And I close "Create Internal Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:internalContactTableId---" panel
-    Then I softly can see row level action button "View" against "{SavedValue:Automation Runtime Contact}" in flex table with id "flexTableRandomID"
+    Then I softly can see row level action button "View" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:internalContactTableId---"
     And I click on "View" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---" without waiting for record
     Then I softly see field "Organization" as "Test Automation Organization"
     And I refresh the page
@@ -235,13 +235,13 @@ Feature: Validate all scenarios in the home tab
     When I click modal button "Save"
     #And I close "Create Internal Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
-    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "flexTableRandomID" panel
-    When I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "flexTableRandomID" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:internalContactTableId---" panel
+    When I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:internalContactTableId---" without waiting for record
     And I enter "Edition1" values from "InternalContact_Field_Values.xlsx"
     And I click modal button "Save"
     #And I close "Edit" modal by clicking the top right x button
-    And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "flexTableRandomID" panel
-    Then I see value "Active" for title "Status" inside table "flexTableRandomID"
+    And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:internalContactTableId---" panel
+    Then I see value "Active" for title "Status" inside table "---home:-:internalContactTableId---"
     Examples:
       | User  |
       | ADMIN |

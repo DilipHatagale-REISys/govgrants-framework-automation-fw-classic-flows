@@ -27,7 +27,7 @@ Automation Permanent Strategic Goal2 -> Automation Permanent Objective2
 
 * Under 'Automation Permanent Internal Program' , add mandatory supporting document for Progress report and Payment Request. As we donot have support of supporting document in Existing API's
 * Create One NGO Contact by name "NGO Contact" on Automation org after refresh
-
+* Every Org Refresh change the admin user name as a "Automation ADMIN" and also second admin user as a "Automation ADMIN1"
 # List of All APIs used in project
 
 # Type of Users

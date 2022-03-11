@@ -81,7 +81,7 @@ Feature: Validate all scenarios in the Application Intake
       | Files Tab - All mandatory forms must be 100% completed. |
     When I navigate to "Files" sub tab
     Then I see only the following headers in table with id "FormEnhancedTable" :
-      | Form Name | Mandatory | Percentage | Last Modified By | Last Modified Date | Actions |
+      | Form Name | Mandatory | Percentage | Last Modified By | Last Modified Date | Allow Edit? | Actions |
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details

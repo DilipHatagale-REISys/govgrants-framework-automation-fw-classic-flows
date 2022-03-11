@@ -105,6 +105,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Submit to Grantor" in the page details
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    And I click toggle button to select "Pre-Application - All"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-App}" in "---preApplication:-:recipientPreApplicationsTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-App}" inside table
     Then I softly cannot see top right button "Create Pre-Application" in page detail
@@ -122,7 +123,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     Then I softly cannot see top right button "Create Pre-Application" in page detail
 
-  @71115 @71114 @preappDueDateValidation @deepika  @buglogged113230
+  @71115 @71114 @preappDueDateValidation @deepika
   Scenario: Validate whether User will be able to submit the pre- application on the last date for submission.
   Validate once the Announcement is published and Pre-Application is in created status, later the announcement is unpublished then the User will not be able to see the Submit to Grantor on pre-application
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for PreApp and App" and properties "TODAY_PREAPP_DUE_DATE"
@@ -160,6 +161,7 @@ Feature: Pre-Application scenarios without background
     And I login as "SPI3" user
     And I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Pre-Applications - All"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for PreApp and App}" in "---preApplication:-:recipientPreApplicationsTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for PreApp and App}" inside table
     Then I softly cannot see top right button "Submit to Grantor" in page detail
@@ -202,7 +204,7 @@ Feature: Pre-Application scenarios without background
     And I click on "Edit" in the page details
     And I enter "Edition1" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
-    When I navigate to "Files" sub tab
+    When I navigate to "Files and Forms" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
@@ -319,7 +321,7 @@ Feature: Pre-Application scenarios without background
     And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Files and Forms" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     And I get the "EGMS ID"
@@ -474,7 +476,7 @@ Feature: Pre-Application scenarios without background
     And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 100    | 1000       | 50             | 100            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Files and Forms" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     And I refresh the page
@@ -579,7 +581,7 @@ Feature: Pre-Application scenarios without background
     And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
-    When I navigate to "Files" sub tab
+    When I navigate to "Files and Forms" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
@@ -672,7 +674,7 @@ Feature: Pre-Application scenarios without background
     And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 0      | 0          | 0              | 0              |
-    When I navigate to "Files" sub tab
+    When I navigate to "Files and Forms" sub tab
     And I click on top right button "Add Files" in flex table with id "---preApplication:-:ExternalPreApplicationFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Other" from computer
     And I refresh the page
