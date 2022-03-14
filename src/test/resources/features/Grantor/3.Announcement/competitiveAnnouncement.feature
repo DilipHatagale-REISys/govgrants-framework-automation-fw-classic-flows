@@ -559,6 +559,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I see the sub-header is "TestFirst TestLast" in the page details
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     When I navigate to "Overview" sub tab
@@ -579,6 +580,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:contactTableId---"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "Draft Competitive Announcements"
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     When I navigate to "Overview" sub tab
