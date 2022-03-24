@@ -155,7 +155,6 @@ Feature: Application Intake scenarios without background
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
-    Given I expand nested table containing column value "BP01"
     Then I softly see value "$1,300.00" for title "Total Project Cost" against the value "Construction" inside table "---applicationIntake:-:budgetPeriodTableId---"
 
   @70460 @70461 @goalsAndObjectivesInApplication @deepika
@@ -1114,7 +1113,6 @@ Feature: Application Intake scenarios without background
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 0          | 0              | 0              |
-    Given I expand nested table containing column value "BP01"
     Then I softly see value "$1,000.00" for title "Budget" against the value "Construction" inside table "---applicationIntake:-:budgetPeriodTableId---"
 
   @34322 @zeroBudgetRequestedAmount @deepika
@@ -1301,8 +1299,8 @@ Feature: Application Intake scenarios without background
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - Expired"
-    And I perform quick search for "TEST APP from Announcement 2 for Automation API" in "---applicationIntake:-:recipientApplications---" panel
-    When I click on "View" icon for "TEST APP from Announcement 2 for Automation API" inside flex table with id "---applicationIntake:-:recipientApplications---" without waiting for record
+    And I perform quick search for "Automation Runtime Announcement for Site Visit104651" in "---applicationIntake:-:recipientApplications---" panel
+    When I click on "View" icon for "Automation Runtime Announcement for Site Visit104651" inside flex table with id "---applicationIntake:-:recipientApplications---" without waiting for record
     When I click on "Submit Application" in the page details
     Then I softly see the following messages in the page details contains:
       | An Application cannot be submitted after the Application Due Date. |

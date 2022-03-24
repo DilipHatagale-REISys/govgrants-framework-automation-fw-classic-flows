@@ -1673,7 +1673,7 @@ Feature: Validate all scenarios in Organizational Site Visit
       | {SavedValue:PM Username} | Step 1     |
     Then I softly see "Saved Successfully!" inside flex table with id "---orgLevelSiteVisits:-:approverSiteVisitTableId---"
 
-  @148023 @VerifyErrorMessageAtApproverSectionWhileSkippingForSiteVisitOrgLevel-RnRFunctnality @monu @buglogged146819
+  @148023 @VerifyErrorMessageAtApproverSectionWhileSkippingForSiteVisitOrgLevel-RnRFunctnality @monu
   Scenario: Verify the validation is displayed when NA is defined for step on organization site visit
     Given I navigate to "Related log" sub tab
     And I click on top right button "Initiate Site Visit" in flex table with id "SiteVisit"

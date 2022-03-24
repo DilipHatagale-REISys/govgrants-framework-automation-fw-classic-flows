@@ -166,6 +166,7 @@ Feature: Validate all scenarios for program
       | Name                      | Program |
       | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
+    And I pause execution for "3" seconds
     #111183 #monu
     When I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -748,7 +749,7 @@ Feature: Validate all scenarios for program
     And I select value "Automation EXE1" into field "s2id_autogen1"
     And I select value "Automation EXE" into field "s2id_autogen3"
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:adminTaskReassignmentTableId---" panel
-    Then I softly see value "GrantorPlanning" for title "Phase Name" inside table "---program:-:adminTaskReassignmentTableId---"
+    Then I softly see value "GrantorPlanning" for title "Phase" inside table "---program:-:adminTaskReassignmentTableId---"
     Then I softly see value "Activate Internal Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:adminTaskReassignmentTableId---"
     Then I softly see value "In Progress" for title "Status" inside table "---program:-:adminTaskReassignmentTableId---"
     When I check "{SavedValue:ProgramEGMSID}" boxes in flex table with id "---program:-:adminTaskReassignmentTableId---"
@@ -1628,7 +1629,7 @@ Feature: Validate all scenarios for program
     And I navigate to "Planning" tab
     When I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---program:-:completedTaskTableId---"
-    Then I softly see value "Activate Activate NGO Program Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:completedTaskTableId---"
+    Then I softly see value "Activate NGO Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:completedTaskTableId---"
 
   @197125 @Validateownershiptasksareroutedtoappropriateuserwhentransferofownershipisdonesimultaneouslyfor4internalprogramsindifferentstateshasrelatedtasksonthem @sprint-4 @vaibhav
   Scenario: Validate ownership & tasks are routed to appropriate user when transfer of ownership is done simultaneously for 4 internal programs in different states & has related tasks on them
@@ -1735,6 +1736,7 @@ Feature: Validate all scenarios for program
     When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Internal Programs - Draft"
@@ -1809,6 +1811,7 @@ Feature: Validate all scenarios for program
     And I refresh the page
     When I perform quick search for "{SavedValue:ProgramEGMSID3}" in "---program:-:adminTargetOwnerReplaceTableId---" panel
     Then I see value "{SavedValue:ProgramEGMSID3}" for title "Program ID" inside table "---program:-:adminTargetOwnerReplaceTableId---"
+    And I refresh the page
     When I perform quick search for "{SavedValue:ProgramEGMSID4}" in "---program:-:adminOwnerReplaceTableId---" panel
     When I check "{SavedValue:ProgramEGMSID4}" boxes in flex table with id "---program:-:adminOwnerReplaceTableId---"
     When I click table top right button "Transfer Ownership" in flex table with id "---program:-:adminOwnerReplaceTableId---"
@@ -1998,13 +2001,9 @@ Feature: Validate all scenarios for program
     Then I see the mail text is as follows :
       """
        Hello Automation EXE1
-
-       This email is to notify you that Program #PG-ASAP-0084 has been rejected.
-
+       This email is to notify you that Program #{SavedValue:ProgramEGMSID} has been rejected.
        Log in to EGMS and click here to see details.
-
        Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com, if you have any questions or need assistance with this task.
-
        Thank you.
        The EGMS Team
       """
@@ -2440,7 +2439,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "Activate NGO Program {SavedValue:ProgramEGMSID2}" for title "Subject" inside table "---program:-:pendingTaskTableId---"
     And I click on "Start" icon for "{SavedValue:ProgramEGMSID2}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
-    Then I softly see value "Automation PM1" for title "Name" inside table "---program:-:programOwnerTableId---"
+    Then I softly see value "Automation PM" for title "Name" inside table "---program:-:programOwnerTableId---"
     And I click on "Activate" in the page details
     Then I softly see status in Progress-bar is "Active" and is "green"
 
@@ -2497,7 +2496,7 @@ Feature: Validate all scenarios for program
     And I navigate to "Planning" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
-    Then I softly see value "Activate NGO Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:grantorTaskReassignTableId---"
+    Then I softly see value "Activate NGO Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:pendingTaskTableId---"
     And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     Then I can see top right button "Activate" in page detail
     And I click on "Activate" in the page details
@@ -2546,7 +2545,7 @@ Feature: Validate all scenarios for program
     And I select value "Automation ADMIN1" into field "s2id_autogen3"
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:adminTaskReassignmentTableId---" panel
     And I pause execution for "5" seconds
-    Then I softly see value "GrantorPlanning" for title "Phase Name" inside table "---program:-:adminTaskReassignmentTableId---"
+    Then I softly see value "GrantorPlanning" for title "Phase" inside table "---program:-:adminTaskReassignmentTableId---"
     Then I softly see value "Activate NGO Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:adminTaskReassignmentTableId---"
     Then I softly see value "Not Started" for title "Status" inside table "---program:-:adminTaskReassignmentTableId---"
     When I check "{SavedValue:ProgramEGMSID}" boxes in flex table with id "---program:-:adminTaskReassignmentTableId---"
@@ -2613,7 +2612,7 @@ Feature: Validate all scenarios for program
     And I select value "Automation ADMIN" into field "s2id_autogen1"
     And I select value "Automation ADMIN1" into field "s2id_autogen3"
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:adminTaskReassignmentTableId---" panel
-    Then I softly see value "GrantorPlanning" for title "Phase Name" inside table "---program:-:adminTaskReassignmentTableId---"
+    Then I softly see value "GrantorPlanning" for title "Phase" inside table "---program:-:adminTaskReassignmentTableId---"
     Then I softly see value "Activate Internal Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:adminTaskReassignmentTableId---"
     Then I softly see value "Not Started" for title "Status" inside table "---program:-:adminTaskReassignmentTableId---"
     When I check "{SavedValue:ProgramEGMSID}" boxes in flex table with id "---program:-:adminTaskReassignmentTableId---"
@@ -2681,7 +2680,7 @@ Feature: Validate all scenarios for program
     And I navigate to "Planning" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
-    Then I softly see value "Activate NGO Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:grantorTaskReassignTableId---"
+    Then I softly see value "Activate NGO Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:pendingTaskTableId---"
     And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     Then I can see top right button "Activate" in page detail
     And I click on "Activate" in the page details

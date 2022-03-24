@@ -175,7 +175,7 @@ Feature: Validate all scenarios in the Pre-Application
      | EGMS ID                  | Target |
       | Automation Permanent KPI | 10     |
     And I get the "EGMS ID"
-    And I navigate to "Files and Forms" sub tab
+    And I navigate to "Files" sub tab
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -279,7 +279,7 @@ Feature: Validate all scenarios in the Pre-Application
     And I login as "SPI3" user
     When I navigate to "Applications" tab
     And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
-    When I click toggle button to select "Pre-Applications - Submitted"
+    When I click toggle button to select "Pre-Applications - All"
     And I perform quick search for "<Announcement Name>" in "RecipientPreApplications" panel
     Then I softly see value "<Announcement Name>" for title "Pre-Application Title" against the value "Rejected" inside table "RecipientPreApplications"
     When I click on "View" icon for "<Announcement Name>" inside table
