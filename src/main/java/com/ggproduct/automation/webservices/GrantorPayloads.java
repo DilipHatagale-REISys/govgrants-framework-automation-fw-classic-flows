@@ -542,7 +542,7 @@ public class GrantorPayloads {
         ann.addProperty("ApplicationDueDate",I.amPerforming()
                 .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         ann.addProperty("FocusAreaRequired","Yes");
-        ann.addProperty("IsGoalsRequired","No");
+        ann.addProperty("IsGoalsRequired","Yes");
         ann.addProperty("KPIsRequired","Yes");
         ann.addProperty("WBSRequired","No");
         ann.addProperty("RiskAssessment_Required","Yes");

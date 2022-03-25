@@ -628,8 +628,8 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Reassign" content inside "My Tasks" subheader on left panel
     When I reassign task to "{SavedValue:EXE Username}"
-    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "GrantorTaskReassignment" panel
-    When I click "Reassign Selected" after selection of "{SavedValue:ProgramEGMSID}" in the table "GrantorTaskReassignment"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
+    When I click "Reassign Selected" after selection of "{SavedValue:ProgramEGMSID}" in the table "---program:-:grantorTaskReassignTableId---"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel

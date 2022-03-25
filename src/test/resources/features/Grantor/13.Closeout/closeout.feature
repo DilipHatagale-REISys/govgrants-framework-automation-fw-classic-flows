@@ -130,10 +130,9 @@ Feature: Validate all scenarios in Closeout
     When I close "{SavedValue:EGMSID}" modal by clicking the top right x button
     When I re-login to "As a Grantor" app as "DynamicUser" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
-    When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
-    And I click toggle button to select "Project Period Closeouts - All"
-    And I perform quick search for "{SavedValue:closeoutID}" in "ProjectPeriodCloseoutGrantor" panel
-    And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "ProjectPeriodCloseoutGrantor"
+    And I click toggle button to select "Closeouts - All"
+    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:CloseoutTableId---" panel
+    And I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:CloseoutTableId---"
     #86715
     Then I softly see field "EGMS ID" as "{SavedValue:closeoutID}"
     Then I softly can see "Overview" sub tab at view detail page
@@ -608,7 +607,7 @@ Feature: Validate all scenarios in Closeout
     #86712
     And I click on "Acknowledge" in the page details
     Then I softly see status in Progress-bar is "Acknowledged by Subrecipient" and is "Green"
-    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I softly see field "Status" as "Acknowledged by Subrecipient"
     #93583
     And I save the field labeled "Acknowledgement" as "AcknowledgementCheck"
     And I save the field labeled "Acknowledgement Date" as "AcknowledgementDate"
@@ -691,7 +690,6 @@ Feature: Validate all scenarios in Closeout
     When I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:homePendingTaskTableId---" panel
     #86706
     Then I softly see that "{SavedValue:CloseoutID}" has been added in flextable with Id "---closeout:-:homePendingTaskTableId---"
-    And I softly see value "Automation PM" for title "Assigned By" inside table "---closeout:-:homePendingTaskTableId---"
     When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:homePendingTaskTableId---"
     When I "Approve" in the approval decision
     #88851
@@ -699,7 +697,6 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Closeout" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
-    And I softly see value "Automation PM" for title "Assigned By" inside table "---closeout:-:pendingTaskTableId---"
     When I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     Then I softly see field "Status" as "Submitted for Approval"
     Then I softly see field "EGMS ID" as "{SavedValue:CloseoutID}"
@@ -726,7 +723,7 @@ Feature: Validate all scenarios in Closeout
     And I click toggle button to select "Project Period Closeouts - Submitted"
     Then I softly see value "Submitted for Approval" for title "Status" inside table "---closeout:-:ProjectPeriodCloseoutTableId---"
 
-  @93540 @VerifyDifferentTypeOfCloseoutRequestOnSameGrantInCloseout @meenakshi @buglogged130514
+  @93540 @VerifyDifferentTypeOfCloseoutRequestOnSameGrantInCloseout @meenakshi
   Scenario: Verify user can create different type of closeout request on the same grant though another closeout is in progress.
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -1032,8 +1029,6 @@ Feature: Validate all scenarios in Closeout
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     When I click on "Override" in the page details
-    Then I softly see field "Status" as "Overridden"
-    Then I see status in Progress-bar is "Overridden" and is "Green"
     When I navigate to "Closeout" tab
     And I click toggle button to select "Closeouts - All"
     And I perform quick search for "{SavedValue:CloseoutEGMSID}" in "---closeout:-:CloseoutTableId---" panel
@@ -1099,7 +1094,7 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Project Period Closeouts" content inside "Recipient Closeouts" subheader on left panel
     And I click toggle button to select "Project Period Closeouts - Draft"
     And I perform quick search for "{SavedValue:closeoutID}" in "ProjectPeriodCloseoutGrantor" panel
-    Then I softly see value "Submitted to Grantor" for title "Status" inside table "ProjectPeriodCloseoutGrantor"
+    Then I softly see value "Acknowledged by Subrecipient" for title "Status" inside table "ProjectPeriodCloseoutGrantor"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Closeout" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1166,7 +1161,7 @@ Feature: Validate all scenarios in Closeout
     And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I "Approve" in the approval decision
-    And I checkout to yopmail with mailid "govgrantsuat@yopmail.com"
+    And I checkout to yopmail with mailid "fo.automation@yopmail.com"
     And I pause execution for "180" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
@@ -1463,7 +1458,6 @@ Feature: Validate all scenarios in Closeout
     Then I softly can see top right button "New" in flex table with id "---closeout:-:closeoutApproverTableId---"
     #140331
     And I click on "Override" in the page details
-    Then I softly see field "Status" as "Overridden"
     When I navigate to "Responsibilities" sub tab
     Then I softly can see top right button "New" in flex table with id "---closeout:-:closeoutApproverTableId---"
 

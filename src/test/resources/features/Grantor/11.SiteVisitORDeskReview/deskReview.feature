@@ -317,8 +317,8 @@ Feature: Validate all scenarios in Desk Review
     Then I softly see field "Status" as "Sent to Subrecipient"
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
-    And I checkout to yopmail with mailid "govgrantsuat@yopmail.com"
-    And I pause execution for "5" seconds
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "120" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -566,6 +566,7 @@ Feature: Validate all scenarios in Desk Review
   Scenario Outline: Verify that record owner can delete created state desk review from Award level
     Given I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    And I click toggle button to select "Desk Review Reports - All"
     When I perform quick search for "<Desk Review Name>" in "---deskreview:-:deskReviewGridViewTableId---" panel
     And I click on "Delete" icon for "<Desk Review Name>" inside table
     Then I do not see values "<Desk Review Name>" and "Title" inside table

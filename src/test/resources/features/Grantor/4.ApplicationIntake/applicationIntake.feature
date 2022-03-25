@@ -155,13 +155,13 @@ Feature: Validate all scenarios in the Application Intake
    # Then I softly can see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
     #When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
     And I click on "Remove Focus Area" icon for "Automation Permanent Focus Area" inside table
-    When I click modal button "Yes"
+  #  When I click modal button "Yes"
      # When I click "Remove" after selection of "Automation Permanent Focus Area" in the table "---applicationIntake:-:focusAreaFlexTableId---"
       #73514 need to check
 #    Then I softly see the following messages in the page details :
 #      | Budget Tab - At least one focus area must be in place at all times. |
     When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
-    When I perform quick search for "Automation Permanent Focus Area1" in "---applicationIntake:-:AddFocusAreaTableAppId---" panel
+    When I perform quick search for "Automation Permanent Focus Area" in "---applicationIntake:-:AddFocusAreaTableAppId---" panel
     Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:AddFocusAreaTableAppId---"
     And I close modal by clicking the top right x button
     Given I expand nested table containing column value "BP01"
