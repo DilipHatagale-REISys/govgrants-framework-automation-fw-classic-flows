@@ -471,8 +471,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "View" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:activeOrgTableID---" without waiting for record
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
-    Then I softly see value "" for title "Effective From" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    Then I softly see value "" for title "Effective Until" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I softly do not see value "" for title "Effective From" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I softly do not see value "" for title "Effective Until" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @62303 @OrgLRAOnceActiveThenCreatedDateIsTodaysDate @deepika
   Scenario: Validate once the Org Level Risk Assessment is Active, then the Created Date is Today's date
@@ -924,7 +924,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I navigate to "Subawards" sub tab
-    And I click on "Start" icon for "Revise Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Start" icon for "Created" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
     And I get the "EGMS ID"
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -1186,7 +1186,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I click on "Submit" in the page details
     And I navigate to "Overview" sub tab
     Then I see field "Effective Date" is getting updated with todays date
-    And I save the field labeled "Effective From" as "EffectiveDate"
+    And I save the field labeled "Effective Date" as "EffectiveDate"
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab

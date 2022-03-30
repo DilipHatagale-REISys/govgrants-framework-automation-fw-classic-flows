@@ -221,7 +221,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     Then I softly cannot see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
     When I navigate to "Monitoring" tab
     And I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
-    When I click toggle button to select "Risk Assessments - All"
+    And I click toggle button to select "Subaward Risk Assessments - All"
     When I perform quick search for "Record Id" in "---auditor:-:monitoringtableid---" panel
     Then I softly see that "Active" has been added in flextable with Id "---auditor:-:monitoringtableid---"
     Examples:
@@ -252,6 +252,10 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Document" modal by clicking the top right x button
+    And I click on "Save" in the page details
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
