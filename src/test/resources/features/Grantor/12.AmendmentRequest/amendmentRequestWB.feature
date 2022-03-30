@@ -1748,7 +1748,6 @@ Feature: Amendment Request scenarios without background
       | Automation Execution KPI | fieldMasterKPI__c |
       | 10                       | fieldTarget__c    |
     And I click modal button "Save"
-    When I close "Associate KPI" modal by clicking the top right x button
     Then I softly see value "Automation Execution KPI" for title "Title" inside table "---amendment:-:AmendmentKPITableId---"
     And I click on "Edit" icon for "Automation Execution KPI" inside flex table with id "---amendment:-:AmendmentKPITableId---" without waiting for record
     And I enter value "20" into field "Target__c"
@@ -2368,12 +2367,12 @@ Feature: Amendment Request scenarios without background
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     And I navigate to "Budget" sub tab
-    When I expand nested table containing column value "Fiscal Year(2021-2031)"
+    When I expand nested table containing column value "Fiscal Year(2022-2032)"
     Then I softly see value "$1,000.00" for title "Awarded Budget" against the value "Construction" inside table "---amendment:-:GrantsBudgetCategoriesTableId---"
     Then I softly see value "$100.00" for title "Cash Match" against the value "Construction" inside table "---amendment:-:GrantsBudgetCategoriesTableId---"
     And I navigate to "Actuals" sub tab
     And I refresh the page
-    When I expand nested table containing column value "Fiscal Year(2021-2031)"
+    When I expand nested table containing column value "Fiscal Year(2022-2032)"
     Then I softly see value "$1,000.00" for title "Awarded Budget" against the value "Construction" inside table "---amendment:-:GrantsActualBudgetPeriodTableId---"
     Then I softly see value "$100.00" for title "Cash Match" against the value "Construction" inside table "---amendment:-:GrantsActualBudgetPeriodTableId---"
 
@@ -2507,7 +2506,6 @@ Feature: Amendment Request scenarios without background
       | Automation Execution KPI | fieldMasterKPI__c |
       | 10                       | fieldTarget__c    |
     And I click modal button "Save"
-    When I close "Grantor Amendment KPIs" modal by clicking the top right x button
     Then I softly see value "Automation Execution KPI" for title "Title" inside table "---amendment:-:RecipientKPITableId---"
 
   @99213 @99239 @99224 @99235 @VerifySubRecipientAbleToCreateAmendmentRequest-BudgetRedirection @monu
