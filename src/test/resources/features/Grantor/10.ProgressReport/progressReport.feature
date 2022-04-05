@@ -966,8 +966,6 @@ Feature: Validate all scenarios in Progress Report
       | Title                    | Actual | Reported Date |
       | Automation Permanent KPI | 2      | 7             |
     Then I softly see value "2" for title "Actual" against the value "Automation Permanent KPI" inside table "---progressReport:-:kpiTableId---"
-    Then I softly see the following messages in the page details contains:
-      | Saved Successfully! |
 
   @59775 @validateActualFieldAtInternalSide @mahadev
   Scenario: Validate Actual field updated by SR user reflect the same value at Internal user end when Progress report status is Submitted to Grantor
