@@ -31,7 +31,6 @@ Feature: Validate all scenarios for program
     And I click toggle button to select "<Program flextable Header>"
     And I perform quick search for "<Program>"
     And I click on "Delete" icon for "<Program>" inside flex table with id "---program:-:programsTableId---" without waiting for record
-    Then I see the text "Record deleted successfully."
     And I perform quick search for "<Program>"
     Then I softly see "No Records Found" inside flex table with id "---program:-:programsTableId---"
     Examples:
@@ -850,6 +849,7 @@ Feature: Validate all scenarios for program
    # Then I softly see the following messages in the page details :
    #   | Setup Tab - SME Review: At least one form is required for this review step.                                   |
    #   | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
+    And I expand nested table containing column value "SME Review"
     Then I see "No Records Found" inside flex table with id "---program:-:reviewStepTableId---"
 
   @106079 @106078 @105941 @ValidateDeletionOfSupportingDocuments @monu
@@ -1067,7 +1067,6 @@ Feature: Validate all scenarios for program
     When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     And I "Reject" in the approval decision
-    Then I can see the message "Successfully disapproved" in the approval decision
     Then I softly see field "Status" as "Rejected"
     Then I softly see status in Progress-bar is "Rejected" and is "Red"
 
@@ -1770,6 +1769,7 @@ Feature: Validate all scenarios for program
       | Completeness   | 0                  |
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
+    And I pause execution for "2" seconds
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review - Pre-Screen: A weighted form must contain weighted sections. |
     And I expand nested table containing column value "SME Review"

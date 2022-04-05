@@ -78,11 +78,8 @@ public class UsersAndURL implements UsersController {
             case "SARAH PO":
                 password = "test72018";
                 break;
-            case "ADMIN":
-                password = "Salesforce_2019";
-                break;
             default:
-                password = "SALESFORCE2019";
+                password = "Welcome@20213";
         }
         return password;
     }
@@ -108,9 +105,6 @@ public class UsersAndURL implements UsersController {
             case "ADMIN1":
                 password = "Product@2022";
                 break;
-            case "SARAH PM":
-                password = "GoProduct@12345";
-                break;
             default:
                 password = "Salesforce2022";
         }
@@ -119,11 +113,11 @@ public class UsersAndURL implements UsersController {
 
     private String getQAEnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
-        username.put("ADMIN", "mayuresh.g@ggp.test7");
+        username.put("ADMIN", "demoadmin@ggp.test8.qaorg");
         username.put("EXE", "test@gmaildemo.com");
-        username.put("PM", "donald_pm@ggp.test7");
+        username.put("SARAH PM", "sarah.pm@ggp.test8.qaorg");
         username.put("FO", "auto.fm@auto.com");
-        username.put("SPI", "kyle.farrell@reisystems.com21");
+        username.put("SPI", "primary.sa@yopmail.com.qaorg");
         username.put("SPA", "spaautomation@yopmail.com");
 
         username.put("PO", "sdgdg45435dj@gmail.com");
@@ -162,7 +156,7 @@ public class UsersAndURL implements UsersController {
         username.put("FO1", "fo1.automation@yopmail.com");
         username.put("FD1", "automationfd1@yopmail.com");
 
-        username.put("SARAH PM", "sarah.pm@ggp.test8.automation");
+        username.put("SARAH PM", "sarah.pm@ggp.test9.automation");
         username.put("ALEX FO", "alex_fo@ggp.test7.automation");
         username.put("CATHY PM", "cathy_pm@ggp.test7.automation");
         username.put("OSCAR PM", "oscar_pm@ggp.test7.automation");

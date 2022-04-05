@@ -191,7 +191,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see that Budget Period field contains the updated Budget Period End Date
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All" in "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I click toggle button to select "Grants - All"
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     Then I softly see value "Draft" for title "Status" against the value "{SavedValue:Automation Runtime Execution Award}" inside table "---subAwardStandAlone:-:activeGrantsTableId---"
 
@@ -672,8 +672,8 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see value "7" for title "Target" against the value "Automation Permanent KPI" inside table "---subAwardStandAlone:-:kpiTableId---"
     When I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account1" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    And I perform quick search for "Automation Permanent Funding Account" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     Then I softly see value "{SavedValue:fundingAccount}" for title "Funding Account" inside table "---subAwardStandAlone:-:fundingAccountsTableId---"
@@ -822,43 +822,43 @@ Feature: Validate all scenarios of grants and award without background
     And I clear the value from field "fieldProjectTitle__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | *Grant Title is required to save. |
+      | Grant Title is required to save. |
     And I clear the value from field "GrantAbbreviation__c"
     When I enter value "{SavedValue:Automation Runtime Execution Award}" into field "fieldProjectTitle__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | *Grant Abbreviation is required to save. |
+      | Grant Abbreviation is required to save. |
     When I enter value "GA" into field "GrantAbbreviation__c"
     And I clear the value from field "ProjectPeriodEndDate__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | *Project Period End Date is Required to save. |
+      | Project Period End Date is Required to save. |
     When I enter value "3650" into field "ProjectPeriodEndDate__c"
     And I clear the value from field "ProjectPeriodStartDate__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | *Project Period Start Date is Required to save. |
+      | Project Period Start Date is Required to save. |
     And I clear the value from field "ExternalOrganization__c"
     When I enter value "3650" into field "ProjectPeriodEndDate__c"
     When I enter value "0" into field "ProjectPeriodStartDate__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | *Funding Organization is required to save. |
+      | Funding Organization is required to save. |
     And I clear the value from field "Program__c"
     When I enter value "Test Automation Organization" into field "ExternalOrganization__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | *Internal Program is required to save. |
+      | Internal Program is required to save. |
     When I enter value "Automation Permanent Internal Program" into field "Program__c"
     When I enter value "--None--" into field "BudgetCategoryPackage__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | *Budget Category Type is required to save. |
+      | Budget Category Type is required to save. |
     And I clear the value from field "InternalOrganization__c"
     When I enter value "Construction" into field "BudgetCategoryPackage__c"
     And I click modal button "Continue"
     Then I softly see the following messages in the page details :
-      | *Subrecipient Organization is required to save. |
+      | Subrecipient Organization is required to save. |
 
   @64424 @VerifyRequiredMatch%Filed @keerti
   Scenario: Verify If you select Subrecipient Match Required setting as Yes and award owner did not enter Required Match % field then it should show validation message.
@@ -1002,9 +1002,10 @@ Feature: Validate all scenarios of grants and award without background
     And I refresh the page
     Then I softly cannot see row level action button "Edit" against "Test T&C" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Terms and Conditions" in the table "---subAwardStandAlone:-:grantTermConditionPopUp---"
+    When I click "Associate" after selection of "Test TC" in the table "---subAwardStandAlone:-:grantTermConditionPopUp---"
     And I close modal by clicking the top right x button
-    Then I softly see value "Automation Permanent Terms and Conditions" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
+    When I perform quick search for "Test TC" in "---subAwardStandAlone:-:termsndConditionsTableId---" panel
+    Then I softly see value "Test TC" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
 
   @65794 @65822 @verifySRUserCanEnterBudgetDetails @mahadev
   Scenario Outline: To verify that the Sub Award budget field is editable in the Subrecipient (SPI User) under budget tab
@@ -1023,7 +1024,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Funding Account" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
     When I close "Associate Funding Accounts" modal by clicking the top right x button
     And I refresh the page
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
@@ -1185,6 +1186,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "flexGridRelatedAwards1" without waiting for record
     And I save the field value having link labeled "Grant  ID" as "grantID"
     And I softly see "Nakul Admin" is present after mouse hover for active subaward
+    And I halt execution
     And I mouse hover to link contains "{SavedValue:grantID}"
     Then I softly see "Grant" shown inside mini page layout on hover
     Then I softly see "Test Automation Organization" shown inside mini page layout on hover
@@ -1241,8 +1243,8 @@ Feature: Validate all scenarios of grants and award without background
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                                 | Target |
-      | Automation Permanent KPI for Regression | 10     |
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
     And I navigate to "Terms" sub tab
     And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:PaymentRequestModalIframeId---"
@@ -1476,7 +1478,7 @@ Feature: Validate all scenarios of grants and award without background
     And I enter "SourceError" values from "DeskReview_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see the following messages in the page details :
-      | Source is Required to save. |
+      | Source is required to save under Overview. |
 
   @66410 @validateInstructionFieldInDeskReview  @mahadev
   Scenario: To verify that if instruction field is left unfilled in Desk review and upon clicking on the save button by the award owner (Pm profile) on the top right corner of the page validation message must be thrown

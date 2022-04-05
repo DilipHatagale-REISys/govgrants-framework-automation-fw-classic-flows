@@ -524,7 +524,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     Then I softly see value "{SavedValue:PM Username}" for title "Reviewer" inside table "---announcement:-:AnnouncementReviewPanel---"
-    Then I softly see value "govgrantsuat@yopmail.com" for title "Email" inside table "---announcement:-:AnnouncementReviewPanel---"
+    Then I softly see value "pm.automation@yopmail.com" for title "Email" inside table "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see value "Test Automation Organization" for title "Organization Name" inside table "---announcement:-:AnnouncementReviewPanel---"
     And I click on "Remove from Form" icon for "Automation PM" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:AnnouncementReviewPanel---"
@@ -564,7 +564,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       | {SavedValue:FO Username} | Step 3       |
     And I click on advance filter "#advfGrantorAnnouncementRolesandResponsibilities" of table id "---announcement:-:approversTableId---"
     And I enter advance filter values inside id "advfGrantorAnnouncementRolesandResponsibilities"
-      | Announcement | equals to | Step 1 |
+      | Announcement | equals to | Step 4 |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:approversTableId---"
     And I navigate to "Setup" sub tab
     And I click on advance filter "#advfAnnoucementPackagesGrantor" of table id "---announcement:-:businessFormlistTableId---"
