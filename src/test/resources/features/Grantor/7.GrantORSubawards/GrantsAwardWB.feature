@@ -1186,7 +1186,6 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "flexGridRelatedAwards1" without waiting for record
     And I save the field value having link labeled "Grant  ID" as "grantID"
     And I softly see "Nakul Admin" is present after mouse hover for active subaward
-    And I halt execution
     And I mouse hover to link contains "{SavedValue:grantID}"
     Then I softly see "Grant" shown inside mini page layout on hover
     Then I softly see "Test Automation Organization" shown inside mini page layout on hover
