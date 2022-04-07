@@ -64,10 +64,6 @@ public class ProjectManager extends ProjectWebServices {
                 + "//form//input[@type='submit' and @value]");
     }
 
-    public void clickIconWithOutTableId(String iconName, String recordName) {
-        I.amPerforming().click().on(By.xpath("//td//*[text()='"+recordName+"']//ancestor::tr[1]//td//*[@title='"+iconName+"']|//td[text()='"+recordName+"']//ancestor::tr[1]//td//*[@title='"+iconName+"']"));
-    }
-
     public void validateImage(String usage, String imageName) {
         if (usage.equalsIgnoreCase("softly see")) {
             I.amPerforming().assertionsTo().assertThat(imageIsVisibleOrNot(imageName)).isTrue();

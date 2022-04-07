@@ -42,13 +42,6 @@ public class CommonSteps {
         projectManager.deletionApi(recordName, objectType);
     }
 
-
-    @And("^I Click on \"([^\"]*)\" icon for \"([^\"]*)\" without tableid")
-    public void iClickIconWithOutTableId(String iconName, String recordName) {
-        projectManager.clickIconWithOutTableId(iconName, recordName);
-    }
-
-
     @When("I close the tab")
     public void closeCurrentTab() {
         I.amPerforming().browserOperationsTo().closeBrowserOrTab();
