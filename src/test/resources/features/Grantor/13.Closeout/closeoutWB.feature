@@ -338,8 +338,6 @@ Feature: Validate all scenarios in Closeout
     And I softly see value "{Date:MM/dd/yyyy::d+7}" for title "Due Date" inside table "---closeout:-:closeoutPeerReviewTableId---"
     #94021
     And I click on "Delete" icon for "Automation PM" inside flex table with id "---closeout:-:closeoutPeerReviewTableId---" without waiting for record
-    Then I softly see the following messages in the page details contains:
-      | Record deleted successfully. |
     And I softly do not see value "Automation PM" for title "Reviewer Name" inside table "---closeout:-:closeoutPeerReviewTableId---"
     And I softly see value "Automation FO" for title "Reviewer Name" inside table "---closeout:-:closeoutPeerReviewTableId---"
     #94040

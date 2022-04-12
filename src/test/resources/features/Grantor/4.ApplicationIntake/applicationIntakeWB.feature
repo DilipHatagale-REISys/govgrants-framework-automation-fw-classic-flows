@@ -256,8 +256,8 @@ Feature: Application Intake scenarios without background
     When I click toggle button to select "Qualified Opportunities - All"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" in "---applicationIntake:-:qualifiedTableId---" panel
     And I wait for "1" seconds
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" inside table without waiting for record
-    Then I softly cannot see top right button "Qualify" in page detail
+   # When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" inside table without waiting for record
+   # Then I softly cannot see top right button "Qualify" in page detail
     And I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -290,8 +290,7 @@ Feature: Application Intake scenarios without background
     And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "View" icon for "Record id" inside table
     And I click on "Publish" in the page details
-    When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"

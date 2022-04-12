@@ -4486,8 +4486,6 @@ Feature: Validate all scenarios for program
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I expand nested table containing column value "Program Income"
     And I click on "Delete" icon for "<Question 2>" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---" without waiting for record
-    Then I softly see the following messages in the page details :
-      | Record deleted successfully. |
     Then I softly do not see value "<Question 2>" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
     #77195 #monu
     And I refresh the page
@@ -4500,8 +4498,6 @@ Feature: Validate all scenarios for program
     And I enter value "Yes/No" into field "Type__c"
     And I enter value "10" into field "MaxScore__c"
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
-    Then I softly see the following messages in the page details :
-      | Record deleted successfully. |
     Then I softly see value "Automation Question 3" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
 
     Examples:
@@ -4567,8 +4563,6 @@ Feature: Validate all scenarios for program
     And I expand nested table containing column value "Capability"
     When I click on "Question" column header inside table with id "---program:-:programReviewPanelQuestionsTableId---"
     And I click on "Delete" icon for "<Question 2>" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---" without waiting for record
-    Then I softly see the following messages in the page details contains:
-      | Record deleted successfully. |
     Then I softly do not see value "<Question 2>" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
     Examples:
       | Objective                      | Question 2                                                                                                                                                                                                                                                   |
@@ -4873,8 +4867,6 @@ Feature: Validate all scenarios for program
     Then I softly see value "Written" for title "Type" against the value "3" inside table "---program:-:programReviewPanelQuestionsTableId---"
     #77101
     And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---" without waiting for record
-    Then I softly see the following messages in the page details contains:
-      | Record deleted successfully. |
     Then I softly do not see value "3" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
     #77104
    # And I collapse nested table containing column value "Schedule"
@@ -5093,7 +5085,7 @@ Feature: Validate all scenarios for program
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Program #{SavedValue:ProgramEGMSID} has been Created andWaiting for Your Approval
+      Sandbox: Notification: Request to Approve {SavedValue:ProgramEGMSID}
       """
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "EXE" user
@@ -5104,7 +5096,7 @@ Feature: Validate all scenarios for program
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Program #{SavedValue:ProgramEGMSID} has been Created andWaiting for Your Approval
+      Sandbox: Notification: Request to Approve {SavedValue:ProgramEGMSID}
       """
 
   @109790 @VerifyValidationMessageForReviewFormWeightLessThan100%  @monu
@@ -5119,9 +5111,11 @@ Feature: Validate all scenarios for program
     When I enter value "1" into field "MinimumNumberOfReviewers__c"
     When I enter value "Checked" into field "Required__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I pause execution for "3" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 70.00%. |
+      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
+      | Setup Tab - The total Review Step weight must equal 100%. It is currently 130.00%. |
 
   @109651 @VerifyValidationMessageForReviewFormStepWeightLessThan100%  @monu
   Scenario: validate user is able to see validation message when step weight is les than 100%
@@ -5129,6 +5123,7 @@ Feature: Validate all scenarios for program
     And I click on "Edit" icon for "SME Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     When I enter value "70" into field "Weight__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I pause execution for "3" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - The total Review Step weight must equal 100%. It is currently 95.00%. |
@@ -5151,9 +5146,11 @@ Feature: Validate all scenarios for program
     And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Form Name         | Form Weight (%) | Minimum Number of Reviews per Application | Required? |
       | Compliance Review | 30              | 1                                         | Checked   |
+    And I pause execution for "3" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. it is currently 130.00% |
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 130.00%. |
+      | Setup Tab - SME Review - Compliance Review: A weighted form must contain weighted sections. |
 
   @109646 @VerifyAdditionOfNewReviewList  @monu
   Scenario: validate user is able to add new Review list for created internal program
