@@ -96,7 +96,7 @@ Feature: Validate all scenarios in Funding Source
     And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I enter "Funding Account Edition" values from "FundingSource_Field_Values.xlsx"
-    When I enter value "4650" into field "EndDate__c"
+    When I enter value "4650" into field "fieldEndDate__c"
     When I click on "Save" in the page details
     When I click on "Activate" in the page details
     Then I softly see the following messages in the page details contains:
