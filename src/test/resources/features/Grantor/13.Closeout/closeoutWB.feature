@@ -1354,7 +1354,6 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     Then I softly see field "Override Justification" as "Automation Test justification"
     When I click on "Override" in the page details
-    Then I softly see field "Status" as "Overridden"
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
     And I click toggle button to select "Project Period Closeouts - All"
