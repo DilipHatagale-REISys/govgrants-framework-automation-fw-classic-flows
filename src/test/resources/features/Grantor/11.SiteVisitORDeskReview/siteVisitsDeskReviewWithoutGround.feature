@@ -721,6 +721,12 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I refresh the page
     When I perform quick search for "Closed" in "---sitevisits:-:siteVisitSourceTableId---" panel
     Then I see value "Closed" for title "Status" inside table "---sitevisits:-:siteVisitSourceTableId---"
+    And I refresh the page
+    When I perform quick search for "Notified" in "---sitevisits:-:siteVisitSourceTableId---" panel
+    Then I see value "Notified" for title "Status" inside table "---sitevisits:-:siteVisitSourceTableId---"
+    And I refresh the page
+    When I perform quick search for "Submitted for Approval" in "---sitevisits:-:siteVisitSourceTableId---" panel
+    Then I see value "Submitted for Approval" for title "Status" inside table "---sitevisits:-:siteVisitSourceTableId---"
     #197290
     Then I can see top right button "Transfer Ownership" in flex table with id "---sitevisits:-:siteVisitSourceTableId---"
     #197292
