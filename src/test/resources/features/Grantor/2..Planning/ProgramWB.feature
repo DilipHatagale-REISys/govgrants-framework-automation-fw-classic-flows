@@ -165,6 +165,7 @@ Feature: Validate all scenarios for program
     When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
       | Name                      | Program |
       | {SavedValue:EXE Username} | Step 2  |
+    And I pause execution for "3" seconds
     And I click on "Submit For Approval" in the page details
     And I pause execution for "3" seconds
     #111183 #monu
