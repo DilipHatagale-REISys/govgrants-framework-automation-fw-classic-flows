@@ -299,6 +299,7 @@ Feature: Validate all scenarios for program
     And I edit the following rows inline in flex table with id "---program:-:reviewStepTableId---" by clicking "Edit" :
       | Form Name  | Form Weight (%) | Minimum Number of Reviews per Application | Required? |
       | Pre-Screen | 100.00%         | 1                                         | Checked   |
+    And I pause execution for "5" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review - Pre-Screen: A weighted form must contain weighted sections. |
@@ -309,6 +310,7 @@ Feature: Validate all scenarios for program
       | Eligibility    | 30                 |
       | Completeness   | 60                 |
     And I close "Review Form" modal by clicking the top right x button
+    And I pause execution for "5" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted. |
@@ -321,6 +323,7 @@ Feature: Validate all scenarios for program
       | Eligibility    | 40                 |
       | Completeness   | 60                 |
     And I close "Review Form" modal by clicking the top right x button
+    And I pause execution for "5" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted. |
@@ -334,6 +337,7 @@ Feature: Validate all scenarios for program
       | Environment    | 30                 |
       | Permits        | 40                 |
     And I close "Review Form" modal by clicking the top right x button
+    And I pause execution for "5" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted. |
@@ -350,6 +354,7 @@ Feature: Validate all scenarios for program
       | Environment    | 30                 |
       | Permits        | 40                 |
     And I close "Review Form" modal by clicking the top right x button
+    And I pause execution for "5" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted. |
@@ -1281,12 +1286,14 @@ Feature: Validate all scenarios for program
     And I expand nested table containing column value "Pre-Screen Review"
     And I click on "Delete" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
     Then I softly see "No Records Found" inside flex table with id "ProgramReviewStepTemplatesFlexToggle"
+    And I pause execution for "5" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review: At least one form is required for this review step. |
     And I expand nested table containing column value "Management Review"
     And I click on "Delete" icon for "Management Review" inside flex table with id "---program:-:reviewFormPanelId---"
     Then I softly see "No Records Found" inside flex table with id "ProgramReviewStepTemplatesFlexToggle"
+    And I pause execution for "5" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Management Review: At least one form is required for this review step.                                   |
@@ -1768,8 +1775,8 @@ Feature: Validate all scenarios for program
       | Eligibility    | 0                  |
       | Completeness   | 0                  |
     And I close "Review Form" modal by clicking the top right x button
+    And I pause execution for "5" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
-    And I pause execution for "2" seconds
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review - Pre-Screen: A weighted form must contain weighted sections. |
     And I expand nested table containing column value "SME Review"
@@ -1778,17 +1785,17 @@ Feature: Validate all scenarios for program
     When I enter the following values into flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "New" :
       | Question Order | Question | Type | Max Score |
       | 4              | Test 4   | Date | 0         |
+    And I pause execution for "5" seconds
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     When I edit the following rows inline in flex table with id "---program:-:programReviewPanelQuestionsTableId---" by clicking "Edit" :
       | Question Order | Type   |
       | 4              | Number |
+    And I pause execution for "5" seconds
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     Then I softly see value "Number" for title "Type" against the value "4" inside table "---program:-:programReviewPanelQuestionsTableId---"
     And I click on "Delete" icon for "4" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---" without waiting for record
-    Then I softly see the following messages in the page details contains:
-      | Record deleted successfully. |
     Then I softly do not see value "4" for title "Question Order" inside table "---program:-:programReviewPanelQuestionsTableId---"
 
   @77118 @77116 @77122 @77120 @ValidatingAdditionModificationDeletionOfPermitsReview @keerti @skipOnJenkins
@@ -2169,6 +2176,7 @@ Feature: Validate all scenarios for program
     And I delete all rows inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     Then I softly see "No Records Found" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---"
     And I close "Review Form" modal by clicking the top right x button
+    And I pause execution for "5" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Return on Investment (ROI) section because it is weighted. |
@@ -2530,8 +2538,6 @@ Feature: Validate all scenarios for program
     When I enter value "0" into field "MinimumNumberOfReviewers__c"
     When I enter value "Unchecked" into field "Required__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
-    Then I softly see the following messages in the page details contains:
-      | Saved Successfully! |
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
@@ -5111,7 +5117,7 @@ Feature: Validate all scenarios for program
     When I enter value "1" into field "MinimumNumberOfReviewers__c"
     When I enter value "Checked" into field "Required__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
-    And I pause execution for "3" seconds
+    And I pause execution for "5" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
@@ -5123,7 +5129,7 @@ Feature: Validate all scenarios for program
     And I click on "Edit" icon for "SME Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     When I enter value "70" into field "Weight__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
-    And I pause execution for "3" seconds
+    And I pause execution for "5" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - The total Review Step weight must equal 100%. It is currently 95.00%. |
@@ -5131,6 +5137,7 @@ Feature: Validate all scenarios for program
     And I click on "Edit" icon for "SME Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     When I enter value "85" into field "Weight__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
+    And I pause execution for "5" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - The total Review Step weight must equal 100%. It is currently 110.00%. |

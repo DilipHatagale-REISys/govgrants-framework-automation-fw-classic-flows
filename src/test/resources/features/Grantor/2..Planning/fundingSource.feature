@@ -271,3 +271,414 @@ Feature: Validate all scenarios in Funding Source
     When I click on "Activate" in the page details
     And I click "{SavedValue:FUNDINGSOURCE}" lookup link
     Then I softly see field "Appropriation Amount" as "$2,500.00"
+
+  @196552 @196555 @ValidatefilerelatedpermissionsforEXEprofileduringtheworkflowStatusCreatedActivatedClosedwhenInternalFundingSourceiscreatedbyEXE @Sprint-3-US-195048 @vaibhav
+  Scenario: Validate file related permissions for EXE profile during the workflow Status (Created, Activated, Closed) when Internal Funding Source is created by EXE
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "Start Date" as "SDATE"
+    And I save the field labeled "End Date" as "EDATE"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I click on top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I upload attachment without random number "Attachment.pdf" of type "Other" from computer
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I navigate to "Overview" sub tab
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter value "1000" into field "AppropriationBalance__c"
+    When I click modal button "Save and Continue"
+    When I enter value "{SavedValue:SDATE}" into field "fieldStartDate__c"
+    When I enter value "{SavedValue:EDATE}" into field "fieldEndDate__c"
+    And I click on "Save" in the page details
+    When I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Active" and is "green"
+    And I save the field labeled "Funding Source" as "FUNDINGSOURCE"
+    And I save the field labeled "EGMS ID" as "FundingAccId"
+    And I click "{SavedValue:FUNDINGSOURCE}" lookup link
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I navigate to "Overview" sub tab
+    And I click on "View" icon for "{SavedValue:FundingAccId}" inside flex table with id "---fundingsource:-:fundingAccountTableId---"
+    When I click on "Deactivate" in the page details
+    And I click "{SavedValue:FUNDINGSOURCE}" lookup link
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    #196555
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Planning" tab
+    And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Internal Funding Sources -Closed"
+    When I perform quick search for "{SavedValue:FUNDINGSOURCE}" in "---fundingsource:-:fundingSourceTableId---" panel
+    And I click on "View" icon for "{SavedValue:FUNDINGSOURCE}" inside table
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I click on "Download" icon for "Other" inside flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---" without waiting for record
+    Then I softly verify that the file "Attachment.pdf" is downloaded
+
+  @196553 @ValidatefilerelatedpermissionsforADMINprofileduringtheworkflowStatusCreatedActivatedClosedwhenInternalFundingSourceiscreatedbyEXE @Sprint-3-US-195048 @vaibhav
+  Scenario: Validate file related permissions for ADMIN profile during the workflow Status (Created, Activated, Closed) when Internal Funding Source is created by EXE
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Planning" tab
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "Start Date" as "SDATE"
+    And I save the field labeled "End Date" as "EDATE"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I click on top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I navigate to "Overview" sub tab
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter value "1000" into field "AppropriationBalance__c"
+    When I click modal button "Save and Continue"
+    When I enter value "{SavedValue:SDATE}" into field "fieldStartDate__c"
+    When I enter value "{SavedValue:EDATE}" into field "fieldEndDate__c"
+    And I click on "Save" in the page details
+    When I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Active" and is "green"
+    And I save the field labeled "Funding Source" as "FUNDINGSOURCE"
+    And I save the field labeled "EGMS ID" as "FundingAccId"
+    And I click "{SavedValue:FUNDINGSOURCE}" lookup link
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I navigate to "Overview" sub tab
+    And I click on "View" icon for "{SavedValue:FundingAccId}" inside flex table with id "---fundingsource:-:fundingAccountTableId---"
+    When I click on "Deactivate" in the page details
+    And I pause execution for "3" seconds
+    And I click "{SavedValue:FUNDINGSOURCE}" lookup link
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+
+  @196554 @196557 @ValidatefilerelatedpermissionsforFOprofileduringtheworkflowStatusCreatedActivatedClosedwhenInternalFundingSourceiscreatedbyEXE @Sprint-3-US-195048 @vaibhav
+  Scenario: Validate file related permissions for FO profile during the workflow Status (Created, Activated, Closed) when Internal Funding Source is created by EXE
+    When I login to "As a Grantor" app as "FO" user
+    And I navigate to "Planning" tab
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "Start Date" as "SDATE"
+    And I save the field labeled "End Date" as "EDATE"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I click on top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I upload attachment "Attachment.pdf" of type "Other" from computer
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I navigate to "Overview" sub tab
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter value "1000" into field "AppropriationBalance__c"
+    When I click modal button "Save and Continue"
+    When I enter value "{SavedValue:SDATE}" into field "fieldStartDate__c"
+    When I enter value "{SavedValue:EDATE}" into field "fieldEndDate__c"
+    And I click on "Save" in the page details
+    When I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Active" and is "green"
+    And I save the field labeled "Funding Source" as "FUNDINGSOURCE"
+    And I save the field labeled "EGMS ID" as "FundingAccId"
+    And I click "{SavedValue:FUNDINGSOURCE}" lookup link
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I navigate to "Overview" sub tab
+    And I click on "View" icon for "{SavedValue:FundingAccId}" inside flex table with id "---fundingsource:-:fundingAccountTableId---"
+    When I click on "Deactivate" in the page details
+    And I pause execution for "3" seconds
+    And I click "{SavedValue:FUNDINGSOURCE}" lookup link
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    #196557
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    When I navigate to "Planning" tab
+    And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Internal Funding Sources - Active"
+    When I perform quick search for "{SavedValue:FUNDINGSOURCE}" in "---fundingsource:-:fundingSourceTableId---" panel
+    And I click on "View" icon for "{SavedValue:FUNDINGSOURCE}" inside table
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I click on "Download" icon for "Other" inside flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---" without waiting for record
+    Then I softly verify that the file "Attachment.pdf" is downloaded
+
+  @196556 @ValidatefilerelatedpermissionsforPOprofileduringtheworkflowStatusCreatedActivatedActivewhenInternalFundingSourceiscreatedbyEXE @Sprint-3-US-195048 @vaibhav
+  Scenario: Validate file related permissions for EXE profile during the workflow Status (Created, Activated, Closed) when Internal Funding Source is created by EXE
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click on top right button "New" in flex table with id "---fundingsource:-:fundingSourceTableId---"
+    When I enter in modal "Creation" values from "FundingSource_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "FundingSource_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "Start Date" as "SDATE"
+    And I save the field labeled "End Date" as "EDATE"
+    And I save the field labeled "Funding Source" as "FUNDINGSOURCE"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I click on top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I upload attachment without random number "Attachment.pdf" of type "Other" from computer
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I navigate to "Overview" sub tab
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter value "1000" into field "AppropriationBalance__c"
+    When I click modal button "Save and Continue"
+    When I enter value "{SavedValue:SDATE}" into field "fieldStartDate__c"
+    When I enter value "{SavedValue:EDATE}" into field "fieldEndDate__c"
+    And I click on "Save" in the page details
+    When I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Active" and is "green"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    When I navigate to "Planning" tab
+    And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click toggle button to select "Internal Funding Sources - Active"
+    When I perform quick search for "{SavedValue:FUNDINGSOURCE}" in "---fundingsource:-:fundingSourceTableId---" panel
+    And I click on "View" icon for "{SavedValue:FUNDINGSOURCE}" inside table
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
+    And I click on "Download" icon for "Other" inside flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---" without waiting for record
+    Then I softly verify that the file "Attachment.pdf" is downloaded
+
+  @196558 @196563 @ValidatefilerelatedpermissionsforEXEprofileduringtheworkflowStatusCreatedActivatedClosedwhenExternalFundingSourceiscreatedbyEXE @Sprint-3-US-195048 @vaibhav
+  Scenario: Validate file related permissions for EXE profile during the workflow Status (Created, Activated, Closed) when External Funding Source is created by EXE
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click on top right button "New" in flex table with id "---fundingsource:-:externalFundingTableId---"
+    When I enter in modal "External_fs_Creation" values from "FundingSource_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "External_FS_Edition" values from "FundingSource_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "Start Date" as "SDATE"
+    And I save the field labeled "End Date" as "EDATE"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    And I click on top right button "Add Files" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    And I upload attachment without random number "Attachment.pdf" of type "Other" from computer
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    And I navigate to "Overview" sub tab
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter value "1000" into field "AppropriationBalance__c"
+    When I click modal button "Save and Continue"
+    When I enter value "{SavedValue:SDATE}" into field "fieldStartDate__c"
+    When I enter value "{SavedValue:EDATE}" into field "fieldEndDate__c"
+    And I click on "Save" in the page details
+    When I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Active" and is "green"
+    And I save the field labeled "Funding Source" as "FUNDINGSOURCE"
+    And I save the field labeled "EGMS ID" as "FundingAccId"
+    And I click "{SavedValue:FUNDINGSOURCE}" lookup link
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    And I navigate to "Overview" sub tab
+    And I click on "View" icon for "{SavedValue:FundingAccId}" inside flex table with id "---fundingsource:-:fundingAccountTableId---"
+    When I click on "Deactivate" in the page details
+    And I click "{SavedValue:FUNDINGSOURCE}" lookup link
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly cannot see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly cannot see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    #196563
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    When I navigate to "Planning" tab
+    And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click toggle button to select "All External Funding Sources"
+    When I perform quick search for "{SavedValue:FUNDINGSOURCE}" in "---fundingsource:-:externalFundingTableId---" panel
+    And I click on "View" icon for "{SavedValue:FUNDINGSOURCE}" inside table
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    And I click on "Download" icon for "Other" inside flex table with id "---fundingSource:-:externalFundingSourceTableId---" without waiting for record
+    Then I softly verify that the file "Attachment.pdf" is downloaded
+
+  @196559 @196561 @ValidatefilerelatedpermissionsforADMINprofileduringtheworkflowStatusCreatedActivatedClosedwhenExternalFundingSourceiscreatedbyEXE @Sprint-3-US-195048 @vaibhav
+  Scenario: Validate file related permissions for ADMIN profile during the workflow Status (Created, Activated, Closed) when External Funding Source is created by ADMIN
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Planning" tab
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click on top right button "New" in flex table with id "---fundingsource:-:externalFundingTableId---"
+    When I enter in modal "External_fs_Creation" values from "FundingSource_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "External_FS_Edition" values from "FundingSource_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "Start Date" as "SDATE"
+    And I save the field labeled "End Date" as "EDATE"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    And I click on top right button "Add Files" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    And I upload attachment without random number "Attachment.pdf" of type "Other" from computer
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    And I navigate to "Overview" sub tab
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter value "1000" into field "AppropriationBalance__c"
+    When I click modal button "Save and Continue"
+    When I enter value "{SavedValue:SDATE}" into field "fieldStartDate__c"
+    When I enter value "{SavedValue:EDATE}" into field "fieldEndDate__c"
+    And I click on "Save" in the page details
+    When I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Active" and is "green"
+    And I save the field labeled "Funding Source" as "FUNDINGSOURCE"
+    And I save the field labeled "EGMS ID" as "FundingAccId"
+    And I click "{SavedValue:FUNDINGSOURCE}" lookup link
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    And I navigate to "Overview" sub tab
+    And I click on "View" icon for "{SavedValue:FundingAccId}" inside flex table with id "---fundingsource:-:fundingAccountTableId---"
+    When I click on "Deactivate" in the page details
+    And I click "{SavedValue:FUNDINGSOURCE}" lookup link
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly cannot see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly cannot see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    #196561
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Planning" tab
+    And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click toggle button to select "All External Funding Sources"
+    When I perform quick search for "{SavedValue:FUNDINGSOURCE}" in "---fundingsource:-:externalFundingTableId---" panel
+    And I click on "View" icon for "{SavedValue:FUNDINGSOURCE}" inside table
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    And I click on "Download" icon for "Other" inside flex table with id "---fundingSource:-:externalFundingSourceTableId---" without waiting for record
+    Then I softly verify that the file "Attachment.pdf" is downloaded
+
+  @196560 @196562 @ValidatefilerelatedpermissionsforFOprofileduringtheworkflowStatusCreatedActivatedClosedwhenExternalFundingSourceiscreatedbyFO @Sprint-3-US-195048 @vaibhav
+  Scenario: Validate file related permissions for FO profile during the workflow Status (Created, Activated, Closed) when External Funding Source is created by FO
+    When I login to "As a Grantor" app as "FO" user
+    And I navigate to "Planning" tab
+    When I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click on top right button "New" in flex table with id "---fundingsource:-:externalFundingTableId---"
+    When I enter in modal "External_fs_Creation" values from "FundingSource_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I enter "External_FS_Edition" values from "FundingSource_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "Start Date" as "SDATE"
+    And I save the field labeled "End Date" as "EDATE"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    And I click on top right button "Add Files" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    And I upload attachment without random number "Attachment.pdf" of type "Other" from computer
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    And I navigate to "Overview" sub tab
+    When I click on top right button "New" in flex table with id "---fundingsource:-:fundingAccountTableId---"
+    And I enter in modal "Funding Account Creation" values from "FundingSource_Field_Values.xlsx"
+    When I enter value "1000" into field "AppropriationBalance__c"
+    When I click modal button "Save and Continue"
+    When I enter value "{SavedValue:SDATE}" into field "fieldStartDate__c"
+    When I enter value "{SavedValue:EDATE}" into field "fieldEndDate__c"
+    And I click on "Save" in the page details
+    When I click on "Activate" in the page details
+    Then I see status in Progress-bar is "Active" and is "green"
+    And I save the field labeled "Funding Source" as "FUNDINGSOURCE"
+    And I save the field labeled "EGMS ID" as "FundingAccId"
+    And I click "{SavedValue:FUNDINGSOURCE}" lookup link
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add Files" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    And I navigate to "Overview" sub tab
+    And I click on "View" icon for "{SavedValue:FundingAccId}" inside flex table with id "---fundingsource:-:fundingAccountTableId---"
+    When I click on "Deactivate" in the page details
+    And I click "{SavedValue:FUNDINGSOURCE}" lookup link
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly cannot see row level action button "Edit" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly cannot see row level action button "Delete" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    #196561
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    When I navigate to "Planning" tab
+    And I navigate to "Funding Sources" content inside "Setup" subheader on left panel
+    And I click toggle button to select "All External Funding Sources"
+    When I perform quick search for "{SavedValue:FUNDINGSOURCE}" in "---fundingsource:-:externalFundingTableId---" panel
+    And I click on "View" icon for "{SavedValue:FUNDINGSOURCE}" inside table
+    When I navigate to "Files" sub tab
+    Then I softly cannot see top right button "Add Files" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "Download" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    Then I softly can see row level action button "View" against "Other" in flex table with id "---fundingSource:-:externalFundingSourceTableId---"
+    And I click on "Download" icon for "Other" inside flex table with id "---fundingSource:-:externalFundingSourceTableId---" without waiting for record
+    Then I softly verify that the file "Attachment.pdf" is downloaded
