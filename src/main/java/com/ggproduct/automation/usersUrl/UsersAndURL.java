@@ -105,6 +105,30 @@ public class UsersAndURL implements UsersController {
             case "ADMIN1":
                 password = "Product@2022";
                 break;
+            case "ADMIN":
+                password = "Salesforce2023";
+                break;
+            case "PM":
+                password = "Salesforce2023";
+                break;
+            case "EXE":
+                password = "Salesforce2023";
+                break;
+            case "FO":
+                password = "Salesforce2023";
+                break;
+            case "FD":
+                password = "Salesforce2023";
+                break;
+            case "PO":
+                password = "Salesforce2023";
+                break;
+            case "AUDITOR":
+                password = "Salesforce2023";
+                break;
+            case "SPI3":
+                password = "Salesforce2023";
+                break;
             default:
                 password = "Salesforce2022";
         }
