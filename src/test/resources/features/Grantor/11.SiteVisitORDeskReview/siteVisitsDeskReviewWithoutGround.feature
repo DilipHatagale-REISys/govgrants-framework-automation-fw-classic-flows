@@ -2272,14 +2272,3 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I pause execution for "60" seconds
     When I perform quick search for "{SavedValue:DeskReview}" in "---deskreview:-:deskReviewTargetTableId---" panel
     Then I see value "{SavedValue:DeskReview}" for title "Site Visit ID" inside table "---deskreview:-:deskReviewTargetTableId---"
-
-    @tet
-    Scenario: tet
-      And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
-      And I pause execution for "60" seconds
-      Then I refresh the page
-      And I see the mail subject is as follows :
-      """
-      Sandbox: Notification: Site Visit Report for SV-1883 has been SentBack
-      """
-
