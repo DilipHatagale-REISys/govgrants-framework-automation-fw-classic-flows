@@ -830,6 +830,91 @@ Feature: Validate all scenarios in the home tab
     Then I see the following messages in the page details :
       | Email Sent Successfully |
 
-#    @testScenarios
-#    Scenario: Self healing testing
-#      When I login to portal
+  @201744 @201746 @201748 @ValidateSPIusershouldnotabletoeditfollowingfieldsFirstNameLastNameEmaildUserRolealreadyread-onlyonexternalprofileuser @sprint-5-US-200038 @vaibhav
+  Scenario Outline: Validate SPI user should not able to edit following fields a. First Name b. Last Name c. Email d. User Role already read-only on external profile user
+    Given I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "<userType>" user
+    And I select "My Profile" from user dropdown
+    And I click on "Edit" in the page details
+    Then I softly see that "First Name" rendered in view mode only
+    Then I softly see that "Last Name" rendered in view mode only
+    Then I softly see that "User Role" rendered in view mode only
+    Then I softly see that "Email" rendered in view mode only
+    Examples:
+      | userType |
+      | SPI3     |
+      | SPA      |
+      | IND      |
+
+  @201750 @ValidateSPI\SPA\INDusercanedittheAccessibilityModefieldonexternalprofileuser @sprint-5-US-200038 @vaibhav
+  Scenario Outline: Validate SPI\SPA\IND user can edit the 'Accessibility Mode' field on external profile user
+    Given I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "<userType>" user
+    And I select "My Profile" from user dropdown
+    And I click on "Edit" in the page details
+    Then I softly see checkbox field "Accessibility Mode" is editable
+    Examples:
+      | userType |
+      | SPI3     |
+      | SPA      |
+      | IND      |
+
+  @201753 @201756 @ValidatefollowingfieldsareeditableforSPI\SPAuseronexternalprofileuser @sprint-5-US-200038 @vaibhav
+  Scenario Outline: Validate following fields are editable for SPI\SPA user on external profile user
+    Given I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "<userType>" user
+    And I select "My Profile" from user dropdown
+    And I click on "Edit" in the page details
+    Then I softly see fields "Phone" is in edit mode
+    Then I softly see fields "fieldMailingStreet" is in edit mode
+    Then I softly see fields "fieldAddress2__c" is in edit mode
+    Then I softly see fields "fieldMailingCity" is in edit mode
+    Then I softly see fields "fieldMailingState" is in edit mode
+    Then I softly see fields "fieldMailingPostalCode" is in edit mode
+    Then I softly see fields "fieldMailingCountry" is in edit mode
+    #201756
+    Then I softly do not see "Affiliated Institution" inside page block detail
+    Examples:
+      | userType |
+      | SPI3     |
+      | SPA      |
+
+  @201757  @ValidateSPI\SPAIseeMovedAddressLine2fieldbeforetheCityfieldonexternalprofileuser @sprint-5-US-200038 @vaibhav
+  Scenario Outline: Validate SPI\SPA I see Moved 'Address Line 2' field before the 'City' field on external profile user
+    Given I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "<userType>" user
+    And I select "My Profile" from user dropdown
+    And I click on "Edit" in the page details
+    Then I softly see "Address Line 2" inside page block detail
+    Then I softly see "City" inside page block detail
+    Examples:
+      | userType |
+      | SPI3     |
+      | SPA      |
+
+  @201758 @ValidateSPI\SPA\INDuserseeMovedCountryfieldaftertheZipCodefieldonexternalprofileuser @sprint-5-US-200038 @vaibhav
+  Scenario Outline: Validate SPI\SPA\IND user see Moved 'Country' field after the 'Zip Code' field on external profile user
+    Given I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "<userType>" user
+    And I select "My Profile" from user dropdown
+    And I click on "Edit" in the page details
+    Then I softly see "Zip Code" inside page block detail
+    Then I softly see "Country" inside page block detail
+    Examples:
+      | userType |
+      | SPI3     |
+      | SPA      |
+      | IND      |
+
+  @201759 @ValidateSPI\SPA\INDuserIshouldnotseetheProfileDescriptionsectiononexternalprofileuseronexternalprofileuser @sprint-5-US-200038 @vaibhav
+  Scenario Outline: Validate SPI\SPA\IND user I should not see the 'Profile Description' section on external profile user on external profile user
+    Given I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "<userType>" user
+    And I select "My Profile" from user dropdown
+    And I click on "Edit" in the page details
+    Then I softly do not see "Profile Description" page block displayed
+    Examples:
+      | userType |
+      | SPI3     |
+      | SPA      |
+      | IND      |

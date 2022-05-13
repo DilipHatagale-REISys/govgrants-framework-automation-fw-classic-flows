@@ -129,6 +129,15 @@ public class UsersAndURL implements UsersController {
             case "SPI3":
                 password = "Salesforce2023";
                 break;
+            case "SPA":
+                password = "Salesforce2023";
+                break;
+                case "IND":
+                password = "Salesforce2023";
+                break;
+            case "SME":
+                password = "Salesforce2023";
+                break;
             default:
                 password = "Salesforce2022";
         }
@@ -179,6 +188,7 @@ public class UsersAndURL implements UsersController {
         username.put("PO1", "automationpo1@yopmail.com");
         username.put("FO1", "fo1.automation@yopmail.com");
         username.put("FD1", "automationfd1@yopmail.com");
+        username.put("SME", "product.ucs.sme1@yopmail.com.automation");
 
         username.put("SARAH PM", "sarah.pm@ggp.test9.automation");
         username.put("ALEX FO", "alex_fo@ggp.test7.automation");
