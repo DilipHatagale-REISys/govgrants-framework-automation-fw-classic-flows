@@ -3206,7 +3206,7 @@ Feature: Validate all scenarios of grants and award without background
       | Award Name                                   | Grant Name                                   |
       | {SavedValue:Automation Runtime Direct Award} | {SavedValue:Automation Runtime Direct Award} |
 
-  @196571 @196573 @196574 @196575 @196576 @196587 @ValidateusershouldableseethenewmoduleGrantafterenterthesourceuser&targetuserinOwnershipReassignmentoption @sprint-4 @vaibhav
+  @196571 @196573 @196574 @196575 @196576 @196587 @ValidateusershouldableseethenewmoduleGrantafterenterthesourceuser&targetuserinOwnershipReassignmentoption @sprint-4 @vaibhav @reassignment
   Scenario: Validate user should able see the new module Grant after enter the source user & target user in Ownership Reassignment option
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3250,7 +3250,7 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:grantTargetOwnerTableId---" panel
     Then I see value "{SavedValue:GrantEGMSID}" for title "Grant ID" inside table "---subAwardStandAlone:-:grantTargetOwnerTableId---"
 
-  @196596 @196598 @196611 @Validateafterclickingontransferownershipbuttonforgrantsusershouldabletoseethefollowingmessage @sprint-4 @vaibhav
+  @196596 @196598 @196611 @Validateafterclickingontransferownershipbuttonforgrantsusershouldabletoseethefollowingmessage @sprint-4 @vaibhav @reassignment
   Scenario: Validate after clicking on transfer ownership button for grants user should able to see the following message
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3297,7 +3297,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM1" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @196600 @ValidatewhenuserclickonNObuttonofwarningmessageforgrantsthenflowshouldbestop @sprint-4 @vaibhav
+  @196600 @ValidatewhenuserclickonNObuttonofwarningmessageforgrantsthenflowshouldbestop @sprint-4 @vaibhav @reassignment
   Scenario: Validate when user click on NO button of warning message for grants then flow should be stop
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3325,7 +3325,7 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:grantSourceOwnerTableId---" panel
     Then I see value "{SavedValue:GrantEGMSID}" for title "Grant ID" inside table "---subAwardStandAlone:-:grantSourceOwnerTableId---"
 
-  @196613 @Validateawardafterchangingtheownershipthennewowner&oldownershouldbeupdateinownersectionunderresponsibilitytab @sprint-4 @vaibhav
+  @196613 @Validateawardafterchangingtheownershipthennewowner&oldownershouldbeupdateinownersectionunderresponsibilitytab @sprint-4 @vaibhav @reassignment
   Scenario: Validate award after changing the ownership then new owner & old owner should be update in owner section under responsibility tab
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3380,7 +3380,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM1" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @198227 @ValidateUsershouldabletoseenewuserasaownernameafterreassigningthetaskownership @sprint-4 @vaibhav
+  @198227 @ValidateUsershouldabletoseenewuserasaownernameafterreassigningthetaskownership @sprint-4 @vaibhav @reassignment
   Scenario: Validate User should able to see new user as a owner name after reassigning the task ownership
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3462,7 +3462,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM1" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @198233 @ValidateusershouldabletoseethenameAcceptanceofSubawardbySubrecipientbysubrecipientaftercreatedaward&sendtoSRafterapprovedaward @sprint-4 @vaibhav
+  @198233 @ValidateusershouldabletoseethenameAcceptanceofSubawardbySubrecipientbysubrecipientaftercreatedaward&sendtoSRafterapprovedaward @sprint-4 @vaibhav @reassignment
   Scenario: Validate user should able to see the name Acceptance of Subaward by Subrecipient by subrecipient after created award & send to SR after approved award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3570,7 +3570,7 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "{SavedValue:AwardEGMSID}" in "---home:-:internalHomePendingTaskTableId---" panel
     Then I softly see value "Accepted Subaward By Subrecipient" for title "Task Type" inside table "---home:-:internalHomePendingTaskTableId---"
 
-  @198320 @ValidateusershouldabletoreassignthetaskfromSarahpmToSimonPMbeforeapprovedtheaward @sprint-4 @vaibhav
+  @198320 @ValidateusershouldabletoreassignthetaskfromSarahpmToSimonPMbeforeapprovedtheaward @sprint-4 @vaibhav @reassignment
   Scenario: Validate user should able to reassign the task from Sarah pm To Simon PM before approved the award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3647,7 +3647,7 @@ Feature: Validate all scenarios of grants and award without background
     When I click on "Start" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---home:-:internalHomePendingTaskTableId---" without waiting for record
     Then I can see top right button "Submit for Approval" in page detail
 
-  @198356 @Validateusershouldabletoreassigntheawardtaskwithsameprofile&sameOrganization @sprint-4 @vaibhav
+  @198356 @Validateusershouldabletoreassigntheawardtaskwithsameprofile&sameOrganization @sprint-4 @vaibhav @reassignment
   Scenario: Validate user should able to reassign the award task with same profile & same Organization
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -3717,7 +3717,7 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "{SavedValue:AwardEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:AwardEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198402 @ValidatePMusershouldabletoseeallthependingtasksinReassignMyCurrentTaskpage @sprint-4 @vaibhav
+  @198402 @ValidatePMusershouldabletoseeallthependingtasksinReassignMyCurrentTaskpage @sprint-4 @vaibhav @reassignment
   Scenario: Validate PM user should able to see all the pending tasks in Reassign My Current Task page
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3796,7 +3796,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Submit For Approval" in page detail
 
-  @198594 @ValidateusershouldnotabletoselectthesameuserinReassignTo&Reassignfromfield @sprint-4 @vaibhav
+  @198594 @ValidateusershouldnotabletoselectthesameuserinReassignTo&Reassignfromfield @sprint-4 @vaibhav @reassignment
   Scenario: Validate user should not able to select the same user in Reassign To & Reassign from field
     When I login to "As a Grantor" app as "PM1" user
     And I navigate to "Grants" tab
@@ -3817,7 +3817,7 @@ Feature: Validate all scenarios of grants and award without background
     And I pause execution for "4" seconds
     Then I softly do not see "Automation PM1" inside auto search result
 
-  @196618 @ValidateusershouldabletoseetheupdatedhistoryafterreassignmentownershipforGrantmodule @sprint-4 @vaibhav
+  @196618 @ValidateusershouldabletoseetheupdatedhistoryafterreassignmentownershipforGrantmodule @sprint-4 @vaibhav @reassignment
   Scenario: Validate user should able to see the updated history after reassignment ownership for Grant module
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3861,7 +3861,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---subAwardStandAlone:-:historyTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---subAwardStandAlone:-:historyTableId---"
 
-  @196621 @Validateusershouldabletocreatetheownershiptasktonewownerforgrantmodule @sprint-4 @vaibhav
+  @196621 @Validateusershouldabletocreatetheownershiptasktonewownerforgrantmodule @sprint-4 @vaibhav @reassignment
   Scenario: Validate user should able to create the ownership task to new owner for grant module
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3894,7 +3894,7 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:grantTargetOwnerTableId---" panel
     Then I see value "{SavedValue:GrantEGMSID}" for title "Grant ID" inside table "---subAwardStandAlone:-:grantTargetOwnerTableId---"
 
-  @196622 @ValidateusershouldabletocreatetheownershiptasktonewownerforAwardmodule @sprint-4 @vaibhav
+  @196622 @ValidateusershouldabletocreatetheownershiptasktonewownerforAwardmodule @sprint-4 @vaibhav @reassignment
   Scenario: Validate user should able to create the ownership task to new owner for Award module
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3966,7 +3966,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see the following messages in the page details contains:
       | Ownership cannot be transferred across profiles and organizations. |
 
-  @196634 @Validateadminusershouldnotabletoseetheinactiveuserintargetuserforgrantmodule @sprint-4 @vaibhav
+  @196634 @Validateadminusershouldnotabletoseetheinactiveuserintargetuserforgrantmodule @sprint-4 @vaibhav @reassignment
   Scenario: Validate admin user should not able to see the inactive user in target user for grant module
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3986,7 +3986,7 @@ Feature: Validate all scenarios of grants and award without background
     And I pause execution for "4" seconds
     Then I softly see "No matches found" inside auto search result
 
-  @196635 @Validateusershouldabletoseethefuturetasktonewuserforgrantmodule @sprint-4 @vaibhav
+  @196635 @Validateusershouldabletoseethefuturetasktonewuserforgrantmodule @sprint-4 @vaibhav @reassignment
   Scenario: Validate user should able to see the future task to new user for grant module
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4030,7 +4030,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Subawards" sub tab
     Then I softly can see row level action button "Edit" against "{SavedValue:AwardEGMSID}" in flex table with id "---subAwardStandAlone:-:subawardsTableId---"
 
-  @196637 @Validateusershouldabletoseethefuturetasktonewuserforawardmodule @sprint-4 @vaibhav
+  @196637 @Validateusershouldabletoseethefuturetasktonewuserforawardmodule @sprint-4 @vaibhav @reassignment
   Scenario: Validate user should able to see the future task to new user for award module
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -4084,7 +4084,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I can see top right button "Edit" in page detail
     Then I can see top right button "Send to Subrecipient" in page detail
 
-  @196643 @Validatewhengrantisincreatedandchangetheownershipthenforactivatetaskshouldassigntonewowner @sprint-4 @vaibhav
+  @196643 @Validatewhengrantisincreatedandchangetheownershipthenforactivatetaskshouldassigntonewowner @sprint-4 @vaibhav @reassignment
   Scenario: Validate when grant is in created and change the ownership then for activate task should assign to new owner
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4223,7 +4223,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Activate" in the page details
     Then I softly see that "Subaward" is in "Activated" status
 
-  @196645 @ValidatereassigntheownershipafterawardissendtosubrecipientafterapprovedawardthenActivatedoptionshoulddisplaytothenewowner @sprint-4 @vaibhav
+  @196645 @ValidatereassigntheownershipafterawardissendtosubrecipientafterapprovedawardthenActivatedoptionshoulddisplaytothenewowner @sprint-4 @vaibhav @reassignment
   Scenario: Validate reassign the ownership after award is send to subrecipient after approved award then Activated option should display to the new owner
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4349,7 +4349,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Start" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---home:-:internalHomePendingTaskTableId---" without waiting for record
     Then I can see top right button "Activate" in page detail
 
-  @196648 @ValidatechangetheownershiptasktoSimonPMfromSarahPMuserafteracceptafterapprovaltaskfromSRthenactivatedtaskshouldgeneratetothenewowner @sprint-4 @vaibhav
+  @196648 @ValidatechangetheownershiptasktoSimonPMfromSarahPMuserafteracceptafterapprovaltaskfromSRthenactivatedtaskshouldgeneratetothenewowner @sprint-4 @vaibhav @reassignment
   Scenario: Validate change the ownership task to Simon PM from Sarah PM user after accept after approval task from S/R then activated task should generate to the new owner
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4475,7 +4475,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Start" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---home:-:internalHomePendingTaskTableId---" without waiting for record
     Then I can see top right button "Activate" in page detail
 
-  @196651 @ValidatereassignmentownershiptaskischangedaftercreatedawardfromPOtootherPOthensubmittedforapprovaloptionshoulddisplaytootherFOuser @sprint-4 @vaibhav
+  @196651 @ValidatereassignmentownershiptaskischangedaftercreatedawardfromPOtootherPOthensubmittedforapprovaloptionshoulddisplaytootherFOuser @sprint-4 @vaibhav @reassignment
   Scenario: Validate reassignment ownership task is changed after created award from PO to other PO then submitted for approval option should display to other FO user
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -4573,7 +4573,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     Then I softly can see top right button "Submit For Approval" in page detail
 
-  @196655 @ValidateownershipreassignmentfromPMtootherPMbeforeapprovetheawarduserthensubmitforapprovalshoulddisplaytootherPMuser @sprint-4 @vaibhav
+  @196655 @ValidateownershipreassignmentfromPMtootherPMbeforeapprovetheawarduserthensubmitforapprovalshoulddisplaytootherPMuser @sprint-4 @vaibhav @reassignment
   Scenario: Validate ownership reassignment from PM to other PM before approve the award user then submit for approval should display to other PM user
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4671,7 +4671,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     Then I softly can see top right button "Submit For Approval" in page detail
 
-  @196676 @Validateusershouldnotreassigntheownershiptosameprofilebutdifferentorganizationforawardmodule @sprint-4 @vaibhav
+  @196676 @Validateusershouldnotreassigntheownershiptosameprofilebutdifferentorganizationforawardmodule @sprint-4 @vaibhav @reassignment
   Scenario: Validate user should not reassign the ownership to same profile but different organization for award module
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -4696,7 +4696,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see the following messages in the page details contains:
       | Ownership cannot be transferred across profiles and organizations. |
 
-  @196677 @Validateadminusershouldnotabletoseetheinactiveuserintargetuserforawardmodule @Sprint-4 @vaibhav
+  @196677 @Validateadminusershouldnotabletoseetheinactiveuserintargetuserforawardmodule @Sprint-4 @vaibhav @reassignment
   Scenario: Validate admin user should not able to see the inactive user in target user for award module
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4720,7 +4720,7 @@ Feature: Validate all scenarios of grants and award without background
     And I pause execution for "4" seconds
     Then I softly see "No matches found" inside auto search result
 
-  @196685 @Validateoldownernameshouldbedisplayincreatedbyfieldinoverviewtabforgrantrecord @sprint-4 @vaibhav
+  @196685 @Validateoldownernameshouldbedisplayincreatedbyfieldinoverviewtabforgrantrecord @sprint-4 @vaibhav @reassignment
   Scenario: Validate old owner name should be display in created by field in overview tab for grant record
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4759,7 +4759,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Overview" sub tab
     Then I softly see field "Created by" as "{SavedValue:PM Username}"
 
-  @196686 @Validateoldownernameshouldbedisplayincreatedbyfieldinoverviewtabforawardrecord @sprint-4 @vaibhav
+  @196686 @Validateoldownernameshouldbedisplayincreatedbyfieldinoverviewtabforawardrecord @sprint-4 @vaibhav @reassignment
   Scenario: Validate old owner name should be display in created by field in overview tab for award record
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4804,7 +4804,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Overview" sub tab
     Then I softly see field "Created by" as "{SavedValue:PM Username}"
 
-  @198226 @ValidateusershouldabletoseetheupdatedhistoryafterreassignmentoftaskownershipforAwardmodule @sprint-4 @vaibhav
+  @198226 @ValidateusershouldabletoseetheupdatedhistoryafterreassignmentoftaskownershipforAwardmodule @sprint-4 @vaibhav  @reassignment
   Scenario: Validate user should able to see the updated history after reassignment of task ownership for Award module
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4884,7 +4884,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---subAwardStandAlone:-:historyTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---subAwardStandAlone:-:historyTableId---"
 
-  @198595 @198598 @Validateusershouldabletoseeemailinyopmailwhenawardrejectedbyapproveraftertaskiscreatedforaward&acknowledgebysubrecipient @sprint-4 @vaibhav
+  @198595 @198598 @Validateusershouldabletoseeemailinyopmailwhenawardrejectedbyapproveraftertaskiscreatedforaward&acknowledgebysubrecipient @sprint-4 @vaibhav @reassignment
   Scenario: Validate  user should able to see email in yopmail when award rejected by approver after task is created for award & acknowledge by subrecipient
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4991,7 +4991,7 @@ Feature: Validate all scenarios of grants and award without background
       The EGMS Team
       """
 
-  @198596 @Validateusershouldabletoseeemailinyopmailwhenawardsendbackbyapproveraftertaskiscreatedforaward&acknowledgebysubrecipient @sprint-4 @vaibhav
+  @198596 @Validateusershouldabletoseeemailinyopmailwhenawardsendbackbyapproveraftertaskiscreatedforaward&acknowledgebysubrecipient @sprint-4 @vaibhav @reassignment
   Scenario: Validate user should able to see email in yopmail when award send back by approver after task is created for award & acknowledge by subrecipient
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -5098,7 +5098,7 @@ Feature: Validate all scenarios of grants and award without background
       The EGMS Team
       """
 
-  @198597 @Validateusershouldabletoseeemailinyopmailwhenawardsendbackbyapproveraftertaskiscreatedforaward&acknowledgebysubrecipient @sprint-4 @vaibhav
+  @198597 @Validateusershouldabletoseeemailinyopmailwhenawardsendbackbyapproveraftertaskiscreatedforaward&acknowledgebysubrecipient @sprint-4 @vaibhav @reassignment
   Scenario: Validate user should able to see email in yopmail when award send back by approver after task is created for award & acknowledge by subrecipient
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -5204,7 +5204,7 @@ Feature: Validate all scenarios of grants and award without background
       The EGMS Team
       """
 
-  @198228 @198229 @ValidateafterchangingthetaskownershipfromprevioususertonewuserthenalleditaccessshouldgotonewtaskOwner @sprint-4 @vaibhav
+  @198228 @198229 @ValidateafterchangingthetaskownershipfromprevioususertonewuserthenalleditaccessshouldgotonewtaskOwner @sprint-4 @vaibhav @reassignment
   Scenario: Validate after changing the task ownership from previous user to new user then all edit access should go to new task Owner
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -5301,7 +5301,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I softly can see row level action button "View" against "{SavedValue:AwardEGMSID}" in flex table with id "---subAwardStandAlone:-:subawardsTableId---"
     Then I softly cannot see row level action button "Edit" against "{SavedValue:AwardEGMSID}" in flex table with id "---subAwardStandAlone:-:subawardsTableId---"
 
-  @198323 @198418 @ValidateusershouldabletoreassignthetaskfromVictorEXEtoScottEXEafterapprovedtheaward @sprint-4 @vaibhav
+  @198323 @198418 @ValidateusershouldabletoreassignthetaskfromVictorEXEtoScottEXEafterapprovedtheaward @sprint-4 @vaibhav @reassignment
   Scenario: Validate user should able to reassign the task from Victor EXE  to Scott EXE after approved the award
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -5416,3 +5416,171 @@ Feature: Validate all scenarios of grants and award without background
     When I reassign task to "Automation EXE"
     When I perform quick search for "{SavedValue:AwardEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "{SavedValue:AwardEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+
+  @220549 @ValidateGrantsFileAdminUsercanseeSupportingDocumentChecklist @sprint-7-US-205248 @vaibhav
+  Scenario: Validate Grants Files Admin User can see Supporting Document Checklist
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields3" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    When I navigate to "Files" sub tab
+    Then I softly can see page block "Supporting Documents Checklist"
+
+  @220552 @ValidateEXEuserclickonAddbuttonusercanaddthedetailsinSupportingDocumentChecklistsectioninCreatedstatus @sprint-7-US-205248 @vaibhav
+  Scenario: Validate EXE user click on "Add" button user can add the details in Supporting Document Checklist section in "Created" status
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add" in flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---"
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    Then I see value "Automation test description" for title "Description" inside table "---subAwardStandAlone:-:grantSupportDocTableId---"
+    Then I see value "Mandatory" for title "Required" inside table "---subAwardStandAlone:-:grantSupportDocTableId---"
+    Then I see value "Application" for title "Applies To" inside table "---subAwardStandAlone:-:grantSupportDocTableId---"
+    Then I see value "Active" for title "Status" inside table "---subAwardStandAlone:-:grantSupportDocTableId---"
+
+  @220555 @ValidatePMUsercanseeAddbuttoninSupportingDocumentChecklistsectionwhengrantisinActivestatus
+  Scenario: Validate PM User can see "Add" button in Supporting Document Checklist section, when grant is in "Active" status
+    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    And I perform quick search for "{SavedValue:Automation Runtime Award Record}" in "GrantorActiveGrantsgrid" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Record}" inside flex table with id "GrantorActiveGrantsgrid"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add" in flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---"
+
+  @220558 @ValidatePOuserclickonUploadTemplateiconanewmodalwillopennamedasAddSupportingChecklistDocument @sprint-7-US-205248 @vaibhav
+  Scenario: Validate PO user click on Upload Template icon a new modal will open named as Add Supporting Checklist Document
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add" in flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---"
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" without waiting for record
+    Then I softly see "Add Supporting Checklist Document" opens in overLay window
+
+  @220559 @ValidatePOuserclickonUploadTemplateiconanewmodalwillopenItwillhaveoneoptionUploadFilefromComputer @sprint-7-US-205248 @vaibhav
+  Scenario: Validate PO user click on Upload Template icon a new modal will open It will have one option Upload File from Computer
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add" in flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---"
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" without waiting for record
+    Then I see "Upload File from Computer" page block displayed
+
+  @220561 @ValidateUploadFIlesfromComputerwillhavesectionslikeClassificationUploadFileChooseaFileORDragithereDescription @sprint-7-US-205248 @vaibhav
+  Scenario: Validate Upload FIles from Computer will have sections like Classification Upload File Choose a File OR Drag it here Description
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add" in flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---"
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" without waiting for record
+    Then I see field "Classification" as "Select file classification" on modal
+    Then I see field "Upload File" as " " on modal
+    Then I see field "Description" as " " on modal
+
+  @220564 @ValidatePMusercanseetobuttonsatthebottomofUploadFilesfromComputerUploadItwillenableonlyafterwechooseafiletouploadelseitwillbedisabled @sprint-7-US-205248 @vaibhav
+  Scenario: Validate PM user can see to buttons at the bottom of Upload Files from Computer Upload It will enable only after we choose a file to upload else it will be disabled
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add" in flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---"
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" without waiting for record
+    Then I see "Upload" button is disabled at modal under library
+    When I upload file "AttachmentTesting.pdf" into library
+    Then I do not see "Upload" button is disabled at modal under library
+
+  @220563 @ValidateEXEusershouldhavetwooptionsifuserclickonClassificationinUploadFilefromComputerTemplateforGrantOthers @sprint-7-US-205248 @vaibhav
+  Scenario: Validate EXE user should have two options if user click on Classification in Upload File from Computer Template for Grant Others
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add" in flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---"
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" without waiting for record
+    Then I softly see Classification as "Select file classification" at upload file modal
+    Then I softly see Classification as "Template for Grant" at upload file modal
+    Then I softly see Classification as "Others" at upload file modal
+
+  @220565 @ValidatePMusercanseetobuttonsatthebottomofUploadFilesfromComputerCancelclickonCancelthanthemodalwillcloseanddetailsfilledwillbelost @sprint-7-US-205248 @vaibhav
+  Scenario: Validate PM user can see to buttons at the bottom of Upload Files from Computer Cancel If click on Cancel than the modal will close and details filled will be lost
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Files" sub tab
+    Then I softly can see top right button "Add" in flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---"
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---subAwardStandAlone:-:grantSupportDocTableId---" without waiting for record
+    And I click modal button "Cancel"
+    Then I see value "Not Applicable" for title "Template Link" against the value "Active" inside table "---subAwardStandAlone:-:grantSupportDocTableId---"

@@ -532,4 +532,9 @@ public class GenericSteps {
     public void iSeeFieldStatusInPageBlock(String usage, String fieldName, String fieldValue, String pageblockName) {
         grantorProjectManager.seeFieldStatusInPageBlock(usage, fieldName, fieldValue, pageblockName);
     }
+
+    @Then("^I (see|softly see|do not see|softly do not see) \"([^\"]*)\" button is displayed On Modal$")
+    public void assertButtonDisplayedOnModal(String usage, String buttonName) {
+        grantorProjectManager.assertButtonDisplayedOnModal(usage, buttonName);
+    }
 }

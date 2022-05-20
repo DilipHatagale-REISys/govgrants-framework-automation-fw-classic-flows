@@ -391,7 +391,7 @@ public class GrantorProjectManager extends ProjectManager {
      */
     public Boolean isButtonDisplayedOnModal(String buttonName) {
         try {
-            return I.amPerforming().checkToSee().isDisplayed(By.xpath("//div[@class='panel-body']//button[@title='" + buttonName + "'] | //div[@class='panel-body']//span[text()='" + buttonName + "']"));
+            return I.amPerforming().checkToSee().isDisplayed(By.xpath("//div[contains(@id,'modaltemp')]//button[@title='"+buttonName+"']"));
         } catch (Exception e) {
         }
         return false;
@@ -683,4 +683,15 @@ public class GrantorProjectManager extends ProjectManager {
 
     }
 
+    public void assertButtonDisplayedOnModal(String usage, String buttonName) {
+        if (usage.equalsIgnoreCase("see")) {
+            Assert.assertTrue(isButtonDisplayedOnModal(buttonName));
+        } else if (usage.equalsIgnoreCase("do not see")) {
+            Assert.assertFalse(isButtonDisplayedOnModal(buttonName));
+        } else if (usage.equalsIgnoreCase("softly see")) {
+            I.amPerforming().assertionsTo().assertThat(isButtonDisplayedOnModal(buttonName)).isTrue();
+        } else if (usage.equalsIgnoreCase("softly do not see")) {
+            I.amPerforming().assertionsTo().assertThat(isButtonDisplayedOnModal(buttonName)).isFalse();
+        }
+    }
 }
