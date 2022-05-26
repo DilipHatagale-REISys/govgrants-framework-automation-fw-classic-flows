@@ -1678,7 +1678,7 @@ Feature: Payment Request scenarios without background
     Then I softly see "Payment Request Source user " page block displayed
     Then I softly see "Payment Request Target user " page block displayed
 
-  @197621 @197633 @ValidateAdminusershowpaymentrequesttothesourceuserInternalsideOwnerevenifPRwhichareincreatedstate1stsectionofpaymentrequest @sprint-4 @vaibhav @reassignment
+  @197621 @197633 @ValidateAdminusershowpaymentrequesttothesourceuserInternalsideOwnerevenifPRwhichareincreatedstate1stsectionofpaymentrequest @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate Admin user show payment request to the source user Internal side Owner even if PR which are in created state 1st section of payment request
     Given I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -1852,7 +1852,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
     Then I do not see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
 
-  @197640 @ValidateuserseewarningmessageafterclickonTransferownershipbutton @sprint-4 @vaibhav @reassignment
+  @197640 @ValidateuserseewarningmessageafterclickonTransferownershipbutton @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate user see warning message after click on Transfer ownership button
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal

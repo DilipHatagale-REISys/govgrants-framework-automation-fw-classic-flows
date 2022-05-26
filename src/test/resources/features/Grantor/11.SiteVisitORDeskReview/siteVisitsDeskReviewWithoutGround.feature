@@ -623,7 +623,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I cannot see top right button "Conduct" in page detail
 
-  @197266 @197272 @197275 @ValidateAdminusershouldabletoseeoptionofownershipoptionunderreassignsectiononleftnavigationbar @sprint-4 @vaibhav @reassignment
+  @197266 @197272 @197275 @ValidateAdminusershouldabletoseeoptionofownershipoptionunderreassignsectiononleftnavigationbar @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate Admin user should able to see option of ownership option under reassign section on left navigation bar
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Home" tab
@@ -780,7 +780,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I click table top right button "Transfer Ownership" in flex table with id "---sitevisits:-:siteVisitSourceTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
 
-  @197410 @197417 @ValidatependingtaskshouldbegeneratedforNewuserafterSiteVisitownershipassigntonewuser @sprint-4 @vaibhav @reassignment
+  @197410 @197417 @ValidatependingtaskshouldbegeneratedforNewuserafterSiteVisitownershipassigntonewuser @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate pending task should be generated for New user after Site Visit ownership assign to new user
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -1172,7 +1172,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @197447 @ValidatePOuserfurthertasklikeSubmittedtoGrantoshouldbegeneratedfornewSVownerotherPOuseronlyonceownershipofSVischangedevenAwardownerischangedinbetweenlifecycleofSV @sprint-4 @vaibhav @reassignment
+  @197447 @ValidatePOuserfurthertasklikeSubmittedtoGrantoshouldbegeneratedfornewSVownerotherPOuseronlyonceownershipofSVischangedevenAwardownerischangedinbetweenlifecycleofSV @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate PO user further task like Submitted to Grantor should be generated for new SV owner other PO user only once ownership of SV is changed even if Award owner is changed in between life cycle of SV
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -1509,7 +1509,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I click on "View" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly can see top right button "Conduct" in page detail
 
-  @197492 @ValidateSVownerasEXEuserisinInProgressstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinInProgressstate @sprint-4 @vaibhav @reassignment
+  @197492 @ValidateSVownerasEXEuserisinInProgressstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinInProgressstate @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Valdate SV owner as EXE user is in In Progress state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in In Progress state
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -1919,7 +1919,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly see "SiteVisit Source user " page block displayed
     Then I softly see "SiteVisit Target User " page block displayed
 
-  @197625 @ValidateasusercanshowalltheDeskReviewoftargetuserswillbetransferredinfutureortransferredispastfromsourceusertotargetuserin2ndsectionofDeskReview @sprint-4 @vaibhav @reassignment
+  @197625 @ValidateasusercanshowalltheDeskReviewoftargetuserswillbetransferredinfutureortransferredispastfromsourceusertotargetuserin2ndsectionofDeskReview @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate as user can show all the Desk Review of target users will be transferred in future or transferred is past from source user to target user in 2nd section of Desk Review
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -2446,7 +2446,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly see value "Automation PM1" for title "New Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---deskreview:-:deskReviewHistoryTableId---"
 
-  @197644 @ValidateEXEuserownershipofDRrecordisassigntonewEXEusermeansthatDRrecordownerwillbethenewassignedownerinanystatebutifuserwantinitiateotherdeskreviewthenownerofthatdeskreviewwillbeinitiatorofDR @sprint-4-US-196236 @vaibhav @reassignment
+  @197644 @ValidateEXEuserownershipofDRrecordisassigntonewEXEusermeansthatDRrecordownerwillbethenewassignedownerinanystatebutifuserwantinitiateotherdeskreviewthenownerofthatdeskreviewwillbeinitiatorofDR @sprint-4-US-196236 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate EXE user ownership of DR record is assign to new EXE user means that DR record owner will be the new assigned owner in any state but if user want initiate other desk review then owner of that desk review will be initiator of DR
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "CREATE_AWARD_EXE"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "CREATE_AWARD_EXE"

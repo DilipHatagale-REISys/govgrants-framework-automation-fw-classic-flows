@@ -1520,7 +1520,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:annAdminTargetOwnerReplaceTableId---" panel
     Then I see value "{SavedValue:AnnEGMSID}" for title "Announcement ID" inside table "---announcement:-:annAdminTargetOwnerReplaceTableId---"
 
-  @194694 @194714 @194712 @Validateclickontransferredbuttonthenusershouldabletoseethewarningmessage @sprint-4 @vaibhav @reassignment
+  @194694 @194714 @194712 @Validateclickontransferredbuttonthenusershouldabletoseethewarningmessage @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate click on transferred button then user should able to see the warning message
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -1596,7 +1596,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I navigate to "Responsibilities" sub tab
     Then I see value "Automation PM1" for title "Name" inside table "---announcement:-:announcementOwner---"
 
-  @194741 @Validatenewownercanchangetheextenddate&unpublishtheannouncementonlyannouncementisinpublishedstate @sprint-4 @vaibhav @reassignment
+  @194741 @Validatenewownercanchangetheextenddate&unpublishtheannouncementonlyannouncementisinpublishedstate @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate new owner can change the extend date & unpublish the announcement only if announcement is in published state
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -2165,7 +2165,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see value "Automation EXE1" for title "New Value" inside table "---announcement:-:annFieldHistory---"
     Then I softly see value "Automation EXE" for title "Old Value" inside table "---announcement:-:annFieldHistory---"
 
-  @196847 @Validateuserapprovedtheannouncement&reassignownershiptonewuserthenpublishoptionshoulddisplaytonewowner @sprint-4 @vaibhav @reassignment
+  @196847 @Validateuserapprovedtheannouncement&reassignownershiptonewuserthenpublishoptionshoulddisplaytonewowner @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate user approved the announcement & reassign ownership to  new user then publish option should display to new owner
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab

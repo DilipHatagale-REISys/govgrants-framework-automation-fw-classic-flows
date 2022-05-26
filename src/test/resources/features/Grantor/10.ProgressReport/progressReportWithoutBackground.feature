@@ -5785,7 +5785,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID}" in "---progressreport:-:progressTargetTableId---" panel
     Then I see value "{SavedValue:progID}" for title "Progress Report ID" inside table "---progressreport:-:progressTargetTableId---"
 
-  @197270 @ValidatewhenuserclickonNobuttonofwarningmessageforPRthenflowshouldbestop @sprint-4 @vaibhav @reassignment
+  @197270 @ValidatewhenuserclickonNobuttonofwarningmessageforPRthenflowshouldbestop @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate when user click on "No" button of warning message for PR then flow should be stop
     Given I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Home" tab
@@ -5872,7 +5872,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:progID}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197377 @197382 @Validateprogressreportiscreatedstate&userchangedOwnershiptonewownerofPRreport&afterPRissubmittograntorthenSendtoS/Risdisplaytonewowner @sprint-4 @vaibhav @reassignment
+  @197377 @197382 @Validateprogressreportiscreatedstate&userchangedOwnershiptonewownerofPRreport&afterPRissubmittograntorthenSendtoS/Risdisplaytonewowner @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate progress report is created state & user changed Ownership to new owner of PR report & after PR is submit to grantor then Send to S/R is display to new owner
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab

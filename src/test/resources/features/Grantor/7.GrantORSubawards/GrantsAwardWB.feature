@@ -3297,7 +3297,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM1" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @196600 @ValidatewhenuserclickonNObuttonofwarningmessageforgrantsthenflowshouldbestop @sprint-4 @vaibhav @reassignment
+  @196600 @ValidatewhenuserclickonNObuttonofwarningmessageforgrantsthenflowshouldbestop @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate when user click on NO button of warning message for grants then flow should be stop
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3647,7 +3647,7 @@ Feature: Validate all scenarios of grants and award without background
     When I click on "Start" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---home:-:internalHomePendingTaskTableId---" without waiting for record
     Then I can see top right button "Submit for Approval" in page detail
 
-  @198356 @Validateusershouldabletoreassigntheawardtaskwithsameprofile&sameOrganization @sprint-4 @vaibhav @reassignment
+  @198356 @Validateusershouldabletoreassigntheawardtaskwithsameprofile&sameOrganization @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate user should able to reassign the award task with same profile & same Organization
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -4030,7 +4030,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Subawards" sub tab
     Then I softly can see row level action button "Edit" against "{SavedValue:AwardEGMSID}" in flex table with id "---subAwardStandAlone:-:subawardsTableId---"
 
-  @196637 @Validateusershouldabletoseethefuturetasktonewuserforawardmodule @sprint-4 @vaibhav @reassignment
+  @196637 @Validateusershouldabletoseethefuturetasktonewuserforawardmodule @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate user should able to see the future task to new user for award module
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -4349,7 +4349,7 @@ Feature: Validate all scenarios of grants and award without background
     And I click on "Start" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---home:-:internalHomePendingTaskTableId---" without waiting for record
     Then I can see top right button "Activate" in page detail
 
-  @196648 @ValidatechangetheownershiptasktoSimonPMfromSarahPMuserafteracceptafterapprovaltaskfromSRthenactivatedtaskshouldgeneratetothenewowner @sprint-4 @vaibhav @reassignment
+  @196648 @ValidatechangetheownershiptasktoSimonPMfromSarahPMuserafteracceptafterapprovaltaskfromSRthenactivatedtaskshouldgeneratetothenewowner @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate change the ownership task to Simon PM from Sarah PM user after accept after approval task from S/R then activated task should generate to the new owner
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
