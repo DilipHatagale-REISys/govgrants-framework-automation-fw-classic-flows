@@ -8584,7 +8584,6 @@ Feature: Amendment Request scenarios without background
     When I perform quick search for "{SavedValue:TermsCondId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
     And I click on "View" icon for "{SavedValue:TermsCondId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     And I navigate to "Overview" sub tab
-    And I halt execution
     Then I softly cannot see top right button "Edit" in page detail
     Then I softly cannot see top right button "Submit for Approval" in page detail
     When I navigate to "Responsibilities" sub tab
