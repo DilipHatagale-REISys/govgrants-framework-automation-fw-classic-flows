@@ -264,6 +264,23 @@ Feature: Application Intake scenarios without background
     When I click toggle button to select "All Competitive Announcements"
     And I perform quick search for "Record Id" in "---announcement:-:competitiveTableId---" panel
     When I click on "View" icon for "Record Id" inside table
+    When I click on "Edit" in the page details
+    And I navigate to "Overview" sub tab
+    And I enter "Test" values from "fieldAnnouncementDescription__c"
+    And I navigate to "Financials" sub tab
+    And I enter "Test" values from "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:FO Username} | Step 2       |
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                      | Announcement |
+      | {SavedValue:EXE Username} | Step 3       |
+    And I pause execution for "3" seconds
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -1067,7 +1084,7 @@ Feature: Application Intake scenarios without background
   Validate Opportunities created from 'Competitive Announcements' are available for all external users and can qualify and create the Applications
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     When I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SA" user
+    When I login to "Grants Portal" app as "SPA" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"

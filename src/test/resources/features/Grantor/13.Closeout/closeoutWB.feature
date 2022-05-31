@@ -129,7 +129,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     #93795
-    And I checkout to yopmail with mailid "govgrantsuat@yopmail.com"
+    And I checkout to yopmail with mailid "exe.automation@yopmail.com"
     And I pause execution for "5" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
@@ -165,7 +165,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
     And I click on "Acknowledge" in the page details
     #76492
-    And I checkout to yopmail with mailid "govgrantsuat@yopmail.com"
+    And I checkout to yopmail with mailid "exe.automation@yopmail.com"
     And I pause execution for "60" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
@@ -241,7 +241,7 @@ Feature: Validate all scenarios in Closeout
     And I save the field labeled "EGMS ID" as "closeoutID"
     When I click on "Save" in the page details
     Given I click on "Send To Subrecipient" in the page details
-    And I checkout to yopmail with mailid "automation.spi3@yopmail.com"
+    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
     And I pause execution for "5" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
@@ -277,7 +277,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Override" in the page details
     When I click on "Submit for Approval" in the page details
     #86707
-    And I checkout to yopmail with mailid "govgrantsuat@yopmail.com"
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     And I pause execution for "5" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
@@ -285,7 +285,7 @@ Feature: Validate all scenarios in Closeout
       Sandbox: Notification: Closeout Request {SavedValue:closeoutID} has beenSubmitted for your Approval
       """
     #86709
-    And I checkout to yopmail with mailid "govgrantsuat@yopmail.com"
+    And I checkout to yopmail with mailid "fo.automation@yopmail.com"
     And I pause execution for "5" seconds
     Then I refresh the page
     And I see the mail subject is as follows :

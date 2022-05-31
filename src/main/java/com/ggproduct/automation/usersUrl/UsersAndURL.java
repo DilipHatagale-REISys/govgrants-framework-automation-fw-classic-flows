@@ -102,50 +102,8 @@ public class UsersAndURL implements UsersController {
     private String getAUTOEnvironmentPassword(String userLevel) {
         String password;
         switch (userLevel.toUpperCase()) {
-            case "SPI":
-                password = "Salesforce2023";
-                break;
-            case "ADMIN1":
-                password = "Salesforce2023";
-                break;
-            case "ADMIN":
-                password = "Salesforce2023";
-                break;
-            case "PM":
-                password = "Salesforce2023";
-                break;
-            case "EXE":
-                password = "Salesforce2023";
-                break;
-            case "FO":
-                password = "Salesforce2023";
-                break;
-            case "FD":
-                password = "Salesforce2023";
-                break;
-            case "PO":
-                password = "Salesforce2023";
-                break;
-            case "AUDITOR":
-                password = "Salesforce2023";
-                break;
-            case "SPI3":
-                password = "Salesforce2023";
-                break;
-            case "SPA":
-                password = "Salesforce2023";
-                break;
-                case "IND":
-                password = "Salesforce2023";
-                break;
-            case "SME":
-                password = "Salesforce2023";
-                break;
-            case "SA":
-                password = "Salesforce2023";
-                break;
             default:
-                password = "Salesforce2022";
+                password = "Salesforce2023";
         }
         return password;
     }
@@ -197,6 +155,7 @@ public class UsersAndURL implements UsersController {
         username.put("SME", "product.ucs.sme1@yopmail.com.automation");
 
         username.put("SARAH PM", "sarah.pm@ggp.test9.automation");
+        username.put("SIMON PM", "simon@ggp.test8.automation");
         username.put("ALEX FO", "alex_fo@ggp.test7.automation");
         username.put("CATHY PM", "cathy_pm@ggp.test7.automation");
         username.put("OSCAR PM", "oscar_pm@ggp.test7.automation");
