@@ -266,9 +266,13 @@ Feature: Application Intake scenarios without background
     When I click on "View" icon for "Record Id" inside table
     When I click on "Edit" in the page details
     And I navigate to "Overview" sub tab
-    And I enter "Test" values from "fieldAnnouncementDescription__c"
+    And I enter values into fields
+      | Value | Field                           |
+      | Test  | fieldAnnouncementDescription__c |
     And I navigate to "Financials" sub tab
-    And I enter "Test" values from "fieldJustification__c"
+    And I enter values into fields
+      | Value | Field                 |
+      | Test  | fieldJustification__c |
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
@@ -744,7 +748,7 @@ Feature: Application Intake scenarios without background
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 1000   | 100        | 100            | 100            |
     When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I click on "Edit" icon for "<Key User>" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     And I enter value "Checked" into field "IsKeyContact__c"
     And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
     When I navigate to "Proposal" sub tab
@@ -769,9 +773,9 @@ Feature: Application Intake scenarios without background
     Then I softly see field "Application Due Date" contains date less than todays date
     And I softly cannot see top right button "Create Application" in page detail
     Examples:
-      | User |
-      | SPI3 |
-      | SPA  |
+      | User | Key User        |
+      | SPI3 | Automation SPI3 |
+      | SPA  | Automation SPA  |
 
   @73367 @spiUserCanViewAllocatedAmountOnceSubmittedToGrantor @deepika @buglogged129432
   Scenario Outline: Validate whether SPI & SPA user were able to view the allocated amount once the Oppurtunity is Converted to Application when Announcement is of type - Formula

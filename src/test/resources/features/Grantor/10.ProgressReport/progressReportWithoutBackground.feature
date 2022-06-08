@@ -5872,7 +5872,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:progID}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197377 @197382 @Validateprogressreportiscreatedstate&userchangedOwnershiptonewownerofPRreport&afterPRissubmittograntorthenSendtoS/Risdisplaytonewowner @sprint-4 @vaibhav @reassignment @ownershipcheck
+  @197377 @197382 @Validateprogressreportiscreatedstate&userchangedOwnershiptonewownerofPRreport&afterPRissubmittograntorthenSendtoS/Risdisplaytonewowner @sprint-4 @vaibhav @reassignment
   Scenario: Validate progress report is created state & user changed Ownership to new owner of PR report & after PR is submit to grantor then Send to S/R is display to new owner
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -6885,7 +6885,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @197903 @197904 @ValidateusershouldabletoseeallthependingtasksinReassignMyCurrentTaskpage&usershouldreassigntheownershiprelatedtaskstoanotherbusinessuserofsameprofile @sprint-4 @vaibhav @reassignment
+  @197903 @197904 @ValidateusershouldabletoseeallthependingtasksinReassignMyCurrentTaskpage&usershouldreassigntheownershiprelatedtaskstoanotherbusinessuserofsameprofile @sprint-4 @vaibhav @reassignment @taskreassign
   Scenario: Validate user should able to see all the pending tasks in Reassign My Current Task page & user should reassign the ownershiprelated tasks to another business user of same profile
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -6998,7 +6998,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly cannot see row level action button "Edit" against "{SavedValue:progID}" in flex table with id "---progressReport:-:internalProgressReportFlexTableId---"
     Then I softly can see row level action button "View" against "{SavedValue:progID}" in flex table with id "---progressReport:-:internalProgressReportFlexTableId---"
 
-  @197975 @198005 @ValidateProgressReportownershipischangedfromprevioususertonewuserthenthenewusershouldbetheownerofthatProgressReport @Sprint-4 @vaibhav @reassignment
+  @197975 @198005 @ValidateProgressReportownershipischangedfromprevioususertonewuserthenthenewusershouldbetheownerofthatProgressReport @Sprint-4 @vaibhav @reassignment @taskreassign
   Scenario: Validate Progress Report ownership is changed from previous user to new user then the new user should be the owner of that Progress Report
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"

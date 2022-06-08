@@ -3004,7 +3004,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "Review Payment Request" for title "Task Type" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @197287 @ValidatePMusercanreassignad-hocreimbursementpaymentrequestownershiptaskstootherPMuser @sprint4 @vaibhav @reassignment
+  @197287 @ValidatePMusercanreassignad-hocreimbursementpaymentrequestownershiptaskstootherPMuser @sprint4 @vaibhav @reassignment @taskreassign
   Scenario: Validate PM user can reassign ad-hoc reimbursement payment request ownership tasks to other PM user
     And I activated standalone subaward "Automation Runtime award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -3502,7 +3502,7 @@ Feature: Payment Request scenarios without background
     And I pause execution for "4" seconds
     Then I softly see "No matches found" inside auto search result
 
-  @197366 @ValidatePMusercanreassignadvancepaymentrequestownershiptaskstootherPMuser @sprin-4 @vaibhav @reassignment
+  @197366 @ValidatePMusercanreassignadvancepaymentrequestownershiptaskstootherPMuser @sprin-4 @vaibhav @reassignment @taskreassign
   Scenario: Validate PM user can reassign advance payment request ownership tasks to other PM user
     And I activated standalone subaward "Automation Runtime award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -4211,7 +4211,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I do not see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197511 @ValidatenewownerPOofadvancepaymentrequestshouldhavefollowingbuttonsaccessafterpaymentrequestsubmittograntor @sprint-4 @vaibhav @reassignment
+  @197511 @ValidatenewownerPOofadvancepaymentrequestshouldhavefollowingbuttonsaccessafterpaymentrequestsubmittograntor @sprint-4 @vaibhav @reassignment @taskreassign
   Scenario: Validate new owner PO of advance payment request should have following buttons access after payment request submit to grantor
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab

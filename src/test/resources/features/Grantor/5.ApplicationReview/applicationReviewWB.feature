@@ -8473,7 +8473,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I perform quick search for "{SavedValue:EGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:EGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @197959 @ValidateReviewNegotiationtaskshouldnotgenerateforEXEuserforapplicationonreassignmytaskpage @sprint-7-US-197384 @vaibhav @reassignment @ownershipcheck
+  @197959 @ValidateReviewNegotiationtaskshouldnotgenerateforEXEuserforapplicationonreassignmytaskpage @sprint-7-US-197384 @vaibhav @reassignment @taskreassign
   Scenario: Validate Review Negotiation task should not generate for EXE user for application on reassign my task page
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab

@@ -6311,7 +6311,6 @@ Feature: Amendment Request scenarios without background
     And I click modal button "Save"
     #When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     When I navigate to "Overview" sub tab
-    And I pause execution
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
       | Name                       | Project Role             | Is Key Personnel |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
@@ -10140,7 +10139,7 @@ Feature: Amendment Request scenarios without background
     And I edit the following rows inline in flex table with id "---amendment:-:amendmentFundingAccountsTableId---" by clicking "Edit" :
       | Title                       | Revised Encumbrance |
       | {SavedValue:fundingAccount} | 1500                |
-   When I navigate to "Responsibilities" sub tab
+    When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
       | Name                     | Amendment Request |
       | {SavedValue:PM Username} | Step 1            |
@@ -10308,3 +10307,1310 @@ Feature: Amendment Request scenarios without background
     And I navigate to "History" sub tab
     Then I softly see value "Automation PM1" for title "New Value" inside table "---amendment:-:historyTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
+
+  @199845 @ValidatePMusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatcreatedstateforBudgetPeriodChangeARtype @sprint-5-US-198419  @vaibhav @reassignment
+  Scenario: Validate PM user should able to see the AR is updated after change the ownership by Grantor Side at created state for Budget Period Change AR type
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "budgetPChangeId"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Amendment Request"
+    And I Click on "Reassign Records" icon for "Amendment Request" without tableid
+    Then I softly see "Amendment Requests Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    When I check "{SavedValue:budgetPChangeId}" boxes in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "60" seconds
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly can see top right button "Edit" in page detail
+    Then I softly can see top right button "Send Subrecipient" in page detail
+    When I navigate to "Responsibilities" sub tab
+    Then I softly can see top right button "New" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    When I navigate to "Files" sub tab
+    Then I can see top right button "Add" in flex table with id "---amendment:-:amendmentAddNotesTableId---"
+    Then I can see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly cannot see top right button "Edit" in page detail
+    Then I softly cannot see top right button "Send to Subrecipient" in page detail
+    When I navigate to "Responsibilities" sub tab
+    Then I softly cannot see top right button "New" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    When I navigate to "Files" sub tab
+    Then I cannot see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PM1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
+
+  @199849 @ValidateEXEusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatSubmittedtoGrantorstateforBudgetPeriodChangeARtype @sprint-5-US-198419  @vaibhav @reassignment
+  Scenario: Validate EXE user should able to see the AR is updated after change the ownership by Grantor Side at Submitted to Grantor state for Budget Period Change AR type
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "budgetPChangeId"
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Amendment Award}"
+    When I click on "Edit" in the page details
+    And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
+    When I click on "Save" in the page details
+    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation EXE" into field "s2id_autogen1"
+    And I select value "Automation EXE1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation EXE" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Amendment Request"
+    And I Click on "Reassign Records" icon for "Amendment Request" without tableid
+    Then I softly see "Amendment Requests Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    When I check "{SavedValue:budgetPChangeId}" boxes in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "60" seconds
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
+    When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    Then I softly can see top right button "Edit" in page detail
+    Then I softly can see top right button "Submit For Approval" in page detail
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation EXE1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation EXE" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly cannot see top right button "Edit" in page detail
+    Then I softly cannot see top right button "Submit For Approval" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly cannot see top right button "Edit" in page detail
+    Then I softly cannot see top right button "Submit For Approval" in page detail
+
+  @199851 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatSubmittedforapprovalstateforCombinationOfBPC&SOWARtype @sprint-5-US-198419  @vaibhav @reassignment
+  Scenario: Validate user should able to see the AR is updated after change the ownership by Grantor Side at Submitted for approval state for Combination Of BPC & SOW AR type
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Scope&BudgetPeriod_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "budgetPC&ScopeId"
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Amendment Award}"
+    When I click on "Edit" in the page details
+    And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
+    And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PO" into field "s2id_autogen1"
+    And I select value "Automation PO1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PO" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Amendment Request"
+    And I Click on "Reassign Records" icon for "Amendment Request" without tableid
+    Then I softly see "Amendment Requests Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:budgetPC&ScopeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPC&ScopeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:budgetPC&ScopeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    When I check "{SavedValue:budgetPC&ScopeId}" boxes in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "60" seconds
+    When I perform quick search for "{SavedValue:budgetPC&ScopeId}" in "---amendment:-:amendmentTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPC&ScopeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PO1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPC&ScopeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPC&ScopeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPC&ScopeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Submitted for Approval"
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPC&ScopeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPC&ScopeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPC&ScopeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Submitted for Approval"
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PO1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PO" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:budgetPC&ScopeId}" in "---amendment:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:budgetPC&ScopeId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
+    When I click on "Start" icon for "{SavedValue:budgetPC&ScopeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    Then I softly cannot see top right button "Amend Subaward" in page detail
+    When I re-login to "As a Grantor" app as "PO1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPC&ScopeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPC&ScopeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPC&ScopeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly can see top right button "Amend Subaward" in page detail
+
+  @199867 @ValidatePMusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatrejectedstateforbudgetperiodchange @sprint-5-US-198419  @vaibhav @reassignment
+  Scenario: Validate PM user should able to see the AR is updated after change the ownership by Grantor Side at rejected state for budget period change
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "budgetPChangeId"
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Amendment Award}"
+    When I click on "Edit" in the page details
+    And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
+    When I click on "Save" in the page details
+    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Submit for Approval" in the page details
+    And I "Reject" in the approval decision
+    Then I softly see field "Status" as "Rejected"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Amendment Request"
+    And I Click on "Reassign Records" icon for "Amendment Request" without tableid
+    Then I softly see "Amendment Requests Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    When I check "{SavedValue:budgetPChangeId}" boxes in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "60" seconds
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Rejected"
+    When I navigate to "Responsibilities" sub tab
+    Then I softly see value "Automation PM" for title "Name" inside table "---amendment:-:amendmentOwnerTableId---"
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PM1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Rejected"
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PM1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
+
+  @199868 @ValidatePOusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatapprovedstateforbudgetperiodchange @sprint-5-US-198419 @vaibhav @reassignment
+  Scenario: Validate PO user should able to see the AR is updated after change the ownership by Grantor Side at approved state for budget period change
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "budgetPChangeId"
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Amendment Award}"
+    When I click on "Edit" in the page details
+    And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
+    When I click on "Save" in the page details
+    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Submit for Approval" in the page details
+    And I pause execution for "3" seconds
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PO" into field "s2id_autogen1"
+    And I select value "Automation PO1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PO" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Amendment Request"
+    And I Click on "Reassign Records" icon for "Amendment Request" without tableid
+    Then I softly see "Amendment Requests Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    When I check "{SavedValue:budgetPChangeId}" boxes in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "60" seconds
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PO1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Approved"
+    When I navigate to "Responsibilities" sub tab
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PO1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PO" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    Then I softly can see top right button "Amend Subaward" in page detail
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Approved"
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PO1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PO" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    Then I softly cannot see top right button "Amend Subaward" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Approved"
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PO1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PO" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    Then I softly cannot see top right button "Amend Subaward" in page detail
+
+  @200052 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RSideatSubmittedtoGrantorStateforBudgetPeriodChangeARtype @sprint-5-US-198419  @vaibhav @reassignment
+  Scenario: Validate user should able to see the AR is updated after change the ownership by S/R Side at Submitted to Grantor State for Budget Period Change AR type
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "BudgetPeriodChange_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "budgetPChangeId"
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Amendment Award}"
+    When I click on "Edit" in the page details
+    And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
+    When I click on "Save" in the page details
+    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Amendment Request"
+    And I Click on "Reassign Records" icon for "Amendment Request" without tableid
+    Then I softly see "Amendment Requests Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    When I check "{SavedValue:budgetPChangeId}" boxes in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "60" seconds
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
+    When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    Then I softly can see top right button "Submit For Approval" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly cannot see top right button "Submit For Approval" in page detail
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PM1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
+
+  @200053 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RSideatcreatedstateforBudgetPeriodChangeARtype @sprint-5-US-198419 @vaibhav @reassignment
+  Scenario: Validate user should able to see the AR is updated after change the ownership by S/R  Side at created state for Budget Period Change AR type
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---amendment:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:recipientAwardAmendmentRequestTableId---"
+    When I enter "SubRecipientBPC_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "budgetPChangeId"
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
+    When I click on "Edit" in the page details
+    And I enter "SubRecipientBPC_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "{SavedValue:updatedBudgetPeriodDate}" into field "fieldNewBudgetPeriodEndDate__c"
+    And I click on "Save" in the page details
+    Then I see status in Progress-bar is "Created" and is "Green"
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Amendment Request"
+    And I Click on "Reassign Records" icon for "Amendment Request" without tableid
+    Then I softly see "Amendment Requests Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    When I check "{SavedValue:budgetPChangeId}" boxes in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "60" seconds
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
+    When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    Then I softly can see top right button "Submit For Approval" in page detail
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PM1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly cannot see top right button "Submit For Approval" in page detail
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PM1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
+
+  @200054 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RSideatrejectedstateforbudgetperiodchange @sprint-5-US-198419 @vaibhav @reassignment
+  Scenario: Validate user should able to see the AR is updated after change the ownership by S/R Side at rejected state for budget period change
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---amendment:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:recipientAwardAmendmentRequestTableId---"
+    When I enter "SubRecipientBPC_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "budgetPChangeId"
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
+    When I click on "Edit" in the page details
+    And I enter "SubRecipientBPC_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
+    And I click on "Save" in the page details
+    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    When I click on "Submit for Approval" in the page details
+    And I pause execution for "3" seconds
+    And I "Reject" in the approval decision
+    Then I softly see field "Status" as "Rejected"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Amendment Request"
+    And I Click on "Reassign Records" icon for "Amendment Request" without tableid
+    Then I softly see "Amendment Requests Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    When I check "{SavedValue:budgetPChangeId}" boxes in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "60" seconds
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Rejected"
+    When I navigate to "Responsibilities" sub tab
+    Then I softly see value "Automation PM" for title "Name" inside table "---amendment:-:fundingChangeApproversTableId---"
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PM1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Rejected"
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PM1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
+
+  @200057 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RatSubmittedforapprovalstateforBudgetPeriodChangeARtype @sprint-5-US-198419 @vaibhav @reassignment
+  Scenario: Validate user should able to see the AR is updated after change the ownership by S/R at Submitted for approval state for Budget Period Change AR type
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---amendment:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:recipientAwardAmendmentRequestTableId---"
+    When I enter "SubRecipientBPC_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "budgetPChangeId"
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
+    When I click on "Edit" in the page details
+    And I enter "SubRecipientBPC_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
+    And I click on "Save" in the page details
+    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                      | Amendment Request |
+      | {SavedValue:EXE Username} | Step 1            |
+    When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation EXE" into field "s2id_autogen1"
+    And I select value "Automation EXE1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation EXE" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Amendment Request"
+    And I Click on "Reassign Records" icon for "Amendment Request" without tableid
+    Then I softly see "Amendment Requests Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    When I check "{SavedValue:budgetPChangeId}" boxes in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "60" seconds
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Submitted for Approval"
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I navigate to "Responsibilities" sub tab
+    Then I see value "{SavedValue:EXE Username}" for title "Name" inside table "---amendment:-:fundingChangeApproversTableId---"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Submitted for Approval"
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation EXE1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation EXE" for title "Old Value" inside table "---amendment:-:historyTableId---"
+
+  @200058 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RSideatapprovedstateforbudgetperiodchange @sprint-5-US-198419 @vaibhav @reassignment
+  Scenario: Validate user should able to see the AR is updated after change the ownership by S/R Side at approved state for budget period change
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---amendment:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:recipientAwardAmendmentRequestTableId---"
+    When I enter "SubRecipientBPC_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "budgetPChangeId"
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
+    When I click on "Edit" in the page details
+    And I enter "SubRecipientBPC_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
+    And I click on "Save" in the page details
+    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PO Username} | Step 1            |
+    When I click on "Submit for Approval" in the page details
+    And I pause execution for "3" seconds
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PO" into field "s2id_autogen1"
+    And I select value "Automation PO1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PO" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Amendment Request"
+    And I Click on "Reassign Records" icon for "Amendment Request" without tableid
+    Then I softly see "Amendment Requests Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    When I check "{SavedValue:budgetPChangeId}" boxes in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "60" seconds
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PO1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Approved"
+    When I navigate to "Responsibilities" sub tab
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PO1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PO" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    Then I softly can see top right button "Amend Subaward" in page detail
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Approved"
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PO1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PO" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    Then I softly cannot see top right button "Amend Subaward" in page detail
+
+  @200059 @ValidatePMusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatcreatedstateforScopeofWorkChangeARtype @sprint-5-US-198419 @vaibhav @reassignment
+  Scenario: Validate PM user should able to see the AR is updated after change the ownership by Grantor Side at created state for Scope of Work Change AR type
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
+    Given I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    When I click on "Edit" in the page details
+    And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "scopeWorkId"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Amendment Request"
+    And I Click on "Reassign Records" icon for "Amendment Request" without tableid
+    Then I softly see "Amendment Requests Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    When I check "{SavedValue:scopeWorkId}" boxes in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "60" seconds
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:amendmentTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly can see top right button "Edit" in page detail
+    Then I softly can see top right button "Send to Subrecipient" in page detail
+    Then I softly can see top right button "Delete" in page detail
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly cannot see top right button "Edit" in page detail
+    Then I softly cannot see top right button "Send to Subrecipient" in page detail
+    Then I softly cannot see top right button "Delete" in page detail
+
+  @200067 @ValidateEXEusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatSubmittedtoGrantorstateforcombinationofSOW/BPCARtype @sprint-5-US-198419 @vaibhav @reassignment
+  Scenario: Validate EXE user should able to see the AR is updated after change the ownership by Grantor Side at Submitted to Grantor state for combination of SOW/BPC AR type
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "Activated" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "Activated" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "Scope&BudgetPeriod_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "budgetPC&ScopeId"
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Amendment Award}"
+    When I click on "Edit" in the page details
+    And I enter "BudgetPeriodChange_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
+    And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
+    And I edit the following rows inline in flex table with id "---amendment:-:projectAreasTableId---" by clicking "Edit" :
+      | Title                           | End Date                             |
+      | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
+    And I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    When I get the "EGMS ID"
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation EXE" into field "s2id_autogen1"
+    And I select value "Automation EXE1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation EXE" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Amendment Request"
+    And I Click on "Reassign Records" icon for "Amendment Request" without tableid
+    Then I softly see "Amendment Requests Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:budgetPC&ScopeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPC&ScopeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:budgetPC&ScopeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    When I check "{SavedValue:budgetPC&ScopeId}" boxes in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "60" seconds
+    When I perform quick search for "{SavedValue:budgetPC&ScopeId}" in "---amendment:-:amendmentTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPC&ScopeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:budgetPC&ScopeId}" in "---amendment:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:budgetPC&ScopeId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
+    When I click on "Start" icon for "{SavedValue:budgetPC&ScopeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    Then I softly can see top right button "Submit For Approval" in page detail
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation EXE1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation EXE" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPC&ScopeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPC&ScopeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPC&ScopeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly cannot see top right button "Submit For Approval" in page detail
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation EXE1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation EXE" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:budgetPC&ScopeId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:budgetPC&ScopeId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:budgetPC&ScopeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly cannot see top right button "Submit For Approval" in page detail
+
+  @200068 @ValidateFOusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatSubmittedforapprovalstateforSOWARtype @sprint-5-US-198419 @vaibhav @reassignment
+  Scenario: Validate FO user should able to see the AR is updated after change the ownership by Grantor Side at Submitted for  approval state for SOW AR type
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    When I login to "As a Grantor" app as "FO" user
+    And I navigate to "Grants" tab
+    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
+    Given I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    When I click on "Edit" in the page details
+    And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "scopeWorkId"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    Then I see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
+    And I click on "Start" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation FO" into field "s2id_autogen1"
+    And I select value "Automation FO1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation FO" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Amendment Request"
+    And I Click on "Reassign Records" icon for "Amendment Request" without tableid
+    Then I softly see "Amendment Requests Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    When I check "{SavedValue:scopeWorkId}" boxes in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "60" seconds
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:amendmentTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "FO1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Submitted for Approval"
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation FO1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation FO" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Submitted for Approval"
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation FO1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation FO" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    Then I softly see field "Status" as "Approved"
+    Then I softly cannot see top right button "Amend Subaward" in page detail
+    When I re-login to "As a Grantor" app as "FO1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly can see top right button "Amend Subaward" in page detail
+
+  @200069 @ValidatePMusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatrejectedstateforSOWAR @sprint-5-US-198419 @vaibhav @reassignment
+  Scenario: Validate PM user should able to see the AR is updated after change the ownership by Grantor Side at rejected state for SOW AR
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
+    Given I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    When I click on "Edit" in the page details
+    And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "scopeWorkId"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    Then I see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
+    And I click on "Start" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Submit to Grantor" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    When I click on "Submit for Approval" in the page details
+    And I pause execution for "3" seconds
+    And I "Reject" in the approval decision
+    Then I softly see field "Status" as "Rejected"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Amendment Request"
+    And I Click on "Reassign Records" icon for "Amendment Request" without tableid
+    Then I softly see "Amendment Requests Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    When I check "{SavedValue:scopeWorkId}" boxes in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "60" seconds
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:amendmentTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Rejected"
+    When I navigate to "Responsibilities" sub tab
+    Then I softly see value "Automation PM" for title "Name" inside table "---amendment:-:amendmentOwnerTableId---"
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PM1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Amendment Requests" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Amendment Requests - All"
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:grantorAmendmentRequestsTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "EGMS ID" inside table "---amendment:-:grantorAmendmentRequestsTableId---"
+    And I click on "View" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
+    Then I softly see field "Status" as "Rejected"
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PM1" for title "New Value" inside table "---amendment:-:historyTableId---"
+    Then I softly see value "Automation PM" for title "Old Value" inside table "---amendment:-:historyTableId---"
+
+  @200486 @ValidatePMusershouldabletoseealleditaccesspage&sectionleveltonewowneraftertaskreassignmentforcombinationofBPC&SOWARbygrantorsideattachment @sprint-5-US-198153 @vaibhav @reassignment @taskreassign
+  Scenario: Validate PM user should able to see all edit access(page & section level) to new owner after task reassignment for combination of BPC & SOW AR by grantor side attachment
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Amendment Award}" in "---subAwardStandAlone:-:SubAwardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Amendment Award}" inside flex table with id "---subAwardStandAlone:-:SubAwardTableId---" without waiting for record
+    Given I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    When I enter "ScopeOfWork_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I click on "Save" in the page details
+    When I click on "Edit" in the page details
+    And I enter "ScopeOfWork_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "scopeWorkId"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---amendment:-:approversTableId---" by clicking "New" :
+      | Name                     | Amendment Request |
+      | {SavedValue:PM Username} | Step 1            |
+    And I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
+    When I reassign task to "Automation PM1"
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---program:-:grantorTaskReassignTableId---" panel
+    When I check "{SavedValue:scopeWorkId}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I pause execution for "60" seconds
+    And I refresh the page
+    When I perform quick search for "{SavedValue:scopeWorkId}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly do not see value "{SavedValue:scopeWorkId}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:scopeWorkId}" in "---amendment:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:scopeWorkId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
+    When I click on "Start" icon for "{SavedValue:scopeWorkId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Overview" sub tab
+    Then I softly can see top right button "Edit" in page detail
+    Then I softly can see top right button "Submit for Approval" in page detail
+    When I navigate to "Responsibilities" sub tab
+    Then I softly can see top right button "New" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    When I navigate to "Files" sub tab
+    Then I can see top right button "Add" in flex table with id "---amendment:-:amendmentAddNotesTableId---"
+    Then I can see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"

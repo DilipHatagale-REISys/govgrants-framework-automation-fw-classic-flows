@@ -458,7 +458,7 @@ Feature: Validate all scenarios for program
     And I expand nested table containing column value "Grantor Pre-application Form"
     Then I softly see value "Standard Pre-Application form" for title "Display Name" inside table "---program:-:packagesTableId---"
 
-  @197300 @ValidatePMuserisabletotransferhisowntaskofthetasktypeActivatetheProgramstatusasInprogresstoanotherPMuserforinternalprogram @sprint-4 @vaibhav @reassignment @ownershipcheck
+  @197300 @ValidatePMuserisabletotransferhisowntaskofthetasktypeActivatetheProgramstatusasInprogresstoanotherPMuserforinternalprogram @sprint-4 @vaibhav @reassignment @taskreassign
   Scenario: Validate PM user is able to transfer his own task of the task type Activate the Program status as In progress to another PM user for internal program
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -515,7 +515,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "In Progress" for title "Status" inside table "---program:-:grantorTaskReassignTableId---"
     When I check "{SavedValue:ProgramEGMSID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
-    And I pause execution for "300" seconds
+    And I pause execution for "60" seconds
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     And I navigate to "Planning" tab
@@ -535,7 +535,7 @@ Feature: Validate all scenarios for program
     Then I softly see value "{SavedValue:OwnerName1}" for title "Name" inside table "---program:-:programOwnerTableId---"
     Then I cannot see top right button "Activate" in page detail
 
-  @197309 @ValidateEXEuserisabletotransferhisowntaskofthetasktypeActivateNGOProgramstatusaInprogresstoanotherEXEuserforexternalprogram @sprint-4 @vaibhav @reassignment
+  @197309 @ValidateEXEuserisabletotransferhisowntaskofthetasktypeActivateNGOProgramstatusaInprogresstoanotherEXEuserforexternalprogram @sprint-4 @vaibhav @reassignment @taskreassign
   Scenario: Validate EXE user is able to transfer his own task of the task type Activate NGO Program status as In progress to another EXE user for external program
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
@@ -1791,7 +1791,7 @@ Feature: Validate all scenarios for program
     When I click table top right button "Transfer Ownership" in flex table with id "---program:-:adminOwnerReplaceTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    And I pause execution for "180" seconds
+    And I pause execution for "60" seconds
     And I refresh the page
     When I perform quick search for "{SavedValue:ProgramEGMSID1}" in "---program:-:adminTargetOwnerReplaceTableId---" panel
     Then I see value "{SavedValue:ProgramEGMSID1}" for title "Program ID" inside table "---program:-:adminTargetOwnerReplaceTableId---"
@@ -1800,7 +1800,7 @@ Feature: Validate all scenarios for program
     When I click table top right button "Transfer Ownership" in flex table with id "---program:-:adminOwnerReplaceTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    And I pause execution for "180" seconds
+    And I pause execution for "60" seconds
     And I refresh the page
     When I perform quick search for "{SavedValue:ProgramEGMSID2}" in "---program:-:adminTargetOwnerReplaceTableId---" panel
     Then I see value "{SavedValue:ProgramEGMSID2}" for title "Program ID" inside table "---program:-:adminTargetOwnerReplaceTableId---"
@@ -1809,7 +1809,7 @@ Feature: Validate all scenarios for program
     When I click table top right button "Transfer Ownership" in flex table with id "---program:-:adminOwnerReplaceTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    And I pause execution for "180" seconds
+    And I pause execution for "60" seconds
     And I refresh the page
     When I perform quick search for "{SavedValue:ProgramEGMSID3}" in "---program:-:adminTargetOwnerReplaceTableId---" panel
     Then I see value "{SavedValue:ProgramEGMSID3}" for title "Program ID" inside table "---program:-:adminTargetOwnerReplaceTableId---"
@@ -1819,7 +1819,7 @@ Feature: Validate all scenarios for program
     When I click table top right button "Transfer Ownership" in flex table with id "---program:-:adminOwnerReplaceTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    And I pause execution for "180" seconds
+    And I pause execution for "60" seconds
     And I refresh the page
     When I perform quick search for "{SavedValue:ProgramEGMSID4}" in "---program:-:adminTargetOwnerReplaceTableId---" panel
     Then I see value "{SavedValue:ProgramEGMSID4}" for title "Program ID" inside table "---program:-:adminTargetOwnerReplaceTableId---"
@@ -1829,17 +1829,13 @@ Feature: Validate all scenarios for program
     And I navigate to "Planning" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:ProgramEGMSID1}" in "---program:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "{SavedValue:ProgramEGMSID1}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     Then I do not see value "{SavedValue:ProgramEGMSID1}" for title "EGMS ID" inside table "---program:-:pendingTaskTableId---"
     When I perform quick search for "{SavedValue:ProgramEGMSID2}" in "---program:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "{SavedValue:ProgramEGMSID2}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     Then I do not see value "{SavedValue:ProgramEGMSID2}" for title "EGMS ID" inside table "---program:-:pendingTaskTableId---"
     When I perform quick search for "{SavedValue:ProgramEGMSID3}" in "---program:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "{SavedValue:ProgramEGMSID3}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     Then I see value "{SavedValue:ProgramEGMSID3}" for title "EGMS ID" inside table "---program:-:pendingTaskTableId---"
     Then I softly see value "Activate Internal Program {SavedValue:ProgramEGMSID3}" for title "Subject" inside table "---program:-:pendingTaskTableId---"
     When I perform quick search for "{SavedValue:ProgramEGMSID4}" in "---program:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "{SavedValue:ProgramEGMSID4}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     Then I see value "{SavedValue:ProgramEGMSID4}" for title "EGMS ID" inside table "---program:-:pendingTaskTableId---"
     Then I softly see value "Activate Internal Program {SavedValue:ProgramEGMSID4}" for title "Subject" inside table "---program:-:pendingTaskTableId---"
     And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
@@ -2295,7 +2291,7 @@ Feature: Validate all scenarios for program
     And I click on "Activate" in the page details
     Then I softly see field "Status" as "Active"
 
-  @197549 @ValidateownershiptasksareroutedtoretainedbyappropriateuserwhentaskshavingdifferentpurposearereassignedsimultaneouslytoanotherPMuserfor3differentexternalprograms @sprint-4 @vaibhav @reassignment
+  @197549 @ValidateownershiptasksareroutedtoretainedbyappropriateuserwhentaskshavingdifferentpurposearereassignedsimultaneouslytoanotherPMuserfor3differentexternalprograms @sprint-4 @vaibhav @reassignment @taskreassign
   Scenario: Validate ownership & tasks are routed to retained by appropriate user when tasks having different purpose are reassigned simultaneously to another PM user for 3 different external programs
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab

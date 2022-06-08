@@ -176,12 +176,12 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @56728 @dunsRegistration
+  @56728 @UEIRegistration
   Scenario Outline: Validate whether ADMIN have view access to DUNSRegistration
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab
-    And I navigate to "DUNS Registration" content inside "Useful Links" subheader on left panel
-    Then I navigate to url "https://www.dnb.com/duns-number/view-update-company-credit-file.html"
+    And I navigate to "UEI Registration" content inside "Useful Links" subheader on left panel
+    Then I navigate to url "https://sam.gov/content/entity-registration"
     Examples:
       | User  |
       | ADMIN |
@@ -364,7 +364,7 @@ Feature: Validate all scenarios in the home tab
     When I click on "delete" icon for "138047990" inside flex table with id "---home:-:dunsTableId---" without waiting for record
     Then I softly do not see values "138047990" and "DUNSNumber" inside table
 
-  @56743 @deleteIndirectCostRate @buglogged151630
+  @56743 @deleteIndirectCostRate @buglogged151630 @wip
   Scenario: Validate whether ADMIN and DA users can delete the Indirect Cost Rates
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab

@@ -3380,7 +3380,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM1" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @198227 @ValidateUsershouldabletoseenewuserasaownernameafterreassigningthetaskownership @sprint-4 @vaibhav @reassignment
+  @198227 @ValidateUsershouldabletoseenewuserasaownernameafterreassigningthetaskownership @sprint-4 @vaibhav @reassignment @taskreassign
   Scenario: Validate User should able to see new user as a owner name after reassigning the task ownership
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3570,7 +3570,7 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "{SavedValue:AwardEGMSID}" in "---home:-:internalHomePendingTaskTableId---" panel
     Then I softly see value "Accepted Subaward By Subrecipient" for title "Task Type" inside table "---home:-:internalHomePendingTaskTableId---"
 
-  @198320 @ValidateusershouldabletoreassignthetaskfromSarahpmToSimonPMbeforeapprovedtheaward @sprint-4 @vaibhav @reassignment
+  @198320 @ValidateusershouldabletoreassignthetaskfromSarahpmToSimonPMbeforeapprovedtheaward @sprint-4 @vaibhav @reassignment @taskreassign
   Scenario: Validate user should able to reassign the task from Sarah pm To Simon PM before approved the award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4991,7 +4991,7 @@ Feature: Validate all scenarios of grants and award without background
       The EGMS Team
       """
 
-  @198596 @Validateusershouldabletoseeemailinyopmailwhenawardsendbackbyapproveraftertaskiscreatedforaward&acknowledgebysubrecipient @sprint-4 @vaibhav @reassignment
+  @198596 @Validateusershouldabletoseeemailinyopmailwhenawardsendbackbyapproveraftertaskiscreatedforaward&acknowledgebysubrecipient @sprint-4 @vaibhav @reassignment @taskreassign
   Scenario: Validate user should able to see email in yopmail when award send back by approver after task is created for award & acknowledge by subrecipient
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab

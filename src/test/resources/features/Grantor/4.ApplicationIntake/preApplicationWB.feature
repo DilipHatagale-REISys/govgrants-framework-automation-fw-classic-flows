@@ -3205,7 +3205,7 @@ Feature: Pre-Application scenarios without background
     When I perform quick search for "{SavedValue:PreappEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:PreappEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @197939 @ValidatePreApplicationReviewtaskshouldnotgenerateforEXEuseronreassignmytaskpage @sprint-7-US-197384 @vaibhav @reassignment
+  @197939 @ValidatePreApplicationReviewtaskshouldnotgenerateforEXEuseronreassignmytaskpage @sprint-7-US-197384 @vaibhav @reassignment @taskreassign
   Scenario: Validate Pre-Application Review Negotiation task should not generate for admin user on reassign my task page
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -3531,7 +3531,7 @@ Feature: Pre-Application scenarios without background
     When I perform quick search for "{SavedValue:PreappEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:PreappEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @197949 @ValidatePre-ApplicationReviewNegotiationtaskshouldnotgenerateforPMuseronreassignmytaskpage @sprint-7-US-197384 @vaibhav @reassignment @ownershipcheck
+  @197949 @ValidatePre-ApplicationReviewNegotiationtaskshouldnotgenerateforPMuseronreassignmytaskpage @sprint-7-US-197384 @vaibhav @reassignment @taskreassign
   Scenario: Validate Pre-Application Review Negotiation' task should not generate for PM user on reassign my task page
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
