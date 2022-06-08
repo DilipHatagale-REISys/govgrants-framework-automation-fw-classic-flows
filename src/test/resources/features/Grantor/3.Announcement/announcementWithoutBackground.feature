@@ -2532,7 +2532,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly can see top right button "Add Files" in flex table with id "---announcement:-:AnnouncementAttachmentTableId---"
     Then I softly can see top right button "Add" in flex table with id "---announcement:-:AnnouncementNotestableId---"
 
-  @194693 @ValidatePMuserIcanseemyownpendingtasksinMyTasksectionandcanreassignownershiptaskstotargeuser @sprint-4 @vaibhav @reassignment
+  @194693 @ValidatePMuserIcanseemyownpendingtasksinMyTasksectionandcanreassignownershiptaskstotargeuser @sprint-4 @vaibhav @reassignment @taskreassign
   Scenario: Validate PM user I can see my own pending tasks in 'My Task' section and can reassign ownership tasks to target user
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -2682,7 +2682,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 
-  @195051 @ValidateEXEuserIcanseemyownpendingtasksinMyTasksectionandcanreassignownershiptaskstotargeuser @sprint-4 @vaibhav @reassignment
+  @195051 @ValidateEXEuserIcanseemyownpendingtasksinMyTasksectionandcanreassignownershiptaskstotargeuser @sprint-4 @vaibhav @reassignment @taskreassign
   Scenario: Validate EXE user I can see my own pending tasks in 'My Task' section and can reassign ownership tasks to target user
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -2959,7 +2959,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I pause execution for "4" seconds
     Then I softly see "No matches found" inside auto search result
 
-  @195201 @ValidatependingtaskshouldbegeneratedforPOasnewownerofAnn @sprint-4 @vaibhav @reassignment
+  @195201 @ValidatependingtaskshouldbegeneratedforPOasnewownerofAnn @sprint-4 @vaibhav @reassignment @taskreassign
   Scenario: Validate pending task should be generated for PO as new owner of Ann
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab

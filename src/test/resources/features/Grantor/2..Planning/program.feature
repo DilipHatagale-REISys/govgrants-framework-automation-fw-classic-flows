@@ -673,8 +673,7 @@ Feature: Validate all scenarios for program
       | Description                 | Required  | Applies To  | Status |
       | Automation test description | Mandatory | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Template" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Edit" in the page details
     And I navigate to "Overview" sub tab
     When I enter value "No" into field "fieldFocusAreaRequired__c"
@@ -825,8 +824,7 @@ Feature: Validate all scenarios for program
       | Description                 | Required  | Applies To  | Status |
       | Automation test description | Mandatory | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Template" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     Then I softly see that "Active" has been added in flextable with Id "---program:-:checklistTableId---"
     And I refresh the page
     When I navigate to "Setup" sub tab
@@ -869,8 +867,7 @@ Feature: Validate all scenarios for program
       | Description                 | Required  | Applies To  | Status |
       | Automation test description | Mandatory | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Template" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     Then I softly see that "Active" has been added in flextable with Id "---program:-:checklistTableId---"
     #106078 #monu
     When I click on "Edit" icon for "Mandatory" inside flex table with id "---program:-:checklistTableId---" without waiting for record
@@ -959,8 +956,7 @@ Feature: Validate all scenarios for program
       | Description                 | Required  | Applies To  | Status |
       | Automation test description | Mandatory | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Template" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     #110141 #monu
     When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
@@ -1007,8 +1003,7 @@ Feature: Validate all scenarios for program
       | Description                 | Required  | Applies To  | Status |
       | Automation test description | Mandatory | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Template" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
     And I upload attachment "Attachment.pdf" of type "Program Artifacts" from computer
@@ -1064,8 +1059,7 @@ Feature: Validate all scenarios for program
    # When I close "Upload Template" modal by clicking the top right x button
     And I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
-   # And I upload attachment "Attachment.pdf" of type "Program Artifacts" from computer
-    When I upload attachment without random number "AttachmentTesting.pdf" of type "Program Artifacts" from computer
+    And I upload attachment "Attachment.pdf" of type "Program Artifacts" from computer
     And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -5076,8 +5070,7 @@ Feature: Validate all scenarios for program
       | Description                 | Required  | Applies To  | Status |
       | Automation test description | Mandatory | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Template" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
@@ -5232,8 +5225,7 @@ Feature: Validate all scenarios for program
       | Description                 | Required  | Applies To  | Status |
       | Automation test description | Mandatory | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Template" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab

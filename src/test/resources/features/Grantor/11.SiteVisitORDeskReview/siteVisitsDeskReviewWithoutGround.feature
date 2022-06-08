@@ -4038,7 +4038,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
-  @197985 @ValidatePMusershouldabletoreassignthetaskofSiteVisitfromMyTasksunderReassignsectiononleft-handnavigationbar  @sprint-4-US-192978 @vaibhav @reassignment
+  @197985 @ValidatePMusershouldabletoreassignthetaskofSiteVisitfromMyTasksunderReassignsectiononleft-handnavigationbar  @sprint-4-US-192978 @vaibhav @reassignment @taskreassign
   Scenario: Validate PM user should able to reassign the task of Site Visit from My Tasks under Reassign section on left-hand navigation bar
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -4338,7 +4338,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I see value "Not Started" for title "Status" against the value "{SavedValue:SitevVisitId}" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198010 @ValidateFOusershouldabletoseealltaskrelatedtoSiteVisitFindingsintheReassignMyCurrentTaskandreassigntotheotherFOuserwhichsourceuserhasselectedinlookupfield @sprint-4-US-192978 @vaibhav @reassignment
+  @198010 @ValidateFOusershouldabletoseealltaskrelatedtoSiteVisitFindingsintheReassignMyCurrentTaskandreassigntotheotherFOuserwhichsourceuserhasselectedinlookupfield @sprint-4-US-192978 @vaibhav @reassignment @taskreassign
   Scenario: Validate FO user should able to see all task related to Site Visit Findings in the Reassign My Current Task and reassign to the other FO user which source user has selected in lookup field
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -6093,7 +6093,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly cannot see top right button "Send Back to Subrecipient" in page detail
     Then I softly cannot see top right button "Accept and Close" in page detail
 
-  @198067 @ValidateownershiprelatedtaskofDRisreassigntonewuser&thatDRiscompletedafterchangedhisownershiptaskafterthatuserwanttocreateanotherDRthenownerofthatDR2shouldbetheinitiatorofDR2notthereassignownerofDR1 @sprint-4-US-192997 @vaibhav @reassignment
+  @198067 @ValidateownershiprelatedtaskofDRisreassigntonewuser&thatDRiscompletedafterchangedhisownershiptaskafterthatuserwanttocreateanotherDRthenownerofthatDR2shouldbetheinitiatorofDR2notthereassignownerofDR1 @sprint-4-US-192997 @vaibhav @reassignment @taskreassign
   Scenario: Validate ownership related task of DR is reassign to new user & that DR is completed after changed his ownership task after that user want to create another DR then owner of that DR2 should be the initiator of DR2 not the reassign owner of DR1
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
