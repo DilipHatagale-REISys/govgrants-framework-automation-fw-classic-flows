@@ -12055,6 +12055,8 @@ Feature: Amendment Request scenarios without background
     And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     Then I softly can see top right button "Edit" in page detail
     Then I softly can see top right button "Send to Subrecipient" in page detail
+    When I navigate to "Overview" sub tab
+    Then I softly can see row level action button "Edit" against "Automation Permanent KPI" in flex table with id "---amendment:-:keyOutcomesTableId---"
     When I navigate to "Responsibilities" sub tab
     Then I softly can see top right button "New" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
     When I navigate to "Files" sub tab
@@ -12069,7 +12071,6 @@ Feature: Amendment Request scenarios without background
     And I click on "View" icon for "{SavedValue:budgetPChangeId}" inside flex table with id "---amendment:-:grantorAmendmentRequestsTableId---" without waiting for record
     Then I softly cannot see top right button "Edit" in page detail
     Then I softly cannot see top right button "Send to Subrecipient" in page detail
-    Then I softly can see row level action button "Edit" against "Automation Permanent KPI" in flex table with id "---amendment:-:keyOutcomesTableId---"
     When I navigate to "Responsibilities" sub tab
     Then I softly cannot see top right button "New" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
     When I navigate to "Files" sub tab
