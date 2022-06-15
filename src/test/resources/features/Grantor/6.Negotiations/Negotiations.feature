@@ -284,7 +284,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
     When I click on "Submit to Grantor" in the page details
     And I checkout to yopmail with mailid "automationspi3@yopmail.com"
-    And I pause execution for "180" seconds
+    And I pause execution for "60" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """

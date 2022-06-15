@@ -639,8 +639,8 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I see the text containing "Site Visit/Desk Review"
     #197275
     And I Click on "Reassign Records" icon for "Site Visit/Desk Review" without tableid
-    Then I softly see "SiteVisit Source user " page block displayed
-    Then I softly see "SiteVisit Target User " page block displayed
+    Then I softly see "Site Visits Available for Reassignment " page block displayed
+    Then I softly see "Site Visits Owned by Target User " page block displayed
 
   @197278 @ValidateusercanshowalltheSiteVisitoftargetuserswillbetransferredinfutureortransferredispastfromsourceusertotargetuserin2ndsectionofSiteVisit @sprint-4 @vaibhav @reassignment
   Scenario: Validate user can show all the Site Visit of target users will be transferred in future or transferred is past from source user to target user in 2nd section of Site Visit
@@ -1916,8 +1916,8 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly see " Reassign Ownership" page block displayed
     Then I see the text containing "Site Visit/Desk Review"
     And I Click on "Reassign Records" icon for "Site Visit/Desk Review" without tableid
-    Then I softly see "SiteVisit Source user " page block displayed
-    Then I softly see "SiteVisit Target User " page block displayed
+    Then I softly see "Site Visits Available for Reassignment " page block displayed
+    Then I softly see "Site Visits Owned by Target User " page block displayed
 
   @197625 @ValidateasusercanshowalltheDeskReviewoftargetuserswillbetransferredinfutureortransferredispastfromsourceusertotargetuserin2ndsectionofDeskReview @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate as user can show all the Desk Review of target users will be transferred in future or transferred is past from source user to target user in 2nd section of Desk Review
@@ -6078,7 +6078,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---program:-:grantorTaskReassignTableId---" panel
     When I check "{SavedValue:DeskReview}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:DeskReview}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:DeskReview}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     And I navigate to "Monitoring" tab
@@ -6220,7 +6220,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
   Scenario: Validate old DR owner(FO user) can able to 'view' the DR record once ownership of task is in Submitted to grantor state is reassign to new FO user New DR owner
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
-    When I login to "As a Grantor" app as "EXE" user
+    When I login to "As a Grantor" app as "FO" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -6267,7 +6267,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I softly see that "Approve Desk Review" has been added in flextable with Id "---deskreview:-:homePendingTasksTableId---"
     And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:homePendingTasksTableId---"
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel

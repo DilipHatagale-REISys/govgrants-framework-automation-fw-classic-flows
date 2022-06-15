@@ -1675,8 +1675,8 @@ Feature: Payment Request scenarios without background
     Then I see the text containing "Payment Request"
     #197614
     And I Click on "Reassign Records" icon for "Payment Request" without tableid
-    Then I softly see "Payment Request Source user " page block displayed
-    Then I softly see "Payment Request Target user " page block displayed
+    Then I softly see "Payment Requests Available for Reassignment " page block displayed
+    Then I softly see "Payment Requests Owned by Target User " page block displayed
 
   @197621 @197633 @ValidateAdminusershowpaymentrequesttothesourceuserInternalsideOwnerevenifPRwhichareincreatedstate1stsectionofpaymentrequest @sprint-4 @vaibhav @reassignment @ownershipcheck
   Scenario: Validate Admin user show payment request to the source user Internal side Owner even if PR which are in created state 1st section of payment request
@@ -2250,7 +2250,7 @@ Feature: Payment Request scenarios without background
     When I click table top right button "Transfer Ownership" in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
     Then I do not see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
     And I pause execution for "2" seconds
@@ -2345,7 +2345,7 @@ Feature: Payment Request scenarios without background
     When I click table top right button "Transfer Ownership" in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
     Then I do not see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
     And I pause execution for "2" seconds
@@ -2465,7 +2465,7 @@ Feature: Payment Request scenarios without background
     When I click table top right button "Transfer Ownership" in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
     Then I do not see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
     And I pause execution for "2" seconds
@@ -2499,15 +2499,15 @@ Feature: Payment Request scenarios without background
       Sandbox: Notification: Payment Request #{SavedValue:PayreqId} has beenRejected.
       """
 
-    Then I see the mail text is as follows :
-      """
-     Hello,
-     This email is to inform you that the payment request {SavedValue:PayreqId} for the award # {SavedValue:AwardEGMSID} has been rejected by an approver.
-     Payment Request Details:
-     Payment Type: Reimbursement
-     Payment ID: {SavedValue:PayreqId}
-     Key POC: Automation SPI3
-      """
+#    Then I see the mail text is as follows :
+#      """
+#     Hello,
+#     This email is to inform you that the payment request {SavedValue:PayreqId} for the award # {SavedValue:AwardEGMSID} has been rejected by an approver.
+#     Payment Request Details:
+#     Payment Type: Reimbursement
+#     Payment ID: {SavedValue:PayreqId}
+#     Key POC: Automation SPI3
+#      """
 
   @197769 @ValidatesystemcreatenewschedulepaymentrequestafterpreviousPRownershiptaskreassigntootheruserthennewPRinternalsideownershouldbeawardonly @sprint-4 @vaibhav @reassignment
   Scenario: Validate system create new schedule payment request after previous PR ownership task reassign to other user then new PR internal side owner should be award only

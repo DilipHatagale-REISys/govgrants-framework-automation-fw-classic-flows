@@ -4,6 +4,7 @@ import com.automation.rei.handlers.govgrants;
 import com.ggproduct.automation.usersUrl.UsersAndURL;
 import com.ggproduct.automation.webservices.ProjectWebServices;
 import com.testingblaze.actionsfactory.api.ByUsing;
+import com.testingblaze.exception.TestingBlazeCustomException;
 import com.testingblaze.register.I;
 import com.testingblaze.report.LogLevel;
 import org.openqa.selenium.By;
@@ -20,6 +21,8 @@ import java.util.stream.Collectors;
  */
 public class ProjectManager extends ProjectWebServices {
     UsersAndURL usersAndURL = new UsersAndURL();
+    private String tableIdQsearch;
+    private String searchTermQsearch;
 
     public void navigateToProductReciepientPortal(String portalName) {
         By pageConnectionReset = By.xpath("//*[text()='The connection was reset.' or text()='A network change was detected.'] | //div[@id='AppBodyHeader']");
@@ -83,22 +86,18 @@ public class ProjectManager extends ProjectWebServices {
         return flag;
     }
 
-    public void validateButton(String usage, String buttonName) {
-        if (usage.equalsIgnoreCase("softly see")) {
-            I.amPerforming().assertionsTo().assertThat(buttonIsVisibleOrNot(buttonName)).isTrue();
-        } else if (usage.equalsIgnoreCase("do not see")) {
-            I.amPerforming().assertionsTo().assertThat(buttonIsVisibleOrNot(buttonName)).isFalse();
-        }
+    public void PerformQuickSearchForInPanelWithTimeLimit(String tableIdQsearch, String searchTermQsearch) throws TestingBlazeCustomException {
+      for(int i=0;i<3;i++) {
+          this.tableIdQsearch = tableIdQsearch;
+          this.searchTermQsearch = searchTermQsearch;
+          if (searchTermQsearch.equalsIgnoreCase("Record Id")) {
+              govgrants.perform().quickSearch().performTableSpecificQuickSearch(this.tableIdQsearch,
+                      govgrants.perform().pageDetails().idOfRecord);
+          } else {
+              govgrants.perform().quickSearch().performTableSpecificQuickSearch(this.tableIdQsearch, this.searchTermQsearch);
+          }
+          I.amPerforming().waitFor().makeThreadSleep(30000);
+      }
     }
 
-    private boolean buttonIsVisibleOrNot(String buttonName) {
-        boolean flag = false;
-        try {
-            if (I.amPerforming().checkToSee().isDisplayed(I.amPerforming().getElementReference().of(By.xpath("//div[contains(@class, 'modal-content')]//button[text()='" + buttonName + "']")))) {
-                flag = true;
-            }
-        } catch (Exception e) {
-        }
-        return flag;
-    }
 }

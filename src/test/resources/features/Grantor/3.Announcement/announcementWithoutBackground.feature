@@ -1474,10 +1474,10 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I see the text containing "Announcement"
     #194682
     And I Click on "Reassign Records" icon for "Announcement" without tableid
-    Then I softly see "Announcement Source user " page block displayed
+    Then I softly see "Announcements Available for Reassignment " page block displayed
     #194683
-    Then I softly see "Announcement Source user " page block displayed
-    Then I softly see "Announcement Target User " page block displayed
+    Then I softly see "Announcements Available for Reassignment " page block displayed
+    Then I softly see "Announcements Owned by Target User " page block displayed
     #194690
     And I click on top right button "Transfer Ownership" in flex table with id "---announcement:-:annAdminOwnerReplaceTableId---"
     Then I softly see the following messages in the page details contains:
@@ -2871,7 +2871,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Associate Organizations" modal by clicking the top right x button
+    When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
@@ -2935,7 +2935,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Associate Organizations" modal by clicking the top right x button
+    When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :

@@ -895,7 +895,7 @@ Feature: Validate all scenarios for program
     And I select value "Automation EXE1" into field "s2id_autogen3"
     And I Click on "Start" icon for "Automation EXE" without tableid
     And I Click on "Reassign Records" icon for "Program" without tableid
-    Then I softly see "Program Source user " page block displayed
+    Then I softly see "Programs Available for Reassignment " page block displayed
 
   @195251 @195254 @ValidateProgramSourceusershouldshowalltheprogramsInternalProgramNGOexternalprogramsofthesourceuser @sprint-4 @vaibhav @reassignment
   Scenario: Validate Program -Source user should show all the programs(Internal Program/NGO external programs of the source user
@@ -2863,3 +2863,10 @@ Feature: Validate all scenarios for program
       | Automation test description | Mandatory | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
     Then I do not see "Cancel" button is disabled at modal under library
+
+    @test123 @vai
+    Scenario: test
+      Given I login to "As a Grantor" app as "dynamicUser" user
+      And I navigate to "Planning" tab
+      When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+      When I perform quick search for "---program:-:programsTableId---" in "{SavedValue:ProgramEGMSID}" panel with time limit
