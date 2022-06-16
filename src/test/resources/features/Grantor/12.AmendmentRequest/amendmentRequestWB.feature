@@ -13122,7 +13122,7 @@ Feature: Amendment Request scenarios without background
       The EGMS Team
       """
 
-  @200860 @200867 @ValidateFundingchangeallsectionlevelandpagelevelbuttonwillbevisibletoamendmentowneronlyandnotawardowner @sprint-5-US-194231 @vaibhav @reassignment
+  @200860 @200867 @ValidateFundingchangeallsectionlevelandpagelevelbuttonwillbevisibletoamendmentowneronlyandnotawardowner @sprint-5-US-194231 @vaibhav @reassignment @ownvai1
   Scenario: Validate Funding change all section level and page level button will be visible to amendment owner only and not award owner
     And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
     When I login to "As a Grantor" app as "EXE" user
@@ -13222,7 +13222,7 @@ Feature: Amendment Request scenarios without background
     When I navigate to "Files" sub tab
     Then I cannot see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
 
-  @200879 @ValidatePeriodicrenewalSenttoS/rpendingtaskshouldgeneratedforPMuserinmytask @sprint-5-US-194231 @vaibhav @reassignment
+  @200879 @ValidatePeriodicrenewalSenttoS/rpendingtaskshouldgeneratedforPMuserinmytask @sprint-5-US-194231 @vaibhav @reassignment @ownvai1
   Scenario: Validate Periodic renewal Sent to S/r pending task should generated for PM user in my task
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     When I am on "INTERNAL" portal

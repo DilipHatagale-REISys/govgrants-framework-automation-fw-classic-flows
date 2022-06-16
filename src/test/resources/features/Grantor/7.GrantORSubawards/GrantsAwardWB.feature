@@ -3462,7 +3462,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM1" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @198233 @ValidateusershouldabletoseethenameAcceptanceofSubawardbySubrecipientbysubrecipientaftercreatedaward&sendtoSRafterapprovedaward @sprint-4 @vaibhav @reassignment @ownvai
+  @198233 @ValidateusershouldabletoseethenameAcceptanceofSubawardbySubrecipientbysubrecipientaftercreatedaward&sendtoSRafterapprovedaward @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate user should able to see the name Acceptance of Subaward by Subrecipient by subrecipient after created award & send to SR after approved award
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3568,7 +3568,7 @@ Feature: Validate all scenarios of grants and award without background
     And I navigate to "Home" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:AwardEGMSID}" in "---home:-:internalHomePendingTaskTableId---" panel
-    Then I softly see value "Accepted Subaward By Subrecipient" for title "Task Type" inside table "---home:-:internalHomePendingTaskTableId---"
+    Then I softly see value "Initial Acceptance of Subaward by Subrecipient" for title "Task Type" inside table "---home:-:internalHomePendingTaskTableId---"
 
   @198320 @ValidateusershouldabletoreassignthetaskfromSarahpmToSimonPMbeforeapprovedtheaward @sprint-4 @vaibhav @reassignment @taskreassign @ownvai
   Scenario: Validate user should able to reassign the task from Sarah pm To Simon PM before approved the award
@@ -4084,7 +4084,7 @@ Feature: Validate all scenarios of grants and award without background
     Then I can see top right button "Edit" in page detail
     Then I can see top right button "Send to Subrecipient" in page detail
 
-  @196643 @Validatewhengrantisincreatedandchangetheownershipthenforactivatetaskshouldassigntonewowner @sprint-4 @vaibhav @reassignment
+  @196643 @Validatewhengrantisincreatedandchangetheownershipthenforactivatetaskshouldassigntonewowner @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate when grant is in created and change the ownership then for activate task should assign to new owner
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab

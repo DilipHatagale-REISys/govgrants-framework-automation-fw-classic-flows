@@ -2006,7 +2006,7 @@ Feature: Validate all scenarios for program
        The EGMS Team
       """
 
-  @198790 @ValidatenewlyassignedownerPMreceivesanemailafterinternalprogramissenttoownerduringapprovalswhenownershipistransferredbeforepostprogramisReviewed @sprint-4 @vaibhav @reassignment
+  @198790 @ValidatenewlyassignedownerPMreceivesanemailafterinternalprogramissenttoownerduringapprovalswhenownershipistransferredbeforepostprogramisReviewed @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate newly assigned owner PM receives an email after internal program is sent to owner during approvals when ownership is transferred before post program is Reviewed
     When I login to "As a Grantor" app as "PM1" user
     And I navigate to "Planning" tab

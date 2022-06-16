@@ -5871,7 +5871,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:progID}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @vai @197377 @197382 @Validateprogressreportiscreatedstate&userchangedOwnershiptonewownerofPRreport&afterPRissubmittograntorthenSendtoS/Risdisplaytonewowner @sprint-4 @vaibhav @reassignment
+  @197377 @197382 @Validateprogressreportiscreatedstate&userchangedOwnershiptonewownerofPRreport&afterPRissubmittograntorthenSendtoS/Risdisplaytonewowner @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate progress report is created state & user changed Ownership to new owner of PR report & after PR is submit to grantor then Send to S/R is display to new owner
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation EXE user"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -5949,7 +5949,7 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Responsibilities" sub tab
     Then I cannot see top right button "New" in flex table with id "---progressreport:-:peerReviewersTableId---"
 
-  @197383 @ValidatestateissubmitforapprovalofPR&thenchangetheOwnershipofPRthenPRissamestatebothnew&oldowner @sprint-4 @vaibhav @reassignment
+  @197383 @ValidatestateissubmitforapprovalofPR&thenchangetheOwnershipofPRthenPRissamestatebothnew&oldowner @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate state is submit for approval of PR & then change the Ownership of PR  then PR is same state both new & old owner
     Given I activated standalone subaward "Automation Runtime award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
@@ -5962,8 +5962,7 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Forms and Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "progID"
@@ -6002,7 +6001,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see " Reassign Ownership" page block displayed
     Then I see the text containing "Progress Report"
     And I Click on "Reassign Records" icon for "Progress Report" without tableid
-    Then I softly see "ProgressReports Source user " page block displayed
+    Then I softly see "Progress Reports Available for Reassignment " page block displayed
     When I perform quick search for "{SavedValue:progID}" in "---progressreport:-:progressSourceTableId---" panel
     Then I see value "{SavedValue:progID}" for title "Progress Report ID" inside table "---progressreport:-:progressSourceTableId---"
     When I perform quick search for "{SavedValue:progID}" in "---progressreport:-:progressSourceTableId---" panel
@@ -6010,7 +6009,7 @@ Feature: Validate scenarios in Progress Report without background
     When I click table top right button "Transfer Ownership" in flex table with id "---progressreport:-:progressSourceTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:progID}" in "---progressreport:-:progressTargetTableId---" panel
     Then I see value "{SavedValue:progID}" for title "Progress Report ID" inside table "---progressreport:-:progressTargetTableId---"
     And I pause execution for "2" seconds
@@ -6026,7 +6025,7 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Responsibilities" sub tab
     Then I see value "{SavedValue:FO Username}" for title "Name" inside table "---progressreport:-:approversTableId---"
 
-  @197390 @197398 @197401 @ValidatechangingtheownershipofPRthennewownershouldhaveallsameaccesslikeoldrecordhadinthatspecificstateofrecord @springt-4 @vaibhav @reassignment
+  @197390 @197398 @197401 @ValidatechangingtheownershipofPRthennewownershouldhaveallsameaccesslikeoldrecordhadinthatspecificstateofrecord @springt-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate changing the ownership of PR then new owner should have all same access like old record had in that specific state of record
     Given I activated standalone subaward "Automation Runtime award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
@@ -6068,7 +6067,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see " Reassign Ownership" page block displayed
     Then I see the text containing "Progress Report"
     And I Click on "Reassign Records" icon for "Progress Report" without tableid
-    Then I softly see "ProgressReports Source user " page block displayed
+    Then I softly see "Progress Reports Available for Reassignment " page block displayed
     When I perform quick search for "{SavedValue:Record Id}" in "---progressreport:-:progressSourceTableId---" panel
     Then I see value "{SavedValue:Record Id}" for title "Progress Report ID" inside table "---progressreport:-:progressSourceTableId---"
     When I perform quick search for "{SavedValue:Record Id}" in "---progressreport:-:progressSourceTableId---" panel
@@ -6099,7 +6098,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---progressreport:-:progressHistoryTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---progressreport:-:progressHistoryTableId---"
 
-  @197403 @Validateadminusershouldnotabletoseetheinactiveuser&targetuserforPRmodule @sprint-4 @vaibhav @reassignment
+  @197403 @Validateadminusershouldnotabletoseetheinactiveuser&targetuserforPRmodule @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate admin user should not able to see the inactive user & target user for PR  module
     Given I activated standalone subaward "Automation Runtime award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
@@ -6125,7 +6124,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see the following messages in the page details contains:
       | Ownership cannot be transferred across profiles and organizations. |
 
-  @197664 @197732 @Validateprogressreport1internalownershouldchangedinanystate&progressreport2iscreatedbyschedulethentheinternalownershouldawardowneronly @sprint-4 @vaibhav @reassignment
+  @197664 @197732 @Validateprogressreport1internalownershouldchangedinanystate&progressreport2iscreatedbyschedulethentheinternalownershouldawardowneronly @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate progress report 1 internal owner should changed in any state & progress report 2 is created by schedule then the internal owner should award owner only
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -6258,8 +6257,7 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Forms and Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "progID1"
@@ -6293,7 +6291,7 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PO1" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @197668 @Validateawardownerischangedinbetweenthelifecycleoftheprogressreportthenawardshouldnotaffecttheinternalowneroftheprogressreport @sprint-4 @vaibhav @reassignment
+  @197668 @Validateawardownerischangedinbetweenthelifecycleoftheprogressreportthenawardshouldnotaffecttheinternalowneroftheprogressreport @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate award owner is changed in between the life cycle of the progress report then award should not affect the internal owner of the progress report
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation EXE user"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -6361,7 +6359,7 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation EXE1" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @197760 @197898 @197909 @ValidateAsaadminusershouldabletoreassignthetaskofprogressreportwithsameprofile&sameOrganization @Sprint-4 @vaibhav @reassignment
+  @197760 @197898 @197909 @ValidateAsaadminusershouldabletoreassignthetaskofprogressreportwithsameprofile&sameOrganization @Sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate As a admin user should able to reassign the task of progress report with same profile & same Organization
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Grants" tab
@@ -6508,7 +6506,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @197766 @ValidatePMusershouldabletoreassignthetaskofProgressreportfromMyTasksunderReassignsectiononlefthandnavigationbar @sprint-4 @vaibhav @reassignment
+  @197766 @ValidatePMusershouldabletoreassignthetaskofProgressreportfromMyTasksunderReassignsectiononlefthandnavigationbar @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate PM user should able to reassign the task of Progress report  from  My Tasks under Reassign section on left-hand navigation bar
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -6546,7 +6544,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @197896 @ValidatePOusershouldabletoreassignthetaskofProgressreportfromMyTasksunderReassignsectiononlefthandnavigationbar @sprint-4 @vaibhav @reassignment
+  @197896 @ValidatePOusershouldabletoreassignthetaskofProgressreportfromMyTasksunderReassignsectiononlefthandnavigationbar @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate PO user should able to reassign the task of Progress report from My Tasks under Reassign section on left-hand navigation bar
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation PO user"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -6584,7 +6582,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @197903 @197904 @ValidateusershouldabletoseeallthependingtasksinReassignMyCurrentTaskpage&usershouldreassigntheownershiprelatedtaskstoanotherbusinessuserofsameprofile @sprint-4 @vaibhav @reassignment @taskreassign
+  @197903 @197904 @ValidateusershouldabletoseeallthependingtasksinReassignMyCurrentTaskpage&usershouldreassigntheownershiprelatedtaskstoanotherbusinessuserofsameprofile @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate user should able to see all the pending tasks in Reassign My Current Task page & user should reassign the ownershiprelated tasks to another business user of same profile
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -6597,8 +6595,7 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Forms and Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "progID"
@@ -6635,7 +6632,7 @@ Feature: Validate scenarios in Progress Report without background
     #197903
     Then I see value "{SavedValue:progID}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197958 @197962 @197968 @197969 @ValidatenewusershouldabletoreassignReviewtaskofProgressReport @sprint-4 @vaibhav @reassignment
+  @197958 @197962 @197968 @197969 @ValidatenewusershouldabletoreassignReviewtaskofProgressReport @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate new user should able to reassign Review task of Progress Report
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -6648,8 +6645,7 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Forms and Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "progID"
@@ -6675,7 +6671,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I check "{SavedValue:progID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:progID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
@@ -6697,7 +6693,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly cannot see row level action button "Edit" against "{SavedValue:progID}" in flex table with id "---progressReport:-:internalProgressReportFlexTableId---"
     Then I softly can see row level action button "View" against "{SavedValue:progID}" in flex table with id "---progressReport:-:internalProgressReportFlexTableId---"
 
-  @197975 @198005 @ValidateProgressReportownershipischangedfromprevioususertonewuserthenthenewusershouldbetheownerofthatProgressReport @Sprint-4 @vaibhav @reassignment @taskreassign
+  @197975 @198005 @ValidateProgressReportownershipischangedfromprevioususertonewuserthenthenewusershouldbetheownerofthatProgressReport @Sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate Progress Report ownership is changed from previous user to new user then the new user should be the owner of that Progress Report
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -6710,8 +6706,7 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Forms and Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "progID"
@@ -6762,7 +6757,7 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "View" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:internalProgressReportFlexTableId---" without waiting for record
     Then I softly cannot see top right button "Edit" in page detail
 
-  @198105 @ValidateaftercompletingthePRthentheOwnerofProgressreportshouldbethisuserwhohasinitiatedtheprogressreport @sprint-4 @vaibhav @reassignment
+  @198105 @ValidateaftercompletingthePRthentheOwnerofProgressreportshouldbethisuserwhohasinitiatedtheprogressreport @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate after completing the PR then the Owner of Progress report should be this user who has initiated the progress report
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -6775,8 +6770,7 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Forms and Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "progID"
@@ -6802,7 +6796,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I check "{SavedValue:progID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:progID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
@@ -6851,7 +6845,7 @@ Feature: Validate scenarios in Progress Report without background
     And I perform quick search for "{SavedValue:progID1}" in "---progressReport:-:pendingTaskTableId---" panel
     Then I softly see value "{SavedValue:progID1}" for title "EGMS ID" inside table "---program:-:pendingTaskTableId---"
 
-  @198106 @ValidatetheprogressreportiscreatedaspertheschedulethenitsownershouldmatchwiththeGrantOwner @sprint-4 @vaibhav @reassignment
+  @198106 @ValidatetheprogressreportiscreatedaspertheschedulethenitsownershouldmatchwiththeGrantOwner @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate the progress report is created as per the schedule then its owner should match with the Grant Owner
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -6864,8 +6858,7 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Forms and Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "progID"
@@ -6891,7 +6884,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I check "{SavedValue:progID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:progID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
@@ -6911,7 +6904,7 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @198108 @198111 @Validateuserchangethetaskownershipofoneparticularprogressreportthenownerofthatprogressreportshouldthenewuser @sprint-4 @vaibhav @reassignment
+  @198108 @198111 @Validateuserchangethetaskownershipofoneparticularprogressreportthenownerofthatprogressreportshouldthenewuser @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate user change the task ownership of one particular progress report then owner of that progress report should the new user
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -7022,8 +7015,7 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Forms and Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "progID"
@@ -7049,7 +7041,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I check "{SavedValue:progID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:progID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
@@ -7095,7 +7087,7 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Responsibilities" sub tab
     Then I see value "Automation EXE" for title "Name" inside table "---progressreport:-:progressOwnerTableId---"
 
-  @198113 @ValidateusershoulabletoseenewownerinresponsibilitytabofnewownerafterchangingtheTaskownerofPR @sprint-4 @vaibhav @reassignment
+  @198113 @ValidateusershoulabletoseenewownerinresponsibilitytabofnewownerafterchangingtheTaskownerofPR @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate user should able to see new owner in responsibility tab of new owner after changing the Task owner of PR
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -7108,8 +7100,7 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Forms and Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "progID"
@@ -7135,7 +7126,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I check "{SavedValue:progID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:progID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
@@ -7146,7 +7137,7 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Responsibilities" sub tab
     Then I see value "Automation PM1" for title "Name" inside table "---progressreport:-:progressOwnerTableId---"
 
-  @198116 @ValidatenewprogressreportiscreatedthenitsownershouldbeGrantOwnerortheuserwhohascreatedthatprogressreport&nottheuseronwhichthetaskownershipwastransferred @sprint-4 @vaibhav @reassignment
+  @198116 @ValidatenewprogressreportiscreatedthenitsownershouldbeGrantOwnerortheuserwhohascreatedthatprogressreport&nottheuseronwhichthetaskownershipwastransferred @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate new progress report is created then its owner should be Grant Owner or the user who has created that progress report & not the user on which the task ownership was transferred
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -7248,18 +7239,16 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Activate" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
-    And I am on "SUBPORTAL" portal
-    And I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Forms and Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "progID"
@@ -7285,7 +7274,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I check "{SavedValue:progID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:progID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
@@ -7303,7 +7292,7 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation EXE" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @198117 @Validateusershouldabletoseetheupdatedfieldhistoryafterchangingtheownershiptaskreassignmentofprogressreport @sprint-4 @vaibhav @reassignment
+  @198117 @Validateusershouldabletoseetheupdatedfieldhistoryafterchangingtheownershiptaskreassignmentofprogressreport @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate user should able to see the updated field history after changing the ownership task reassignment of progress report
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -7316,8 +7305,7 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Forms and Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "progID"
@@ -7343,7 +7331,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I check "{SavedValue:progID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:progID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
@@ -7355,7 +7343,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---progressreport:-:progressHistoryTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---progressreport:-:progressHistoryTableId---"
 
-  @198118 @Validateusershouldnotabletoselectthesource&targetuserissame @sprint-4 @vaibhav @reassignment
+  @198118 @Validateusershouldnotabletoselectthesource&targetuserissame @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate user should not able to  select the source & target user is same
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -7368,8 +7356,7 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     When I navigate to "Forms and Files" sub tab
     And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
-    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Save" in the page details
     When I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "progID"

@@ -1720,7 +1720,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestTargetOwnerTableId---" panel
     Then I see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestTargetOwnerTableId---"
 
-  @197637 @ValidateschedulepaymentrequestownershipreassigntotargetuserEXEthensourceusershouldnotabletoseethatreassignpaymentrequestrecord @sprint-4 @vaibhav @reassignment
+  @197637 @ValidateschedulepaymentrequestownershipreassigntotargetuserEXEthensourceusershouldnotabletoseethatreassignpaymentrequestrecord @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate schedule payment request ownership reassign to target user EXE then source user should not able to see that reassign payment request record
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -1822,9 +1822,9 @@ Feature: Payment Request scenarios without background
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I click on "Activate" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "PaymentRequest__c"
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
@@ -1848,7 +1848,7 @@ Feature: Payment Request scenarios without background
     When I click table top right button "Transfer Ownership" in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
     Then I do not see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
 
@@ -2105,7 +2105,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197686 @ValidatependingtaskshouldbegeneratedforNewPOuserforsubmittograntoradvancepaymentrequestafterownershipreassigntoPO @sprint-4 @vaibhav @reassignment
+  @197686 @ValidatependingtaskshouldbegeneratedforNewPOuserforsubmittograntoradvancepaymentrequestafterownershipreassigntoPO @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate pending task should be generated for New PO user for submit to grantor advance payment request after ownership reassign to PO
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -2226,10 +2226,7 @@ Feature: Payment Request scenarios without background
       | Construction    | 10                            |
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
-    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
-    When I upload file "Program_Field_Values.xlsx" into library
-    And I click modal button "Save"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
@@ -2261,7 +2258,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197746 @ValidateNewPMusercanonlyviewforcecloseadhocreimbursementpaymentrequestafterownershipreassigntoPM @sprint-4 @vaibhav @reassignment
+  @197746 @ValidateNewPMusercanonlyviewforcecloseadhocreimbursementpaymentrequestafterownershipreassigntoPM @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate New PM user can only view force close ad-hoc reimbursement payment request after ownership reassign to PM
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -2360,7 +2357,7 @@ Feature: Payment Request scenarios without background
     Then I cannot see row level action button "Edit" against "{SavedValue:PayreqId}" in flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---"
     Then I cannot see row level action button "Delete" against "{SavedValue:PayreqId}" in flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---"
 
-  @197759 @Validatefieldhistorytableshouldbeupdateoncead-hocreimbursementpaymentrequestreassignafterownershiptonewuser @sprint-4 @vaibhav @reassignment
+  @197759 @Validatefieldhistorytableshouldbeupdateoncead-hocreimbursementpaymentrequestreassignafterownershiptonewuser @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate field history table should be update once ad-hoc reimbursement payment request reassign after ownership to new user
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -2405,7 +2402,7 @@ Feature: Payment Request scenarios without background
     When I click table top right button "Transfer Ownership" in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
     Then I do not see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
     And I pause execution for "2" seconds
@@ -2419,7 +2416,7 @@ Feature: Payment Request scenarios without background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---subAwardStandAlone:-:historyTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---subAwardStandAlone:-:historyTableId---"
 
-  @197764 @ValidatePaymentRequestApproverRejectedemailshouldbegeneratedforad-hocreimbursementpaymentrequestfornewowner @sprint-4 @vaibhav @buglogged-205498 @reassignment
+  @197764 @ValidatePaymentRequestApproverRejectedemailshouldbegeneratedforad-hocreimbursementpaymentrequestfornewowner @sprint-4 @vaibhav @buglogged-205498 @reassignment @ownvai1
   Scenario: Validate Payment Request Approver Rejected email should be generated for ad-hoc reimbursement payment request for new owner
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -2509,7 +2506,7 @@ Feature: Payment Request scenarios without background
      Key POC: Automation SPI3
       """
 
-  @197769 @ValidatesystemcreatenewschedulepaymentrequestafterpreviousPRownershiptaskreassigntootheruserthennewPRinternalsideownershouldbeawardonly @sprint-4 @vaibhav @reassignment
+  @197769 @ValidatesystemcreatenewschedulepaymentrequestafterpreviousPRownershiptaskreassigntootheruserthennewPRinternalsideownershouldbeawardonly @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate system create new schedule payment request after previous PR ownership task reassign to other user then new PR internal side owner should be award only
     And I activated standalone subaward "Automation Runtime award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Payment Request"
@@ -2581,7 +2578,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId2}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I do not see value "{SavedValue:PayreqId2}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197785 @Validatepaymentrequestownershouldnotchangeevenifawardownerchangehisownershipinbetweenpaymentrequestisinprogress @sprint-4 @vaibhav @reassignment
+  @197785 @Validatepaymentrequestownershouldnotchangeevenifawardownerchangehisownershipinbetweenpaymentrequestisinprogress @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate  payment request owner should not change even if award owner change his ownership in between payment request is in progress
     And I activated standalone subaward "Automation Runtime award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -2608,10 +2605,7 @@ Feature: Payment Request scenarios without background
       | Construction    | 10                            |
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
-    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
-    When I upload file "Program_Field_Values.xlsx" into library
-    And I click modal button "Save"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
@@ -2628,7 +2622,7 @@ Feature: Payment Request scenarios without background
     When I click table top right button "Transfer Ownership" in flex table with id "---subAwardStandAlone:-:grantSourceOwnerTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:grantTargetOwnerTableId---" panel
     Then I see value "{SavedValue:GrantEGMSID}" for title "Grant ID" inside table "---subAwardStandAlone:-:grantTargetOwnerTableId---"
     And I pause execution for "2" seconds
@@ -2644,7 +2638,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I do not see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197787 @Validateawardownerchangehisownershipthencreatedpaymentrequestonthatthenownerofpaymentrequestshouldbenewuser @sprint-4 @vaibhav @reassignment
+  @197787 @Validateawardownerchangehisownershipthencreatedpaymentrequestonthatthenownerofpaymentrequestshouldbenewuser @sprint-4 @vaibhav @reassignment @ownvai1
   Scenario: Validate award owner change his ownership then created payment request on that then owner of payment request should be new user
     And I activated standalone subaward "Automation Runtime award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -2672,7 +2666,7 @@ Feature: Payment Request scenarios without background
     When I click table top right button "Transfer Ownership" in flex table with id "---subAwardStandAlone:-:grantSourceOwnerTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "Yes" on modal confirmation box
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:grantTargetOwnerTableId---" panel
     Then I see value "{SavedValue:GrantEGMSID}" for title "Grant ID" inside table "---subAwardStandAlone:-:grantTargetOwnerTableId---"
     And I pause execution for "2" seconds
