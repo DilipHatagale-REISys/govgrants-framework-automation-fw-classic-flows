@@ -623,7 +623,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I click on "View" icon for "Record Id" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I cannot see top right button "Conduct" in page detail
 
-  @197266 @197272 @197275 @ValidateAdminusershouldabletoseeoptionofownershipoptionunderreassignsectiononleftnavigationbar @sprint-4 @vaibhav @reassignment @ownershipcheck
+  @197266 @197272 @197275 @ValidateAdminusershouldabletoseeoptionofownershipoptionunderreassignsectiononleftnavigationbar @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate Admin user should able to see option of ownership option under reassign section on left navigation bar
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Home" tab
@@ -1323,7 +1323,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
     Then I see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:monitoringTabPhasePendingTasks---"
 
-  @197450 @ValidateemailshouldbegeneratedinyopmailtonewSVownerEXEuseronceownershipischangedwhenassignedapproverclickedonSentbackbutton @sprint-4 @vaibhav @reassignment
+  @197450 @ValidateemailshouldbegeneratedinyopmailtonewSVownerEXEuseronceownershipischangedwhenassignedapproverclickedonSentbackbutton @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate email should be generated in yopmail to new SV owner EXE user once ownership is changed when assigned approver clicked on Sent back button
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -1903,7 +1903,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I can see top right button "Edit" in page detail
     Then I softly can see top right button "Submit for Approval" in page detail
 
-  @197623 @ValidateDeskReviewuserclickoninlineArrowiconofDeskReviewthenusercannavigatetopagewhereheseelistofalltheDeskReviewinsourceandtargetusersection @sprint-4 @vaibhav @reassignment
+  @197623 @ValidateDeskReviewuserclickoninlineArrowiconofDeskReviewthenusercannavigatetopagewhereheseelistofalltheDeskReviewinsourceandtargetusersection @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate Desk Review user click on inline Arrow icon of Desk Review then user can navigate to page where he see list of all the Desk Review in source and target user section
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Home" tab
@@ -2654,7 +2654,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Responsibilities" sub tab
     Then I see value "Automation PO1" for title "Name" inside table "---deskreview:-:deskReviewOwnerTableId---"
 
-  @197655 @ValidateemailshouldbegeneratedinyopmailtonewDRownerEXEuseronceownershipischangewhenassignedapproverclickedonSentbackbutton @reassignment
+  @197655 @ValidateemailshouldbegeneratedinyopmailtonewDRownerEXEuseronceownershipischangewhenassignedapproverclickedonSentbackbutton @reassignment @ownvai
   Scenario: Validate email should be generated in yopmail to new DR owner EXE user once ownership is changed when assigned approver clicked on Sent back button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -5645,7 +5645,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:DeskReview}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @198028 @ValidatenewDRownerPOuserpendingtaskshouldbecreatedfortaskownershipofDeskReviewfindingswhenoldPOuserreassigntheownershiprelatedtasktonewPOuser @reassignment
+  @198028 @ValidatenewDRownerPOuserpendingtaskshouldbecreatedfortaskownershipofDeskReviewfindingswhenoldPOuserreassigntheownershiprelatedtasktonewPOuser @reassignment @ownvai
   Scenario: Validate new DR owner (PO user) pending task should be created for task ownership of Desk Review findings when old PO user reassign the ownership related task to new PO user
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -5989,7 +5989,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @198065 @ValidateoldDRownerasEXEusershouldnotabletoseebuttonswhenownershiprelatedtaskisreassigntonewEXEuser @sprint-4-US-192997 @vaibhav @reassignment
+  @198065 @ValidateoldDRownerasEXEusershouldnotabletoseebuttonswhenownershiprelatedtaskisreassigntonewEXEuser @sprint-4-US-192997 @vaibhav @reassignment @ownvai
   Scenario: Validate old DR owner as EXE user should not able to see buttons when ownership related task is reassign to new EXE user
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"

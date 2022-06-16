@@ -5719,7 +5719,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            |
       | {SavedValue:Automation Runtime Award} |
 
-  @197254 @197255 @197256 @197257 @197258 @197260 @ValidateusershouldableseethenewmoduleProgressReportafterenterthesourceuser&targetuserinOwnershipReassignmentoption @sprint-4 @vaibhav @reassignment
+  @197254 @197255 @197256 @197257 @197258 @197260 @ValidateusershouldableseethenewmoduleProgressReportafterenterthesourceuser&targetuserinOwnershipReassignmentoption @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate user should able see the new module Progress Report after enter the source user & target user in  Ownership Reassignment option
     Given I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Home" tab
@@ -5759,7 +5759,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID}" in "---progressreport:-:progressTargetTableId---" panel
     Then I see value "{SavedValue:progID}" for title "Progress Report ID" inside table "---progressreport:-:progressTargetTableId---"
 
-  @197267 @ValidatewhenuserclickonYesbuttonofwarningmessageforPRthenflowshouldbeproceed @sprint-4 @vaibhav @reassignment
+  @197267 @ValidatewhenuserclickonYesbuttonofwarningmessageforPRthenflowshouldbeproceed @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate when user click on "Yes" button of warning message for PR then flow should be proceed
     Given I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Home" tab
@@ -5785,7 +5785,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID}" in "---progressreport:-:progressTargetTableId---" panel
     Then I see value "{SavedValue:progID}" for title "Progress Report ID" inside table "---progressreport:-:progressTargetTableId---"
 
-  @197270 @ValidatewhenuserclickonNobuttonofwarningmessageforPRthenflowshouldbestop @sprint-4 @vaibhav @reassignment @ownershipcheck
+  @197270 @ValidatewhenuserclickonNobuttonofwarningmessageforPRthenflowshouldbestop @sprint-4 @vaibhav @reassignment @ownershipcheck @ownvai
   Scenario: Validate when user click on "No" button of warning message for PR then flow should be stop
     Given I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Home" tab
@@ -5807,11 +5807,10 @@ Feature: Validate scenarios in Progress Report without background
     When I click table top right button "Transfer Ownership" in flex table with id "---progressreport:-:progressSourceTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
     And I click "No" on modal confirmation box
-    And I pause execution for "60" seconds
     When I perform quick search for "{SavedValue:progID}" in "---progressreport:-:progressSourceTableId---" panel
     Then I see value "{SavedValue:progID}" for title "Progress Report ID" inside table "---progressreport:-:progressSourceTableId---"
 
-  @197357 @ValidatePRiscreationAwardownerischangedthenPRreportrecordisdisplaytonewAwardowneafterPRissubmittograntor @sprint-4 @vaibhav @reassignment
+  @197357 @ValidatePRiscreationAwardownerischangedthenPRreportrecordisdisplaytonewAwardowneafterPRissubmittograntor @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate PR is creation Award owner is changed then PR report record is display to new Award owner after PR is submit to grantor
     Given I activated standalone subaward "Automation Runtime award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
@@ -5872,7 +5871,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:progID}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197377 @197382 @Validateprogressreportiscreatedstate&userchangedOwnershiptonewownerofPRreport&afterPRissubmittograntorthenSendtoS/Risdisplaytonewowner @sprint-4 @vaibhav @reassignment
+  @vai @197377 @197382 @Validateprogressreportiscreatedstate&userchangedOwnershiptonewownerofPRreport&afterPRissubmittograntorthenSendtoS/Risdisplaytonewowner @sprint-4 @vaibhav @reassignment
   Scenario: Validate progress report is created state & user changed Ownership to new owner of PR report & after PR is submit to grantor then Send to S/R is display to new owner
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation EXE user"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"

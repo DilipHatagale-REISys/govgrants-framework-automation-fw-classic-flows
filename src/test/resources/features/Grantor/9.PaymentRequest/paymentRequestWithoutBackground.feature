@@ -1661,7 +1661,7 @@ Feature: Payment Request scenarios without background
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
 
-  @197613 @197614 @ValidateAdminusercanabletoseepaymentrequestmoduleinReassignownershiptableafteraddingsourceuserandtargetuserinownership @sprint-4 @vaibhav @reassignment
+  @197613 @197614 @ValidateAdminusercanabletoseepaymentrequestmoduleinReassignownershiptableafteraddingsourceuserandtargetuserinownership @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate Admin user can able to see payment request module in Reassign ownership table after adding source user and target user in ownership
     Given I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Home" tab
@@ -2499,15 +2499,15 @@ Feature: Payment Request scenarios without background
       Sandbox: Notification: Payment Request #{SavedValue:PayreqId} has beenRejected.
       """
 
-#    Then I see the mail text is as follows :
-#      """
-#     Hello,
-#     This email is to inform you that the payment request {SavedValue:PayreqId} for the award # {SavedValue:AwardEGMSID} has been rejected by an approver.
-#     Payment Request Details:
-#     Payment Type: Reimbursement
-#     Payment ID: {SavedValue:PayreqId}
-#     Key POC: Automation SPI3
-#      """
+    Then I see the mail text is as follows :
+      """
+     Hello,
+     This email is to inform you that the payment request {SavedValue:PayreqId} for the award # {SavedValue:AwardEGMSID} has been rejected by an approver.
+     Payment Request Details:
+     Payment Type: Reimbursement
+     Payment ID: {SavedValue:PayreqId}
+     Key POC: Automation SPI3
+      """
 
   @197769 @ValidatesystemcreatenewschedulepaymentrequestafterpreviousPRownershiptaskreassigntootheruserthennewPRinternalsideownershouldbeawardonly @sprint-4 @vaibhav @reassignment
   Scenario: Validate system create new schedule payment request after previous PR ownership task reassign to other user then new PR internal side owner should be award only
@@ -4015,7 +4015,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197397 @197453 @Validatependingtaskshouldnotgenerateforolduserofad-hocreimbursementpaymentrequestafterownershipreassignment @sprint-4 @vaibhav @reassignment
+  @197397 @197453 @Validatependingtaskshouldnotgenerateforolduserofad-hocreimbursementpaymentrequestafterownershipreassignment @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate pending task should not generate for old user of ad-hoc reimbursement payment request after ownership reassignment
     And I activated standalone subaward "Automation Runtime award" with properties "NO_ADVANCE_PERMISSION"
     And I am on "SUBPORTAL" portal
@@ -4211,7 +4211,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I do not see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197511 @ValidatenewownerPOofadvancepaymentrequestshouldhavefollowingbuttonsaccessafterpaymentrequestsubmittograntor @sprint-4 @vaibhav @reassignment @taskreassign
+  @197511 @ValidatenewownerPOofadvancepaymentrequestshouldhavefollowingbuttonsaccessafterpaymentrequestsubmittograntor @sprint-4 @vaibhav @reassignment @taskreassign @ownvai
   Scenario: Validate new owner PO of advance payment request should have following buttons access after payment request submit to grantor
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -4698,7 +4698,7 @@ Feature: Payment Request scenarios without background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---subAwardStandAlone:-:historyTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---subAwardStandAlone:-:historyTableId---"
 
-  @199397 @ValidatereassignedtaskownerPMuserisabletoallbuttonsaccessifadmintransferstaskofthetasktypeReviewpaymentrequestwhenstatusoftaskisInProgress @sprint-4 @vaibhav @reassignment
+  @199397 @ValidatereassignedtaskownerPMuserisabletoallbuttonsaccessifadmintransferstaskofthetasktypeReviewpaymentrequestwhenstatusoftaskisInProgress @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate reassigned task owner PM user is able to all buttons access if admin transfers task of the task type Review payment request when status of task is In Progress
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -4734,7 +4734,7 @@ Feature: Payment Request scenarios without background
     Then I softly see value "Review Payment Request" for title "Task Type" inside table "---program:-:adminTaskReassignmentTableId---"
     When I check "{SavedValue:PayreqId}" boxes in flex table with id "---program:-:adminTaskReassignmentTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:adminTaskReassignmentTableId---"
-    And I pause execution for "60" seconds
+    And I pause execution for "30" seconds
     When I perform quick search for "{SavedValue:PayreqId}" in "---program:-:adminTaskReassignmentTableId---" panel
     Then I softly do not see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---program:-:adminTaskReassignmentTableId---"
     When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
