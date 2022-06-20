@@ -82,23 +82,4 @@ public class ProjectManager extends ProjectWebServices {
         }
         return flag;
     }
-
-    public void validateButton(String usage, String buttonName) {
-        if (usage.equalsIgnoreCase("softly see")) {
-            I.amPerforming().assertionsTo().assertThat(buttonIsVisibleOrNot(buttonName)).isTrue();
-        } else if (usage.equalsIgnoreCase("do not see")) {
-            I.amPerforming().assertionsTo().assertThat(buttonIsVisibleOrNot(buttonName)).isFalse();
-        }
-    }
-
-    private boolean buttonIsVisibleOrNot(String buttonName) {
-        boolean flag = false;
-        try {
-            if (I.amPerforming().checkToSee().isDisplayed(I.amPerforming().getElementReference().of(By.xpath("//div[contains(@class, 'modal-content')]//button[text()='" + buttonName + "']")))) {
-                flag = true;
-            }
-        } catch (Exception e) {
-        }
-        return flag;
-    }
 }

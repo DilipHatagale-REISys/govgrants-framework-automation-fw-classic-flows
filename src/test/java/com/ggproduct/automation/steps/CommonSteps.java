@@ -54,9 +54,4 @@ public class CommonSteps {
     public void validateImageinPageDetail(String usage, String imageName) {
         projectManager.validateImage(usage, imageName);
     }
-
-    @Then("I (softly see|do not see) button \"([^\"]*)\" on modal confirmation box$")
-    public void iSeeButtonOnModalConfirmationBox(String usage, String buttonName) {
-        projectManager.validateButton(usage, buttonName);
-    }
 }
