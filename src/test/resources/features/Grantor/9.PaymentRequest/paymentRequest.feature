@@ -1585,7 +1585,7 @@ Feature: Validate all scenarios in Payment Request
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     And I checkout to yopmail with mailid "govgrantsuat@yopmail.com"
-    And I pause execution for "180" seconds
+    And I pause execution for "30" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
