@@ -643,7 +643,7 @@ Feature: Validate all scenarios in the Site Visit
     And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "180" seconds
+    And I pause execution for "20" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """

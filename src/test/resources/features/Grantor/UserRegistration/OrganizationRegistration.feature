@@ -345,7 +345,7 @@ Feature: Validate all registration related scenarios
     When I click on "Start" icon for "AUTOMATION RUNTIME Organization" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
     And I "Approve" in the approval decision
     And I checkout to yopmail with mailid "AutomationInternal@yopmail.com"
-    And I pause execution for "180" seconds
+    And I pause execution for "20" seconds
     Then I refresh the page
     And I navigate to yopmail portal for "AutomationInternal@yopmail.com"
     Then I set password for the user
@@ -412,7 +412,7 @@ Feature: Validate all registration related scenarios
     When I click on "Start" icon for "AUTOMATION RUNTIME Organization" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
     And I "Approve" in the approval decision
     And I checkout to yopmail with mailid "Auto@yopmail.com"
-    And I pause execution for "180" seconds
+    And I pause execution for "20" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -495,7 +495,7 @@ Feature: Validate all registration related scenarios
     And I click modal button "Send"
     When I close "Send Invitation" modal by clicking the top right x button
     And I refresh the page
-    And I pause execution for "180" seconds
+    And I pause execution for "20" seconds
     And I navigate to yopmail portal for "AutomationManager@yopmail.com"
     Then I see the header is "Registration" in the page details
     Then I see the sub-header is "Legal Disclaimer 1 of 2" in the page details
