@@ -673,7 +673,7 @@ Feature: Validate all scenarios for program
     And I click on "Activate" in the page details
     Then I can see top right button "Amend Program" in page detail
 
-  @199391 @ValidatereassignedtaskownerEXEuserisabletoactivattheinternalprogramifadmintransferstaskofthetasktypeActivatetheProgramwhenstatusoftaskisInProgress @sprint-4 @vaibhav @reassignment @ownershipcheck
+  @199391 @ValidatereassignedtaskownerEXEuserisabletoactivattheinternalprogramifadmintransferstaskofthetasktypeActivatetheProgramwhenstatusoftaskisInProgress @sprint-4 @vaibhav @reassignment
   Scenario: Validate  reassigned task owner EXE user is able to activate the internal program if admin transfers task of the task type Activate the Program when status of task is In Progress
     When I login to "As a Grantor" app as "EXE1" user
     And I navigate to "Planning" tab
@@ -2823,29 +2823,29 @@ Feature: Validate all scenarios for program
     Then I see "Upload" button is disabled at modal under library
     Then I see "Cancel" button is displayed On Modal
 
-    @204038 @ValidateCancelbuttonIfclickonCancelthanthemodalwillcloseanddetailsfilledwillbelost @sprint-7-US-202724 @vaibhav
-    Scenario: Validate Cancel button If click on Cancel than the modal will close and details filled will be lost
-      When I login to "As a Grantor" app as "ADMIN" user
-      And I navigate to "Planning" tab
-      When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
-      And I click toggle button to select "Internal Programs - Draft"
-      And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
-      When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
-      And I click modal button "Save and Continue"
-      And I get the "EGMS ID"
-      And I save the field labeled "EGMS ID" as "ProgramEGMSID"
-      And I click on "Save" in the page details
-      Then I softly see field "Status" as "Created"
-      And I navigate to "Setup" sub tab
-      When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
-        | Description                 | Required  | Applies To  | Status |
-        | Automation test description | Mandatory | Application | Active |
-      When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
-      And I click modal button "Cancel"
-      Then I see value "Not Applicable" for title "Template Link" against the value "Active" inside table "---progressreport:-:progressReportChecklistsTableId---"
+  @204038 @ValidateCancelbuttonIfclickonCancelthanthemodalwillcloseanddetailsfilledwillbelost @sprint-7-US-202724 @vaibhav
+  Scenario: Validate Cancel button If click on Cancel than the modal will close and details filled will be lost
+    When I login to "As a Grantor" app as "ADMIN" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    Then I softly see field "Status" as "Created"
+    And I navigate to "Setup" sub tab
+    When I enter the following values into flex table with id "---program:-:checklistTableId---" by clicking "Add" :
+      | Description                 | Required  | Applies To  | Status |
+      | Automation test description | Mandatory | Application | Active |
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
+    And I click modal button "Cancel"
+    Then I see value "Not Applicable" for title "Template Link" against the value "Active" inside table "---progressreport:-:progressReportChecklistsTableId---"
 
   @204046 @ValidateCancelbuttonwillalwaysbeenabled @sprint-7-US-202724 @vaibhav
-    Scenario: Validate Cancel button will always be enabled
+  Scenario: Validate Cancel button will always be enabled
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
@@ -2863,4 +2863,3 @@ Feature: Validate all scenarios for program
       | Automation test description | Mandatory | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
     Then I do not see "Cancel" button is disabled at modal under library
-
