@@ -423,7 +423,6 @@ Feature: Validate all scenarios for program
       | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Schedule section because it is weighted.     |
       | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Environment section because it is weighted.  |
       | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Permits section because it is weighted.      |
-      | Setup Tab - SME Review - Fiscal Review: The total section weight must equal 100% or 0%. It is currently 120%.                                       |
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
     And I edit the following rows inline in flex table with id "---program:-:programReviewPanel---" by clicking "Edit" :
       | Section Header | Section Weight (%) |
@@ -924,7 +923,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details :
-      | Setup Tab - Management Review - Management Review: At least one section must be added to this form. |
+      | Setup Tab - Management Review - Management Review: The total section weight must equal 100% or 0%. It is currently 40%. |
 
   @34750 @106291 @110156 @110141 @submittingProgramForApproval @monu
   Scenario: Validate the submission of Program for Approval
@@ -960,6 +959,7 @@ Feature: Validate all scenarios for program
     #110141 #monu
     When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    And I switch to iframe with id "---program:-:addFilesIframeId---"
     And I upload attachment "Attachment.pdf" of type "Program Artifacts" from computer
     Then I softly see "Program Artifacts" has been added in "Program Files" flex table
     And I pause execution for "5" seconds
@@ -1006,6 +1006,7 @@ Feature: Validate all scenarios for program
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    And I switch to iframe with id "---program:-:addFilesIframeId---"
     And I upload attachment "Attachment.pdf" of type "Program Artifacts" from computer
     And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
@@ -1055,10 +1056,9 @@ Feature: Validate all scenarios for program
       | Automation test description | Mandatory | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
-#    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Others"
-   # When I close "Upload Template" modal by clicking the top right x button
     And I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---program:-:GrantorInternalProgramFilesTableId---"
+    And I switch to iframe with id "---program:-:addFilesIframeId---"
     And I upload attachment "Attachment.pdf" of type "Program Artifacts" from computer
     And I pause execution for "5" seconds
     And I click on "Submit For Approval" in the page details
@@ -1726,8 +1726,6 @@ Feature: Validate all scenarios for program
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
     And I click on "Delete" icon for "3" inside flex table with id "---program:-:programReviewPanelQuestionsTableId---" without waiting for record
-    Then I softly see the following messages in the page details contains:
-      | Record deleted successfully! |
     Then I softly do not see value "3" for title "Question" inside table "---program:-:programReviewPanelQuestionsTableId---"
     Examples:
       | Objective                      |
@@ -2855,8 +2853,8 @@ Feature: Validate all scenarios for program
       | Saved Successfully! |
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%.                                  |
-      | Setup Tab - Pre-Screen Review - Pre-Screen: The total section weight must equal 100% or 0%. It is currently 50%.                                      |
+      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%.                                |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted. |
     And I refresh the page
     And I expand nested table containing column value "Pre-Screen Review"
     And I click on "Edit" icon for "Pre-Screen" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
@@ -2868,8 +2866,8 @@ Feature: Validate all scenarios for program
       | Saved Successfully! |
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%.                                  |
-      | Setup Tab - Pre-Screen Review - Pre-Screen: The total section weight must equal 100% or 0%. It is currently 50%.                                      |
+      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%.                               |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -2953,7 +2951,7 @@ Feature: Validate all scenarios for program
       | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Capability section because it is weighted. |
       | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Approach section because it is weighted.   |
       | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Impact section because it is weighted.     |
-      | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%. It is currently 135%.                                 |
+      | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%. It is currently 180%.                                 |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -3275,7 +3273,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | There are no errors with the review step templates. |
+      | Setup Tab - SME Review - Fiscal Review: The total section weight must equal 100% or 0%. It is currently 50%. |
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I click on "Edit" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---"
@@ -3298,7 +3296,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | There are no errors with the review step templates. |
+      | Setup Tab - SME Review - Fiscal Review: The total section weight must equal 100% or 0%. It is currently 50%. |
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I click on "Edit" icon for "Compliance Review" inside flex table with id "---program:-:reviewFormPanelId---"
@@ -3528,9 +3526,7 @@ Feature: Validate all scenarios for program
     Then I softly see the following messages in the page details contains:
       | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 80.00%.                              |
       | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Capability section because it is weighted. |
-      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Approach section because it is weighted.   |
-      | Setup Tab - SME Review - Program Review: A score must be associated to at least one question in the Impact section because it is weighted.     |
-      | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%. It is currently 90%.                                  |
+      | Setup Tab - SME Review - Program Review: The total section weight must equal 100% or 0%. It is currently 90%.   |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -3629,8 +3625,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 150.00%.                                |
-      | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Program Income section because it is weighted. |
+      | Setup Tab - SME Review - Fiscal Review: A score must be associated to at least one question in the Program Income section because it is weighted.                                |
 
   @77405 @77406 @validatingSMEReviewFormQuestions @meenakshi @needToCheckErrorMessage
   Scenario: To validate system generated validation message, When Max score:0, for all review questions under the Schedule review panel categories and  Weight is present, in Compliance Review form of SME review steps in planning phase
@@ -3689,10 +3684,10 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 130.00%.                                   |
-      | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Schedule section because it is weighted.      |
-      | Setup Tab - SME Review - Compliance Review: A score cannot be associated to a question in the Environment section because it does not have a weight. |
-      | Setup Tab - SME Review - Compliance Review: The total section weight must equal 100% or 0%. It is currently 30%.                                     |
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 130.00%.                                 |
+      | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Schedule section because it is weighted.    |
+      | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Environment section because it is weighted. |
+      | Setup Tab - SME Review - Compliance Review: The total section weight must equal 100% or 0%. It is currently 60%.                                   |
 
   @77408 @validatingMaxScoreZeroForEligiblityInPreScreenReviewFormQuestions @meenakshi
   Scenario Outline: To validate system generated validation message, When Max score:0, for all review questions under the Eligibility review panel categories and  Weight is present, in prescreening Review form of prescreening review steps in planning phase
@@ -4015,8 +4010,8 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Return on Investment (ROI) section because it is weighted. |
-      | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Strategic Alignment section because it is weighted.        |
+      | Setup Tab - Management Review - Management Review: A score must be associated to at least one question in the Strategic Alignment section because it is weighted. |
+
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -4086,7 +4081,8 @@ Feature: Validate all scenarios for program
       | Saved Successfully! |
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details :
-      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step, it is currently 0%. |
+      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%.        |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -4171,7 +4167,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | There are no errors with the review step templates. |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted. |
     And I refresh the page
     And I expand nested table containing column value "Pre-Screen Review"
     And I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
@@ -4187,7 +4183,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | There are no errors with the review step templates. |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A score must be associated to at least one question in the Completeness section because it is weighted. |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -4291,7 +4287,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | There are no errors with the review step templates. |
+      | Setup Tab - SME Review - Compliance Review: A score must be associated to at least one question in the Permits section because it is weighted. |
     And I refresh the page
     And I expand nested table containing column value "SME Review"
     And I click on "Review Form" icon for "Compliance Review" inside flex table with id "---program:-:reviewStepTableId---" without waiting for record
@@ -4349,7 +4345,7 @@ Feature: Validate all scenarios for program
     And I close "Review Form" modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | There are no errors with the review step templates. |
+      | Setup Tab - SME Review - Fiscal Review: The total section weight must equal 100% or 0%. It is currently 90%. |
     Examples:
       | Objective                      |
       | Automation Permanent Objective |
@@ -5115,8 +5111,9 @@ Feature: Validate all scenarios for program
     And I pause execution for "5" seconds
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
-      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 0%. |
-      | Setup Tab - The total Review Step weight must equal 100%. It is currently 130.00%. |
+      | Setup Tab - Pre-Screen Review: The total Review Form weight must equal 100% for a weighted step. It is currently 70.00%. |
+      | Setup Tab - The total Review Step weight must equal 100%. It is currently 130.00%.                                |
+      | Setup Tab - Pre-Screen Review - Pre-Screen: A weighted form must contain weighted sections.                             |
 
   @109651 @VerifyValidationMessageForReviewFormStepWeightLessThan100%  @monu
   Scenario: validate user is able to see validation message when step weight is les than 100%
@@ -5152,7 +5149,7 @@ Feature: Validate all scenarios for program
     And I click on top right button "Validate" in flex table with id "---program:-:reviewStepTableId---"
     Then I softly see the following messages in the page details contains:
       | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 130.00%. |
-      | Setup Tab - SME Review - Compliance Review: A weighted form must contain weighted sections. |
+      | Setup Tab - SME Review - Compliance Review: A weighted form must contain weighted sections.                        |
 
   @109646 @VerifyAdditionOfNewReviewList  @monu
   Scenario: validate user is able to add new Review list for created internal program

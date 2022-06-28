@@ -2134,8 +2134,9 @@ Feature: Validate all scenarios for program
        Thank you.
        The EGMS Team
       """
-    Given I am on "Internal" portal
-    And I login to "As a Grantor" app as "PM" user
+    Then I refresh the page
+    And I am on "INTERNAL" portal
+    When I login to "As a Grantor" app as "PM" user
     And I navigate to "Planning" tab
     When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
     And I click toggle button to select "Internal Programs - All"

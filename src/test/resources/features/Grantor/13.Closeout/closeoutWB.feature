@@ -191,14 +191,14 @@ Feature: Validate all scenarios in Closeout
     When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:ProjectPeriodCloseoutTableId---" panel
     When I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:ProjectPeriodCloseoutTableId---"
     And I navigate to "History" sub tab
-    Then I softly see value "SentToSubrecipient.pdf" for title "File Name" against the value "SentToSubrecipient.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "{SavedValue:PM Username}" for title "Taken By" against the value "SentToSubrecipient.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "Acknowledge.pdf" for title "File Name" against the value "Acknowledge.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+    Then I softly see value "SentToSubrecipient.pdf" for title "File Name" against the value "{SavedValue:EXE Username}" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+    Then I softly see value "{SavedValue:EXE Username}" for title "Taken By" against the value "SentToSubrecipient.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+    Then I softly see value "Acknowledge.pdf" for title "File Name" against the value "{SavedValue:SPI3 Username}" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     Then I softly see value "{SavedValue:SPI3 Username}" for title "Taken By" against the value "Acknowledge.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "Overriden.pdf" for title "File Name" against the value "Overriden.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "{SavedValue:PM Username}" for title "Taken By" against the value "Overriden.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "Submission.pdf" for title "File Name" against the value "Submission.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "{SavedValue:PM Username}" for title "Taken By" against the value "Submission.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+    Then I softly see value "Overriden.pdf" for title "File Name" against the value "{SavedValue:EXE Username}" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+    Then I softly see value "{SavedValue:EXE Username}" for title "Taken By" against the value "Overriden.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+  #  Then I softly see value "Submission.pdf" for title "File Name" against the value "Submission.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+  #  Then I softly see value "{SavedValue:PM Username}" for title "Taken By" against the value "Submission.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     And I click on hyperlink containing value "Overriden.pdf"
     And I switch to parent tab
     Then I softly see page title contains as "servlet.FileDownload"
@@ -223,7 +223,7 @@ Feature: Validate all scenarios in Closeout
     And I click toggle button to select "Project Period Closeouts - Completed"
     Then I softly see value "Completed" for title "Status" inside table "---closeout:-:ProjectPeriodCloseoutTableId---"
 
-  @87358 @86711 @86707 @86709 @VerifyEmailNoificationRecievedBySPIUserForCloseout @meenakshi
+  @87358 @86711 @86707 @86709 @VerifyEmailNoificationRecievedBySPIUserForCloseout @meenakshi @buglogged-234888
   Scenario: To verify Email notification should be received to SPI user when closeout Request has Sent to Subrecipient in Closeout phase
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
     When I login to "As a Grantor" app as "dynamicUser" user
