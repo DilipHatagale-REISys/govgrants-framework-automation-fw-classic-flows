@@ -313,12 +313,10 @@ Feature: Application Intake scenarios without background
     And I click on "Publish" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Opportunities" tab
-    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    When I click toggle button to select "Not Yet Qualified Opportunities - All"
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" in "---applicationIntake:-:NotYetQualifiedTableId---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" inside table
-    Then I softly can see top right button "Qualify" in page detail
-    When I click on "Qualify" in the page details
+   When I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
+   And I click toggle button to select "Opportunities Converted to Application - All"
+   And I perform quick search for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" in "---applicationIntake:-:convertedToApplicationTableID---" panel
+   When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" inside flex table with id "---applicationIntake:-:convertedToApplicationTableID---" without waiting for record
     Then I softly can see top right button "Create Application" in page detail
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
