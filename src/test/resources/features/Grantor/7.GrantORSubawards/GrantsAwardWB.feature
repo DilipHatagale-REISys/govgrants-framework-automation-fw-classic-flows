@@ -3558,7 +3558,7 @@ Feature: Validate all scenarios of grants and award without background
     When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
     When I reassign task to "Automation PM1"
     When I perform quick search for "{SavedValue:AwardEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
-    Then I softly see value "Initial Acceptance of Subaward by Subrecipient" for title "Task Type" inside table "---program:-:grantorTaskReassignTableId---"
+    Then I softly see value "Acceptance of Subaward by Subrecipient" for title "Task Type" inside table "---program:-:grantorTaskReassignTableId---"
     When I check "{SavedValue:AwardEGMSID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
     And I pause execution for "30" seconds
