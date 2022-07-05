@@ -111,7 +111,6 @@ Feature: Validate all scenarios for Auditor Profile in Closeout Request module
     And I enter "Override" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Override" in the page details
-    Then I see status in Progress-bar is "Overridden" and is "green"
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     And I navigate to "Closeout" tab
