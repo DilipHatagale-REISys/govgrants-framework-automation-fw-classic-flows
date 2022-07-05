@@ -119,8 +119,8 @@ Feature: Validate all scenarios for Auditor Profile in Planning Module
     When I perform quick search for "<FundingSource>" in "---fundingsource:-:fundingSourceTableId---" panel
     Then I softly can see row level action button "View" against "<FundingSource>" in flex table with id "---fundingsource:-:fundingSourceTableId---"
     Examples:
-      | User    | FundingSource                         |
-      | AUDITOR | Automation Permanent Funding Source 1 |
+      | User    | FundingSource                       |
+      | AUDITOR | Automation Permanent Funding Source |
 
 
   @67847 @auditorCannotCreateKPI @deepika

@@ -22,7 +22,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     And I navigate to "Advances" content inside "Payments" subheader on left panel
     When I click toggle button to select "Advances - All"
     When I perform quick search for "Created" in "---auditor:-:paymentrequestAdvancesTableId---" panel
-    Then I see values "Created" and "Advance" inside table
+    Then I see value "Created" for title "Status" inside table "---auditor:-:paymentrequestAdvancesTableId---"
 
   @69179 @69942 @auditorOrgRiskAssessment @smoke
   Scenario: Validate Auditor should have view / read  only access to Organizational Risk Assessment |Validate Auditor should not be  able to Provide revision access
@@ -60,11 +60,20 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
   Scenario Outline: Validate Auditor should have view Monitoring Scheduled Activities of award
     Given I activated standalone subaward "Automation Runtime Award" with properties "default"
     Given I login to "As a Grantor" app as "<User>" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside table
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
     When I navigate to "Monitoring" tab
     And I navigate to "Monitoring Schedules" content inside "Monitoring Activities" subheader on left panel
     When I click toggle button to select "Scheduled Activities - All"
-    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---auditor:-:scheduledactivtiesTableId---" panel
-    Then I can see row level action button "View" against "{SavedValue:Automation Runtime Award}" in flex table with id "---auditor:-:scheduledactivtiesTableId---"
+    When I perform quick search for "{SavedValue:AwardEGMSID}" in "---auditor:-:scheduledactivtiesTableId---" panel
+    Then I can see row level action button "View" against "{SavedValue:AwardEGMSID}" in flex table with id "---auditor:-:scheduledactivtiesTableId---"
     Examples:
       | User    |
       | AUDITOR |
@@ -120,6 +129,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     Given I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    And I click toggle button to select "Site Visit Reports - All"
     When I perform quick search for "{SavedValue:Automation Runtime Site Visit}" in "---auditor:-:sitevisitMonitoringTableId---" panel
     Then I can see row level action button "View" against "{SavedValue:Automation Runtime Site Visit}" in flex table with id "---auditor:-:sitevisitMonitoringTableId---"
     And I click on "View" icon for "{SavedValue:Automation Runtime Site Visit}" inside flex table with id "---auditor:-:sitevisitMonitoringTableId---"
@@ -156,6 +166,7 @@ Feature: Validate all scenarios for Auditor Profile in Monitoring module
     When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
     Given I navigate to "Monitoring" tab
     When I navigate to "Desk Reviews" content inside "Monitoring Activities" subheader on left panel
+    And I click toggle button to select "Desk Review Reports - All"
     When I perform quick search for "{SavedValue:Automation Runtime Award Desk}" in "---auditor:-:deskreviewMonitoringTableId---" panel
     Then I softly cannot see row level action button "Delete" against "{SavedValue:Automation Runtime Award Desk}" in flex table with id "---auditor:-:deskreviewMonitoringTableId---"
     Then I softly can see row level action button "View" against "{SavedValue:Automation Runtime Award Desk}" in flex table with id "---auditor:-:deskreviewMonitoringTableId---"
