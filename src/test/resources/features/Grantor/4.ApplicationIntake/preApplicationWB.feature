@@ -3102,7 +3102,7 @@ Feature: Pre-Application scenarios without background
     And I perform quick search for "Record Id" in "---home:-:internalHomePendingTaskTableId---" panel
     Then I softly see value "Pre-Application Review Negotiation" for title "Task Type" inside table "---home:-:internalHomePendingTaskTableId---"
 
-  @197928 @ValidatePreApplicationReviewtaskshouldnotgenerateforadminuseronreassignmytaskpage @sprint-7-US-197384 @vaibhav @reassignment @ownershipcheck
+  @197928 @ValidatePreApplicationReviewtaskshouldnotgenerateforadminuseronreassignmytaskpage @sprint-7-US-197384 @vaibhav @reassignment @ownvai
   Scenario: Validate Pre Application Review task should not generate for admin user on reassign my task page
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Announcements" tab
@@ -3405,7 +3405,7 @@ Feature: Pre-Application scenarios without background
     When I perform quick search for "{SavedValue:PreappEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:PreappEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @197942 @ValidatePre-ApplicationReviewNegotiationtaskshouldnotgenerateforadminuseronreassignmytaskpage  @sprint-7-US-197384 @vaibhav @reassignment
+  @197942 @ValidatePre-ApplicationReviewNegotiationtaskshouldnotgenerateforadminuseronreassignmytaskpage  @sprint-7-US-197384 @vaibhav @reassignment @ownvai
   Scenario: Validate Pre-Application Review Negotiation task should not generate for admin user on reassign my task page
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Announcements" tab
@@ -3717,7 +3717,7 @@ Feature: Pre-Application scenarios without background
     When I perform quick search for "{SavedValue:PreappEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:PreappEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @197954 @ValidatePre-ApplicationReviewNegotiationtaskshouldnotgenerateforPOuseronreassignmytaskpage @sprint-7-US-197384 @vaibhav @reassignment
+  @197954 @ValidatePre-ApplicationReviewNegotiationtaskshouldnotgenerateforPOuseronreassignmytaskpage @sprint-7-US-197384 @vaibhav @reassignment @ownvai
   Scenario: Validate Pre-Application Review Negotiation' task should not generate for PO user on reassign my task page
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab

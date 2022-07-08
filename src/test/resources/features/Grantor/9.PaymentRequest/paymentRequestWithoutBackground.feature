@@ -2629,7 +2629,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I do not see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197787 @Validateawardownerchangehisownershipthencreatedpaymentrequestonthatthenownerofpaymentrequestshouldbenewuser @sprint-4 @vaibhav @reassignment
+  @197787 @Validateawardownerchangehisownershipthencreatedpaymentrequestonthatthenownerofpaymentrequestshouldbenewuser @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate award owner change his ownership then created payment request on that then owner of payment request should be new user
     And I activated standalone subaward "Automation Runtime award" with properties "default"
     And I am on "SUBPORTAL" portal
@@ -3711,7 +3711,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197394 @ValidatependingtaskshouldbegeneratedforPOasnewownerschedulereimbursementpaymentrequestownershiptaskreassigntootherPO @sprint-4 @vaibhav @reassignment
+  @197394 @ValidatependingtaskshouldbegeneratedforPOasnewownerschedulereimbursementpaymentrequestownershiptaskreassigntootherPO @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate pending task should be generated for PO as new owner if schedule reimbursement payment request ownership task reassign to other PO
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -4235,7 +4235,7 @@ Feature: Payment Request scenarios without background
     And I navigate to "Collab" sub tab
     Then I can see top right button "Send Email" in flex table with id "---paymentRequest:-:reimburseCollabMessages---"
 
-  @197512 @Validatependingtaskshouldgeneratedfornewowneronceapproverapprovead-hocreimbursementpaymentrequest @sprint-4 @vaibhav @reassignment
+  @197512 @Validatependingtaskshouldgeneratedfornewowneronceapproverapprovead-hocreimbursementpaymentrequest @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate pending task should generated for new owner once approver approve ad-hoc reimbursement payment request
     And I activated standalone subaward "Automation Runtime award" with properties "NO_ADVANCE_PERMISSION"
     And I am on "SUBPORTAL" portal
@@ -4619,7 +4619,7 @@ Feature: Payment Request scenarios without background
     And I navigate to "Files" sub tab
     Then I can see top right button "Add Files" in flex table with id "---paymentRequest:-:reimburseFilesTableId---"
 
-  @198604 @Validatecheckeffectsongrantafterpaymentrequestownershipreassigntonewuser @sprint-4 @vaibhav @reassignment
+  @198604 @Validatecheckeffectsongrantafterpaymentrequestownershipreassigntonewuser @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate check effects on grant after payment request ownership reassign to new user
     And I activated standalone subaward "Automation Runtime Award" with properties "default"
     And I am on "SUBPORTAL" portal

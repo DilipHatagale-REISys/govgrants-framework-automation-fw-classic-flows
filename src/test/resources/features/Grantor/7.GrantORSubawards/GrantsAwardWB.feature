@@ -3325,7 +3325,7 @@ Feature: Validate all scenarios of grants and award without background
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:grantSourceOwnerTableId---" panel
     Then I see value "{SavedValue:GrantEGMSID}" for title "Grant ID" inside table "---subAwardStandAlone:-:grantSourceOwnerTableId---"
 
-  @196613 @Validateawardafterchangingtheownershipthennewowner&oldownershouldbeupdateinownersectionunderresponsibilitytab @sprint-4 @vaibhav @reassignment
+  @196613 @Validateawardafterchangingtheownershipthennewowner&oldownershouldbeupdateinownersectionunderresponsibilitytab @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate award after changing the ownership then new owner & old owner should be update in owner section under responsibility tab
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3817,7 +3817,7 @@ Feature: Validate all scenarios of grants and award without background
     And I pause execution for "4" seconds
     Then I softly do not see "Automation PM1" inside auto search result
 
-  @196618 @ValidateusershouldabletoseetheupdatedhistoryafterreassignmentownershipforGrantmodule @sprint-4 @vaibhav @reassignment
+  @196618 @ValidateusershouldabletoseetheupdatedhistoryafterreassignmentownershipforGrantmodule @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate user should able to see the updated history after reassignment ownership for Grant module
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4719,7 +4719,7 @@ Feature: Validate all scenarios of grants and award without background
     And I pause execution for "4" seconds
     Then I softly see "No matches found" inside auto search result
 
-  @196685 @Validateoldownernameshouldbedisplayincreatedbyfieldinoverviewtabforgrantrecord @sprint-4 @vaibhav @reassignment
+  @196685 @Validateoldownernameshouldbedisplayincreatedbyfieldinoverviewtabforgrantrecord @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate old owner name should be display in created by field in overview tab for grant record
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -5097,7 +5097,7 @@ Feature: Validate all scenarios of grants and award without background
       The EGMS Team
       """
 
-  @198597 @Validateusershouldabletoseeemailinyopmailwhenawardsendbackbyapproveraftertaskiscreatedforaward&acknowledgebysubrecipient @sprint-4 @vaibhav @reassignment
+  @198597 @Validateusershouldabletoseeemailinyopmailwhenawardsendbackbyapproveraftertaskiscreatedforaward&acknowledgebysubrecipient @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate user should able to see email in yopmail when award send back by approver after task is created for award & acknowledge by subrecipient
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab

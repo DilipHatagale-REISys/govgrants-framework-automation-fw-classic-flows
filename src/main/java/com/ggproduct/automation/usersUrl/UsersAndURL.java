@@ -90,11 +90,8 @@ public class UsersAndURL implements UsersController {
     private String getTest8EnvironmentPassword(String userLevel) {
         String password;
         switch (userLevel.toUpperCase()) {
-            case "ADMIN":
-                password = "GoProduct@1234";
-                break;
             default:
-                password = "SALESFORCE2019";
+                password = "Salesforce@2024";
         }
         return password;
     }
@@ -178,23 +175,23 @@ public class UsersAndURL implements UsersController {
 
     private String getTest8EnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
-        username.put("ADMIN", "manu.admin@ggp.test8.automation");
-        username.put("EXE", "test@gmaildemo.com.atm.automation");
-        username.put("PM", "donald_pm@ggp.test7.atm.automation");
-        username.put("FO", "auto.fm@auto.com.atm.automation");
-        username.put("SPI", "automationspi@yopmail.com");
+        username.put("ADMIN", "krishnacr7@reisystems.in");
+        username.put("ADMIN1", "manu.admin@ggp.test8");
+        username.put("EXE", "test@gmaildemo.com.atm");
+        username.put("PM", "donald_pm@ggp.test7.atm");
+        username.put("FO", "auto.fm@auto.com.atm");
         username.put("SPA", "automation.spa@yopmail.com");
-        username.put("IND", "automationind123@yopmail.com");
-        username.put("SA", "christopher.sa@yopmail.com.atm");
-        username.put("SPI2", "david.schim@yopmail.com");
-        username.put("SPI3", "automation.patricksa@yopmail.com20.atm");
-        username.put("AUDITOR", "automation.auditor@yopmail.com");
-
-        username.put("SIMON PM", "simon_pm@ggp.test7.automation");
-        username.put("ALEX FO", "alex_fo@ggp.test7.automation");
-        username.put("CATHY PM", "cathy_pm@ggp.test7.automation");
-        username.put("OSCAR PM", "oscar_pm@ggp.test7.automation");
-        username.put("Bill PM", "bill_pm@ggp.test7.automation");
+        username.put("IND", "ind.automation@yopmail.com");
+        username.put("SA", "automationspi1@yopmail.com");
+        username.put("SPI3", "automationspi30@yopmail.com");
+        username.put("AUDITOR", "test8.automationauditor@yopmail.com");
+        username.put("PO", "test8.automationpo@yopmail.com");
+        username.put("FD", "test8.automationfd@yopmail.com");
+        username.put("PM1", "test8.pm1.automation@yopmail.com");
+        username.put("EXE1", "test8.exe1.automation@yopmail.com");
+        username.put("FO1", "test8.fo1.automation@yopmail.com");
+        username.put("PO1", "test8.automationpo1@yopmail.com");
+        username.put("FD1", "test8.automationfd1@yopmail.com");
 
         if (userLevel.toUpperCase() != null) {
             return username.get(userLevel.toUpperCase());

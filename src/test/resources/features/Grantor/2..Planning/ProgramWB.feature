@@ -458,7 +458,7 @@ Feature: Validate all scenarios for program
     And I expand nested table containing column value "Grantor Pre-application Form"
     Then I softly see value "Standard Pre-Application form" for title "Display Name" inside table "---program:-:packagesTableId---"
 
-  @197300 @ValidatePMuserisabletotransferhisowntaskofthetasktypeActivatetheProgramstatusasInprogresstoanotherPMuserforinternalprogram @sprint-4 @vaibhav @reassignment @taskreassign
+  @197300 @ValidatePMuserisabletotransferhisowntaskofthetasktypeActivatetheProgramstatusasInprogresstoanotherPMuserforinternalprogram @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate PM user is able to transfer his own task of the task type Activate the Program status as In progress to another PM user for internal program
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -796,7 +796,7 @@ Feature: Validate all scenarios for program
     And I pause execution for "4" seconds
     Then I softly see "No matches found" inside auto search result
 
-  @195212 @Validateusershouldabletoreassigntheownershiptaskbetweensameprofileandthesameorganization @sprint-4 @vaibhav @reassignment
+  @195212 @Validateusershouldabletoreassigntheownershiptaskbetweensameprofileandthesameorganization @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate user should able to re-assign the ownership task between same profile and the same organization
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -1233,7 +1233,7 @@ Feature: Validate all scenarios for program
     Then I see value "Record Id" for title "EGMS ID" inside table "---program:-:completedTaskTableId---"
     Then I softly see value "Activate Internal Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:completedTaskTableId---"
 
-  @196688 @ValidateownershipistransferredforaPrograminSubmittedforReviewstateValidateallthevisibilityofallthebuttonsoftheprogramisavailabletothenewowner @sprint-4 @vaibhav @reassignment
+  @196688 @ValidateownershipistransferredforaPrograminSubmittedforReviewstateValidateallthevisibilityofallthebuttonsoftheprogramisavailabletothenewowner @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate ownership is transferred for a Program in Submitted for Review state Validate all the visibility of all the buttons of the program is available to the new owner
     When I login to "As a Grantor" app as "PM1" user
     And I navigate to "Planning" tab
@@ -2233,7 +2233,7 @@ Feature: Validate all scenarios for program
     And I navigate to "History" sub tab
     Then I softly see column "Overall Status" inside row "1" at position "1" contains text "Rejected"
 
-  @197314 @ValidatereassignedtaskownerEXEuserisabletoactivatetheexternalprogramifanotherEXEtransferstaskofthetasktypeActivateNGOProgramwhenstatusoftaskasNotstarted @sprint-4 @vaibhav @reassignment
+  @197314 @ValidatereassignedtaskownerEXEuserisabletoactivatetheexternalprogramifanotherEXEtransferstaskofthetasktypeActivateNGOProgramwhenstatusoftaskasNotstarted @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate reassigned task owner EXE user is able to activate the external program if another EXE transfers task of the task type Activate NGO Program when status of task as Not started
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Planning" tab
