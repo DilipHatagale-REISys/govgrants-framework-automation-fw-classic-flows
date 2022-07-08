@@ -780,7 +780,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I click table top right button "Transfer Ownership" in flex table with id "---sitevisits:-:siteVisitSourceTableId---"
     Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
 
-  @197410 @197417 @ValidatependingtaskshouldbegeneratedforNewuserafterSiteVisitownershipassigntonewuser @sprint-4 @vaibhav @reassignment @ownershipcheck
+  @197410 @197417 @ValidatependingtaskshouldbegeneratedforNewuserafterSiteVisitownershipassigntonewuser @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate pending task should be generated for New user after Site Visit ownership assign to new user
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -1509,7 +1509,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I click on "View" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly can see top right button "Conduct" in page detail
 
-  @197492 @ValidateSVownerasEXEuserisinInProgressstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinInProgressstate @sprint-4 @vaibhav @reassignment @ownershipcheck
+  @197492 @ValidateSVownerasEXEuserisinInProgressstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinInProgressstate @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Valdate SV owner as EXE user is in In Progress state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in In Progress state
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -2017,7 +2017,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I perform quick search for "{SavedValue:DeskReview}" in "---deskreview:-:deskReviewSourceTableId---" panel
     Then I do not see value "{SavedValue:DeskReview}" for title "Site Visit ID" inside table "---deskreview:-:deskReviewSourceTableId---"
 
-  @197632 @ValidateusershouldseewarningmessageafterclickonTransferownershipbutton @sprint-4 @vaibhav @reassignment
+  @197632 @ValidateusershouldseewarningmessageafterclickonTransferownershipbutton @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate user should see warning message after click on Transfer ownership button
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -2896,7 +2896,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     And I click on "View" icon for "{SavedValue:DeskReview}" inside flex table with id "---deskreview:-:deskReviewGridViewTableId---"
     Then I softly can see top right button "Conduct" in page detail
 
-  @197882 @ValidateDRownerasEXEuserisinSubmittedtoReviewstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinSubmittedtoReviewstate @reassignment
+  @197882 @ValidateDRownerasEXEuserisinSubmittedtoReviewstateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayout&sectionallevelbuttonsasoldownerhadinSubmittedtoReviewstate @reassignment @ownvai
   Scenario: Validate DR owner as EXE user is in Submitted to Review state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in Submitted to Review state
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -5058,7 +5058,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     Then I see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:manageSiteVisitTableId---"
     Then I softly can see row level action button "View" against "{SavedValue:SitevVisitId}" in flex table with id "---sitevisits:-:manageSiteVisitTableId---"
 
-  @198050 @ValidateoldSVownerasEXEusershouldnotabletoseebuttonswhenownershiprelatedtaskisreassigntonewEXEuser @sprint-4-US-192978 @vaibhav @reassignment
+  @198050 @ValidateoldSVownerasEXEusershouldnotabletoseebuttonswhenownershiprelatedtaskisreassigntonewEXEuser @sprint-4-US-192978 @vaibhav @reassignment @ownvai
   Scenario: Validate old SV owner as EXE user should not able to see buttons when ownership related task is reassign to new EXE user
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
@@ -5989,7 +5989,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @198065 @ValidateoldDRownerasEXEusershouldnotabletoseebuttonswhenownershiprelatedtaskisreassigntonewEXEuser @sprint-4-US-192997 @vaibhav @reassignment
+  @198065 @ValidateoldDRownerasEXEusershouldnotabletoseebuttonswhenownershiprelatedtaskisreassigntonewEXEuser @sprint-4-US-192997 @vaibhav @reassignment @ownvai
   Scenario: Validate old DR owner as EXE user should not able to see buttons when ownership related task is reassign to new EXE user
     Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"

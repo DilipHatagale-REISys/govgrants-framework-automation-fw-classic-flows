@@ -7483,7 +7483,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                     | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -8507,7 +8507,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -8613,7 +8613,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I perform quick search for "{SavedValue:EGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:EGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @197960 @ValidateReviewNegotiationtaskshouldnotgenerateforPOuserforapplicationonreassignmytaskpage @sprint-7-US-197384 @vaibhav @reassignment
+  @197960 @ValidateReviewNegotiationtaskshouldnotgenerateforPOuserforapplicationonreassignmytaskpage @sprint-7-US-197384 @vaibhav @reassignment @ownvai
   Scenario: Validate Review Negotiation task should not generate for PO user for application on reassign my task page
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -8647,7 +8647,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -8753,7 +8753,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I perform quick search for "{SavedValue:EGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:EGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @197961 @197967 @Validatefollowingsectionshoulddisplayonreassigntaskpageforadmin/PM/EXE/POuser @sprint-7-US-197384 @vaibhav @reassignment
+  @197961 @197967 @Validatefollowingsectionshoulddisplayonreassigntaskpageforadmin/PM/EXE/POuser @sprint-7-US-197384 @vaibhav @reassignment @ownvai
   Scenario Outline: Validate following section should display on reassign task page for admin/PM/EXE/PO user
     Given I login to "As a Grantor" app as "<users>" user
     And I navigate to "Home" tab
@@ -8769,7 +8769,7 @@ Feature: Validate all scenarios in the Application Review without background
       | EXE   |
       | PO    |
 
-  @198022 @ValidateApplicationreviewtaskshouldnotgenerateforPMuserforapplicationonreassigmytaskpage  @sprint-7-US-197384 @vaibhav @reassignment
+  @198022 @ValidateApplicationreviewtaskshouldnotgenerateforPMuserforapplicationonreassigmytaskpage  @sprint-7-US-197384 @vaibhav @reassignment @ownvai
   Scenario: Validate Application review task should not generate for PM user for application on reassign my task page
     And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
     When I am on "SUBPORTAL" portal
@@ -9126,7 +9126,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement |
@@ -9366,7 +9366,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement |
@@ -9695,7 +9695,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement |
@@ -9789,7 +9789,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement |
@@ -9917,7 +9917,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement |
@@ -10123,7 +10123,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement |
@@ -10310,7 +10310,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement |
@@ -10633,7 +10633,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement |

@@ -1460,7 +1460,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I perform quick search for "Grantor Pre-application Form" in "---announcement:-:businessFormlistTableId---" panel
     Then I softly see value "1" for title "Version Number" inside table "---announcement:-:businessFormlistTableId---"
 
-  @194677 @194682 @194683 @194690 @194685 @ValidateusershouldabletoseethenewmoduleAnnouncementmodulewhenuserenterthesourceuser&targetuser @sprint-4 @vaibhav @reassignment
+  @194677 @194682 @194683 @194690 @194685 @ValidateusershouldabletoseethenewmoduleAnnouncementmodulewhenuserenterthesourceuser&targetuser @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate user should able to click on play button after selecting the source & target user with the same profile PM
     When I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Home" tab
@@ -1630,7 +1630,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                      | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -1758,7 +1758,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                      | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -1880,7 +1880,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                     | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -1968,7 +1968,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I perform quick search for "{SavedValue:AnnEGMSID}" in "---applicationReview:-:announcementListTableId---" panel
     Then I softly can see row level action button "Initiate Review Process" against "{SavedValue:AnnEGMSID}" in flex table with id "---applicationReview:-:announcementListTableId---"
 
-  @194760 @Validateapplicationsorpreapplicationattachedtothatannouncementbeforeownershiptransfer @sprint-4 @vaibhav @reassignment
+  @194760 @Validateapplicationsorpreapplicationattachedtothatannouncementbeforeownershiptransfer @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate applications or pre-application attached to that announcement before ownership transfer
     When I login to "As a Grantor" app as "PM1" user
     And I navigate to "Announcements" tab
@@ -2002,7 +2002,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                      | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -2199,7 +2199,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                      | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -2403,7 +2403,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                      | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -2566,7 +2566,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                      | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -2607,7 +2607,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
 
-  @195050 @ValidatePOuserIcanseemyownpendingtasksinMyTasksectionandcanreassignownershiptaskstotargeuser @sprint-4 @vaibhav @reassignment
+  @195050 @ValidatePOuserIcanseemyownpendingtasksinMyTasksectionandcanreassignownershiptaskstotargeuser @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate PO user I can see my own pending tasks in 'My Task' section and can reassign ownership tasks to target user
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Announcements" tab
@@ -2641,7 +2641,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                      | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -2716,7 +2716,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                     | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -2791,7 +2791,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                      | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -2993,7 +2993,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                      | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -3064,7 +3064,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                     | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -3145,7 +3145,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name           | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -3221,7 +3221,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name           | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -3283,7 +3283,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name           | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -3362,7 +3362,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name           | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -3434,7 +3434,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I perform quick search for "{SavedValue:preAppId}" in "---home:-:internalHomePendingTaskTableId---" panel
     Then I see value "{SavedValue:preAppId}" for title "EGMS ID" inside table "---home:-:internalHomePendingTaskTableId---"
 
-  @195276 @ValidateoldownerofapplicationinternalshouldnotabletoproccedfurtherreviewinitiationprocessifappcreatedonnewownerafterAnnownershipreassignment @sprint-4 @vaibhav @reassignment
+  @195276 @ValidateoldownerofapplicationinternalshouldnotabletoproccedfurtherreviewinitiationprocessifappcreatedonnewownerafterAnnownershipreassignment @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate old owner of application internal should not able to procced further review initiation process if app created on new owner after Ann ownership reassignment
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -3468,7 +3468,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -3583,7 +3583,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name           | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -3674,7 +3674,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name           | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |

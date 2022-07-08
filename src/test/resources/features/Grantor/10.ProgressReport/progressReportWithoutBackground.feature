@@ -5825,7 +5825,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:progID}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197377 @197382 @Validateprogressreportiscreatedstate&userchangedOwnershiptonewownerofPRreport&afterPRissubmittograntorthenSendtoS/Risdisplaytonewowner @sprint-4 @vaibhav @reassignment
+  @197377 @197382 @Validateprogressreportiscreatedstate&userchangedOwnershiptonewownerofPRreport&afterPRissubmittograntorthenSendtoS/Risdisplaytonewowner @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate progress report is created state & user changed Ownership to new owner of PR report & after PR is submit to grantor then Send to S/R is display to new owner
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation EXE user"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -6066,7 +6066,7 @@ Feature: Validate scenarios in Progress Report without background
     And I pause execution for "4" seconds
     Then I softly see "No matches found" inside auto search result
 
-  @197405 @ValidateusershouldnotreassigntheownershiptosameprofilebutdifferentorganizationforPRmodule @sprint-4 @vaibhav @reassignment
+  @197405 @ValidateusershouldnotreassigntheownershiptosameprofilebutdifferentorganizationforPRmodule @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate user should not reassign the ownership to same profile but different organization for PR module
     Given I login to "As a Grantor" app as "ADMIN" user
     And I navigate to "Home" tab
@@ -6647,7 +6647,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly cannot see row level action button "Edit" against "{SavedValue:progID}" in flex table with id "---progressReport:-:internalProgressReportFlexTableId---"
     Then I softly can see row level action button "View" against "{SavedValue:progID}" in flex table with id "---progressReport:-:internalProgressReportFlexTableId---"
 
-  @197975 @198005 @ValidateProgressReportownershipischangedfromprevioususertonewuserthenthenewusershouldbetheownerofthatProgressReport @Sprint-4 @vaibhav @reassignment
+  @197975 @198005 @ValidateProgressReportownershipischangedfromprevioususertonewuserthenthenewusershouldbetheownerofthatProgressReport @Sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate Progress Report ownership is changed from previous user to new user then the new user should be the owner of that Progress Report
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -7197,7 +7197,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---progressreport:-:progressHistoryTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---progressreport:-:progressHistoryTableId---"
 
-  @198118 @Validateusershouldnotabletoselectthesource&targetuserissame @sprint-4 @vaibhav @reassignment
+  @198118 @Validateusershouldnotabletoselectthesource&targetuserissame @sprint-4 @vaibhav @reassignment @ownvai
   Scenario: Validate user should not able to  select the source & target user is same
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"

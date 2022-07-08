@@ -135,7 +135,8 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I softly see that "Approve Subaward Risk Assessment" has been added in flextable with Id "---subAwardStandAlone:-:pendingTaskTableId---"
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    And I "Disapprove" in the approval decision
+    And I "Reject" in the approval decision
+    And I refresh the page
     Then I softly see status in Progress-bar is "Rejected" and is "Red"
     When I navigate to "History" sub tab
     Then I softly see value "Rejected" for title "New Value" inside table "History"
@@ -674,20 +675,19 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
-    And I halt execution
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:AwardId}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:AwardId}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:AwardId}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:AwardId}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:AwardId}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -872,13 +872,13 @@ Feature: Validate all scenarios in the Risk Assessment
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -1367,10 +1367,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
       | Name                     | Risk Assessment |
-      | {SavedValue:PM Username} | Step 1          |
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
-      | Name                     | Risk Assessment |
-      | {SavedValue:FO Username} | Step 2          |
+      | {SavedValue:FO Username} | Step 1          |
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -1767,13 +1764,13 @@ Feature: Validate all scenarios in the Risk Assessment
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -2071,13 +2068,13 @@ Feature: Validate all scenarios in the Risk Assessment
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -2261,8 +2258,8 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save and Continue" in the page details
     When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---orgRiskAssessment:-:awardRiskAssessmentTableId---"
-    And I upload attachment "Attachment.pdf" of type "AGENCY DETAILS" from computer
-    Then I softly see "AGENCY DETAILS" has been added in "Risk Assessment Files" flex table
+    And I upload attachment "Attachment.pdf" of type "Financial Artifacts" from computer
+    Then I softly see "Financial Artifacts" has been added in "Subaward Risk Assessment Files" flex table
 
   @60218 @taskNotCreatedForFOWhenPMSendbacktoOwnerOfRiskAssessment @deepika
   Scenario: To validate  task is not created for Fiscal Approver when progress approver Sends back the Risk Assessment to Owner.
@@ -2906,13 +2903,13 @@ Feature: Validate all scenarios in the Risk Assessment
     When I perform quick search for "{SavedValue:AwardID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:AwardId}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:AwardID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:AwardId}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:AwardID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -3136,8 +3133,8 @@ Feature: Validate all scenarios in the Risk Assessment
     When I click on "Save and Continue" in the page details
     When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---orgRiskAssessment:-:awardRiskAssessmentTableId---"
-    When I upload attachment "Attachment.pdf" of type "AGENCY DETAILS" from computer
-    Then I softly see "AGENCY DETAILS" has been added in "Risk Assessment Files" flex table
+    And I upload attachment "Attachment.pdf" of type "Financial Artifacts" from computer
+    Then I softly see "Financial Artifacts" has been added in "Subaward Risk Assessment Files" flex table
 
   @58825 @monitoringTabListViewsOfRiskAssessment @deepika
   Scenario: Monitoring Tab List Views for all Award level risk assessments in the internal portal
@@ -3464,13 +3461,13 @@ Feature: Validate all scenarios in the Risk Assessment
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
@@ -3557,6 +3554,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
       | Name                     | Risk Assessment |
       | {SavedValue:PM Username} | NA              |
+    And I pause execution for "5" seconds
     And I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details contains:
       | Responsibilities - At least one approver is required |
