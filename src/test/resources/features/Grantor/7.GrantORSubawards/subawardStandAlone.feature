@@ -2268,8 +2268,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
     And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     When I enter in modal "Progress Report Monthly" values from "Award_Field_Values.xlsx"
-    And I click modal button "Save"
-    Then I see field "Schedule Base" as "Reporting Period"
+    Then I see "Reporting Period" text enter in field "fieldScheduleBase__c"
 
   @55294 @verifyUserIsNotAllowedToSelectProgressReportScheduleStartDateBeforeBudgetPeriodStartDate @mahadev
   Scenario: Verify While creating schedule user is not allowed to select the Schedule Start Date which is before Budget period start date on draft award
