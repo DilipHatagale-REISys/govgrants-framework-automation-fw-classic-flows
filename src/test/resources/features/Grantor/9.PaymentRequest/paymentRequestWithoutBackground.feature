@@ -4298,7 +4298,6 @@ Feature: Payment Request scenarios without background
     When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Reimbursements" content inside "Payments" subheader on left panel
-    And I click toggle button to select "Reimbursements - All"
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
     Then I see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:paymentrequestReimbursementTableId---"
     And I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
