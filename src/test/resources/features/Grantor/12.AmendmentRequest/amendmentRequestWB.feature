@@ -16387,7 +16387,7 @@ Feature: Amendment Request scenarios without background
     And I "Send to Owner" in the approval decision
     Then I softly see field "Status" as "Created"
     And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
-    And I pause execution for "20" seconds
+    And I pause execution for "5" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """

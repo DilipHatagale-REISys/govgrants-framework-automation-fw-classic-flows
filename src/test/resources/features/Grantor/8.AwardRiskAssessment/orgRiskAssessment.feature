@@ -1645,7 +1645,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     And I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---" without waiting for record
-    When I navigate to "Overview" sub tab
+    And I navigate to "Assessment" sub tab
     Then I softly see field "Overall Score" as "76.0%"
 
   @64515 @overallRiSKScoreWhenAssessmentSelectedDiffQuestions @deepika
