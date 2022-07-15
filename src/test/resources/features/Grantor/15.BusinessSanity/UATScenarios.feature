@@ -2844,7 +2844,7 @@ Feature: Validate sanity testing of Complete UAT Business Flow
     Then I softly see field "Status" as "Created"
     Then I softly see status in Progress-bar is "Created" and is "green"
 
-  @143754 @verifySubmissionOfSiteVisitToGrantorBySubrecipient @buglogged146819
+  @143754 @verifySubmissionOfSiteVisitToGrantorBySubrecipient
   Scenario: Verify user (Subrecipient) should able to submit the Site Visit to Grantor
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"

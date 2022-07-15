@@ -1998,7 +1998,7 @@ Feature: Validate all scenarios for program
       """
     Then I see the mail text is as follows :
       """
-       Hello Automation EXE1
+       Hello
        This email is to notify you that Program #{SavedValue:ProgramEGMSID} has been rejected.
        Log in to EGMS and click here to see details.
        Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com, if you have any questions or need assistance with this task.
@@ -2931,6 +2931,7 @@ Feature: Validate all scenarios for program
     Then I softly can see row level action button "Edit" against "Fiscal Reviewer" in flex table with id "---program:-:peerReviewTableId---"
     Then I softly can see row level action button "Delete" against "Fiscal Reviewer" in flex table with id "---program:-:peerReviewTableId---"
     Then I softly can see row level action button "Send for Review" against "Fiscal Reviewer" in flex table with id "---program:-:peerReviewTableId---"
+    When I click on "Delete" icon for "Automation EXE" inside flex table with id "---program:-:peerReviewTableId---"
     Then I softly can see top right button "Complete Review" in page detail
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Home" tab

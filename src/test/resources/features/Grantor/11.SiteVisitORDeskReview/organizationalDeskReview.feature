@@ -149,7 +149,7 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Automation Observation | Automation Description | Observation |
     Then I softly see that "Automation Finding" has been added in flextable with Id "---orgLevelDeskReview:-:correctiveTableId---"
 
-  @54572 @formFillingDeskReviewOrgLevel @smoke @deepika @buglogged146819
+  @54572 @formFillingDeskReviewOrgLevel @smoke @deepika
   Scenario: Filling up of form in Desk Review Org Level
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -194,7 +194,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Back" in the page details
     Then I see that "100%" has been added in flextable with Id "---orgLevelDeskReview:-:reportsTableId---"
 
-  @54886 @54571 @66270 @submittingForAprovalOfDeskReviewOrgLevel @deepika @buglogged146819 @buglogged150042
+  @54886 @54571 @66270 @submittingForAprovalOfDeskReviewOrgLevel @deepika  @buglogged150042
   Scenario: Validate the org level Desk Review Submitting for Approval | Validate Approvers Table is not editable for record owner and award owner end when the status of Org Level Desk Review is Submitted to Approval
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -260,7 +260,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I "Approve" in the approval decision
     Then I softly see status in Progress-bar is "Approved" and is "green"
 
-  @54888 @55203 @deskReviewCorrectiveActionsSubmitToGrantoBySubrecipientOrgLevel @deepika @buglogged146819
+  @54888 @55203 @deskReviewCorrectiveActionsSubmitToGrantoBySubrecipientOrgLevel @deepika
   Scenario: Validate Org Level Desk Review Submit to Grantor and Corrective Actions By Subrecipient
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -354,7 +354,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
 
-  @55415 @viewOrgDeskReviewAcceptButtonAfterSRecipientsSubmission @deepika @smoke @buglogged146819
+  @55415 @viewOrgDeskReviewAcceptButtonAfterSRecipientsSubmission @deepika @smoke
   Scenario: Validate Submitted By field at Certification table should get updated on Org Desk Review at SR user end and User will be able to view the Desk Review Accept button after review the submission by Recipients
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -453,7 +453,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     Then I can see top right button "Accept and Close" in page detail
 
-  @55416 @56041 @55997 @submittingForApprovalSendBacktoOwnerReceivePendingTaskDROrgLevel @deepika @buglogged146819
+  @55416 @56041 @55997 @submittingForApprovalSendBacktoOwnerReceivePendingTaskDROrgLevel @deepika
   Scenario: Validate user view the Submit for Approval button when record sent back to Recipients when outcomes are not properly addressed and recipients will be able to receive a pending task
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -520,7 +520,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I perform quick search for "Record Id" in "---deskreview:-:deskReviewGridViewTableId---" panel
     Then I softly see that "Record Id" has been added in flextable with Id "---deskreview:-:deskReviewGridViewTableId---"
 
-  @55459 @54887 @deskReviewOrgLevelSendToSubrecipientWithOutAddingCorerctiveItems @deepika @buglogged146819
+  @55459 @54887 @deskReviewOrgLevelSendToSubrecipientWithOutAddingCorerctiveItems @deepika
   Scenario:  Validate User will not be able to submit the Desk Review Org Level to Grantor without adding corrective actions to findings.
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -600,7 +600,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Then I softly see the following messages in the page details :
       | Reports and Outcomes Tab - Enter corrective actions on all Findings outcomes using the "+" icons. |
 
-  @55460 @approverForwardUserGetPendingTaskDeskReview @deepika @buglogged146819
+  @55460 @approverForwardUserGetPendingTaskDeskReview @deepika
   Scenario: Validate when the Approver forward Org Level Desk Review to other user, the Pending Task will be created to the User
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -764,7 +764,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     Then I softly cannot see "Reports and Outcomes" sub tab at view detail page
     Then I softly see field "Status" as "Notified"
     And I checkout to yopmail with mailid "automationspi30@yopmail.com"
-    And I pause execution for "5" seconds
+    And I pause execution for "180" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -853,8 +853,10 @@ Feature: Validate all scenarios in Organizational Desk Review
   @55998 @UploadsupportingDocumentChecklistFromWorkSpace @deepika @RunAfterJuly
   Scenario: User will be able to review the supporting document checklist submitted by the subrecipient
     When I navigate to "Files" sub tab
-    And I upload attachment "InternalOrganization_Field_Values.xlsx" from workspace
-    Then I see "InternalOrganization_Field_Values.xlsx" has been added in "Attachment" flex table
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---orgRiskAssessment:-:orgriskSupportingDocTableId---"
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Template" modal by clicking the top right x button
+    Then I see "Program_Field_Values.xlsx" has been added in "Attachment" flex table
 
   @61061 @61995 @61059 @CreatedDateOfRAdisplayedOnOverviewTabAdditionOfAttachment @Keerti @buglogged150045
   Scenario: Validate the Created Date of Desk Review display on Overview Tab and Adding Attachments- Organizational Desk Review
@@ -867,10 +869,11 @@ Feature: Validate all scenarios in Organizational Desk Review
     Given I navigate to "Overview" sub tab
     Then I softly see field "Created Date" is not editable
     When I navigate to "Files" sub tab
-    When I upload attachment "Announcement_Field_Values.xlsx" from workspace
-    Then I softly see "Announcement_Field_Values.xlsx" has been added in "Attachments" flex table
+    And I choose the file "Program_Field_Values.xlsx" to upload for "Checklist" of type "Program"
+    When I close "Upload Template" modal by clicking the top right x button
+    Then I see "Program_Field_Values.xlsx" has been added in "Attachment" flex table
 
-  @61992 @RecordOwnerCanViewSnapshotAfterODRIsSubmittedForApproval @skipOnJenkins @buglogged146819
+  @61992 @RecordOwnerCanViewSnapshotAfterODRIsSubmittedForApproval @skipOnJenkins
   Scenario: Validate Record Owner user is able to take Snapshot after Org Desk Review is Submitted for Approval status - Org Desk Review
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -925,7 +928,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I download the file
     Then I softly see "{SavedValue:Record Id}" on page "1" of "govgrants" pdf file
 
-  @61990 @RecordOwnerCanViewCompletedTask @keerti @buglogged146819
+  @61990 @RecordOwnerCanViewCompletedTask @keerti
   Scenario: Validate whether user is able to view the Completed task once approved under Monitoring Tab - Org Level Desk review
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -1007,7 +1010,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I perform quick search for "{SavedValue:Automation Runtime Desk Review Org level}" in "DeskReview" panel
     Then I softly see "No Records Found" inside flex table with id "DeskReview"
 
-  @65070 @historyOfOrgDeskReviewsendbacktoOwner @deepika @buglogged146819
+  @65070 @historyOfOrgDeskReviewsendbacktoOwner @deepika
   Scenario: Validate History Field is getting Updated at Award owner End when Org Desk Review status is Submitted to Grantor.
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
@@ -1071,7 +1074,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     When I navigate to "History" sub tab
     Then I see value "Active" for title "New Value" inside table "History"
 
-  @65071 @corerctiveActionsDueDate @deepika @smoke @buglogged146819
+  @65071 @corerctiveActionsDueDate @deepika @smoke
   Scenario: Validate Org Level Desk Review Submit to Grantor and Corrective Actions By Subrecipient
     Given I navigate to "Related Log" sub tab
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
