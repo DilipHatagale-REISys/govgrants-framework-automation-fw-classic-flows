@@ -1,4 +1,4 @@
-@grantor-regression @grantor-parallel-regression @progressReport @progressReportNB @regression
+@grantor-regression @grantor-parallel-regression @progressReport @progressReportNB @regression @wip
 Feature: Validate scenarios in Progress Report without background
 
   @37184 @ValidateScheduleFrequencyQuarterlyScheduleBaseAsCalendar @mahadev

@@ -44,7 +44,7 @@ Feature: Validate all scenarios of every modules flow
     When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
     And I click on "Activate" in the page details
-    Then I softly see field "Status" as "Activated"
+    Then I softly see field "Status" as "Active"
 
   @FocusArea_KPI_Objective_WorkFlow
   Scenario: WorkFlow For Focus Area KPI & Objectives
@@ -1024,3 +1024,16 @@ Feature: Validate all scenarios of every modules flow
     Examples:
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
+
+  @termsconditions123
+  Scenario:
+    Given I login to "As a Grantor" app as "ADMIN" user
+    When I navigate to "Planning" tab
+    And I navigate to "Terms and Conditions" content inside "Setup" subheader on left panel
+    When I click on top right button "New" in flex table with id "---home:-:termsAndConditionsTableId---"
+    And I enter "Creation" values from "TermsandConditions_Field_Values.xlsx"
+    When I click modal button "Save"
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    When I close "Create Terms and Conditions" modal by clicking the top right x button
+    When I perform quick search for "{SavedValue:EGMSID}" in "---home:-:termsAndConditionsTableId---" panel
+    Then I softly see value "Active" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---home:-:termsAndConditionsTableId---"

@@ -1,4 +1,4 @@
-@paymentRequest @grantor-regression @grantor-parallel-regression @regression
+@paymentRequest @grantor-regression @grantor-parallel-regression @regression @wip
 Feature: Scheduled Reimbursement Payment Request Scenarios
 
   @38313 @taskCreationForSubrecipientUser @mahadev

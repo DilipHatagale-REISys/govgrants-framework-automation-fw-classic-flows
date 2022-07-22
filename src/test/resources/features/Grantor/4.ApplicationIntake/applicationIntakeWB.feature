@@ -313,10 +313,10 @@ Feature: Application Intake scenarios without background
     And I click on "Publish" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Opportunities" tab
-   When I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
-   And I click toggle button to select "Opportunities Converted to Application - All"
-   And I perform quick search for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" in "---applicationIntake:-:convertedToApplicationTableID---" panel
-   When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" inside flex table with id "---applicationIntake:-:convertedToApplicationTableID---" without waiting for record
+    When I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
+    And I click toggle button to select "Opportunities Converted to Application - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" in "---applicationIntake:-:convertedToApplicationTableID---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for App Intake and PreApp}" inside flex table with id "---applicationIntake:-:convertedToApplicationTableID---" without waiting for record
     Then I softly can see top right button "Create Application" in page detail
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
@@ -1346,3 +1346,101 @@ Feature: Application Intake scenarios without background
     And I click on hyperlink containing value "Snapshot on"
     When I download the file
     Then I see "Created" on page "1" of "govgrants" pdf file
+
+  @195250 @ValidateapplicationrelatedpendingtaskshouldgeneratedfornewAnnownerifapplicationcreatedfromoldownerevenAnnownershiptaskreassigntootheruser @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate application related pending task should generated for new Ann owner if application created from old owner even if Ann ownership task reassign to other user
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application" and properties "default"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside flex table with id "---applicationIntake:-:activeOpportunitiesTableId---"
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    When I save the field labeled "EGMS ID" as "AppEGMSID"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    And I click toggle button to select "All Announcements"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
+    And I click on "Unpublish" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    And I save the field labeled "Announcement Name" as "Automation Runtime Competitive Announcement"
+    When I click on "Edit" in the page details
+    When I navigate to "Overview" sub tab
+    And I enter value "Test" into field "fieldAnnouncementDescription__c"
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:EXE Username} | Step 1       |
+    And I click on "Submit For Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
+    When I reassign task to "Automation PM1"
+    When I perform quick search for "{SavedValue:AnnEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
+    When I check "{SavedValue:AnnEGMSID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:AnnEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly do not see value "{SavedValue:AnnEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    And I click toggle button to select "All Announcements"
+    When I perform quick search for "{SavedValue:Automation Runtime Announcement Application}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
+    And I click on "Publish" in the page details
+    Then I softly see field "Status" as "Published"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    When I perform quick search for "{SavedValue:AppEGMSID}" in "---applicationIntake:-:recipientApplications---" panel
+    When I click on "View" icon for "{SavedValue:AppEGMSID}" inside flex table with id "---applicationIntake:-:recipientApplications---" without waiting for record
+    When I click on "Edit" in the page details
+    When I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match |
+      | Construction  | 1000   | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I navigate to "Proposal" sub tab
+    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
+    And I navigate to "Files" sub tab
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I get the "EGMS ID"
+    When I click on "Submit Application" in the page details
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:AppEGMSID}" in "---negotiation:-:phasePendingTasksTableId---" panel
+    Then I softly see value "{SavedValue:AppEGMSID}" for title "EGMS ID" inside table "---negotiation:-:phasePendingTasksTableId---"
