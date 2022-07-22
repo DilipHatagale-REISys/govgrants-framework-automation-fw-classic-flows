@@ -2978,3 +2978,135 @@ Feature: Validate all scenarios for program
     And I click on "Complete Review" in the page details
     Then I softly see field "Status" as "Reviewed"
     Then I can see top right button "Submit for Approval" in page detail
+
+  @197527 @ValidatereassignedtaskownerPMuserisabletoactivatetheexternalprogramifadmintransferstaskofthetasktypeActivateNGOProgramwhenstatusoftaskisNotStarted @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate reassigned task owner PM user is able to activate the external program if admin transfers task of the task type Activate NGO Program when status of task is Not Started
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Planning" tab
+    When I navigate to "External Programs" content inside "Programs" subheader on left panel
+    And I click on top right button "New" in flex table with id "---program:-:ExternalNGOProgramTableId---"
+    When I enter "NGOCreation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I enter "NGOEdit" values from "Program_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:ExternalNGOProgramContactTableId---"
+    When I click "Associate" after selection of "NGO Contact" in the table "---program:-:associateContactsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:extapproverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:FO Username} | Step 1  |
+    Then I softly see value "{SavedValue:FO Username}" for title "Name" inside table "---program:-:extapproverTableId---"
+    And I save the value from row "1" for column name "Name" as "OwnerName" from flex table "---program:-:programOwnerTableId---"
+    Then I softly see value "{SavedValue:OwnerName}" for title "Name" inside table "---program:-:programOwnerTableId---"
+    And I pause execution for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    Then I softly see value "Not Started" for title "Status" inside table "---program:-:pendingTaskTableId---"
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "All Tasks as Admin" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:adminTaskReassignmentTableId---" panel
+    And I pause execution for "5" seconds
+    Then I softly see value "GrantorPlanning" for title "Phase" inside table "---program:-:adminTaskReassignmentTableId---"
+    Then I softly see value "Activate NGO Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:adminTaskReassignmentTableId---"
+    Then I softly see value "Not Started" for title "Status" inside table "---program:-:adminTaskReassignmentTableId---"
+    When I check "{SavedValue:ProgramEGMSID}" boxes in flex table with id "---program:-:adminTaskReassignmentTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:adminTaskReassignmentTableId---"
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:adminTaskReassignmentTableId---" panel
+    Then I softly do not see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:adminTaskReassignmentTableId---"
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    Then I softly see value "Activate NGO Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:pendingTaskTableId---"
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    Then I can see top right button "Activate" in page detail
+    And I click on "Activate" in the page details
+    Then I softly see field "Status" as "Active"
+
+  @197530 @ValidatereassignedtaskownerEXEuserisabletocompletetheworkflowoninternalprogramifanotherEXEtransferstaskoftypeActivatetheProgramwhenprogramisamendedafteractivation @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate reassigned task owner EXE user is able to complete the workflow on internal program if another EXE transfers task of type Activate the Program when program is amended after activation
+    When I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Planning" tab
+    When I navigate to "Internal Programs" content inside "Programs" subheader on left panel
+    And I click toggle button to select "Internal Programs - Draft"
+    And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
+    When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "ProgramEGMSID"
+    And I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "Program_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
+    When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I navigate to "Setup" sub tab
+    And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Focus Area" in the table "---program:-:associateFocusAreaTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:objectivesTableId---"
+    When I perform quick search for "Automation Permanent Objective" in "---program:-:associateObjectivesTableId---" panel
+    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---program:-:associateObjectivesTableId---"
+    And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
+    When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
+    When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:FO Username} | Step 1  |
+    Then I softly see value "{SavedValue:FO Username}" for title "Name" inside table "---program:-:approverTableId---"
+    And I save the value from row "1" for column name "Name" as "OwnerName" from flex table "---program:-:programOwnerTableId---"
+    Then I softly see value "{SavedValue:OwnerName}" for title "Name" inside table "---program:-:programOwnerTableId---"
+    And I pause execution for "5" seconds
+    And I click on "Submit For Approval" in the page details
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    When I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---program:-:pendingTaskTableId---" panel
+    Then I see value "Record Id" for title "EGMS ID" inside table "---program:-:pendingTaskTableId---"
+    And I navigate to "Home" tab
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
+    When I reassign task to "Automation EXE1"
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly see value "GrantorPlanning" for title "Phase Name" inside table "---program:-:grantorTaskReassignTableId---"
+    Then I softly see value "Activate Internal Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:grantorTaskReassignTableId---"
+    Then I softly see value "Not Started" for title "Status" inside table "---program:-:grantorTaskReassignTableId---"
+    When I check "{SavedValue:ProgramEGMSID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly do not see value "{SavedValue:ProgramEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    And I navigate to "Planning" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:ProgramEGMSID}" in "---program:-:pendingTaskTableId---" panel
+    Then I softly see value "Activate Internal Program {SavedValue:ProgramEGMSID}" for title "Subject" inside table "---program:-:pendingTaskTableId---"
+    And I click on "Start" icon for "{SavedValue:ProgramEGMSID}" inside flex table with id "---program:-:pendingTaskTableId---" without waiting for record
+    Then I can see top right button "Activate" in page detail
+    And I click on "Activate" in the page details
+    Then I softly see field "Status" as "Active"
+    Then I can see top right button "Amend Program" in page detail

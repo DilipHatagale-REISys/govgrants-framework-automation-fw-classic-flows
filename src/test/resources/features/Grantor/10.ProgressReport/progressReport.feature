@@ -1,4 +1,4 @@
-@progressReport @grantor-regression @grantor-parallel-regression @progressReportWithBackground @regression
+@progressReport @grantor-regression @grantor-parallel-regression @progressReportWithBackground @regression @wip
 Feature: Validate all scenarios in Progress Report
 
   Background: To create a progress report

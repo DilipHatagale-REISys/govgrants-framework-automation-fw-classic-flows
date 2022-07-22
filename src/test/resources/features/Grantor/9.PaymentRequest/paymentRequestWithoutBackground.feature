@@ -4665,3 +4665,576 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardFromFDM:-:grantsTableId---" panel
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
     Then I softly see field "Created by" as "Automation ADMIN"
+
+  @197509 @Validatenewownerofadvancepaymentrequestshouldhavefollowingbuttonsaccessafterpaymentrequestsubmittograntor @sprint-4 @vaibhav @reassignment
+  Scenario: Validate new owner of advance payment request should have following buttons access after payment request submit to grantor
+    And I activated standalone subaward "Automation Runtime award" with properties "Automation PM1 user"
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PayreqId"
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 10                            |
+    When I navigate to "Files" sub tab
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    When I click on "Submit to Grantor" in the page details
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
+    When I reassign task to "Automation PM"
+    When I perform quick search for "{SavedValue:PayreqId}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly see value "Review Payment Request" for title "Task Type" inside table "---program:-:grantorTaskReassignTableId---"
+    When I check "{SavedValue:PayreqId}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:PayreqId}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly do not see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    Then I softly can see top right button "Send Back to Subrecipient" in page detail
+    Then I softly can see top right button "Submit for Approval" in page detail
+    When I navigate to "Responsibilities" sub tab
+    Then I can see top right button "New" in flex table with id "---paymentRequest:-:approversTableId---"
+    And I navigate to "Files" sub tab
+    Then I can see top right button "Add Files" in flex table with id "---paymentRequest:-:advanceFilesTableId---"
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---paymentRequest:-:reimburseCollabMessages---"
+
+  @197510 @Validatenewownerofad-hocreimbursementpaymentrequestshouldhavefollowingbuttonsaccessafterpaymentrequestsubmittograntor @sprint-4 @vaibhav @reassignment
+  Scenario: Validate new owner of ad-hoc reimbursement payment request should have following buttons access after payment request submit to grantor
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 100000000       | 20                       | 100        | 100            |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+    And I save the field labeled "EGMS ID" as "PayreqId"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
+    When I reassign task to "Automation EXE1"
+    When I perform quick search for "{SavedValue:PayreqId}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly see value "Review Payment Request" for title "Task Type" inside table "---program:-:grantorTaskReassignTableId---"
+    When I check "{SavedValue:PayreqId}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:PayreqId}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly do not see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    Then I softly can see top right button "Send Back to Subrecipient" in page detail
+    Then I softly can see top right button "Submit for Approval" in page detail
+    When I navigate to "Responsibilities" sub tab
+    Then I can see top right button "New" in flex table with id "---paymentRequest:-:payapproversTableId---"
+    And I navigate to "Files" sub tab
+    Then I can see top right button "Add Files" in flex table with id "---paymentRequest:-:reimburseFilesTableId---"
+    Then I can see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---paymentRequest:-:reimburseCollabMessages---"
+
+  @197738 @ValidateOldPOownerofad-hocreimbursementpaymentrequestshouldnothavefollowingbuttonsaccessafterpaymentrequestownershipreassigntonewPOuser @sprint-4 @vaibhav @reassignment
+  Scenario: Validate Old PO owner of ad-hoc reimbursement payment request should not have following buttons access after payment request ownership reassign to new PO user
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 100000000       | 20                       | 100        | 100            |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+    And I save the field labeled "EGMS ID" as "PayreqId"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PO" into field "s2id_autogen1"
+    And I select value "Automation PO1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PO" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Payment Request"
+    And I Click on "Reassign Records" icon for "Payment Request" without tableid
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    When I check "{SavedValue:PayreqId}" boxes in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    Then I do not see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Reimbursements" content inside "Payments" subheader on left panel
+    And I click toggle button to select "Reimbursements - All"
+    And I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentrequestReimbursementTableId---" panel
+    When I click on "View" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:paymentrequestReimbursementTableId---" without waiting for record
+    Then I softly cannot see top right button "Send Back to Subrecipient" in page detail
+    Then I softly cannot see top right button "Submit for Approval" in page detail
+    When I navigate to "Responsibilities" sub tab
+    Then I cannot see top right button "New" in flex table with id "---paymentRequest:-:payapproversTableId---"
+    And I navigate to "Files" sub tab
+    Then I cannot see top right button "Add Files" in flex table with id "---paymentRequest:-:reimburseFilesTableId---"
+    Then I can see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    And I navigate to "Collab" sub tab
+    Then I cannot see top right button "Send Email" in flex table with id "---paymentRequest:-:reimburseCollabMessages---"
+
+  @197763 @ValidatePaymentRequestApproverSendBackemailshouldbegeneratedforad-hocreimbursementpaymentrequestfornewowner @sprint-4 @vaibhav @reassignment
+  Scenario: Validate Payment Request Approver Send Back email should be generated for ad-hoc reimbursement payment request for new owner
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement |
+      | Extra Salary | The narrative | 30         | 1        | Feet        |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+    And I save the field labeled "EGMS ID" as "PayreqId"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PO" into field "s2id_autogen1"
+    And I select value "Automation PO1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PO" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Payment Request"
+    And I Click on "Reassign Records" icon for "Payment Request" without tableid
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    When I check "{SavedValue:PayreqId}" boxes in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    Then I do not see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PO1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
+      | Funding Account             | Net Spent This Action |
+      | {SavedValue:fundingAccount} | 30                    |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+      | Name                      | Reimbursement |
+      | {SavedValue:EXE Username} | Step 1        |
+    When I get the "EGMS ID"
+    When I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    And I "Send to Owner" in the approval decision
+    And I checkout to yopmail with mailid "automationpo1@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Payment Request {SavedValue:PayreqId} has been SentBack
+      """
+
+    Then I see the mail text is as follows :
+      """
+      Hello,
+
+      This email is to inform you that the payment request {SavedValue:PayreqId} for the award #{SavedValue:AwardEGMSID} has been sent back by the approver.
+
+      Payment Request Details:
+      Payment Type: Reimbursement
+      Payment ID: {SavedValue:PayreqId}
+      Key POC: Automation SPI3
+
+      Log in to EGMS and click here to review the payment request.
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance.
+
+      Thank you.
+      The EGMS Team
+      """
+
+  @197790 @Validatenewownerofadvancepaymentrequestshouldhavefollowingbuttonsaccessafterpaymentrequestsubmittograntor @sprint-4 @vaibhav @reassignment
+  Scenario: Validate new owner of advance payment request should have following buttons access after payment request submit to grantor
+    And I activated standalone subaward "Automation Runtime award" with properties "default"
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PayreqId"
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 10                            |
+    When I navigate to "Files" sub tab
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    When I click on "Submit to Grantor" in the page details
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Payment Request"
+    And I Click on "Reassign Records" icon for "Payment Request" without tableid
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    When I check "{SavedValue:PayreqId}" boxes in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    Then I do not see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    Then I softly can see top right button "Send Back to Subrecipient" in page detail
+    Then I softly can see top right button "Submit for Approval" in page detail
+    When I navigate to "Responsibilities" sub tab
+    Then I can see top right button "New" in flex table with id "---paymentRequest:-:approversTableId---"
+    And I navigate to "Files" sub tab
+    Then I can see top right button "Add Files" in flex table with id "---paymentRequest:-:advanceFilesTableId---"
+    Then I can see top right button "Add" in flex table with id "---paymentRequest:-:advancePaymentNotesTableId---"
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---paymentRequest:-:reimburseCollabMessages---"
+
+  @197791 @Validatenewownerofad-hocreimbursementpaymentrequestshouldhavefollowingbuttonsaccessafterpaymentrequestsubmittograntor @sprint-4 @vaibhav @reassignment
+  Scenario: Validate new owner of ad-hoc reimbursement payment request should have following buttons access after payment request submit to grantor
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 100000000       | 20                       | 100        | 100            |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+    And I save the field labeled "EGMS ID" as "PayreqId"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation EXE" into field "s2id_autogen1"
+    And I select value "Automation EXE1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation EXE" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Payment Request"
+    And I Click on "Reassign Records" icon for "Payment Request" without tableid
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    When I check "{SavedValue:PayreqId}" boxes in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    Then I do not see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    Then I softly can see top right button "Send Back to Subrecipient" in page detail
+    Then I softly can see top right button "Submit for Approval" in page detail
+    When I navigate to "Responsibilities" sub tab
+    Then I can see top right button "New" in flex table with id "---paymentRequest:-:payapproversTableId---"
+    And I navigate to "Files" sub tab
+    Then I can see top right button "Add Files" in flex table with id "---paymentRequest:-:reimburseFilesTableId---"
+    Then I can see top right button "Add" in flex table with id "---paymentRequest:-:reimbursePaymentsNotesTableId---"
+    And I navigate to "Collab" sub tab
+    Then I can see top right button "Send Email" in flex table with id "---paymentRequest:-:reimburseCollabMessages---"
+
+  @197433 @ValidatePaymentRequestGrantorNotifyemailshouldbegeneratedforad-hocreimbursementpaymentrequestfornewowner @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate Payment Request Grantor Notify email should be generated for ad-hoc reimbursement payment request for new owner
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement |
+      | Extra Salary | The narrative | 30         | 1        | Feet        |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+    And I save the field labeled "EGMS ID" as "PayreqId"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation EXE" into field "s2id_autogen1"
+    And I select value "Automation EXE1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation EXE" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Payment Request"
+    And I Click on "Reassign Records" icon for "Payment Request" without tableid
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    When I check "{SavedValue:PayreqId}" boxes in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    Then I do not see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
+    And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    When I click on "Send Back to Subrecipient" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement |
+      | Extra Salary | The narrative | 30         | 1        | Feet        |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "Green"
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
+    And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
+    And I pause execution for "180" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Payment Request {SavedValue:PayreqId} from AutomationSPI3 has been Submitted
+      """
+
+    Then I see the mail text is as follows :
+      """
+      Hello,
+
+      This email is to inform you that the payment request {SavedValue:PayreqId} has been submitted for the award #{SavedValue:AwardEGMSID} for Automation SPI3. You are requested to review the payment request made for the award.
+
+      Payment Request Details:
+      Payment Type: Reimbursement
+      Payment ID: {SavedValue:PayreqId}
+      Key POC: Automation SPI3
+
+      Log in to EGMS and click here to review the payment request.
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance.
+
+      Thank you.
+      The EGMS Team
+      """
+
+  @198602 @ValidatenewPRownershouldbedisplayforhistorytabafterownershiptaskreassigntonewuser @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate new PR owner should be display for history  tab after ownership task reassign to new user
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Reimbursement Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Financials" sub tab
+    When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
+    When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 100000000       | 20                       | 100        | 100            |
+    When I close "Add Line Items" modal by clicking the top right x button
+    And I click on "Submit to Grantor" in the page details
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+    And I save the field labeled "EGMS ID" as "PayreqId"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Payment Request"
+    And I Click on "Reassign Records" icon for "Payment Request" without tableid
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    When I check "{SavedValue:PayreqId}" boxes in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
+    Then I do not see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "History" sub tab
+    Then I softly see value "Automation PM1" for title "New Value" inside table "---subAwardStandAlone:-:historyTableId---"
+    Then I softly see value "Automation PM" for title "Old Value" inside table "---subAwardStandAlone:-:historyTableId---"

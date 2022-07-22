@@ -5080,3 +5080,317 @@ Feature: Validate all scenarios in the Risk Assessment
     Examples:
       | Award Name                                                | Grant Name                                                |
       | {SavedValue:Automation Runtime Award for Risk Assessment} | {SavedValue:Automation Runtime Award for Risk Assessment} |
+
+  @198024 @ValidateEXEusercandotheneedfulonaawardriskassessmentandsubmititforpeerreviewtoanotheruserafterownershipistransferred @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate EXE user can do the needful on a award risk assessment and submit it for peer review to another user after ownership is transferred
+    Given I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:AwardEGMSID}" in "---home:-:internalHomePendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "RAEGMSID"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation EXE" into field "s2id_autogen1"
+    And I select value "Automation EXE1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation EXE" without tableid
+    And I pause execution for "3" seconds
+    And I Click on "Reassign Records" icon for "Risk Assessment" without tableid
+    When I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssSourceTableId---" panel
+    When I check "{SavedValue:RAEGMSID}" boxes in flex table with id "---riskassessment:-:riskAssSourceTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---riskassessment:-:riskAssSourceTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssTargetTableId---" panel
+    Then I see value "{SavedValue:RAEGMSID}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Subaward Risk Assessments - All"
+    And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
+    And I click on "View" icon for "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
+    And I click on "Edit" in the page details
+    When I navigate to "Assessment" sub tab
+    Then I softly see fields "fieldexperienceQuestion1__c" is in edit mode
+    When I click on "Save" in the page details
+    When I navigate to "Files" sub tab
+    Then I can see top right button "Add" in flex table with id "---riskassessment:-:riskAssNotesTableId---"
+    When I enter the following values into flex table with id "---riskassessment:-:riskAssNotesTableId---" by clicking "Add" :
+      | Title           | Description      |
+      | Automation Test | Automation Notes |
+    Then I softly can see row level action button "Edit" against "Automation Test" in flex table with id "---riskassessment:-:riskAssNotesTableId---"
+    Then I softly can see row level action button "Delete" against "Automation Test" in flex table with id "---riskassessment:-:riskAssNotesTableId---"
+    Then I can see top right button "Add Files" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
+    And I click on top right button "Add Files" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
+    And I switch to iframe with id "---riskassessment:-:riskIframeId---"
+    And I upload attachment "Attachment.pdf" of type "Other Artifacts" from computer
+    Then I softly can see row level action button "Download" against "Other Artifacts" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
+    Then I softly can see row level action button "View" against "Other Artifacts" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
+    Then I softly can see row level action button "Edit" against "Other Artifacts" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
+    Then I softly can see row level action button "Delete" against "Other Artifacts" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:PM Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FO Username} | Step 2          |
+    Then I softly can see top right button "New" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
+    And I enter the following values into flex table with id "---riskassessment:-:raPeerReviewFlexTableId---" by clicking "New" :
+      | Name                     | Responsibility  | Description                 | Due Date | Allow Record Editing |
+      | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        | No                   |
+    Then I softly can see row level action button "Edit" against "Fiscal Reviewer" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
+    Then I softly can see row level action button "Delete" against "Fiscal Reviewer" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
+    Then I softly can see row level action button "Send for Review" against "Fiscal Reviewer" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
+    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---riskassessment:-:raPeerReviewFlexTableId---" without waiting for record
+    Then I softly see field "Status" as "Submitted for Review"
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:RAEGMSID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:RAEGMSID}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    When I click on "Enter Review" icon for "{SavedValue:FO Username}" inside flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
+    And I enter a review as "Passed"
+    When I click modal button "Save"
+    And I click on submit review
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Subaward Risk Assessments - All"
+    And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
+    And I click on "View" icon for "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" without waiting for record
+    And I click on "Complete Review" in the page details
+    Then I softly see status in Progress-bar is "Reviewed" and is "green"
+    Then I softly can see top right button "Submit for Approval" in page detail
+
+  @198041 @ValidatePOusercansubmittheawardriskassessmentforapprovalpostrevieweraddcommentswhenownershipistransferredforRAwhichisinSubmittedforReviewstatus @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate PO user can submit the award risk assessment for approval post reviewer add comments when ownership is transferred for a RA which is in Submitted for Review status
+    Given I login to "As a Grantor" app as "PO" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:AwardEGMSID}" in "---home:-:internalHomePendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "RAEGMSID"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FD Username} | Step 1          |
+    And I enter the following values into flex table with id "---riskassessment:-:raPeerReviewFlexTableId---" by clicking "New" :
+      | Name                      | Responsibility   | Description                 | Due Date | Allow Record Editing |
+      | {SavedValue:EXE Username} | Program Reviewer | Automation Test Description | 7        | Yes                  |
+    And I click on "Send for Review" icon for "Program Reviewer" inside flex table with id "---riskassessment:-:raPeerReviewFlexTableId---" without waiting for record
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PO" into field "s2id_autogen1"
+    And I select value "Automation PO1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PO" without tableid
+    And I pause execution for "3" seconds
+    And I Click on "Reassign Records" icon for "Risk Assessment" without tableid
+    When I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssSourceTableId---" panel
+    When I check "{SavedValue:RAEGMSID}" boxes in flex table with id "---riskassessment:-:riskAssSourceTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---riskassessment:-:riskAssSourceTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssTargetTableId---" panel
+    Then I see value "{SavedValue:RAEGMSID}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PO1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:RAEGMSID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    Then I do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:RAEGMSID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    Then I softly see value "Review Subaward Risk Assessment" for title "Task Type" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    And I click on "Start" icon for "{SavedValue:RAEGMSID}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    When I click on "Edit" in the page details
+    When I navigate to "Assessment" sub tab
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I click on "Enter Review" icon for "{SavedValue:EXE Username}" inside flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
+    And I enter a review as "Passed"
+    When I click modal button "Save"
+    And I click on submit review
+    And I logout
+    And I checkout to yopmail with mailid "automationpo1@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Program {SavedValue:ProgramEGMSID} has been PeerReviewed
+      """
+    Then I see the mail text is as follows :
+      """
+      Hello Automation,
+      This email is to notify you that Program {SavedValue:ProgramEGMSID} has been peer reviewed.
+      Program Details:
+      Program ID: {SavedValue:ProgramEGMSID}
+      Program Name: {SavedValue:Automation Runtime Internal Program}
+      Log in to EGMS and click here to start reviewing the details.
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+      Thank you.
+      The EGMS Team
+      """
+    Then I refresh the page
+    And I am on "INTERNAL" portal
+    When I login to "As a Grantor" app as "PO1" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Subaward Risk Assessments - All"
+    And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
+    And I click on "View" icon for "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    Then I softly can see row level action button "Resend for Review" against "{SavedValue:EXE Username}" in flex table with id "---riskassessment:-:raPeerReviewFlexTableId---"
+    Then I softly see value "Automation PO1" for title "Name" inside table "---riskassessment:-:riskAssOwnerTableId---"
+    And I click on "Complete Review" in the page details
+    Then I softly see status in Progress-bar is "Reviewed" and is "green"
+    Then I softly can see top right button "Submit for Approval" in page detail
+    And I click on "Submit for Approval" in the page details
+    Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
+
+  @198047 @ValidateFDprofileusercanrejecttheawardrisassessmentforstep1approvalswhenownershipistransferredforRAwhichisinSubmittedforapprovalstatus @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate FD profile user can reject the award risk assessment for step 1 approvals when ownership is transferred for a RA which is in Submitted for approval status
+    Given I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:AwardEGMSID}" in "---home:-:internalHomePendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "RAEGMSID"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:FD Username} | Step 1          |
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
+      | Name                     | Risk Assessment |
+      | {SavedValue:EXE Username} | Step 2          |
+    And I click on "Submit for Approval" in the page details
+    Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation EXE" into field "s2id_autogen1"
+    And I select value "Automation EXE1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation EXE" without tableid
+    And I pause execution for "3" seconds
+    And I Click on "Reassign Records" icon for "Risk Assessment" without tableid
+    When I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssSourceTableId---" panel
+    When I check "{SavedValue:RAEGMSID}" boxes in flex table with id "---riskassessment:-:riskAssSourceTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---riskassessment:-:riskAssSourceTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssTargetTableId---" panel
+    Then I see value "{SavedValue:RAEGMSID}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Subaward Risk Assessments - All"
+    And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
+    And I click on "View" icon for "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    Then I softly see value "Automation EXE1" for title "Name" inside table "---riskassessment:-:riskAssOwnerTableId---"
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:RAEGMSID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    Then I softly do not see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    Then I softly do not see value "Approve Subaward Risk Assessment" for title "Task Type" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:RAEGMSID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    Then I softly see value "Approve Subaward Risk Assessment" for title "Task Type" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    When I click on "Start" icon for "{SavedValue:RAEGMSID}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I "Reject" in the approval decision
+    Then I softly see field "Status" as "Rejected"
+    And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
+    And I pause execution for "20" seconds
+    And I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Approver Rejected Subaward Risk Assessmentfor {SavedValue:AwardEGMSID}
+      """
+
+    Then I see the mail text is as follows :
+
+      """
+      Hello,
+      This email is to inform you that the Subaward Risk Assessment for {SavedValue:AwardEGMSID} has been rejected by the Approver.
+      Log in to EGMS and click here for more details.
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+      Thank you.
+      The EGMS Team
+      """

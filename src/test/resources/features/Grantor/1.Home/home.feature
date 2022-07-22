@@ -224,7 +224,7 @@ Feature: Validate all scenarios in the home tab
       | User  |
       | ADMIN |
 
-  @56733 @internalContactsEdition @smoke
+  @56733 @internalContactsEdition @smoke @wip
   Scenario Outline: Validate whether all Internal Users can edit the Contacts
     Given I login to "As a Grantor" app as "<User>" user
     When I navigate to "Home" tab

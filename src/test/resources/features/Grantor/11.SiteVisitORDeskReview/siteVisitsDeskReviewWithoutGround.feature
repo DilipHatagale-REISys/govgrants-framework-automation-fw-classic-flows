@@ -6700,3 +6700,168 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       Thank you.
       The EGMS Team
       """
+
+  @197504 @ValidateSVownerasEXEuserisinForceClosestateafterthatownershipwillgetchangedthennewownerwillhavethesameaccesspagelayou&sectionallevelbuttonsasoldownerhadinForceClosestate @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate SV owner as EXE user is in 'Force Close' state after that ownership will get changed then new owner will have the same access page layout & sectional level buttons as old owner had in Force Close state
+    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    And I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---sitevisits:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---sitevisits:-:grantsTableId---"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---sitevisits:-:GrantsSubAwardsTableId---"
+    Given I navigate to "Management" sub tab
+    And I click on top right button "Initiate Site Visit" in flex table with id "---sitevisits:-:InitiateSiteVisitTableId---"
+    And I pause execution for "4" seconds
+    And I enter values into fields
+      | Value                 | Field                     |
+      | Automation Site Visit | fieldTitle__c             |
+      | Automation SPI3       | fieldGranteePOCContact__c |
+      | Program & Fiscal      | fieldMonitoringType__c    |
+    When I click modal button "Save and Continue"
+    And I enter "Edition" values from "SiteVisit_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "SitevVisitId"
+    Given I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---sitevisits:-:approverSiteVisitTableId---" by clicking "New" :
+      | Name                      | Site Visit |
+      | {SavedValue:EXE Username} | Step 1     |
+    Given I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:participantsTableId---"
+    When I click "Associate" after selection of "Automation SPA" in the table "---sitevisits:-:siteVisitContactsTableId---"
+    And I click on top right button "Associate" in flex table with id "---sitevisits:-:associateAwardSiteVisitsTableId---"
+    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---sitevisits:-:awardSiteVisitsTableId---"
+    And I click on "Notify" in the page details
+    When I click on "Conduct" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    And I navigate to "Reports and Outcomes" sub tab
+    When I click on "Edit" icon for "General Review Form" inside flex table with id "---sitevisits:-:reportsTableId---"
+    And I enter "Form Fields" values from "DeskReview_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
+      | Title                  | Description            | Type        |
+      | Automation Finding     | Automation Description | Finding     |
+      | Automation Concern     | Automation Description | Concern     |
+      | Automation Observation | Automation Description | Observation |
+    When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    Given I click on "Send to Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---sitevisits:-:monitoringTabPhasePendingTasks---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
+    When I navigate to "Reports and Outcomes" sub tab
+    And I expand nested table containing column value "Automation Observation"
+    When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
+      | Title                               | Description            | Status      | Due Date | Assigned To                |
+      | Automation Observation Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    When I collapse nested table containing column value "Automation Observation"
+    And I expand nested table containing column value "Automation Concern"
+    When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Concern Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    When I collapse nested table containing column value "Automation Concern"
+    And I expand nested table containing column value "Automation Finding"
+    When I enter the following values into flex table with id "---sitevisits:-:correctiveTableId---" by clicking "New" :
+      | Title                           | Description            | Status      | Due Date | Assigned To                |
+      | Automation Finding Subrecipient | Automation Description | In-Progress | 30       | {SavedValue:SPI3 Username} |
+    And I collapse nested table containing column value "Automation Finding"
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award Site Visit}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside flex table with id "---closeout:-:grantsTableId---"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "closeoutID"
+    When I click on "Save" in the page details
+    And I click on "Edit" in the page details
+    And I enter value "Automation Test justification" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
+      | Name                      | Closeout |
+      | {SavedValue:EXE Username} | Step 1   |
+    And I click on "Send To Subrecipient" in the page details
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    When I click on "Edit" in the page details
+    And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Acknowledge" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Closeout" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
+    And I refresh the page
+    When I click on "Override" in the page details
+    When I navigate to "Open Items" sub tab
+    And I perform quick search for "{SavedValue:SitevVisitId}" in "---closeout:-:PendingSiteVisitDeskReviewTableId---" panel
+    Then I softly see value "Force Closed" for title "Status" against the value "{SavedValue:SitevVisitId}" inside table "---closeout:-:PendingSiteVisitDeskReviewTableId---"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    Then I see the text containing "Site Visit/Desk Review"
+    And I Click on "Reassign Records" icon for "Site Visit/Desk Review" without tableid
+    When I perform quick search for "{SavedValue:SitevVisitId}" in "---deskreview:-:deskReviewSourceTableId---" panel
+    Then I see value "{SavedValue:SitevVisitId}" for title "Site Visit ID" inside table "---deskreview:-:deskReviewSourceTableId---"
+    When I perform quick search for "{SavedValue:SitevVisitId}" in "---deskreview:-:deskReviewSourceTableId---" panel
+    When I check "{SavedValue:SitevVisitId}" boxes in flex table with id "---deskreview:-:deskReviewSourceTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---deskreview:-:deskReviewSourceTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:SitevVisitId}" in "---deskreview:-:deskReviewTargetTableId---" panel
+    Then I see value "{SavedValue:SitevVisitId}" for title "Site Visit ID" inside table "---deskreview:-:deskReviewTargetTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    When I perform quick search for "{SavedValue:SitevVisitId}" in "---sitevisits:-:manageSiteVisitTableId---" panel
+    Then I see value "{SavedValue:SitevVisitId}" for title "EGMS ID" inside table "---sitevisits:-:manageSiteVisitTableId---"
+    And I click on "View" icon for "{SavedValue:SitevVisitId}" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    Then I softly cannot see top right button "Send Back to Subrecipient" in page detail
+    Then I softly cannot see top right button "Accept and Close" in page detail
