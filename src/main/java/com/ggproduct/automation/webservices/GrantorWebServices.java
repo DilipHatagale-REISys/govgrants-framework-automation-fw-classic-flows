@@ -59,7 +59,7 @@ public class GrantorWebServices extends ProjectWebServices {
                 System.out.println("Batch Status is :" + status);
                 break;
             }
-            I.amPerforming().waitFor().makeThreadSleep(3000);
+            I.amPerforming().waitFor().makeThreadSleep(7000);
         }
 
         if (status.equalsIgnoreCase("Completed") && objectName.length == 1 && !objectApiName.equalsIgnoreCase("closeout"))  {
@@ -129,7 +129,7 @@ public class GrantorWebServices extends ProjectWebServices {
             }
             if (StringUtils.containsIgnoreCase(record, "contact")) {
                 deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record), "Contact");
-                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record), "DUNS");
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record), "UEI");
             }
             if (StringUtils.containsIgnoreCase(record, "application")) {
                 try {

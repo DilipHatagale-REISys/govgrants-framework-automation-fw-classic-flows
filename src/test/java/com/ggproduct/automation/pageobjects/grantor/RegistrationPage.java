@@ -35,17 +35,6 @@ public class RegistrationPage extends ProjectManager {
 
     /******* "Key Methods with complete functionality - public" *****************/
 
-    /**
-     * enter values in the fields at old form layout
-     *
-     * @param enterValue
-     * @param labelName
-     */
-    public void enterValueIntoFieldAtOldForms(String enterValue, String labelName) {
-        By getField = By.xpath("//span[text()='" + labelName + "']/ancestor::div/following-sibling::div//input");
-        I.amPerforming().textInput().toClear(getField);
-        I.amPerforming().textInput().in(getField, enterValue);
-    }
 
     public void clickOfficeTypeButton(String officeType, String buttonName) {
         try {

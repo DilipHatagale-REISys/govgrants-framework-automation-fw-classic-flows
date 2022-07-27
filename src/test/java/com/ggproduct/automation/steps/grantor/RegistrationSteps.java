@@ -2,8 +2,10 @@ package com.ggproduct.automation.steps.grantor;
 
 import com.ggproduct.automation.pageobjects.grantor.RegistrationPage;
 import com.testingblaze.register.I;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import jdk.jfr.Description;
 
 import java.util.List;
 
@@ -12,11 +14,6 @@ public class RegistrationSteps {
 
     public RegistrationSteps(RegistrationPage registrationPage) {
         this.registrationPage = registrationPage;
-    }
-
-    @When("^I enter value as \"([^\"]*)\" into \"([^\"]*)\" on old form$")
-    public void enterValueIntoFieldAtDynamicFormsLayout(String enterValue, String labelName) {
-        registrationPage.enterValueIntoFieldAtOldForms(enterValue, labelName);
     }
 
     @Then("I see the privacy policy text is as follows :")
@@ -39,5 +36,18 @@ public class RegistrationSteps {
     @Then("I set password for the user")
     public void iSetPasswordForTheUser() {
         registrationPage.setPasswordForTheUser();
+    }
+
+    @Description("To generate unique emailID, EIN, SSN or random number")
+    @When("^I generate the random (EIN|SSN|EmailID|digits) and save as \"([^\"]*)\"$")
+    public void generateAndSaveRandomDigits(String usage, String fieldKey) {
+        String randomNumbers = String.valueOf(I.amPerforming().addOnsTo().getRandomNumber()).substring(0, 5);
+        if (usage.equalsIgnoreCase("EmailID"))
+            I.amPerforming().propertiesFileOperationsTo().saveValue(fieldKey, ("AutomationRuntime" + randomNumbers + "@yopmail.com"));
+        else if (usage.equalsIgnoreCase("EIN") || usage.equalsIgnoreCase("SSN")) {
+            String randomEmail =  randomNumbers + randomNumbers.substring(0, 4);
+            I.amPerforming().propertiesFileOperationsTo().saveValue(fieldKey,randomEmail);
+        } else
+            I.amPerforming().propertiesFileOperationsTo().saveValue(fieldKey, randomNumbers);
     }
 }
