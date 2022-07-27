@@ -5269,19 +5269,16 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Program {SavedValue:ProgramEGMSID} has been PeerReviewed
+      Subaward Risk Assessment for RA-0595 has been Peer Reviewed.
       """
     Then I see the mail text is as follows :
       """
-      Hello Automation,
-      This email is to notify you that Program {SavedValue:ProgramEGMSID} has been peer reviewed.
-      Program Details:
-      Program ID: {SavedValue:ProgramEGMSID}
-      Program Name: {SavedValue:Automation Runtime Internal Program}
-      Log in to EGMS and click here to start reviewing the details.
-      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
-      Thank you.
-      The EGMS Team
+      Hello Automation PO1,
+     This email to notify you that a Subaward Risk Assessment for Subaward {SavedValue:AwardEGMSID} has been peer reviewed.
+     Log in to EGMS and click here for more details.
+     Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com If you have any questions or need assistance with this task.
+     Thank you.
+     The EGMS Team
       """
     Then I refresh the page
     And I am on "INTERNAL" portal

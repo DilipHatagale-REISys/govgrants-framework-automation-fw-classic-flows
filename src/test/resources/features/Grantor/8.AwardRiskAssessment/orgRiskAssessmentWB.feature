@@ -491,3 +491,34 @@ Feature: Validate all scenarios when the Organizational Risk Assessment is in ex
     And I click on "Amend Subaward" in the page details
     Then I see the following messages in the page details contains:
       | The subrecipient organization risk assessment is expired. Please notify the subrecipient to renew their organization risk assessment. |
+
+  @201170 @ValidateOrganizationRiskAssessmentsarenotshownintheReassignmodal @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate Organization Risk Assessments are not shown in the Reassign modal
+    Given I delete the record "Automation Permanent Organization for Risk Assessment" from the object "ORGANIZATION RISKASSESSMENT"
+    When I create a risk assessment record for organization "Automation Permanent Organization for Risk Assessment"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SA" user
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Automation Permanent Organization for Risk Assessment" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Assessment" sub tab
+    And I enter "OrgAssessmentValues" values from "RiskAssessment_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    When I click on "Submit" in the page details
+    And I save the field labeled "EGMS ID" as "OrgRiskId"
+    Then I see status in Progress-bar is "Active" and is "Green"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    And I Click on "Reassign Records" icon for "Risk Assessment" without tableid
+    When I perform quick search for "{SavedValue:OrgRiskId}" in "---riskassessment:-:riskAssSourceTableId---" panel
+    Then I do not see value "{SavedValue:OrgRiskId}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"

@@ -80,3 +80,7 @@ Lead
 Ownership Reassignment
 =======================
 @reassignment tag for all Ownership & Task Reassignment Test Cases.
+
+Migration Disclaimer
+=======================
+1)After Migration We can use same email id while creating the user 
