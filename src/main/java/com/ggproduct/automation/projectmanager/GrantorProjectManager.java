@@ -479,7 +479,7 @@ public class GrantorProjectManager extends ProjectManager {
         if (usage.contains("softly")) {
             I.amPerforming().assertionsTo().assertThat(savedValue1).isEqualToIgnoringCase(savedValue2);
         } else if (usage.contains("not")) {
-            Assert.assertEquals("Saved value :" + savedValue1 + " is not equals to saved value " + savedValue2, savedValue1, savedValue2);
+            Assert.assertNotEquals("Saved value :" + savedValue1 + " is not equals to saved value " + savedValue2, savedValue1, savedValue2);
         }
     }
 

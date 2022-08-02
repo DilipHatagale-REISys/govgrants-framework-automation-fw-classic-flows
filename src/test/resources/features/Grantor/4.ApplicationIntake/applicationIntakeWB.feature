@@ -901,9 +901,9 @@ Feature: Application Intake scenarios without background
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Proposal" sub tab
-    And I save the value from row "1" for column name "EGMS ID" as "searchedItem" from flex table "---applicationIntake:-:goalsAndObjectivesTableId---"
-    And I perform quick search for "{SavedValue:searchedItem}" in "---applicationIntake:-:goalsAndObjectivesTableId---" panel
-    Then I softly see value "{SavedValue:searchedItem}" for title "EGMS ID" inside table "---applicationIntake:-:goalsAndObjectivesTableId---"
+    And I save the value from row "1" for column name "Title" as "SavedTitle" from flex table "---applicationIntake:-:goalsAndObjectivesTableId---"
+    And I perform quick search for "{SavedValue:SavedTitle}" in "---applicationIntake:-:goalsAndObjectivesTableId---" panel
+    Then I softly see value "{SavedValue:SavedTitle}" for title "Title" inside table "---applicationIntake:-:goalsAndObjectivesTableId---"
 
   @73753 @announcementInApprovedStatusWillNotBeAOppurtunity @deepika
   Scenario: Validate if the announcment is in Approved status and not published status then the record will not be available for SPI/SPA users under oppurtunity
