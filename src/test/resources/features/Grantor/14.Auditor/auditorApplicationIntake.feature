@@ -29,7 +29,6 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
   Scenario: Validate Auditor should not be  able to  Create Negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "default"
     When I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
-    And I pause execution for "45" seconds
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     Given I login to "As a Grantor" app as "Auditor" user
     And I navigate to "Applications" tab
