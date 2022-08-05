@@ -457,6 +457,7 @@ public class GenericSteps {
     @Given("I initiated an application review for application {string} on announcement {string} with properties {string}")
     public void iInitiatedAnApplicationReviewOnAnnouncement(String applicationTitle, String announcmentTitle, String filter) {
         grantorWebServices.initateApplicationReviewOnAnnouncement(applicationTitle, announcmentTitle, filter);
+        I.amPerforming().waitFor().makeThreadSleep(40000);
     }
 
     @Given("I created approved FDM on application {string}")
