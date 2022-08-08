@@ -461,11 +461,13 @@ public class GenericSteps {
 
     @Given("I created approved FDM on application {string}")
     public void iCreatedApprovedFDMWithProperties(String applicationName) {
+        I.amPerforming().waitFor().makeThreadSleep(40000); //ToDO- This API gets failed as It needs Application Record, So added wait time as of now
         grantorWebServices.approveDFM(applicationName);
     }
 
     @Given("I reviewed the application {string}")
     public void reviewedApplication(String applicationName) {
+        I.amPerforming().waitFor().makeThreadSleep(40000); //ToDO- This API gets failed as It needs Application Record, So added wait time as of now
         grantorWebServices.reviewedApplication(applicationName);
     }
 
