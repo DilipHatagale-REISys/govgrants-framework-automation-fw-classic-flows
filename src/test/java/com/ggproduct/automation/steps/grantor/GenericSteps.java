@@ -467,6 +467,7 @@ public class GenericSteps {
 
     @Given("I reviewed the application {string}")
     public void reviewedApplication(String applicationName) {
+        I.amPerforming().waitFor().makeThreadSleep(40000); //ToDO- This API gets failed as It needs Application Record, So added wait time as of now
         grantorWebServices.reviewedApplication(applicationName);
     }
 
