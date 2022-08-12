@@ -9,7 +9,6 @@ Feature: Validate all scenarios for program
     And I click toggle button to select "Internal Programs - Draft"
     And I click on top right button "New" in flex table with id "---program:-:programsTableId---"
     When I enter in modal "Creation" values from "Program_Field_Values.xlsx"
-    When I enter in modal value "Department of Health" into field "fieldAccount__c"
     And I click modal button "Save and Continue"
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "ProgramEGMSID"
@@ -19,9 +18,9 @@ Feature: Validate all scenarios for program
     And I click toggle button to select "Internal Programs - Draft"
     And I perform quick search for "{SavedValue:Automation Runtime Internal Program}"
     And I click on "Edit" icon for "{SavedValue:Automation Runtime Internal Program}" inside flex table with id "---program:-:programsTableId---" without waiting for record
-    When I enter value "Children’s Health Insurance Program" into field "fieldAccount__c"
+    When I enter value "Test Automation Organization" into field "fieldAccount__c"
     And I click on "Save" in the page details
-    Then I softly see field "Internal Organization" as "Department of Health"
+    Then I softly see field "Internal Organization" as "Test Automation Organization"
 
   @105386 @VerifyCreationOfStrategicPlanWithFOProfile @monu
   Scenario: Verifying FO user is not able to create Strategic plan
@@ -1998,7 +1997,7 @@ Feature: Validate all scenarios for program
       """
     Then I see the mail text is as follows :
       """
-       Hello
+       Hello,
        This email is to notify you that Program #{SavedValue:ProgramEGMSID} has been rejected.
        Log in to EGMS and click here to see details.
        Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com, if you have any questions or need assistance with this task.
@@ -2844,7 +2843,7 @@ Feature: Validate all scenarios for program
       | Automation test description | Mandatory | Application | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---program:-:checklistTableId---" without waiting for record
     And I click modal button "Cancel"
-    Then I see value "Not Applicable" for title "Template Link" against the value "Active" inside table "---progressreport:-:progressReportChecklistsTableId---"
+    Then I see value "Not Applicable" for title "Template Link" against the value "Active" inside table "---program:-:checklistTableId---"
 
   @204046 @ValidateCancelbuttonwillalwaysbeenabled @sprint-7-US-202724 @vaibhav
   Scenario: Validate Cancel button will always be enabled

@@ -129,7 +129,7 @@ public class GrantorWebServices extends ProjectWebServices {
             }
             if (StringUtils.containsIgnoreCase(record, "contact")) {
                 deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record), "Contact");
-                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record), "UEI");
+                deletionApi(I.amPerforming().propertiesFileOperationsTo().getValue(record), "DUNS");
             }
             if (StringUtils.containsIgnoreCase(record, "application")) {
                 try {

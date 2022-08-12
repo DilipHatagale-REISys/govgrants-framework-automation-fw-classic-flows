@@ -395,7 +395,7 @@ Feature: Validate all scenarios in Desk Review
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Desk Review Report for {SavedValue:dvID} has been SentBack
+      Sandbox: Notification: Site Visit/Desk Review Report for {SavedValue:dvID} has been SentBack
       """
     Given I am on "INTERNAL" portal
     When I login as "FO" user
@@ -948,7 +948,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Start" icon for "Record Id" inside flex table with id "---deskreview:-:monitoringTabPhasePendingTasks---"
     And I "Send to Owner" in the approval decision
     When I navigate to "History" sub tab
-    When I perform quick search for "{SavedValue:Record Id}" in "History" panel
+    When I perform quick search for "{SavedValue:DeskReview}" in "History" panel
     Then I see value "Created" for title "Old Value" inside table "History"
 
   @61054 @FieldHistoryUpdatePostAwardLevelDeskReviewIsSendBackToOwnerByProgramApprover @Keerti
@@ -1004,7 +1004,7 @@ Feature: Validate all scenarios in Desk Review
     And I click on "Start" icon for "Record Id" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I "Send to Owner" in the approval decision
     When I navigate to "History" sub tab
-    When I perform quick search for "{SavedValue:Record Id}" in "History" panel
+    When I perform quick search for "{SavedValue:DeskReview}" in "History" panel
     Then I see value "Created" for title "Old Value" inside table "History"
 
   @69411 @61057 @61055 @55370 @66139 @77253 @66274 @snapshotAfterSubmitForApprovalDeskReviewIsAcceptedAndClosed @Keerti @skipOnJenkins

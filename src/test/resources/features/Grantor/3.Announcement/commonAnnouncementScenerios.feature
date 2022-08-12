@@ -348,12 +348,14 @@ Feature: Validate all common scenarios in the  Announcement tab
   Scenario: Validate that other users are not able to delete created announcement
     When I re-login to "As a Grantor" app as "PM" user
     When I navigate to "Announcements" tab
-    And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+   And I click toggle button to select "All Announcements"
+   And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
     Then I cannot see row level action button "Delete" against "Record id" in flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
 
   @45774 @announcementOtherNotAbleToEdit
   Scenario: Validate that other users are not able to Edit created announcement
     When I re-login to "As a Grantor" app as "PM" user
     When I navigate to "Announcements" tab
+    And I click toggle button to select "All Announcements"
     And I perform quick search for "Record id" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
     Then I cannot see row level action button "Edit" against "Record id" in flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"

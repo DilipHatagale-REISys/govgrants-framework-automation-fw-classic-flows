@@ -156,10 +156,10 @@ Feature: Validate all scenarios in the home tab
     And I enter "Creation" values from "TermsandConditions_Field_Values.xlsx"
     When I click modal button "Save"
     When I close "Create Terms and Conditions" modal by clicking the top right x button
-    When I perform quick search for "TC-598383" in "---home:-:termsAndConditionsTableId---" panel
-    Then I softly see value "Active" for title "Status" against the value "TC-598383" inside table "---home:-:termsAndConditionsTableId---"
-    Then I softly can see row level action button "View" against "TC-598383" in flex table with id "---home:-:termsAndConditionsTableId---"
-    Then I softly can see row level action button "Edit" against "TC-598383" in flex table with id "---home:-:termsAndConditionsTableId---"
+    When I perform quick search for "{SavedValue:EGMSID}" in "---home:-:termsAndConditionsTableId---" panel
+    Then I softly see value "Active" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---home:-:termsAndConditionsTableId---"
+    Then I softly can see row level action button "View" against "{SavedValue:EGMSID}" in flex table with id "---home:-:termsAndConditionsTableId---"
+    Then I softly can see row level action button "Edit" against "{SavedValue:EGMSID}" in flex table with id "---home:-:termsAndConditionsTableId---"
     Examples:
       | User  |
       | ADMIN |
@@ -588,7 +588,7 @@ Feature: Validate all scenarios in the home tab
       | EXE   |
       | PM    |
 
-  @58245 @verifyReassignFunctionality @reassign @smoke
+  @58245 @verifyReassignFunctionality @reassign @smoke @wip
   Scenario: The Reassign on the left Navigation allows the reassignment of tasks.
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Planning" tab
@@ -819,7 +819,7 @@ Feature: Validate all scenarios in the home tab
     And I save the contact name as "Automation Runtime Contact"
     And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     Then I softly see value "{SavedValue:Automation Runtime Contact}" for title "Full Name" inside table "---home:-:reviewersTableId---"
-    Then I softly see value "automation.sme@yopmail.com" for title "Email" inside table "---home:-:reviewersTableId---"
+    Then I softly see value "automation.sme143@yopmail.com" for title "Email" inside table "---home:-:reviewersTableId---"
     Then I softly see value "New" for title "Status" inside table "---home:-:reviewersTableId---"
     Then I softly see value "Test Automation Organization" for title "Sponsoring Agency" inside table "---home:-:reviewersTableId---"
     #34674

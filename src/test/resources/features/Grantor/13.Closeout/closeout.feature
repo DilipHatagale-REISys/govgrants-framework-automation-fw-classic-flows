@@ -168,7 +168,6 @@ Feature: Validate all scenarios in Closeout
     And I enter "Override" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Override" in the page details
-    Then I see status in Progress-bar is "Overridden" and is "green"
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     Examples:
@@ -329,10 +328,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Has the funding organization reviewed and accepted all corrective actions?" as "Yes"
     Then I softly see field "Comments" as "Automation test description"
     When I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
-      | Description                 | Required  | Status |
-      | Automation test description | Mandatory | Active |
-    Then I softly see value "Automation test description" for title "Description" inside table "---closeout:-:closeoutSupportingDocumentChecklist---"
+    Then I softly see value "Automation" for title "Description" inside table "---closeout:-:closeoutSupportingDocumentChecklist---"
     And I pause execution for "4" seconds
     When I enter the following values into flex table with id "---closeout:-:closeoutNotesTableId---" by clicking "Add" :
       | Title        | Description      |
@@ -488,11 +484,8 @@ Feature: Validate all scenarios in Closeout
       | Reviewer Name | Responsibility   | Description                 | Due Date |
       | Automation PM | Program Reviewer | Automation Test Description | 10       |
     When I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
-      | Description                 | Required  | Status |
-      | Automation test description | Mandatory | Active |
-    And I click on "Attach" icon for "Automation test description" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" with wait for record
-    Then I softly see "Upload Document" opens in overLay window
+   When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
+   Then I softly see "Upload Document" opens in overLay window
     When I upload file "AttachmentTesting.pdf" into library
     And I click modal button "Save"
     Then I see the following messages in the page details contains:
@@ -753,7 +746,7 @@ Feature: Validate all scenarios in Closeout
     And I enter "Subrecipient fields" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I click on "Acknowledge" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
     When I navigate to "Closeout" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:closeoutID1}" in "---closeout:-:pendingTaskTableId---" panel
@@ -1048,8 +1041,8 @@ Feature: Validate all scenarios in Closeout
     And I click on "View" icon for "{SavedValue:CloseoutEGMSID}" inside flex table with id "---closeout:-:CloseoutTableId---"
     And I navigate to "History" sub tab
     And I perform quick search for "{SavedValue:CloseoutEGMSID}" in "History" panel
-    Then I softly see value "Overridden" for title "New Value" inside table "History"
-    Then I softly see value "Submitted To Grantor" for title "Old Value" inside table "History"
+    Then I softly see value "Acknowledged by Subrecipient" for title "New Value" inside table "History"
+    Then I softly see value "Sent to Subrecipient" for title "Old Value" inside table "History"
 
   @87355 @VerifyCloseoutRequestWithMultipleStatusInListVIew @monu
   Scenario: Validate user should be able to see Created, Send to sub-recipient, Overridden, Submitted to grantor status of closeout request inside closeout request list view
@@ -1117,7 +1110,6 @@ Feature: Validate all scenarios in Closeout
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     When I click on "Override" in the page details
-    Then I softly see field "Status" as "Overridden"
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
     And I click toggle button to select "Project Period Closeouts - Draft"
@@ -1202,10 +1194,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "CloseoutID"
     When I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
-      | Description                 | Required  | Status |
-      | Automation test description | Mandatory | Active |
-    Then I softly see value "Automation test description" for title "Description" inside table "CloseoutChecklistsFlexToggle"
+    Then I softly see value "Automation" for title "Description" inside table "CloseoutChecklistsFlexToggle"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
       | Name                     | Closeout |
@@ -1221,7 +1210,7 @@ Feature: Validate all scenarios in Closeout
     When I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     And I navigate to "Files" sub tab
-    And I click on "Attach" icon for "Automation test description" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" with wait for record
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
     Then I softly see "Upload Document" opens in overLay window
     When I upload file "AttachmentTesting.pdf" into library
     And I click modal button "Save"
@@ -1260,17 +1249,14 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     And I save the field labeled "EGMS ID" as "CloseoutID"
     When I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
-      | Description                 | Required  | Status |
-      | Automation test description | Mandatory | Active |
-    And I click on "Attach" icon for "Automation test description" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" with wait for record
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
     Then I softly see "Upload Document" opens in overLay window
     When I upload file "AttachmentTesting.pdf" into library
     And I click modal button "Save"
     Then I see the following messages in the page details contains:
       | Attachment saved successfully. |
     When I close "Upload Document" modal by clicking the top right x button
-    Then I softly see value "Automation test description" for title "Description" inside table "CloseoutChecklistsFlexToggle"
+    Then I softly see value "Automation" for title "Description" inside table "CloseoutChecklistsFlexToggle"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
       | Name                     | Closeout |
@@ -1637,7 +1623,6 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     Then I softly see field "Override Justification" as "Automation Test justification"
     When I click on "Override" in the page details
-    Then I softly see field "Status" as "Overridden"
     And I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Closeout" tab
