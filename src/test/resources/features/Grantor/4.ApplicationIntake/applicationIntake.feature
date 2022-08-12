@@ -80,8 +80,8 @@ Feature: Validate all scenarios in the Application Intake
     Then I softly see the following messages in the page details contains:
       | Files Tab - All mandatory forms must be 100% completed. |
     When I navigate to "Files" sub tab
-    Then I see only the following headers in table with id "FormEnhancedTablegrid" :
-      | Form Name | Mandatory | Percentage | Last Modified By | Last Modified Date | Allow Edit? | Actions |
+    Then I see only the following headers in table with id "---applicationReview:-:allFormsTableId---" :
+      | Form Name | Mandatory | Percentage | Last Modified By | Last Modified Date |  Actions |
     And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
     When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
@@ -90,7 +90,8 @@ Feature: Validate all scenarios in the Application Intake
     When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    Then I softly see that "100%" has been added in flextable with Id "---applicationIntake:-:allFormsTableId---"
+   Then I softly see value "100.00%" for title "Percentage" against the value "Program Application Form" inside table "---applicationIntake:-:allFormsTableId---"
+   Then I softly see value "100.00%" for title "Percentage" against the value "Standard Assurances Form" inside table "---applicationIntake:-:allFormsTableId---"
 
   @34346 @73602 @34334 @70459 @viewSubmitedApplication @smoke @deepika
   Scenario Outline: Validate Viewing the application submitted by sub-recipient as Internal user | Validate whether user can view the edit button once application has been submitted to Grantor

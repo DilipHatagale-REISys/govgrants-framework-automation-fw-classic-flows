@@ -462,7 +462,7 @@ Feature: Validate all scenarios in Funding Source
     And I click on "Save" in the page details
     And I save the field labeled "Start Date" as "SDATE"
     And I save the field labeled "End Date" as "EDATE"
-    And I save the field labeled "Funding Source" as "FUNDINGSOURCE"
+    And I save the field labeled "EGMS ID" as "FUNDINGSOURCE"
     When I navigate to "Files" sub tab
     Then I softly can see top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"
     And I click on top right button "Add Files" in flex table with id "---fundingSource:-:InternalFundingSourceFilesTableId---"

@@ -66,7 +66,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST1" in "---announcement:-:directedAddInviteApplicantTableId---" panel
     Then I softly do not see value "SAN DIEGO ELECTRICAL TRAINING TRUST1" for title "Organization" inside table "---announcement:-:directedAddInviteApplicantTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Associate Organizations" modal by clicking the top right x button
+    When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     Then I softly see value "RG-000612" for title "Agency Code" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
     Then I softly see value "223323432" for title "EIN" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
@@ -75,7 +75,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Associate Organizations" modal by clicking the top right x button
+    When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
@@ -326,7 +326,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Associate Organizations" modal by clicking the top right x button
+    When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
@@ -531,7 +531,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Associate Organizations" modal by clicking the top right x button
+    When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
@@ -736,7 +736,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Associate Organizations" modal by clicking the top right x button
+    When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
@@ -940,7 +940,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Associate Organizations" modal by clicking the top right x button
+    When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
@@ -1123,7 +1123,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST1" in "---announcement:-:directedAddInviteApplicantTableId---" panel
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Associate Organizations" modal by clicking the top right x button
+    When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     And I click on parallel menu button in flex table title "Invited Applicants"
     And I select "Download as PDF" from parallel lines dropdown of "Invited Applicants"

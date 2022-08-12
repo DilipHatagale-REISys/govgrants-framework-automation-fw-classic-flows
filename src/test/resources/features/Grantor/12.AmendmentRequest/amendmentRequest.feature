@@ -213,7 +213,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    And I click on "Acknowledge" in the page details
+    When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -884,7 +884,6 @@ Feature: Validate all scenarios in the Amendment Request
     When I enter Revised Encumbrance for award "{SavedValue:Automation Runtime Award}"
     And I click on top right button "Save" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
     And I click on "Submit for Approval" in the page details
-    Then I softly cannot see top right button "Edit" in page detail
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
@@ -1008,7 +1007,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    And I click on "Revise" in the page details
+#    And I click on "Revise" in the page details
     Then I softly see status in Progress-bar is "Created" and is "Green"
     When I navigate to "Overview" sub tab
     And I click on "Edit" in the page details
@@ -1066,7 +1065,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    And I click on "Revise" in the page details
+#    And I click on "Revise" in the page details
     When I navigate to "Overview" sub tab
     Then I softly see value "$500.00" for title "Difference" against the value "Construction" inside table "---amendment:-:grantorBudgetChangeTableId---"
     And I softly see value "$500.00" for title "Difference" against the value "Site work" inside table "---amendment:-:grantorBudgetChangeTableId---"
@@ -1249,7 +1248,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     Then I see value "Record Id" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
 
-  @57267 @verifyReviseButtonAmendment @jitendra
+  @57267 @verifyReviseButtonAmendment @jitendra @wip
   Scenario: Verify Once Sub-recipient update the requested changes and submit to Grantor Revise button is displayed.
     When I navigate to "Management" sub tab
     And I click on top right button "New" in flex table with id "---amendment:-:amendmentRequestTableId---"
@@ -1331,7 +1330,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    And I click on "Revise" in the page details
+#    And I click on "Revise" in the page details
     When I navigate to "Overview" sub tab
     And I click on "Edit" in the page details
     When I enter value "2000" into field "fieldRequestedChangeInBudget__c"
@@ -1379,7 +1378,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    And I click on "Revise" in the page details
+#    And I click on "Revise" in the page details
     When I navigate to "Overview" sub tab
     And I click on "Edit" in the page details
     When I enter value "2000" into field "fieldRequestedChangeInBudget__c"
@@ -2114,7 +2113,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
-    And I click on "Revise" in the page details
+#    And I click on "Revise" in the page details
     When I navigate to "Overview" sub tab
     And I click on "Edit" in the page details
     When I enter value "4000" into field "fieldRequestedChangeInBudget__c"
@@ -2317,7 +2316,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Subawards  - Active"
+    And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
     When I navigate to "Subawards" sub tab
@@ -2414,7 +2413,8 @@ Feature: Validate all scenarios in the Amendment Request
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
-    And I upload attachment "Attachment.pdf" of type "Invoice" from computer
+   And I pause execution for "3" seconds
+   And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab

@@ -94,7 +94,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:kpiTableId---"
     When I enter "KPI" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
-    When I close "GrantorAwardKeyOutcomes" modal by clicking the top right x button
+#    When I close "GrantorAwardKeyOutcomes" modal by clicking the top right x button
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | Title                    | Target |
       | Automation Permanent KPI | 10     |
@@ -964,12 +964,12 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     #As we have added supporting documents mandatory at program level So adding steps to upload file. This activity has to perform on every org refresh
-    When I navigate to "Files" sub tab
-    When I click on "Attach" icon for "Mandatory" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
-    And I switch to iframe with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableFrameId---"
-    When I upload file "Program_Field_Values.xlsx" into library
-    And I click modal button "Save"
-    When I close "Upload Document" modal by clicking the top right x button
+#    When I navigate to "Files" sub tab
+#    When I click on "Attach" icon for "Mandatory" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
+#    And I switch to iframe with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableFrameId---"
+#    When I upload file "Program_Field_Values.xlsx" into library
+#    And I click modal button "Save"
+#    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Accept" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -1082,6 +1082,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
     And I enter value "Automation Test Description" into field "fieldDescription__c"
     And I click modal button "Save"
+    And I click on "View" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
     Then I see field "Description" as "Automation Test Description"
 
   @53840 @paymentRequestSchedulesUpdateOnDraftAward @mahadev
@@ -2142,6 +2143,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     When I enter value "Calendar" into field "ScheduleBase__c"
     And I click modal button "Save"
+    And I click on "View" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
     Then I see field "Schedule Base" as "Calendar"
 
   @55296 @ViewProgressReportScheduleOnDraftAward @mahadev
@@ -2287,6 +2289,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     When I enter in modal "Progress Report Fixed Date" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
+    And I pause execution for "5" seconds
+    And I click on "View" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     And I save the field labeled "Reporting Period Start Date" as "endDate"
     Then I see field "Reporting Period Start Date" as "{SavedValue:endDate}"
 
@@ -2498,7 +2502,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click modal button "Save"
     #When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
-    Then I see total records count "Total Records:22" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
+    Then I see total records count "Total Records:17" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
   @45725 @validateSubRecipientCannotEditSchedule @mahadev
   Scenario Outline: Verify if subaward is sent to sub-recipient for Accept action then external user should not have access to modify Schedule
@@ -2720,8 +2724,10 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     When I enter in modal "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
+    And I pause execution for "5" seconds
+    And I click on "View" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
     And I save the field labeled "Reporting Period End Date" as "ScheduleEndDate"
-    #When I close "Edit Progress Report Schedule" modal by clicking the top right x button
+    When I close "Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     #And I navigate to last page in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
     And I get the value from row "last row" for column name "Reporting Period End Date" in flex table "---subAwardStandAlone:-:progressReportScheduleChildTableId---"
@@ -2737,8 +2743,10 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
     When I enter in modal "ProgressReportQuartelyReporting" values from "Award_Field_Values.xlsx"
     And I click modal button "Save"
+    And I pause execution for "3" seconds
+    And I click on "View" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---"
     And I save the field labeled "Reporting Period Start Date" as "ScheduleStartDate"
-    #When I close "Edit Progress Report Schedule" modal by clicking the top right x button
+    When I close "Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
     And I get the value from row "1" for column name "Reporting Period Start Date" in flex table "---subAwardStandAlone:-:progressReportScheduleChildTableId---"
     Then I verify that the Schedule start date is matching with Reporting Period start Date
@@ -3577,11 +3585,11 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I navigate to "Terms" sub tab
     When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I enter values into fields
-      | Value                  | Field            |
-      | Automation Title       | Title__c         |
-      | Automation Description | Description__c   |
-      | 1                      | Sequence__c      |
-      | 265                    | EffectiveTill__c |
+      | Value                  | Field                 |
+      | Automation Title       | Title__c              |
+      | Automation Description | Description__c        |
+      | 1                      | Sequence__c           |
+      | 265                    | fieldEffectiveTill__c |
     When I click modal button "Save"
     When I close "Create Terms and Conditions" modal by clicking the top right x button
     Then I softly see value "Automation Title" for title "Title" inside table "---subAwardStandAlone:-:termsndConditionsTableId---"
@@ -4277,6 +4285,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I navigate to "Terms" sub tab
+    When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
     Then I see status in Progress-bar is "Submitted for Approval" and is "Green"
     Examples:
@@ -4831,7 +4841,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I enter value "Automation Description" into field "GrantAwardDescription__c"
     When I navigate to "Budget" sub tab
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
-    And I enter value "4000" into field "BudgetPeriodEndDate__c"
+    And I enter value "4000" into field "fieldBudgetPeriodEndDate__c"
     And I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
@@ -5334,6 +5344,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardFromFDM:-:RecipientSubAwardTableId---" without waiting for record
     Then I softly can see top right button "Edit" in page detail
     And I click on "Edit" in the page details
+    And I clear the value from field "fieldGrantAwardDescription__c"
     When I enter value "Automation Test1 Description" into field "fieldGrantAwardDescription__c"
     And I click on "Save" in the page details
     Then I softly see field "Brief information about the subaward." as "Automation Test1 Description"
@@ -6047,13 +6058,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    #As we have added supporting documents mandatory at program level So adding steps to upload file. This activity has to perform on every org refresh
-    When I navigate to "Files" sub tab
-    When I click on "Attach" icon for "Mandatory" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
-    And I switch to iframe with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableFrameId---"
-    When I upload file "Program_Field_Values.xlsx" into library
-    And I click modal button "Save"
-    When I close "Upload Document" modal by clicking the top right x button
+#    #As we have added supporting documents mandatory at program level So adding steps to upload file. This activity has to perform on every org refresh
+#    When I navigate to "Files" sub tab
+#    When I click on "Attach" icon for "Mandatory" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
+#    And I switch to iframe with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableFrameId---"
+#    When I upload file "Program_Field_Values.xlsx" into library
+#    And I click modal button "Save"
+#    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Accept" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -6219,13 +6230,13 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    #As we have added supporting documents mandatory at program level So adding steps to upload file. This activity has to perform on every org refresh
-    When I navigate to "Files" sub tab
-    When I click on "Attach" icon for "Mandatory" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
-    And I switch to iframe with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableFrameId---"
-    When I upload file "Program_Field_Values.xlsx" into library
-    And I click modal button "Save"
-    When I close "Upload Document" modal by clicking the top right x button
+#    #As we have added supporting documents mandatory at program level So adding steps to upload file. This activity has to perform on every org refresh
+#    When I navigate to "Files" sub tab
+#    When I click on "Attach" icon for "Mandatory" inside flex table with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableId---" without waiting for record
+#    And I switch to iframe with id "---subAwardStandAlone:-:RecipientSubAwardChecklistTableFrameId---"
+#    When I upload file "Program_Field_Values.xlsx" into library
+#    And I click modal button "Save"
+#    When I close "Upload Document" modal by clicking the top right x button
     When I click on "Accept" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab

@@ -5842,7 +5842,7 @@ Feature: Payment Request scenarios without background
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
       | Name                      | Advance |
-      | {SavedValue:EXE Username} | Step 1  |
+      | {SavedValue:FO Username} | Step 1  |
     When I click on "Submit for Approval" in the page details
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -5851,7 +5851,6 @@ Feature: Payment Request scenarios without background
     And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
     And I "Reject" in the approval decision
     Then I softly see field "Status" as "Rejected"
-    Then I softly see status in Progress-bar is "Rejected" and is "Green"
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
     And I navigate to "Home" tab
     Then I see "Ownership" inside "Reassign" is displayed
@@ -5940,7 +5939,8 @@ Feature: Payment Request scenarios without background
     When I click on "Mark As Paid" in the page details
     And I enter in modal "Paid Details" values from "PaymentRequest_Field_Values.xlsx"
     When I click modal button "Save"
-    And I halt execution
+    When I close "{SavedValue:PayreqId}" modal by clicking the top right x button
+    Then I see status in Progress-bar is "Paid" and is "green"
     When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
     And I navigate to "Home" tab
     Then I see "Ownership" inside "Reassign" is displayed

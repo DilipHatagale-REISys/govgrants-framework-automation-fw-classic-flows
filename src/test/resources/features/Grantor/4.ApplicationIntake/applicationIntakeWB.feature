@@ -1096,8 +1096,9 @@ Feature: Application Intake scenarios without background
     When I click on "Qualify" in the page details
     Then I softly see that "{SavedValue:Automation Runtime Announcement Application Review}" is in "Qualified" status
     Then I softly can see top right button "Create Application" in page detail
-    When I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI3" user
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -1443,4 +1444,9 @@ Feature: Application Intake scenarios without background
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AppEGMSID}" in "---negotiation:-:phasePendingTasksTableId---" panel
-    Then I softly see value "{SavedValue:AppEGMSID}" for title "EGMS ID" inside table "---negotiation:-:phasePendingTasksTableId---"
+    Then I softly do not see value "{SavedValue:AppEGMSID}" for title "EGMS ID" inside table "---negotiation:-:phasePendingTasksTableId---"
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "{SavedValue:AnnEGMSID}" in "---applicationReview:-:announcementListTableId---" panel
+    Then I softly see value "{SavedValue:AnnEGMSID}" for title "EGMS ID" inside table "---applicationReview:-:announcementListTableId---"

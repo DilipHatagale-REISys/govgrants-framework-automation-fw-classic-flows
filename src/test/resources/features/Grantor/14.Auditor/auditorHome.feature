@@ -85,7 +85,6 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     Then I softly see "Organization" in flex table header "---home:-:internalContactTableId---"
     Then I softly see "Email" in flex table header "---home:-:internalContactTableId---"
     Then I softly see "Phone" in flex table header "---home:-:internalContactTableId---"
-    Then I softly see "Status" in flex table header "---home:-:internalContactTableId---"
     Then I softly see "Is User" in flex table header "---home:-:internalContactTableId---"
 
     Examples:
@@ -127,7 +126,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
   Scenario: Verify Auditor profile would not have tasks assigned,  Re assign will populate no tasks to reassign
     Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Home" tab
-    And I navigate to "Reassign" content inside "My Tasks" subheader on left panel
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
     Then I softly cannot see user "AUDITOR" in the reassign box
 
   @69120 @69130 @auditorPendingTaskSummaryPhase
@@ -166,7 +165,7 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
-    Then I softly cannot see top right button "New" in flex table with id "---home:-:subrecipientcontactTableId---"
+    Then I cannot see top right button "New" in flex table with id "---home:-:subrecipientcontactTableId---"
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:subrecipientcontactTableId---" panel
     Then I softly cannot see row level action button "Edit" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:subrecipientcontactTableId---"
 
@@ -177,6 +176,10 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter values into fields
+      | Value                      | Field      |
+      | {SavedValue:uniqueEmailID} | fieldEmail |
     When I click modal button "Save"
     And I save the contact name as "Automation Runtime Contact"
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:internalContactTableId---" panel
@@ -199,5 +202,5 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
   Scenario: Verify Auditor profile would not have tasks assigned  Re assign will populate no tasks to reassign
     Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Home" tab
-    And I navigate to "Reassign" content inside "My Tasks" subheader on left panel
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
     Then I softly cannot see user "AUDITOR" in the reassign box

@@ -76,7 +76,7 @@ Feature: Validate all scenarios in the Application Review
     And I check "{SavedValue:PM Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
     When I close "Assign Reviewers" modal by clicking the top right x button
-    #When I expand nested table containing column value "<Application Name>"
+    When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "{SavedValue:FO Username}" in "---applicationReview:-:panelAppTableId---" panel
     And I check "{SavedValue:FO Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
@@ -376,9 +376,8 @@ Feature: Validate all scenarios in the Application Review
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I pause execution for "5" seconds
-    Then I softly see "No Records Found" inside flex table with id "---applicationReview:-:appreviewsTableId---"
-   # Then I see the following messages in the page details :
-    #  | Please select the reviews to send. |
+    Then I see the following messages in the page details :
+      | Please select the reviews to send. |
     Examples:
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
@@ -702,9 +701,9 @@ Feature: Validate all scenarios in the Application Review
     Then I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     Then I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---announcement:-:reviewStepTableId---"
-    And I click table top right button "Add" in flex table with id "---applicationReview:-:reviewersTableId---"
-    And I select value "{SavedValue:FO Username}" into field "Reviewer__c"
-    And I click on top right button "Save" in flex table with id "---applicationReview:-:reviewersTableId---"
+    When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
+      | Reviewer                 |
+      | {SavedValue:FO Username} |
    # message disappear in few sec.
      # Then I softly see the following messages in the page details :
     #  | Saved Successfully! |
@@ -762,9 +761,9 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---announcement:-:reviewStepTableId---" with wait for record
     And I pause execution for "2" seconds
     Then I softly can see page block "Reviewers"
-    And I click table top right button "Add" in flex table with id "---applicationReview:-:reviewersTableId---"
-    And I select value "{SavedValue:FO Username}" into field "Reviewer__c"
-    And I click on top right button "Save" in flex table with id "---applicationReview:-:reviewersTableId---"
+    When I enter the following values into flex table with id "---applicationReview:-:reviewersTableId---" by clicking "Add" :
+      | Reviewer                 |
+      | {SavedValue:FO Username} |
   # message disappear in few sec.
     #  Then I softly see the following messages in the page details :
    #   | Saved Successfully! |
@@ -1031,13 +1030,13 @@ Feature: Validate all scenarios in the Application Review
     And I check "{SavedValue:PM Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
     When I close "Assign Reviewers" modal by clicking the top right x button
-   # When I expand nested table containing column value "<Application Name>"
+    When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Fiscal Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "{SavedValue:FO Username}" in "---applicationReview:-:panelAppTableId---" panel
     And I check "{SavedValue:FO Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:panelAppTableId---"
     When I close "Assign Reviewers" modal by clicking the top right x button
-    #When I expand nested table containing column value "<Application Name>"
+    When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "{SavedValue:EXE Username}" in "---applicationReview:-:panelAppTableId---" panel
     And I check "{SavedValue:EXE Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"
@@ -1624,8 +1623,7 @@ Feature: Validate all scenarios in the Application Review
      | Saved Successfully! |
     Then I softly see value "{SavedValue:PM Username}" for title "Reviewer" inside table "---applicationReview:-:reviewersTableId---"
     #Then I softly see value "govgrantsuat@yopmail.com" for title "Email" inside table "---applicationReview:-:reviewersTableId---"
-    Then I softly see value "automationpmprod@yopmail.com" for title "Email" inside table "---applicationReview:-:reviewersTableId---"
-
+    Then I softly see value "pm.automation@yopmail.com" for title "Email" inside table "---applicationReview:-:reviewersTableId---"
     Then I softly see value "Test Automation Organization" for title "Organization" inside table "---applicationReview:-:reviewersTableId---"
     Then I softly see value "0" for title "# of Reviews Assigned" inside table "---applicationReview:-:reviewersTableId---"
     Examples:
@@ -1842,7 +1840,7 @@ Feature: Validate all scenarios in the Application Review
     #Then I softly see the following messages in the page details :
     #  | Application successfully assigned to Reviewer. |
     When I close "Assign Reviewers" modal by clicking the top right x button
-    #When I expand nested table containing column value "<Application Name>"
+    When I expand nested table containing column value "<Application Name>"
     And I click on "Assign" icon for "Compliance Review" inside flex table with id "---applicationReview:-:reviewFormsTableId---" with wait for record
     And I perform quick search for "{SavedValue:EXE Username}" in "---applicationReview:-:panelAppTableId---" panel
     And I check "{SavedValue:EXE Username}" boxes in flex table with id "---applicationReview:-:panelAppTableId---"

@@ -17,7 +17,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   @34461 @70612 @submittingAnnouncementForApprovalFA @announcementForPastApplicationDueDateFA @submittedAnnouncementDeletionFA @smoke
   Scenario: Validate that user can not enter application due date as past date | Validate the submission of Announcement for Approval || Validate that only record owner cannot delete Submitted for Approval status announcements
     When I click on "Edit" in the page details
-    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
@@ -243,7 +243,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   @70613 @70677 @announcementWithBlankBudgetPeriodFA
   Scenario: Validate that user should not submit announcement with blank budget period dates | To verify that if announcement type is -Formula then user can remove applicant organization in Invited Applicants section while creating the  Announcement
     When I click on "Edit" in the page details
-    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
@@ -449,7 +449,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   @announcementApprovalFA @announcementPendingTaskPostApprovalFA @announcementCompletedTaskPostApprovalFA
   Scenario: Validate that after approval of an Announcement task get added to its completed task table. || Validate the approval of an Announcement||Validate that after approval of an Announcement task get deleted from pending task table.
     When I click on "Edit" in the page details
-    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
@@ -654,7 +654,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   @announcementSendBackToOwnerFA @announcementPostSendBackCheckFieldHistoryFA @announcementSendBackPendingTaskToOwnerFA @smoke
   Scenario: Validate the send back functionality of an Announcement || Validate that after send back from approvers owner should not get pending task
     When I click on "Edit" in the page details
-    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
@@ -864,7 +864,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
   @announcementPostRejectionCheckInListViewFA @announcementPostRejectCompletedTaskForUserFA @announcementApprovalRejectionFA @announcementRejectPendingTaskForNextApproverFA @announcementPostRejectPendingTaskForUserFA @announcementPostRejectCheckFieldHistoryFA
   Scenario: Validate the rejected announcement will reflect under "Rejected Announcements" list view || Validate the field history after rejection of an announcement || Validate that after rejection of an Announcement task get added to it's completed task table. || Validate that after rejection of an Announcement task get deleted from pending task table.|| Validate the reject functionality of an Announcement || Validate that after rejection from 1st approver, 2nd user should not get pending task
     When I click on "Edit" in the page details
-    And I enter "Edition" values from "Announcement_Field_Values.xlsx"
+    And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"

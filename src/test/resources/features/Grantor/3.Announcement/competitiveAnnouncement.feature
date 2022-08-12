@@ -240,8 +240,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see the text containing "Response Deadline"
     Then I softly see the text containing "Submit questions to:"
     And I enter value "20" into field "fieldApplicationDueDate__c"
-    And I enter value "3" into field "QSubmissionDeadline__c"
-    And I enter value "3" into field "AResponseDeadline__c"
+    And I enter value "3" into field "fieldQSubmissionDeadline__c"
+    And I enter value "3" into field "fieldAResponseDeadline__c"
     And I enter value "reisystemsqa@yopmail.com" into field "fieldQAContactEmailAddress__c"
     And I enter value "Test Eligibility Information" into field "---announcement:-:eligibilityInformation---"
     And I click on "Save" in the page details
@@ -255,8 +255,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see field "Eligibility Information" as "Test Eligibility Information"
     And I click on "Edit" in the page details
     And I enter value "2" into field "fieldApplicationDueDate__c"
-    And I enter value "5" into field "QSubmissionDeadline__c"
-    And I enter value "5" into field "AResponseDeadline__c"
+    And I enter value "5" into field "fieldQSubmissionDeadline__c"
+    And I enter value "5" into field "fieldAResponseDeadline__c"
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Then I softly see the following messages in the page details :
@@ -271,8 +271,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Responsibilities - At least one approver is required                                                                  |
     And I click on "Edit" in the page details
     And I enter value "20" into field "fieldApplicationDueDate__c"
-    And I enter value "15" into field "QSubmissionDeadline__c"
-    And I enter value "10" into field "AResponseDeadline__c"
+    And I enter value "15" into field "fieldQSubmissionDeadline__c"
+    And I enter value "10" into field "fieldAResponseDeadline__c"
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     And I pause execution for "10" seconds
@@ -419,6 +419,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter advance filter values inside id "advfAnnouncementKeyOutcomes"
       | Title | Contains | Automation Permanent KPI |
     Then I softly see value "Automation Permanent KPI" for title "Title" inside table "---announcement:-:kpiflextableid---"
+    When I save the value from row "1" for column name "EGMS ID" as "KPI" from flex table "---announcement:-:kpiflextableid---"
     Then I softly see value "KPI-0001" for title "EGMS ID" inside table "---announcement:-:kpiflextableid---"
     When I click on "View" icon for "Automation Permanent KPI" inside flex table with id "---announcement:-:kpiflextableid---" without waiting for record
     Then I see the header is "Key Performance Indicator" in the page details
@@ -500,10 +501,11 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see status in Progress-bar is "Active" and is "green"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
-    When  I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
-    And I click on "Remove" icon for "Wildlife Services" inside flex table with id "---announcement:-:relatedAnnouncementTableId---" without waiting for record
-    Then I softly do not see value "Wildlife Services" for title "Program Title" inside table "---announcement:-:relatedAnnouncementTableId---"
+   When I click toggle button to select "All Competitive Announcements"
+   And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
+    And I click on "Remove" icon for "NGO" inside flex table with id "---announcement:-:relatedAnnouncementTableId---" without waiting for record
+    Then I softly do not see value "NGO" for title "Type" inside table "---announcement:-:relatedAnnouncementTableId---"
 
   @75617 @70727 @73624 @70723 @73621 @72482 @73536 @announcementForPastApplicationDueDateCA @announcementWithBlankBudgetPeriodCA @submittedAnnouncementDeletionCA
   Scenario Outline: Validate that user can not enter application due date as past date | Validate that user should not submit announcement with blank budget period dates|To Verify that user can view contact while creating Announcement
@@ -569,7 +571,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter value "SecondLast" into field "fieldLastName"
     #need to check with duplicate email address
     When I enter value "xyz@test.mail" into field "fieldEmail"
-    When I enter value "Secondary" into field "fieldUserRole__c"
     And I click modal button "Save"
     And I click on advance filter "#advfAnnouncementContacts" of table id "---announcement:-:contactTableId---"
     When I enter advance filter values inside id "advfAnnouncementContacts"
@@ -632,128 +633,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     Given I click on "Complete Review" in the page details
-    And I navigate to "Setup" sub tab
-    And I expand nested table containing column value "Pre-Screen Review"
-    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Eligibility    | 50                 |
-      | Completeness   | 50                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Eligibility"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Eligibility"
-    And I expand nested table containing column value "Completeness"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "Pre-Screen Review"
-    And I expand nested table containing column value "SME Review"
-    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Schedule       | 30                 |
-      | Environment    | 30                 |
-      | Permits        | 40                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Schedule"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Schedule"
-    And I expand nested table containing column value "Environment"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Environment"
-    And I expand nested table containing column value "Permits"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-  #  And I collapse nested table containing column value "Permits"
-    When I close "Review Form" modal by clicking the top right x button
-    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Budget         | 30                 |
-      | Match          | 40                 |
-      | Program Income | 30                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Budget"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Budget"
-    And I expand nested table containing column value "Match"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Match"
-    And I expand nested table containing column value "Program Income"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Program Income"
-    When I close "Review Form" modal by clicking the top right x button
-    When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Capability     | 30                 |
-      | Approach       | 30                 |
-      | Impact         | 40                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Capability"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Capability"
-    And I expand nested table containing column value "Approach"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Approach"
-    And I expand nested table containing column value "Impact"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Impact"
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "SME Review"
-    And I expand nested table containing column value "Management Review"
-    When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header             | Section Weight (%) |
-      | Return on Investment (ROI) | 50                 |
-      | Strategic Alignment        | 50                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Return on Investment (ROI)"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Return on Investment (ROI)"
-    And I expand nested table containing column value "Strategic Alignment"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -1108,128 +987,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     Given I click on "Complete Review" in the page details
-    And I navigate to "Setup" sub tab
-    And I expand nested table containing column value "Pre-Screen Review"
-    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Eligibility    | 50                 |
-      | Completeness   | 50                 |
-    And I pause execution for "2" seconds
-    And I expand nested table containing column value "Eligibility"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "2" seconds
-   # And I collapse nested table containing column value "Eligibility"
-    And I expand nested table containing column value "Completeness"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "2" seconds
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "Pre-Screen Review"
-    And I expand nested table containing column value "SME Review"
-    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Schedule       | 30                 |
-      | Environment    | 30                 |
-      | Permits        | 40                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Schedule"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Schedule"
-    And I expand nested table containing column value "Environment"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Environment"
-    And I expand nested table containing column value "Permits"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Permits"
-    When I close "Review Form" modal by clicking the top right x button
-    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Budget         | 30                 |
-      | Match          | 40                 |
-      | Program Income | 30                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Budget"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Budget"
-    And I expand nested table containing column value "Match"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Match"
-    And I expand nested table containing column value "Program Income"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Program Income"
-    When I close "Review Form" modal by clicking the top right x button
-    When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Capability     | 30                 |
-      | Approach       | 30                 |
-      | Impact         | 40                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Capability"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Capability"
-    And I expand nested table containing column value "Approach"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Approach"
-    And I expand nested table containing column value "Impact"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Impact"
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "SME Review"
-    And I expand nested table containing column value "Management Review"
-    When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header             | Section Weight (%) |
-      | Return on Investment (ROI) | 50                 |
-      | Strategic Alignment        | 50                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Return on Investment (ROI)"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Return on Investment (ROI)"
-    And I expand nested table containing column value "Strategic Alignment"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -1348,128 +1105,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     Given I click on "Complete Review" in the page details
-    And I navigate to "Setup" sub tab
-    And I expand nested table containing column value "Pre-Screen Review"
-    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Eligibility    | 50                 |
-      | Completeness   | 50                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Eligibility"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Eligibility"
-    And I expand nested table containing column value "Completeness"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "Pre-Screen Review"
-    And I expand nested table containing column value "SME Review"
-    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Schedule       | 30                 |
-      | Environment    | 30                 |
-      | Permits        | 40                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Schedule"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-  #  And I collapse nested table containing column value "Schedule"
-    And I expand nested table containing column value "Environment"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Environment"
-    And I expand nested table containing column value "Permits"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Permits"
-    When I close "Review Form" modal by clicking the top right x button
-    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Budget         | 30                 |
-      | Match          | 40                 |
-      | Program Income | 30                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Budget"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Budget"
-    And I expand nested table containing column value "Match"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Match"
-    And I expand nested table containing column value "Program Income"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Program Income"
-    When I close "Review Form" modal by clicking the top right x button
-    When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Capability     | 30                 |
-      | Approach       | 30                 |
-      | Impact         | 40                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Capability"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Capability"
-    And I expand nested table containing column value "Approach"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Approach"
-    And I expand nested table containing column value "Impact"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Impact"
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "SME Review"
-    And I expand nested table containing column value "Management Review"
-    When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header             | Section Weight (%) |
-      | Return on Investment (ROI) | 50                 |
-      | Strategic Alignment        | 50                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Return on Investment (ROI)"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Return on Investment (ROI)"
-    And I expand nested table containing column value "Strategic Alignment"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -1986,128 +1621,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     Given I click on "Complete Review" in the page details
-    And I navigate to "Setup" sub tab
-    And I expand nested table containing column value "Pre-Screen Review"
-    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---announcement:-:preScreenReviewFormTableId---"
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Eligibility    | 50                 |
-      | Completeness   | 50                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Eligibility"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Eligibility"
-    And I expand nested table containing column value "Completeness"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "Pre-Screen Review"
-    And I expand nested table containing column value "SME Review"
-    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Schedule       | 30                 |
-      | Environment    | 30                 |
-      | Permits        | 40                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Schedule"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Schedule"
-    And I expand nested table containing column value "Environment"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Environment"
-    And I expand nested table containing column value "Permits"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Permits"
-    When I close "Review Form" modal by clicking the top right x button
-    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Budget         | 30                 |
-      | Match          | 40                 |
-      | Program Income | 30                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Budget"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Budget"
-    And I expand nested table containing column value "Match"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Match"
-    And I expand nested table containing column value "Program Income"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Program Income"
-    When I close "Review Form" modal by clicking the top right x button
-    When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Capability     | 30                 |
-      | Approach       | 30                 |
-      | Impact         | 40                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Capability"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Capability"
-    And I expand nested table containing column value "Approach"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Approach"
-    And I expand nested table containing column value "Impact"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Impact"
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "SME Review"
-    And I expand nested table containing column value "Management Review"
-    When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header             | Section Weight (%) |
-      | Return on Investment (ROI) | 50                 |
-      | Strategic Alignment        | 50                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Return on Investment (ROI)"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Return on Investment (ROI)"
-    And I expand nested table containing column value "Strategic Alignment"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -2727,128 +2240,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I perform quick search for "Record Id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     Given I click on "Complete Review" in the page details
-    And I navigate to "Setup" sub tab
-    And I expand nested table containing column value "Pre-Screen Review"
-    When I click on "Review Form" icon for "Pre-Screen" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Eligibility    | 50                 |
-      | Completeness   | 50                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Eligibility"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Eligibility"
-    And I expand nested table containing column value "Completeness"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "Pre-Screen Review"
-    And I expand nested table containing column value "SME Review"
-    When I click on "Review Form" icon for "Compliance Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Schedule       | 30                 |
-      | Environment    | 30                 |
-      | Permits        | 40                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Schedule"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Schedule"
-    And I expand nested table containing column value "Environment"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Environment"
-    And I expand nested table containing column value "Permits"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Permits"
-    When I close "Review Form" modal by clicking the top right x button
-    When I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Budget         | 30                 |
-      | Match          | 40                 |
-      | Program Income | 30                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Budget"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Budget"
-    And I expand nested table containing column value "Match"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Match"
-    And I expand nested table containing column value "Program Income"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Program Income"
-    When I close "Review Form" modal by clicking the top right x button
-    When I click on "Review Form" icon for "Program Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header | Section Weight (%) |
-      | Capability     | 30                 |
-      | Approach       | 30                 |
-      | Impact         | 40                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Capability"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-   # And I collapse nested table containing column value "Capability"
-    And I expand nested table containing column value "Approach"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Approach"
-    And I expand nested table containing column value "Impact"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Impact"
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "SME Review"
-    And I expand nested table containing column value "Management Review"
-    When I click on "Review Form" icon for "Management Review" inside flex table with id "---announcement:-:preScreenReviewFormTableId---" without waiting for record
-    And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
-      | Section Header             | Section Weight (%) |
-      | Return on Investment (ROI) | 50                 |
-      | Strategic Alignment        | 50                 |
-    And I pause execution for "3" seconds
-    And I expand nested table containing column value "Return on Investment (ROI)"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    #And I collapse nested table containing column value "Return on Investment (ROI)"
-    And I expand nested table containing column value "Strategic Alignment"
-    When I enter the following values into flex table with id "---announcement:-:reviewPanelQuestionsTableId---" by clicking "New" :
-      | Question Order | Question  | Type    | Max Score |
-      | 1              | Question1 | Written | 100       |
-    And I pause execution for "3" seconds
-    When I close "Review Form" modal by clicking the top right x button
-    When I collapse nested table containing column value "Management Review"
-    And I click on top right button "Validate" in flex table with id "---announcement:-:preScreenReviewFormTableId---"
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
@@ -2865,10 +2256,16 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "Record ID" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "Record ID" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I click on "Publish" in the page details
     And I click on "Unpublish" in the page details
     Then I softly see field "Status" as "Under Revision"
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     And I click toggle button to select "All Competitive Announcements"

@@ -890,6 +890,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click toggle button to select "Grants - All"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside table without waiting for record
+    And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1339,7 +1340,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" without waiting for record
     When I navigate to "Overview" sub tab
-    Then I see "Risk Level" image as "red.png"
+    Then I see "Overall Risk Level" image as "b-red.png"
 
   @59808 @historyOfRiskAssessmentWhenSendBacktoOwnerbyPM @deepika
   Scenario: To Validate field history update post Risk Assessment is send back to owner by program approver.
@@ -1927,6 +1928,7 @@ Feature: Validate all scenarios in the Risk Assessment
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    And I click toggle button to select "Subaward Risk Assessments - All"
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" without waiting for record
     When I navigate to "Responsibilities" sub tab
@@ -3404,7 +3406,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I refresh the page
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
-      | {SavedValue:fundingAccount} | 1000        |
+      | {SavedValue:fundingAccount1} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
