@@ -453,7 +453,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Active" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     And I navigate to "Files" sub tab
-    Then I see top right button "Add" for "---orgRiskAssessment:-:orgriskSupportingDocTableId---" flex table
+   Then I softly can see top right button "Add" in flex table with id "---orgRiskAssessment:-:orgriskSupportingDocTableId---"
 
   @62304 @EffectiveDatAandExpirationDatesForOrgLRAIsInCraetedStatus @keerti
   Scenario: Valdiate the Effective Date and Expiration Dates are not populated when Org Risk Assessment is in Craeted Status
@@ -924,7 +924,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I navigate to "Subawards" sub tab
-    And I click on "Start" icon for "Created" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
+    And I click on "Start" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     And I get the "EGMS ID"
     And I click on "Edit" in the page details
     When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
@@ -939,7 +939,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
       | Automation Permanent Focus Area | 0          | 3650     |
     When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
       | Funding Account             | Encumbrance |
-      | {SavedValue:fundingAccount} | 1000        |
+      | {SavedValue:fundingAccount1} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
       | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
