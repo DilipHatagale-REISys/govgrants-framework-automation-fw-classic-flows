@@ -5973,7 +5973,7 @@ Feature: Payment Request scenarios without background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---subAwardStandAlone:-:historyTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---subAwardStandAlone:-:historyTableId---"
 
-  @197433 @ValidatePaymentRequestGrantorNotifyemailshouldtriggerforadvancepaymentrequestfornewownerPM @sprint-12-US-226646 @vaibhav @reassignment
+  @199093 @ValidatePaymentRequestGrantorNotifyemailshouldtriggerforadvancepaymentrequestfornewownerPM @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate Payment Request Grantor Notify' email should trigger for advance payment request for new owner PM
     And I activated standalone subaward "Automation Runtime award" with properties "default"
     And I am on "SUBPORTAL" portal
