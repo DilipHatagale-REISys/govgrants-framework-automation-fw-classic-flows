@@ -50,4 +50,18 @@ public class RegistrationSteps {
         } else
             I.amPerforming().propertiesFileOperationsTo().saveValue(fieldKey, randomNumbers);
     }
+    @And("I navigate to reset password link")
+    public void iNavigateToResetPasswordPage() {
+        try {
+            registrationPage.iNavigateToResetPasswordLink();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @And("I click on mail with subject \"([^\"]*)\"$")
+    public void iClickOnMailWithSubject(String subject) {
+        registrationPage.iClickOnMailWithSubject(subject);
+    }
+
 }

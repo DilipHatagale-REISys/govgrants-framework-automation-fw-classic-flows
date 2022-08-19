@@ -212,8 +212,8 @@ public class ProgressReportPage extends GrantorProjectManager {
     }
 
     public boolean compareTwoFieldValues(String savedValue1, String compare, String savedValue2) {
-        int value1 = Double.valueOf(I.amPerforming().propertiesFileOperationsTo().getValue("BudgetRemaining2").replaceAll("[^0-9.]", "")).intValue();
-        int value2 = Double.valueOf(I.amPerforming().propertiesFileOperationsTo().getValue("BudgetRemaining1").replaceAll("[^0-9.]", "")).intValue();
+        int value1 = Double.valueOf(savedValue1.replaceAll("[^0-9.]", "")).intValue();
+        int value2 = Double.valueOf(savedValue2.replaceAll("[^0-9.]", "")).intValue();
         return compare.equalsIgnoreCase("Less Than") ? value1 < value2 : compare.equalsIgnoreCase("Greater Than") ? value1 > value2 : value1 == value2;
     }
 }

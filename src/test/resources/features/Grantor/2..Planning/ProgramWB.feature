@@ -3265,7 +3265,6 @@ Feature: Validate all scenarios for program
       | Name                     | Program | Post Award / Monitoring | Closeout |
       | {SavedValue:PM Username} | Step 2  | Step 1                  | Step 1   |
     And I click on "Submit For Approval" in the page details
-    And I halt execution
     Then I softly see field "Status" as "Submitted for Approval"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Planning" tab

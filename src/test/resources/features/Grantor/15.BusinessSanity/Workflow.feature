@@ -1164,3 +1164,73 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
+
+ @SubrecipientOrganizationRegistrationFlow
+  Scenario: Verify Subrecipient Organization Registration Process
+    Given I begin "Organization" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
+    When I enter value as "987654321273" into "Data Universal Number System (DUNS) Number" on old form
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
+    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    #    TODO: Extra Save step to be removed after bug-237206
+    And I click on "Save" in the page details
+    And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldPrimaryRepEmail__c"
+    When I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I pause execution for "5" seconds
+    Then I see the following messages in the page details contains:
+      | Confirmation Message |
+    And I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "PM" user
+    When I navigate to "Pending Subrecipient Registrations" content inside "Organization" subheader on left panel
+    When I perform quick search for "{SavedValue:Automation Runtime Organization}" in "{grantor_tableId:SubrecipientOrganization}" panel
+    When I click on "Start" icon for "{SavedValue:Automation Runtime Organization}" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
+    And I "Approve" in the approval decision
+    And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
+    And I pause execution for "190" seconds
+    And I refresh the page
+    And I click on mail with subject "Sandbox: Welcome to Recipient Portal"
+    And I navigate to reset password link
+    Then I set password for the user
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    Then I see the header is "Subrecipient Organization" in the page details
+
+  @IndividualUserRegistrationFlow
+  Scenario:Verify Individual User Registration Process
+    Given I begin "Individual" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    And I generate the random SSN and save as "SSN"
+    When I enter value as "{SavedValue:SSN}" into "Social Security Number (SSN)" on old form
+    And I generate the random EmailID and save as "uniqueEmailID"
+    When I enter value as "{SavedValue:uniqueEmailID}" into "Email" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I pause execution for "5" seconds
+    Then I see the following messages in the page details contains:
+      | Your registration request for access to EGMS has been completed and sent for government approval.Once approved, you will be sent another email from salesforce.com (technology platform provider) with your Username and Password shortly to log into the system. |
+    And I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Pending Subrecipient Registrations" content inside "Organization" subheader on left panel
+    When I perform quick search for "{SavedValue:uniqueEmailID}" in "{grantor_tableId:SubrecipientIndRegistration}" panel
+    When I click on "Start" icon for "{SavedValue:uniqueEmailID}" inside flex table with id "{grantor_tableId:SubrecipientIndRegistration}"
+    And I "Approve" in the approval decision
+    And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
+    And I pause execution for "190" seconds
+    And I refresh the page
+    And I click on mail with subject "Sandbox: Welcome to Recipient Portal"
+    And I navigate to reset password link
+    Then I set password for the user
+    And I navigate to "Home" tab
