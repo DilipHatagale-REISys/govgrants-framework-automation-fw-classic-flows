@@ -1171,7 +1171,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321273" into "Data Universal Number System (DUNS) Number" on old form
+    When I enter value as "987034579273" into "Unique Entity Identifier (UEI)" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
