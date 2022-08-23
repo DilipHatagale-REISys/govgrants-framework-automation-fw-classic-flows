@@ -1234,3 +1234,5 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to reset password link
     Then I set password for the user
     And I navigate to "Home" tab
+    When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
+    Then I see the header is "Subrecipient Organization" in the page details
