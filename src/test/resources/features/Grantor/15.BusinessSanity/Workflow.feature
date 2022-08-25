@@ -129,7 +129,7 @@ Feature: Validate all scenarios of every modules flow
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -1009,6 +1009,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Funding Decision Memo" in the page details
     Then I softly see field "Status" as "Created"
     And I get the "EGMS ID"
+    When I click on "Edit" in the page details
     When I enter values into fields
       | Value                       | Field                 |
       | AuGr                        | GrantCode__c          |
@@ -1235,4 +1236,4 @@ Feature: Validate all scenarios of every modules flow
     Then I set password for the user
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
-    Then I see the header is "Subrecipient Organization" in the page details
+    Then I see the header is "Individual Subrecipient" in the page details
