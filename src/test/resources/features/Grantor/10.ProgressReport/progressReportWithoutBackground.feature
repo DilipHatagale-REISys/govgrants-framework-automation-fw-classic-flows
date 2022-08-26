@@ -7915,6 +7915,98 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
+    And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Notification: Progress Report {SavedValue:progID} has beensubmitted.
+      """
+
+    Then I see the mail text is as follows :
+      """
+     Hello Automation PM1,
+     This email is to notify you that the Progress Report #{SavedValue:progID} of Grant #{SavedValue:GrantEGMSID} has been submitted by Automation and it is waiting for you to be reviewed.
+
+      Report Details:
+      Award ID: {SavedValue:AwardEGMSID}
+      Subrecipient Organization: SAN DIEGO ELECTRICAL TRAINING TRUST
+      Report Type: Program
+      Reporting Period Start Date: {Date:M/d/yyyy}
+      Reporting Period End Date: {Date:MM/d/yyyy::d+158}
+      Frequency: Annually
+
+      Log in to EGMS and click here to review the progress report.
+      Please do not reply to this system-generated email. You may contact GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+      Thank you,
+      The EGMS Team
+      """
+
+  @198104 @ValidateusershouldabletoseeemailinyopmailwhenPRPeerreviewiscompleted @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate user should able to see email in yopmail when PR Peer review is completed
+    And I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation EXE user"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                    | Actual | Reported Date |
+      | Automation Permanent KPI | 7      | 7             |
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
+    When I reassign task to "Automation EXE1"
+    When I perform quick search for "{SavedValue:progID}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    When I check "{SavedValue:progID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:progID}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly do not see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Responsibilities" sub tab
+    And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
+      | Reviewer Name            | Responsibility  | Description                 | Due Date |
+      | {SavedValue:PM Username} | Fiscal Reviewer | Automation Test Description | 7        |
+    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---progressReport:-:peerReviewersTableId---" without waiting for record
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Responsibilities" sub tab
+    When I click on "Enter Review" icon for "{SavedValue:EXE Username}" inside flex table with id "---progressReport:-:peerReviewersTableId---" without waiting for record
+    And I enter values into fields
+      | Value       | Field             |
+      | Cannot Rate | Rating__c         |
+      | Passed      | ReviewComments__c |
+    When I click modal button "Save"
+    And I click on submit review
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     And I pause execution for "10" seconds
     Then I refresh the page
@@ -7938,6 +8030,74 @@ Feature: Validate scenarios in Progress Report without background
 
       Log in to EGMS and click here to review the progress report.
       Please do not reply to this system-generated email. You may contact GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+      Thank you,
+      The EGMS Team
+      """
+
+  @198109 @ValidatechangingthetaskownershipofPRthentheallfuturetask&emailshouldgettothenewPRowner @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate changing the task ownership of PR then the all future task & email should get to the new PR owner
+    And I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation PO user"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                    | Actual | Reported Date |
+      | Automation Permanent KPI | 7      | 7             |
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
+    When I reassign task to "Automation PO1"
+    When I perform quick search for "{SavedValue:progID}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    When I check "{SavedValue:progID}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:progID}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly do not see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    And I checkout to yopmail with mailid "automationpo1@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Notification: Owner Reassignment Report
+      """
+    Then I see the mail text is as follows :
+      """
+      Hello,
+
+     The record(s) below have been reassigned from [Automation PO] to [Automation PO1] successfully. Please find the details below:
+
+      EGMS ID Assigned By Module Name
+      {SavedValue:progID} Automation PO Progress Report
+
+      Because these records have been reassigned, the original reviewer may have only view access to the record.
+
+      Log in to EGMS and click on EGMS IDs to access the assigned record.
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+
       Thank you,
       The EGMS Team
       """

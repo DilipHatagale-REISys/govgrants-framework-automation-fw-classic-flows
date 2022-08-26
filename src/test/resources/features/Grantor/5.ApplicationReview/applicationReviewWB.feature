@@ -14469,7 +14469,7 @@ Feature: Validate all scenarios in the Application Review without background
       | Announcement Name                                | Application Name                                 |
       | {SavedValue:Automation Runtime FDM Announcement} | {SavedValue:Automation Runtime FDM Announcement} |
 
- @vai @220315 @Validatereviewer2canreassignAppreviewtasktoreviewer1onlyafternegotiationcompleteifreviewer1alreadySentforreviewforsameform @sprint-12-US-226646 @vaibhav @reassignment
+  @220315 @Validatereviewer2canreassignAppreviewtasktoreviewer1onlyafternegotiationcompleteifreviewer1alreadySentforreviewforsameform @sprint-12-US-226646 @vaibhav @reassignment
   Scenario Outline: Validate reviewer 2 can reassign App review task to reviewer 1 only after negotiation complete if reviewer 1 already 'Sent for review' for same form
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -14707,14 +14707,14 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Complete Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Negotiation Request Status" as "Complete" in "Negotiation Request Details" pageblock
-   When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-   And I navigate to "Applications" tab
-   And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
-   When I click toggle button to select "Application Reviews - All"
-   And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-   When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
-   And I navigate to "Related Log" sub tab
-   When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    And I navigate to "Related Log" sub tab
+    When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly see value "Resubmitted" for title "Decision Status" against the value "{SavedValue:AppEGMSID}" inside table "---applicationReview:-:reSubmittedAppTableId---"
     Then I softly see value "Review Incomplete" for title "Status" inside table "---applicationReview:-:appreviewsTableId---"
     And I click on "Assign" icon for "Automation PM1" inside flex table with id "---applicationReview:-:reviewersTableId---"

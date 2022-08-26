@@ -503,7 +503,7 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to "Monitoring" tab
     When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     And I click toggle button to select "Progress Reports - Approved"
-    Then I softly see all values "Approved" under column "Status" inside flextable with id "---progressReport:-:internalProgressReportFlexTableId---"
+    Then I see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:internalProgressReportFlexTableId---"
 
   @SiteVisitFlow
   Scenario: Sitevisit Flow
@@ -595,6 +595,7 @@ Feature: Validate all scenarios of every modules flow
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    And I click toggle button to select "Site Visit Reports - All"
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside table
     And I click on "Accept And Close" in the page details
     Then I softly see status in Progress-bar is "Closed" and is "Green"
@@ -1027,7 +1028,7 @@ Feature: Validate all scenarios of every modules flow
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
     When I navigate to "Funding Decision Memo" sub tab
-    Then I softly see value "Approved" for title "Final Decision" inside table "---subAwardFromFDM:-:fdmNonRecommendedTableId---"
+    Then I softly see value "Approved" for title "Final Decision" inside table "---subAwardFromFDM:-:recommendedAppTableId---"
 
     Examples:
       | Announcement Name                                | Application Name                                 |

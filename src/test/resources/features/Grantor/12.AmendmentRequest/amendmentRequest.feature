@@ -661,7 +661,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
     When I navigate to "Management" sub tab
-    Then I cannot see row level action button "Edit" against "Record Id" in flex table with id "---amendment:-:amendmentRequestTableId---"
+    Then I can see row level action button "Edit" against "Record Id" in flex table with id "---amendment:-:amendmentRequestTableId---"
 
   @56851 @validateErrorMessageIfRequestedChangeInBudgetFieldIsnotEntered @mahadev
   Scenario: Verify error message if requested budget change is not entered

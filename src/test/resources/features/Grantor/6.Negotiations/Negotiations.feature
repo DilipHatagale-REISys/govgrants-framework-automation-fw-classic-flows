@@ -203,7 +203,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
     And I pause execution for "5" seconds
     When I click on "Submit to Grantor" in the page details
-    Then I softly cannot see top right button "Edit Negotiation" in page detail
+    Then I softly cannot see top right button "Edit" in page detail
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -215,7 +215,7 @@ Feature: Validate all scenarios in Negotiations
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    Then I softly cannot see row level action button "Initiate Negotiation" against "{SavedValue:Automation Runtime FDM Announcement}" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
+    Then I softly can see row level action button "Request Negotiation" against "{SavedValue:Automation Runtime FDM Announcement}" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
 
   @57218 @57219 @pendingTaskActionIconApplicantEditNegotiationRequest @deepika
   Scenario: Validate whether users will review the information and Applicant will be able to edit the respective application section(s) that the Agency mentioned
@@ -570,9 +570,9 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "Applications - All"
     When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---negotiation:-:negotiationAppReviewListTableId---" panel
-    Then I softly see value "{SavedValue:EGMSID}" for title "EGMS ID" against the value "Negotiated" inside table "---negotiation:-:negotiationAppReviewListTableId---"
+    Then I softly see value "{SavedValue:EGMSID}" for title "EGMS ID" against the value "Reviewed" inside table "---negotiation:-:negotiationAppReviewListTableId---"
     When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
-    Then I softly see status in Progress-bar is "Negotiated" and is "Green"
+    Then I softly see status in Progress-bar is "Reviewed" and is "Green"
 
   @58031 @applicationStatusReviewedAfterIntiationofNegotiation @deepika
   Scenario: Verify that on FDM View page when user click on Initiate Negotiation action then user is able to see status of application to “Reviewed”
@@ -990,8 +990,8 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     When I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
-    Then I softly can see top right button "Edit Negotiation" in page detail
-    When I click on "Edit Negotiation" in the page details
+    Then I softly can see top right button "Edit" in page detail
+    When I click on "Edit" in the page details
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"

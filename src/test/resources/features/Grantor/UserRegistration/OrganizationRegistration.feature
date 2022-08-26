@@ -326,18 +326,22 @@ Feature: Validate all registration related scenarios
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987654321" into "Data Universal Number System (DUNS) Number" on old form
-    When I enter value as "1234" into "Vendor ID" on old form
+    When I enter value as "987654321245" into "Unique Entity Identifier (UEI)" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
     And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
     When I click on "Save" in the page details
-    And I save the contact name as "Automation Runtime Organization"
+    #    TODO: Extra Save step to be removed after bug-237206
+    And I click on "Save" in the page details
     And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
-    And I enter value "AutomationInternal@yopmail.com" into field "fieldPrimaryRepEmail__c"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldPrimaryRepEmail__c"
     When I click on "Save" in the page details
     When I click on "Submit" in the page details
+    And I pause execution for "5" seconds
+    Then I see the following messages in the page details contains:
+      | Confirmation Message |
     And I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Pending Subrecipient Registrations" content inside "Organization" subheader on left panel
@@ -769,3 +773,63 @@ Feature: Validate all registration related scenarios
     And I select value "Automation EXE1" into field "s2id_autogen3"
     When I perform quick search for "{SavedValue:UserFullName}" in "---program:-:adminTaskReassignmentTableId---" panel
     Then I softly do not see value "Review Individual User Registration" for title "Task Type" inside table "---program:-:adminTaskReassignmentTableId---"
+
+  @223047 @ValidateAdminusershouldnotabletoseethereassigntaskofParent/ChildrelationshipApprovalfromAlltasksAsaAdmin @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate Admin user should not able to see the reassign task of Parent/Child relationship Approval from All tasks As a Admin
+    Given I begin "Organization" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
+    When I enter value as "736518924561" into "Unique Entity Identifier (UEI)" on old form
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
+    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    #    TODO: Extra Save step to be removed after bug-237206
+    And I click on "Save" in the page details
+    And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldPrimaryRepEmail__c"
+    When I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I pause execution for "5" seconds
+    Then I see the following messages in the page details contains:
+      | Confirmation Message |
+    And I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "PM" user
+    When I navigate to "Pending Subrecipient Registrations" content inside "Organization" subheader on left panel
+    When I perform quick search for "{SavedValue:Automation Runtime Organization}" in "{grantor_tableId:SubrecipientOrganization}" panel
+    When I click on "Start" icon for "{SavedValue:Automation Runtime Organization}" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
+    And I "Approve" in the approval decision
+    And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
+    And I pause execution for "190" seconds
+    And I refresh the page
+    And I click on mail with subject "Sandbox: Welcome to Recipient Portal"
+    And I navigate to reset password link
+    Then I set password for the user
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    And I click on "Associate Parent Organization" in the page details
+    And I enter "parentOrg" values from "UserRegistration_Field_Values.xlsx"
+    When I upload attachment "Announcement_Field_Values.xlsx" of type "Program Artifacts"
+    When I click on "Save" in the page details
+   When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+   And I navigate to "Home" tab
+   When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+   And I perform quick search for "{SavedValue:Automation Runtime Organization}" in "---negotiation:-:homePendingTasks---" panel
+   And I click on "Start" icon for "{SavedValue:Automation Runtime Organization}" inside flex table with id "---negotiation:-:homePendingTasks---"
+   And I "Approve" in the approval decision
+   When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+   When I navigate to "Home" tab
+   And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+   When I perform quick search for "{SavedValue:Automation Runtime Organization}" in "---closeout:-:homePendingTaskTableId---" panel
+   Then I softly see value "{SavedValue:Automation Runtime Organization}" for title "EGMS ID" inside table "{grantee_tableId:SubrecipientOrganization}"
+   When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+   And I navigate to "Home" tab
+   When I navigate to "All Tasks as Admin" content inside "Reassign" subheader on left panel
+   And I select value "Automation PM" into field "s2id_autogen1"
+   And I select value "Automation PM1" into field "s2id_autogen3"
+   When I perform quick search for "{SavedValue:Automation Runtime Organization}" in "---program:-:adminTaskReassignmentTableId---" panel
+   Then I softly do not see value "{SavedValue:Automation Runtime Organization}" for title "EGMS ID" inside table "---program:-:adminTaskReassignmentTableId---"
+   Then I softly do not see value "Review Parent/Child Organization Relationship Request" for title "Task Type" inside table "---program:-:adminTaskReassignmentTableId---"

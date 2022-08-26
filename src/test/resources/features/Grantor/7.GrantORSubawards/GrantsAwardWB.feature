@@ -6261,3 +6261,90 @@ Feature: Validate all scenarios of grants and award without background
     When I reassign task to "Automation PM1"
     When I perform quick search for "{SavedValue:AwardEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "Initial Acceptance of Subaward by Subrecipient" for title "Task Type" inside table "---program:-:grantorTaskReassignTableId---"
+
+ @196603 @Validateafterownershipgrantrecordischangedthenemailshouldbereachedtotheyopmail @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate after ownership of a grant record is changed then email should be reached to the yopmail
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    And I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    And I Click on "Reassign Records" icon for "Grant" without tableid
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:grantSourceOwnerTableId---" panel
+    When I check "{SavedValue:GrantEGMSID}" boxes in flex table with id "---subAwardStandAlone:-:grantSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---subAwardStandAlone:-:grantSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:grantTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:GrantEGMSID}" for title "Grant ID" inside table "---subAwardStandAlone:-:grantTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Notification: Owner Reassignment Report
+      """
+
+    Then I see the mail text is as follows :
+      """
+      Hello,
+
+     The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+
+      EGMS ID Assigned By Module Name
+      {SavedValue:GrantEGMSID} Automation ADMIN Grant
+
+      Because these records have been reassigned, the original reviewer may have only view access to the record.
+
+      Log in to EGMS and click on EGMS IDs to access the assigned record.
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+
+      Thank you,
+      The EGMS Team
+      """
+    Given I am on "INTERNAL" portal
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Notification: Owner Reassignment Report
+      """
+
+    Then I see the mail text is as follows :
+      """
+      Hello,
+
+     The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+
+      EGMS ID Assigned By Module Name
+      {SavedValue:GrantEGMSID} Automation ADMIN Grant
+
+      Because these records have been reassigned, the original reviewer may have only view access to the record.
+
+      Log in to EGMS and click on EGMS IDs to access the assigned record.
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+
+      Thank you,
+      The EGMS Team
+      """

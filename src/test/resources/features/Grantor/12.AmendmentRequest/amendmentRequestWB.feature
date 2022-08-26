@@ -22549,3 +22549,281 @@ Feature: Amendment Request scenarios without background
     Then I softly see value "NA" for title "Desk Review" against the value "Automation FD" inside table "---subAwardStandAlone:-:awardApproversTableId---"
     Then I softly see value "NA" for title "Site Visit" against the value "Automation FD" inside table "---subAwardStandAlone:-:awardApproversTableId---"
     Then I softly see value "NA" for title "Closeout" against the value "Automation FD" inside table "---subAwardStandAlone:-:awardApproversTableId---"
+
+  @200106 @ValidateEmailshouldbetriggeredwhenownershipischangeofBPCARatS/Rside @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate Email should be triggered when ownership is change of BPC  AR  at S/R side
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---amendment:-:recipientsSubawardTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---amendment:-:recipientsSubawardTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:recipientAwardAmendmentRequestTableId---"
+    When I enter "SubRecipientBPC_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "budgetPChangeId"
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
+    When I click on "Edit" in the page details
+    And I enter "SubRecipientBPC_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
+    And I click on "Save" in the page details
+    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM1" into field "s2id_autogen1"
+    And I select value "Automation PM" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM1" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Amendment Request"
+    And I Click on "Reassign Records" icon for "Amendment Request" without tableid
+    Then I softly see "Amendment Requests Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentSourceOwnerTableId---"
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentSourceOwnerTableId---" panel
+    When I check "{SavedValue:budgetPChangeId}" boxes in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---amendment:-:amendmentSourceOwnerTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:budgetPChangeId}" in "---amendment:-:amendmentTargetOwnerTableId---" panel
+    Then I see value "{SavedValue:budgetPChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Notification: Owner Reassignment Report
+      """
+    Then I see the mail text is as follows :
+      """
+      Hello,
+
+     The record(s) below have been reassigned from [Automation PM1] to [Automation PM] successfully. Please find the details below:
+
+      EGMS ID Assigned By Module Name
+      {SavedValue:budgetPChangeId} Automation ADMIN Amendment Request
+
+      Because these records have been reassigned, the original reviewer may have only view access to the record.
+
+      Log in to EGMS and click on EGMS IDs to access the assigned record.
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+
+      Thank you,
+      The EGMS Team
+      """
+    Given I am on "INTERNAL" portal
+    And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Notification: Owner Reassignment Report
+      """
+    Then I see the mail text is as follows :
+      """
+      Hello,
+
+     The record(s) below have been reassigned from [Automation PM1] to [Automation PM] successfully. Please find the details below:
+
+      EGMS ID Assigned By Module Name
+      {SavedValue:budgetPChangeId} Automation ADMIN Amendment Request
+
+      Because these records have been reassigned, the original reviewer may have only view access to the record.
+
+      Log in to EGMS and click on EGMS IDs to access the assigned record.
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+
+      Thank you,
+      The EGMS Team
+      """
+    Given I am on "INTERNAL" portal
+    And I checkout to yopmail with mailid "govgrantsautomation@yopmail.com"
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Notification: Owner Reassignment Report
+      """
+    Then I see the mail text is as follows :
+      """
+     Hello,
+
+     The record(s) below have been reassigned from [Automation PM1] to [Automation PM] successfully. Please find the details below:
+
+      EGMS ID Assigned By Module Name
+      {SavedValue:budgetPChangeId} Automation ADMIN Amendment Request
+
+      Because these records have been reassigned, the original reviewer may have only view access to the record.
+
+      Log in to EGMS and click on EGMS IDs to access the assigned record.
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+
+      Thank you,
+      The EGMS Team
+      """
+
+  @200515 @ValidateafterchangingthetaskownershipofcombinationSOW/BPCchangebyS/Rsidethenemailshouldtriggeredto&newOwner @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate after changing the task ownership of combination SOW/BPC  change by S/R side then email should triggered to old & new Owner
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award}" in "---amendment:-:recipientActiveGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---amendment:-:recipientActiveGrantsTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award}" inside flex table with id "---amendment:-:recipientAwardsTableId---" without waiting for record
+    And I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---amendment:-:recipientAwardAmendmentRequestTableId---"
+    When I enter "Subrecipient_BPCSOW_Creation" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "budgetSOWChangeId"
+    And I get the updated budget end date by offset "1" for award "{SavedValue:Automation Runtime Award}"
+    When I click on "Edit" in the page details
+    And I enter "SubRecipientBPC_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I enter value "4000" into field "fieldNewBudgetPeriodEndDate__c"
+    And I enter "Subrecipient_SOW_Edition" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "New Budget Period End Date" as "updatedBudgetPeriodDate"
+    Then I see status in Progress-bar is "Created" and is "Green"
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
+    When I reassign task to "Automation PM"
+    When I perform quick search for "{SavedValue:budgetSOWChangeId}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I see value "{SavedValue:budgetSOWChangeId}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    Then I see value "Not Started" for title "Status" against the value "{SavedValue:budgetSOWChangeId}" inside table "---program:-:grantorTaskReassignTableId---"
+    When I check "{SavedValue:budgetSOWChangeId}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:budgetSOWChangeId}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly do not see value "{SavedValue:budgetSOWChangeId}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:budgetSOWChangeId}" in "---amendment:-:pendingTaskTableId---" panel
+    Then I softly see value "{SavedValue:budgetSOWChangeId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
+    And I click on "Start" icon for "{SavedValue:budgetSOWChangeId}" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
+    Then I softly can see top right button "Edit" in page detail
+    Then I softly can see top right button "Send Back to Subrecipient" in page detail
+    Then I softly can see top right button "Submit for Approval" in page detail
+    When I navigate to "Overview" sub tab
+    Then I can see top right button "Associate" in flex table with id "---amendment:-:goalsAndObjectivesTableId---"
+    Then I can see top right button "Associate" in flex table with id "---amendment:-:keyOutcomesTableId---"
+    Then I softly can see row level action button "Edit" against "Automation Permanent KPI" in flex table with id "---amendment:-:keyOutcomesTableId---"
+    When I navigate to "Responsibilities" sub tab
+    Then I softly can see top right button "New" in flex table with id "---amendment:-:fundingChangeApproversTableId---"
+    Then I softly see value "Automation SPI3" for title "Name" inside table "---amendment:-:amendmentOwnerTableId---"
+    When I navigate to "Files" sub tab
+    Then I can see top right button "Add Files" in flex table with id "---amendment:-:amendmentAddFilesTableId---"
+    Then I can see top right button "Add" in flex table with id "---amendment:-:amendmentAddNotesTableId---"
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Notification: Owner Reassignment Report
+      """
+
+    Then I see the mail text is as follows :
+      """
+      Hello,
+
+     The record(s) below have been reassigned from [Automation PM1] to [Automation PM] successfully. Please find the details below:
+
+      EGMS ID Assigned By Module Name
+      {SavedValue:budgetSOWChangeId} Automation PM1 Amendment Request
+
+      Because these records have been reassigned, the original reviewer may have only view access to the record.
+
+      Log in to EGMS and click on EGMS IDs to access the assigned record.
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+
+      Thank you,
+      The EGMS Team
+      """
+
+ @vai @200318 @ValidateBudgetRedirectionemailshouldbegeneratedfornewownerafterReviewamendmentrequesttaskownershipreassigntonewowner @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate Budget Redirection email should be generated for new owner after 'Review amendment request' task ownership reassign to new owner
+    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    Given I navigate to "Management" sub tab
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:recipientAwardAmendmentRequestTableId---"
+    When I enter "Subrecipient_BRedirection" values from "AmendmentRequest_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    Then I softly see status in Progress-bar is "Created" and is "green"
+    And I enter value "Automation Justification" into field "fieldJustification__c"
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "BudgetRedirectId"
+    And I click on "Submit to Grantor" in the page details
+    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:BudgetRedirectId}" in "---amendment:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:BudgetRedirectId}" for title "EGMS ID" inside table "---amendment:-:pendingTaskTableId---"
+    Then I see value "Review Amendment Request" for title "Task Type" inside table "---amendment:-:pendingTaskTableId---"
+    And I navigate to "Home" tab
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
+    When I reassign task to "Automation PM1"
+    When I perform quick search for "{SavedValue:BudgetRedirectId}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I see value "{SavedValue:BudgetRedirectId}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    Then I softly see value "Review Amendment Request" for title "Task Type" inside table "---program:-:grantorTaskReassignTableId---"
+    Then I see value "Not Started" for title "Status" against the value "{SavedValue:BudgetRedirectId}" inside table "---program:-:grantorTaskReassignTableId---"
+    When I check "{SavedValue:BudgetRedirectId}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:BudgetRedirectId}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly do not see value "{SavedValue:BudgetRedirectId}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Notification: Owner Reassignment Report
+      """
+
+    Then I see the mail text is as follows :
+      """
+      Hello,
+
+     The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+
+      EGMS ID Assigned By Module Name
+      {SavedValue:BudgetRedirectId} Automation PM Amendment Request
+
+      Because these records have been reassigned, the original reviewer may have only view access to the record.
+
+      Log in to EGMS and click on EGMS IDs to access the assigned record.
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+
+      Thank you,
+      The EGMS Team
+      """
