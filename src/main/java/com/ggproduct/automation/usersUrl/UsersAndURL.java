@@ -90,9 +90,7 @@ public class UsersAndURL implements UsersController {
     private String getTest8EnvironmentPassword(String userLevel) {
         String password;
         switch (userLevel.toUpperCase()) {
-            case "ADMIN":
-                password = "Salesforce@2025";
-                break;
+
             default:
                 password = "Salesforce@2024";
         }
@@ -178,7 +176,7 @@ public class UsersAndURL implements UsersController {
 
     private String getTest8EnvironmentUser(String userLevel) {
         Map<String, String> username = new HashMap<>();
-        username.put("ADMIN", "krishnacr7@reisystems.in");
+        username.put("ADMIN", "govgrantsautomation@yopmail.com");
         username.put("ADMIN1", "manu.admin@ggp.test8");
         username.put("EXE", "test@gmaildemo.com.atm");
         username.put("PM", "donald_pm@ggp.test7.atm");

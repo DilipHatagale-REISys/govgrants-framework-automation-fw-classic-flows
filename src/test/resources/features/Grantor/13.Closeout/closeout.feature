@@ -388,10 +388,10 @@ Feature: Validate all scenarios in Closeout
     Then I softly see that "Automation Test Description" has been added in flextable with Id "---closeout:-:closeoutPeerReviewTableId---"
     #89223
     When I navigate to "Files" sub tab
-    When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
-      | Description                 | Required  | Status |
-      | Automation test description | Mandatory | Active |
-    Then I softly see value "Automation test description" for title "Description" inside table "CloseoutChecklistsFlexToggle"
+#    When I enter the following values into flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" by clicking "Add" :
+#      | Description                 | Required  | Status |
+#      | Automation test description | Mandatory | Active |
+    Then I softly see value "Automation" for title "Description" inside table "CloseoutChecklistsFlexToggle"
     #89224
     And I click on "Attach" icon for "Automation test description" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" with wait for record
     Then I softly see "Upload Document" opens in overLay window

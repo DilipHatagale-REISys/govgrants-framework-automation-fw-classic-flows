@@ -129,7 +129,7 @@ Feature: Validate all scenarios of every modules flow
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---announcement:-:annoucementContactTableId---"
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
-    When I click "Associate" after selection of "Automation Permanent Objective" in the table "---announcement:-:goalsTableId---"
+    When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement | FDM    | Award  | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
@@ -503,7 +503,7 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to "Monitoring" tab
     When I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     And I click toggle button to select "Progress Reports - Approved"
-    Then I softly see all values "Approved" under column "Status" inside flextable with id "---progressReport:-:internalProgressReportFlexTableId---"
+    Then I see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:internalProgressReportFlexTableId---"
 
   @SiteVisitFlow
   Scenario: Sitevisit Flow
@@ -595,6 +595,7 @@ Feature: Validate all scenarios of every modules flow
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    And I click toggle button to select "Site Visit Reports - All"
     And I click on "View" icon for "{SavedValue:Automation Runtime Award Site Visit}" inside table
     And I click on "Accept And Close" in the page details
     Then I softly see status in Progress-bar is "Closed" and is "Green"
@@ -1009,6 +1010,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Funding Decision Memo" in the page details
     Then I softly see field "Status" as "Created"
     And I get the "EGMS ID"
+    When I click on "Edit" in the page details
     When I enter values into fields
       | Value                       | Field                 |
       | AuGr                        | GrantCode__c          |
@@ -1026,7 +1028,7 @@ Feature: Validate all scenarios of every modules flow
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
     When I navigate to "Funding Decision Memo" sub tab
-    Then I softly see value "Approved" for title "Final Decision" inside table "---subAwardFromFDM:-:fdmNonRecommendedTableId---"
+    Then I softly see value "Approved" for title "Final Decision" inside table "---subAwardFromFDM:-:recommendedAppTableId---"
 
     Examples:
       | Announcement Name                                | Application Name                                 |
@@ -1164,3 +1166,75 @@ Feature: Validate all scenarios of every modules flow
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
+
+ @SubrecipientOrganizationRegistrationFlow
+  Scenario: Verify Subrecipient Organization Registration Process
+    Given I begin "Organization" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
+    When I enter value as "987034579273" into "Unique Entity Identifier (UEI)" on old form
+    When I click on "Save and Continue" in the page details
+    And I navigate to "Organization Profile" sub tab
+    And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    #    TODO: Extra Save step to be removed after bug-237206
+    And I click on "Save" in the page details
+    And I enter "AuthorizedRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldPrimaryRepEmail__c"
+    When I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I pause execution for "5" seconds
+    Then I see the following messages in the page details contains:
+      | Confirmation Message |
+    And I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "PM" user
+    When I navigate to "Pending Subrecipient Registrations" content inside "Organization" subheader on left panel
+    When I perform quick search for "{SavedValue:Automation Runtime Organization}" in "{grantor_tableId:SubrecipientOrganization}" panel
+    When I click on "Start" icon for "{SavedValue:Automation Runtime Organization}" inside flex table with id "{grantor_tableId:SubrecipientOrganization}"
+    And I "Approve" in the approval decision
+    And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
+    And I pause execution for "190" seconds
+    And I refresh the page
+    And I click on mail with subject "Sandbox: Welcome to Recipient Portal"
+    And I navigate to reset password link
+    Then I set password for the user
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    Then I see the header is "Subrecipient Organization" in the page details
+
+  @IndividualUserRegistrationFlow
+  Scenario:Verify Individual User Registration Process
+    Given I begin "Individual" registration
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    And I generate the random SSN and save as "SSN"
+    When I enter value as "{SavedValue:SSN}" into "Social Security Number (SSN)" on old form
+    And I generate the random EmailID and save as "uniqueEmailID"
+    When I enter value as "{SavedValue:uniqueEmailID}" into "Email" on old form
+    When I enter value as "1234" into "Vendor ID" on old form
+    When I click on "Save and Continue" in the page details
+    And I enter "PrimaryRepresentativeDetails" values from "UserRegistration_Field_Values.xlsx"
+    And I enter value "Yes" into field "fieldSameAsOrganizationAddress__c"
+    When I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I pause execution for "5" seconds
+    Then I see the following messages in the page details contains:
+      | Your registration request for access to EGMS has been completed and sent for government approval.Once approved, you will be sent another email from salesforce.com (technology platform provider) with your Username and Password shortly to log into the system. |
+    And I am on "INTERNAL" portal
+    And I login to "As a Grantor" app as "dynamicUser" user
+    When I navigate to "Pending Subrecipient Registrations" content inside "Organization" subheader on left panel
+    When I perform quick search for "{SavedValue:uniqueEmailID}" in "{grantor_tableId:SubrecipientIndRegistration}" panel
+    When I click on "Start" icon for "{SavedValue:uniqueEmailID}" inside flex table with id "{grantor_tableId:SubrecipientIndRegistration}"
+    And I "Approve" in the approval decision
+    And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
+    And I pause execution for "190" seconds
+    And I refresh the page
+    And I click on mail with subject "Sandbox: Welcome to Recipient Portal"
+    And I navigate to reset password link
+    Then I set password for the user
+    And I navigate to "Home" tab
+    When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
+    Then I see the header is "Individual Subrecipient" in the page details

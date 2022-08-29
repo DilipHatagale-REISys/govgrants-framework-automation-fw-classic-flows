@@ -97,4 +97,35 @@ public class RegistrationPage extends ProjectManager {
         I.amPerforming().textInput().in(confirmNewPassword, passwordText);
         I.amPerforming().click().on(changePasswordBtn);
     }
+
+    /**
+     * Method to navigate to the reset password link from an email
+     *
+     * @author komal.mukhekar
+     */
+    public void iNavigateToResetPasswordLink() {
+        String setPasswordLink = "https" + I.amPerforming().actionToGet().text(By.xpath("//div[@id='mail']")).split("https")[1].split("\\s")[0].trim();
+        I.amPerforming().browserOperationsTo().navigateToUrl(setPasswordLink);
+    }
+
+    /**
+     * Method to navigate to an email with given subject
+     *
+     * @author komal.mukhekar
+     */
+    public void iClickOnMailWithSubject(String subject) {
+        By mailSubject = By.xpath("//div[@class='m']//div[@class='lms' and text()='" + subject + "']");
+        try {
+            I.amPerforming().click().on(mailSubject);
+        } catch (Exception e) {
+            for (int i = 0; i < 15; i++) {
+                I.amPerforming().waitFor().makeThreadSleep(5000);
+                I.amPerforming().click().on(By.xpath("//button[@id='refresh']"));
+                if (I.amPerforming().checkToSee().isElementDisplayed(mailSubject)) {
+                    I.amPerforming().click().on(mailSubject);
+                    break;
+                }
+            }
+        }
+    }
 }

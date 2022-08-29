@@ -780,7 +780,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Back" in the page details
     When I get the "EGMS ID"
     Given I click on "Submit to Grantor" in the page details
-    Given I re-login to "As a Grantor" app as "SARAH PM" user on "INTERNAL" portal
+    Given I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
     And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
     When I click toggle button to select "Progress Reports - All"
@@ -996,8 +996,8 @@ Feature: Validate all scenarios in Progress Report
     Then I softly see "No Records Found" inside flex table with id "---progressreport:-:progressReportChecklistsTableId---"
     And I navigate to "Performance" sub tab
     When I click on "Edit" icon for "Automation Permanent KPI" inside flex table with id "---progressReport:-:kpiTableId---"
-    Then I softly see field "PreviousActual__c" is not editable
-    Then I softly see field "PreviousDate__c" is not editable
+    Then I softly see field "Actual__c" is not editable
+    Then I softly see field "ActualDate__c" is not editable
 
   @59829 @validateSRUserCannotEditKPIOnceSubmittedToGrantor @mahadev
   Scenario: Validate SR user is not able to update the KPI actuals field value once Progress report is Submitted to Grantor
@@ -1315,7 +1315,7 @@ Feature: Validate all scenarios in Progress Report
     When I navigate to "Management" sub tab
     And I click on "Edit" icon for "Created" inside flex table with id "---progressReport:-:recipientGrantProgressReportTableId---"
     And I navigate to "Performance" sub tab
-    Then I softly see value "200" for title "Previous Value" against the value "Automation Permanent KPI" inside table "---progressReport:-:kpiTableId---"
+    Then I softly see value "200.00" for title "Previous Value" against the value "Automation Permanent KPI" inside table "---progressReport:-:kpiTableId---"
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
       | Title                    | Actual | Reported Date |
       | Automation Permanent KPI | 10     | 0             |
@@ -1956,9 +1956,11 @@ Feature: Validate all scenarios in Progress Report
   Scenario: Validate Objectives table at Performance Tab on Progress report should not be editable at Award owner end when Progress report status is Submitted to Grantor. | Validate SR User is able to take snapshot of the Progress report when it is submitted to Grantor on active subaward
   Validate SR User can View the Objectives associated at award on progress report.
     When I navigate to "Performance" sub tab
-    And I click on "View" icon for "Automation Permanent Objective" inside table
+    And I save the value from row "1" for column name "EGMS ID" as "ObjectiveEGMSID" from flex table "---progressReport:-:objectivesTableId---"
+    And I click on hyperlink containing value "{SavedValue:ObjectiveEGMSID}"
     And I navigate to "Overview" sub tab
     Then I softly see field "Title" as "Automation Permanent Objective"
+    And I close the tab
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details

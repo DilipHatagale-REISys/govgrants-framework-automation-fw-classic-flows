@@ -45,9 +45,20 @@ public class RegistrationSteps {
         if (usage.equalsIgnoreCase("EmailID"))
             I.amPerforming().propertiesFileOperationsTo().saveValue(fieldKey, ("AutomationRuntime" + randomNumbers + "@yopmail.com"));
         else if (usage.equalsIgnoreCase("EIN") || usage.equalsIgnoreCase("SSN")) {
-            String randomEmail =  randomNumbers + randomNumbers.substring(0, 4);
-            I.amPerforming().propertiesFileOperationsTo().saveValue(fieldKey,randomEmail);
+            String randomEmail = randomNumbers + randomNumbers.substring(0, 4);
+            I.amPerforming().propertiesFileOperationsTo().saveValue(fieldKey, randomEmail);
         } else
             I.amPerforming().propertiesFileOperationsTo().saveValue(fieldKey, randomNumbers);
     }
+
+    @And("I navigate to reset password link")
+    public void iNavigateToResetPasswordPage() {
+        registrationPage.iNavigateToResetPasswordLink();
+    }
+
+    @And("I click on mail with subject \"([^\"]*)\"$")
+    public void iClickOnMailWithSubject(String subject) {
+        registrationPage.iClickOnMailWithSubject(subject);
+    }
+
 }

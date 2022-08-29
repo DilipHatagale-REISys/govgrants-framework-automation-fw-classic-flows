@@ -84,3 +84,4 @@ Ownership Reassignment
 Migration Disclaimer
 =======================
 1)After Migration We can use same email id while creating the user 
+2)Added @NotApplicable tag for few test cases that has not applicable please don't execute those test cases
