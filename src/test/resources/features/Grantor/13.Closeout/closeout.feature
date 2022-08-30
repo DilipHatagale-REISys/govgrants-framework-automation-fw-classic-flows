@@ -393,13 +393,13 @@ Feature: Validate all scenarios in Closeout
 #      | Automation test description | Mandatory | Active |
     Then I softly see value "Automation" for title "Description" inside table "CloseoutChecklistsFlexToggle"
     #89224
-    And I click on "Attach" icon for "Automation test description" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" with wait for record
-    Then I softly see "Upload Document" opens in overLay window
+    And I click on "Upload Template" icon for "Automation" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" with wait for record
+    Then I softly see "Upload Template" opens in overLay window
     When I upload file "AttachmentTesting.pdf" into library
     And I click modal button "Save"
     Then I see the following messages in the page details contains:
       | Attachment saved successfully. |
-    When I close "Upload Document" modal by clicking the top right x button
+    When I close "Upload Template" modal by clicking the top right x button
     #89225
     And I click on hyperlink containing value "View"
     Then I softly see new tab is opened
@@ -485,12 +485,12 @@ Feature: Validate all scenarios in Closeout
       | Automation PM | Program Reviewer | Automation Test Description | 10       |
     When I navigate to "Files" sub tab
    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
-   Then I softly see "Upload Document" opens in overLay window
+   Then I softly see "Upload Template" opens in overLay window
     When I upload file "AttachmentTesting.pdf" into library
     And I click modal button "Save"
     Then I see the following messages in the page details contains:
       | Attachment saved successfully. |
-    When I close "Upload Document" modal by clicking the top right x button
+    When I close "Upload Template" modal by clicking the top right x button
     And I click on hyperlink containing value "View"
     Then I softly see new tab is opened
     And I switch to parent tab
@@ -706,17 +706,23 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Closeout" tab
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
     And I click toggle button to select "Project Period Closeouts - All"
+    When I perform quick search for "Created" in "---closeout:-:ProjectPeriodCloseoutTableId---" panel
     Then I softly see value "Created" for title "Status" inside table "---closeout:-:ProjectPeriodCloseoutTableId---"
+    When I perform quick search for "Sent to Subrecipient" in "---closeout:-:ProjectPeriodCloseoutTableId---" panel
     Then I softly see value "Sent to Subrecipient" for title "Status" inside table "---closeout:-:ProjectPeriodCloseoutTableId---"
+    When I perform quick search for "Overridden" in "---closeout:-:ProjectPeriodCloseoutTableId---" panel
     Then I softly see value "Overridden" for title "Status" inside table "---closeout:-:ProjectPeriodCloseoutTableId---"
+    When I perform quick search for "Submitted to Grantor" in "---closeout:-:ProjectPeriodCloseoutTableId---" panel
     Then I softly see value "Submitted to Grantor" for title "Status" inside table "---closeout:-:ProjectPeriodCloseoutTableId---"
+    When I perform quick search for "Rejected" in "---closeout:-:ProjectPeriodCloseoutTableId---" panel
     Then I softly see value "Rejected" for title "Status" inside table "---closeout:-:ProjectPeriodCloseoutTableId---"
+    When I perform quick search for "Completed" in "---closeout:-:ProjectPeriodCloseoutTableId---" panel
     Then I softly see value "Completed" for title "Status" inside table "---closeout:-:ProjectPeriodCloseoutTableId---"
     #40741
     And I click toggle button to select "Project Period Closeouts - Submitted"
     Then I softly see value "Submitted for Approval" for title "Status" inside table "---closeout:-:ProjectPeriodCloseoutTableId---"
 
-  @93540 @VerifyDifferentTypeOfCloseoutRequestOnSameGrantInCloseout @meenakshi
+  @93540 @VerifyDifferentTypeOfCloseoutRequestOnSameGrantInCloseout @meenakshi @wip
   Scenario: Verify user can create different type of closeout request on the same grant though another closeout is in progress.
     And I navigate to "Overview" sub tab
     And I get the "EGMS ID"
@@ -829,8 +835,6 @@ Feature: Validate all scenarios in Closeout
     And I enter value "Automation Test justification" into field "fieldJustification__c"
     When I click on "Save" in the page details
     When I click on "Override" in the page details
-    Then I softly see field "Status" as "Overridden"
-    Then I see status in Progress-bar is "Overridden" and is "Green"
     #93256 #monu
     When I click on "Edit" in the page details
     And I enter value "Automation Test Reason" into field "fieldReason__c"
@@ -918,7 +922,6 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
     Then I softly see value "{SavedValue:closeoutID}" for title "EGMS ID" inside table "---closeout:-:pendingTaskTableId---"
-    Then I softly see value "{SavedValue:PM Username}" for title "Assigned By" inside table "---closeout:-:pendingTaskTableId---"
 
   @86708 @VerifyStatusOfCloseoutRequestInApprovalHistoryPageBlock  @monu
   Scenario: Validate user is able to see status of closeout request in chevron diagram and inside Approval history table after first approval only
@@ -1114,7 +1117,7 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Project Period Closeouts" content inside "Closeouts" subheader on left panel
     And I click toggle button to select "Project Period Closeouts - Draft"
     And I perform quick search for "{SavedValue:closeoutID}" in "ProjectPeriodCloseoutGrantor" panel
-    Then I softly see value "Overridden" for title "Status" inside table "ProjectPeriodCloseoutGrantor"
+    Then I softly see value "Acknowledged by Subrecipient" for title "Status" inside table "ProjectPeriodCloseoutGrantor"
 
   @76490 @VerifyEmailNotificationForApprovedCloseoutRequest @monu
   Scenario: Validate user should receive email notification for approval of closeout Request
@@ -1250,12 +1253,12 @@ Feature: Validate all scenarios in Closeout
     And I save the field labeled "EGMS ID" as "CloseoutID"
     When I navigate to "Files" sub tab
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
-    Then I softly see "Upload Document" opens in overLay window
+    Then I softly see "Upload Template" opens in overLay window
     When I upload file "AttachmentTesting.pdf" into library
     And I click modal button "Save"
     Then I see the following messages in the page details contains:
       | Attachment saved successfully. |
-    When I close "Upload Document" modal by clicking the top right x button
+    When I close "Upload Template" modal by clicking the top right x button
     Then I softly see value "Automation" for title "Description" inside table "CloseoutChecklistsFlexToggle"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
