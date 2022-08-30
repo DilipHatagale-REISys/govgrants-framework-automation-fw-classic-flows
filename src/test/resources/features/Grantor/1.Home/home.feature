@@ -155,6 +155,7 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:termsAndConditionsTableId---"
     And I enter "Creation" values from "TermsandConditions_Field_Values.xlsx"
     When I click modal button "Save"
+    When I save the field labeled "EGMS ID" as "EGMSID"
     When I close "Create Terms and Conditions" modal by clicking the top right x button
     When I perform quick search for "{SavedValue:EGMSID}" in "---home:-:termsAndConditionsTableId---" panel
     Then I softly see value "Active" for title "Status" against the value "{SavedValue:EGMSID}" inside table "---home:-:termsAndConditionsTableId---"
@@ -256,6 +257,8 @@ Feature: Validate all scenarios in the home tab
     And I pause execution for "3" seconds
     When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter "{SavedValue:uniqueEmailID}" values from "Email"
     When I click modal button "Save"
     #And I close "Create Subrecipient Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"

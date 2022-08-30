@@ -6209,3 +6209,94 @@ Feature: Payment Request scenarios without background
       Thank you,
       The EGMS Team
       """
+
+  @223443 @ValidatePaymentModulethetransfertaskownershipisfailincaseofanyreasonthenrelatedtaskofPaymentshouldnotbeupdated @sprint-12-US-226646 @vaibhav @reassignment
+  Scenario: Validate Payment Module the transfer task ownership is fail in case of any reason then related task of Payment should not be updated
+    And I activated standalone subaward "Automation Runtime award" with properties "default"
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    When I navigate to "Actuals" sub tab
+    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
+    When I enter value "Automation Runtime Payment Request" into field "Title__c"
+    And I click modal button "Save and Continue"
+    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "PayreqId"
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:budgetTableId---" by clicking "Edit" :
+      | Budget Category | Advance Requested This Action |
+      | Construction    | 10                            |
+    When I navigate to "Files" sub tab
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    When I click on "Submit to Grantor" in the page details
+    Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:PayreqId}" inside flex table with id "---paymentRequest:-:pendingTaskTableId---" without waiting for record
+    And I navigate to "Financials" sub tab
+    And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountsAdvTableId---" by clicking "Edit" :
+      | Funding Account             | Advance Requested This Action |
+      | {SavedValue:fundingAccount} | 10                            |
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name                     | Advance |
+      | {SavedValue:PM Username} | Step 1  |
+    When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
+      | Name           | Advance |
+      | Automation PM1 | Step 2  |
+    When I click on "Submit for Approval" in the page details
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "My Tasks" content inside "Reassign" subheader on left panel
+    When I reassign task to "Automation PM1"
+    When I perform quick search for "{SavedValue:PayreqId}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly see value "Review Payment Request" for title "Task Type" inside table "---program:-:grantorTaskReassignTableId---"
+    When I check "{SavedValue:PayreqId}" boxes in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:grantorTaskReassignTableId---"
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:PayreqId}" in "---program:-:grantorTaskReassignTableId---" panel
+    Then I softly see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
+    And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Task Reassignment Report
+      """
+    Then I see the mail text is as follows :
+      """
+      Hello,
+
+      The task(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+
+      EGMS ID Type Status Subject Assigned By Due Date
+
+
+      Because these tasks have been reassigned, the original reviewer may have lost edit access to the record. However, they may still view the record.
+      Login in to EGMS and click on EGMS IDs to access the assigned record.
+
+
+      The task(s) below were failed to reassigned as user was already assigned as a reviewer on this record.
+
+      EGMS ID Type Status Subject Assigned By Reason of Failure
+      {SavedValue:PayreqId} Approve Payment Request Not Started Approve Payment Request #{SavedValue:PayreqId} for Subaward #{SavedValue:AwardEGMSID} Automation PM You cannot specify the same user for multiple steps for Advance
+
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+      Thank you,
+
+      The EGMS Team.
+      """
