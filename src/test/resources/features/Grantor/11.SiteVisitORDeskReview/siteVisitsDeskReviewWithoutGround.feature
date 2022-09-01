@@ -8016,7 +8016,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
       The EGMS Team
       """
 
- @vai @223684 @ValidateSiteVisitpeerreviewershouldgetupdateinreviewertableandemailshouldgeneratedforbothreviewerafterpeerreviewtaskreassignment @sprint-12-US-226646 @vaibhav @reassignment
+  @223684 @ValidateSiteVisitpeerreviewershouldgetupdateinreviewertableandemailshouldgeneratedforbothreviewerafterpeerreviewtaskreassignment @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate Site Visit peer reviewer should get update in reviewer table and email should generated for both reviewer after peer review task reassignment
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
