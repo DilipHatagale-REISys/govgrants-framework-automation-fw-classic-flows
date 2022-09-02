@@ -24,7 +24,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    Then I softly see field "Status" as "Sent to Subrecipient" in "Negotiation Request Status" pageblock
+    Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Status" pageblock
     Then I softly see field "Status" as "Negotiation Initiated"
 
   @65295 @57033 @65310 @57034 @65356 @submitToGrantorbySubrecipientCompleteNegotiation @deepika @smoke

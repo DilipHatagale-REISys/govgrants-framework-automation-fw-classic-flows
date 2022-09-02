@@ -1631,7 +1631,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:awardApproversTableId---"
     And I enter value "{SavedValue:SPI3 Username}" into field "Name__c"
     And I pause execution for "4" seconds
-    Then I softly see "No matches found" inside auto search result
+    Then I softly do not see "{SavedValue:SPI3 Username}" inside auto search result
 
     Examples:
       | Award Name                                   | Grant Name                                   |
