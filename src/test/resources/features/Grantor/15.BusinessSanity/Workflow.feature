@@ -1205,6 +1205,7 @@ Feature: Validate all scenarios of every modules flow
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     Then I see the header is "Subrecipient Organization" in the page details
 
+
   @IndividualUserRegistrationFlow
   Scenario:Verify Individual User Registration Process
     Given I begin "Individual" registration
@@ -1238,3 +1239,20 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to "Home" tab
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     Then I see the header is "Individual Subrecipient" in the page details
+
+    @SMEreviewerFlow
+    Scenario:
+      Given I login to "As a Grantor" app as "PM" user
+      When I navigate to "Home" tab
+      And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+      When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
+      And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+      When I click modal button "Save"
+      And I save the contact name as "Automation Runtime Contact"
+      And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+      And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
+      And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
+      And I enter value "Test Automation Description" in email body
+      And I click "Send" button in modal
+      Then I see the following messages in the page details :
+        | Email Sent Successfully |

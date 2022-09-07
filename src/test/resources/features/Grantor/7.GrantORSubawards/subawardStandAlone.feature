@@ -245,6 +245,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - All"
     And I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
     When I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
     Then I softly can see top right button "Accept" in page detail
@@ -3573,6 +3574,7 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
     And I perform quick search for "<Award Name>" in "flexGridRecipientActiveGrants" panel
     Then I see value "Draft" for title "Status" inside table "flexGridRecipientActiveGrants"
     Examples:

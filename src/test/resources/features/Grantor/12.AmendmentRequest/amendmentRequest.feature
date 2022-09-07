@@ -2585,7 +2585,7 @@ Feature: Validate all scenarios in the Amendment Request
       | Grant Name                            |
       | {SavedValue:Automation Runtime Award} |
 
-  @62966 @97938 @97976 @97966 @97942 @97917 @98482 @SRUserCanViewRiskScoreForARACopiedToNewCreatedAndAmendmentTypeTermsAndConditionsAmendment @smoke
+  @62966 @97938 @97976 @97966 @97942 @97917 @98482 @SRUserCanViewRiskScoreForARACopiedToNewCreatedAndAmendmentTypeTermsAndConditionsAmendment @smoke @wip
   Scenario: Validate whether SR user can view the Risk Score which remained as is when Award Risk Assessment is copied to new created award when amendment type -  Terms and conditions amendment
     And I navigate to "Management" sub tab
     When I click on "View" icon for "Active" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---" without waiting for record
@@ -3422,6 +3422,9 @@ Feature: Validate all scenarios in the Amendment Request
       | Budget Category | Advance Requested This Action |
       | Construction    | 10                            |
     When I get the "EGMS ID"
+    When I navigate to "Files" sub tab
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
