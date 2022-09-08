@@ -1167,7 +1167,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
 
- @SubrecipientOrganizationRegistrationFlow
+  @SubrecipientOrganizationRegistrationFlow
   Scenario: Verify Subrecipient Organization Registration Process
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -1204,7 +1204,28 @@ Feature: Validate all scenarios of every modules flow
     And I navigate to "Home" tab
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     Then I see the header is "Subrecipient Organization" in the page details
-
+    #Create Secondary User
+    And I click on top right button "New" in flex table with id "---home:-:userContactsTableId---"
+    And I enter value "Secondary_User" into field "SubrecipientOrganization_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldPrimaryRepEmail__c"
+    When I click on "Save" in the page details
+    And I save the value from row "1" for column name "Full Name" as "Automation Runtime Contact" from flex table "---home:-:userContactsTableId---"
+    And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:userContactsTableId---" without waiting for record
+    And I click "Send" button in modal
+    Then I see the following messages in the page details :
+      | Email Sent Successfully |
+    And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
+    And I pause execution for "190" seconds
+    Then I refresh the page
+    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}"
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    And I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I pause execution for "5" seconds
+    Then I see the following messages in the page details contains:
+      | Confirmation Message |
 
   @IndividualUserRegistrationFlow
   Scenario:Verify Individual User Registration Process
@@ -1240,19 +1261,19 @@ Feature: Validate all scenarios of every modules flow
     When I navigate to "Individual Profile" content inside "Organization" subheader on left panel
     Then I see the header is "Individual Subrecipient" in the page details
 
-    @SMEreviewerFlow
-    Scenario:
-      Given I login to "As a Grantor" app as "PM" user
-      When I navigate to "Home" tab
-      And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-      When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
-      And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
-      When I click modal button "Save"
-      And I save the contact name as "Automation Runtime Contact"
-      And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
-      And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
-      And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
-      And I enter value "Test Automation Description" in email body
-      And I click "Send" button in modal
-      Then I see the following messages in the page details :
-        | Email Sent Successfully |
+  @SMEreviewerFlow
+  Scenario:
+    Given I login to "As a Grantor" app as "PM" user
+    When I navigate to "Home" tab
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
+    And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    When I click modal button "Save"
+    And I save the contact name as "Automation Runtime Contact"
+    And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
+    And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
+    And I enter value "Test Automation Description" in email body
+    And I click "Send" button in modal
+    Then I see the following messages in the page details :
+      | Email Sent Successfully |

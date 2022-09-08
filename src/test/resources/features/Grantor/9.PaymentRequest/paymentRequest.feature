@@ -398,7 +398,6 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     Then I softly see field "Acknowledgement" as "I Agree"
 
-
   @53971 @advancePaymentRequestSubmitToGrantorBySPA @mahadev
   Scenario Outline: verify that advance payment request should not be able to submit by SPA user
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal

@@ -143,8 +143,7 @@ Feature: Validate all common scenarios in the  Announcement tab
       | Description                 | Required  | Applies To | Status |
       | Automation test description | Mandatory | Award      | Active |
     When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---announcement:-:annChecklist---" without waiting for record
-    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
-    When I close "Upload Template" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     Then I see that "Active" has been added in flextable with Id "---announcement:-:annChecklist---"
 
   @52411 @announcementApproverSelectionFA
