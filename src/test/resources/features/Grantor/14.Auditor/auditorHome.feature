@@ -153,6 +153,10 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter values into fields
+      | Value                      | Field      |
+      | {SavedValue:uniqueEmailID} | fieldEmail |
     When I click modal button "Save"
     And I save the contact name as "Automation Runtime Contact"
     When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:internalContactTableId---" panel

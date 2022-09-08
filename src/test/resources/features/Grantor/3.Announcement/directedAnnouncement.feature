@@ -63,8 +63,8 @@ Feature: Validate all scenarios in the directed Announcement tab
 #    Then I softly see "No Records Found" inside flex table with id "---announcement:-:objectivesTableId---"
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
-    And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST1" in "---announcement:-:directedAddInviteApplicantTableId---" panel
-    Then I softly do not see value "SAN DIEGO ELECTRICAL TRAINING TRUST1" for title "Organization" inside table "---announcement:-:directedAddInviteApplicantTableId---"
+    And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---announcement:-:directedAddInviteApplicantTableId---" panel
+    Then I softly do not see value "SAN DIEGO ELECTRICAL TRAINING TRUST" for title "Organization" inside table "---announcement:-:directedAddInviteApplicantTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page

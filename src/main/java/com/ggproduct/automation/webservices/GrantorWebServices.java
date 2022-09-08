@@ -220,7 +220,7 @@ public class GrantorWebServices extends ProjectWebServices {
     }
 
     private void activateSubawardGetCall(JsonObject jsonObject, String awardName) {
-        String createAwardEndPoint = endPoint + "/services/apexrest/activateAwardFromGrant/v1";
+        String createAwardEndPoint = endPoint + "/services/apexrest/activateAwardFromGrantCopy/v1";
         Response response = I.amPerforming().restHttp().postCall(jsonObject, null,
                 createAwardEndPoint, "Authorization", "Bearer " + tokenString, null);
         response.prettyPrint();
@@ -234,7 +234,7 @@ public class GrantorWebServices extends ProjectWebServices {
     }
 
     private void publishAnnouncementPostCall(JsonObject jsonObject) {
-        String finalEndPoint = endPoint + "/services/apexrest/PublishAnnouncement";
+        String finalEndPoint = endPoint + "/services/apexrest/PublishAnnouncementCopy";
         Response response = I.amPerforming().restHttp().postCall(jsonObject, null,
                 finalEndPoint, "Authorization", "Bearer " + tokenString, null);
         response.prettyPrint();

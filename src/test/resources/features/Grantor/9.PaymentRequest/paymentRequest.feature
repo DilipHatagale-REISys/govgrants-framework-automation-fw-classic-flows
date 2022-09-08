@@ -398,8 +398,6 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     Then I softly see field "Acknowledgement" as "I Agree"
 
-
-
   @53971 @advancePaymentRequestSubmitToGrantorBySPA @mahadev
   Scenario Outline: verify that advance payment request should not be able to submit by SPA user
     When I re-login to "Grants Portal" app as "SPA" user on "SUBPORTAL" portal
@@ -436,9 +434,10 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
-    And I upload attachment "Attachment.pdf" of type "Invoice" from computer 
-   And I click on "Submit to Grantor" in the page details
+    And I upload attachment "Attachment.pdf" of type "Invoice" from computer
+    And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -479,8 +478,9 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
-    And I upload attachment "Attachment.pdf" of type "Invoice" from computer 
+    And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -524,6 +524,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -569,6 +570,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -615,6 +617,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -667,8 +670,9 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
-    And I upload attachment "Attachment.pdf" of type "Invoice" from computer 
+    And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     Then I softly cannot see top right button "Edit" in page detail
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -774,6 +778,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -849,6 +854,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -893,6 +899,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
@@ -908,6 +915,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     And I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
@@ -923,6 +931,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Save" in the page details
     When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---paymentRequest:-:recipientReimbursmentPaymentFilesTableId---"
@@ -945,6 +954,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -1029,6 +1039,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -1277,6 +1288,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -1327,6 +1339,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -1411,6 +1424,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -1532,6 +1546,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -1586,6 +1601,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -1621,6 +1637,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -1765,6 +1782,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -1814,6 +1832,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -1863,6 +1882,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -2069,6 +2089,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -2118,6 +2139,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -2165,6 +2187,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -2304,8 +2327,9 @@ Feature: Validate all scenarios in Payment Request
     When I navigate to "Files" sub tab
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
-    And I upload attachment "Attachment.pdf" of type "Invoice" from computer 
+    And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2460,6 +2484,8 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
+    And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -2521,9 +2547,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
-    When I upload file "Program_Field_Values.xlsx" into library
-    And I click modal button "Save"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2567,12 +2591,11 @@ Feature: Validate all scenarios in Payment Request
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
-    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
-    When I upload file "Program_Field_Values.xlsx" into library
-    And I click modal button "Save"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
-    And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
+    And I pause execution for "5" seconds
+    And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
+    And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2608,6 +2631,7 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -2658,10 +2682,7 @@ Feature: Validate all scenarios in Payment Request
     And I get the "EGMS ID"
     And I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
-    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
-    When I upload file "Program_Field_Values.xlsx" into library
-    And I click modal button "Save"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
@@ -2716,10 +2737,7 @@ Feature: Validate all scenarios in Payment Request
     And I get the "EGMS ID"
     And I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
-    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
-    When I upload file "Program_Field_Values.xlsx" into library
-    And I click modal button "Save"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab

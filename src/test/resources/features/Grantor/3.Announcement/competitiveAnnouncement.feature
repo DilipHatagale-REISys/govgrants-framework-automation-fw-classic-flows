@@ -420,7 +420,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Title | Contains | Automation Permanent KPI |
     Then I softly see value "Automation Permanent KPI" for title "Title" inside table "---announcement:-:kpiflextableid---"
     When I save the value from row "1" for column name "EGMS ID" as "KPI" from flex table "---announcement:-:kpiflextableid---"
-    Then I softly see value "KPI-0001" for title "EGMS ID" inside table "---announcement:-:kpiflextableid---"
+    Then I softly see value "{SavedValue:KPI}" for title "EGMS ID" inside table "---announcement:-:kpiflextableid---"
     When I click on "View" icon for "Automation Permanent KPI" inside flex table with id "---announcement:-:kpiflextableid---" without waiting for record
     Then I see the header is "Key Performance Indicator" in the page details
     Then I see the sub-header is "Automation Permanent KPI" in the page details
@@ -501,8 +501,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see status in Progress-bar is "Active" and is "green"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
-   When I click toggle button to select "All Competitive Announcements"
-   And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "Record id" in "---announcement:-:competitiveAnnouncementTableId---" panel
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     And I click on "Remove" icon for "NGO" inside flex table with id "---announcement:-:relatedAnnouncementTableId---" without waiting for record
     Then I softly do not see value "NGO" for title "Type" inside table "---announcement:-:relatedAnnouncementTableId---"
@@ -548,10 +548,12 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I refresh the page
     When I navigate to "Overview" sub tab
     And I click on top right button "New" in flex table with id "---announcement:-:contactTableId---"
-    When I enter value "xy" into field "fieldTitle"
-    When I enter value "TestFirst" into field "fieldFirstName"
-    When I enter value "TestLast" into field "fieldLastName"
-    When I enter value "abc@test.mail" into field "fieldEmail"
+    And I enter values into fields
+      | Value         | Field          |
+      | xy            | fieldTitle     |
+      | TestFirst     | fieldFirstName |
+      | TestLast      | fieldLastName  |
+      | abc@test.mail | fieldEmail     |
    # When I enter value "Primary" into field "fieldUserRole__c"
     And I click modal button "Save"
     And I refresh the page
@@ -566,6 +568,12 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Edit" icon for "Record id" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---" without waiting for record
     When I navigate to "Overview" sub tab
     And I click on top right button "New" in flex table with id "---announcement:-:contactTableId---"
+    And I enter values into fields
+      | Value         | Field          |
+      | ab            | fieldTitle     |
+      | SecondTest     | fieldFirstName |
+      | SecondLast      | fieldLastName  |
+      | xyz@test.mail | fieldEmail     |
     When I enter value "ab" into field "fieldTitle"
     When I enter value "SecondTest" into field "fieldFirstName"
     When I enter value "SecondLast" into field "fieldLastName"
