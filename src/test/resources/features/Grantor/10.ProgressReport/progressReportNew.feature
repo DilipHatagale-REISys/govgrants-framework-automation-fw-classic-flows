@@ -2404,7 +2404,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:amendedSubawardId}" inside flex table with id "---progressReport:-:recipientsRelatedSubAwardsTableId---" without waiting for record
     When I navigate to "Performance" sub tab
-    Then I softly see value "Sent Back to subrecipient" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
+    Then I softly see value "Sent Back to Subrecipient" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressreport:-:recipientAwardProgressReportTableId---"
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
@@ -2433,6 +2433,9 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
@@ -3595,7 +3598,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I click on "Amend Subaward" in the page details
     When I click on "Activate" in the page details
     When I navigate to "Terms" sub tab
-    Then I see value "Bi-Monthly" for title "Frequency" inside table "---progressreport:-:progressReportsScheduleId---"
+    Then I see value "Annually" for title "Frequency" inside table "---progressreport:-:progressReportsScheduleId---"
     Examples:
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
@@ -3957,7 +3960,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     When I navigate to "Files" sub tab
     And I click on top right button "Add Files" in flex table with id "---progressreport:-:AmendmentAttachmentTableId---"
     And I upload attachment "Attachment.pdf" of type "Terms and Conditions" from computer
-    Then I softly see "Attachment.pdf" has been added in "Amendment Files" flex table
+    Then I softly see "Attachment.pdf" has been added in "---progressreport:-:AmendmentAttachmentTableId---" flex table
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
@@ -4715,6 +4718,9 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
     And I click on "Back" in the page details
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab

@@ -446,6 +446,7 @@ Feature: Validate all scenarios in the Site Visit
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
+    And I click toggle button to select "Site Visit Reports - All"
     When I perform quick search for "Record Id" in "---sitevisits:-:manageSiteVisitTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Then I cannot see top right button "Notify" in page detail
@@ -643,6 +644,7 @@ Feature: Validate all scenarios in the Site Visit
     And I click on "Start" icon for "{SavedValue:siteVisitID}" inside flex table with id "---sitevisits:-:monitoringTabPhasePendingTasks---"
     And I "Reassign" to user "{SavedValue:EXE Username}" in the approval decision
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I logout
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
     And I pause execution for "180" seconds
     Then I refresh the page

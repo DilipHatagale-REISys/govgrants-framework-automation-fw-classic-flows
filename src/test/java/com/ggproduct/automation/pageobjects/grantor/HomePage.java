@@ -35,12 +35,12 @@ public class HomePage extends GrantorProjectManager {
     /**
      * handles yopmail portal emails notification
      */
-    public void performOperationOnYopmail(String emailId) {
+    public void NavigateToYopmailPortalForWithSubject(String emailId, String subject) {
         I.amPerforming().browserOperationsTo().navigateToUrl("http://www.yopmail.com/");
         I.amPerforming().textInput().toClear(By.xpath("//input[@id='login' and @type='text']"));
         I.amPerforming().textInput().in(By.xpath("//input[@id='login' and @type='text']"), emailId);
-        I.amPerforming().click().on(By.xpath("//input[@value='Check Inbox' and @type='submit']"));
-        I.amPerforming().click().on(By.xpath("//div[@id='m1']//a[@class='lm']//span[text()='[SPAM]Recipient Portal']/../../span[2]|//div[@id='m1']//a[@class='lm']//span[text()='[SPAM]Nakul Admin']/../../span[2]"));
+        I.amPerforming().click().on(By.xpath("//input[@type='submit']"));
+        I.amPerforming().click().on(By.xpath("//div[@class='m']//div[@class='lms' and text()='" + subject + "']"));
         I.amPerforming().click().on(By.xpath("//span/a[text()='here']| //div[@id='mailmillieu']//a"));
     }
 

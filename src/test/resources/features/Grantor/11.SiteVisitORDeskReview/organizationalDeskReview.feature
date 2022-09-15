@@ -1076,7 +1076,7 @@ Feature: Validate all scenarios in Organizational Desk Review
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelDeskReview:-:phasePendingTaskTableId---"
     And I "Send to Owner" in the approval decision
     When I navigate to "History" sub tab
-    Then I see value "Active" for title "New Value" inside table "History"
+    Then I see value "In Progress" for title "New Value" inside table "History"
 
   @65071 @corerctiveActionsDueDate @deepika @smoke
   Scenario: Validate Org Level Desk Review Submit to Grantor and Corrective Actions By Subrecipient

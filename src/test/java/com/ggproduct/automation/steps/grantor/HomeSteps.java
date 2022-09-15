@@ -52,9 +52,9 @@ public  class HomeSteps {
         homePage.assertReassignedTo(userName, usage.contains("softly"), usage.contains("cannot"));
     }
 
-    @And("^I navigate to yopmail portal for \"([^\"]*)\"$")
-    public void completeProcessOnYopmailPortal(String emailId) {
-        homePage.performOperationOnYopmail(emailId);
+    @And("I navigate to yopmail portal for {string} with subject {string}")
+    public void iNavigateToYopmailPortalForWithSubject(String emailId, String subject) {
+        homePage.NavigateToYopmailPortalForWithSubject(emailId,subject);
     }
 
     /*@When("I login to portal")

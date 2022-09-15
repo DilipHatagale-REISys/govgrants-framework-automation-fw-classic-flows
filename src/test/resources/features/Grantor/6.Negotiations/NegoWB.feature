@@ -183,7 +183,7 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     When I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
-    When I click on "Edit" in the page details
+    When I click on "Request Negotiations" in the page details
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
@@ -288,7 +288,7 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     When I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
-    When I click on "Edit" in the page details
+    When I click on "Request Negotiations" in the page details
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
@@ -566,12 +566,12 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     When I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
-    When I click on "Edit" in the page details
+    When I click on "Request Negotiations" in the page details
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
-    When I click on "Send Back to Subrecipient" in the page details
+    When I click on "Send to Subrecipient" in the page details
     Then I softly see the following messages in the page details contains:
       | Negotiations Tab - Select at least one form for negotiation, because Form section is added for negotiation. |
 
@@ -668,7 +668,7 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     When I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
-    When I click on "Edit" in the page details
+    When I click on "Request Negotiations" in the page details
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
@@ -779,7 +779,7 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     When I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
-    When I click on "Edit" in the page details
+    When I click on "Request Negotiations" in the page details
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
@@ -979,7 +979,7 @@ Feature: Validate all scenarios in Negotiations
     When I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
     Then I softly can see top right button "Edit" in page detail
-    When I click on "Edit" in the page details
+    When I click on "Request Negotiations" in the page details
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"

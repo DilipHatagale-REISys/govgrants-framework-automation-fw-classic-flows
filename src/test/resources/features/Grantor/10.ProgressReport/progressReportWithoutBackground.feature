@@ -362,6 +362,7 @@ Feature: Validate scenarios in Progress Report without background
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Subawards  - All"
     And I perform quick search for "Record Id" in "---subAwardStandAlone:-:recipientsRelatedAwards2FlexToggleTableId---" panel
     And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:recipientsRelatedAwards2FlexToggleTableId---" without waiting for record
     And I click on "Accept" in the page details
@@ -2917,11 +2918,10 @@ Feature: Validate scenarios in Progress Report without background
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
-    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
-    When I upload file "Program_Field_Values.xlsx" into library
-    And I click modal button "Save"
-    When I close "Upload Document" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
+    And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -3398,7 +3398,7 @@ Feature: Validate scenarios in Progress Report without background
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
+    And I click toggle button to select "Grants - Closed"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     When I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
     When I navigate to "Management" sub tab
@@ -3482,7 +3482,7 @@ Feature: Validate scenarios in Progress Report without background
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - Active"
+    And I click toggle button to select "Grants - Closed"
     When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
     When I click on "View" icon for "<Grant Name>" inside flex table with id "---progressReport:-:activeGrantsTableId---" without waiting for record
     When I navigate to "Management" sub tab
@@ -4591,6 +4591,8 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
+    And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     Then I softly cannot see top right button "Edit" in page detail
@@ -4733,6 +4735,8 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
+    And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     Then I softly cannot see top right button "Edit" in page detail
@@ -4865,6 +4869,8 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
+    And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     Then I softly cannot see top right button "Edit" in page detail
@@ -4995,6 +5001,8 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
+    And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -5186,6 +5194,8 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
+    And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -5256,6 +5266,8 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
+    And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -5426,6 +5438,8 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
+    And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "InternalOrganization_Field_Values.xlsx" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -7326,7 +7340,7 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
-  @198019 @ValidateusershouldabletoseeemailinyopmailwhenPRissendbacktotheS/R @sprint-4 @vaibhav @reassignment
+  @198019 @ValidateusershouldabletoseeemailinyopmailwhenPRissendbacktotheS/R @sprint-4 @vaibhav @reassignment @buglogged-197651
   Scenario: Validate user should able to see email in yopmail when PR is send back to the S/R
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -7942,7 +7956,7 @@ Feature: Validate scenarios in Progress Report without background
       The EGMS Team
       """
 
-  @198104 @ValidateusershouldabletoseeemailinyopmailwhenPRPeerreviewiscompleted @sprint-12-US-226646 @vaibhav @reassignment
+  @198104 @ValidateusershouldabletoseeemailinyopmailwhenPRPeerreviewiscompleted @sprint-12-US-226646 @vaibhav @reassignment @buglogged-256649
   Scenario: Validate user should able to see email in yopmail when PR Peer review is completed
     And I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation EXE user"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -8000,7 +8014,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Responsibilities" sub tab
-    When I click on "Enter Review" icon for "{SavedValue:EXE Username}" inside flex table with id "---progressReport:-:peerReviewersTableId---" without waiting for record
+    When I click on "Enter Review" icon for "{SavedValue:PM Username}" inside flex table with id "---progressReport:-:peerReviewersTableId---" without waiting for record
     And I enter values into fields
       | Value       | Field             |
       | Cannot Rate | Rating__c         |
@@ -8358,3 +8372,303 @@ Feature: Validate scenarios in Progress Report without background
       Thank you,
       The EGMS Team
       """
+
+  @197281 @ValidateafterownershipofProgressReportrecordischangedthenemailshouldbereachedtotheyopmail @sprint-11-US-224734 @vaibhav @reassignment
+  Scenario: Validate after ownership of a Progress Report record is changed then email should be reached to the yopmail
+    Given I activated standalone subaward "Automation Runtime award" with properties "default"
+    Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                    | Actual | Reported Date |
+      | Automation Permanent KPI | 7      | 7             |
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Progress Report"
+    And I Click on "Reassign Records" icon for "Progress Report" without tableid
+    Then I softly see "Progress Reports Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:progID}" in "---progressreport:-:progressSourceTableId---" panel
+    Then I see value "{SavedValue:Record Id}" for title "Progress Report ID" inside table "---progressreport:-:progressSourceTableId---"
+    When I perform quick search for "{SavedValue:progID}" in "---progressreport:-:progressSourceTableId---" panel
+    When I check "{SavedValue:progID}" boxes in flex table with id "---progressreport:-:progressSourceTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---progressreport:-:progressSourceTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:progID}" in "---progressreport:-:progressTargetTableId---" panel
+    Then I see value "{SavedValue:progID}" for title "Progress Report ID" inside table "---progressreport:-:progressTargetTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Notification: Owner Reassignment Report
+      """
+    Then I see the mail text is as follows :
+      """
+      Hello,
+
+     The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+
+      EGMS ID Assigned By Module Name
+      {SavedValue:progID} Automation ADMIN Progress Report
+
+      Because these records have been reassigned, the original reviewer may have only view access to the record.
+
+      Log in to EGMS and click on EGMS IDs to access the assigned record.
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+
+      Thank you,
+      The EGMS Team
+      """
+    Given I am on "INTERNAL" portal
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Notification: Owner Reassignment Report
+      """
+    Then I see the mail text is as follows :
+      """
+      Hello,
+
+     The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+
+      EGMS ID Assigned By Module Name
+      {SavedValue:progID} Automation ADMIN Progress Report
+
+      Because these records have been reassigned, the original reviewer may have only view access to the record.
+
+      Log in to EGMS and click on EGMS IDs to access the assigned record.
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+
+      Thank you,
+      The EGMS Team
+      """
+    Given I am on "INTERNAL" portal
+    And I checkout to yopmail with mailid "govgrantsautomation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Notification: Owner Reassignment Report
+      """
+    Then I see the mail text is as follows :
+      """
+      Hello,
+
+     The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+
+      EGMS ID Assigned By Module Name
+      {SavedValue:progID} Automation ADMIN Progress Report
+
+      Because these records have been reassigned, the original reviewer may have only view access to the record.
+
+      Log in to EGMS and click on EGMS IDs to access the assigned record.
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+
+      Thank you,
+      The EGMS Team
+      """
+
+  @197651 @ValidateusershouldabletoseetheyopmailwhenPRissendbacktosubrecepient @sprint-11-US-224734 @vaibhav @reassignment @buglogged-256649
+  Scenario: Validate user should able to see the yopmail when PR is send back to subrecepient
+    And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Direct Award}" in "---paymentRequest:-:recipientGrantTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    When I navigate to "Subawards" sub tab
+    And I click on "View" icon for "{SavedValue:Automation Runtime Direct Award}" inside flex table with id "---paymentRequest:-:recipientAwardTableId---" without waiting for record
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                    | Actual | Reported Date |
+      | Automation Permanent KPI | 7      | 7             |
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    Then I softly see " Reassign Ownership" page block displayed
+    Then I see the text containing "Progress Report"
+    And I Click on "Reassign Records" icon for "Progress Report" without tableid
+    Then I softly see "Progress Reports Available for Reassignment " page block displayed
+    When I perform quick search for "{SavedValue:progID}" in "---progressreport:-:progressSourceTableId---" panel
+    Then I see value "{SavedValue:Record Id}" for title "Progress Report ID" inside table "---progressreport:-:progressSourceTableId---"
+    When I perform quick search for "{SavedValue:progID}" in "---progressreport:-:progressSourceTableId---" panel
+    When I check "{SavedValue:progID}" boxes in flex table with id "---progressreport:-:progressSourceTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---progressreport:-:progressSourceTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:progID}" in "---progressreport:-:progressTargetTableId---" panel
+    Then I see value "{SavedValue:progID}" for title "Progress Report ID" inside table "---progressreport:-:progressTargetTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:progID}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
+    Then I see value "{SavedValue:progID}" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    And I click on "Send Back to Subrecipient" in the page details
+    And I refresh the page
+    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I pause execution for "10" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+      """
+      Sandbox: Notification: Progress Report {SavedValue:progID} has beensubmitted.
+      """
+
+    Then I see the mail text is as follows :
+      """
+     Hello Automation PM1,
+     This email is to notify you that the Progress Report #{SavedValue:progID} of Grant #{SavedValue:GrantEGMSID} has been submitted by Automation and it is waiting for you to be reviewed.
+
+      Report Details:
+      Award ID: {SavedValue:AwardEGMSID}
+      Subrecipient Organization: SAN DIEGO ELECTRICAL TRAINING TRUST
+      Report Type: Program
+      Reporting Period Start Date: {Date:M/d/yyyy}
+      Reporting Period End Date: {Date:MM/d/yyyy::d+158}
+      Frequency: Annually
+
+      Log in to EGMS and click here to review the progress report.
+      Please do not reply to this system-generated email. You may contact GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+      Thank you,
+      The EGMS Team
+      """
+
+  @205797 @ValidateProgressReportafterchangingtheapproveraskofPRtoanotheruserthenpendingtaskshouldbegenerateofapprovaltonewownerofapproval @sprint-11-US-224734 @vaibhav @reassignment
+  Scenario: Validate Progress Report after changing the approver task of PR to another user then pending task should be generate of approval to new owner of approval
+    And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
+    Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
+    When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime Direct Award}" having object api name as "ProgressReports__c"
+    And I am on "SUBPORTAL" portal
+    And I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:Record Id}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Attach" icon for "Active" inside flex table with id "---progressReport:-:progressReportChecklistsTableId---" without waiting for record
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
+    And I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "progID"
+    And I save the field labeled "Subaward ID" as "SubAwardID"
+    And I click on "Edit" in the page details
+    When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I navigate to "Performance" sub tab
+    When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
+      | Title                    | Actual | Reported Date |
+      | Automation Permanent KPI | 7      | 7             |
+    When I navigate to "Forms and Files" sub tab
+    And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
+    And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---progressReport:-:approversTableId---" by clicking "New" :
+      | Name           | Progress Report |
+      | Automation EXE | Step 1          |
+    And I click on "Submit for Approval" in the page details
+    Then I softly see field "Status" as "Submitted for Approval"
+    When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "All Tasks as Admin" content inside "Reassign" subheader on left panel
+    And I select value "Automation EXE" into field "s2id_autogen1"
+    And I select value "Automation EXE1" into field "s2id_autogen3"
+    When I perform quick search for "{SavedValue:progID}" in "---program:-:adminTaskReassignmentTableId---" panel
+    When I check "{SavedValue:progID}" boxes in flex table with id "---program:-:adminTaskReassignmentTableId---"
+    And I click on top right button "Reassign Selected" in flex table with id "---program:-:adminTaskReassignmentTableId---"
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:progID}" in "---program:-:adminTaskReassignmentTableId---" panel
+    Then I softly do not see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:adminTaskReassignmentTableId---"
+    When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:progID}" in "---progressreport:-:pendingTaskTableId---" panel
+    Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---progressreport:-:pendingTaskTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    And I navigate to "Progress Reports" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Progress Reports - All"
+    And I perform quick search for "{SavedValue:progID}" in "---progressReport:-:internalProgressReportFlexTableId---" panel
+    And I click on "View" icon for "{SavedValue:progID}" inside flex table with id "---progressreport:-:internalProgressReportFlexTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    Then I softly see value "Step 1" for title "Progress Report" against the value "Automation EXE1" inside table "---progressReport:-:approversTableId---"
