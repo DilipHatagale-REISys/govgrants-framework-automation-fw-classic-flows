@@ -5467,8 +5467,8 @@ Feature: Validate all scenarios in the Risk Assessment
     Then I softly can see row level action button "Edit" against "Other Artifacts" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
     Then I softly can see row level action button "Delete" against "Other Artifacts" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
     Then I can see top right button "Add" in flex table with id "---riskassessment:-:riskAssNotesTableId---"
-    Then I softly can see row level action button "Edit" against "Automation Finding" in flex table with id "---riskassessment:-:riskAssNotesTableId---"
-    Then I softly can see row level action button "Delete" against "Automation Finding" in flex table with id "---riskassessment:-:riskAssNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Automation Finding" in flex table with id "---riskassessment:-:riskAssNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Automation Finding" in flex table with id "---riskassessment:-:riskAssNotesTableId---"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -6378,3 +6378,96 @@ Feature: Validate all scenarios in the Risk Assessment
       Thank you,
       The EGMS Team
       """
+
+  @201287 @ValidatepermissionsonFilesofAwardRiskAssessmentwhenithasstatusascreated&transferofownershipisperformed @sprint-11-US-224734 @vaibhav @reassignment
+  Scenario: Validate permissions on Files of Award Risk Assessment, when it has status as created & transfer of ownership is performed
+    Given I login to "As a Grantor" app as "PM" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
+    And I enter "Grant_Creation1" values from "Award_Field_Values.xlsx"
+    And I click modal button "Continue"
+    And I enter "Grant_Edition" values from "Award_Field_Values.xlsx"
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "GrantEGMSID"
+    And I navigate to "Subawards" sub tab
+    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I get the "EGMS ID"
+    And I click on "Edit" in the page details
+    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    And I save the field labeled "EGMS ID" as "AwardEGMSID"
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:AwardEGMSID}" in "---home:-:internalHomePendingTaskTableId---" panel
+    And I click on "Start" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
+    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
+    When I click on "Save and Continue" in the page details
+    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I get the "EGMS ID"
+    And I save the field labeled "EGMS ID" as "RAEGMSID"
+    And I navigate to "Files" sub tab
+    When I enter the following values into flex table with id "---riskassessment:-:riskAssNotesTableId---" by clicking "Add" :
+      | Title              | Description            |
+      | Automation Finding | Automation Description |
+    When I re-login to "As a Grantor" app as "Admin" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    Then I see "Ownership" inside "Reassign" is displayed
+    When I navigate to "Ownership" content inside "Reassign" subheader on left panel
+    And I select value "Automation PM" into field "s2id_autogen1"
+    And I select value "Automation PM1" into field "s2id_autogen3"
+    And I Click on "Start" icon for "Automation PM" without tableid
+    And I pause execution for "3" seconds
+    And I Click on "Reassign Records" icon for "Risk Assessment" without tableid
+    When I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssSourceTableId---" panel
+    When I check "{SavedValue:RAEGMSID}" boxes in flex table with id "---riskassessment:-:riskAssSourceTableId---"
+    When I click table top right button "Transfer Ownership" in flex table with id "---riskassessment:-:riskAssSourceTableId---"
+    Then I softly see confirmation box with body "When the ownership of the record is changed, all pending tasks assigned to the owner of the record will be reassigned automatically as well. Do you wish to proceed?" is displayed
+    And I click "Yes" on modal confirmation box
+    And I pause execution for "30" seconds
+    When I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:riskAssTargetTableId---" panel
+    Then I softly see value "{SavedValue:RAEGMSID}" for title "Risk Assessment ID" inside table "---riskassessment:-:riskAssTargetTableId---"
+    And I pause execution for "2" seconds
+    And I close the tab
+    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Risk Assessments" content inside "Monitoring Activities" subheader on left panel
+    When I click toggle button to select "Subaward Risk Assessments - All"
+    And I perform quick search for "{SavedValue:RAEGMSID}" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
+    Then I softly see value "{SavedValue:RAEGMSID}" for title "EGMS ID" inside table "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
+    Then I softly can see row level action button "View" against "{SavedValue:RAEGMSID}" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
+    Then I softly can see row level action button "Edit" against "{SavedValue:RAEGMSID}" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
+    Then I softly can see row level action button "Delete" against "{SavedValue:RAEGMSID}" in flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---"
+    And I click on "View" icon for "{SavedValue:RAEGMSID}" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" without waiting for record
+    When I navigate to "Responsibilities" sub tab
+    Then I softly see value "Automation PM1" for title "Name" inside table "---riskassessment:-:riskAssOwnerTableId---"
+    When I navigate to "Files" sub tab
+    Then I can see top right button "Add Files" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
+    And I click on top right button "Add Files" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
+    And I switch to iframe with id "---riskassessment:-:riskIframeId---"
+    And I upload attachment "Attachment.pdf" of type "Other Artifacts" from computer
+    Then I softly can see row level action button "Download" against "Other Artifacts" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
+    Then I softly can see row level action button "View" against "Other Artifacts" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
+    Then I softly can see row level action button "Edit" against "Other Artifacts" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
+    Then I softly can see row level action button "Delete" against "Other Artifacts" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
+    Then I can see top right button "Add" in flex table with id "---riskassessment:-:riskAssNotesTableId---"
+    Then I softly cannot see row level action button "Edit" against "Automation Finding" in flex table with id "---riskassessment:-:riskAssNotesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Automation Finding" in flex table with id "---riskassessment:-:riskAssNotesTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Grants" tab
+    And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - All"
+    When I perform quick search for "{SavedValue:GrantEGMSID}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---subAwardStandAlone:-:activeGrantsTableId---" without waiting for record
+    When I navigate to "Subawards" sub tab
+    When I perform quick search for "{SavedValue:AwardEGMSID}" in "---subAwardStandAlone:-:subawardsTableId---" panel
+    And I click on "View" icon for "{SavedValue:AwardEGMSID}" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
+    When I navigate to "Management" sub tab
+    Then  I can see top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    Then I softly cannot see row level action button "Edit" against "{SavedValue:RAEGMSID}" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    Then I softly cannot see row level action button "Delete" against "{SavedValue:RAEGMSID}" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
+    And I click on "View" icon for "{SavedValue:RAEGMSID}" inside flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---" without waiting for record
+    When I navigate to "Files" sub tab
+    Then I softly cannot see row level action button "Edit" against "Other Artifacts" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"
+    Then I softly cannot see row level action button "Delete" against "Other Artifacts" in flex table with id "---subAwardStandAlone:-:RiskAttachmentFilesTableId---"

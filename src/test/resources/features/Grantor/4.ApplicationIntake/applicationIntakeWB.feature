@@ -169,6 +169,7 @@ Feature: Application Intake scenarios without background
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationIntake:-:NotYetQualifiedTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationIntake:-:NotYetQualifiedTableId---" without waiting for record
     And I save the field labeled "EGMS ID" as "oppurtunityId"
+    And I save the field labeled "Program" as "programName"
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
@@ -180,7 +181,7 @@ Feature: Application Intake scenarios without background
       | Automation Permanent Objective | View    |
     When I navigate to "Overview" sub tab
     And I mouse hover to link contains "{SavedValue:oppurtunityId}"
-    And I click "PG-TAO modified-0006" link present on hovered tooltip
+    And I click "{SavedValue:programName}" link present on hovered tooltip
     Then I softly see page title contains as "Automation Permanent Internal Program"
 
   @73755 @71110 @appdueDateValidation @deepika @smoke
@@ -1380,7 +1381,7 @@ Feature: Application Intake scenarios without background
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
-      | Name                     | Announcement |
+      | Name                      | Announcement |
       | {SavedValue:EXE Username} | Step 1       |
     And I click on "Submit For Approval" in the page details
     Then I softly see field "Status" as "Submitted for Approval"

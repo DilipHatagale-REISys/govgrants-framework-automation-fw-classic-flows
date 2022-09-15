@@ -32,6 +32,7 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Edit" in the page details
     When I enter "Edition" values from "ProgressReport_Field_Values.xlsx"
     And I click on "Save" in the page details
+    And I pause execution for "4" seconds
     Then I softly see status in Progress-bar is "Created" and is "Green"
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
@@ -250,9 +251,15 @@ Feature: Validate all scenarios in Progress Report
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Management" sub tab
     Then I softly do not see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:grantorGrantProgressReportTableId---"
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    When I navigate to "Performance" sub tab
+  When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+  And I navigate to "Grants" tab
+  When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+  And I click toggle button to select "Grants - Active"
+  When I perform quick search for "<Grant Name>" in "---paymentRequest:-:recipientGrantTableId---" panel
+  And I click on "View" icon for "<Grant Name>" inside flex table with id "---paymentRequest:-:recipientGrantTableId---" without waiting for record
+  When I navigate to "Subawards" sub tab
+  And I click on "View" icon for "<Grant Name>" inside flex table with id "---progressreport:-:RecipientSubAwardTableId---" without waiting for record
+  When I navigate to "Performance" sub tab
     Then I softly see value "{SavedValue:Record Id}" for title "EGMS ID" inside table "---progressReport:-:AwardProgressReportTableId---"
     Examples:
       | Grant Name                            |
@@ -996,8 +1003,8 @@ Feature: Validate all scenarios in Progress Report
     Then I softly see "No Records Found" inside flex table with id "---progressreport:-:progressReportChecklistsTableId---"
     And I navigate to "Performance" sub tab
     When I click on "Edit" icon for "Automation Permanent KPI" inside flex table with id "---progressReport:-:kpiTableId---"
-    Then I softly see field "Actual__c" is not editable
-    Then I softly see field "ActualDate__c" is not editable
+    Then I softly see field "PreviousDate__c" is not editable
+    Then I softly see field "PreviousActual__c" is not editable
 
   @59829 @validateSRUserCannotEditKPIOnceSubmittedToGrantor @mahadev
   Scenario: Validate SR user is not able to update the KPI actuals field value once Progress report is Submitted to Grantor

@@ -57,13 +57,16 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
       | EGMS ID | Contains | Invalid |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:AnnouncementGrantsTableId---"
     And I refresh the page
-    Then I softly see value "Record Id" for title "Grant Title" inside table "---announcement:-:AnnouncementGrantsTableId---"
+    Then I softly see value "<Grant Name>" for title "Grant Title" inside table "---announcement:-:AnnouncementGrantsTableId---"
+    And I refresh the page
+    And I save the value from row "1" for column name "EGMS ID" as "GrantEGMSID" from flex table "---announcement:-:AnnouncementGrantsTableId---"
     And I click on advance filter "#advfAnnouncementActiveGrants" of table id "---announcement:-:AnnouncementGrantsTableId---"
     And I enter advance filter values inside id "advfAnnouncementActiveGrants"
-      | EGMS ID | Contains | <Grant Name> |
-    Then I softly see value "<Grant Name>" for title "Grant Title" inside table "---subAwardFromFDM:-:relatedloggrant---"
-    And I click on "View" icon for "<Grant Name>" inside flex table with id "---subAwardFromFDM:-:relatedloggrant---" without waiting for record
-    Then I softly see field "Subaward" as "<Grant Name>"
+      | EGMS ID | Contains | {SavedValue:GrantEGMSID} |
+    Then I softly see value "{SavedValue:GrantEGMSID}" for title "EGMS ID" inside table "---subAwardFromFDM:-:relatedloggrant---"
+    And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---subAwardFromFDM:-:relatedloggrant---" without waiting for record
+    And I save the field labeled "Active Subaward" as "ActiveSubaward"
+    Then I softly see field "Active Subaward" as "{SavedValue:ActiveSubaward}"
     Examples:
       | Grant Name                                       |
       | {SavedValue:Automation Runtime FDM Announcement} |

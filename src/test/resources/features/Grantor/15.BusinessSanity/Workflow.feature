@@ -1167,13 +1167,14 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
 
-  @SubrecipientOrganizationRegistrationFlow
+ @vai @SubrecipientOrganizationRegistrationFlow
   Scenario: Verify Subrecipient Organization Registration Process
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     When I enter value as "123456780" into "Employer Identification Number (EIN)" on old form
-    When I enter value as "987034579273" into "Unique Entity Identifier (UEI)" on old form
+    And I generate the random UEI and save as "UEI"
+    When I enter value as "{SavedValue:UEI}" into "Unique Entity Identifier (UEI)" on old form
     When I click on "Save and Continue" in the page details
     And I navigate to "Organization Profile" sub tab
     And I enter "CreationWithAllDetails" values from "UserRegistration_Field_Values.xlsx"
@@ -1206,19 +1207,21 @@ Feature: Validate all scenarios of every modules flow
     Then I see the header is "Subrecipient Organization" in the page details
     #Create Secondary User
     And I click on top right button "New" in flex table with id "---home:-:userContactsTableId---"
-    And I enter value "Secondary_User" into field "SubrecipientOrganization_Field_Values.xlsx"
-    And I generate the random EmailID and save as "uniqueEmailID"
-    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldPrimaryRepEmail__c"
+    And I enter "Secondary_User" values from "SubrecipientOrganization_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID1"
+    And I enter value "{SavedValue:uniqueEmailID1}" into field "fieldEmail"
     When I click on "Save" in the page details
+    When I close "Create Contact" modal by clicking the top right x button
+    And I refresh the page
     And I save the value from row "1" for column name "Full Name" as "Automation Runtime Contact" from flex table "---home:-:userContactsTableId---"
     And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:userContactsTableId---" without waiting for record
     And I click "Send" button in modal
-    Then I see the following messages in the page details :
-      | Email Sent Successfully |
-    And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
+    Then I softly see confirmation box with body "Email sent succesfully." is displayed
+    When I click modal button "Ok"
+    And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID1}"
     And I pause execution for "190" seconds
     Then I refresh the page
-    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}"
+    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID1}" with subject "Sandbox: Notification: You have been Invited to Register in theEnterprise Grants Management System (EGMS)"
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     And I click on "Save" in the page details
@@ -1226,6 +1229,15 @@ Feature: Validate all scenarios of every modules flow
     And I pause execution for "5" seconds
     Then I see the following messages in the page details contains:
       | Confirmation Message |
+    And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID1}"
+    And I pause execution for "190" seconds
+    And I refresh the page
+    And I click on mail with subject "Sandbox: Welcome to Recipient Portal"
+    And I navigate to reset password link
+    Then I set password for the user
+    And I navigate to "Home" tab
+    When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
+    Then I see the header is "Subrecipient Organization" in the page details
 
   @IndividualUserRegistrationFlow
   Scenario:Verify Individual User Registration Process
@@ -1263,17 +1275,39 @@ Feature: Validate all scenarios of every modules flow
 
   @SMEreviewerFlow
   Scenario:
-    Given I login to "As a Grantor" app as "PM" user
+    Given I login to "As a Grantor" app as "EXE" user
     When I navigate to "Home" tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldEmail"
     When I click modal button "Save"
     And I save the contact name as "Automation Runtime Contact"
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     And I click on "Send Invitation" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
-    And I enter value "Test Automation Description" in email body
     And I click "Send" button in modal
     Then I see the following messages in the page details :
       | Email Sent Successfully |
+    And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
+    And I pause execution for "300" seconds
+    And I refresh the page
+    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID}" with subject "Sandbox: Notification: You have been Invited to Register in theEnterprise Grants Management System (EGMS)"
+    When I click on "Agree" in the page details
+    When I click on "Agree" in the page details
+    And I enter "Edition" values from "PotentialReviewersContact_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Submit" in the page details
+    And I pause execution for "5" seconds
+    Then I see the following messages in the page details contains:
+      | Confirmation Message |
+    And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
+    And I pause execution for "190" seconds
+    And I refresh the page
+    And I click on mail with subject "Sandbox: Welcome to Recipient Portal"
+    And I navigate to reset password link
+    Then I set password for the user
+    And I navigate to "Home" tab
+    And I select "My Profile" from user dropdown
+    Then I see the header is "{SavedValue:Automation Runtime Contact}" in the page details
