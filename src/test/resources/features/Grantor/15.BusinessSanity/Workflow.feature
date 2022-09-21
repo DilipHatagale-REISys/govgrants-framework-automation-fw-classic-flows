@@ -1167,7 +1167,7 @@ Feature: Validate all scenarios of every modules flow
     When I click on "Activate" in the page details
     Then I softly see field "Status" as "Activated"
 
- @vai @SubrecipientOrganizationRegistrationFlow
+  @SubrecipientOrganizationRegistrationFlow
   Scenario: Verify Subrecipient Organization Registration Process
     Given I begin "Organization" registration
     When I click on "Agree" in the page details
@@ -1221,7 +1221,7 @@ Feature: Validate all scenarios of every modules flow
     And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID1}"
     And I pause execution for "190" seconds
     Then I refresh the page
-    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID1}" with subject "Sandbox: Notification: You have been Invited to Register in theEnterprise Grants Management System (EGMS)"
+    And I navigate to yopmail portal for "{SavedValue:uniqueEmailID1}" with subject "Sandbox: Notification: Invitation to be a user of EGMS"
     When I click on "Agree" in the page details
     When I click on "Agree" in the page details
     And I click on "Save" in the page details
@@ -1303,7 +1303,7 @@ Feature: Validate all scenarios of every modules flow
     Then I see the following messages in the page details contains:
       | Confirmation Message |
     And I checkout to yopmail with mailid "{SavedValue:uniqueEmailID}"
-    And I pause execution for "190" seconds
+    And I pause execution for "40" seconds
     And I refresh the page
     And I click on mail with subject "Sandbox: Welcome to Recipient Portal"
     And I navigate to reset password link
