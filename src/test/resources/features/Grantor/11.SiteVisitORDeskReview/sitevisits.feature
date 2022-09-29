@@ -350,7 +350,7 @@ Feature: Validate all scenarios in the Site Visit
     And I navigate to "Monitoring" tab
     When I navigate to "Site Visits" content inside "Monitoring Activities" subheader on left panel
     When I perform quick search for "<Site Visit Name>" in "---sitevisits:-:manageSiteVisitTableId---" panel
-    And I click on "Start" icon for "<Site Visit Name>" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
+    And I click on "View" icon for "<Site Visit Name>" inside flex table with id "---sitevisits:-:manageSiteVisitTableId---"
     Given I click on "Send to Subrecipient" in the page details
     And I navigate to "Reports and Outcomes" tab
     And I expand nested table containing column value "Automation Observation"
@@ -546,7 +546,7 @@ Feature: Validate all scenarios in the Site Visit
     When I click on "Conduct" in the page details
     When I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details :
-      | Reports and Outcomes Tab - Fill all the required data in the form before submitting. |
+      | Reports and Outcomes Tab - Complete all data in the form. |
 
   @55275 @approverPendingTaskUnderMonitoringAward @deepika
   Scenario: Validate whether the approver will be able to view the Pending task under Monitoring

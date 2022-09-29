@@ -1213,7 +1213,7 @@ Feature: Validate all scenarios in Closeout
     When I perform quick search for "{SavedValue:CloseoutID}" in "---closeout:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:CloseoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     And I navigate to "Files" sub tab
-    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
+    When I click on "Attach" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
     Then I softly see "Upload Document" opens in overLay window
     When I upload file "AttachmentTesting.pdf" into library
     And I click modal button "Save"

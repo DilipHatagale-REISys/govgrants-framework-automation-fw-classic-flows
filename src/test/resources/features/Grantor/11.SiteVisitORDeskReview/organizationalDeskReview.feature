@@ -1219,10 +1219,10 @@ Feature: Validate all scenarios in Organizational Desk Review
       | Name                     | Desk Review |
       | {SavedValue:PM Username} | Step 2      |
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:participateassociateContactsId---"
-    When I click "Associate" after selection of "{SavedValue:SPI3 Username}" in the table "---orgLevelDeskReview:-:deskReviewContactsTableId---"
-    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
-    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
+    And I click on top right button "Associate" in flex table with id "---orgLevelSiteVisits:-:participateassociateContactsId---"
+    When I click "Associate" after selection of "{SavedValue:SPI3 Username}" in the table "---orgLevelDeskReview:-:associateContactsId---"
+#    And I click on top right button "Associate" in flex table with id "---orgLevelDeskReview:-:associateAwardId---"
+#    When I click "Associate" after selection of "{SavedValue:Automation Runtime Award Record}" in the table "---orgLevelDeskReview:-:selectAwardId---"
     When I get the "EGMS ID"
     And I click on "Notify" in the page details
     When I click on "Conduct" in the page details

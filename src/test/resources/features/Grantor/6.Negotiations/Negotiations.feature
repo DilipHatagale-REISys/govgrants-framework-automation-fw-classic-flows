@@ -450,7 +450,7 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Initiated | ApplicantResponse__c |
     When I click on "Save" in the page details
     And I pause execution for "3" seconds
-    Then I softly see status in Progress-bar is "Negotiation Initiated" and is "green"
+    Then I softly see field "Status" as "Negotiation Initiated"
     When I click on "Submit to Grantor" in the page details
     Then I softly cannot see top right button "Edit" in page detail
 
@@ -515,7 +515,7 @@ Feature: Validate all scenarios in Negotiations
       | Automation Negotiation Iniatiation | ExplanationOfRevisionsNeeded__c |
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
-    Then I softly see status in Progress-bar is "Negotiation Initiated" and is "green"
+    Then I softly see field "Status" as "Negotiation Initiated"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -776,7 +776,7 @@ Feature: Validate all scenarios in Negotiations
     And I save the field labeled "Created Date" as "CreatedDate"
     Then I softly see field "Created Date" as "{SavedValue:CreatedDate}"
     And I navigate to "Negotiations" sub tab
-    Then I softly see field "Status" as "Complete" in "Negotiation Request Details" pageblock
+    Then I softly see field "Negotiation Request Status" as "Complete" in "Negotiation Request Details" pageblock
 
   @65074 @fieldupdateBySPI @deepika
   Scenario: Validate whether SPI user can edit the field of Negotiation Request from Application tab
@@ -987,9 +987,11 @@ Feature: Validate all scenarios in Negotiations
     When I save the field labeled "EGMS ID" as "EGMSID"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Applications" tab
-    When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
-    When I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
-    And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
+    When I navigate to "Applications" content inside "Applications" subheader on left panel
+    And I click toggle button to select "Applications - All"
+    When I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationAppReviewListTableId---" panel
+    Then I softly see values "{SavedValue:EGMSID}" and "Reviewed" inside table
+    And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationAppReviewListTableId---"
     Then I softly can see top right button "Edit" in page detail
     When I click on "Edit" in the page details
     And I navigate to "Negotiations" sub tab
@@ -1032,7 +1034,7 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     When I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
-    Then I softly can see top right button "Edit" in page detail
+    Then I softly can see top right button "Request Negotiations" in page detail
     When I click on "Request Negotiations" in the page details
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
@@ -1084,7 +1086,7 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     When I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
-    Then I softly can see top right button "Edit" in page detail
+    Then I softly can see top right button "Request Negotiations" in page detail
     When I click on "Request Negotiations" in the page details
     And I navigate to "Negotiations" sub tab
     Then I softly can see row level action button "Edit" against "Standard Assurances Form" in flex table with id "---negotiation:-:NegotiationFormsTableId---"
@@ -1320,7 +1322,7 @@ Feature: Validate all scenarios in Negotiations
     When I clear the value from field "ApplicationSectionsForRevision__c"
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
     And I click on "Save" in the page details
-    Then I softly see field "Application Sections for Revision" as "Files: Forms"
+    Then I softly see field "Application Sections for Negotiation" as "Files: Forms"
 
   @166360 @VerifyvalidationisdisplayedtoPMtoselecttheFiles:FormsoptionApplicationSectionsRevisionsection @sprint-3 @vrishali @bug-190352
   Scenario: Verify validation is displayed to PM user to select the "Allow edit" for at least one form in the available forms for Revisions table

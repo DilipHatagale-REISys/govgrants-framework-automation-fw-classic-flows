@@ -471,11 +471,11 @@ Feature: Validate all scenarios in the Application Review
     And I softly see value "SME Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     And I softly see value "Management Review" for title "Step Name" inside table "---announcement:-:reviewStepTableId---"
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---announcement:-:reviewStepTableId---"
-    Then I softly can see page block "Forms"
-    Then I softly can see page block "Reviewers"
-    Then I softly can see page block "Applications"
-    Then I softly can see page block "Reviews"
-    Then I softly can see page block "System Information"
+    Then I see "Forms" page block displayed
+    Then I see "Reviewers" page block displayed
+    Then I see "Applications" page block displayed
+    Then I see "Reviews" page block displayed
+    Then I see "System Information" page block displayed
     When I click on "View" icon for "Record Id" inside flex table with id "---applicationReview:-:appTableId---"
     Then I softly can see "Overview" sub tab at view detail page
     And I softly can see "Budget" sub tab at view detail page
