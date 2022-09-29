@@ -96,7 +96,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on top right button "Initiate Desk Review" in flex table with id "DeskReview"
     And I enter "Application" values from "Organizational_SiteVisit_Field_Values.xlsx"
     When I click modal button "Save and Continue"
-    Then I see field "Desk Review Type" as "Application"
+    Then I see field "Desk Review Type" as "Other"
 
   @54427 @orgSiteVisitTypeAward @deepika
   Scenario: Validate the Site Visit type Award
@@ -828,7 +828,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Edition1" values from "Organizational_SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see the following messages in the page details :
-      | Purpose is Required to save. |
+      | Purpose is Required to save under Overview. |
 
   @55800 @organizationalsiteVisitSource @deepika
   Scenario: Validate the Source of Site Visit Org level
@@ -839,7 +839,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I enter "Edition1" values from "Organizational_SiteVisit_Field_Values.xlsx"
     When I click on "Save" in the page details
     Then I see the following messages in the page details :
-      | Source is Required to save. |
+      | Source is Required to save under Overview. |
 
   @55802 @55806 @notifyConductButtonSiteVisitOrgLevel @smoke @deepika
   Scenario: User will be able to view the Notify and Conduct button on the Site Visit to complete the action items
@@ -920,7 +920,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     When I click on "Conduct" in the page details
     When I click on "Submit for Approval" in the page details
     Then I see the following messages in the page details :
-      | Reports and Outcomes Tab - Fill all the required data in the form before submitting. |
+      | Reports and Outcomes Tab - Complete all data in the form. |
 
   @56005 @uploadsupportingDocumentChecklistFromWorkSpace @deepika
   Scenario: User will be able to review the supporting document checklist submitted by the subrecipient
@@ -985,7 +985,7 @@ Feature: Validate all scenarios in Organizational Site Visit
     And I click on "Start" icon for "Record Id" inside flex table with id "---orgLevelSiteVisits:-:sitevisitPhasePendingTableId---"
     And I "Send to Owner" in the approval decision
     When I navigate to "History" sub tab
-    When I perform quick search for "{SavedValue:Record Id}" in "History" panel
+    When I perform quick search for "Record Id" in "History" panel
     Then I softly see value "Created" for title "Old Value" inside table "History"
 
   @61399 @FieldHistoryUpdatedForSiteVisitIsSendBackToOwnerByFiscalApprover @keerti

@@ -1645,8 +1645,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I navigate to "Risk Assessment" sub tab
     And I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     When I click on "View" icon for "Record Id" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---" without waiting for record
-    And I navigate to "Assessment" sub tab
-    Then I softly see field "Overall Score" as "76.0%"
+    When I navigate to "Overview" sub tab
+    Then I softly see field "Overall Score" as "75.0%"
 
   @64515 @overallRiSKScoreWhenAssessmentSelectedDiffQuestions @deepika
   Scenario: Validate the Moderate Risk Score of Risk Assessment, that shows the Overall Score as per the provided Assessment once Risk Assessment is Active

@@ -258,7 +258,7 @@ Feature: Validate all scenarios in the home tab
     When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
     And I enter "Creation" values from "SubrecipientContact_Field_Values.xlsx"
     And I generate the random EmailID and save as "uniqueEmailID"
-    And I enter "{SavedValue:uniqueEmailID}" values from "Email"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldEmail"
     When I click modal button "Save"
     #And I close "Create Subrecipient Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
@@ -282,12 +282,13 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "SME Reviewers" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:reviewersTableId---"
     And I enter "Creation" values from "PotentialReviewersContact_Field_Values.xlsx"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldEmail"
     When I click modal button "Save"
     #And I close "Create Potential Reviewer Contact" modal by clicking the top right x button
     And I save the contact name as "Automation Runtime Contact"
     And I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:reviewersTableId---" panel
     When I click on "Edit" icon for "{SavedValue:Automation Runtime Contact}" inside flex table with id "---home:-:reviewersTableId---" without waiting for record
-    When I enter "Edition" values from "PotentialContact_Field_values.xlsx"
     And I click modal button "Save"
     Then I see value "New" for title "Status" inside table "---home:-:reviewersTableId---"
     Examples:
@@ -340,7 +341,9 @@ Feature: Validate all scenarios in the home tab
     Given I login to "As a Grantor" app as "ADMIN" user
     When I navigate to "Home" tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
-    When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
+    And I select value inside table "---home:-:internalOrganizationId---" is "All"
+    And I pause execution for "5" seconds
+    When I click on "View" icon for "SYSTEM" inside table without waiting for record
     And I click on top right button "New" in flex table with id "---home:-:relatedContactsTableId---"
     And I enter "RelatedContactsCreation" values from "InternalOrganization_Field_Values.xlsx"
     And I click modal button "Save"
@@ -358,14 +361,14 @@ Feature: Validate all scenarios in the home tab
     And I navigate to "Internal" content inside "Organization" subheader on left panel
     When I click on "View" icon for "Test Automation Organization" inside table without waiting for record
     When I enter the following values into flex table with id "---home:-:dunsTableId---" by clicking "New" :
-      | DUNS Number | Entity Name as Registered       | Location |
-      | 138047990   | Automation Runtime Contact Name | HernNdon |
-    Then I softly see values "138047990" and "HernNdon" inside table
-    When I click on "Edit" icon for "138047990" inside flex table with id "---home:-:dunsTableId---" without waiting for record
+      | UEI Number   | Entity Name as Registered       | Location |
+      | 138047990986 | Automation Runtime Contact Name | HernNdon |
+    Then I softly see values "138047990986" and "HernNdon" inside table
+    When I click on "Edit" icon for "138047990986" inside flex table with id "---home:-:dunsTableId---" without waiting for record
     And I click on top right button "Save" in flex table with id "---home:-:dunsTableId---"
-    Then I softly see values "138047990" and "HernNdon" inside table
-    When I click on "delete" icon for "138047990" inside flex table with id "---home:-:dunsTableId---" without waiting for record
-    Then I softly do not see values "138047990" and "DUNSNumber" inside table
+    Then I softly see values "138047990986" and "HernNdon" inside table
+    When I click on "delete" icon for "138047990986" inside flex table with id "---home:-:dunsTableId---" without waiting for record
+    Then I softly do not see values "138047990986" and "UEINumber" inside table
 
   @56743 @deleteIndirectCostRate @buglogged151630 @wip
   Scenario: Validate whether ADMIN and DA users can delete the Indirect Cost Rates
@@ -509,7 +512,7 @@ Feature: Validate all scenarios in the home tab
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Organization" subheader on left panel
     When I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "ActiveAccount" panel
-    Then I see values "234567891" and "123456788" inside table
+    Then I see values "234567891" and " " inside table
     Examples:
       | User  |
       | ADMIN |
