@@ -288,7 +288,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime award}" inside flex table with id "flexGridRelatedAwards1" without waiting for record
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
+    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
       | Name                     | Reimbursement |
       | {SavedValue:PM Username} | Step 1        |
     Given I delete the record "<Award Name>" from the object "Payment Request"

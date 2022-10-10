@@ -722,7 +722,7 @@ Feature: Validate all scenarios in Payment Request
       | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |
       | Extra Salary | The narrative | 100000000  | 1        | Feet        | 10                |
     Then I softly see the following messages in the page details contains:
-      | Advance applied cannot be greater than the Net Payment. |
+      | Financials Tab - Reimbursed Amount This Action cannot be greater than the reimbursement balance. Apply Advance if any. |
     When I close "Add Line Items" modal by clicking the top right x button
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
@@ -993,7 +993,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:fundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Net Spent This Action |
-      | {SavedValue:fundingAccount} | 20                    |
+      | {SavedValue:fundingAccount} | 10                    |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
       | Name                     | Reimbursement |
@@ -2122,7 +2122,7 @@ Feature: Validate all scenarios in Payment Request
       Sandbox: Notification: Payment Request {SavedValue:PaymentId} for {SavedValue:SubawardId}has been Rejected
       """
 
-  @55404 @advancePRSentBackToOwner @jitendra @buglogged101132
+  @55404 @advancePRSentBackToOwner @jitendra
   Scenario: Verify that Payment Approval can send back Payment request to Owner (Advance)
     When I navigate to "Actuals" sub tab
     And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
@@ -2166,9 +2166,11 @@ Feature: Validate all scenarios in Payment Request
     And I "Send to Owner" in the approval decision
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---paymentRequest:-:pendingTaskTableId---" panel
-    Then I see that "Record Id" has been added in flextable with Id "---paymentRequest:-:pendingTaskTableId---"
+    And I navigate to "Advances" content inside "Payments" subheader on left panel
+    When I click toggle button to select "Advances - All"
+    When I perform quick search for "Record Id" in "---paymentRequest:-:paymentrequestAdvancesTableId---" panel
+    When I click on "View" icon for "Record Id" inside flex table with id "---paymentRequest:-:paymentrequestAdvancesTableId---" without waiting for record
+    Then I softly see field "Status" as "Created"
 
   @57516 @advancePRErrorMsgAfterSubmitToApproval @jitendra
   Scenario: Verify If Payment Approval is not selected by FO user it should show validation error message.(Advance Payment Request)
@@ -2277,7 +2279,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:advanceFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Advance Requested This Action |
-      | {SavedValue:fundingAccount} | 10                            |
+      | {SavedValue:fundingAccount} | 20                            |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
       | Name                     | Advance |
@@ -2325,6 +2327,7 @@ Feature: Validate all scenarios in Payment Request
       | Construction    | 10                            |
     When I get the "EGMS ID"
     When I navigate to "Files" sub tab
+    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
     And I pause execution for "5" seconds
@@ -2532,23 +2535,6 @@ Feature: Validate all scenarios in Payment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on "Submit to Grantor" in the page details
-    And I navigate to "Grants" tab
-    When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Subawards  - Active"
-    And I perform quick search for "<Award Name>" in "---paymentRequest:-:recipientsSubawardTableId---" panel
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---paymentRequest:-:recipientsSubawardTableId---" without waiting for record
-    When I navigate to "Actuals" sub tab
-    And I click on top right button "Advance Request" in flex table with id "---paymentRequest:-:paymentRequestTableId---"
-    When I enter value "Automation Runtime Payment Request2" into field "Title__c"
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "PaymentRequest_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I get the "EGMS ID"
-    And I navigate to "Files" sub tab
-    When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
-    And I switch to iframe with id "---paymentRequest:-:recipientPaymentRequestAttachmentModalIframeId---"
-    And I upload attachment "Attachment.pdf" of type "Others" from computer
-    And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2557,7 +2543,7 @@ Feature: Validate all scenarios in Payment Request
     And I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---paymentRequest:-:advanceFundingAccountTableId---" by clicking "Edit" :
       | Funding Account             | Advance Requested This Action |
-      | {SavedValue:fundingAccount} | 10                            |
+      | {SavedValue:fundingAccount} | 20                            |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
       | Name                     | Advance |
@@ -2700,7 +2686,8 @@ Feature: Validate all scenarios in Payment Request
     When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
       | Name                     | Advance |
       | {SavedValue:FO Username} | Step 2  |
-    Then I softly see "You cannot specify the same user for multiple steps for Advance" inside flex table with id "---amendment:-:approversTableId---"
+    Then I see the following messages in the page details contains:
+      | You cannot specify the same user for multiple steps for Advance |
 
     Examples:
       | Award Name                            |
@@ -2755,8 +2742,8 @@ Feature: Validate all scenarios in Payment Request
     When I enter the following values into flex table with id "---paymentRequest:-:approversTableId---" by clicking "New" :
       | Name                     | Advance |
       | {SavedValue:PM Username} | Step 1  |
-    Then I softly see "You cannot specify the same step for multiple users for Advance." inside flex table with id "---amendment:-:approversTableId---"
-
+    Then I see the following messages in the page details contains:
+      | You cannot specify the same user for multiple steps for Advance |
     Examples:
       | Award Name                            |
       | {SavedValue:Automation Runtime Award} |

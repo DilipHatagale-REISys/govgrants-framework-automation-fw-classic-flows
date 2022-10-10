@@ -126,7 +126,6 @@ Feature: Validate all scenarios of Subaward From FDM and activating an Award usi
     When I enter "Periodic Renewal" values from "AmendmentRequest_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     And I enter "Periodic Renewal Edition" values from "AmendmentRequest_Field_Values.xlsx"
-    And I enter value "{SavedValue:Project Period Start Date}" into field "ProposedBPStartDate__c"
     When I click on "Save" in the page details
     And I refresh the page
     And I save the field labeled "Proposed Budget Period End Date" as "updatedBudgetPeriod"
