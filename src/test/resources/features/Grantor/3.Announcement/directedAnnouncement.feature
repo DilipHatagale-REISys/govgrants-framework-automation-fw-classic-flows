@@ -10,7 +10,6 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I enter "DirectedAnnouncement" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Continue"
     When I enter "Creation Second Modal" values from "Announcement_Field_Values.xlsx"
-    When I enter value "N/A" into field "fieldAllocationlevel__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
