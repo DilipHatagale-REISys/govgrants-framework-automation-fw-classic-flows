@@ -79,11 +79,8 @@ public class UsersAndURL implements UsersController {
             case "SARAH PO":
                 password = "test72018";
                 break;
-            case "SPI":
-                password = "Welcome@2023";
-                break;
             default:
-                password = "Welcome@2022";
+                password = "welcome@2022";
         }
         return password;
     }
@@ -93,7 +90,7 @@ public class UsersAndURL implements UsersController {
         switch (userLevel.toUpperCase()) {
 
             default:
-                password = "Salesforce@2024";
+                password = "Salesforce@2025";
         }
         return password;
     }

@@ -316,6 +316,12 @@ public class GrantorPayloads {
                 return negotiationNoForAnnouncement(json);
             case "PRE_APP_YES_FOCUS_AREA_NO":
                 return preAppYesFocusAreaNoAnnouncement(json);
+            case "BY_APPLICANT_FOCUS_AREA_NO":
+                return byApplicantFocusAreaNo(json);
+            case "BY_APPLICANT":
+                return byApplicant(json);
+            case "BY_APPLICANT_FOCUS_AREA":
+                return byApplicantFocusArea(json);
             case "GOALS_YES":
                 return goalsYesForAnnouncement(json);
             case "PRE_APP_GOALS_YES":
@@ -337,6 +343,34 @@ public class GrantorPayloads {
             default:
                 return json;
         }
+    }
+
+    private JsonObject byApplicantFocusAreaNo(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("Allocationlevel","By Applicant");
+        jsonObject.addProperty("FocusAreaRequired","No");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
+    }
+
+    private JsonObject byApplicant(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("Allocationlevel","By Applicant");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
+    }
+
+    private JsonObject byApplicantFocusArea(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("Allocationlevel","By Applicant and Focus Area");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
     }
 
     private JsonObject updatePreApplicationAndNegotiationAsYesForAnnouncement(JsonObject json) {
@@ -543,8 +577,7 @@ public class GrantorPayloads {
                 .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         ann.addProperty("FocusAreaRequired","Yes");
         ann.addProperty("IsGoalsRequired","Yes");
-        if(annType.equalsIgnoreCase("Directed"))
-            ann.addProperty("Allocationlevel","N/A");
+        ann.addProperty("Allocationlevel", "N/A");
         ann.addProperty("KPIsRequired","Yes");
         ann.addProperty("WBSRequired","No");
         ann.addProperty("RiskAssessment_Required","Yes");
@@ -603,7 +636,7 @@ public class GrantorPayloads {
         JsonObject invApp = new JsonObject();
         JsonArray invAppA = new JsonArray();
         invApp.addProperty("Organization",ProjectWebServices.getIdOf("Account","SAN DIEGO ELECTRICAL TRAINING TRUST"));
-        invApp.addProperty("AllocatedAmount",2000);
+        invApp.addProperty("AllocatedAmount",1000);
         invAppA.add(invApp);
         parent.add("InvitedApplicant",invAppA);
 

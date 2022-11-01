@@ -1013,7 +1013,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Edit" in the page details
     When I enter value "Automation Description" into field "fieldPurposeRTA__c"
     And I click on "Save" in the page details
-    And I click on "Send to Subrecipient" in the page details
+    And I click on "Send Back to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1335,8 +1335,8 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Edit" in the page details
     When I enter value "2000" into field "fieldRequestedChangeInBudget__c"
     And I click on "Save" in the page details
-    And I click on "Send to Subrecipient" in the page details
-    Then I see status in Progress-bar is "Sent to Subrecipient" and is "Green"
+    And I click on "Send Back to Subrecipient" in the page details
+    Then I softly see status in Progress-bar is "Sent Back to Subrecipient" and is "green"
 
   @57288 @verifyAdvancePRCreatedAtRevisedAmendmentSubaward @jitendra
   Scenario: Verify Advance Payment request is created at revised amendment Subaward
@@ -1383,7 +1383,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Edit" in the page details
     When I enter value "2000" into field "fieldRequestedChangeInBudget__c"
     And I click on "Save" in the page details
-    And I click on "Send to Subrecipient" in the page details
+    And I click on "Send Back to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1829,7 +1829,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I perform quick search for "Record Id" in "---amendment:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "Record Id" inside flex table with id "---amendment:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:fundingAccount1}" inside flex table with id "---amendment:-:amendmentFundingAccountsTableId---" without waiting for record
+    When I click on "Edit" icon for "{SavedValue:fundingAccount}" inside flex table with id "---amendment:-:amendmentFundingAccountsTableId---" without waiting for record
     When I enter Revised Encumbrance for award "{SavedValue:Automation Runtime Award}"
     And I click on top right button "Save" in flex table with id "---amendment:-:amendmentFundingAccountsTableId---"
     When I navigate to "Responsibilities" sub tab
@@ -2118,7 +2118,7 @@ Feature: Validate all scenarios in the Amendment Request
     And I click on "Edit" in the page details
     When I enter value "4000" into field "fieldRequestedChangeInBudget__c"
     And I click on "Save" in the page details
-    And I click on "Send to Subrecipient" in the page details
+    And I click on "Send Back to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2249,6 +2249,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I click on "Attach" icon for "Mandatory" inside flex table with id "---paymentRequest:-:recipientAdvanceSupportiveDocumentChecklistTableId---" without waiting for record
     And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I click on top right button "Add Files" in flex table with id "---paymentRequest:-:recipientAdvancePaymentFilesTableId---"
+    And I pause execution for "5" seconds
     And I switch to iframe with id "---paymentRequest:-:addFilesTableIframeId---"
     And I upload attachment "Attachment.pdf" of type "Invoice" from computer
     And I click on "Submit to Grantor" in the page details
@@ -2741,7 +2742,7 @@ Feature: Validate all scenarios in the Amendment Request
     When I navigate to "Management" sub tab
     And I click on "View" icon for "Record Id" inside flex table with id "---amendment:-:recipientAwardAmendmentRequestTableId---" without waiting for record
     When I navigate to "Overview" sub tab
-    Then I softly see value "{SavedValue:updatedBudgetPeriodDate}" for title "End Date" inside table "---amendment:-:projectAreasTableId---"
+    Then I softly see value "{SavedValue:updatedBudgetPeriodDate}" for title "End Date" inside table "---amendment:-:subrecipientProjectAreasTableId---"
     Examples:
       | Grant Name                            |
       | {SavedValue:Automation Runtime Award} |

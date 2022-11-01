@@ -1086,7 +1086,7 @@ Feature: Validate all scenarios in the award created from FDM
       | Name                     | Award  |
       | {SavedValue:FO Username} | Step 3 |
     And I click on "Send to Subrecipient" in the page details
-    Then I softly see status in Progress-bar is "Sent to Subrecipient" and is "green"
+    Then I softly see field "Status" as "Sent to Subrecipient"
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Grants" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1191,7 +1191,8 @@ Feature: Validate all scenarios in the award created from FDM
     And I enter "Edition" values from "Award_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate" in flex table with id "---subAwardFromFDM:-:associateContactTableId---"
+    And I click on "Remove" icon for "Project Director/Manager" inside flex table with id "---subAwardFromFDM:-:associateContactTableId---" without waiting for record
+   And I click on top right button "Associate" in flex table with id "---subAwardFromFDM:-:associateContactTableId---"
     When I perform quick search for "Automation SPA" in "---subAwardFromFDM:-:keyContactsTableId---" panel
     When I click "Associate" after selection of "Automation SPA" in the table "---subAwardFromFDM:-:keyContactsTableId---"
     When I close "Associate Contacts" modal by clicking the top right x button

@@ -54,4 +54,9 @@ public class CommonSteps {
     public void validateImageinPageDetail(String usage, String imageName) {
         projectManager.validateImage(usage, imageName);
     }
+
+    @Then("^I see the page contains text \"([^\"]*)\"$")
+    public void assertTextOnPage(String desiredText) {
+        projectManager.assertTextOnPage(desiredText);
+    }
 }
