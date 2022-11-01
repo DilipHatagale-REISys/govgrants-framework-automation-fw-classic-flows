@@ -19,7 +19,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     #219166
     Then I softly see "Focus Areas" page block displayed
 
-  @TBE @219077 @VerifyAdminuserseetheEGMSIDshouldbeclickablelinkinthecolumnofApplicationEGMSIDforDirectedAnnouncement @sprint-9-US-208408 @komal @Allocation
+  @219077 @VerifyAdminuserseetheEGMSIDshouldbeclickablelinkinthecolumnofApplicationEGMSIDforDirectedAnnouncement @sprint-9-US-208408 @komal @Allocation
   Scenario: Verify Admin user see the EGMS ID should be clickable link  in the column of Application EGMS ID for Directed Announcement
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
     Given I am on "SUBPORTAL" portal
@@ -31,8 +31,6 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Proposal" sub tab
@@ -61,7 +59,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     Given I click on "Back" in the page details
     When I click on "Submit Application" in the page details
     And I save the field labeled "EGMS ID" as "AppEgmdId"
-
+    Given I am on "INTERNAL" portal
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
     When I navigate to "Directed" content inside "Announcements" subheader on left panel
@@ -69,11 +67,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "ActiveFundingOpportunities" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside flex table with id "ActiveFundingOpportunities"
     #219077
-    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
-    When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
-    When I close "Add Organizations" modal by clicking the top right x button
-    And I refresh the page
-    Then I see "{SavedValue:AppEgmdId}" status in lookup modal table
+    And I click on hyperlink containing value "{SavedValue:AppEgmdId}"
+    Then I see the header is "Application" in the page details
 
   @219075 @AdminUserShouldAbleToSeeTwoColumnsInPublishedStateForDirectedAnnouncement @sprint-9-US-208408 @komal @Allocation
   Scenario: Verify Admin user should able to see the two columns in published state for Directed Announcement
@@ -210,7 +205,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly see the following messages in the page details :
       | Record removed successfully. |
 
-  @TBE @AnnNotShownInNotYetQualifiedList @219619 @219614 @IND/SPIUser_VerifyforDirectedannouncementinbudgetsummarysectionSubawardfloor&Subawardcellingfieldshouldbedisplay @sprint-11-US-204998 @komal @Allocation
+  @TBE @219619 @219614 @IND/SPIUser_VerifyforDirectedannouncementinbudgetsummarysectionSubawardfloor&Subawardcellingfieldshouldbedisplay @sprint-11-US-204998 @komal @Allocation
   Scenario Outline: IND/SPI User_Verify for Directed announcement in budget summary section Subaward floor & Subaward celling field should be display.
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
     When I am on "SUBPORTAL" portal
@@ -241,7 +236,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | SPI3 |
       | IND  |
 
-  @TBE @AnnNotShownInNotYetQualifiedList @226489 @219617 @219612 @IND/SPA/SPI-User_VerifyforCompetitiveannouncementinbudgetsummarysectionSubawardfloor&Subawardcellingfieldshouldbedisplay @sprint-11-US-204998 @komal @Allocation
+  @TBE @226489 @219617 @219612 @IND/SPA/SPI-User_VerifyforCompetitiveannouncementinbudgetsummarysectionSubawardfloor&Subawardcellingfieldshouldbedisplay @sprint-11-US-204998 @komal @Allocation
   Scenario Outline: IND/SPA/SPI User_Verify for Competitive announcement in budget summary section Subaward floor & Subaward celling field should be display.
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default"
     When I am on "SUBPORTAL" portal
