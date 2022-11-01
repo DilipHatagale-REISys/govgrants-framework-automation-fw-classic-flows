@@ -148,7 +148,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I download the file
     Then I see "Related Focus Areas" on page "1" of "govgrants" pdf file
 
-  @70551 @70552 @73405 @73389 @73406 @73387 @70800 @70885 @71595 @72646 @72641 @73537 @userCanViewAddAndDeleteFocusArea @aashish
+  @vai @70551 @70552 @73405 @73389 @73406 @73387 @70800 @70885 @71595 @72646 @72641 @73537 @userCanViewAddAndDeleteFocusArea @aashish
   Scenario: To Verify that user is able to remove associated focus areas While creating the Announcement | To verify PM can remove non relevant Budget categories from specific Budget Type in Announcement based on the need.
     When I navigate to "Announcements" tab
     And I click toggle button to select "Published Announcements"
@@ -168,19 +168,16 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Package Name | Contains | Grantor Site Visit Forms |
     Then I softly see value "Grantor Site Visit Forms" for title "Package Name" inside table "---announcement:-:businessFormlistTableId---"
     Then I softly see value "Site Visit" for title "Package Type" inside table "---announcement:-:businessFormlistTableId---"
+    When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
     When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
     Then I softly see that "Automation Permanent Focus Area2" has been added in flextable with Id "---announcement:-:AnnouncementServiceArea1TableId---"
-    And I click on "View" icon for "Automation Permanent Focus Area2" inside flex table with id "---announcement:-:AnnouncementServiceArea1TableId---" without waiting for record
-    Then I softly see field "GAT Title" as "Automation Permanent Focus Area2"
     And I refresh the page
     And I click on "Remove" icon for "Automation Permanent Focus Area2" inside flex table with id "---announcement:-:AnnouncementServiceArea1TableId---" without waiting for record
-    Then I softly see the following messages in the page details :
-      | Record deleted successfully. |
     When I navigate to "Financials" sub tab
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     Then I softly see the following messages in the page details :
-      | Budget period added successfully. |
+      | Budget period added successfully.. |
     And I save the value from row "1" for column name "Start Date" as "startDate" from flex table "---announcement:-:budgetPeriodTableId---"
     And I save the value from row "1" for column name "End Date" as "endDate" from flex table "---announcement:-:budgetPeriodTableId---"
     Then I softly do not see value "{SavedValue:startDate}" for title "Start Date" inside table "---announcement:-:budgetPeriodTableId---"
@@ -189,8 +186,6 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Remove" icon for "BP01" inside flex table with id "---announcement:-:budgetPeriodTableId---"
     Then I softly do not see value "BP01" for title "Budget Period Name" inside table "---announcement:-:budgetPeriodTableId---"
     And I click on "Remove" icon for "Travel" inside flex table with id "---announcement:-:announcementBudgetCategory---" without waiting for record
-    Then I softly see the following messages in the page details :
-      | Record removed successfully. |
     Then I softly do not see value "Travel" for title "Name" inside table "---announcement:-:announcementBudgetCategory---"
     And I enter value "2000" into field "---announcement:-:subawardfloor---"
     And I enter value "3000" into field "---announcement:-:subawardceiling---"
@@ -260,14 +255,13 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Then I softly see the following messages in the page details :
+      | Overview Tab - Select Eligible Applicant Types in the Eligibility Details section.                                    |
       | Financial Tab - Enter Subaward Ceiling amount before submitting this Announcement.                                    |
       | Financial Tab - Enter the Estimated Funding Amount.                                                                   |
-      | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
       | Financial Tab - Enter at least one Budget Period.                                                                     |
+      | Overview Tab - The response deadline cannot be earlier than the question deadline.                                    |
       | Overview Tab - Enter the Description.                                                                                 |
-      | Overview Tab - Select applicant types.                                                                                |
-      | Overview Tab - The question submission deadline must be before the Application due date.                              |
-      | Overview Tab - The answer submission deadline must be before the Application due date.                                |
+      | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
       | Responsibilities - At least one approver is required                                                                  |
     And I click on "Edit" in the page details
     And I enter value "20" into field "fieldApplicationDueDate__c"
@@ -277,13 +271,13 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Submit For Approval" in the page details
     And I pause execution for "10" seconds
     Then I softly see the following messages in the page details :
+      | Overview Tab - Select Eligible Applicant Types in the Eligibility Details section.                                    |
       | Financial Tab - Enter Subaward Ceiling amount before submitting this Announcement.                                    |
       | Financial Tab - Enter the Estimated Funding Amount.                                                                   |
-      | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
       | Financial Tab - Enter at least one Budget Period.                                                                     |
-      | Overview Tab - Enter the Description.                                                                                 |
-      | Overview Tab - Select applicant types.                                                                                |
       | Overview Tab - The response deadline cannot be earlier than the question deadline.                                    |
+      | Overview Tab - Enter the Description.                                                                                 |
+      | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
       | Responsibilities - At least one approver is required                                                                  |
 
   @70479 @70481 @70503 @70422 @70507 @70542 @70543 @70425 @70424 @70426 @70419 @70417 @70418 @70506 @71951 @73408 @userDeleteSupportingDocument @aashish
@@ -315,10 +309,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Description                 | Required  | Applies To | Status |
       | Automation test description | Mandatory | Award      | Active |
     When I click on "Upload Template" icon for " Automation test description" inside flex table with id "---announcement:-:annChecklist---" without waiting for record
-    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
-    Then I softly see the following messages in the page details :
-      | Attachement saved successfully. |
-    When I close "Upload Template" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I perform quick search for "Automation test description" in "---announcement:-:annChecklist---" panel
     Then I softly see value "Mandatory" for title "Required" inside table "---announcement:-:annChecklist---"
     Then I softly see value "Award" for title "Applies To" inside table "---announcement:-:annChecklist---"
@@ -355,6 +346,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I pause execution for "2" seconds
     And I refresh the page
     And I click on top right button "Add Files" in flex table with id "---announcement:-:AnnouncementAttachmentTableId---"
+    And I pause execution for "5" seconds
+    And I switch to iframe with id "---announcement:-:iframeIdAddFiles---"
     And I upload attachment "Attachment.pdf" of type "Funding Opportunity Announcement" from computer
     When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---announcement:-:AnnouncementAttachmentTableId---"
     Then I see value "{SavedValue:AttachedFile}" for title "Title" inside table "---announcement:-:AnnouncementAttachmentTableId---"
@@ -571,8 +564,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I enter values into fields
       | Value         | Field          |
       | ab            | fieldTitle     |
-      | SecondTest     | fieldFirstName |
-      | SecondLast      | fieldLastName  |
+      | SecondTest    | fieldFirstName |
+      | SecondLast    | fieldLastName  |
       | xyz@test.mail | fieldEmail     |
     When I enter value "ab" into field "fieldTitle"
     When I enter value "SecondTest" into field "fieldFirstName"

@@ -2234,6 +2234,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Edit" in the page details
     When I enter values into fields
       | Value                       | Field                 |
+      | AuGr                        | fieldGrantCode__c     |
       | Automation Test Description | fieldJustification__c |
     And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" by clicking "Edit" :

@@ -1,4 +1,4 @@
-@directedAnnouncements @grantor-regression @grantor-parallel-regression @announcement @regression
+@directedAnnouncements @grantor-regression @grantor-parallel-regression @announcement @regression @vanch
 Feature: Validate all scenarios in the directed Announcement tab
 
   Background: Create Announcement
@@ -64,13 +64,16 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---announcement:-:directedAddInviteApplicantTableId---" panel
-    Then I softly do not see value "SAN DIEGO ELECTRICAL TRAINING TRUST" for title "Organization" inside table "---announcement:-:directedAddInviteApplicantTableId---"
+    Then I softly see value "SAN DIEGO ELECTRICAL TRAINING TRUST" for title "Organization" inside table "---announcement:-:directedAddInviteApplicantTableId---"
     When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
-    Then I softly see value "RG-000612" for title "Agency Code" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
-    Then I softly see value "223323432" for title "EIN" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
-    Then I softly see value "223323432" for title "DUNS" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
+   And I save the value from row "1" for column name "Agency Code" as "AgencyCode" from flex table "---announcement:-:directedInvitedApplicatsTableId---"
+   Then I softly see value "{SavedValue:AgencyCode}" for title "Agency Code" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
+   And I save the value from row "1" for column name "EIN" as "EIN" from flex table "---announcement:-:directedInvitedApplicatsTableId---"
+   Then I softly see value "{SavedValue:EIN}" for title "EIN" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
+   And I save the value from row "1" for column name "DUNS" as "DUNS" from flex table "---announcement:-:directedInvitedApplicatsTableId---"
+   Then I softly see value "{SavedValue:DUNS}" for title "DUNS" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---announcement:-:directedInvitedApplicatsTableId---"
     And I click on "Remove" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
     And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
@@ -283,7 +286,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
     When I navigate to "Overview" sub tab
-    And I enter value "-1" into field "ApplicationDueDate__c"
+   And I enter value "-1" into field "fieldApplicationDueDate__c"
     And I click on "Save" in the page details
     Then I softly see the following messages in the page details :
       | Overview Tab - Application Due Date cannot be in the past. |
@@ -529,8 +532,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:objectivesTableId---"
     When I click "Associate" after selection of "Automation Permanent Objective2" in the table "---announcement:-:goalsTableId---"
     When I navigate to "Overview" sub tab
-    And I click on top right button "Associate Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
-    When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:directedInvitedApplicatsTableId---"
+    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
     When I close "Add Organizations" modal by clicking the top right x button
     And I refresh the page
     When I navigate to "Responsibilities" sub tab

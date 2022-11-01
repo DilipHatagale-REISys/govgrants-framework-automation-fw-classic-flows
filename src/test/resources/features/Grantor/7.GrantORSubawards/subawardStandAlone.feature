@@ -1103,7 +1103,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click modal button "Save"
     #When I close "Edit Payment Request Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Payment Request"
-    Then I see total records count "Total Records:120" in flex table "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
+    And I save the total records from the flex table id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" as "totalRecords"
+    Then I see total records count "{SavedValue:totalRecords}" in flex table "---subAwardStandAlone:-:paymentRequestSchedulesTableId---"
 
   @53911 @66200 @67817 @66318 @68036 @69318 @ValidateAdvancePaymentRequestcreation @mahadev @buglogged102071
   Scenario Outline: Advance Payment Request creation when Advance Payment Allowed selected as Yes
@@ -2263,7 +2264,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click modal button "Save"
     #When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
-    Then I see total records count "Total Records:12" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
+    And I save the total records from the flex table id "---subAwardStandAlone:-:progressReportScheduleId---" as "totalRecords"
+    Then I see total records count "{SavedValue:totalRecords}" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
   @55291 @ScheduleBaseAsReportingPeriod @jitendra
   Scenario: Verify While creating schedule user should be allowed to select the Desired Frequency as monthly
@@ -2503,7 +2505,8 @@ Feature: Validate all scenarios in the Stand Alone Award and Grant
     And I click modal button "Save"
     #When I close "Edit Progress Report Schedule" modal by clicking the top right x button
     And I expand nested table containing column value "Progress Report"
-    Then I see total records count "Total Records:17" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
+    And I save the total records from the flex table id "---subAwardStandAlone:-:progressReportScheduleId---" as "totalRecords"
+    Then I see total records count "{SavedValue:totalRecords}" in flex table "---subAwardStandAlone:-:progressReportScheduleId---"
 
   @45725 @validateSubRecipientCannotEditSchedule @mahadev
   Scenario Outline: Verify if subaward is sent to sub-recipient for Accept action then external user should not have access to modify Schedule
