@@ -218,6 +218,10 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
+   And I navigate to "Overview" sub tab
+   And I edit the following rows inline in flex table with id "---preApplication:-:preAppContactTableId---" by clicking "Edit" :
+     | Name                       | Project Role             | Is Key Contact |
+     | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I navigate to "Files and Forms" sub tab
     And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
     And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
@@ -226,6 +230,7 @@ Feature: Validate all scenarios for Auditor Profile in Application Module
     And I click on top right button "Add Files" in flex table with id "---auditor:-:PreApplicationTableId---"
     When I upload attachment "Attachment.pdf" of type "Other" from computer
     When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     When I navigate to "Applications" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel

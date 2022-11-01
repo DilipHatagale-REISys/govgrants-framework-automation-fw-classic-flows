@@ -98,7 +98,8 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     And I navigate to "Internal" content inside "Contacts" subheader on left panel
     When I click on top right button "New" in flex table with id "---home:-:internalContactTableId---"
     And I enter "Creation" values from "InternalContact_Field_Values.xlsx"
-    When I enter value "automationInternalContact@yopmail.com" into field "fieldEmail"
+    And I generate the random EmailID and save as "uniqueEmailID"
+    And I enter value "{SavedValue:uniqueEmailID}" into field "fieldEmail"
     When I click modal button "Save"
     And I save the contact name as "Automation Runtime Contact"
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
@@ -169,9 +170,9 @@ Feature: Validate all scenarios for Auditor Profile in Home Module
     When I re-login to "As a Grantor" app as "AUDITOR" user on "INTERNAL" portal
     When I navigate to "Home" tab
     And I navigate to "Subrecipients" content inside "Contacts" subheader on left panel
-    Then I cannot see top right button "New" in flex table with id "---home:-:subrecipientcontactTableId---"
-    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:subrecipientcontactTableId---" panel
-    Then I softly cannot see row level action button "Edit" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:subrecipientcontactTableId---"
+    Then I softly cannot see top right button "New" in flex table with id "---home:-:internalContactTableId---"
+    When I perform quick search for "{SavedValue:Automation Runtime Contact}" in "---home:-:internalContactTableId---" panel
+    Then I softly cannot see row level action button "Edit" against "{SavedValue:Automation Runtime Contact}" in flex table with id "---home:-:internalContactTableId---"
 
   @69143 @auditorViewSubrecipientContacts
   Scenario: Validate Auditor should have view / read  only access to subrecipient contacts

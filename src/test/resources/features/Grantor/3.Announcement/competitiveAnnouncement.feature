@@ -315,10 +315,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Description                 | Required  | Applies To | Status |
       | Automation test description | Mandatory | Award      | Active |
     When I click on "Upload Template" icon for " Automation test description" inside flex table with id "---announcement:-:annChecklist---" without waiting for record
-    And I choose the file "Announcement_Field_Values.xlsx" to upload for "Checklist" of type "Announcement"
-    Then I softly see the following messages in the page details :
-      | Attachement saved successfully. |
-    When I close "Upload Template" modal by clicking the top right x button
+    And I upload attachment "Attachment.pdf" of type "Others" from computer
     And I perform quick search for "Automation test description" in "---announcement:-:annChecklist---" panel
     Then I softly see value "Mandatory" for title "Required" inside table "---announcement:-:annChecklist---"
     Then I softly see value "Award" for title "Applies To" inside table "---announcement:-:annChecklist---"
@@ -355,6 +352,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I pause execution for "2" seconds
     And I refresh the page
     And I click on top right button "Add Files" in flex table with id "---announcement:-:AnnouncementAttachmentTableId---"
+    And I pause execution for "5" seconds
+    And I switch to iframe with id "---announcement:-:iframeIdAddFiles---"
     And I upload attachment "Attachment.pdf" of type "Funding Opportunity Announcement" from computer
     When I save the value from row "1" for column name "Title" as "AttachedFile" from flex table "---announcement:-:AnnouncementAttachmentTableId---"
     Then I see value "{SavedValue:AttachedFile}" for title "Title" inside table "---announcement:-:AnnouncementAttachmentTableId---"

@@ -6,6 +6,7 @@ import com.ggproduct.automation.webservices.ProjectWebServices;
 import com.testingblaze.actionsfactory.api.ByUsing;
 import com.testingblaze.register.I;
 import com.testingblaze.report.LogLevel;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 
@@ -81,5 +82,16 @@ public class ProjectManager extends ProjectWebServices {
         } catch (Exception e) {
         }
         return flag;
+    }
+
+    /**
+     * Method to validate partial/full text on page
+     *
+     * @param desiredText
+     * @author- vaibhav.chandratre
+     */
+    public void assertTextOnPage(String desiredText) {
+        Assert.assertTrue(I.amPerforming().getElementReference().of(By.xpath("//div[@class='messageText']"))
+                .getAttribute("innerText").contains(desiredText));
     }
 }
