@@ -45,7 +45,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see field "Budgeted Amount" as "$1,000.00"
     Then I softly see field "Allocated Amount" as "$1,000"
 
- @vai @219703 @ValidateSPIUserifbudgetedamountisnotequaltoallocationamountthenerrormessageshouldgenerateonclickonsubmittograntorbutton @sprint-11-US-203038 @vaibhav @Allocation
+  @219703 @ValidateSPIUserifbudgetedamountisnotequaltoallocationamountthenerrormessageshouldgenerateonclickonsubmittograntorbutton @sprint-11-US-203038 @vaibhav @Allocation
   Scenario: Validate SPI User if budgeted amount is not equal to allocation amount then error message should generate on click on submit to grantor button
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT"
     Given I am on "SUBPORTAL" portal
