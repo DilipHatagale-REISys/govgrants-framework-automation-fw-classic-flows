@@ -1,4 +1,4 @@
-@announcement @commonAnnouncements @grantor-regression @grantor-parallel-regression @regression
+@announcement @commonAnnouncements @grantor-regression @grantor-parallel-regression @regression @vanch
 Feature: Validate all common scenarios in the  Announcement tab
 
   Background: Create Announcement
