@@ -297,7 +297,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Type |
       | Directed          |
 
- @vai @announcementSendBackToOwner @announcementSendBackPendingTaskToOwner @announcementPostSendBackCheckFieldHistory
+  @announcementSendBackToOwner @announcementSendBackPendingTaskToOwner @announcementPostSendBackCheckFieldHistory
   Scenario Outline: Validate the send back functionality of an Announcement || Validate that after send back from approvers owner should not get pending task || Validate the field history after send back of an announcement
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Announcement_Field_Values.xlsx"
