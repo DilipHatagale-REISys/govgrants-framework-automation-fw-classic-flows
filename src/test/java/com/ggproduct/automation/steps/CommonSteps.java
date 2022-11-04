@@ -10,10 +10,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import jdk.jfr.Description;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.springframework.context.annotation.Description;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -59,4 +59,11 @@ public class CommonSteps {
     public void assertTextOnPage(String desiredText) {
         projectManager.assertTextOnPage(desiredText);
     }
+
+    @Description("Validate text message coming on confirmation box")
+    @Then("^I (softly see|see) confirmation box with quotes in body \"(.*?)\" is displayed$")
+    public void assertConfirmationBoxWithMessage(String usage, String message) {
+        projectManager.assertMessageOfConfirmationBoxPopUp(message, usage.contains("softly"));
+    }
+
 }
