@@ -488,13 +488,20 @@ public class GenericSteps {
         annName = newAnnName;
         grantorWebServices.publishAnnouncment(annType, annName, filter);
     }
-
     @And("I activated standalone subaward {string} with properties {string}")
     public void iActivatedStandaloneSubawardWithProperties(String grantName, String filter) {
         String newGrantName = grantName + I.amPerforming().addOnsTo().getRandomNumber();
         I.amPerforming().propertiesFileOperationsTo().saveValue(grantName, newGrantName);
         grantName = newGrantName;
         grantorWebServices.activateSubaward(grantName, filter);
+    }
+
+    @And("I activated standalone subaward {string} of type {string} with properties {string}")
+    public void iActivatedStandaloneSubawardWithPropertiesAndType(String grantName, String filter, String Type) {
+        String newGrantName = grantName + I.amPerforming().addOnsTo().getRandomNumber();
+        I.amPerforming().propertiesFileOperationsTo().saveValue(grantName, newGrantName);
+        grantName = newGrantName;
+        grantorWebServices.activateSubaward(grantName, filter, Type);
     }
 
     @And("I click on submit review")

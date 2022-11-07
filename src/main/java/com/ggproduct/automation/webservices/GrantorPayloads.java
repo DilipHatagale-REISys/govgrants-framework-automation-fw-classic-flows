@@ -138,6 +138,7 @@ public class GrantorPayloads {
         FDM.addProperty("SubawardAbbreviation","AWD");
         FDM.addProperty("RecommendedForAward","Yes");
         FDM.addProperty("RecommendedAmount",1000);
+//        FDM.addProperty("TotalCommitmentAmount",1000);
         FDMArray.add(FDM);
 
         parent.add("FDM",FDMArray);
@@ -648,19 +649,25 @@ public class GrantorPayloads {
      * @param filter
      * @return
      * This method include switch cases. If we wants to change the some parameter from the default payload returned by method
-     * @see #defaultPayloadCreateStandaloneAward(String) then we can simply create our own method having parameter(this parameter would be json object return
+//     * @see #defaultPayloadCreateStandaloneAward(String, String) then we can simply create our own method having parameter(this parameter would be json object return
      * by method defaultPayloadCreateStandaloneAward(String)) and then we can create out own swtich case and call that method under this switch case. And pass
      * this switch cases from feature step....
      */
-    public JsonObject payloadForCreateStandaloneAward(String grantName, String filter){
+    public JsonObject payloadForCreateStandaloneAward(String grantName, String filter,String... Type){
         String user = "";
+        JsonObject json;
         if(!filter.toLowerCase().contains("user")){
             filter = filter.toUpperCase();
         } else {
             user = filter.replace("user","").trim();
             filter = "USER";
         }
-        JsonObject json = defaultPayloadCreateStandaloneAward(grantName);
+        if (Type.length > 0) {
+            json = defaultPayloadCreateStandaloneAward(grantName, Type[0]);
+        } else {
+            json = defaultPayloadCreateStandaloneAward(grantName);
+        }
+
 
         switch (filter){
             case "NO_RISK_ASSESSMENT":
@@ -855,7 +862,7 @@ public class GrantorPayloads {
      * @see GrantorWebServices#getIdOf(String, String)
      * @see GrantorWebServices#getRecordTypeId(String, String)
      */
-    public JsonObject defaultPayloadCreateStandaloneAward(String grantName){
+    public JsonObject defaultPayloadCreateStandaloneAward(String grantName,String... Type){
         JsonObject parent = new JsonObject();
 
         JsonObject grant = new JsonObject();
@@ -871,7 +878,6 @@ public class GrantorPayloads {
                 I.amPerforming()
                         .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(3650, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         grant.addProperty("BudgetCategoryPackage","Construction");
-        grant.addProperty("GrantType","Formula Grant");
         grant.addProperty("GrantDescription","API Testing For Award Activation From Direct Grant");
         grant.addProperty("ExternalOrganization",ProjectWebServices.getIdOf("Account","Test Automation Organization"));
         grant.addProperty("InternalOrganization",ProjectWebServices.getIdOf("Account","SAN DIEGO ELECTRICAL TRAINING TRUST"));
@@ -881,7 +887,7 @@ public class GrantorPayloads {
         grant.addProperty("MaintenanceOfEffort","Yes");
         grant.addProperty("LaverageAllowed","Yes");
         grant.addProperty("IsProgramIncomeAnticipated","Yes");
-        grant.addProperty("IsAdvancePermitted","Yes");
+        grant.addProperty("IsAdvancePermitted","No");
         grant.addProperty("FocusAreaRequired","Yes");
         grant.addProperty("IsGoalsRequired","Yes");
         grant.addProperty("KPIsRequired","Yes");
@@ -892,6 +898,29 @@ public class GrantorPayloads {
         grant.addProperty("GranteeMatch",10);
         grant.addProperty("BudgetCloseoutrequestRequired","Yes");
         grant.addProperty("CostSharing","Cash Match");
+        if (Type[0].contains("Formula")){
+            if (Type[0].equals("Formula_By_Applicant")) {
+                grant.addProperty("GrantType","Formula");
+                grant.addProperty("Allocationlevel", "By Applicant");
+            }
+            else if (Type[0].equals("Formula_By_Applicant_Focus_Area")) {
+                grant.addProperty("GrantType","Formula");
+                grant.addProperty("AllocationLevel", "By Applicant and Focus Area");
+            }
+            else if (Type[0].equals("Formula_By_Applicant_Focus_Area_No")) {
+                grant.addProperty("GrantType","Formula");
+                grant.addProperty("AllocationLevel", "By Applicant and Focus Area");
+                grant.addProperty("FocusAreaRequired","No");
+            }
+        }
+        else if (Type[0].contains("Directed")) {
+            grant.addProperty("GrantType","Directed");
+            grant.addProperty("AllocationLevel", "N/A");
+        }
+        else {
+            grant.addProperty("GrantType","Competitive");
+            grant.addProperty("AllocationLevel", "N/A");
+        }
         grant.addProperty("RecordTypeId",ProjectWebServices.getRecordTypeId("Grant__c","Grantor"));
         grant.addProperty("OwnerId",ProjectWebServices.getIdOf("User","Automation PM"));
         grantA.add(grant);

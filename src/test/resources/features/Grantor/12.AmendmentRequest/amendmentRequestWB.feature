@@ -24855,7 +24855,7 @@ Feature: Amendment Request scenarios without background
       | Automation Permanent Focus Area | {SavedValue:updatedBudgetPeriodDate} |
     And I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---amendment:-:fundingChangeApproversTableId---" by clicking "New" :
-      | Name           | Amendment Request |
+      | Name          | Amendment Request |
       | Automation PO1 | Step 1            |
     When I click on "Submit for Approval" in the page details
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
@@ -24883,7 +24883,7 @@ Feature: Amendment Request scenarios without background
     Then I see value "{SavedValue:budgetSOWChangeId}" for title "Amendment Request ID" inside table "---amendment:-:amendmentTargetOwnerTableId---"
     And I pause execution for "2" seconds
     And I close the tab
-    When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PO1" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:budgetSOWChangeId}" in "---amendment:-:pendingTaskTableId---" panel
@@ -24964,9 +24964,9 @@ Feature: Amendment Request scenarios without background
     And I enter value "1000" into field "ActualEncumbrance__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:AmendmentFundingAccountTableId---"
     And I save the field labeled "EGMS ID" as "PERIODICRENEWAL1"
-   When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-   And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
-   And I navigate to "Grants" tab
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
+    And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
     When I perform quick search for "{SavedValue:Automation Runtime Bulk Award for Amendment}" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
@@ -24983,8 +24983,8 @@ Feature: Amendment Request scenarios without background
     And I enter value "1000" into field "ActualEncumbrance__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:AmendmentFundingAccountTableId---"
     And I save the field labeled "EGMS ID" as "PERIODICRENEWAL2"
-   When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-   And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -25002,8 +25002,8 @@ Feature: Amendment Request scenarios without background
     And I enter value "1000" into field "ActualEncumbrance__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:AmendmentFundingAccountTableId---"
     And I save the field labeled "EGMS ID" as "PERIODICRENEWAL3"
-   When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-   And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -25021,8 +25021,8 @@ Feature: Amendment Request scenarios without background
     And I enter value "1000" into field "ActualEncumbrance__c"
     And I click on top right button "Save" in flex table with id "---amendment:-:AmendmentFundingAccountTableId---"
     And I save the field labeled "EGMS ID" as "PERIODICRENEWAL4"
-   When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-   And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -25055,8 +25055,8 @@ Feature: Amendment Request scenarios without background
       | Automation PM | Step 1            |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
-   When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-   And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -25089,8 +25089,8 @@ Feature: Amendment Request scenarios without background
       | Automation PM | Step 1            |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
-   When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-   And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -25123,8 +25123,8 @@ Feature: Amendment Request scenarios without background
       | Automation PM | Step 1            |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
-   When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-   And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -25157,8 +25157,8 @@ Feature: Amendment Request scenarios without background
       | Automation PM | Step 1            |
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient"
-   When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-   And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -25201,8 +25201,8 @@ Feature: Amendment Request scenarios without background
     And I click on top right button "Save" in flex table with id "---amendment:-:RecipientKeyPersonalTableId---"
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
-   When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-   And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -25245,8 +25245,8 @@ Feature: Amendment Request scenarios without background
     And I click on top right button "Save" in flex table with id "---amendment:-:RecipientKeyPersonalTableId---"
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
-   When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-   And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -25289,8 +25289,8 @@ Feature: Amendment Request scenarios without background
     And I click on top right button "Save" in flex table with id "---amendment:-:RecipientKeyPersonalTableId---"
     And I click on "Submit to Grantor" in the page details
     Then I softly see status in Progress-bar is "Submitted to Grantor" and is "Green"
-   When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-   And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
