@@ -496,7 +496,7 @@ public class GenericSteps {
         grantorWebServices.activateSubaward(grantName, filter);
     }
 
-    @And("I activated standalone subaward {string} of type {string} with properties {string}")
+    @And("I activated standalone subaward {string} with properties {string} of type {string}")
     public void iActivatedStandaloneSubawardWithPropertiesAndType(String grantName, String filter, String Type) {
         String newGrantName = grantName + I.amPerforming().addOnsTo().getRandomNumber();
         I.amPerforming().propertiesFileOperationsTo().saveValue(grantName, newGrantName);

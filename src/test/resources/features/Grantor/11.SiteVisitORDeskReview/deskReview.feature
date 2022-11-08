@@ -2,8 +2,8 @@
 Feature: Validate all scenarios in Desk Review
 
   Background: Create Desk Review
-    Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default"
-    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Desk Review" with properties "default" of type "Formula_By_Applicant"
+    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel

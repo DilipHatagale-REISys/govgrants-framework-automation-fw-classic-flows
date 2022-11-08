@@ -935,6 +935,8 @@ public class GrantorPayloads {
         award.addProperty("FO",ProjectWebServices.getIdOf("User","Automation FO"));
         award.addProperty("EXE",ProjectWebServices.getIdOf("User","Automation EXE"));
         awardArray.add(award);
+        award.addProperty("NewObligation","1000");
+        award.addProperty("TotalCommitment","2000");
         parent.add("Award",awardArray);
 
         JsonObject awardFundingAccount = new JsonObject();

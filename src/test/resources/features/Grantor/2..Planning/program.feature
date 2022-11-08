@@ -1163,6 +1163,13 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 2  |
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -1173,13 +1180,6 @@ Feature: Validate all scenarios for program
     And I click on top right button "Associate" in flex table with id "---program:-:kpiTableId---"
     When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
     When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-      | Name                     | Program |
-      | {SavedValue:PM Username} | Step 1  |
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-      | Name                      | Program |
-      | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab
@@ -2982,7 +2982,7 @@ Feature: Validate all scenarios for program
     When I enter value "30" into field "Weight__c"
     And I click on top right button "save" in flex table with id "---program:-:reviewStepTableId---"
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---program:-:reviewFormPanelId---" without waiting for record
-   # And I expand nested table containing column value "Program Income"
+    And I expand nested table containing column value "Program Income"
     And I click on "Edit" icon for "Program Income" inside flex table with id "---program:-:programReviewPanel---" without waiting for record
     When I enter value "60" into field "Weight__c"
     And I click on top right button "Save" in flex table with id "---program:-:programReviewPanel---"
@@ -4913,6 +4913,12 @@ Feature: Validate all scenarios for program
     When I navigate to "Overview" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:contactsTableId---"
     When I click "Associate" after selection of "{SavedValue:EXE Username}" in the table "---program:-:associateContactsTableId---"
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                     | Program |
+      | {SavedValue:PM Username} | Step 1  |
+    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
+      | Name                      | Program |
+      | {SavedValue:EXE Username} | Step 2  |
     When I navigate to "Setup" sub tab
     And I click on top right button "Associate" in flex table with id "---program:-:focusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---program:-:associateFocusAreaTableId---" panel
@@ -4924,12 +4930,6 @@ Feature: Validate all scenarios for program
     When I perform quick search for "Automation Permanent KPI" in "---program:-:associateKPITableId---" panel
     When I click "Associate" after selection of "Automation Permanent KPI" in the table "---program:-:associateKPITableId---"
     When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-      | Name                     | Program |
-      | {SavedValue:PM Username} | Step 1  |
-    When I enter the following values into flex table with id "---program:-:approverTableId---" by clicking "New" :
-      | Name                      | Program |
-      | {SavedValue:EXE Username} | Step 2  |
     And I click on "Submit For Approval" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Planning" tab

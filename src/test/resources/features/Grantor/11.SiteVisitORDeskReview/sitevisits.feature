@@ -1,9 +1,9 @@
-@siteVisits @grantor-regression @grantor-parallel-regression @siteVisit @regression @vanch
+@siteVisits @grantor-regression @grantor-parallel-regression @siteVisit @regression
 Feature: Validate all scenarios in the Site Visit
 
   Background: Data setup for Site Visit
-    Given I activated standalone subaward "Automation Runtime Award Site Visit" of type "Competitive" with properties "default"
-    Given I activated standalone subaward "Automation Runtime Award Record" of type "Competitive" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
+    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel

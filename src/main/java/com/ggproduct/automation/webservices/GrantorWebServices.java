@@ -228,7 +228,6 @@ public class GrantorWebServices extends ProjectWebServices {
                 createAwardEndPoint, "Authorization", "Bearer " + tokenString, null);
         response.prettyPrint();
         assertStatusCode(response);
-        I.amPerforming().waitFor().makeThreadSleep(110000);
         String activateAwardEndPoint = endPoint + "/services/apexrest/activateAwardFromGrant/v2?AwardId=" + getIdOf("Award__c", awardName);
         Response response1 = I.amPerforming().restHttp().getCall(
                 activateAwardEndPoint, "Authorization", "Bearer " + tokenString);

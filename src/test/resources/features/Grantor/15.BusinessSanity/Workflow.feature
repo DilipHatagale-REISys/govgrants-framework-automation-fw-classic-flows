@@ -244,7 +244,7 @@ Feature: Validate all scenarios of every modules flow
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
     And I enter "GrantFields1" values from "Award_Field_Values.xlsx"
     And I click modal button "Continue"
-    And I enter "Grant_Edition1" values from "Award_Field_Values.xlsx"
+    And I enter "Grant_Edition_By_Applicant" values from "Award_Field_Values.xlsx"
     When I click modal button "Save and Continue"
     And I save the field labeled "EGMS ID" as "GrantEGMSID"
     And I navigate to "Subawards" sub tab
@@ -267,7 +267,7 @@ Feature: Validate all scenarios of every modules flow
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Budget Category | Award Amount   | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
@@ -308,6 +308,7 @@ Feature: Validate all scenarios of every modules flow
     When I navigate to "Terms" sub tab
     When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
     And I click on "Submit for Approval" in the page details
+    Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
