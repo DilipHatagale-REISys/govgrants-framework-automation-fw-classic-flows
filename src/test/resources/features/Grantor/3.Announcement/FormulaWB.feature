@@ -788,7 +788,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
     And I click on "Edit" in the page details
-    #226431 -TBE
+    #226431
     And I click table top right button "Add Organization" in flex table with id "---announcement:-:addOrganizationByAppFocusAreaTableId---"
     Then I see confirmation box with quotes in body "Unsaved data will be lost due to page refresh on "Add Organization" button . Please save the record to continue." is displayed
     And I click "Yes" on modal confirmation box
@@ -801,7 +801,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Removes" icon for "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table with table id "---announcement:-:addOrganizationByAppFocusAreaTableId---" without processing
     Then I see confirmation box with body "This action will delete the Organization and associated focus areas and Unsaved data will be lost due to page refresh . Please save the record to continue." is displayed
 
-  @TBE @226416 @VerifyIfuseraddingonefocusarea,thenatleastonefocusareamustbepresentinthefocusareasection,otherwise,showtheerrormessageonAddorganizations @sprint-11-US-201040 @komal @Allocation
+  @226416 @VerifyIfuseraddingonefocusarea,thenatleastonefocusareamustbepresentinthefocusareasection,otherwise,showtheerrormessageonAddorganizations @sprint-11-US-201040 @komal @Allocation
   Scenario: Verify If user adding one focus area, then at least one focus area must be present in the focus area section, otherwise, show the error message on Add organizations .
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -815,9 +815,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I navigate to "Overview" sub tab
-    And I click on "Edit" in the page details
-    And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
+    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:addOrganizationByAppFocusAreaTableId---"
     When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:formulaAddInviteApplicantTableId---"
     #226416
+#    TODO: Message disappearing shortly [exact validation message to be updated]
     Then I softly see the following messages in the page details contains:
-      | Please associate at least one Focus Area before adding Organization  As Allocation level is by  "By Applicant and Focus Area". |
+      | Please associate at least one Focus Area before adding Organization As Allocation level is by "By Applicant and Focus Area". |
