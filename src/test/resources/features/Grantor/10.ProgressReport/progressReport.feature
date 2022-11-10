@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in Progress Report
 
   Background: To create a progress report
-    Given I activated standalone subaward "Automation Runtime award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     Given I am on "SUBPORTAL" portal
