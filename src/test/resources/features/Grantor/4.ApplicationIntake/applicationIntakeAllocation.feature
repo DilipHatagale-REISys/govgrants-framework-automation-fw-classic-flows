@@ -818,7 +818,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
       | Construction  | 11000  | 100        | 100            |
-    When I click on "Submit Application" in the page details
+    And I wait for "5" seconds
+    When I click on "Submit Application" in the page details without processing
 #   TODO: Message disappearing shortly
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Budgeted Amount should be less than or equal to the Subaward Ceiling Amount. Adjust the Budgeted Amount in the Budget period section. |
