@@ -1,7 +1,7 @@
 @riskAssessment @awardLevelRiskAssessment @grantor-regression @grantor-parallel-regression @regression
 Feature: Validate all scenarios in the Risk Assessment
 
-  @58164 @58165 @58166 @75867 @65552 @creationOfRiskAssessmentddingApproversSubmitForApproval @deepika @smoke
+ @vai @58164 @58165 @58166 @75867 @65552 @creationOfRiskAssessmentddingApproversSubmitForApproval @deepika @smoke
   Scenario: Validate the Creation of Risk Assessment from Draft Award and whether user is able to Add Approvers and submit Risk Assessment for Approval| Also New Button on peer review table is not availble once submit for approval
   Validate when the Risk Assessment is submit for approval, the approver will receive an email notification that the PM has been assigned as approval
     Given I login to "As a Grantor" app as "dynamicUser" user
