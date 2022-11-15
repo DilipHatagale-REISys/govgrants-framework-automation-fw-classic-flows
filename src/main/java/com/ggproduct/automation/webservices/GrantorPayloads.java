@@ -295,9 +295,17 @@ public class GrantorPayloads {
      * this switch cases from feature step....
      * e.g take a look at BUDGETPERIODDATES case below...
      */
-    public JsonObject publishAnnPayload(String annType, String annName, String filter){
+    public JsonObject publishAnnPayload(String annType, String annName, String filter) {
         JsonObject json = getDefaultPayloadPublishAnn(annType, annName);
-        filter = filter.toUpperCase();
+        String user = "";
+
+        if (filter.toLowerCase().contains("user")) {
+            user = filter.split("-")[1].split("user")[0].trim();
+            updateAnnouncementOwner(json, user);
+            filter = filter.split("-")[0];
+        } else {
+            filter = filter.toUpperCase();
+        }
 
         switch (filter){
             case "BUDGETPERIODDATES":
@@ -341,10 +349,20 @@ public class GrantorPayloads {
                 return subMatchYesRequiredMatch10RiskYesExpenseYesAdvacnceYesAnnouncement(json);
             case "BY_APPLICANTNT_NEGOTIATION_YES":
                 return byApplicantNegotiationYes(json);
+            case "BY_APPLICANT_AND_FOCUS_AREA_NEGOTIATION_YES":
+                return byApplicantFocusAreaNegotiationYes(json);
 
             default:
                 return json;
         }
+    }
+
+    private void updateAnnouncementOwner(JsonObject json, String user) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray annOwner = new JsonArray();
+        jsonObject.addProperty("OwnerId",ProjectWebServices.getIdOf("User",user));
+        annOwner.add(jsonObject);
+        json.add("Announcement",annOwner);
     }
 
     private JsonObject byApplicantFocusAreaNo(JsonObject json) {
@@ -370,6 +388,16 @@ public class GrantorPayloads {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
         jsonObject.addProperty("Allocationlevel","By Applicant and Focus Area");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
+    }
+
+    private JsonObject byApplicantFocusAreaNegotiationYes(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("Allocationlevel","By Applicant and Focus Area");
+        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
         pre.add(jsonObject);
         json.add("Announcement",pre);
         return json;
@@ -583,10 +611,18 @@ public class GrantorPayloads {
         ann.addProperty("IsProgramIncomeAnticipated","Yes");
         ann.addProperty("LaverageAllowed","Yes");
         ann.addProperty("PreApplicationNeeded","No");
-        ann.addProperty("PreApplicationDueDate",I.amPerforming()
-                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        ann.addProperty("ApplicationDueDate",I.amPerforming()
-                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        if (annName.contains("Closed")){
+            ann.addProperty("PreApplicationDueDate", I.amPerforming()
+                    .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(-1, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            ann.addProperty("ApplicationDueDate", I.amPerforming()
+                    .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(-1, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        }
+        else {
+            ann.addProperty("PreApplicationDueDate", I.amPerforming()
+                    .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            ann.addProperty("ApplicationDueDate", I.amPerforming()
+                    .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        }
         ann.addProperty("FocusAreaRequired","Yes");
         ann.addProperty("IsGoalsRequired","Yes");
         ann.addProperty("Allocationlevel", "N/A");

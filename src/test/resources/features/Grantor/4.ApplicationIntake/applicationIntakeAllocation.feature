@@ -813,13 +813,14 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Budgeted Amount should be greater than or equal to the Subaward Floor Amount. Adjust the Budgeted Amount in the Budget period section. |
     #219569
+    And I refresh the page
     And I navigate to "Budget" sub tab
     When I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
       | Construction  | 11000  | 100        | 100            |
     And I wait for "5" seconds
-    When I click on "Submit Application" in the page details without processing
+    When I click on "Submit Application" in the page details
 #   TODO: Message disappearing shortly
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Budgeted Amount should be less than or equal to the Subaward Ceiling Amount. Adjust the Budgeted Amount in the Budget period section. |
@@ -876,7 +877,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
   @226909 @226911 @DirectedAnn_VerifyvalidationmessageshouldbedisplaytoINDonAppifuserenterbudgetedamountlessthansub-awardflooramountWithFocusAreaYes
   @DirectedAnn_VerifyvalidationmessageshouldbedisplaytoINDonAppifuserenterbudgetedamountmorethansub-awardCeilingamountWithFocusAreaYes @sprint-11-US-203541 @komal @Allocation
-  Scenario: Directed Ann_ Verify validation message should be display to IND on App if user enter budgeted amount less than sub-award floor amount
+  Scenario: Directed Ann_ Verify validation message should be display to IND on App if user enter budgeted amount less/greater than sub-award floor amount
   | Directed Ann_ Verify validation message should be display to IND on App if user enter budgeted amount more than sub-award Ceiling amount  |
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
     Given I am on "SUBPORTAL" portal
@@ -925,6 +926,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
       | Construction  | 11000  | 100        | 100            |
+    And I refresh the page
+    And I wait for "5" seconds
     When I click on "Submit Application" in the page details
 #    TODO: Message disappearing shortly
     Then I softly see the following messages in the page details contains:
