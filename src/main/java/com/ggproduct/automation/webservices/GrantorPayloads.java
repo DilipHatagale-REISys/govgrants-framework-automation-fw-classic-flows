@@ -339,6 +339,8 @@ public class GrantorPayloads {
                 return updateMachRequiredToNoAnnouncement(json);
             case "SUB_MATCH_YES_RISK_YES_EXPENSE_YES_ADVANCE_YES":
                 return subMatchYesRequiredMatch10RiskYesExpenseYesAdvacnceYesAnnouncement(json);
+            case "BY_APPLICANTNT_NEGOTIATION_YES":
+                return byApplicantNegotiationYes(json);
 
             default:
                 return json;
@@ -370,6 +372,16 @@ public class GrantorPayloads {
         jsonObject.addProperty("Allocationlevel","By Applicant and Focus Area");
         pre.add(jsonObject);
         json.add("Announcement",pre);
+        return json;
+    }
+
+    private JsonObject byApplicantNegotiationYes(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray nego = new JsonArray();
+        jsonObject.addProperty("Allocationlevel","By Applicant");
+        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        nego.add(jsonObject);
+        json.add("Announcement",nego);
         return json;
     }
 

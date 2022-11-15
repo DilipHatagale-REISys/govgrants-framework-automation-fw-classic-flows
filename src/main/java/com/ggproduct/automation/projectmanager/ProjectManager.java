@@ -94,4 +94,21 @@ public class ProjectManager extends ProjectWebServices {
         Assert.assertTrue(I.amPerforming().getElementReference().of(By.xpath("//div[@class='messageText']"))
                 .getAttribute("innerText").contains(desiredText));
     }
+
+    /**
+     * assert if message with quotes is displayed on confirmation box pop up
+     *
+     * @param message
+     * @author komal.mukhekar
+     */
+    public void assertMessageOfConfirmationBoxPopUp(String message, boolean isSoftly) {
+        By confirmationBoxMessage = By.xpath("//div[contains(@class,'modal-dialog')]//div[contains(@class, 'bootbox-body')]");
+        if (isSoftly) {
+            I.amPerforming().assertionsTo().assertThat(message).isEqualTo(
+                    I.amPerforming().actionToGet().attribute(confirmationBoxMessage, "innerText").replaceAll("\\u00a0", " ")
+            );
+        } else {
+            Assert.assertEquals(I.amPerforming().actionToGet().attribute(confirmationBoxMessage, "innerText").replaceAll("\\u00a0", " "), message);
+        }
+    }
 }
