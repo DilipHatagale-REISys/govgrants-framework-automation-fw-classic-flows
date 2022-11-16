@@ -1833,7 +1833,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I perform quick search for "Record Id" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
     Then I see "No Records Found" inside flex table with id "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
- @vai @64611 @spiCanViewOrgRiskAssessmentInActiveStatus @deepika
+  @64611 @spiCanViewOrgRiskAssessmentInActiveStatus @deepika
   Scenario: Validate whether the org Risk Assessment that is in Active state is visible to SPI user that are not SA
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"

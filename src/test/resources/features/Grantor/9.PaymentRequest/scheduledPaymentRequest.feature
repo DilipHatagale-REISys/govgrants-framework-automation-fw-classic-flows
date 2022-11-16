@@ -3,7 +3,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
 
   @38313 @taskCreationForSubrecipientUser @mahadev
   Scenario Outline: Validate task is getting created for SPI user
-    And I activated standalone subaward "Automation Runtime award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
     And I am on "SUBPORTAL" portal
@@ -19,7 +19,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
 
   @55398 @submittedPRDisplayedInCompletedTask @mahadev
   Scenario Outline: Validate submitted payment request displays under completed task for SPI user
-    And I activated standalone subaward "Automation Runtime award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
     And I am on "SUBPORTAL" portal
@@ -47,7 +47,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
 
   @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal-SPI3 @mahadev
   Scenario Outline: Verify when Batch is run then User Notified field gets Updated at External Portal
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "<User>" user
@@ -68,7 +68,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
 
   @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal-SPA @mahadev
   Scenario Outline: Verify when Batch is run then User Notified field gets Updated at External Portal
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "<User>" user
@@ -89,7 +89,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
 
   @153111 @Verify3StepApprovalFor-ScheduledPaymentRequest-RnRFunctionality @monu
   Scenario Outline: Verify user is able to add three step approver for schedule reimbursement payment request and reject it on step three
-    And I activated standalone subaward "Automation Runtime award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
     And I am on "SUBPORTAL" portal
@@ -153,7 +153,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
 
   @153110 @VerifyErrorMessageAtApproverSectionWhileSkippingAt-ScheduledPaymentRequest-RnRFunctionality @monu
   Scenario Outline: Verify the validation message when approval step has <NA>  on schedule reimbursement payment request
-    And I activated standalone subaward "Automation Runtime award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
     And I am on "SUBPORTAL" portal
@@ -194,7 +194,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
 
   @153108 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUser-ScheduledPaymentrequest-RnRFunctionality @monu
   Scenario Outline: Verify validation displayed when same step is added for different approver for schedule Payment Request
-    And I activated standalone subaward "Automation Runtime award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
     And I am on "SUBPORTAL" portal
@@ -236,7 +236,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
 
   @153107 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStep-SchedulePaymentRequest-RnRFunctionality @monu
   Scenario Outline: Verify validation displayed when same approver is added on different  step for schedule reimbursement Payment Request
-    And I activated standalone subaward "Automation Runtime award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
     And I am on "SUBPORTAL" portal
@@ -278,7 +278,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
 
   @153109 @VerifyInheritatedApproverAtScheduledPaymentRequestFromAward-RnRFunctionality @monu
   Scenario Outline: Validate Approvers are getting inherited from award record to schedule reimbursement payment request
-    And I activated standalone subaward "Automation Runtime award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -326,7 +326,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
 
   @152781 @Verify3StepApprovalFor-ScheduledReimbursementPaymentRequest-RnRFunctionality @monu
   Scenario Outline: Verify user is able to add three step approver for Reimbursement payment request and forward it on step three
-    And I activated standalone subaward "Automation Runtime award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
     And I am on "SUBPORTAL" portal
