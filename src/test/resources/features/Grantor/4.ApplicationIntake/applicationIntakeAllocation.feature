@@ -1697,7 +1697,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
   @219363 @219366 @CompetativeAnn_VerifyasPMuserIcanseeRecommendedforawardcolumnisvisiblewhenAppstatusisnegotiationCompleted @sprint-10-US-203669 @komal @Allocation
   Scenario: Competitive Ann_ Verify as PM user I can see Recommended budget field is visible when App status is negotiation completed
-    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANTNT_NEGOTIATION_YES"
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANTNT"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     And I delete the record "{SavedValue:Automation Runtime FDM Announcement}" from the object "FDM"
@@ -1743,9 +1743,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Budget" sub tab
     Then I softly see field "Recommended Budget" inside page block
 
-  @219346 @DirectedAnn_VerifyasPMuserIcanseeRecommendedforawardcolumnisvisiblewhenAppstatusisnegotiationinitiated @sprint-10-US-203669 @komal @Allocation
-  Scenario: Directed Ann_ Verify as PM user I can see Recommended for award column is visible when App status is negotiation initiated
-    Given I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANTNT_NEGOTIATION_YES"
+  @219346 @DirectedAnn_VerifyasPMuserIcanseeRecommendedBudgetcolumnisvisiblewhenAppstatusisnegotiationinitiated @sprint-10-US-203669 @komal @Allocation
+  Scenario: Directed Ann_ Verify as PM user I can see Recommended budget column is visible when App status is negotiation initiated
+    Given I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "NEGOTIATION"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     And I delete the record "{SavedValue:Automation Runtime FDM Announcement}" from the object "FDM"
@@ -1766,9 +1766,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Budget" sub tab
     Then I softly see field "Recommended Budget" inside page block
 
-  @219360 @DirectedAnn_VerifyasAdminuserIcanseeRecommendedforawardfieldisvisibleunderbudgetsummarywhenAppstatusisnegotiationsubmitted @sprint-10-US-203669 @komal @Allocation
-  Scenario: Directed Ann_ Verify as Admin user I can see Recommended for award field is visible under budget summary when App status is negotiation submitted
-    Given I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANTNT_NEGOTIATION_YES"
+  @219360 @DirectedAnn_VerifyasAdminuserIcanseeRecommendedBudgetfieldisvisibleunderbudgetsummarywhenAppstatusisnegotiationsubmitted @sprint-10-US-203669 @komal @Allocation
+  Scenario: Directed Ann_ Verify as Admin user I can see Recommended Budget field is visible under budget summary when App status is negotiation submitted
+    Given I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "NEGOTIATION"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     And I delete the record "{SavedValue:Automation Runtime FDM Announcement}" from the object "FDM"

@@ -347,10 +347,10 @@ public class GrantorPayloads {
                 return updateMachRequiredToNoAnnouncement(json);
             case "SUB_MATCH_YES_RISK_YES_EXPENSE_YES_ADVANCE_YES":
                 return subMatchYesRequiredMatch10RiskYesExpenseYesAdvacnceYesAnnouncement(json);
-            case "BY_APPLICANTNT_NEGOTIATION_YES":
-                return byApplicantNegotiationYes(json);
-            case "BY_APPLICANT_AND_FOCUS_AREA_NEGOTIATION_YES":
-                return byApplicantFocusAreaNegotiationYes(json);
+            case "BY_APPLICANT_NEGOTIATION_NO":
+                return byApplicantNegotiationNo(json);
+            case "BY_APPLICANT_FOCUS_AREA_NEGOTIATION_NO":
+                return byApplicantFocusAreaNegotiationsNo(json);
 
             default:
                 return json;
@@ -384,6 +384,16 @@ public class GrantorPayloads {
         return json;
     }
 
+    private JsonObject byApplicantFocusAreaNegotiationsNo(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("Allocationlevel","By Applicant and Focus Area");
+        jsonObject.addProperty("IsNegotiationsAllowed","No");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
+    }
+
     private JsonObject byApplicantFocusArea(JsonObject json) {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
@@ -403,11 +413,11 @@ public class GrantorPayloads {
         return json;
     }
 
-    private JsonObject byApplicantNegotiationYes(JsonObject json) {
+    private JsonObject byApplicantNegotiationNo(JsonObject json) {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray nego = new JsonArray();
         jsonObject.addProperty("Allocationlevel","By Applicant");
-        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        jsonObject.addProperty("IsNegotiationsAllowed","No");
         nego.add(jsonObject);
         json.add("Announcement",nego);
         return json;
