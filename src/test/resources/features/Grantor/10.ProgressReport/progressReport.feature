@@ -174,8 +174,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -273,8 +273,8 @@ Feature: Validate all scenarios in Progress Report
     Then I softly see field "Key Accomplishments" as "Key accomplishments for this reporting period"
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -367,8 +367,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -410,8 +410,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     When I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -438,8 +438,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -503,8 +503,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 8/29/2022     |
+      | Title                    |  Reported Date | Actual |
+      | Automation Permanent KPI |  8/29/2022     | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -538,8 +538,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -566,8 +566,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -615,8 +615,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -641,8 +641,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -693,8 +693,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -866,8 +866,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -890,8 +890,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -918,8 +918,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -980,8 +980,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 10     | 7             |
+      | Title                    |  Reported Date | Actual |
+      | Automation Permanent KPI |  7             | 10     |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -996,16 +996,6 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Performance" sub tab
     Then I see value "10" for title "Actual" against the value "Automation Permanent KPI" inside table "---progressReport:-:kpiTableId---"
 
-  @59832 @59571 @validateSRUserCannotEditPreviousDateField @mahadev @buglogged150448
-  Scenario: Validate SR user is not able to edit the Previous Actual field on KPI table under Performance tab at Progress report
-  Validate Supporting checklist Table is empty if Supporting document checklist data is not added at Grant at SR user end. | Validate SR user is not able to edit the Previous Actual field on KPI table under Performance tab at Progress report
-    When I navigate to "Forms and Files" sub tab
-    Then I softly see "No Records Found" inside flex table with id "---progressreport:-:progressReportChecklistsTableId---"
-    And I navigate to "Performance" sub tab
-    When I click on "Edit" icon for "Automation Permanent KPI" inside flex table with id "---progressReport:-:kpiTableId---"
-    Then I softly see field "PreviousDate__c" is not editable
-    Then I softly see field "PreviousActual__c" is not editable
-
   @59829 @validateSRUserCannotEditKPIOnceSubmittedToGrantor @mahadev
   Scenario: Validate SR user is not able to update the KPI actuals field value once Progress report is Submitted to Grantor
     And I click on "Edit" in the page details
@@ -1013,8 +1003,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 10     | 7             |
+      | Title                    | Reported Date |  Actual |
+      | Automation Permanent KPI |  7             | 10     |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1032,8 +1022,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 10     | 7             |
+      | Title                    |  Reported Date | Actual |
+      | Automation Permanent KPI |  7             | 10     |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1050,12 +1040,12 @@ Feature: Validate all scenarios in Progress Report
     And I click on "View" icon for "Created" inside flex table with id "---progressReport:-:recipientGrantProgressReportTableId---" without waiting for record
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 10     | 7             |
+      | Title                    |  Reported Date | Actual |
+      | Automation Permanent KPI |  7             | 10     |
     Then I softly see value "10" for title "Actual" against the value "Automation Permanent KPI" inside table "---progressReport:-:kpiTableId---"
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 10     | 0             |
+      | Title                    |  Reported Date | Actual |
+      | Automation Permanent KPI |  0             | 10     |
     When I save the value from row "1" for column name "Reported Date" as "ReportedDate" from flex table "---progressReport:-:kpiTableId---"
     Then I softly see the Reported Date field contains todays date
     Examples:
@@ -1070,8 +1060,8 @@ Feature: Validate all scenarios in Progress Report
     And I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1098,8 +1088,8 @@ Feature: Validate all scenarios in Progress Report
     And I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1131,8 +1121,8 @@ Feature: Validate all scenarios in Progress Report
     And I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1171,8 +1161,8 @@ Feature: Validate all scenarios in Progress Report
     And I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1218,8 +1208,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1240,8 +1230,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 10     | 7             |
+      | Title                    |  Reported Date | Actual |
+      | Automation Permanent KPI |  7             | 10     |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1324,8 +1314,8 @@ Feature: Validate all scenarios in Progress Report
     And I navigate to "Performance" sub tab
     Then I softly see value "200.00" for title "Previous Value" against the value "Automation Permanent KPI" inside table "---progressReport:-:kpiTableId---"
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 10     | 0             |
+      | Title                    |  Reported Date |Actual |
+      | Automation Permanent KPI |  0             |10     |
     When I save the value from row "1" for column name "Reported Date" as "ReportedDate" from flex table "---progressReport:-:kpiTableId---"
     Then I softly see the Reported Date field contains todays date
     Examples:
@@ -1341,8 +1331,8 @@ Feature: Validate all scenarios in Progress Report
     And I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1555,8 +1545,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1585,8 +1575,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1645,8 +1635,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     When I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1694,8 +1684,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1725,8 +1715,8 @@ Feature: Validate all scenarios in Progress Report
     And I click on "Save" in the page details
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1796,8 +1786,8 @@ Feature: Validate all scenarios in Progress Report
     And I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1849,8 +1839,8 @@ Feature: Validate all scenarios in Progress Report
     And I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"
@@ -1880,8 +1870,8 @@ Feature: Validate all scenarios in Progress Report
     And I save the field labeled "EGMS ID" as "EGMSID"
     And I navigate to "Performance" sub tab
     When I edit the following rows inline in flex table with id "---progressReport:-:kpiTableId---" by clicking "Edit" :
-      | Title                    | Actual | Reported Date |
-      | Automation Permanent KPI | 7      | 7             |
+      | Title                    | Reported Date | Actual |
+      | Automation Permanent KPI | 7             | 7      |
     When I navigate to "Forms and Files" sub tab
     And I click on "Edit" icon for "Community Initiative Progress Report" inside flex table with id "---progressReport:-:formTableId---" without waiting for record
     And I enter "Form Fields" values from "ProgressReport_Field_Values.xlsx"

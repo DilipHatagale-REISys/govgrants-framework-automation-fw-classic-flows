@@ -45,7 +45,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
       | Award Name                            |
       | {SavedValue:Automation Runtime award} |
 
-  @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal-SPI3 @mahadev
+  @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal-SPI3 @mahadev @vanch
   Scenario Outline: Verify when Batch is run then User Notified field gets Updated at External Portal
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
@@ -66,7 +66,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
       | Award Name                            | Grant Name                            | User |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | SPA  |
 
-  @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal-SPA @mahadev
+  @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal-SPA @mahadev @vanch
   Scenario Outline: Verify when Batch is run then User Notified field gets Updated at External Portal
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
@@ -184,6 +184,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
     When I enter the following values into flex table with id "---paymentRequest:-:ReimbursmentApproverTableId---" by clicking "New" :
       | Name                     | Reimbursement |
       | {SavedValue:PM Username} | NA            |
+    And I refresh the page
     When I click on "Submit for Approval" in the page details
     Then I softly see the following messages in the page details contains:
       | Responsibilities - At least one approver is required |
@@ -192,7 +193,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
       | Award Name                            |
       | {SavedValue:Automation Runtime award} |
 
-  @153108 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUser-ScheduledPaymentrequest-RnRFunctionality @monu
+  @153108 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUser-ScheduledPaymentrequest-RnRFunctionality @monu @vanch
   Scenario Outline: Verify validation displayed when same step is added for different approver for schedule Payment Request
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
@@ -234,7 +235,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
       | Award Name                            |
       | {SavedValue:Automation Runtime award} |
 
-  @153107 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStep-SchedulePaymentRequest-RnRFunctionality @monu
+  @153107 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStep-SchedulePaymentRequest-RnRFunctionality @monu @vanch
   Scenario Outline: Verify validation displayed when same approver is added on different  step for schedule reimbursement Payment Request
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
