@@ -19,7 +19,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @53966 @enterDetailedBudgetOnAdvPaymentRequest @mahadev @vanch
+  @53966 @enterDetailedBudgetOnAdvPaymentRequest @mahadev
   Scenario Outline: Validate user can enter detailed budget for Advance Payment Request when Are Expense Details Required on Reimbursements? is Yes at Grant
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -46,7 +46,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @53953 @validateProgramIncomeFieldIsDisplayedOnAdvancePaymentRequest @mahadev @vanch
+  @53953 @validateProgramIncomeFieldIsDisplayedOnAdvancePaymentRequest @mahadev
   Scenario Outline: Validate user can enter Program Income at payment request when program Income Allowed is Yes at Grant
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -119,7 +119,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @53964 @validateProgramIncomeTrackingNotDisplayedOnPaymentRequest @mahadev @vanch
+  @53964 @validateProgramIncomeTrackingNotDisplayedOnPaymentRequest @mahadev
   Scenario Outline: Validate user can not see page block Program Income tracking not displayed on Reimbursement payment request when program Income Allowed is No at Grant
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_YES_FOCUS_NO_PROGRAM_ANTICIPATED_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -142,7 +142,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @54174 @ValidateAwardBudgetIsSameAsBalanceonAward @mahadev @vanch
+  @54174 @ValidateAwardBudgetIsSameAsBalanceonAward @mahadev
   Scenario Outline: validate awarded budget is same as award balance on award activation
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     And I am on "INTERNAL" portal
@@ -154,7 +154,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "<Grant Name>" inside table
     When I navigate to "Subawards" sub tab
     And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    And I get the field value "Total Subaward Amount this Budget Period" from sub tab "Budget"
+    And I get the field value "Cumulative Obligation" from sub tab "Budget"
     Then I compare field "Balance" from sub tab "Actuals" with expected field
     Examples:
       | Award Name                            | Grant Name                            |
@@ -192,7 +192,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @54496 @ValidateActiveSuppportingDocumentChecklistOnReimbursementPR @mahadev @vanch
+  @54496 @ValidateActiveSuppportingDocumentChecklistOnReimbursementPR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is displayed on reimbursement payment request
     Given I activated standalone subaward "Automation Runtime Award" with properties "NO_PROGRAM_INCOME_ANTICIPATE" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -231,7 +231,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @54499 @ValidateInActiveSuppportingDocumentChecklistOnReimbursementPR @mahadev @vanch
+  @54499 @ValidateInActiveSuppportingDocumentChecklistOnReimbursementPR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is not displayed on reimbursement payment request if selected as Inactive on grant
     And I activated standalone subaward "Automation Runtime Award" with properties "NO_PROGRAM_INCOME_ANTICIPATE" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -260,7 +260,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @54415 @ValidateUserCanAttachDocumentTypeInvoiceOnReimbursementPR @mahadev @buglogged169487 @vanch
+  @54415 @ValidateUserCanAttachDocumentTypeInvoiceOnReimbursementPR @mahadev @buglogged169487
   Scenario Outline: validate user can add active supporting document for Reimbursement payment request as type Invoice
     And I activated standalone subaward "Automation Runtime Award" with properties "NO_PROGRAM_INCOME_ANTICIPATE" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -287,7 +287,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @54498 @ValidateInActiveSuppportingDocumentChecklistOnAdvancePR @mahadev @vanch
+  @54498 @ValidateInActiveSuppportingDocumentChecklistOnAdvancePR @mahadev
   Scenario Outline: validate Suppporting Document Checklist is not displayed on advance payment request if selected as Inactive on grant
     And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -344,7 +344,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @54506 @ValidateOptionalSuppportingDocumentChecklistOnReimbursementPR @mahadev @vanch
+  @54506 @ValidateOptionalSuppportingDocumentChecklistOnReimbursementPR @mahadev
   Scenario Outline: validate Optional Suppporting Document Checklist should not display any error message on reimbursement payment request
     And I activated standalone subaward "Automation Runtime Award" with properties "NO_PROGRAM_INCOME_ANTICIPATE" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -373,7 +373,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @54507 @ValidateOptionalSuppportingDocumentChecklistOnAdvancePR @mahadev @vanch
+  @54507 @ValidateOptionalSuppportingDocumentChecklistOnAdvancePR @mahadev
   Scenario Outline: validate Optional Suppporting Document Checklist should not display any error message on advance payment request
     And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -616,7 +616,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @54709 @ValidateReimbursementBalanceFieldOnAwardAtSubPortalUpdatedAfterReimbursementPRApproval @mahadev @vanch
+  @54709 @ValidateReimbursementBalanceFieldOnAwardAtSubPortalUpdatedAfterReimbursementPRApproval @mahadev
   Scenario Outline: validate Advance Requested Amount field at sub portal gets updated after Advance payment request approval
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -637,8 +637,8 @@ Feature: Payment Request scenarios without background
     And I get the "EGMS ID"
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
-      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
-      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 10         | 10             |
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |  Program Income Disbursed | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |  20                       | 10         | 10             |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -897,7 +897,7 @@ Feature: Payment Request scenarios without background
       | SPI3 |
       | SPA  |
 
-  @55809 @PRReimbursement2ndIsFinalPayment1stPRShouldShowValidMsg @jitendra @smoke @vanch
+  @55809 @PRReimbursement2ndIsFinalPayment1stPRShouldShowValidMsg @jitendra @smoke
   Scenario Outline: Verify that once final payment request is approved then Created status Payment should show validation message on Submit to Grantor Button.
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -1035,7 +1035,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @55305 @verifyUserIsNotAllowedToSelectProgressReportScheduleStartDateBeforeBudgetPeriodStartDateOnActiveAward @mahadev @vanch
+  @55305 @verifyUserIsNotAllowedToSelectProgressReportScheduleStartDateBeforeBudgetPeriodStartDateOnActiveAward @mahadev
   Scenario Outline: Verify While creating schedule user is not allowed to select the Schedule Start Date which is before Budget period start date on active award
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     When I login to "As a Grantor" app as "dynamicUser" user
@@ -1283,7 +1283,7 @@ Feature: Payment Request scenarios without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @152651 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStep-ReimbursementPaymentRequest-RnRFuntionality @monu @vanch
+  @152651 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStep-ReimbursementPaymentRequest-RnRFuntionality @monu
   Scenario Outline: Verify validation displayed when same approver is added on different step for Reimbursement Payment Request
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -1793,7 +1793,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:paymentRequestSourceOwnerTableId---" panel
     Then I do not see value "{SavedValue:PayreqId}" for title "Payment Request ID" inside table "---paymentRequest:-:paymentRequestSourceOwnerTableId---"
 
-  @197640 @ValidateuserseewarningmessageafterclickonTransferownershipbutton @sprint-4 @vaibhav @reassignment @vanch
+  @197640 @ValidateuserseewarningmessageafterclickonTransferownershipbutton @sprint-4 @vaibhav @reassignment
   Scenario: Validate user see warning message after click on Transfer ownership button
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -1814,8 +1814,8 @@ Feature: Payment Request scenarios without background
     And I navigate to "Financials" sub tab
     When I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---" with wait for record
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
-      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
-      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                | 0               | 20                       | 100        | 100            |
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) |  Program Income Disbursed | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 10         | 1        | Feet        | 10                |  20                       | 100        | 100            |
     When I close "Add Line Items" modal by clicking the top right x button
     And I click on "Submit to Grantor" in the page details
     Then I see status in Progress-bar is "Submitted to Grantor" and is "green"
@@ -2357,7 +2357,7 @@ Feature: Payment Request scenarios without background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---subAwardStandAlone:-:historyTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---subAwardStandAlone:-:historyTableId---"
 
-  @197764 @ValidatePaymentRequestApproverRejectedemailshouldbegeneratedforad-hocreimbursementpaymentrequestfornewowner @sprint-4 @vaibhav @reassignment @vanch
+  @197764 @ValidatePaymentRequestApproverRejectedemailshouldbegeneratedforad-hocreimbursementpaymentrequestfornewowner @sprint-4 @vaibhav @reassignment
   Scenario: Validate Payment Request Approver Rejected email should be generated for ad-hoc reimbursement payment request for new owner
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -2451,7 +2451,7 @@ Feature: Payment Request scenarios without background
      The EGMS Team
       """
 
-  @197769 @ValidatesystemcreatenewschedulepaymentrequestafterpreviousPRownershiptaskreassigntootheruserthennewPRinternalsideownershouldbeawardonly @sprint-4 @vaibhav @reassignment @vanch
+  @197769 @ValidatesystemcreatenewschedulepaymentrequestafterpreviousPRownershiptaskreassigntootheruserthennewPRinternalsideownershouldbeawardonly @sprint-4 @vaibhav @reassignment
   Scenario: Validate system create new schedule payment request after previous PR ownership task reassign to other user then new PR internal side owner should be award only
     And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Payment Request"
@@ -2943,7 +2943,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "Review Payment Request" for title "Task Type" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @197287 @ValidatePMusercanreassignad-hocreimbursementpaymentrequestownershiptaskstootherPMuser @sprint4 @vaibhav @reassignment @vanch
+  @197287 @ValidatePMusercanreassignad-hocreimbursementpaymentrequestownershiptaskstootherPMuser @sprint4 @vaibhav @reassignment
   Scenario: Validate PM user can reassign ad-hoc reimbursement payment request ownership tasks to other PM user
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -3435,9 +3435,9 @@ Feature: Payment Request scenarios without background
     And I pause execution for "4" seconds
     Then I softly see "No matches found" inside auto search result
 
-  @197366 @ValidatePMusercanreassignadvancepaymentrequestownershiptaskstootherPMuser @sprin-4 @vaibhav @reassignment @vanch
+  @197366 @ValidatePMusercanreassignadvancepaymentrequestownershiptaskstootherPMuser @sprin-4 @vaibhav @reassignment
   Scenario: Validate PM user can reassign advance payment request ownership tasks to other PM user
-    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
+    And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -3844,7 +3844,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197397 @197453 @Validatependingtaskshouldnotgenerateforolduserofad-hocreimbursementpaymentrequestafterownershipreassignment @sprint-4 @vaibhav @reassignment @vanch
+  @197397 @197453 @Validatependingtaskshouldnotgenerateforolduserofad-hocreimbursementpaymentrequestafterownershipreassignment @sprint-4 @vaibhav @reassignment
   Scenario: Validate pending task should not generate for old user of ad-hoc reimbursement payment request after ownership reassignment
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -4375,7 +4375,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId2}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I do not see value "{SavedValue:PayreqId2}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197582 @Validatenewownershouldbedisplayinfiledhistorytableafterownershiptaskreassignmenttonewuser @sprint-4 @vaibhav @reassignment @vanch
+  @197582 @Validatenewownershouldbedisplayinfiledhistorytableafterownershiptaskreassignmenttonewuser @sprint-4 @vaibhav @reassignment
   Scenario: Validate new owner should be display in filed history table after ownership task reassignment to new user
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -4522,7 +4522,7 @@ Feature: Payment Request scenarios without background
     And I click on "View" icon for "{SavedValue:GrantEGMSID}" inside flex table with id "---subAwardFromFDM:-:grantsTableId---" without waiting for record
     Then I softly see field "Created by" as "Automation ADMIN"
 
-  @197509 @Validatenewownerofadvancepaymentrequestshouldhavefollowingbuttonsaccessafterpaymentrequestsubmittograntor @sprint-4 @vaibhav @reassignment @vanch
+  @197509 @Validatenewownerofadvancepaymentrequestshouldhavefollowingbuttonsaccessafterpaymentrequestsubmittograntor @sprint-4 @vaibhav @reassignment
   Scenario: Validate new owner of advance payment request should have following buttons access after payment request submit to grantor
     And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PM1 user" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -4864,7 +4864,7 @@ Feature: Payment Request scenarios without background
     And I navigate to "Collab" sub tab
     Then I can see top right button "Send Email" in flex table with id "---paymentRequest:-:reimburseCollabMessages---"
 
-  @197791 @Validatenewownerofad-hocreimbursementpaymentrequestshouldhavefollowingbuttonsaccessafterpaymentrequestsubmittograntor @sprint-4 @vaibhav @reassignment @vanch
+  @197791 @Validatenewownerofad-hocreimbursementpaymentrequestshouldhavefollowingbuttonsaccessafterpaymentrequestsubmittograntor @sprint-4 @vaibhav @reassignment
   Scenario: Validate new owner of ad-hoc reimbursement payment request should have following buttons access after payment request submit to grantor
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -4929,7 +4929,7 @@ Feature: Payment Request scenarios without background
     And I navigate to "Collab" sub tab
     Then I can see top right button "Send Email" in flex table with id "---paymentRequest:-:reimburseCollabMessages---"
 
-  @197433 @ValidatePaymentRequestGrantorNotifyemailshouldbegeneratedforad-hocreimbursementpaymentrequestfornewowner @sprint-12-US-226646 @vaibhav @reassignment @vanch
+  @197433 @ValidatePaymentRequestGrantorNotifyemailshouldbegeneratedforad-hocreimbursementpaymentrequestfornewowner @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate Payment Request Grantor Notify email should be generated for ad-hoc reimbursement payment request for new owner
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -5009,8 +5009,9 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
     And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
-    And I pause execution for "180" seconds
+    And I pause execution for "30" seconds
     Then I refresh the page
+    And I click on mail with subject "Sandbox: Notification: Payment Request {SavedValue:PayreqId} from AutomationSPI3 has been Submitted"
     And I see the mail subject is as follows :
       """
       Sandbox: Notification: Payment Request {SavedValue:PayreqId} from AutomationSPI3 has been Submitted
@@ -5027,9 +5028,9 @@ Feature: Payment Request scenarios without background
       Payment ID: {SavedValue:PayreqId}
       Key POC: Automation SPI3
 
-      Log in to EGMS and click here to review the payment request.
+      Log in to EGMS and click here to perform the review.
 
-      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance.
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com if you have any questions or need assistance with this task.
 
       Thank you.
       The EGMS Team
@@ -5094,7 +5095,7 @@ Feature: Payment Request scenarios without background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---subAwardStandAlone:-:historyTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---subAwardStandAlone:-:historyTableId---"
 
-  @197793 @Validatenewownerofschedulereimbursementpaymentrequestshouldhavefollowingbuttonsaccessafterpaymentrequestsubmittograntor @sprint-4 @vaibhav @reassignment @vanch
+  @197793 @Validatenewownerofschedulereimbursementpaymentrequestshouldhavefollowingbuttonsaccessafterpaymentrequestsubmittograntor @sprint-4 @vaibhav @reassignment
   Scenario Outline: Validate new owner of schedule reimbursement payment request should have following buttons access after payment request submit to grantor
     And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
@@ -5655,7 +5656,7 @@ Feature: Payment Request scenarios without background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---subAwardStandAlone:-:historyTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---subAwardStandAlone:-:historyTableId---"
 
-  @229592 @ValidateAdvancepaymentrequestownershouldgetchangeinRejectedstateafterownershipreassigntootheruser @sprint-12-US-226646 @vaibhav @reassignment @vanch
+  @229592 @ValidateAdvancepaymentrequestownershouldgetchangeinRejectedstateafterownershipreassigntootheruser @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate Advance payment request owner should get change in Rejected state after ownership reassign to other user
     And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -5739,7 +5740,7 @@ Feature: Payment Request scenarios without background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---subAwardStandAlone:-:historyTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---subAwardStandAlone:-:historyTableId---"
 
-  @229595 @Validatead-hocpaymentrequestownershouldgetchangeinpaidstateafterownershipreassigntootheruser @sprint-12-US-226646 @vaibhav @reassignment @vanch
+  @229595 @Validatead-hocpaymentrequestownershouldgetchangeinpaidstateafterownershipreassigntootheruser @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate ad-hoc payment request owner should get change in paid state after ownership reassign to other user
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
@@ -6472,9 +6473,9 @@ Feature: Payment Request scenarios without background
       The EGMS Team
       """
 
-  @197429 @ValidatePaymentRequestGrantorNotifyemailshouldbegeneratedforadvancepaymentrequestfornewowner @sprint-12-US-226646 @vaibhav @reassignment @vanch
+  @197429 @ValidatePaymentRequestGrantorNotifyemailshouldbegeneratedforadvancepaymentrequestfornewowner @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate Payment Request Grantor Notify' email should be generated for advance payment request for new owner
-    And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
+    And I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation PM1 user" of type "Competitive"
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab

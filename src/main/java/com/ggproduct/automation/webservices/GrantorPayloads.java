@@ -839,7 +839,7 @@ public class GrantorPayloads {
         JsonArray newA = new JsonArray();
 
         grant.addProperty("RiskAssessment_Required", "No");
-        grant.addProperty("IsAdvancePermitted", "Yes");
+        grant.addProperty("IsAdvancePermitted", "No");
         grant.addProperty("IsBuildUpFunctionality", "Yes");
         grant.addProperty("WBSRequired", "No");
         grant.addProperty("IsProgramIncomeAnticipated", "No");

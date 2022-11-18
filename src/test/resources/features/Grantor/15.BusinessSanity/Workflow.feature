@@ -1512,6 +1512,7 @@ Feature: Validate all scenarios of every modules flow
     And I refresh the page
     When I click on "Override" in the page details
     When I click on "Submit for Approval" in the page details
+    Then I see status in Progress-bar is "Submitted for Approval" and is "green"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Closeout" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel

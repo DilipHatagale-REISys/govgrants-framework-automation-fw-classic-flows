@@ -45,7 +45,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
       | Award Name                            |
       | {SavedValue:Automation Runtime award} |
 
-  @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal-SPI3 @mahadev @vanch
+  @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal-SPI3 @mahadev
   Scenario Outline: Verify when Batch is run then User Notified field gets Updated at External Portal
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
@@ -64,9 +64,9 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
     Then I can see "1" record value is checked for field name "TaskCreated__c"
     Examples:
       | Award Name                            | Grant Name                            | User |
-      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | SPA  |
+      | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | SPI3  |
 
-  @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal-SPA @mahadev @vanch
+  @55401 @ValidatedUserNotifiedFieldUpdatedExternalPortal-SPA @mahadev
   Scenario Outline: Verify when Batch is run then User Notified field gets Updated at External Portal
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
@@ -193,7 +193,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
       | Award Name                            |
       | {SavedValue:Automation Runtime award} |
 
-  @153108 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUser-ScheduledPaymentrequest-RnRFunctionality @monu @vanch
+  @153108 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUser-ScheduledPaymentrequest-RnRFunctionality @monu
   Scenario Outline: Verify validation displayed when same step is added for different approver for schedule Payment Request
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
@@ -235,7 +235,7 @@ Feature: Scheduled Reimbursement Payment Request Scenarios
       | Award Name                            |
       | {SavedValue:Automation Runtime award} |
 
-  @153107 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStep-SchedulePaymentRequest-RnRFunctionality @monu @vanch
+  @153107 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStep-SchedulePaymentRequest-RnRFunctionality @monu
   Scenario Outline: Verify validation displayed when same approver is added on different  step for schedule reimbursement Payment Request
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
