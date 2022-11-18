@@ -620,20 +620,12 @@ public class GrantorPayloads {
         ann.addProperty("GranteeMatch",10);
         ann.addProperty("IsProgramIncomeAnticipated","Yes");
         ann.addProperty("LaverageAllowed","Yes");
-        ann.addProperty("PreApplicationNeeded","No");
-        if (annName.contains("Closed")){
-            ann.addProperty("PreApplicationDueDate", I.amPerforming()
-                    .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(-1, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-            ann.addProperty("ApplicationDueDate", I.amPerforming()
-                    .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(-1, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        }
-        else {
-            ann.addProperty("PreApplicationDueDate", I.amPerforming()
-                    .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-            ann.addProperty("ApplicationDueDate", I.amPerforming()
-                    .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        }
-        ann.addProperty("FocusAreaRequired","Yes");
+        ann.addProperty("PreApplicationNeeded", "No");
+        ann.addProperty("PreApplicationDueDate", I.amPerforming()
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        ann.addProperty("ApplicationDueDate", I.amPerforming()
+                .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        ann.addProperty("FocusAreaRequired", "Yes");
         ann.addProperty("IsGoalsRequired","Yes");
         ann.addProperty("Allocationlevel", "N/A");
         ann.addProperty("KPIsRequired","Yes");

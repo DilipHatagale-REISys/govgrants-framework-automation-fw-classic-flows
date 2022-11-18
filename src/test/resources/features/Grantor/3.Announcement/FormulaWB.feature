@@ -1564,7 +1564,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Overview" sub tab
     Then I softly can see top right button "Remove Selected" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
 
-
   @226434 @222201 @Verifyifuserwantsupdatethefinalallocationforagivenorganization&iftheannouncementstatusisApprovedthenusershouldseetheupdatedfinalallocationisreflectedinthecorrespondingapplication(beforeawardcreation). @sprint-11-US-201558 @komal @Allocation
   Scenario Outline: Verify if user wants update the final allocation for a given organization & if the announcement status is Approved then user should see the updated final allocation is reflected in the corresponding application (before award creation).
     Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT"
@@ -1810,8 +1809,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                |
       | {SavedValue:Automation Runtime FDM Announcement} |
 
-
-  @TbeJenkins @TBE @226436 @Verifyifuserwantsupdatethefinalallocationforagivenorganization&iftheannouncementstatusisApprovedthenusershouldseetheupdatedfinalallocationisreflectedinthecorrespondingapplication(beforeawardcreation) @sprint-11-US-201558 @komal @Allocation
+  @226436 @Verifyifuserwantsupdatethefinalallocationforagivenorganization&iftheannouncementstatusisApprovedthenusershouldseetheupdatedfinalallocationisreflectedinthecorrespondingapplication(beforeawardcreation) @sprint-11-US-201558 @komal @Allocation
   Scenario Outline: Verify if user wants update the final allocation for a given organization & if the announcement status is Approved then user should see the updated final allocation is reflected in the corresponding application (before award creation).
     Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_NEGOTIATION_NO"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -1845,8 +1843,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
-
-#    Nego
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
@@ -1885,8 +1881,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I perform quick search for "{SavedValue:NegoEGMSID}" in "---negotiation:-:internalHomePendingTableId---" panel
     And I click on "Start" icon for "{SavedValue:NegoEGMSID}" inside flex table with id "---negotiation:-:internalHomePendingTableId---"
     When I click on "Complete Negotiation" in the page details
-
-#FDM promo
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
@@ -2058,7 +2052,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Funding Decision Memo" in the page details
-#Validation
     When I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "All Formula Announcements"
@@ -2080,10 +2073,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see field "Allocation Amount" as "$2,000"
 
     Examples:
-      | Announcement Name                        |
+      | Announcement Name                                |
       | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @TbeJenkins @TBE @226439 @Verifyifuserwantsupdatethefinalallocationforagivenorganization&iftheannouncementstatusisApprovedthenusershouldseetheupdatedfinalallocationisreflectedinthecorrespondingapplication(beforeawardcreation). @sprint-11-US-201558 @komal @Allocation
+  @226439 @Verifyifuserwantsupdatethefinalallocationforagivenorganization&iftheannouncementstatusisApprovedthenusershouldseetheupdatedfinalallocationisreflectedinthecorrespondingapplication(beforeawardcreation). @sprint-11-US-201558 @komal @Allocation
   Scenario Outline: Verify if user wants update the final allocation for a given organization & if the announcement status is Approved then user should see the updated final allocation is reflected in the corresponding application (before award creation).
     Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NEGOTIATION_NO"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -2295,9 +2288,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I perform quick search for "<Announcement Name>" in "---announcement:-:formulaAnnouncementTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     When I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
-      | Applicants                          | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | 5000             |
+    And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
+      | Title                           | Allocation Amount |
+      | Automation Permanent Focus Area | 5000              |
     Then I softly see the following messages in the page details contains:
       | "Allocation Amount" update is not allowed for organization, As Application is Promoted to FDM. |
     And I navigate to "Applications" tab
@@ -2626,7 +2620,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                |
       | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @TbeJenkins @TBE @222277 @Verifyifuserwantsupdatethefinalallocationforagivenorganization&iftheannouncementstatusisunderrevisionthenusershouldseetheupdatedfinalallocationisreflectedinthecorrespondingapplication(beforepromotingtoFDM) @sprint-11-US-201558 @komal @Allocation
+  @222277 @Verifyifuserwantsupdatethefinalallocationforagivenorganization&iftheannouncementstatusisunderrevisionthenusershouldseetheupdatedfinalallocationisreflectedinthecorrespondingapplication(beforepromotingtoFDM) @sprint-11-US-201558 @komal @Allocation
   Scenario Outline: Verify if user wants update the final allocation for a given organization & if the announcement status is under revision then user should see the updated final allocation is reflected in the corresponding application (before promoting to FDM )
     Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_NEGOTIATION_NO"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -2660,8 +2654,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see status in Progress-bar is "Approved" and is "Green"
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
-#    nego
-
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
@@ -2700,8 +2692,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I perform quick search for "{SavedValue:NegoEGMSID}" in "---negotiation:-:internalHomePendingTableId---" panel
     And I click on "Start" icon for "{SavedValue:NegoEGMSID}" inside flex table with id "---negotiation:-:internalHomePendingTableId---"
     When I click on "Complete Negotiation" in the page details
-
-#FDM promo
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
@@ -2795,7 +2785,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     And I click on "Next Review Step" in the page details
     Then I see the sub-header is "Management Review" in the page details
-#Validation
     And I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
@@ -2808,7 +2797,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                |
       | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @TbeJenkins @TBE @222305 @Verifyifuserwantsupdatethefinalallocationforagivenorganization&iftheannouncementstatusisunderrevisionthenusershouldseetheupdatedfinalallocationisreflectedinthecorrespondingapplication(beforepromotingtoFDM) @sprint-11-US-201558 @komal @Allocation
+  @222305 @Verifyifuserwantsupdatethefinalallocationforagivenorganization&iftheannouncementstatusisunderrevisionthenusershouldseetheupdatedfinalallocationisreflectedinthecorrespondingapplication(beforepromotingtoFDM) @sprint-11-US-201558 @komal @Allocation
   Scenario Outline: Verify if user wants update the final allocation for a given organization & if the announcement status is under revision then user should see the updated final allocation is reflected in the corresponding application (before promoting to FDM )
     Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -2843,8 +2832,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see status in Progress-bar is "Approved" and is "Green"
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
-    #    nego
-
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
@@ -2883,7 +2870,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I perform quick search for "{SavedValue:NegoEGMSID}" in "---negotiation:-:internalHomePendingTableId---" panel
     And I click on "Start" icon for "{SavedValue:NegoEGMSID}" inside flex table with id "---negotiation:-:internalHomePendingTableId---"
     When I click on "Complete Negotiation" in the page details
-#FDM promo
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
@@ -2977,7 +2963,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     And I click on "Next Review Step" in the page details
     Then I see the sub-header is "Management Review" in the page details
-#Validation
     And I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
@@ -3064,22 +3049,23 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Budget" sub tab
     Then I softly see field "Allocation Amount" as "$2,000"
-    #222555
+    #222555 #222479
     When I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "All Formula Announcements"
     When I perform quick search for "<Announcement Name>" in "---announcement:-:formulaAnnouncementTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     When I navigate to "Overview" sub tab
+    And I save the value from row "1" for column name "Last Updated" as "lastUpdateDateTime" from flex table "---announcement:-:formulaInvitedApplicatsTableId---"
     Then I see the following rows under the following headers in table with id "---announcement:-:formulaInvitedApplicatsTableId---" :
-      | Applicants                          | Last Updated By |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | Automation PM   |
+      | Applicants                          | Last Updated By | Last Updated                    |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | Automation PM   | {SavedValue:lastUpdateDateTime} |
 
     Examples:
       | Announcement Name                                |
       | {SavedValue:Automation Runtime FDM Announcement} |
 
-  @TbeJenkins @TBE @222261 @Verifyifuserwantsupdatethefinalallocationforagivenorganization&iftheannouncementstatusisunderrevisionthenusershouldseetheupdatedfinalallocationisreflectedinthecorrespondingapplication(beforeawardcreation) @sprint-11-US-201558 @komal @Allocation
+  @222261 @Verifyifuserwantsupdatethefinalallocationforagivenorganization&iftheannouncementstatusisunderrevisionthenusershouldseetheupdatedfinalallocationisreflectedinthecorrespondingapplication(beforeawardcreation) @sprint-11-US-201558 @komal @Allocation
   Scenario Outline: Verify if user wants update the final allocation for a given organization & if the announcement status is under revision then user should see the updated final allocation is reflected in the corresponding application (before promoting to FDM )
     Given I published "Formula" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -3113,7 +3099,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see status in Progress-bar is "Approved" and is "Green"
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
-#FDM approved
     And I created approved FDM on application "<Announcement Name>"
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
@@ -3122,7 +3107,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "View" icon for "<Announcement Name>" inside table
     And I navigate to "Budget" sub tab
     Then I softly see field "Allocation Amount" as "$2,000"
-
 #    TODO: Implementation of below flow is pending
 #    Again I have created 1 application from different org
 #    And I submit the application to grantor
@@ -3134,3 +3118,133 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Examples:
       | Announcement Name                                |
       | {SavedValue:Automation Runtime FDM Announcement} |
+
+  @222010 @VerifyPOusercannotdeleteinvitedorganizationsforformulaAnnouncementwhenannouncementisinclosedstate. @sprint-11-US-201558 @komal @Allocation
+  Scenario: Verify PO user cannot delete invited organizations for formula Announcement when announcement is in closed state.
+    When I login to "As a Grantor" app as "PO" user
+    And I navigate to "Announcements" tab
+    And I click toggle button to select "Closed and Archived Announcements"
+    When I perform quick search for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicant_PreScreenReviewCompleted}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    When I click on "View" icon for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicant_PreScreenReviewCompleted}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    When I navigate to "Overview" sub tab
+    #222010
+    Then I softly cannot see top right button "Remove Selected" in flex table with id "---announcement:-:addOrganizationByAppFocusAreaTableId---"
+
+  @222142 @222278 @VerifyPMusercanseerowleveleditactionintheapplicantsectionwhenformulaannouncementisinclosedstate(formulaannouncementswithallocation-level=ByApplicant) @sprint-11-US-201558 @komal @Allocation
+  Scenario: Verify PM user  can see row level edit action in the applicant section when formula announcement is in closed state(formula announcements with allocation-level = By Applicant)
+  | Verify if user wants update the final allocation for a given organization & if the announcement status is closed then user should see the updated final allocation is reflected in the corresponding application (before promoting to FDM ) |
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    And I click toggle button to select "Closed and Archived Announcements"
+    When I perform quick search for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicant_PreScreenReviewCompleted}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    When I click on "View" icon for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicant_PreScreenReviewCompleted}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    When I navigate to "Overview" sub tab
+    #222142
+    Then I softly can see row level action button "Edit" against "SAN DIEGO ELECTRICAL TRAINING TRUST" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
+    #222278
+    Then I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
+      | Applicants                          | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    And I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicant_PreScreenReviewCompleted}"
+    When I click on "View" icon for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicant_PreScreenReviewCompleted}" inside table
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Allocation Amount" as "$2,000"
+
+  @TBE @222259 @Verifyifuserwantsupdatethefinalallocationforagivenorganization&iftheannouncementstatusisClosedthenusershouldseetheupdatedfinalallocationisreflectedinthecorrespondingapplication(beforeawardcreation) @sprint-11-US-201558 @komal @Allocation
+  Scenario: Verify if user wants update the final allocation for a given organization & if the announcement status is Closed then user should see the updated final allocation is reflected in the corresponding application (before award creation)
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicant_FDMApproved}"
+    When I click on "View" icon for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicant_FDMApproved}" inside table
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Allocation Amount" as "$2,000"
+
+  @TBE @222467 @222376 @VerifyusercannotdeletetheassociatedfocusareawhenAnnouncementisinclosedstate @sprint-11-US-201558 @komal @Allocation
+  Scenario: Verify user cannot delete the associated focus area when Announcement is in closed state.
+  | Verify user  can see row level edit action in the applicant section when formula announcement is in Closed state(formula announcements with allocation-level = By Applicant & Focus Area) |
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    And I click toggle button to select "Closed and Archived Announcements"
+    When I perform quick search for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicantAndFocusArea_PreScreenReviewCompleted}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    When I click on "View" icon for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicantAndFocusArea_PreScreenReviewCompleted}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    When I navigate to "Overview" sub tab
+    #222467
+    Then I softly cannot see row level action button "Remove" against "Automation Permanent Focus Area" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
+    And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Then I softly cannot see row level action button "Remove" against "Automation Permanent Focus Area" in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---"
+    #222376
+    Then I softly can see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---"
+    Then I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
+      | Title                           | Allocation Amount |
+      | Automation Permanent Focus Area | 2000              |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
+    #222306
+    And I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicantAndFocusArea_PreScreenReviewCompleted}"
+    When I click on "View" icon for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicantAndFocusArea_PreScreenReviewCompleted}" inside table
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Allocation Amount" as "$2,000"
+
+  @TBE @222301 @Verifyifuserwantsupdatethefinalallocationforagivenorganization&iftheannouncementstatusisClosedthenusershouldseetheupdatedfinalallocationisreflectedinthecorrespondingapplication(beforeawardcreation) @sprint-11-US-201558 @komal @Allocation
+  Scenario: Verify if user wants update the final allocation for a given organization & if the announcement status is Closed then user should see the updated final allocation is reflected in the corresponding application (before award creation)
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicantAndFocusArea__FDMApproved}"
+    When I click on "View" icon for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicantAndFocusArea__FDMApproved}" inside table
+    And I navigate to "Budget" sub tab
+    Then I softly see field "Allocation Amount" as "$2,000"
+
+  @TBE @222469 @222158 @VerifyusercannotdeletetheassociatedfocusareawhenAnnouncementisinArchivedstate. @sprint-11-US-201558 @komal @Allocation
+  Scenario: Verify user cannot delete the associated focus area when Announcement is in Archived state.
+  | Verify PM user  can see row level edit action in the applicant section when formula announcement is in Archived state(formula announcements with allocation-level = By Applicant)|
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    And I click toggle button to select "Closed and Archived Announcements"
+    When I perform quick search for "{AUTOEnvData:ArchivedStateFormulaAnn_ByApplicant}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    When I click on "View" icon for "{AUTOEnvData:ArchivedStateFormulaAnn_ByApplicant}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    When I navigate to "Overview" sub tab
+    #222469
+    Then I softly cannot see row level action button "Remove" against "Automation Permanent Focus Area" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
+    #222158
+    Then I softly can see row level action button "Edit" against "SAN DIEGO ELECTRICAL TRAINING TRUST" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
+
+  @TBE @222020 @VerifyPOusercannotdeleteinvitedorganizationsforformulaAnnouncementwhenannouncementisinArchivedstate. @sprint-11-US-201558 @komal @Allocation
+  Scenario: Verify PO user cannot delete invited organizations for formula Announcement when announcement is in Archived state.
+  | Verify PM user  can see row level edit action in the applicant section when formula announcement is in Archived state(formula announcements with allocation-level = By Applicant)|
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    And I click toggle button to select "Closed and Archived Announcements"
+    When I perform quick search for "{AUTOEnvData:ArchivedStateFormulaAnn_ByApplicant}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    When I click on "View" icon for "{AUTOEnvData:ArchivedStateFormulaAnn_ByApplicant}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    When I navigate to "Overview" sub tab
+    #222020
+    Then I softly cannot see top right button "Remove Selected" in flex table with id "---announcement:-:addOrganizationByAppFocusAreaTableId---"
+
+  @TBE @222381 @VerifyusercanseerowleveleditactionintheapplicantsectionwhenformulaannouncementisinArchivedstate(formulaannouncementswithallocation-level=ByApplicant&FocusArea) @sprint-11-US-201558 @komal @Allocation
+  Scenario: Verify user  can see row level edit action in the applicant section when formula announcement is in Archived state(formula announcements with allocation-level = By Applicant & Focus Area)
+  | Verify user  can see row level edit action in the applicant section when formula announcement is in Closed state(formula announcements with allocation-level = By Applicant & Focus Area) |
+    When I login to "As a Grantor" app as "PM" user
+    And I navigate to "Announcements" tab
+    And I click toggle button to select "Closed and Archived Announcements"
+    When I perform quick search for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicantAndFocusArea}" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    When I click on "View" icon for "{AUTOEnvData:ClosedStateFormulaAnn_ByApplicantAndFocusArea}" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
+    When I navigate to "Overview" sub tab
+    #222381
+    Then I softly can see row level action button "Edit" against "Automation Permanent Focus Area" in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---"
+    Then I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
+      | Title                           | Allocation Amount |
+      | Automation Permanent Focus Area | 2000              |
+    Then I softly see the following messages in the page details contains:
+      | Saved Successfully! |
