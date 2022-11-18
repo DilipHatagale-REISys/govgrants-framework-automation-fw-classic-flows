@@ -487,7 +487,7 @@ public class GenericSteps {
         I.amPerforming().propertiesFileOperationsTo().saveValue(annName, newAnnName);
         annName = newAnnName;
         grantorWebServices.publishAnnouncment(annType, annName, filter);
-    }
+   }
 
     @And("I activated standalone subaward {string} with properties {string}")
     public void iActivatedStandaloneSubawardWithProperties(String grantName, String filter) {
