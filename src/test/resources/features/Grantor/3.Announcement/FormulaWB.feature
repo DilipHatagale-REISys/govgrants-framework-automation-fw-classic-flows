@@ -2111,8 +2111,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Automation Permanent Focus Area | 2000              |
     And I click on "Publish" in the page details
     Then I see status in Progress-bar is "Published" and is "green"
-
-  #    Nego
     When I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
@@ -2151,8 +2149,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I perform quick search for "{SavedValue:NegoEGMSID}" in "---negotiation:-:internalHomePendingTableId---" panel
     And I click on "Start" icon for "{SavedValue:NegoEGMSID}" inside flex table with id "---negotiation:-:internalHomePendingTableId---"
     When I click on "Complete Negotiation" in the page details
-
-#FDM promo
     When I navigate to "Applications" tab
     And I navigate to "Applications" content inside "Applications" subheader on left panel
     When I click toggle button to select "Applications - All"
@@ -2281,7 +2277,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Funding Decision Memo" in the page details
-#Validation
     When I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "All Formula Announcements"
