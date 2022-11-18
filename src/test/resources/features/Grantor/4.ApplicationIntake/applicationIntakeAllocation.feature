@@ -1808,7 +1808,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
 
 
-  @TBEOnJenkins @219325 @CompetitiveAnn>>VerifyasPMusershouldnotsee'FocusArea'sectionunderBudgetsubtabofpre-applicationevenifsettingasAllocationlevelis'NA'&FocusAreais'YES' @sprint-09-US-208948 @komal @Allocation
+  @mk @TBEOnJenkins @219325 @CompetitiveAnn>>VerifyasPMusershouldnotsee'FocusArea'sectionunderBudgetsubtabofpre-applicationevenifsettingasAllocationlevelis'NA'&FocusAreais'YES' @sprint-09-US-208948 @komal @Allocation
   Scenario: Competitive Ann>> Verify as PM user should not see 'Focus Area' section under Budget subtab of pre-application even if setting as Allocation level is 'NA' & Focus Area is 'YES'
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
@@ -1848,7 +1848,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "View" icon for "{SavedValue:preAppId}" inside flex table with id "---preApplication:-:preApplicationsGrantorTableId---"
     When I navigate to "Budget" sub tab
     #219325
-    Then I softly can see page block "Focus Area"
+    Then I softly cannot see page block "Focus Area"
     Then I softly can see page block "Budget Summary by Focus Area"
 
   @TBEOnJenkins @TBE @219330 @CompetitiveAnn>>VerifyasPMusercannotsee'BudgetSummarybyFocusArea'sectionbelowBudgetsummarysectionunderBudgetsubtabofpre-applicationifsettingasfocusAreais'NO' @sprint-09-US-208948 @komal @Allocation
