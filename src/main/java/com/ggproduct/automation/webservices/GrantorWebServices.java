@@ -242,7 +242,7 @@ public class GrantorWebServices extends ProjectWebServices {
     }
 
     private void initiateApplicationReview(JsonObject jsonObject) {
-        String finalEndPoint = endPoint + "/services/apexrest/CreateFDM/v1";
+        String finalEndPoint = endPoint + "/services/apexrest/CreateFDMCopy/v1";
         Response response = I.amPerforming().restHttp().postCall(jsonObject, null,
                 finalEndPoint, "Authorization", "Bearer " + tokenString, null);
         assertStatusCode(response);

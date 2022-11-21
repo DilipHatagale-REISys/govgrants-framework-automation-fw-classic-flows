@@ -295,9 +295,17 @@ public class GrantorPayloads {
      * this switch cases from feature step....
      * e.g take a look at BUDGETPERIODDATES case below...
      */
-    public JsonObject publishAnnPayload(String annType, String annName, String filter){
+    public JsonObject publishAnnPayload(String annType, String annName, String filter) {
         JsonObject json = getDefaultPayloadPublishAnn(annType, annName);
-        filter = filter.toUpperCase();
+        String user = "";
+
+        if (filter.toLowerCase().contains("user")) {
+            user = filter.split("-")[1].split("user")[0].trim();
+            updateAnnouncementOwner(json, user);
+            filter = filter.split("-")[0];
+        } else {
+            filter = filter.toUpperCase();
+        }
 
         switch (filter){
             case "BUDGETPERIODDATES":
@@ -339,12 +347,22 @@ public class GrantorPayloads {
                 return updateMachRequiredToNoAnnouncement(json);
             case "SUB_MATCH_YES_RISK_YES_EXPENSE_YES_ADVANCE_YES":
                 return subMatchYesRequiredMatch10RiskYesExpenseYesAdvacnceYesAnnouncement(json);
-            case "BY_APPLICANTNT_NEGOTIATION_YES":
-                return byApplicantNegotiationYes(json);
+            case "BY_APPLICANT_NEGOTIATION_NO":
+                return byApplicantNegotiationNo(json);
+            case "BY_APPLICANT_FOCUS_AREA_NEGOTIATION_NO":
+                return byApplicantFocusAreaNegotiationsNo(json);
 
             default:
                 return json;
         }
+    }
+
+    private void updateAnnouncementOwner(JsonObject json, String user) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray annOwner = new JsonArray();
+        jsonObject.addProperty("OwnerId",ProjectWebServices.getIdOf("User",user));
+        annOwner.add(jsonObject);
+        json.add("Announcement",annOwner);
     }
 
     private JsonObject byApplicantFocusAreaNo(JsonObject json) {
@@ -366,6 +384,16 @@ public class GrantorPayloads {
         return json;
     }
 
+    private JsonObject byApplicantFocusAreaNegotiationsNo(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("Allocationlevel","By Applicant and Focus Area");
+        jsonObject.addProperty("IsNegotiationsAllowed","No");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
+    }
+
     private JsonObject byApplicantFocusArea(JsonObject json) {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
@@ -375,11 +403,21 @@ public class GrantorPayloads {
         return json;
     }
 
-    private JsonObject byApplicantNegotiationYes(JsonObject json) {
+    private JsonObject byApplicantFocusAreaNegotiationYes(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("Allocationlevel","By Applicant and Focus Area");
+        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
+    }
+
+    private JsonObject byApplicantNegotiationNo(JsonObject json) {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray nego = new JsonArray();
         jsonObject.addProperty("Allocationlevel","By Applicant");
-        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        jsonObject.addProperty("IsNegotiationsAllowed","No");
         nego.add(jsonObject);
         json.add("Announcement",nego);
         return json;
@@ -582,12 +620,12 @@ public class GrantorPayloads {
         ann.addProperty("GranteeMatch",10);
         ann.addProperty("IsProgramIncomeAnticipated","Yes");
         ann.addProperty("LaverageAllowed","Yes");
-        ann.addProperty("PreApplicationNeeded","No");
-        ann.addProperty("PreApplicationDueDate",I.amPerforming()
+        ann.addProperty("PreApplicationNeeded", "No");
+        ann.addProperty("PreApplicationDueDate", I.amPerforming()
                 .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        ann.addProperty("ApplicationDueDate",I.amPerforming()
+        ann.addProperty("ApplicationDueDate", I.amPerforming()
                 .dateOperationsToGet().currentDateWithOffsetInDesiredFormat(10, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        ann.addProperty("FocusAreaRequired","Yes");
+        ann.addProperty("FocusAreaRequired", "Yes");
         ann.addProperty("IsGoalsRequired","Yes");
         ann.addProperty("Allocationlevel", "N/A");
         ann.addProperty("KPIsRequired","Yes");

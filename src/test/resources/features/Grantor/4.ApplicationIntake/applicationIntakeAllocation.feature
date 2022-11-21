@@ -813,13 +813,14 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Budgeted Amount should be greater than or equal to the Subaward Floor Amount. Adjust the Budgeted Amount in the Budget period section. |
     #219569
+    And I refresh the page
     And I navigate to "Budget" sub tab
     When I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
       | Construction  | 11000  | 100        | 100            |
     And I wait for "5" seconds
-    When I click on "Submit Application" in the page details without processing
+    When I click on "Submit Application" in the page details
 #   TODO: Message disappearing shortly
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Budgeted Amount should be less than or equal to the Subaward Ceiling Amount. Adjust the Budgeted Amount in the Budget period section. |
@@ -876,7 +877,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
   @226909 @226911 @DirectedAnn_VerifyvalidationmessageshouldbedisplaytoINDonAppifuserenterbudgetedamountlessthansub-awardflooramountWithFocusAreaYes
   @DirectedAnn_VerifyvalidationmessageshouldbedisplaytoINDonAppifuserenterbudgetedamountmorethansub-awardCeilingamountWithFocusAreaYes @sprint-11-US-203541 @komal @Allocation
-  Scenario: Directed Ann_ Verify validation message should be display to IND on App if user enter budgeted amount less than sub-award floor amount
+  Scenario: Directed Ann_ Verify validation message should be display to IND on App if user enter budgeted amount less/greater than sub-award floor amount
   | Directed Ann_ Verify validation message should be display to IND on App if user enter budgeted amount more than sub-award Ceiling amount  |
     Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "default"
     Given I am on "SUBPORTAL" portal
@@ -925,8 +926,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match |
       | Construction  | 11000  | 100        | 100            |
+    And I refresh the page
+    And I wait for "5" seconds
     When I click on "Submit Application" in the page details
-#    TODO: Message disappearing shortly
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Budgeted Amount should be less than or equal to the Subaward Ceiling Amount. Adjust the Budgeted Amount in the Budget period section. |
 
@@ -1034,7 +1036,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Category Name | Budget | Cash Match | Non-Cash Match |
       | Construction  | 11000  | 100        | 100            |
     When I click on "Submit Application" in the page details
-#   TODO: Message disappearing shortly
     Then I softly see the following messages in the page details contains:
       | Budget Tab - Budgeted Amount should be less than or equal to the Subaward Ceiling Amount. Adjust the Budgeted Amount in the Budget period section. |
 
@@ -1694,7 +1695,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
   @219363 @219366 @CompetativeAnn_VerifyasPMuserIcanseeRecommendedforawardcolumnisvisiblewhenAppstatusisnegotiationCompleted @sprint-10-US-203669 @komal @Allocation
   Scenario: Competitive Ann_ Verify as PM user I can see Recommended budget field is visible when App status is negotiation completed
-    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANTNT_NEGOTIATION_YES"
+    And I published "Competitive" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANTNT"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     And I delete the record "{SavedValue:Automation Runtime FDM Announcement}" from the object "FDM"
@@ -1740,9 +1741,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Budget" sub tab
     Then I softly see field "Recommended Budget" inside page block
 
-  @219346 @DirectedAnn_VerifyasPMuserIcanseeRecommendedforawardcolumnisvisiblewhenAppstatusisnegotiationinitiated @sprint-10-US-203669 @komal @Allocation
-  Scenario: Directed Ann_ Verify as PM user I can see Recommended for award column is visible when App status is negotiation initiated
-    Given I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANTNT_NEGOTIATION_YES"
+  @219346 @DirectedAnn_VerifyasPMuserIcanseeRecommendedBudgetcolumnisvisiblewhenAppstatusisnegotiationinitiated @sprint-10-US-203669 @komal @Allocation
+  Scenario: Directed Ann_ Verify as PM user I can see Recommended budget column is visible when App status is negotiation initiated
+    Given I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "NEGOTIATION"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     And I delete the record "{SavedValue:Automation Runtime FDM Announcement}" from the object "FDM"
@@ -1763,9 +1764,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Budget" sub tab
     Then I softly see field "Recommended Budget" inside page block
 
-  @219360 @DirectedAnn_VerifyasAdminuserIcanseeRecommendedforawardfieldisvisibleunderbudgetsummarywhenAppstatusisnegotiationsubmitted @sprint-10-US-203669 @komal @Allocation
-  Scenario: Directed Ann_ Verify as Admin user I can see Recommended for award field is visible under budget summary when App status is negotiation submitted
-    Given I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "BY_APPLICANTNT_NEGOTIATION_YES"
+  @219360 @DirectedAnn_VerifyasAdminuserIcanseeRecommendedBudgetfieldisvisibleunderbudgetsummarywhenAppstatusisnegotiationsubmitted @sprint-10-US-203669 @komal @Allocation
+  Scenario: Directed Ann_ Verify as Admin user I can see Recommended Budget field is visible under budget summary when App status is negotiation submitted
+    Given I published "Directed" type announcement having name "Automation Runtime FDM Announcement" and properties "NEGOTIATION"
     And I initiated an application review for application "{SavedValue:Automation Runtime FDM Announcement}" on announcement "{SavedValue:Automation Runtime FDM Announcement}" with properties "default"
     And I created approved FDM on application "{SavedValue:Automation Runtime FDM Announcement}"
     And I delete the record "{SavedValue:Automation Runtime FDM Announcement}" from the object "FDM"
@@ -1802,3 +1803,355 @@ Feature: Validate all scenarios in the Formula Announcement tab
     #219360
     When I navigate to "Budget" sub tab
     Then I softly see field "Recommended Budget" inside page block
+
+  @219325 @CompetitiveAnn>>VerifyasPMusershouldnotsee'FocusArea'sectionunderBudgetsubtabofpre-applicationevenifsettingasAllocationlevelis'NA'&FocusAreais'YES' @sprint-09-US-208948 @komal @Allocation
+  Scenario: Competitive Ann>> Verify as PM user should not see 'Focus Area' section under Budget subtab of pre-application even if setting as Allocation level is 'NA' & Focus Area is 'YES'
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "PRE_APPLICATION_YES"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside table
+    When I click on "Qualify" in the page details
+    And I click on "Create Pre-Application" in the page details
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "preAppId"
+    And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When  I navigate to "Overview" sub tab
+    When I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 5000   | 5000       | 50             | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    When I navigate to "Files and Forms" sub tab
+    And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
+    And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Pre-Applications - All"
+    And I perform quick search for "{SavedValue:preAppId}" in "---preApplication:-:preApplicationsGrantorTableId---" panel
+    When I click on "View" icon for "{SavedValue:preAppId}" inside flex table with id "---preApplication:-:preApplicationsGrantorTableId---"
+    When I navigate to "Budget" sub tab
+    #219325
+    Then I softly cannot see page block "Focus Area"
+    Then I softly can see page block "Budget Summary by Focus Area"
+
+  @219330 @CompetitiveAnn>>VerifyasPMusercannotsee'BudgetSummarybyFocusArea'sectionbelowBudgetsummarysectionunderBudgetsubtabofpre-applicationifsettingasfocusAreais'NO' @sprint-09-US-208948 @komal @Allocation
+  Scenario: Competitive Ann>> Verify as PM user can not see 'Budget Summary by Focus Area' section below Budget summary section under Budget subtab of pre-application if setting as focus Area is 'NO'
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "PRE_APP_YES_FOCUS_AREA_NO"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside table
+    When I click on "Qualify" in the page details
+    And I click on "Create Pre-Application" in the page details
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "preAppId"
+    And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When  I navigate to "Overview" sub tab
+    When I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 5000   | 5000       | 50             | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    When I navigate to "Files and Forms" sub tab
+    And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
+    And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Pre-Applications - All"
+    And I perform quick search for "{SavedValue:preAppId}" in "---preApplication:-:preApplicationsGrantorTableId---" panel
+    When I click on "View" icon for "{SavedValue:preAppId}" inside flex table with id "---preApplication:-:preApplicationsGrantorTableId---"
+    When I navigate to "Budget" sub tab
+    #219330
+    Then I softly can see page block "Budget Summary"
+    Then I softly cannot see page block "Budget Summary by Focus Area"
+
+  @219326 @221290 @DirectedAnn>>VerifyasPOusershouldnotsee'FocusArea'sectionunderBudgetsubtabofpre-applicationevenifsettingasAllocationlevelis'NA'&FocusAreais'YES' @sprint-09-US-208948 @komal @Allocation
+  Scenario Outline: Directed Ann>> Verify as PO user should not see 'Focus Area' section under Budget subtab of pre-application even if setting as Allocation level is 'NA' & Focus Area is 'YES'
+  | Directed Ann>> Verify as EXE user can see 'Budget Summary by Focus Area' section below Budget summary section under Budget subtab of pre-application if setting as focus Area is 'YES''|
+    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "PRE_APPLICATION_YES"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside table
+    When I click on "Qualify" in the page details
+    And I click on "Create Pre-Application" in the page details
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "preAppId"
+    And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When  I navigate to "Overview" sub tab
+    When I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 5000   | 5000       | 50             | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    When I navigate to "Files and Forms" sub tab
+    And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
+    And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "<User>" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Pre-Applications - All"
+    And I perform quick search for "{SavedValue:preAppId}" in "---preApplication:-:preApplicationsGrantorTableId---" panel
+    When I click on "View" icon for "{SavedValue:preAppId}" inside flex table with id "---preApplication:-:preApplicationsGrantorTableId---"
+    When I navigate to "Budget" sub tab
+    #219326
+    Then I softly cannot see page block "Focus Area"
+    #221290
+    Then I softly can see page block "Budget Summary by Focus Area"
+
+    Examples:
+      | User |
+      | PO   |
+      | EXE  |
+
+  @219328 @DirectedAnn>>VerifyasPOusercannotsee'BudgetSummarybyFocusArea'sectionbelowBudgetsummarysectionunderBudgetsubtabofpre-applicationifsettingasfocusAreais'NO' @sprint-09-US-208948 @komal @Allocation
+  Scenario: Directed Ann>> Verify as PO user can not see 'Budget Summary by Focus Area' section below Budget summary section under Budget subtab of pre-application if setting as focus Area is 'NO'
+    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "PRE_APP_YES_FOCUS_AREA_NO"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside table
+    When I click on "Qualify" in the page details
+    And I click on "Create Pre-Application" in the page details
+    When I click modal button "Save and Continue"
+    And I save the field labeled "EGMS ID" as "preAppId"
+    And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When  I navigate to "Overview" sub tab
+    When I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 5000   | 5000       | 50             | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    When I navigate to "Files and Forms" sub tab
+    And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
+    And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I re-login to "As a Grantor" app as "PO" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    And I navigate to "Pre-Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Pre-Applications - All"
+    And I perform quick search for "{SavedValue:preAppId}" in "---preApplication:-:preApplicationsGrantorTableId---" panel
+    When I click on "View" icon for "{SavedValue:preAppId}" inside flex table with id "---preApplication:-:preApplicationsGrantorTableId---"
+    When I navigate to "Budget" sub tab
+    #219328
+    Then I softly cannot see page block "Focus Area"
+    Then I softly cannot see page block "Budget Summary by Focus Area"
+
+  @219096 @219100 @219080 @219108 @Pre-application>>VerifyasSPIusershouldsee'BudgetedAmount'sectioninsteadof'RequestedAmount'sectionunderOverviewsubtabofpre-applicationforCompetitiveAnnouncement @sprint-09-US-208978 @komal @Allocation
+  Scenario: Competitive Ann>> Verify as PM user should not see 'Focus Area' section under Budget subtab of pre-application even if setting as Allocation level is 'NA' & Focus Area is 'YES'
+  | Pre-application>>Verify as SPI user should see Budget Summary section on top level under Budget subtab of pre-application for Competitive Announcement|
+  | Pre-application>>Verify as SPI user should not see both Sub award floor & sub award ceiling field under Opportunity overview section for Competitive Announcement |
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "PRE_APPLICATION_YES"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside table
+    When I click on "Qualify" in the page details
+    And I click on "Create Pre-Application" in the page details
+    When I click modal button "Save and Continue"
+    When I navigate to "Budget" sub tab
+    #219100
+    Then I softly see "Budget Summary" page block displayed
+    Then I softly see field "Subaward Floor" inside page block
+    Then I softly see field "Subaward Ceiling" inside page block
+#    Then I softly see field "Recommended Budget" inside page block
+    #219096
+    Then I softly see field "Budgeted Amount" inside page block
+    Then I softly do not see "Pre-application Overview" page block displayed
+    #219080
+    When  I navigate to "Overview" sub tab
+    Then I softly cannot see field "Subaward Floor" inside page block
+    Then I softly cannot see field "Subaward Ceiling" inside page block
+    #219108
+    When I enter "Edition" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match |
+      | Construction  | 900    | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    When I navigate to "Files and Forms" sub tab
+    And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
+    And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Budget Tab - Budgeted Amount must be greater than or equal to the Subaward Floor Amount. Adjust the Budgeted Amount in the Budget period section on the Budget tab. |
+    And I refresh the page
+    And I navigate to "Budget" sub tab
+    When I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match |
+      | Construction  | 11000  | 100        | 100            |
+    And I wait for "5" seconds
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Budget Tab - Budgeted Amount must be less than or equal to the Subaward Ceiling Amount. Adjust the Budgeted Amount in the Budget period section on the Budget tab. |
+
+  @219112 @Pre-application>>VerifyasSPAusershouldseeBudgetSummarybyFocusAreasectionbelowBudgetSummarysectionunderbudgettabofpre-applicationiffocusareais'YES'forCompetitiveAnnouncement @sprint-09-US-208978 @komal @Allocation
+  Scenario: Pre-application>>Verify as SPA user should see Budget Summary by Focus Area section below Budget Summary section under budget tab of pre-application if focus area is 'YES' for Competitive Announcement
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "PRE_APPLICATION_YES"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPA" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside table
+    When I click on "Qualify" in the page details
+    And I click on "Create Pre-Application" in the page details
+    When I click modal button "Save and Continue"
+    When I navigate to "Budget" sub tab
+    #219112
+    Then I softly can see page block "Budget Summary by Focus Area"
+    Then I see the following headers in table with id "---applicationIntake:-:focusAreaTableAppId---" :
+      | Focus Area | Budgeted Amount |
+    Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
+    Then I softly can see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
+
+  @221116 @221129 @221152 @219085 @Pre-application>>VerifyasSPAusershouldnotseebothSubawardfloor&subawardceilingfieldsunderOpportunityoverviewsectionforDirectedAnnouncement @sprint-09-US-208978 @komal @Allocation
+  Scenario: Pre-application>>Verify as SPA user should not see both Sub award floor & sub award ceiling fields under Opportunity overview section for Directed Announcement
+  | Pre-application>>Verify as SPI user should see Budget Summary by Focus Area section below Budget Summary section under budget tab of pre-application if focus area is 'YES'  for Directed Announcement |
+  | Pre-application>>Verify as SPI user should see validation related to sub award floor and sub award ceiling fields & pointing to the Budget tab of pre-application for Directed Announcement|
+    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "PRE_APPLICATION_YES"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside table
+    When I click on "Qualify" in the page details
+    And I click on "Create Pre-Application" in the page details
+    When I click modal button "Save and Continue"
+    When I navigate to "Budget" sub tab
+    #221116
+    Then I softly see "Budget Summary" page block displayed
+    Then I softly see field "Subaward Floor" inside page block
+    Then I softly see field "Subaward Ceiling" inside page block
+    Then I softly see field "Budgeted Amount" inside page block
+    Then I softly do not see "Pre-application Overview" page block displayed
+    #221129
+    Then I softly can see page block "Budget Summary by Focus Area"
+    Then I see the following headers in table with id "---applicationIntake:-:focusAreaTableAppId---" :
+      | Focus Area | Budgeted Amount |
+    Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
+    Then I softly can see row level action button "Remove Focus Area" against "Automation Permanent Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
+    #219085
+    When  I navigate to "Overview" sub tab
+    Then I softly cannot see field "Subaward Floor" inside page block
+    Then I softly cannot see field "Subaward Ceiling" inside page block
+    #221152
+    When I enter "Edition" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match |
+      | Construction  | 900    | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---preApplication:-:flexGridPreAppContactTableId---"
+    When I navigate to "Files and Forms" sub tab
+    And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
+    And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I click on "Back" in the page details
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Budget Tab - Budgeted Amount must be greater than or equal to the Subaward Floor Amount. Adjust the Budgeted Amount in the Budget period section on the Budget tab. |
+    And I refresh the page
+    And I navigate to "Budget" sub tab
+    When I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---preApplication:-:budgetCategoryGridTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match |
+      | Construction  | 11000  | 100        | 100            |
+    And I refresh the page
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Budget Tab - Budgeted Amount must be less than or equal to the Subaward Ceiling Amount. Adjust the Budgeted Amount in the Budget period section on the Budget tab. |
+
+  @221170 @Pre-application>>VerifyasSPIusershouldnotseeBudgetSummarybyFocusAreasectionbelowBudgetSummarysectionunderbudgettabofpre-applicationiffocusareais'NO'forDirectedAnnouncement @sprint-09-US-208978 @komal @Allocation
+  Scenario:Pre-application>>Verify as SPI user should not see Budget Summary by Focus Area section below Budget Summary section under budget tab of pre-application if focus area is 'NO' for Directed Announcement
+    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "PRE_APP_YES_FOCUS_AREA_NO"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside table
+    When I click on "Qualify" in the page details
+    And I click on "Create Pre-Application" in the page details
+    When I click modal button "Save and Continue"
+    When I navigate to "Budget" sub tab
+    #221170
+    Then I softly cannot see page block "Budget Summary by Focus Area"
+
+  @221113 @Pre-application>>VerifyasSPAusershouldsee'BudgetedAmount'fieldunder'Pre-applicationOverview'sectionunderOverviewsubtabofpre-applicationforDirectedAnnouncement @sprint-09-US-208978 @komal @Allocation
+  Scenario: Pre-application>>Verify as SPA user should see 'Budgeted Amount' field under 'Pre-application Overview' section under Overview subtab of pre-application for Directed Announcement
+    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "PRE_APPLICATION_YES"
+    When I am on "SUBPORTAL" portal
+    And I login as "SPI3" user
+    When I navigate to "Opportunities" tab
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement}" in "---preApplication:-:notYetQualifiedTable---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement}" inside table
+    When I click on "Qualify" in the page details
+    And I click on "Create Pre-Application" in the page details
+    When I click modal button "Save and Continue"
+    When I navigate to "Overview" sub tab
+    #221113
+    Then I softly see "Pre-Application Overview" page block displayed
+    Then I softly see field "Budgeted Amount" inside page block
