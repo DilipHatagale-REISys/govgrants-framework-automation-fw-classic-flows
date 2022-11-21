@@ -1313,7 +1313,7 @@ Feature: Validate all scenarios of every modules flow
     And I select "My Profile" from user dropdown
     Then I see the header is "{SavedValue:Automation Runtime Contact}" in the page details
 
-  @vai @end-to-end-flow-paymentrequest-progressreport-closeout
+  @end-to-end-flow-paymentrequest-progressreport-closeout
   Scenario: end-to-end-flow-paymentrequest-progressreport-closeout
     Given I activated standalone subaward "Automation Runtime award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
