@@ -2359,7 +2359,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly cannot see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly cannot see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 
-  @TBEOnJenkins @TBE @222483 @VerifyINDusercanadd/removefocusareainthe"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
+  @TBE @222483 @VerifyINDusercanadd/removefocusareainthe"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
   Scenario: Verify IND user can add/remove focus area in the "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES-Automation EXE user"
     When I am on "SUBPORTAL" portal
@@ -2443,6 +2443,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I login as "IND" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-App}" in "---applicationIntake:-:activeOpportunitiesTableId---" panel
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-App}" inside table
@@ -2480,12 +2481,13 @@ Feature: Validate all scenarios in the Formula Announcement tab
     #222463
     When I click on "Request Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
+    And I enter value "Overview Tab: Project Information" into field "fieldPreApplicationSectionsforRevision__c"
     When I clear the value from field "fieldPreApplicationSectionsforRevision"
     Then I see multipicklist field "fieldApplicationSectionsForRevision__c" contains value "Budget Tab: Budget Summary by Focus Area" under list "Application Sections for Revision - Available"
 
 
 #SPI
-  @TBEOnJenkins @TBE @222462 @222477 @VerifyPMusercansee"BudgetTab:BudgetSummarybyFocusArea"optioninsteadof"BudgetTab:FocusArea"inPre-ApplicationsectionforNegotiation @sprint-9-US-221062 @komal @Allocation
+  @TBE @222462 @222477 @VerifyPMusercansee"BudgetTab:BudgetSummarybyFocusArea"optioninsteadof"BudgetTab:FocusArea"inPre-ApplicationsectionforNegotiation @sprint-9-US-221062 @komal @Allocation
   Scenario: Verify PM user can see "Budget Tab: Budget Summary by Focus Area" option instead of "Budget Tab: Focus Area" in Pre-Application section for Negotiation
   | Verify SPI/SPA user can not edit/add/remove focus area from "Budget Tab: Budget Summary by Focus Area" section in negotiation submit to grantor state for pre-app |
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
@@ -2530,6 +2532,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     #222462
     When I click on "Request Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
+    And I enter value "Overview Tab: Project Information" into field "fieldPreApplicationSectionsforRevision__c"
     When I clear the value from field "fieldPreApplicationSectionsforRevision"
     Then I see multipicklist field "fieldApplicationSectionsForRevision__c" contains value "Budget Tab: Budget Summary by Focus Area" under list "Application Sections for Revision - Available"
     #222477
@@ -2615,7 +2618,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly cannot see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly cannot see row level action button "Remove Focus Area" against "Automation Permanent Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 
-  @TBEOnJenkins @TBE @222481 @VerifySPI/SPAusercanadd/removefocusareainthe"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
+  @TBE @222481 @VerifySPI/SPAusercanadd/removefocusareainthe"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
   Scenario: Verify SPI/SPA user can add/remove focus area in the "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -2691,7 +2694,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Status" as "Submitted to Grantor" in "Negotiation Request Details" pageblock
 
-  @TBEOnJenkins @TBE @222470 @VerifySPI/SPAusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
+  @222470 @VerifySPI/SPAusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
   Scenario: Verify SPI/SPA user can edit "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -2750,7 +2753,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly can see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 
-  @TBEOnJenkins @TBE @222695 @Verify'Budgetsummarybyfocusarea'sectionshouldbehiddenonpre-appiffocusareasetas'No'onAnnbutstilltheoption'Budgetsummarybyfocusarea'onpre-appnegotiation @sprint-9-US-221062 @komal @Allocation
+  @222695 @Verify'Budgetsummarybyfocusarea'sectionshouldbehiddenonpre-appiffocusareasetas'No'onAnnbutstilltheoption'Budgetsummarybyfocusarea'onpre-appnegotiation @sprint-9-US-221062 @komal @Allocation
   Scenario: Verify 'Budget summary by focus area' section should be hidden on pre-app if focus area set as 'No' on Ann but still the option 'Budget summary by focus area' on pre-app negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APP_YES_NEGO_YES_FOCUS_AREA_NO"
     When I am on "SUBPORTAL" portal
@@ -2809,7 +2812,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Pre-Application Sections for Negotiation" as "Budget Tab: Budget Summary by Focus Area Budget Tab: Budget Details"
 
-  @TBEOnJenkins @TBE @222501 @DirectiveAnn-VerifySPIuserseevalidationmessageifbudgetamountnotmatcheswithsubawardceilingAmtduetouserremovefocusareaandtrytosubmitpre-apptograntor @sprint-9-US-221062 @komal @Allocation
+  @TBE @222501 @DirectiveAnn-VerifySPIuserseevalidationmessageifbudgetamountnotmatcheswithsubawardceilingAmtduetouserremovefocusareaandtrytosubmitpre-apptograntor @sprint-9-US-221062 @komal @Allocation
   Scenario: Directive Ann - Verify SPI user see validation message if budget amount not matches with sub award ceiling Amt due to user remove focus area and try to submit pre-app to grantor
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
