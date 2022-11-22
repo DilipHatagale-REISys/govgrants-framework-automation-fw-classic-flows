@@ -1,4 +1,4 @@
-@applicationReview @grantor-regression @grantor-parallel-regression @app @regression
+@applicationReview @grantor-regression @grantor-parallel-regression @app @regression @TBEAllocation
 Feature: Validate all scenarios in the Application Review
 
   Background: Submit the application for Review
