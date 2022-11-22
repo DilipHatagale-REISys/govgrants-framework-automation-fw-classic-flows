@@ -1792,6 +1792,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Value                              | Field                |
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
+    And I wait for "7" seconds
+    And I refresh the page
     When I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "ADMIN" user on "INTERNAL" portal
     And I navigate to "Applications" tab
@@ -2158,7 +2160,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
 
 #IND
-  @TBEOnJenkins @222471 @DirectiveAnn-VerifyINDusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
+  @222471 @DirectiveAnn-VerifyINDusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
   Scenario: Directive Ann - Verify IND user can edit "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -2184,7 +2186,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:IND Username} | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
-    Then I softly see field "Other Leverage" inside page block
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
@@ -2194,7 +2195,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
-    Then I softly see status in Progress-bar is "Submitted to Grantor" and is "green"
+    Then I softly see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2213,11 +2214,12 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Start" icon for "{SavedValue:PreAppEgmsId}" inside table
     #222471
     And I navigate to "Budget" sub tab
+    And I wait for "5" seconds
     Then I softly can see page block "Budget Summary by Focus Area"
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly can see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 
-  @TBEOnJenkins @222478 @VerifyINDusercannotedit"BudgetTab:BudgetSummarybyFocusArea"sectioninnegotiationacceptstateforpre-app @sprint-9-US-221062 @komal @Allocation
+  @222478 @VerifyINDusercannotedit"BudgetTab:BudgetSummarybyFocusArea"sectioninnegotiationacceptstateforpre-app @sprint-9-US-221062 @komal @Allocation
   Scenario: Verify IND user can not edit "Budget Tab: Budget Summary by Focus Area" section in negotiation accept state for pre-app
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -2243,7 +2245,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:IND Username} | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
-    Then I softly see field "Other Leverage" inside page block
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
@@ -2292,11 +2293,12 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "View" icon for "{SavedValue:PreappEGMSID}" inside table
     Then I see status in Progress-bar is "Accepted" and is "Green"
     And I navigate to "Budget" sub tab
+    And I wait for "5" seconds
     Then I softly can see page block "Budget Summary by Focus Area"
     Then I softly cannot see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly cannot see row level action button "Remove Focus Area" against "Automation Permanent Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 
-  @TBEOnJenkins @TBE @222475 @DirectiveAnn-VerifyINDusercan'tedit"BudgetTab:BudgetSummarybyFocusArea"sectionifgrantornotselected"BudgetTab:BudgetSummarybyFocusArea"forpre-applicationfornegotiation @sprint-9-US-221062 @komal @Allocation
+  @222475 @DirectiveAnn-VerifyINDusercan'tedit"BudgetTab:BudgetSummarybyFocusArea"sectionifgrantornotselected"BudgetTab:BudgetSummarybyFocusArea"forpre-applicationfornegotiation @sprint-9-US-221062 @komal @Allocation
   Scenario: Directive Ann - Verify IND user can't edit "Budget Tab: Budget Summary by Focus Area" section if grantor not selected "Budget Tab: Budget Summary by Focus Area" for pre-application for negotiation
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES-Automation EXE user"
     When I am on "SUBPORTAL" portal
@@ -2322,7 +2324,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:IND Username} | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
-    Then I softly see field "Other Leverage" inside page block
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
@@ -2340,7 +2341,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Start" icon for "{SavedValue:PreAppEgmsId}" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
     When I click on "Request Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
-    When I enter "Negotiation_Edit" values from "PreApplication_Field_Values.xlsx"
+    And I enter value "43707" into field "fieldRevisionDueDate__c"
+    And I enter value "Overview Tab: Project Information" into field "fieldPreApplicationSectionsforRevision__c"
+    And I enter value "Negotiation Initiated" into field "fieldExplanationOfRevisionsNeeded__c"
     When I click on "Save" in the page details
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
@@ -2349,11 +2352,12 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:PreAppEgmsId}" in "---home:-:externalPendingTasktableId---" panel
     And I click on "Start" icon for "{SavedValue:PreAppEgmsId}" inside table
-    And I navigate to "Budget" sub tab
     #222475
+    And I navigate to "Budget" sub tab
+    And I wait for "5" seconds
     Then I softly can see page block "Budget Summary by Focus Area"
     Then I softly cannot see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
-    Then I softly cannot see row level action button "Remove Focus Area" against "Automation Permanent Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
+    Then I softly cannot see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 
   @TBEOnJenkins @TBE @222483 @VerifyINDusercanadd/removefocusareainthe"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
   Scenario: Verify IND user can add/remove focus area in the "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
@@ -2381,7 +2385,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:IND Username} | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
-    Then I softly see field "Other Leverage" inside page block
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
@@ -2415,19 +2418,19 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
 
-    When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
+    When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     When I perform quick search for "Automation Permanent Focus Area2" in "---applicationIntake:-:AddFocusAreaTableAppId---" panel
     Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---applicationIntake:-:AddFocusAreaTableAppId---"
     When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---applicationIntake:-:AddFocusAreaTableAppId---"
     And I close modal by clicking the top right x button
-    Then I softly see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableId---"
+    Then I softly see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
 
-    When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
+    When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 #    And I click on "Remove Focus Area" icon for "Automation Permanent Focus Area" inside table
   #  When I click modal button "Yes"
-    When I click "Remove" after selection of "Automation Permanent Focus Area2" in the table "---applicationIntake:-:focusAreaFlexTableId---"
+    When I click "Remove" after selection of "Automation Permanent Focus Area2" in the table "---applicationIntake:-:RemoveFocusAreaPreAppTableId---"
     And I close modal by clicking the top right x button
-    Then I softly do not see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableId---"
+    Then I softly do not see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
 
     When I click on "Submit to Grantor" in the page details
     And I navigate to "Negotiations" sub tab
@@ -2459,7 +2462,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:IND Username} | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
-    Then I softly see field "Other Leverage" inside page block
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
@@ -2510,7 +2512,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
-    Then I softly see field "Other Leverage" inside page block
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
@@ -2528,6 +2529,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Start" icon for "{SavedValue:PreAppEgmsId}" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
     #222462
     When I click on "Request Negotiation" in the page details
+    And I navigate to "Negotiations" sub tab
     When I clear the value from field "fieldPreApplicationSectionsforRevision"
     Then I see multipicklist field "fieldApplicationSectionsForRevision__c" contains value "Budget Tab: Budget Summary by Focus Area" under list "Application Sections for Revision - Available"
     #222477
@@ -2582,7 +2584,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
-    Then I softly see field "Other Leverage" inside page block
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
@@ -2599,6 +2600,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I perform quick search for "{SavedValue:PreAppEgmsId}" in "---home:-:internalHomePendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:PreAppEgmsId}" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
     #222473
+    When I click on "Request Negotiation" in the page details
+    And I navigate to "Negotiations" sub tab
     When I enter "Negotiation_Edit" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I click on "Send to Subrecipient" in the page details
@@ -2638,7 +2641,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
-    Then I softly see field "Other Leverage" inside page block
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
@@ -2671,19 +2673,19 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter value "Automation Test" into field "fieldApplicantResponse__c"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-    When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
+    When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     When I perform quick search for "Automation Permanent Focus Area2" in "---applicationIntake:-:AddFocusAreaTableAppId---" panel
     Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---applicationIntake:-:AddFocusAreaTableAppId---"
     When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---applicationIntake:-:AddFocusAreaTableAppId---"
     And I close modal by clicking the top right x button
     Then I softly see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableId---"
 
-    When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
+    When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 #    And I click on "Remove Focus Area" icon for "Automation Permanent Focus Area" inside table
   #  When I click modal button "Yes"
-    When I click "Remove" after selection of "Automation Permanent Focus Area2" in the table "---applicationIntake:-:focusAreaFlexTableId---"
+    When I click "Remove" after selection of "Automation Permanent Focus Area2" in the table "---applicationIntake:-:RemoveFocusAreaPreAppTableId---"
     And I close modal by clicking the top right x button
-    Then I softly do not see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableId---"
+    Then I softly do not see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
 
     When I click on "Submit to Grantor" in the page details
     And I navigate to "Negotiations" sub tab
@@ -2715,7 +2717,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
-    Then I softly see field "Other Leverage" inside page block
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
@@ -2743,6 +2744,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I perform quick search for "{SavedValue:PreAppEgmsId}" in "---home:-:externalPendingTasktableId---" panel
     And I click on "Start" icon for "{SavedValue:PreAppEgmsId}" inside table
     And I navigate to "Budget" sub tab
+    And I wait for "5" seconds
     #222470
     Then I softly can see page block "Budget Summary by Focus Area"
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
@@ -2774,7 +2776,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
-    Then I softly see field "Other Leverage" inside page block
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
@@ -2794,7 +2795,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Negotiations" sub tab
     When I enter "Negotiation_Edit_Budget" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I softly see field "Pre-Application Sections for Negotiation" as "Budget Tab: Budget Summary by Focus Area"
+    Then I softly see field "Pre-Application Sections for Negotiation" as "Budget Tab: Budget Summary by Focus Area Budget Tab: Budget Details"
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -2806,7 +2807,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Budget" sub tab
     Then I softly cannot see page block "Budget Summary by Focus Area"
     And I navigate to "Negotiations" sub tab
-    Then I softly see field "Pre-Application Sections for Negotiation" as "Budget Tab: Budget Summary by Focus Area"
+    Then I softly see field "Pre-Application Sections for Negotiation" as "Budget Tab: Budget Summary by Focus Area Budget Tab: Budget Details"
 
   @TBEOnJenkins @TBE @222501 @DirectiveAnn-VerifySPIuserseevalidationmessageifbudgetamountnotmatcheswithsubawardceilingAmtduetouserremovefocusareaandtrytosubmitpre-apptograntor @sprint-9-US-221062 @komal @Allocation
   Scenario: Directive Ann - Verify SPI user see validation message if budget amount not matches with sub award ceiling Amt due to user remove focus area and try to submit pre-app to grantor
@@ -2834,7 +2835,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
-    Then I softly see field "Other Leverage" inside page block
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 5000   | 5000       | 50             | 100            |
@@ -2867,12 +2867,17 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter value "Automation Test" into field "fieldApplicantResponse__c"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-    When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
-#    TODO: Remove all FAs
-    When I click "Remove" after selection of "Automation Permanent Focus Area" in the table "---applicationIntake:-:focusAreaFlexTableId---"
-    And I close modal by clicking the top right x button
-    Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:focusAreaTableId---"
+#    TODO: Vaibhav- How to add 2 FAs
+#     When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
+#    When I click "Remove" after selection of "Automation Permanent Focus Area" in the table "---applicationIntake:-:focusAreaFlexTableId---"
+#    And I close modal by clicking the top right x button
+
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 500    | 5000       | 50             | 100            |
+
     When I click on "Submit to Grantor" in the page details
 #    TODO:
     And I softly see the following messages in the page details contains:
-      |  |
+      | Budget Tab - Budgeted Amount must be greater than or equal to the Subaward Floor Amount. Adjust the Budgeted Amount in the Budget period section on the Budget tab. |
