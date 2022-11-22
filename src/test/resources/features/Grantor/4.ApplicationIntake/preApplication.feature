@@ -203,7 +203,7 @@ Feature: Validate all scenarios in the Pre-Application
       | {SavedValue:Automation Runtime Announcement Application} | FO   |
       | {SavedValue:Automation Runtime Announcement Application} | EXE  |
 
- @vai @70468 @acknowledgeRequiredForPre-App @deepika
+  @70468 @acknowledgeRequiredForPre-App @deepika
   Scenario: Validate the system should throw an validation message if the pre-application is submitted with Acknowledging it
     Given I click on "Edit" in the page details
     And I enter "Edition1" values from "PreApplication_Field_Values.xlsx"

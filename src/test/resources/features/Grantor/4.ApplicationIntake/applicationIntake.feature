@@ -12,6 +12,7 @@ Feature: Validate all scenarios in the Application Intake
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
+    And I pause execution for "3" seconds
     When I click on "Save" in the page details
 
   @34044 @70332 @applicationCreation
@@ -29,7 +30,7 @@ Feature: Validate all scenarios in the Application Intake
   @34303 @addFocusAreaToApplication
   Scenario Outline: Addition of Focus area to an application
     When I navigate to "Budget" sub tab
-    Then I see that "<Focus Area>" has been added in flextable with Id "---applicationIntake:-:focusAreaTableId---"
+    Then I see that "<Focus Area>" has been added in flextable with Id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     Examples:
       | Focus Area                      |
       | Automation Permanent Focus Area |
@@ -152,16 +153,12 @@ Feature: Validate all scenarios in the Application Intake
     And I enter "EditionAcknowledge" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-    Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
-   # Then I softly can see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
-    #When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
-    And I click on "Remove Focus Area" icon for "Automation Permanent Focus Area" inside table
-  #  When I click modal button "Yes"
-     # When I click "Remove" after selection of "Automation Permanent Focus Area" in the table "---applicationIntake:-:focusAreaFlexTableId---"
-      #73514 need to check
-#    Then I softly see the following messages in the page details :
-#      | Budget Tab - At least one focus area must be in place at all times. |
-    When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
+    Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
+   And I click on "Remove Focus Area" icon for "Automation Permanent Focus Area" inside flex table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
+      #73514
+    Then I softly see the following messages in the page details :
+      | Can not remove focus area as funding opportunity associates only one focus area. |
+    When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     When I perform quick search for "Automation Permanent Focus Area" in "---applicationIntake:-:AddFocusAreaTableAppId---" panel
     Then I softly see "No Records Found" inside flex table with id "---applicationIntake:-:AddFocusAreaTableAppId---"
     And I close modal by clicking the top right x button
