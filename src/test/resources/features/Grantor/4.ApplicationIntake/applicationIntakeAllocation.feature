@@ -2158,9 +2158,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see field "Budgeted Amount" inside page block
 
 
-
-#IND
-  @222471 @DirectiveAnn-VerifyINDusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
+  @US221062 @222471 @DirectiveAnn-VerifyINDusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
   Scenario: Directive Ann - Verify IND user can edit "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -2219,7 +2217,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly can see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 
-  @222478 @VerifyINDusercannotedit"BudgetTab:BudgetSummarybyFocusArea"sectioninnegotiationacceptstateforpre-app @sprint-9-US-221062 @komal @Allocation
+  @US221062 @222478 @VerifyINDusercannotedit"BudgetTab:BudgetSummarybyFocusArea"sectioninnegotiationacceptstateforpre-app @sprint-9-US-221062 @komal @Allocation
   Scenario: Verify IND user can not edit "Budget Tab: Budget Summary by Focus Area" section in negotiation accept state for pre-app
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -2298,7 +2296,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly cannot see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly cannot see row level action button "Remove Focus Area" against "Automation Permanent Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 
-  @222475 @DirectiveAnn-VerifyINDusercan'tedit"BudgetTab:BudgetSummarybyFocusArea"sectionifgrantornotselected"BudgetTab:BudgetSummarybyFocusArea"forpre-applicationfornegotiation @sprint-9-US-221062 @komal @Allocation
+  @US221062 @222475 @DirectiveAnn-VerifyINDusercan'tedit"BudgetTab:BudgetSummarybyFocusArea"sectionifgrantornotselected"BudgetTab:BudgetSummarybyFocusArea"forpre-applicationfornegotiation @sprint-9-US-221062 @komal @Allocation
   Scenario: Directive Ann - Verify IND user can't edit "Budget Tab: Budget Summary by Focus Area" section if grantor not selected "Budget Tab: Budget Summary by Focus Area" for pre-application for negotiation
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES-Automation EXE user"
     When I am on "SUBPORTAL" portal
@@ -2341,9 +2339,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Start" icon for "{SavedValue:PreAppEgmsId}" inside flex table with id "---home:-:internalHomePendingTaskTableId---"
     When I click on "Request Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
-    And I enter value "43707" into field "fieldRevisionDueDate__c"
-    And I enter value "Overview Tab: Project Information" into field "fieldPreApplicationSectionsforRevision__c"
-    And I enter value "Negotiation Initiated" into field "fieldExplanationOfRevisionsNeeded__c"
+    When  I enter "Edition_PreApp" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
@@ -2359,7 +2355,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly cannot see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly cannot see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 
-  @TBE @222483 @VerifyINDusercanadd/removefocusareainthe"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
+  @AddFAIssue @TBE @222483 @VerifyINDusercanadd/removefocusareainthe"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
   Scenario: Verify IND user can add/remove focus area in the "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES-Automation EXE user"
     When I am on "SUBPORTAL" portal
@@ -2436,7 +2432,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Status" as "Submitted to Grantor" in "Negotiation Request Details" pageblock
 
-  @TBEOnJenkins @TBE @222463 @VerifyEXEusercansee"BudgetTab:BudgetSummarybyFocusArea"optioninsteadof"BudgetTab:FocusArea"inPre-ApplicationsectionforNegotiation @sprint-9-US-221062 @komal @Allocation
+  @US221062 @222463 @VerifyEXEusercansee"BudgetTab:BudgetSummarybyFocusArea"optioninsteadof"BudgetTab:FocusArea"inPre-ApplicationsectionforNegotiation @sprint-9-US-221062 @komal @Allocation
   Scenario: Verify EXE user can see "Budget Tab: Budget Summary by Focus Area" option instead of "Budget Tab: Focus Area" in Pre-Application section for Negotiation
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES-Automation EXE user"
     When I am on "SUBPORTAL" portal
@@ -2472,7 +2468,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
-    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2481,13 +2477,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     #222463
     When I click on "Request Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
-    And I enter value "Overview Tab: Project Information" into field "fieldPreApplicationSectionsforRevision__c"
-    When I clear the value from field "fieldPreApplicationSectionsforRevision"
-    Then I see multipicklist field "fieldApplicationSectionsForRevision__c" contains value "Budget Tab: Budget Summary by Focus Area" under list "Application Sections for Revision - Available"
+    When I clear the value from field "fieldPreApplicationSectionsforRevision__c"
+    Then I see multipicklist field "PreApplicationSectionsforRevision__c" contains value "Budget Tab: Budget Summary by Focus Area" under list "Pre-Application Sections for Revision - Available"
 
-
-#SPI
-  @TBE @222462 @222477 @VerifyPMusercansee"BudgetTab:BudgetSummarybyFocusArea"optioninsteadof"BudgetTab:FocusArea"inPre-ApplicationsectionforNegotiation @sprint-9-US-221062 @komal @Allocation
+  @US221062 @222462 @222477 @VerifyPMusercansee"BudgetTab:BudgetSummarybyFocusArea"optioninsteadof"BudgetTab:FocusArea"inPre-ApplicationsectionforNegotiation @sprint-9-US-221062 @komal @Allocation
   Scenario: Verify PM user can see "Budget Tab: Budget Summary by Focus Area" option instead of "Budget Tab: Focus Area" in Pre-Application section for Negotiation
   | Verify SPI/SPA user can not edit/add/remove focus area from "Budget Tab: Budget Summary by Focus Area" section in negotiation submit to grantor state for pre-app |
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
@@ -2523,7 +2516,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
-    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2532,9 +2525,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     #222462
     When I click on "Request Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
-    And I enter value "Overview Tab: Project Information" into field "fieldPreApplicationSectionsforRevision__c"
-    When I clear the value from field "fieldPreApplicationSectionsforRevision"
-    Then I see multipicklist field "fieldApplicationSectionsForRevision__c" contains value "Budget Tab: Budget Summary by Focus Area" under list "Application Sections for Revision - Available"
+    When I clear the value from field "fieldPreApplicationSectionsforRevision__c"
+    Then I see multipicklist field "PreApplicationSectionsforRevision__c" contains value "Budget Tab: Budget Summary by Focus Area" under list "Pre-Application Sections for Revision - Available"
     #222477
     When I enter "Negotiation_Edit_Budget" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
@@ -2549,11 +2541,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Edit" in the page details
     When I enter value "Automation Test" into field "fieldApplicantResponse__c"
     When I click on "Save" in the page details
-    And I navigate to "Budget" sub tab
-    When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
-    When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---applicationIntake:-:AddFocusAreaTableAppId---"
-    And I close modal by clicking the top right x button
-    Then I softly see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableId---"
     When I click on "Submit to Grantor" in the page details
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Status" as "Submitted to Grantor" in "Negotiation Request Details" pageblock
@@ -2561,11 +2548,11 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly cannot see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly cannot see row level action button "Remove Focus Area" against "Automation Permanent Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 
-  @TBEOnJenkins @TBE @222473 @DirectiveAnn-VerifyINDusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiationVerifySPI/SPAusercan'tedit"BudgetTab:BudgetSummarybyFocusArea"sectionifgrantornotselected"BudgetTab:BudgetSummarybyFocusArea"forpre-applicationfornegotiation @sprint-9-US-221062 @komal @Allocation
-  Scenario: Verify SPI/SPA user can't edit "Budget Tab: Budget Summary by Focus Area" section if grantor not selected "Budget Tab: Budget Summary by Focus Area" for pre-application for negotiation
+  @US221062 @222473 @DirectiveAnn-VerifyINDusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiationVerifySPI/SPAusercan'tedit"BudgetTab:BudgetSummarybyFocusArea"sectionifgrantornotselected"BudgetTab:BudgetSummarybyFocusArea"forpre-applicationfornegotiation @sprint-9-US-221062 @komal @Allocation
+  Scenario Outline: Verify SPI/SPA user can't edit "Budget Tab: Budget Summary by Focus Area" section if grantor not selected "Budget Tab: Budget Summary by Focus Area" for pre-application for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login as "<User>" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2596,7 +2583,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
-    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2605,11 +2592,11 @@ Feature: Validate all scenarios in the Formula Announcement tab
     #222473
     When I click on "Request Negotiation" in the page details
     And I navigate to "Negotiations" sub tab
-    When I enter "Negotiation_Edit" values from "PreApplication_Field_Values.xlsx"
+    When I enter "Edition_PreApp" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "<User>" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:PreAppEgmsId}" in "---home:-:externalPendingTasktableId---" panel
@@ -2617,12 +2604,16 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Budget" sub tab
     Then I softly cannot see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly cannot see row level action button "Remove Focus Area" against "Automation Permanent Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
+    Examples:
+      | User |
+      | SPI3 |
+      | SPA  |
 
-  @TBE @222481 @VerifySPI/SPAusercanadd/removefocusareainthe"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
-  Scenario: Verify SPI/SPA user can add/remove focus area in the "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
+  @AddFAIssue @TBE @222481 @VerifySPI/SPAusercanadd/removefocusareainthe"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
+  Scenario Outline: Verify SPI/SPA user can add/remove focus area in the "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login as "<User>" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2653,7 +2644,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
-    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2666,7 +2657,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Send to Subrecipient" in the page details
     #222481
     Then I softly see field "Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "<User>" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:PreAppEgmsId}" in "---home:-:externalPendingTasktableId---" panel
@@ -2693,12 +2684,16 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Submit to Grantor" in the page details
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Status" as "Submitted to Grantor" in "Negotiation Request Details" pageblock
+    Examples:
+      | User |
+      | SPI3 |
+      | SPA  |
 
-  @222470 @VerifySPI/SPAusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
-  Scenario: Verify SPI/SPA user can edit "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
+  @US221062 @222470 @VerifySPI/SPAusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
+  Scenario Outline: Verify SPI/SPA user can edit "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
-    And I login as "SPI3" user
+    And I login as "<User>" user
     When I navigate to "Opportunities" tab
     And I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     When I click toggle button to select "Not Yet Qualified Opportunities - All"
@@ -2729,7 +2724,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
-    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2741,7 +2736,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     And I click on "Send to Subrecipient" in the page details
     Then I softly see field "Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    When I re-login to "Grants Portal" app as "<User>" user on "SUBPORTAL" portal
     And I navigate to "Home" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:PreAppEgmsId}" in "---home:-:externalPendingTasktableId---" panel
@@ -2752,8 +2747,12 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly can see page block "Budget Summary by Focus Area"
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly can see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
+    Examples:
+      | User |
+      | SPI3 |
+      | SPA  |
 
-  @222695 @Verify'Budgetsummarybyfocusarea'sectionshouldbehiddenonpre-appiffocusareasetas'No'onAnnbutstilltheoption'Budgetsummarybyfocusarea'onpre-appnegotiation @sprint-9-US-221062 @komal @Allocation
+  @US221062 @222695 @Verify'Budgetsummarybyfocusarea'sectionshouldbehiddenonpre-appiffocusareasetas'No'onAnnbutstilltheoption'Budgetsummarybyfocusarea'onpre-appnegotiation @sprint-9-US-221062 @komal @Allocation
   Scenario: Verify 'Budget summary by focus area' section should be hidden on pre-app if focus area set as 'No' on Ann but still the option 'Budget summary by focus area' on pre-app negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APP_YES_NEGO_YES_FOCUS_AREA_NO"
     When I am on "SUBPORTAL" portal
@@ -2788,7 +2787,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
-    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2812,7 +2811,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Pre-Application Sections for Negotiation" as "Budget Tab: Budget Summary by Focus Area Budget Tab: Budget Details"
 
-  @TBE @222501 @DirectiveAnn-VerifySPIuserseevalidationmessageifbudgetamountnotmatcheswithsubawardceilingAmtduetouserremovefocusareaandtrytosubmitpre-apptograntor @sprint-9-US-221062 @komal @Allocation
+  @AddFAIssue @TBE @222501 @DirectiveAnn-VerifySPIuserseevalidationmessageifbudgetamountnotmatcheswithsubawardceilingAmtduetouserremovefocusareaandtrytosubmitpre-apptograntor @sprint-9-US-221062 @komal @Allocation
   Scenario: Directive Ann - Verify SPI user see validation message if budget amount not matches with sub award ceiling Amt due to user remove focus area and try to submit pre-app to grantor
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -2847,7 +2846,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
-    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
