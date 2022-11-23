@@ -2357,6 +2357,32 @@ Feature: Validate all scenarios in the Formula Announcement tab
   @222483 @VerifyINDusercanadd/removefocusareainthe"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-10-US-221062 @komal @Allocation
   Scenario: Verify IND user can add/remove focus area in the "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES-Automation EXE user"
+    When I login to "As a Grantor" app as "PM" user
+    When I navigate to "Announcements" tab
+    And I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-App}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-App}" inside table
+    And I click on "Unpublish" in the page details
+    And I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
+    When I click on "Edit" in the page details
+    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    And I enter value "Test" into field "fieldAnnouncementDescription__c"
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    And I click on "Submit For Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Approved" and is "Green"
+    And I click on "Publish" in the page details
+    Then I see status in Progress-bar is "Published" and is "green"
     When I am on "SUBPORTAL" portal
     And I login as "IND" user
     When I navigate to "Opportunities" tab
@@ -2413,15 +2439,15 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
-    When I check "Automation Permanent Focus Area3" boxes in flex table with id "---applicationIntake:-:RemoveFocusAreaPreAppTableId---"
+    When I check "Automation Permanent Focus Area2" boxes in flex table with id "---applicationIntake:-:RemoveFocusAreaPreAppTableId---"
     When I click on top right button "Remove" in flex table with id "---applicationIntake:-:RemoveFocusAreaPreAppTableId---"
     And I close modal by clicking the top right x button
-    Then I softly do not see value "Automation Permanent Focus Area3" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
+    Then I softly do not see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
     When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
-    When I check "Automation Permanent Focus Area3" boxes in flex table with id "---applicationIntake:-:focusAreaAssociateTableId---"
+    When I check "Automation Permanent Focus Area2" boxes in flex table with id "---applicationIntake:-:focusAreaAssociateTableId---"
     When I click on top right button "Add" in flex table with id "---applicationIntake:-:focusAreaAssociateTableId---"
     And I close modal by clicking the top right x button
-    Then I softly see value "Automation Permanent Focus Area3" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
+    Then I softly see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
     When I click on "Submit to Grantor" in the page details
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Status" as "Submitted to Grantor" in "Negotiation Request Details" pageblock
@@ -2606,6 +2632,32 @@ Feature: Validate all scenarios in the Formula Announcement tab
   @222481 @VerifySPI/SPAusercanadd/removefocusareainthe"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-10-US-221062 @komal @Allocation
   Scenario Outline: Verify SPI/SPA user can add/remove focus area in the "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
+    When I login to "As a Grantor" app as "PM" user
+    When I navigate to "Announcements" tab
+    And I navigate to "Competitive" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "All Competitive Announcements"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-App}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-App}" inside table
+    And I click on "Unpublish" in the page details
+    And I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
+    When I click on "Edit" in the page details
+    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    And I enter value "Test" into field "fieldAnnouncementDescription__c"
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    And I click on "Submit For Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Approved" and is "Green"
+    And I click on "Publish" in the page details
+    Then I see status in Progress-bar is "Published" and is "green"
     When I am on "SUBPORTAL" portal
     And I login as "<User>" user
     When I navigate to "Opportunities" tab
@@ -2662,15 +2714,15 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
     When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
-    When I check "Automation Permanent Focus Area3" boxes in flex table with id "---applicationIntake:-:RemoveFocusAreaPreAppTableId---"
+    When I check "Automation Permanent Focus Area2" boxes in flex table with id "---applicationIntake:-:RemoveFocusAreaPreAppTableId---"
     When I click on top right button "Remove" in flex table with id "---applicationIntake:-:RemoveFocusAreaPreAppTableId---"
     And I close modal by clicking the top right x button
-    Then I softly do not see value "Automation Permanent Focus Area3" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
+    Then I softly do not see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
     When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
-    When I check "Automation Permanent Focus Area3" boxes in flex table with id "---applicationIntake:-:focusAreaAssociateTableId---"
+    When I check "Automation Permanent Focus Area2" boxes in flex table with id "---applicationIntake:-:focusAreaAssociateTableId---"
     When I click on top right button "Add" in flex table with id "---applicationIntake:-:focusAreaAssociateTableId---"
     And I close modal by clicking the top right x button
-    Then I softly see value "Automation Permanent Focus Area3" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
+    Then I softly see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
     When I click on "Submit to Grantor" in the page details
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Status" as "Submitted to Grantor" in "Negotiation Request Details" pageblock
@@ -2804,6 +2856,32 @@ Feature: Validate all scenarios in the Formula Announcement tab
   @222501 @DirectiveAnn-VerifySPIuserseevalidationmessageifbudgetamountnotmatcheswithsubawardceilingAmtduetouserremovefocusareaandtrytosubmitpre-apptograntor @sprint-10-US-221062 @komal @Allocation
   Scenario: Directive Ann - Verify SPI user see validation message if budget amount not matches with sub award ceiling Amt due to user remove focus area and try to submit pre-app to grantor
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
+    When I login to "As a Grantor" app as "PM" user
+    When I navigate to "Announcements" tab
+    When I navigate to "Directed" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Directed Announcements"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Pre-App}" in "---announcement:-:competitiveAnnouncementTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Pre-App}" inside flex table with id "---announcement:-:competitiveAnnouncementTableId---"
+    And I click on "Unpublish" in the page details
+    And I navigate to "Overview" sub tab
+    And I click on top right button "Associate" in flex table with id "---announcement:-:AnnouncementServiceArea1TableId---"
+    When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---announcement:-:selectAnnouncementServiceArea1TableId---"
+    When I click on "Edit" in the page details
+    When I enter value "For Profit Organizations" into field "fieldEligibleApplicantTypes__c"
+    And I enter value "Test" into field "fieldAnnouncementDescription__c"
+    When I navigate to "Financials" sub tab
+    And I enter value "Justified" into field "fieldJustification__c"
+    When I click on "Save" in the page details
+    When I navigate to "Responsibilities" sub tab
+    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+      | Name                     | Announcement |
+      | {SavedValue:PM Username} | Step 1       |
+    And I click on "Submit For Approval" in the page details
+    Then I softly see status in Progress-bar is "Submitted for Approval" and is "green"
+    And I "Approve" in the approval decision
+    Then I softly see status in Progress-bar is "Approved" and is "Green"
+    And I click on "Publish" in the page details
+    Then I see status in Progress-bar is "Published" and is "green"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     When I navigate to "Opportunities" tab
