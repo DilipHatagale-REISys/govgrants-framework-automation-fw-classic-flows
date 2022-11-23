@@ -3245,7 +3245,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
 
 
-  @TBE @225549 @PMUser>>VerifywhennegotiationisinitiatedduringpromotedtoFDMthenitshouldmustmandatoryforusertoselectthe"Budget:BudgetDetails"picklistvalueforNegotiationfieldwhenthebudgetedAmountisnotequaltotheAllocationAmount @sprint-11-US-203558 @komal @Allocation
+  @mk @225549 @PMUser>>VerifywhennegotiationisinitiatedduringpromotedtoFDMthenitshouldmustmandatoryforusertoselectthe"Budget:BudgetDetails"picklistvalueforNegotiationfieldwhenthebudgetedAmountisnotequaltotheAllocationAmount @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: PM User>>Verify when negotiation is initiated during promoted to FDM  then it should must mandatory for user to select the "Budget: Budget Details " picklist value  for Negotiation field when the budgeted Amount is not equal to the Allocation Amount
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -3306,7 +3306,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I wait for "6" seconds
-    When I click on "Submit" in the page details without processing
+    When I click on "Submit" in the page details
     When I click alert button "OK"
     And I wait for "5" seconds
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -3317,7 +3317,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I wait for "6" seconds
-    When I click on "Submit" in the page details without processing
+    When I click on "Submit" in the page details
     When I click alert button "OK"
     And I wait for "5" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -3328,7 +3328,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I wait for "6" seconds
-    When I click on "Submit" in the page details without processing
+    When I click on "Submit" in the page details
     When I click alert button "OK"
     And I wait for "5" seconds
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -3363,7 +3363,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I wait for "6" seconds
-    When I click on "Submit" in the page details without processing
+    When I click on "Submit" in the page details
     When I click alert button "OK"
     And I wait for "5" seconds
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -3375,7 +3375,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
-
     When I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "All Formula Announcements"
@@ -3385,30 +3384,27 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Applicants                          | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
-
-    And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
-    When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
-    And I navigate to "Related Log" sub tab
-    When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
-    And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
-   #    TODO: Confirm validation msg
-    And I softly see the following messages in the page details contains:
-      | Budget Tab: The Budgeted Amount must be equal to the Allocation Amount. |
-    And I refresh the page
-    When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
-    When I click on "Request Negotiation" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:appTableId---"
-    And I navigate to "Negotiations" sub tab
-    When I clear the value from field "fieldApplicationSectionsForRevision__c"
-    When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    When I click on "Send to Subrecipient" in the page details
-#    TODO: Confirm validation msg
-    And I softly see the following messages in the page details contains:
-      | Negotiations Tab:  Negotiations Tab: The Budgeted Amount must be equal to the Allocation Amount in the application. So please select the "Budget: Budget Details" |
+#    And I navigate to "Applications" tab
+#    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+#    When I click toggle button to select "Application Reviews - All"
+#    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+#    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+#    And I navigate to "Related Log" sub tab
+#    When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
+#    When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
+#    And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
+#    And I softly see the following messages in the page details contains:
+#      | The Budgeted amount must be equal to the Allocation amount for the following Application IDs. Please send these applications back for revision. {{SavedValue:AppEgmdId}} |
+#    And I refresh the page
+#    When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
+#    When I click on "Request Negotiation" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:appTableId---"
+#    And I navigate to "Negotiations" sub tab
+#    When I clear the value from field "fieldApplicationSectionsForRevision__c"
+#    When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
+#    When I click on "Save" in the page details
+#    When I click on "Send to Subrecipient" in the page details
+#    And I softly see the following messages in the page details contains:
+#      | Negotiations Tab - The Budgeted Amount must be equal to the Allocation Amount in the application. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field before sending the application back for revision. |
 
     Examples:
       | Announcement Name                                    |
@@ -3475,7 +3471,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I wait for "6" seconds
-    When I click on "Submit" in the page details without processing
+    When I click on "Submit" in the page details
     When I click alert button "OK"
     And I wait for "5" seconds
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
@@ -3486,7 +3482,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I wait for "6" seconds
-    When I click on "Submit" in the page details without processing
+    When I click on "Submit" in the page details
     When I click alert button "OK"
     And I wait for "5" seconds
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -3497,7 +3493,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I wait for "6" seconds
-    When I click on "Submit" in the page details without processing
+    When I click on "Submit" in the page details
     When I click alert button "OK"
     And I wait for "5" seconds
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -3516,9 +3512,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I perform quick search for "<Announcement Name>" in "---announcement:-:formulaAnnouncementTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     When I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
-      | Applicants                          | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
+    And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Then I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
+      | Title                           | Allocation Amount |
+      | Automation Permanent Focus Area | 2000              |
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
@@ -3531,7 +3528,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Next Review Step" in the page details
     And I softly see the following messages in the page details contains:
       | The Budgeted amount for each focus area must be equal to the Allocation amount for that focus area in the following Application IDs. Please send these applications back for revision:{{SavedValue:AppEgmsId}}. |
-
     #225577
     When I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -3539,9 +3535,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I perform quick search for "<Announcement Name>" in "---announcement:-:formulaAnnouncementTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     When I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
-      | Applicants                          | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
+    And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Then I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
+      | Title                           | Allocation Amount |
+      | Automation Permanent Focus Area | 1000              |
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
@@ -3572,7 +3569,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I wait for "6" seconds
-    When I click on "Submit" in the page details without processing
+    When I click on "Submit" in the page details
     When I click alert button "OK"
     And I wait for "5" seconds
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
@@ -3591,11 +3588,11 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I perform quick search for "<Announcement Name>" in "---announcement:-:formulaAnnouncementTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     When I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
-      | Applicants                          | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
+    And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Then I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
+      | Title                           | Allocation Amount |
+      | Automation Permanent Focus Area | 2000              |
 #allocation amt changed
-
 #    validation
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
