@@ -2157,8 +2157,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see "Pre-Application Overview" page block displayed
     Then I softly see field "Budgeted Amount" inside page block
 
-
-  @US221062 @222471 @DirectiveAnn-VerifyINDusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
+  @222471 @DirectiveAnn-VerifyINDusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-10-US-221062 @komal @Allocation
   Scenario: Directive Ann - Verify IND user can edit "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -2217,7 +2216,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly can see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 
-  @US221062 @222478 @VerifyINDusercannotedit"BudgetTab:BudgetSummarybyFocusArea"sectioninnegotiationacceptstateforpre-app @sprint-9-US-221062 @komal @Allocation
+  @222478 @VerifyINDusercannotedit"BudgetTab:BudgetSummarybyFocusArea"sectioninnegotiationacceptstateforpre-app @sprint-10-US-221062 @komal @Allocation
   Scenario: Verify IND user can not edit "Budget Tab: Budget Summary by Focus Area" section in negotiation accept state for pre-app
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -2296,7 +2295,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly cannot see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly cannot see row level action button "Remove Focus Area" against "Automation Permanent Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 
-  @US221062 @222475 @DirectiveAnn-VerifyINDusercan'tedit"BudgetTab:BudgetSummarybyFocusArea"sectionifgrantornotselected"BudgetTab:BudgetSummarybyFocusArea"forpre-applicationfornegotiation @sprint-9-US-221062 @komal @Allocation
+  @222475 @DirectiveAnn-VerifyINDusercan'tedit"BudgetTab:BudgetSummarybyFocusArea"sectionifgrantornotselected"BudgetTab:BudgetSummarybyFocusArea"forpre-applicationfornegotiation @sprint-10-US-221062 @komal @Allocation
   Scenario: Directive Ann - Verify IND user can't edit "Budget Tab: Budget Summary by Focus Area" section if grantor not selected "Budget Tab: Budget Summary by Focus Area" for pre-application for negotiation
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES-Automation EXE user"
     When I am on "SUBPORTAL" portal
@@ -2331,7 +2330,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     And I click on "Back" in the page details
     When I click on "Submit to Grantor" in the page details
-    Then I softly see field "Status" as "Submitted to Grantor"
+    Then I see field "Status" as "Submitted to Grantor"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Home" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -2355,7 +2354,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly cannot see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly cannot see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 
-  @AddFAIssue @TBE @222483 @VerifyINDusercanadd/removefocusareainthe"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
+  @222483 @VerifyINDusercanadd/removefocusareainthe"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-10-US-221062 @komal @Allocation
   Scenario: Verify IND user can add/remove focus area in the "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES-Automation EXE user"
     When I am on "SUBPORTAL" portal
@@ -2413,26 +2412,21 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter value "Automation Test" into field "fieldApplicantResponse__c"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-
-    When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
-    When I perform quick search for "Automation Permanent Focus Area2" in "---applicationIntake:-:AddFocusAreaTableAppId---" panel
-    Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---applicationIntake:-:AddFocusAreaTableAppId---"
-    When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---applicationIntake:-:AddFocusAreaTableAppId---"
-    And I close modal by clicking the top right x button
-    Then I softly see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
-
     When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
-#    And I click on "Remove Focus Area" icon for "Automation Permanent Focus Area" inside table
-  #  When I click modal button "Yes"
-    When I click "Remove" after selection of "Automation Permanent Focus Area2" in the table "---applicationIntake:-:RemoveFocusAreaPreAppTableId---"
+    When I check "Automation Permanent Focus Area3" boxes in flex table with id "---applicationIntake:-:RemoveFocusAreaPreAppTableId---"
+    When I click on top right button "Remove" in flex table with id "---applicationIntake:-:RemoveFocusAreaPreAppTableId---"
     And I close modal by clicking the top right x button
-    Then I softly do not see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
-
+    Then I softly do not see value "Automation Permanent Focus Area3" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
+    When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
+    When I check "Automation Permanent Focus Area3" boxes in flex table with id "---applicationIntake:-:focusAreaAssociateTableId---"
+    When I click on top right button "Add" in flex table with id "---applicationIntake:-:focusAreaAssociateTableId---"
+    And I close modal by clicking the top right x button
+    Then I softly see value "Automation Permanent Focus Area3" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
     When I click on "Submit to Grantor" in the page details
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Status" as "Submitted to Grantor" in "Negotiation Request Details" pageblock
 
-  @US221062 @222463 @VerifyEXEusercansee"BudgetTab:BudgetSummarybyFocusArea"optioninsteadof"BudgetTab:FocusArea"inPre-ApplicationsectionforNegotiation @sprint-9-US-221062 @komal @Allocation
+  @222463 @VerifyEXEusercansee"BudgetTab:BudgetSummarybyFocusArea"optioninsteadof"BudgetTab:FocusArea"inPre-ApplicationsectionforNegotiation @sprint-10-US-221062 @komal @Allocation
   Scenario: Verify EXE user can see "Budget Tab: Budget Summary by Focus Area" option instead of "Budget Tab: Focus Area" in Pre-Application section for Negotiation
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES-Automation EXE user"
     When I am on "SUBPORTAL" portal
@@ -2480,7 +2474,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I clear the value from field "fieldPreApplicationSectionsforRevision__c"
     Then I see multipicklist field "PreApplicationSectionsforRevision__c" contains value "Budget Tab: Budget Summary by Focus Area" under list "Pre-Application Sections for Revision - Available"
 
-  @US221062 @222462 @222477 @VerifyPMusercansee"BudgetTab:BudgetSummarybyFocusArea"optioninsteadof"BudgetTab:FocusArea"inPre-ApplicationsectionforNegotiation @sprint-9-US-221062 @komal @Allocation
+  @222462 @222477 @VerifyPMusercansee"BudgetTab:BudgetSummarybyFocusArea"optioninsteadof"BudgetTab:FocusArea"inPre-ApplicationsectionforNegotiation @sprint-10-US-221062 @komal @Allocation
   Scenario: Verify PM user can see "Budget Tab: Budget Summary by Focus Area" option instead of "Budget Tab: Focus Area" in Pre-Application section for Negotiation
   | Verify SPI/SPA user can not edit/add/remove focus area from "Budget Tab: Budget Summary by Focus Area" section in negotiation submit to grantor state for pre-app |
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
@@ -2548,7 +2542,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly cannot see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly cannot see row level action button "Remove Focus Area" against "Automation Permanent Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
 
-  @US221062 @222473 @DirectiveAnn-VerifyINDusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiationVerifySPI/SPAusercan'tedit"BudgetTab:BudgetSummarybyFocusArea"sectionifgrantornotselected"BudgetTab:BudgetSummarybyFocusArea"forpre-applicationfornegotiation @sprint-9-US-221062 @komal @Allocation
+  @222473 @DirectiveAnn-VerifyINDusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiationVerifySPI/SPAusercan'tedit"BudgetTab:BudgetSummarybyFocusArea"sectionifgrantornotselected"BudgetTab:BudgetSummarybyFocusArea"forpre-applicationfornegotiation @sprint-10-US-221062 @komal @Allocation
   Scenario Outline: Verify SPI/SPA user can't edit "Budget Tab: Budget Summary by Focus Area" section if grantor not selected "Budget Tab: Budget Summary by Focus Area" for pre-application for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -2570,8 +2564,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Overview" sub tab
     When I save the field containing "Program Income Allowed?" as "Yes"
     And I edit the following rows inline in flex table with id "---preApplication:-:preAppContactTableId---" by clicking "Edit" :
-      | Name                       | Project Role             | Is Key Contact |
-      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
+      | Name       | Project Role             | Is Key Contact |
+      | <UserName> | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
@@ -2605,11 +2599,11 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly cannot see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly cannot see row level action button "Remove Focus Area" against "Automation Permanent Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Examples:
-      | User |
-      | SPI3 |
-      | SPA  |
+      | User | UserName                   |
+      | SPI3 | {SavedValue:SPI3 Username} |
+      | SPA  | {SavedValue:SPA Username}  |
 
-  @AddFAIssue @TBE @222481 @VerifySPI/SPAusercanadd/removefocusareainthe"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
+  @222481 @VerifySPI/SPAusercanadd/removefocusareainthe"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-10-US-221062 @komal @Allocation
   Scenario Outline: Verify SPI/SPA user can add/remove focus area in the "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -2631,13 +2625,13 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Overview" sub tab
     When I save the field containing "Program Income Allowed?" as "Yes"
     And I edit the following rows inline in flex table with id "---preApplication:-:preAppContactTableId---" by clicking "Edit" :
-      | Name                       | Project Role             | Is Key Contact |
-      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
+      | Name       | Project Role             | Is Key Contact |
+      | <UserName> | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-      | Construction  | 5000   | 5000       | 50             | 100            |
+      | Contractual   | 5000   | 5000       | 50             | 100            |
     When I navigate to "Files and Forms" sub tab
     And I click on "Edit" icon for "Standard Pre-Application form" inside flex table with id "---preApplication:-:preAppFormTableId---"
     And I enter "Form_Edit" values from "PreApplication_Field_Values.xlsx"
@@ -2667,29 +2661,25 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter value "Automation Test" into field "fieldApplicantResponse__c"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-    When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
-    When I perform quick search for "Automation Permanent Focus Area2" in "---applicationIntake:-:AddFocusAreaTableAppId---" panel
-    Then I softly see value "Automation Permanent Focus Area2" for title "Title" inside table "---applicationIntake:-:AddFocusAreaTableAppId---"
-    When I click "Associate" after selection of "Automation Permanent Focus Area2" in the table "---applicationIntake:-:AddFocusAreaTableAppId---"
-    And I close modal by clicking the top right x button
-    Then I softly see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableId---"
-
     When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
-#    And I click on "Remove Focus Area" icon for "Automation Permanent Focus Area" inside table
-  #  When I click modal button "Yes"
-    When I click "Remove" after selection of "Automation Permanent Focus Area2" in the table "---applicationIntake:-:RemoveFocusAreaPreAppTableId---"
+    When I check "Automation Permanent Focus Area3" boxes in flex table with id "---applicationIntake:-:RemoveFocusAreaPreAppTableId---"
+    When I click on top right button "Remove" in flex table with id "---applicationIntake:-:RemoveFocusAreaPreAppTableId---"
     And I close modal by clicking the top right x button
-    Then I softly do not see value "Automation Permanent Focus Area2" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
-
+    Then I softly do not see value "Automation Permanent Focus Area3" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
+    When I click on top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
+    When I check "Automation Permanent Focus Area3" boxes in flex table with id "---applicationIntake:-:focusAreaAssociateTableId---"
+    When I click on top right button "Add" in flex table with id "---applicationIntake:-:focusAreaAssociateTableId---"
+    And I close modal by clicking the top right x button
+    Then I softly see value "Automation Permanent Focus Area3" for title "Focus Area" inside table "---applicationIntake:-:focusAreaTableAppId---"
     When I click on "Submit to Grantor" in the page details
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Status" as "Submitted to Grantor" in "Negotiation Request Details" pageblock
     Examples:
-      | User |
-      | SPI3 |
-      | SPA  |
+      | User | UserName                   |
+      | SPI3 | {SavedValue:SPI3 Username} |
+      | SPA  | {SavedValue:SPA Username}  |
 
-  @US221062 @222470 @VerifySPI/SPAusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-9-US-221062 @komal @Allocation
+  @222470 @VerifySPI/SPAusercanedit"BudgetTab:BudgetSummarybyFocusArea"sectiononlyifpre-applicationissenttos/rfornegotiation @sprint-10-US-221062 @komal @Allocation
   Scenario Outline: Verify SPI/SPA user can edit "Budget Tab: Budget Summary by Focus Area" section only if pre-application is sent to s/r for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -2711,8 +2701,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Overview" sub tab
     When I save the field containing "Program Income Allowed?" as "Yes"
     And I edit the following rows inline in flex table with id "---preApplication:-:preAppContactTableId---" by clicking "Edit" :
-      | Name                       | Project Role             | Is Key Contact |
-      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
+      | Name       | Project Role             | Is Key Contact |
+      | <UserName> | Project Director/Manager | Checked        |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
@@ -2748,11 +2738,11 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Then I softly can see top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
     Examples:
-      | User |
-      | SPI3 |
-      | SPA  |
+      | User | UserName                   |
+      | SPI3 | {SavedValue:SPI3 Username} |
+      | SPA  | {SavedValue:SPA Username}  |
 
-  @US221062 @222695 @Verify'Budgetsummarybyfocusarea'sectionshouldbehiddenonpre-appiffocusareasetas'No'onAnnbutstilltheoption'Budgetsummarybyfocusarea'onpre-appnegotiation @sprint-9-US-221062 @komal @Allocation
+  @222695 @Verify'Budgetsummarybyfocusarea'sectionshouldbehiddenonpre-appiffocusareasetas'No'onAnnbutstilltheoption'Budgetsummarybyfocusarea'onpre-appnegotiation @sprint-10-US-221062 @komal @Allocation
   Scenario: Verify 'Budget summary by focus area' section should be hidden on pre-app if focus area set as 'No' on Ann but still the option 'Budget summary by focus area' on pre-app negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APP_YES_NEGO_YES_FOCUS_AREA_NO"
     When I am on "SUBPORTAL" portal
@@ -2811,7 +2801,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Negotiations" sub tab
     Then I softly see field "Pre-Application Sections for Negotiation" as "Budget Tab: Budget Summary by Focus Area Budget Tab: Budget Details"
 
-  @AddFAIssue @TBE @222501 @DirectiveAnn-VerifySPIuserseevalidationmessageifbudgetamountnotmatcheswithsubawardceilingAmtduetouserremovefocusareaandtrytosubmitpre-apptograntor @sprint-9-US-221062 @komal @Allocation
+  @222501 @DirectiveAnn-VerifySPIuserseevalidationmessageifbudgetamountnotmatcheswithsubawardceilingAmtduetouserremovefocusareaandtrytosubmitpre-apptograntor @sprint-10-US-221062 @komal @Allocation
   Scenario: Directive Ann - Verify SPI user see validation message if budget amount not matches with sub award ceiling Amt due to user remove focus area and try to submit pre-app to grantor
     Given I published "Directed" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_NEGOTIATION_YES"
     When I am on "SUBPORTAL" portal
@@ -2869,17 +2859,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter value "Automation Test" into field "fieldApplicantResponse__c"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-#    TODO: Vaibhav- How to add 2 FAs
-#     When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableId---"
-#    When I click "Remove" after selection of "Automation Permanent Focus Area" in the table "---applicationIntake:-:focusAreaFlexTableId---"
-#    And I close modal by clicking the top right x button
-
-    Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---preApplication:-:preApplicationAttachmentId---" by clicking "Edit" :
-      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-      | Construction  | 500    | 5000       | 50             | 100            |
-
+    When I click on top right button "Remove Focus Area" in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
+    When I check "Automation Permanent Focus Area" boxes in flex table with id "---applicationIntake:-:focusAreaTableAppId---"
+    When I click on top right button "Remove" in flex table with id "---applicationIntake:-:RemoveFocusAreaPreAppTableId---"
+    And I close modal by clicking the top right x button
     When I click on "Submit to Grantor" in the page details
-#    TODO:
     And I softly see the following messages in the page details contains:
       | Budget Tab - Budgeted Amount must be greater than or equal to the Subaward Floor Amount. Adjust the Budgeted Amount in the Budget period section on the Budget tab. |
