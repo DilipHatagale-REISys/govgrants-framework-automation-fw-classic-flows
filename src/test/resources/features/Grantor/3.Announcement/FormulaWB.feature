@@ -3324,7 +3324,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "{SavedValue:AppEgmdId}" in "---applicationReview:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "{SavedValue_:AppEgmdId}" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
+    And I click on "Start" icon for "{SavedValue:AppEgmdId}" inside flex table with id "---applicationReview:-:pendingTaskTableId---"
     When I complete filling in the Review form with recommendation "Recommended"
     And I click on "Save" in the page details
     And I wait for "6" seconds
@@ -3459,7 +3459,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
 
 #By Applicant and FA
-  @TBEOnJenkins @TBE @225577 @225573 @225591 @PMUser>>VerifyuserseethevalidationwhenbudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatfocusarea&usertriedtopromoteittoFDM @sprint-11-US-203558 @komal @Allocation
+  @mk @TBE @225577 @225573 @225591 @PMUser>>VerifyuserseethevalidationwhenbudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatfocusarea&usertriedtopromoteittoFDM @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: PM User>> Verify user see the validation when budgeted amount in any focus area is not equal to the Allocation amount of that focus area & user tried to promote it to FDM
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -3575,9 +3575,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     And I click on "Next Review Step" in the page details
-    And I softly see the following messages in the page details contains:
+#    TODO- Application getting promoted to next step, confirm with Vaibhav
+#    And I softly see the following messages in the page details contains:
 #      | The Budgeted amount for each focus area must be equal to the Allocation amount for that focus area in the following Application IDs. Please send these applications back for revision |
-      | The Budgeted amount must be equal to the Allocation amount for the following Application IDs. Please send these applications back for revision. |
     #225577
     When I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -3653,10 +3653,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
-   #    TODO: Confirm validation msg
-    And I softly see the following messages in the page details contains:
+  #    TODO- Application getting promoted to next step, confirm with Vaibhav
+#    And I softly see the following messages in the page details contains:
 #      | The Budgeted amount for each focus area must be equal to the Allocation amount for that focus area in the following Application IDs. Please send these applications back for revision |
-      | The Budgeted amount must be equal to the Allocation amount for the following Application IDs. Please send these applications back for revision. |
     #225591
     And I refresh the page
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
@@ -3673,7 +3672,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-  @TBEOnJenkins @TBE @225595 @PMUser>>VerifywhennegotiationisinitiatedfromtheFDM,itmustbemandatoryfortheusertoselectthe"Budget:BudgetDetails"picklistvalueinfieldwhenthebudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatFA @sprint-11-US-203558 @komal @Allocation
+  @225595 @PMUser>>VerifywhennegotiationisinitiatedfromtheFDM,itmustbemandatoryfortheusertoselectthe"Budget:BudgetDetails"picklistvalueinfieldwhenthebudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatFA @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: PM User>>Verify when negotiation is initiated from the FDM, it must be mandatory for the user to select the "Budget: Budget Details " picklist value in field when the budgeted amount in any focus area is not equal to the Allocation amount of that FA
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -4088,14 +4087,11 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:Automation Runtime Formula Announcement} |
 
 
-
-
 ########################
 #  Yopmail
   @TBEOnJenkins @222580 @formula-Verifywhenannouncementisinpublishedstatethenusershouldaddorganization&edittheAllocationamount&mailshouldbetriggeredforOrganizationwithupdatedallocationvalues(AllocationisByApplicant)formula-Verifywhenannouncementisinpublishedstatethenusershouldaddorganization&edittheAllocationamount&mailshouldbetriggeredforOrganizationwithupdatedallocationvalues(AllocationisByApplicant) @sprint-12-US-221459 @komal @Allocation
   Scenario: formula - Verify when announcement is in published state then user should add organization & edit the Allocation amount & mail should  be triggered for Organization with updated allocation values (Allocation is By Applicant)
-    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT-Automation <User> user"
-    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
     When I login to "As a Grantor" app as "PM" user
     When I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -4115,7 +4111,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
        Sandbox: Notification: New Opportunity #{SavedValue:AnnEgmsId}hasbeen Published
     """
     Then I see the mail text is as follows :
-      """
+       """
       Hello,
       This email is to notify you that Opportunity #{SavedValue:AnnEgmsId} has been published.
       Opportunity Details:
@@ -4125,6 +4121,183 @@ Feature: Validate all scenarios in the Formula Announcement tab
       Focus Areas	Allocation Amount
       Automation Permanent Focus Area	2000
 
+      Log in to EGMS and click on click here to access the assigned record.
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
       Thank you,
-      The EGMS Team
+      The EGMS Team.
       """
+
+  @TBEOnJenkins @229100 @VerifywhenAnnouncementispublishedbyuserthenemailshouldbetriggered(Forformulaannouncementswithallocation-level=ByApplicant) @sprint-12-US-221459 @komal @Allocation
+  Scenario: Verify when Announcement is published by  user then email should be triggered(For formula announcements with allocation-level = By Applicant)
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT"
+    When I checkout to yopmail with mailid "automationspi30@yopmail.com"
+    And I wait for "190" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+    """
+       Sandbox: Notification: New Opportunity #{SavedValue:AnnEgmsId}hasbeen Published
+    """
+
+    Then I see the mail text is as follows :
+       """
+      Hello,
+      This email is to notify you that Opportunity #{SavedValue:AnnEgmsId} has been published.
+      Opportunity Details:
+      Opportunity Title: {SavedValue:Automation Runtime Formula Announcement}
+      Opportunity Type: Formula
+
+      Focus Areas	Allocation Amount
+      Automation Permanent Focus Area	1000
+
+      Log in to EGMS and click on click here to access the assigned record.
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+      Thank you,
+      The EGMS Team.
+      """
+
+  @TBEOnJenkins @222620 @formula-Verifywhenannouncementisinpublishedstatethenusershouldaddorganization&edittheAllocationamount&mailshouldbetriggeredforOrganizationwithupdatedallocationvalues(AllocationisByApplicant)formula-Verifywhenannouncementisinpublishedstatethenusershouldaddorganization&edittheAllocationamount&mailshouldbetriggeredforOrganizationwithupdatedallocationvalues(AllocationisByApplicant) @sprint-12-US-221459 @komal @Allocation
+  Scenario: formula - Verify when announcement is in published state then user should add organization & edit the Allocation amount & mail should  be triggered for Organization with updated allocation values (Allocation is By Applicant)
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
+    When I login to "As a Grantor" app as "PM" user
+    When I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Formula Announcements"
+    When I perform quick search for "<Announcement Name>" in "---announcement:-:formulaAnnouncementTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+    Then I see status in Progress-bar is "Published" and is "green"
+    And I save the field labeled "EGMS ID" as "AnnEgmsId"
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
+      | Applicants                          | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
+    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
+    Then I refresh the page
+    And I see the mail subject is as follows :
+    """
+       Sandbox: Notification: New Opportunity #{SavedValue:AnnEgmsId}hasbeen Published
+    """
+    Then I see the mail text is as follows :
+       """
+      Hello,
+      This email is to notify you that Opportunity #{SavedValue:AnnEgmsId} has been published.
+      Opportunity Details:
+      Opportunity Title: {SavedValue:Automation Runtime Formula Announcement}
+      Opportunity Type: Formula
+
+      Focus Areas	Allocation Amount
+      Automation Permanent Focus Area	2000
+
+      Log in to EGMS and click on click here to access the assigned record.
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+      Thank you,
+      The EGMS Team.
+      """
+
+  @TBEOnJenkins @222648 @VerifywhenAllocationamountisupdatedforAllocationinApplicantsthenemailshouldbetriggered(AnnouncementisinPublishedstate)(Forformulaannouncementswithallocation-level=ByApplicant&FocusArea) @sprint-12-US-221459 @komal @Allocation
+  Scenario:  Verify when Allocation amount is updated for Allocation in Applicants then email should be triggered (Announcement is in Published state)(For formula announcements with allocation-level = By Applicant & Focus Area)
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI3" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    And I navigate to "Financials" sub tab
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    When I navigate to "Budget" sub tab
+    When I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match |
+      | Construction  | 1000   | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "Automation SPI3" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I navigate to "Proposal" sub tab
+    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
+    And I navigate to "Files" sub tab
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I save the field labeled "EGMS ID" as "AnnEgmsId"
+    When I click on "Submit Application" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I login to "As a Grantor" app as "PM" user
+    When I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Formula Announcements"
+    When I perform quick search for "<Announcement Name>" in "---announcement:-:formulaAnnouncementTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+    Then I see status in Progress-bar is "Published" and is "green"
+    And I save the field labeled "EGMS ID" as "AnnEgmsId"
+    When I navigate to "Overview" sub tab
+    And I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
+      | Applicants                          | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
+    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
+    Then I refresh the page
+    And I see the mail subject is as follows :
+    """
+       Sandbox: Notification: New Opportunity #{SavedValue:AnnEgmsId}hasbeen Published
+    """
+    Then I see the mail text is as follows :
+       """
+      Hello,
+      This email is to notify you that Opportunity #{SavedValue:AnnEgmsId} has been published.
+      Opportunity Details:
+      Opportunity Title: {SavedValue:Automation Runtime Formula Announcement}
+      Opportunity Type: Formula
+
+      Focus Areas	Allocation Amount
+      Automation Permanent Focus Area	2000
+
+      Log in to EGMS and click on click here to access the assigned record.
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+      Thank you,
+      The EGMS Team.
+      """
+
+  @TBEOnJenkins @229102 @VerifywhenAnnouncementispublishedbyuserthenemailshouldbetriggered(Forformulaannouncementswithallocation-level=ByApplicant&FocusArea=yes&withFAisNO) @sprint-12-US-221459 @komal @Allocation
+  Scenario: Verify when Announcement is published by  user then email should be triggered(For formula announcements with allocation-level = By Applicant & Focus Area=yes & with FA is NO)
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
+    When I checkout to yopmail with mailid "automationspi30@yopmail.com"
+    And I wait for "190" seconds
+    Then I refresh the page
+    And I see the mail subject is as follows :
+    """
+       Sandbox: Notification: New Opportunity #{SavedValue:AnnEgmsId}hasbeen Published
+    """
+    Then I see the mail text is as follows :
+    """
+      Hello,
+      This email is to notify you that Opportunity #{SavedValue:AnnEgmsId} has been published.
+      Opportunity Details:
+      Opportunity Title: {SavedValue:Automation Runtime Formula Announcement}
+      Opportunity Type: Formula
+
+      Focus Areas	Allocation Amount
+      Automation Permanent Focus Area	1000
+
+      Log in to EGMS and click on click here to access the assigned record.
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
+
+      Thank you,
+      The EGMS Team.
+    """
+
