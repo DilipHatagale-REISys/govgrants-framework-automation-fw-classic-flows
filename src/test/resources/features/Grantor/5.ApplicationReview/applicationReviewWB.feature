@@ -1,4 +1,4 @@
-@applicationReviewWB @grantor-regression @grantor-parallel-regression @applicationReview @app @regression @TBEAllocation
+@applicationReviewWB @grantor-regression @grantor-parallel-regression @applicationReview @app @regression
 Feature: Validate all scenarios in the Application Review without background
 
   @78088 @InitiateReviewProcessIcon @keerti
@@ -153,47 +153,15 @@ Feature: Validate all scenarios in the Application Review without background
   | To validate system generated error message ,for user will not be able to Promote to Next step for application when the reviewer decision is still pending for the steps which are Mandatory of SME review step in Application phase
   | To validate system generated error message ,for user will not be able to Promote to FDM for application when the reviewer decision is still pending for the steps which are Mandatory of management review review step in Application phase
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Application" and properties "default"
-    When I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI3" user
-    And I navigate to "Opportunities" tab
-    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Application}" in "---applicationReview:-:reviewsTableId---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Application}" inside flex table with id "---applicationReview:-:reviewsTableId---"
-    When I click on "Qualify" in the page details
-    When I click on "Create Application" in the page details
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "Application_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Budget" sub tab
-    When I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
-      | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 1000   | 100        | 100            |
-    When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    And I enter value "Checked" into field "IsKeyContact__c"
-    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    When I navigate to "Proposal" sub tab
-    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                  | Target |
-      | Automation Permanent KPI | 10     |
-    And I navigate to "Files" sub tab
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
-    And I get the "EGMS ID"
-    When I click on "Submit Application" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I initiated an application review for application "{SavedValue:Automation Runtime Announcement for Application}" on announcement "{SavedValue:Automation Runtime Announcement for Application}" with properties "default"
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
-    When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "<Application Name>"
+    When I click on "View" icon for "<Application Name>" inside table
+    And I get the "EGMS ID"
+    When I save the field labeled "EGMS ID" as "AppEGMSID"
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
@@ -656,54 +624,19 @@ Feature: Validate all scenarios in the Application Review without background
   @80256 @81349 @81348 @verifyStatusOfApplicationAtManagementReview @monu
   Scenario Outline: validate status of application is Review Completed once review form is submitted for management review
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Application" and properties "default"
-    When I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI3" user
-    And I navigate to "Opportunities" tab
-    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement for Application}" in "---applicationReview:-:reviewsTableId---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for Application}" inside flex table with id "---applicationReview:-:reviewsTableId---"
-    When I click on "Qualify" in the page details
-    When I click on "Create Application" in the page details
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "Application_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Budget" sub tab
-    When I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
-      | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 1000   | 100        | 100            |
-    When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    And I enter value "Checked" into field "IsKeyContact__c"
-    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    When I navigate to "Proposal" sub tab
-    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                  | Target |
-      | Automation Permanent KPI | 10     |
-    And I navigate to "Files" sub tab
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
-    And I get the "EGMS ID"
-    When I click on "Submit Application" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I initiated an application review for application "{SavedValue:Automation Runtime Announcement for Application}" on announcement "{SavedValue:Automation Runtime Announcement for Application}" with properties "default"
+    Given I login to "As a Grantor" app as "PM" user
     When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "<Application Name>"
+    When I click on "View" icon for "<Application Name>" inside table
+    And I get the "EGMS ID"
+    When I save the field labeled "EGMS ID" as "AppEGMSID"
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    And I pause execution for "5" seconds
-    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
-    And I pause execution for "2" seconds
-    And I navigate to "Applications" tab
-    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
-    When I click toggle button to select "Application Reviews - All"
-    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     And I get the "Announcement EGMS ID"
@@ -2000,8 +1933,8 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended | 500                     |
     Then I softly see that "Recommended" has been added in flextable with Id "flexGridFundingDecisionMemoApplications"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
@@ -2478,8 +2411,8 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended | 500                     |
     Then I softly see that "Recommended" has been added in flextable with Id "flexGridFundingDecisionMemoApplications"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
@@ -2708,8 +2641,8 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended | 500                     |
     Then I softly see that "Recommended" has been added in flextable with Id "flexGridFundingDecisionMemoApplications"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
@@ -3127,8 +3060,8 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | No                    | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | No                    | Recommended | 500                     |
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -3345,8 +3278,8 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | No                    | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | No                    | Recommended | 500                     |
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
@@ -3443,8 +3376,15 @@ Feature: Validate all scenarios in the Application Review without background
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---" without waiting for record
-    And I click on "Create Subaward" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I save the value from row "1" for column name "EGMS ID" as "appEGMSID" from flex table "---subAwardFromFDM:-:recommendedAppTableId---"
+    And I click on "Create Subaward" icon for "{SavedValue:appEGMSID}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
     And I enter value "Automation Test Description" into field "fieldGrantAwardDescription__c"
+    And I enter values into fields
+      | Value | Field                             |
+      | GA    | fieldAddressline2__c              |
+      | TA    | fieldCongressionalDistrictName__c |
+      | 1234  | fieldZipCode4Extension__c         |
+    And I pause execution for "5" seconds
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I save the field containing "Subaward" as "Subaward_n"
@@ -3468,7 +3408,7 @@ Feature: Validate all scenarios in the Application Review without background
     Then I softly see value "Project Director/Manager" for title "Project Role" against the value "{SavedValue:SPI3 Username}" inside table "{grantor_tableId:SubAwardContactsTableId}"
     #80908 #monu
     #When I save the field labeled "Address Line 1" as "VA 1"
-    Then I softly see field "Address Line 1" as "VA 1"
+    Then I softly see field "Address Line 1" as "VA"
     When I save the field labeled "City" as "City"
     Then I softly see field "City" as "{SavedValue:City}"
     When I save the field labeled "County" as "County"
@@ -3476,12 +3416,10 @@ Feature: Validate all scenarios in the Application Review without background
     When I save the field labeled "State" as "State"
     Then I softly see field "State" as "{SavedValue:State}"
     When I save the field labeled "Zip Code" as "ZipNo"
-    Then I softly see field "Zip Code" as "20171"
+    Then I softly see field "Zip Code" as "{SavedValue:ZipNo}"
     #80907 #monu
     Then I softly see "Subrecipient Information" page block displayed
     Then I softly see field "Subrecipient Organization" as "SAN DIEGO ELECTRICAL TRAINING TRUST"
-    Then I softly see field "DUNS" as "123456788"
-    Then I softly see field "EIN" as "234567891"
     #80949 #monu
     And I navigate to "Budget" sub tab
     Then I softly see "Project Period Details" page block displayed
@@ -3490,13 +3428,13 @@ Feature: Validate all scenarios in the Application Review without background
     When I save the field labeled "Project Period End Date" as "endDate"
     Then I softly see field "Project Period End Date" as "{SavedValue:endDate}"
     #81102 #monu
-    Then I softly see "Budget Period Details" page block displayed
+    Then I softly see "Budget Summary" page block displayed
     When I save the field labeled "Budget Period End Date" as "BPstartdate"
     Then I softly see field "Budget Period End Date" as "{SavedValue:BPstartdate}"
-    When I save the field labeled "Carry-Forward" as "carryForwrdAmount"
-    Then I softly see field "Carry-Forward" as "{SavedValue:carryForwrdAmount}"
-    When I save the field labeled "Total Subaward Amount this Budget Period" as "SubAwardAmount"
-    Then I softly see field "Total Subaward Amount this Budget Period" as "{SavedValue:SubAwardAmount}"
+#    When I save the field labeled "Carry-Forward" as "carryForwrdAmount"
+#    Then I softly see field "Carry-Forward" as "{SavedValue:carryForwrdAmount}"
+    When I save the field labeled "Budgeted Amount" as "SubAwardAmount"
+    Then I softly see field "Budgeted Amount" as "{SavedValue:SubAwardAmount}"
     #81103 #monu
     Then I softly see "Funding Account" in flex table header "{grantor_tableId:FundingAccountInformationTableId}"
     Then I softly see "Available Balance" in flex table header "{grantor_tableId:FundingAccountInformationTableId}"
@@ -3504,7 +3442,7 @@ Feature: Validate all scenarios in the Application Review without background
     Then I softly see "Encumbrance" in flex table header "{grantor_tableId:FundingAccountInformationTableId}"
     #81104 #monu
     Then I softly see "Budget Category" in flex table header "{grantor_tableId:SubAwardBudgetTableId}"
-    Then I softly see "Awarded Budget" in flex table header "{grantor_tableId:SubAwardBudgetTableId}"
+    Then I softly see "Award Amount" in flex table header "{grantor_tableId:SubAwardBudgetTableId}"
     Then I softly see "Cash Match" in flex table header "{grantor_tableId:SubAwardBudgetTableId}"
     Then I softly see "Non-Cash Match" in flex table header "{grantor_tableId:SubAwardBudgetTableId}"
     Then I softly see "Total Match" in flex table header "{grantor_tableId:SubAwardBudgetTableId}"
@@ -4030,7 +3968,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Submit" in the page details without processing
     When I click alert button "OK"
     And I wait for "5" seconds
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
@@ -4041,7 +3979,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Submit" in the page details without processing
     When I click alert button "OK"
     And I wait for "5" seconds
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     And I perform quick search for "Record ID" in "---applicationReview:-:pendingTaskTableId---" panel
@@ -4131,8 +4069,9 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended | 500                     |
+    And I refresh the page
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
       | Name                     | FDM    |
@@ -4550,8 +4489,8 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended | 500                     |
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
       | Name                     | FDM    |
@@ -4766,8 +4705,8 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on "Save" in the page details
     Then I softly see field "Status" as "Created"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended |
+      | Application Title                                               | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
+      | {SavedValue:Automation Runtime Announcement Application Review} | 500                | Yes                   | Recommended | 500                     |
     And I click on "Submit for Approval" in the page details
     And I softly see the following messages in the page details contains:
       | Responsibilities - At least one approver is required |
@@ -5760,8 +5699,8 @@ Feature: Validate all scenarios in the Application Review without background
     Then I softly see field "Status" as "Created"
     When I check "<Application Name>" boxes in flex table with id "flexGridFundingDecisionMemoApplications"
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
-      | Application Title                                            | Recommended Budget | Recommend for Funding | Comments    |
-      | {SavedValue:Automation Runtime Announcement for Application} | 500                | Yes                   | Recommended |
+      | Application Title                                            | Recommended Budget | Recommend for Funding | Comments    | Total Commitment Amount |
+      | {SavedValue:Automation Runtime Announcement for Application} | 500                | Yes                   | Recommended | 500                     |
     Then I softly see that "Recommended" has been added in flextable with Id "flexGridFundingDecisionMemoApplications"
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "flexGridGrantorReviewStepRolesandResponsibilities" by clicking "New" :
@@ -6970,21 +6909,21 @@ Feature: Validate all scenarios in the Application Review without background
     When I save the field labeled "EGMS ID" as "EGMSID1"
     Then I softly can see "Negotiations" sub tab at view detail page
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "120" seconds
+    And I pause execution for "30" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: Application {SavedValue:EGMSID} is Assignedto you for Review
+      Sandbox: Notification: A Negotiation is being requested onApplication {SavedValue:EGMSID}.
       """
 
     Then I see the mail text is as follows :
       """
-       Hello Automation PM,
-       This email is to notify you that Application {SavedValue:EGMSID} is assigned to you for review.
-       Log in to EGMS and click here to start with the assigned review application task.
-       Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
-       Thank you,
-       The EGMS Team.
+       Hello,
+      This email is to inform you that a negotiation is being requested from the applicant for Application {SavedValue:EGMSID}. You are receiving this email notification because you are one of the reviewers assigned to the application.
+      As a reviewer, if you have already completed and submitted your application review, you do not need to take any action. Once the applicant submits the updated application, you may be re-assigned to review the application again. However, your review is now marked as Review Incomplete if you did not complete your application review. Once the applicant submits the updated application, you may be re-assigned to complete your application review.
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrants@support.com , if you have any questions or need assistance with this task.
+      Sincerely,
+      EGMS Team
       """
 
 
@@ -7023,7 +6962,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
     Then I softly see value "{SavedValue:EGMSID}" for title "EGMS ID" inside table "---negotiation:-:homePendingTasks---"
     And I checkout to yopmail with mailid "automationspi30@yopmail.com"
-    And I pause execution for "120" seconds
+    And I pause execution for "60" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -7557,7 +7496,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I navigate to "Files" sub tab
     Then I softly cannot see row level action button "Edit" against "Standard Assurances Form" in flex table with id "---negotiation:-:filesFormsTableId---"
     Then I softly cannot see row level action button "Edit" against "Program Application Form" in flex table with id "---negotiation:-:filesFormsTableId---"
-    And I click on "View" icon for "Program Application Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
+    And I click on "View" icon for "Program Application Form" inside flex table with id "---negotiation:-:negotiationFilesFormTableId---"
     Then I softly cannot see top right button "Edit" in page detail
     When I click on "Back" in the page details
     And I click on "View" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
@@ -8470,6 +8409,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I click modal button "Continue"
     When I enter "Creation Second Negotiation" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
+    And I pause execution for "4" seconds
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
@@ -8618,48 +8558,18 @@ Feature: Validate all scenarios in the Application Review without background
   @198022 @ValidateApplicationreviewtaskshouldnotgenerateforPMuserforapplicationonreassigmytaskpage  @sprint-7-US-197384 @vaibhav @reassignment @ownvai
   Scenario: Validate Application review task should not generate for PM user for application on reassign my task page
     And I published "Competitive" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
-    When I am on "SUBPORTAL" portal
-    When I login to "Grants Portal" app as "SPI3" user
-    And I navigate to "Opportunities" tab
-    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:reviewsTableId---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:reviewsTableId---"
-    When I click on "Qualify" in the page details
-    When I click on "Create Application" in the page details
-    And I click modal button "Save and Continue"
-    When I enter "Edition" values from "Application_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Budget" sub tab
-    When I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
-      | Category Name | Budget | Cash Match | Non-Cash Match |
-      | Construction  | 1000   | 100        | 100            |
-    When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    And I enter value "Checked" into field "IsKeyContact__c"
-    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    When I navigate to "Proposal" sub tab
-    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                  | Target |
-      | Automation Permanent KPI | 10     |
-    And I navigate to "Files" sub tab
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
-    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I click on "Back" in the page details
-    And I get the "EGMS ID"
-    When I click on "Submit Application" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I initiated an application review for application "{SavedValue:Automation Runtime Announcement Application Review}" on announcement "{SavedValue:Automation Runtime Announcement Application Review}" with properties "default"
+    When I login to "As a Grantor" app as "PM" user
     When I navigate to "Applications" tab
+    And I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I click toggle button to select "Applications - All"
+    And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside table
+    And I get the "EGMS ID"
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationReview:-:announcementListTableId---" panel
-    When I click on "Initiate Review Process" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
-    And I get the "EGMS ID"
+    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
@@ -14146,6 +14056,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I click modal button "Continue"
     When I enter "Creation Second Negotiation" values from "Announcement_Field_Values.xlsx"
     And I click modal button "Save and Continue"
+    And I pause execution for "4" seconds
     When I click on "Save" in the page details
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
@@ -16902,6 +16813,8 @@ Feature: Validate all scenarios in the Application Review without background
     Then I softly see value "1" for title "# of Reviews Assigned" against the value "{SavedValue:FD Username}" inside table "---applicationReview:-:reviewersTableId---"
     And I check "All" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
+    And I pause execution for "5" seconds
+    And I logout
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel

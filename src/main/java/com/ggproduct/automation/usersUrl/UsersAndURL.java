@@ -97,6 +97,9 @@ public class UsersAndURL implements UsersController {
     private String getAUTOEnvironmentPassword(String userLevel) {
         String password;
         switch (userLevel.toUpperCase()) {
+            case "SME":
+                password = "Salesforce2026";
+                break;
             default:
                 password = "Salesforce2025";
         }
@@ -147,7 +150,7 @@ public class UsersAndURL implements UsersController {
         username.put("PO1", "automationpo1@yopmail.com");
         username.put("FO1", "fo1.automation@yopmail.com");
         username.put("FD1", "automationfd1@yopmail.com");
-        username.put("SME", "product.ucs.sme1@yopmail.com.automation");
+        username.put("SME", "sme1@yopmail.com");
         username.put("SPI4", "aspi4@grants.gov");
 
         username.put("SARAH PM", "sarah.pm@ggp.test9.automation");

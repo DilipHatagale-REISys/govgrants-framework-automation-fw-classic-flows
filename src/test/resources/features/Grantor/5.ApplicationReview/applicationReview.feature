@@ -2397,7 +2397,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    Then I softly see that "Promoted to Management Review Step" has been added in flextable with Id "---applicationReview:-:appTableId---"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
@@ -2816,7 +2815,7 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               | Application Name                                                |
       | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
 
- @vai @80049 @verifyEnteringOfJustificationForFDM @monu
+  @80049 @verifyEnteringOfJustificationForFDM @monu
   Scenario Outline: validate user is able to enter justification for FDM
     And I login to "As a Grantor" app as "dynamicUser" user
     When I navigate to "Applications" tab
@@ -2982,7 +2981,6 @@ Feature: Validate all scenarios in the Application Review
     When I click on "Funding Decision Memo" in the page details
     Then I softly see field "Status" as "Created"
     And I get the "EGMS ID"
-    And I click on "Edit" in the page details
     Then I softly can see "Funding Decision Memo" sub tab at view detail page
     Then I softly can see "Responsibilities" sub tab at view detail page
     Then I softly can see "History" sub tab at view detail page
@@ -3181,10 +3179,10 @@ Feature: Validate all scenarios in the Application Review
     And I wait for "2" seconds
     Then I softly see field "Comments" as "Automation test description"
     Then I softly see field "Recommendation" as "Recommended"
-    Then I softly see field "Does the schedule account for all applicable regulatory/permit reviews?" as "Yes"
-    Then I softly see field "Is the schedule realistic?" as "Yes"
-    Then I softly see field "Are state resources available to support proposed schedule?" as "Yes"
-    Then I softly see field "Is the applicant EPA certified?" as "Yes"
+    Then I softly see field "Does the application meet the match requirement outlined in the funding opportunity?" as "Yes"
+    Then I softly see field "Is the need for proposed budget item adequately supported?" as "Yes"
+    Then I softly see field "Are proposed indirect costs consistent with applicant's approved indirect cost rate plan?" as "Yes"
+    Then I softly see field "Are the match costs allowable, allocable, and reasonable?" as "Yes"
     When I click on "Submit" in the page details without processing
     When I click alert button "OK"
     And I wait for "5" seconds
@@ -3219,7 +3217,6 @@ Feature: Validate all scenarios in the Application Review
     #Then I softly see the following messages in the page details contains:
      # | Selected Applications have been promoted. |
     And I wait for "2" seconds
-    Then I softly see that "Promoted to Management Review Step" has been added in flextable with Id "---applicationReview:-:appTableId---"
     And I click on "Next Review Step" in the page details
     When I edit the following rows inline in flex table with id "---applicationReview:-:formTableId---" by clicking "Edit" :
       | Form Name         | Due in Days |
