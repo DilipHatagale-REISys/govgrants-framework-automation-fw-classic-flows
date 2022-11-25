@@ -3245,7 +3245,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
 
 #By applicant
-  @TBEOnJenkins @225549 @225427 @PMUser>>VerifywhennegotiationisinitiatedduringpromotedtoFDMthenitshouldmustmandatoryforusertoselectthe"Budget:BudgetDetails"picklistvalueforNegotiationfieldwhenthebudgetedAmountisnotequaltotheAllocationAmount @sprint-11-US-203558 @komal @Allocation
+  @mk @TBEOnJenkins @225549 @225427 @PMUser>>VerifywhennegotiationisinitiatedduringpromotedtoFDMthenitshouldmustmandatoryforusertoselectthe"Budget:BudgetDetails"picklistvalueforNegotiationfieldwhenthebudgetedAmountisnotequaltotheAllocationAmount @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: PM User>>Verify when negotiation is initiated during promoted to FDM  then it should must mandatory for user to select the "Budget: Budget Details " picklist value  for Negotiation field when the budgeted Amount is not equal to the Allocation Amount
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO-Automation <User> user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -3409,10 +3409,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Negotiations Tab - The Budgeted Amount must be equal to the Allocation Amount in the application. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field before sending the application back for revision. |
 
     Examples:
-     |User | Announcement Name                                    |
-     |PM | {SavedValue:Automation Runtime Formula Announcement} |
-     |ADMIN | {SavedValue:Automation Runtime Formula Announcement} |
-#      | Automation Runtime Formula Announcement55358 |
+      | User  | Announcement Name                                    |
+      | PM    | {SavedValue:Automation Runtime Formula Announcement} |
+      | ADMIN | {SavedValue:Automation Runtime Formula Announcement} |
 
   @225429 @225421 @PMUser>>VerifywhennegotiationisinitiatedduringpromotedtoFDMthenitshouldmustmandatoryforusertoselectthe"Budget:BudgetDetails"picklistvalueforNegotiationfieldwhenthebudgetedAmountisnotequaltotheAllocationAmount @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: Verify updated values of Allocation Amount should get updated in opportunity and Qualified opportunity as well.
@@ -3459,7 +3458,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
 
 #By Applicant and FA
-  @mk @TBE @225577 @225573 @225591 @PMUser>>VerifyuserseethevalidationwhenbudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatfocusarea&usertriedtopromoteittoFDM @sprint-11-US-203558 @komal @Allocation
+  @TBE @225577 @225573 @225591 @PMUser>>VerifyuserseethevalidationwhenbudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatfocusarea&usertriedtopromoteittoFDM @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: PM User>> Verify user see the validation when budgeted amount in any focus area is not equal to the Allocation amount of that focus area & user tried to promote it to FDM
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -3576,8 +3575,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     And I click on "Next Review Step" in the page details
 #    TODO- Application getting promoted to next step, confirm with Vaibhav
-#    And I softly see the following messages in the page details contains:
-#      | The Budgeted amount for each focus area must be equal to the Allocation amount for that focus area in the following Application IDs. Please send these applications back for revision |
+    And I softly see the following messages in the page details contains:
+      | The Budgeted amount for each focus area must be equal to the Allocation amount for that focus area in the following Application IDs. Please send these applications back for revision |
     #225577
     When I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -3654,8 +3653,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
   #    TODO- Application getting promoted to next step, confirm with Vaibhav
-#    And I softly see the following messages in the page details contains:
-#      | The Budgeted amount for each focus area must be equal to the Allocation amount for that focus area in the following Application IDs. Please send these applications back for revision |
+    And I softly see the following messages in the page details contains:
+      | The Budgeted amount for each focus area must be equal to the Allocation amount for that focus area in the following Application IDs. Please send these applications back for revision |
     #225591
     And I refresh the page
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
@@ -3823,7 +3822,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
+    And I softly see the following messages in the page details contains:
+      | The Budgeted amount for each focus area must be equal to the Allocation amount for that focus area in the following Application IDs. Please send these applications back for revision |
     #225595
+    And I refresh the page
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Request Negotiation" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:appTableId---"
     And I navigate to "Negotiations" sub tab
@@ -3833,7 +3835,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Send to Subrecipient" in the page details
     And I softly see the following messages in the page details contains:
       | Negotiations Tab: The Budgeted Amount must be equal to the Allocation Amount in the application. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field before sending the application back for revision. |
-
 
     Examples:
       | Announcement Name                                    |
@@ -4089,15 +4090,15 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
 ########################
 #  Yopmail
-  @TBEOnJenkins @222580 @formula-Verifywhenannouncementisinpublishedstatethenusershouldaddorganization&edittheAllocationamount&mailshouldbetriggeredforOrganizationwithupdatedallocationvalues(AllocationisByApplicant)formula-Verifywhenannouncementisinpublishedstatethenusershouldaddorganization&edittheAllocationamount&mailshouldbetriggeredforOrganizationwithupdatedallocationvalues(AllocationisByApplicant) @sprint-12-US-221459 @komal @Allocation
+  @222580 @formula-Verifywhenannouncementisinpublishedstatethenusershouldaddorganization&edittheAllocationamount&mailshouldbetriggeredforOrganizationwithupdatedallocationvalues(AllocationisByApplicant)formula-Verifywhenannouncementisinpublishedstatethenusershouldaddorganization&edittheAllocationamount&mailshouldbetriggeredforOrganizationwithupdatedallocationvalues(AllocationisByApplicant) @sprint-12-US-221459 @komal @Allocation
   Scenario: formula - Verify when announcement is in published state then user should add organization & edit the Allocation amount & mail should  be triggered for Organization with updated allocation values (Allocation is By Applicant)
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
     When I login to "As a Grantor" app as "PM" user
     When I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "All Formula Announcements"
-    When I perform quick search for "<Announcement Name>" in "---announcement:-:formulaAnnouncementTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---announcement:-:formulaAnnouncementTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     Then I see status in Progress-bar is "Published" and is "green"
     And I save the field labeled "EGMS ID" as "AnnEgmsId"
     When I navigate to "Overview" sub tab
@@ -4164,8 +4165,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "All Formula Announcements"
-    When I perform quick search for "<Announcement Name>" in "---announcement:-:formulaAnnouncementTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---announcement:-:formulaAnnouncementTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     Then I see status in Progress-bar is "Published" and is "green"
     And I save the field labeled "EGMS ID" as "AnnEgmsId"
     When I navigate to "Overview" sub tab
@@ -4241,8 +4242,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "All Formula Announcements"
-    When I perform quick search for "<Announcement Name>" in "---announcement:-:formulaAnnouncementTableId---" panel
-    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+    When I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---announcement:-:formulaAnnouncementTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
     Then I see status in Progress-bar is "Published" and is "green"
     And I save the field labeled "EGMS ID" as "AnnEgmsId"
     When I navigate to "Overview" sub tab
