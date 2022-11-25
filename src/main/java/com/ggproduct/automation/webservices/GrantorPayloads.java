@@ -316,6 +316,8 @@ public class GrantorPayloads {
                 return updatePreApplicationAsYesForAnnouncement(json);
             case "PRE_APPLICATION_NEGOTIATION_YES":
                 return updatePreApplicationAndNegotiationAsYesForAnnouncement(json);
+            case "PRE_APP_YES_NEGO_YES_FOCUS_AREA_NO":
+                return updatePreApplicationAndNegotiationAsYesAndFocusAreaNoForAnnouncement(json);
             case "FOCUS_AREA_NO":
                 return updateFocusAreaForAnnouncement(json,"No");
             case "NEGOTIATION":
@@ -428,6 +430,17 @@ public class GrantorPayloads {
         JsonArray pre = new JsonArray();
         jsonObject.addProperty("PreApplicationNeeded","Yes");
         jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        pre.add(jsonObject);
+        json.add("Announcement",pre);
+        return json;
+    }
+
+    private JsonObject updatePreApplicationAndNegotiationAsYesAndFocusAreaNoForAnnouncement(JsonObject json) {
+        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
+        JsonArray pre = new JsonArray();
+        jsonObject.addProperty("PreApplicationNeeded","Yes");
+        jsonObject.addProperty("IsNegotiationsAllowed","Yes");
+        jsonObject.addProperty("FocusAreaRequired","No");
         pre.add(jsonObject);
         json.add("Announcement",pre);
         return json;

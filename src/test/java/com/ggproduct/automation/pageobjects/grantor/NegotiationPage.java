@@ -20,7 +20,7 @@ public class NegotiationPage extends GrantorProjectManager {
      * @return
      */
     public boolean isValuePresentInsidePicklist(String usage,String fieldApiName, String valueFromList, String listTitleFromMultiPickList) {
-        List<Elements> elements = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='field" + fieldApiName + "' or @id='" + fieldApiName + "']//select[@title='" + listTitleFromMultiPickList + "']/option"));
+        List<Elements> elements = I.amPerforming().getElementReference().forListOfElements().of(By.xpath("//div[@id='field" + fieldApiName + "' or @id='" + fieldApiName + "']//select[@title='" + listTitleFromMultiPickList + "']//option"));
         boolean flag = false;
         for (int i = 0; i < elements.size(); i++) {
             if (elements.get(i).getText().contains(valueFromList))
