@@ -79,7 +79,7 @@ Feature: Validate all scenarios in the Application Review without background
   @78089 @InitiateReviewProcessIconForDifferentOwner @keerti
   Scenario Outline: To verify Announcement owner should be able view  "Initiate Review process " icon , If Program and Announcement owner is different
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement for Application" and properties "default"
-    And I login to "As a Grantor" app as "EXE" user
+    And I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "Published Competitive Announcements"
@@ -122,7 +122,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Back" in the page details
     And I get the "EGMS ID"
     When I click on "Submit Application" in the page details
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
     When I click toggle button to select "All Competitive Announcements"
@@ -1720,8 +1720,10 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "View" icon for "Funding Decision Memo" inside flex table with id "---grantor_tableId:-:FDMTableId---"
     And I navigate to "Funding Decision Memo" sub tab
     And I click on "Create Subaward" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I pause execution for "10" seconds
     Then I softly see that "Subaward" is in "Created" status
     #80904 #monu
+    And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
@@ -6820,7 +6822,6 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Submit" in the page details without processing
     When I click alert button "OK"
     And I wait for "5" seconds
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
@@ -7076,8 +7077,8 @@ Feature: Validate all scenarios in the Application Review without background
     And I navigate to "Negotiations" sub tab
     And I save the field labeled "Due Date" as "DueDate"
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
-    Then I softly see field "Application Sections for Revision" as "Overview: Project Information; Budget: Budget Details; Files: Forms"
-    Then I softly see field "Due Date" as "10/12/2141"
+    Then I softly see field "Application Sections for Negotiation" as "Overview: Project Information; Budget: Budget Details; Files: Forms"
+    Then I softly see field "Due Date" as "{Date:MM/dd/yyyy::d+43707}"
 
   @134207 @ValidateapplicationrecordownercaneditsectionsandformswithintheapplicationwhentheapplicationisinnegotiationInitiatedstate @Sprint-1 @vaibhav
   Scenario: Validate application record owner can edit sections and forms within the application when the application is in negotiation Initiated state
@@ -9078,7 +9079,7 @@ Feature: Validate all scenarios in the Application Review without background
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Cancel Negotiation" in the page details
-    Then I softly see field "Negotiation Request Status" as "Canceled" in "Negotiation Request Details" pageblock
+    Then I softly see field "Negotiation Request Status" as "Cancelled" in "Negotiation Request Details" pageblock
     When I click on "Back to Current Review Step" in the page details
     #202625
     Then I see the sub-header is "Pre-Screen Review" in the page details
@@ -9312,7 +9313,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Request Negotiations" in the page details
     When I click on "Save" in the page details
     When I click on "Cancel Negotiation" in the page details
-    Then I softly see field "Negotiation Request Status" as "Canceled" in "Negotiation Request Details" pageblock
+    Then I softly see field "Negotiation Request Status" as "Cancelled" in "Negotiation Request Details" pageblock
     When I click on "Back to Current Review Step" in the page details
     Then I see the sub-header is "Pre-Screen Review" in the page details
     Then I softly see field "Status" as "In Progress"
@@ -9407,7 +9408,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Request Negotiations" in the page details
     When I click on "Save" in the page details
     When I click on "Cancel Negotiation" in the page details
-    Then I softly see field "Negotiation Request Status" as "Canceled" in "Negotiation Request Details" pageblock
+    Then I softly see field "Negotiation Request Status" as "Cancelled" in "Negotiation Request Details" pageblock
     When I click on "Back to Current Review Step" in the page details
     Then I see the sub-header is "Pre-Screen Review" in the page details
     Then I softly see field "Status" as "In Progress"
@@ -9500,7 +9501,7 @@ Feature: Validate all scenarios in the Application Review without background
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Cancel Negotiation" in the page details
-    Then I softly see field "Negotiation Request Status" as "Canceled" in "Negotiation Request Details" pageblock
+    Then I softly see field "Negotiation Request Status" as "Cancelled" in "Negotiation Request Details" pageblock
     When I click on "Back to Current Review Step" in the page details
     Then I see the sub-header is "Pre-Screen Review" in the page details
     Then I softly see field "Status" as "In Progress"
@@ -9628,7 +9629,7 @@ Feature: Validate all scenarios in the Application Review without background
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Cancel Negotiation" in the page details
-    Then I softly see field "Negotiation Request Status" as "Canceled" in "Negotiation Request Details" pageblock
+    Then I softly see field "Negotiation Request Status" as "Cancelled" in "Negotiation Request Details" pageblock
     When I click on "Back to Current Review Step" in the page details
     Then I see the sub-header is "SME Review" in the page details
     Then I softly see field "Status" as "In Progress"
@@ -9833,7 +9834,7 @@ Feature: Validate all scenarios in the Application Review without background
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Cancel Negotiation" in the page details
-    Then I softly see field "Negotiation Request Status" as "Canceled" in "Negotiation Request Details" pageblock
+    Then I softly see field "Negotiation Request Status" as "Cancelled" in "Negotiation Request Details" pageblock
     When I click on "Back to Current Review Step" in the page details
     Then I see the sub-header is "Management Review" in the page details
     Then I softly see field "Status" as "In Progress"
@@ -9928,7 +9929,7 @@ Feature: Validate all scenarios in the Application Review without background
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Cancel Negotiation" in the page details
-    Then I softly see field "Negotiation Request Status" as "Canceled" in "Negotiation Request Details" pageblock
+    Then I softly see field "Negotiation Request Status" as "Cancelled" in "Negotiation Request Details" pageblock
     When I click on "Back to Current Review Step" in the page details
     Then I see the sub-header is "Pre-Screen Review" in the page details
     Then I softly see field "Status" as "In Progress"
@@ -11087,7 +11088,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "Request Negotiations" in the page details
     When I click on "Save" in the page details
     When I click on "Cancel Negotiation" in the page details
-    Then I softly see field "Negotiation Request Status" as "Canceled" in "Negotiation Request Details" pageblock
+    Then I softly see field "Negotiation Request Status" as "Cancelled" in "Negotiation Request Details" pageblock
     When I click on "Back to Current Review Step" in the page details
     Then I see the sub-header is "Pre-Screen Review" in the page details
     Then I softly see field "Status" as "In Progress"
@@ -11232,7 +11233,7 @@ Feature: Validate all scenarios in the Application Review without background
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     When I click on "Cancel Negotiation" in the page details
-    Then I softly see field "Negotiation Request Status" as "Canceled" in "Negotiation Request Details" pageblock
+    Then I softly see field "Negotiation Request Status" as "Cancelled" in "Negotiation Request Details" pageblock
     When I click on "Back to Current Review Step" in the page details
     Then I see the sub-header is "Management Review" in the page details
     Then I softly see field "Status" as "In Progress"
@@ -13862,7 +13863,7 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    Then I softly see value "Automation FD1" for title "Assigned To" against the value "{SavedValue:AppEGMSID}" inside table "---applicationReview:-:appreviewsTableId---"
+    Then I softly see that "Automation FD1" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
 
     Examples:
       | Announcement Name                                | Application Name                                 |
@@ -16868,7 +16869,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I check "<Application Name>" boxes in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     When I click on top right button "Assign" in flex table with id "---applicationReview:-:assignApplicationsTableId---"
     Then I softly see value "1" for title "# of Reviews Assigned" against the value "Automation FD" inside table "---applicationReview:-:reviewersTableId---"
-    Then I softly see value "1" for title "# of Reviews Assigned" against the value "Automation FD1" inside table "---applicationReview:-:reviewersTableId---"
+    Then I softly see value "2" for title "# of Reviews Assigned" against the value "Automation FD1" inside table "---applicationReview:-:reviewersTableId---"
     And I check "All" boxes in flex table with id "---applicationReview:-:appreviewsTableId---"
     And I pause execution for "2" seconds
     And I click on top right button "Send for Review" in flex table with id "---applicationReview:-:appreviewsTableId---"
@@ -16895,11 +16896,11 @@ Feature: Validate all scenarios in the Application Review without background
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---" with wait for record
-    Then I softly see value "1" for title "# of Reviews Assigned" against the value "Automation FD" inside table "---applicationReview:-:reviewersTableId---"
-    Then I softly see value "0" for title "# of Reviews Assigned" against the value "Automation FD1" inside table "---applicationReview:-:reviewersTableId---"
+    Then I softly see value "2" for title "# of Reviews Assigned" against the value "Automation FD" inside table "---applicationReview:-:reviewersTableId---"
+    Then I softly see value "1" for title "# of Reviews Assigned" against the value "Automation FD1" inside table "---applicationReview:-:reviewersTableId---"
     When I expand nested table containing column value "{SavedValue:AppEGMSID}"
-    And I hovering mouse on table id "---applicationReview:-:reviewFormsTableId---" with table row level icon "Automation FD: Review Completed - Recommended" for column value "Automation FD: Review Completed - Recommended"
-    Then I softly see "Automation FD: Review Completed - Recommended" shown as help text
+    And I hovering mouse on table id "---applicationReview:-:reviewFormsTableId---" with table row level icon "Automation FD: Sent for Review" for column value "Automation FD: Sent for Review"
+    Then I softly see "Automation FD: Sent for Review" shown as help text
     When I re-login to "As a Grantor" app as "FD" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
