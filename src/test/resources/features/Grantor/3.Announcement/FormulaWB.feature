@@ -3245,7 +3245,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
 
 #By applicant
-  @mk @TBEOnJenkins @225549 @225427 @PMUser>>VerifywhennegotiationisinitiatedduringpromotedtoFDMthenitshouldmustmandatoryforusertoselectthe"Budget:BudgetDetails"picklistvalueforNegotiationfieldwhenthebudgetedAmountisnotequaltotheAllocationAmount @sprint-11-US-203558 @komal @Allocation
+  @225549 @225427 @PMUser>>VerifywhennegotiationisinitiatedduringpromotedtoFDMthenitshouldmustmandatoryforusertoselectthe"Budget:BudgetDetails"picklistvalueforNegotiationfieldwhenthebudgetedAmountisnotequaltotheAllocationAmount @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: PM User>>Verify when negotiation is initiated during promoted to FDM  then it should must mandatory for user to select the "Budget: Budget Details " picklist value  for Negotiation field when the budgeted Amount is not equal to the Allocation Amount
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO-Automation <User> user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -3573,7 +3573,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-    And I click on "Next Review Step" in the page details
 #    TODO- Application getting promoted to next step, confirm with Vaibhav
     And I softly see the following messages in the page details contains:
       | The Budgeted amount for each focus area must be equal to the Allocation amount for that focus area in the following Application IDs. Please send these applications back for revision |
@@ -3877,7 +3876,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-
 #    Custom review
   @TBEOnJenkins @225602 @EXEUser>>VerifyuserseethevalidationwhenthebudgetedAmountisnotequaltotheAllocationamountwhenusertriedtopromotetheapplicationtothenextstepforcustomizedreviewstep. @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: EXE User>>Verify user see the validation when the budgeted Amount is not equal to the Allocation amount when user tried to promote the application to the next step for customized review step.
@@ -4106,40 +4104,27 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Applicants                          | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
     And I checkout to yopmail with mailid "automationspi30@yopmail.com"
+    And I wait for "190" seconds
     Then I refresh the page
-    And I see the mail subject is as follows :
-    """
-       Sandbox: Notification: New Opportunity #{SavedValue:AnnEgmsId}hasbeen Published
-    """
+    And I click on mail with subject "Sandbox: Notification: New Opportunity # {SavedValue:AnnEgmsId} hasbeen Published"
     Then I see the mail text is as follows :
        """
       Hello,
-      This email is to notify you that Opportunity #{SavedValue:AnnEgmsId} has been published.
-      Opportunity Details:
-      Opportunity Title: {SavedValue:Automation Runtime Formula Announcement}
-      Opportunity Type: Formula
-
-      Focus Areas	Allocation Amount
-      Automation Permanent Focus Area	2000
-
-      Log in to EGMS and click on click here to access the assigned record.
+      This email is to notify you that Opportunity  # {SavedValue:AnnEgmsId} has been published and the amount allocated to your organization is $2,000.
+      Log in to EGMS and click here to review the details and submit an application.
       Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
-      Thank you,
-      The EGMS Team.
+      Thank you.
+      The EGMS Team
       """
 
-  @TBEOnJenkins @229100 @VerifywhenAnnouncementispublishedbyuserthenemailshouldbetriggered(Forformulaannouncementswithallocation-level=ByApplicant) @sprint-12-US-221459 @komal @Allocation
+  @mk @229100 @VerifywhenAnnouncementispublishedbyuserthenemailshouldbetriggered(Forformulaannouncementswithallocation-level=ByApplicant) @sprint-12-US-221459 @komal @Allocation
   Scenario: Verify when Announcement is published by  user then email should be triggered(For formula announcements with allocation-level = By Applicant)
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT"
     When I checkout to yopmail with mailid "automationspi30@yopmail.com"
     And I wait for "190" seconds
     Then I refresh the page
-    And I see the mail subject is as follows :
-    """
-       Sandbox: Notification: New Opportunity #{SavedValue:AnnEgmsId}hasbeen Published
-    """
-
+    And I click on mail with subject "Sandbox: Notification: New Opportunity #{SavedValue:AnnEgmsId}hasbeen Published"
     Then I see the mail text is as follows :
        """
       Hello,
@@ -4174,11 +4159,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Applicants                          | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
     And I checkout to yopmail with mailid "automationspi30@yopmail.com"
+    And I wait for "190" seconds
     Then I refresh the page
-    And I see the mail subject is as follows :
-    """
-       Sandbox: Notification: New Opportunity #{SavedValue:AnnEgmsId}hasbeen Published
-    """
+    And I click on mail with subject "Sandbox: Notification: New Opportunity #{SavedValue:AnnEgmsId}hasbeen Published"
     Then I see the mail text is as follows :
        """
       Hello,
@@ -4251,11 +4234,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Applicants                          | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
     And I checkout to yopmail with mailid "automationspi30@yopmail.com"
+    And I wait for "190" seconds
     Then I refresh the page
-    And I see the mail subject is as follows :
-    """
-       Sandbox: Notification: New Opportunity #{SavedValue:AnnEgmsId}hasbeen Published
-    """
+    And I click on mail with subject "Sandbox: Notification: New Opportunity #{SavedValue:AnnEgmsId}hasbeen Published"
     Then I see the mail text is as follows :
        """
       Hello,
@@ -4276,14 +4257,11 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
   @TBEOnJenkins @229102 @VerifywhenAnnouncementispublishedbyuserthenemailshouldbetriggered(Forformulaannouncementswithallocation-level=ByApplicant&FocusArea=yes&withFAisNO) @sprint-12-US-221459 @komal @Allocation
   Scenario: Verify when Announcement is published by  user then email should be triggered(For formula announcements with allocation-level = By Applicant & Focus Area=yes & with FA is NO)
-    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NoFA"
     When I checkout to yopmail with mailid "automationspi30@yopmail.com"
     And I wait for "190" seconds
     Then I refresh the page
-    And I see the mail subject is as follows :
-    """
-       Sandbox: Notification: New Opportunity #{SavedValue:AnnEgmsId}hasbeen Published
-    """
+    And I click on mail with subject "Sandbox: Notification: New Opportunity #{SavedValue:AnnEgmsId}hasbeen Published"
     Then I see the mail text is as follows :
     """
       Hello,
