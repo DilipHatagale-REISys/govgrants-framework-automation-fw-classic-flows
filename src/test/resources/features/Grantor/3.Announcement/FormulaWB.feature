@@ -3243,8 +3243,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly see the following messages in the page details contains:
       | Saved Successfully! |
 
-
-#By applicant
   @225549 @225427 @PMUser>>VerifywhennegotiationisinitiatedduringpromotedtoFDMthenitshouldmustmandatoryforusertoselectthe"Budget:BudgetDetails"picklistvalueforNegotiationfieldwhenthebudgetedAmountisnotequaltotheAllocationAmount @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: PM User>>Verify when negotiation is initiated during promoted to FDM  then it should must mandatory for user to select the "Budget: Budget Details " picklist value  for Negotiation field when the budgeted Amount is not equal to the Allocation Amount
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO-Automation <User> user"
@@ -3456,9 +3454,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | PM    | {SavedValue:Automation Runtime Formula Announcement} |
       | ADMIN | {SavedValue:Automation Runtime Formula Announcement} |
 
-
-#By Applicant and FA
-  @TBE @225577 @225573 @225591 @PMUser>>VerifyuserseethevalidationwhenbudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatfocusarea&usertriedtopromoteittoFDM @sprint-11-US-203558 @komal @Allocation
+  @225577 @225573 @225591 @PMUser>>VerifyuserseethevalidationwhenbudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatfocusarea&usertriedtopromoteittoFDM @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: PM User>> Verify user see the validation when budgeted amount in any focus area is not equal to the Allocation amount of that focus area & user tried to promote it to FDM
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -3573,7 +3569,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "View" icon for "SME Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
-#    TODO- Application getting promoted to next step, confirm with Vaibhav
     And I softly see the following messages in the page details contains:
       | The Budgeted amount for each focus area must be equal to the Allocation amount for that focus area in the following Application IDs. Please send these applications back for revision |
     #225577
@@ -3629,7 +3624,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     Then I softly see that "Review Completed" has been added in flextable with Id "---applicationReview:-:appreviewsTableId---"
-#review completed
     When I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "All Formula Announcements"
@@ -3640,8 +3634,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
       | Title                           | Allocation Amount |
       | Automation Permanent Focus Area | 2000              |
-#allocation amt changed
-#    validation
     And I navigate to "Applications" tab
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
@@ -3651,7 +3643,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
-  #    TODO- Application getting promoted to next step, confirm with Vaibhav
     And I softly see the following messages in the page details contains:
       | The Budgeted amount for each focus area must be equal to the Allocation amount for that focus area in the following Application IDs. Please send these applications back for revision |
     #225591
@@ -3819,12 +3810,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---"
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Management Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
-    And I click on top right button "Promote to FDM" in flex table with id "---applicationReview:-:appTableId---"
-    And I softly see the following messages in the page details contains:
-      | The Budgeted amount for each focus area must be equal to the Allocation amount for that focus area in the following Application IDs. Please send these applications back for revision |
     #225595
-    And I refresh the page
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Request Negotiation" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:appTableId---"
     And I navigate to "Negotiations" sub tab
@@ -3876,8 +3862,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-#    Custom review
-  @TBEOnJenkins @225602 @EXEUser>>VerifyuserseethevalidationwhenthebudgetedAmountisnotequaltotheAllocationamountwhenusertriedtopromotetheapplicationtothenextstepforcustomizedreviewstep. @sprint-11-US-203558 @komal @Allocation
+  @225602 @EXEUser>>VerifyuserseethevalidationwhenthebudgetedAmountisnotequaltotheAllocationamountwhenusertriedtopromotetheapplicationtothenextstepforcustomizedreviewstep. @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: EXE User>>Verify user see the validation when the budgeted Amount is not equal to the Allocation amount when user tried to promote the application to the next step for customized review step.
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -3890,8 +3875,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I enter in modal value "Yes" into field "IsNegotiationsAllowed__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I get the "EGMS ID"
-    And I save the field labeled "EGMS ID" as "AnnEGMSID"
     And I save the field labeled "Announcement Name" as "Automation Runtime FDM Announcement"
     When I click on "Edit" in the page details
     And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
@@ -3920,12 +3903,12 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-    When I get the "EGMS ID"
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
+    And I pause execution for "7" seconds
     And I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "New" :
       | Step Order | Step Name       | Description |
@@ -3939,34 +3922,37 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Section Order | Section Header  |
       | 1             | Automation Test |
     And I close "Review Form" modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Add Organizations" in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---"
+    When I click "Associate" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:directedAddInviteApplicantTableId---"
+    When I close "Add Organizations" modal by clicking the top right x button
+    And I wait for "5" seconds
+    When I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
+      | Applicant Organization              | Allocated Amount |
+      | SAN DIEGO ELECTRICAL TRAINING TRUST | 1000             |
     And I click on "Submit For Approval" in the page details
+    And I pause execution for "5" seconds
+    Then I softly see field "Status" as "Submitted for Approval"
     And I "Approve" in the approval decision
+    And I pause execution for "5" seconds
+    Then I softly see field "Status" as "Approved"
     And I click on "Publish" in the page details
     Then I softly see status in Progress-bar is "Published" and is "green"
-
     When I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
       | Applicants                          | Allocated Amount |
       | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
-
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    When I initiated an application review for application "{SavedValue:Automation Runtime Formula Announcement}" on announcement "{SavedValue:Automation Runtime Formula Announcement}" with properties "default"
-
+    When I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Applications" content inside "Applications" subheader on left panel
-    When I click toggle button to select "Applications - All"
-    And I perform quick search for "<Application Name>"
-    When I click on "View" icon for "<Application Name>" inside table
-    And I get the "EGMS ID"
-    When I save the field labeled "EGMS ID" as "AppEGMSID"
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
+    When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     And I softly see the following messages in the page details contains:
       | The Budgeted amount must be equal to the Allocation amount for the following Application IDs. Please send these applications back for revision |
@@ -3975,7 +3961,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-  @TBEOnJenkins @225604 @PMUser>>Verifywhennegotiationisinitiatedfromthereviewsteps,itmustbemandatoryfortheusertoselectthe"Budget:BudgetDetails"picklistvaluewhenthebudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatFA @sprint-11-US-203558 @komal @Allocation
+  @225604 @PMUser>>Verifywhennegotiationisinitiatedfromthereviewsteps,itmustbemandatoryfortheusertoselectthe"Budget:BudgetDetails"picklistvaluewhenthebudgetedamountinanyfocusareaisnotequaltotheAllocationamountofthatFA @sprint-11-US-203558 @komal @Allocation
   Scenario Outline: PM User>> Verify when negotiation is initiated from the review steps, it must be mandatory for the user to select the "Budget: Budget Details " picklist value when the budgeted amount in any focus area is not equal to the Allocation amount of that FA (for Customized review Step)
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Announcements" tab
@@ -3988,8 +3974,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I enter in modal value "Yes" into field "IsNegotiationsAllowed__c"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
-    And I get the "EGMS ID"
-    And I save the field labeled "EGMS ID" as "AnnEGMSID"
     And I save the field labeled "Announcement Name" as "Automation Runtime FDM Announcement"
     When I click on "Edit" in the page details
     And I enter "Formula_Edition" values from "Announcement_Field_Values.xlsx"
@@ -4018,12 +4002,12 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I enter value "Justified" into field "Justification__c"
-    When I get the "EGMS ID"
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date | End Date |
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
+    And I pause execution for "7" seconds
     And I navigate to "Setup" sub tab
     When I enter the following values into flex table with id "---announcement:-:preScreenReviewFormTableId---" by clicking "New" :
       | Step Order | Step Name       | Description |
@@ -4037,39 +4021,44 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Section Order | Section Header  |
       | 1             | Automation Test |
     And I close "Review Form" modal by clicking the top right x button
+    When I navigate to "Overview" sub tab
+    And I click on top right button "Add Organization" in flex table with id "---announcement:-:addOrganizationByAppFocusAreaTableId---"
+    And I perform quick search for "SAN DIEGO ELECTRICAL TRAINING TRUST" in "---announcement:-:formulaAddInviteApplicantTableId---" panel
+    Then I softly see value "SAN DIEGO ELECTRICAL TRAINING TRUST" for title "Organization" inside table "---announcement:-:formulaAddInviteApplicantTableId---"
+    When I click "Add" after selection of "SAN DIEGO ELECTRICAL TRAINING TRUST" in the table "---announcement:-:formulaAddInviteApplicantTableId---"
+    When I close "Add Organizations" modal by clicking the top right x button
+    And I refresh the page
+    And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    And I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
+      | Title                           | Allocation Amount |
+      | Automation Permanent Focus Area | 1000              |
     And I click on "Submit For Approval" in the page details
+    And I pause execution for "5" seconds
+    Then I softly see field "Status" as "Submitted for Approval"
     And I "Approve" in the approval decision
+    And I pause execution for "5" seconds
+    Then I softly see field "Status" as "Approved"
     And I click on "Publish" in the page details
     Then I softly see status in Progress-bar is "Published" and is "green"
-
     When I navigate to "Overview" sub tab
     And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
     Then I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
       | Title                           | Allocation Amount |
       | Automation Permanent Focus Area | 2000              |
-
-
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    When I initiated an application review for application "{SavedValue:Automation Runtime Formula Announcement}" on announcement "{SavedValue:Automation Runtime Formula Announcement}" with properties "default"
-
+    When I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Applications" tab
-    And I navigate to "Applications" content inside "Applications" subheader on left panel
-    When I click toggle button to select "Applications - All"
-    And I perform quick search for "<Application Name>"
-    When I click on "View" icon for "<Application Name>" inside table
-    And I get the "EGMS ID"
-    When I save the field labeled "EGMS ID" as "AppEGMSID"
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
     And I navigate to "Related Log" sub tab
     When I click on "View" icon for "Pre-Screen Review" inside flex table with id "---applicationReview:-:reviewStepsTableId---"
-    When I check "<Application Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
+    When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     And I softly see the following messages in the page details contains:
-      | The Budgeted amount must be equal to the Allocation amount for the following Application IDs. Please send these applications back for revision |
+      | The Budgeted amount for each focus area must be equal to the Allocation amount for that focus area in the following Application IDs. Please send these applications back for revision. |
     And I refresh the page
     When I check "<Announcement Name>" boxes in flex table with id "---applicationReview:-:appTableId---"
     When I click on "Request Negotiation" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:appTableId---"
@@ -4085,9 +4074,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-
-########################
-#  Yopmail
   @222580 @formula-Verifywhenannouncementisinpublishedstatethenusershouldaddorganization&edittheAllocationamount&mailshouldbetriggeredforOrganizationwithupdatedallocationvalues(AllocationisByApplicant)formula-Verifywhenannouncementisinpublishedstatethenusershouldaddorganization&edittheAllocationamount&mailshouldbetriggeredforOrganizationwithupdatedallocationvalues(AllocationisByApplicant) @sprint-12-US-221459 @komal @Allocation
   Scenario: formula - Verify when announcement is in published state then user should add organization & edit the Allocation amount & mail should  be triggered for Organization with updated allocation values (Allocation is By Applicant)
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
@@ -4118,9 +4104,17 @@ Feature: Validate all scenarios in the Formula Announcement tab
       The EGMS Team
       """
 
-  @mk @229100 @VerifywhenAnnouncementispublishedbyuserthenemailshouldbetriggered(Forformulaannouncementswithallocation-level=ByApplicant) @sprint-12-US-221459 @komal @Allocation
+  @229100 @VerifywhenAnnouncementispublishedbyuserthenemailshouldbetriggered(Forformulaannouncementswithallocation-level=ByApplicant) @sprint-12-US-221459 @komal @Allocation
   Scenario: Verify when Announcement is published by  user then email should be triggered(For formula announcements with allocation-level = By Applicant)
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT"
+    When I login to "As a Grantor" app as "PM" user
+    When I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Formula Announcements"
+    When I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---announcement:-:formulaAnnouncementTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+    Then I see status in Progress-bar is "Published" and is "green"
+    And I save the field labeled "EGMS ID" as "AnnEgmsId"
     When I checkout to yopmail with mailid "automationspi30@yopmail.com"
     And I wait for "190" seconds
     Then I refresh the page
@@ -4143,8 +4137,8 @@ Feature: Validate all scenarios in the Formula Announcement tab
       The EGMS Team.
       """
 
-  @TBEOnJenkins @222620 @formula-Verifywhenannouncementisinpublishedstatethenusershouldaddorganization&edittheAllocationamount&mailshouldbetriggeredforOrganizationwithupdatedallocationvalues(AllocationisByApplicant)formula-Verifywhenannouncementisinpublishedstatethenusershouldaddorganization&edittheAllocationamount&mailshouldbetriggeredforOrganizationwithupdatedallocationvalues(AllocationisByApplicant) @sprint-12-US-221459 @komal @Allocation
-  Scenario: formula - Verify when announcement is in published state then user should add organization & edit the Allocation amount & mail should  be triggered for Organization with updated allocation values (Allocation is By Applicant)
+  @222620 @formula-Verifywhenannouncementisinpublishedstatethenusershouldaddorganization&edittheAllocationamount&mailshouldbetriggeredforOrganizationwithupdatedallocationvalues(AllocationisByApplicant)formula-Verifywhenannouncementisinpublishedstatethenusershouldaddorganization&edittheAllocationamount&mailshouldbetriggeredforOrganizationwithupdatedallocationvalues(AllocationisByApplicant) @sprint-12-US-221459 @komal @Allocation
+  Scenario: Verify when announcement is in published state then user should add organization & edit the Allocation amount & mail should  be triggered for Organization with updated allocation values (Allocation is By Applicant & focus Area)
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     When I login to "As a Grantor" app as "PM" user
     When I navigate to "Announcements" tab
@@ -4155,9 +4149,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I see status in Progress-bar is "Published" and is "green"
     And I save the field labeled "EGMS ID" as "AnnEgmsId"
     When I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
-      | Applicants                          | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
+    And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Then I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
+      | Title                           | Allocation Amount |
+      | Automation Permanent Focus Area | 2000              |
     And I checkout to yopmail with mailid "automationspi30@yopmail.com"
     And I wait for "190" seconds
     Then I refresh the page
@@ -4180,7 +4175,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       The EGMS Team.
       """
 
-  @TBEOnJenkins @222648 @VerifywhenAllocationamountisupdatedforAllocationinApplicantsthenemailshouldbetriggered(AnnouncementisinPublishedstate)(Forformulaannouncementswithallocation-level=ByApplicant&FocusArea) @sprint-12-US-221459 @komal @Allocation
+  @222648 @VerifywhenAllocationamountisupdatedforAllocationinApplicantsthenemailshouldbetriggered(AnnouncementisinPublishedstate)(Forformulaannouncementswithallocation-level=ByApplicant&FocusArea) @sprint-12-US-221459 @komal @Allocation
   Scenario:  Verify when Allocation amount is updated for Allocation in Applicants then email should be triggered (Announcement is in Published state)(For formula announcements with allocation-level = By Applicant & Focus Area)
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     Given I am on "SUBPORTAL" portal
@@ -4221,7 +4216,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I save the field labeled "EGMS ID" as "AnnEgmsId"
     When I click on "Submit Application" in the page details
     Then I softly see field "Status" as "Submitted to Grantor"
-    When I login to "As a Grantor" app as "PM" user
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
     And I click toggle button to select "All Formula Announcements"
@@ -4230,9 +4225,10 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I see status in Progress-bar is "Published" and is "green"
     And I save the field labeled "EGMS ID" as "AnnEgmsId"
     When I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "---announcement:-:formulaInvitedApplicatsTableId---" by clicking "Edit" :
-      | Applicants                          | Allocated Amount |
-      | SAN DIEGO ELECTRICAL TRAINING TRUST | 2000             |
+    And I expand nested table containing column value "SAN DIEGO ELECTRICAL TRAINING TRUST"
+    Then I edit the following rows inline in flex table with id "---announcement:-:formulaFocusAreaInvitedTableId---" by clicking "Edit" :
+      | Title                           | Allocation Amount |
+      | Automation Permanent Focus Area | 2000              |
     And I checkout to yopmail with mailid "automationspi30@yopmail.com"
     And I wait for "190" seconds
     Then I refresh the page
@@ -4255,9 +4251,17 @@ Feature: Validate all scenarios in the Formula Announcement tab
       The EGMS Team.
       """
 
-  @TBEOnJenkins @229102 @VerifywhenAnnouncementispublishedbyuserthenemailshouldbetriggered(Forformulaannouncementswithallocation-level=ByApplicant&FocusArea=yes&withFAisNO) @sprint-12-US-221459 @komal @Allocation
-  Scenario: Verify when Announcement is published by  user then email should be triggered(For formula announcements with allocation-level = By Applicant & Focus Area=yes & with FA is NO)
-    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NoFA"
+  @229102 @VerifywhenAnnouncementispublishedbyuserthenemailshouldbetriggered(Forformulaannouncementswithallocation-level=ByApplicant&FocusArea=yes) @sprint-12-US-221459 @komal @Allocation
+  Scenario: Verify when Announcement is published by  user then email should be triggered(For formula announcements with allocation-level = By Applicant & Focus Area=yes)
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
+    When I login to "As a Grantor" app as "PM" user
+    When I navigate to "Announcements" tab
+    When I navigate to "Formula" content inside "Announcements" subheader on left panel
+    And I click toggle button to select "All Formula Announcements"
+    When I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---announcement:-:formulaAnnouncementTableId---" panel
+    When I click on "View" icon for "{SavedValue:Automation Runtime Formula Announcement}" inside flex table with id "---announcement:-:formulaAnnouncementTableId---" without waiting for record
+    Then I see status in Progress-bar is "Published" and is "green"
+    And I save the field labeled "EGMS ID" as "AnnEgmsId"
     When I checkout to yopmail with mailid "automationspi30@yopmail.com"
     And I wait for "190" seconds
     Then I refresh the page

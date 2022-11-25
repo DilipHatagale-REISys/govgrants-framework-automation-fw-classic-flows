@@ -332,8 +332,6 @@ public class GrantorPayloads {
                 return byApplicant(json);
             case "BY_APPLICANT_FOCUS_AREA":
                 return byApplicantFocusArea(json);
-            case "BY_APPLICANT_FOCUS_AREA_NoFA":
-                return byApplicantFocusAreaWithNoFocusArea(json);
             case "GOALS_YES":
                 return goalsYesForAnnouncement(json);
             case "PRE_APP_GOALS_YES":
@@ -402,16 +400,6 @@ public class GrantorPayloads {
         JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
         JsonArray pre = new JsonArray();
         jsonObject.addProperty("Allocationlevel","By Applicant and Focus Area");
-        pre.add(jsonObject);
-        json.add("Announcement",pre);
-        return json;
-    }
-
-    private JsonObject byApplicantFocusAreaWithNoFocusArea(JsonObject json) {
-        JsonObject jsonObject = json.getAsJsonArray("Announcement").get(0).getAsJsonObject();
-        JsonArray pre = new JsonArray();
-        jsonObject.addProperty("Allocationlevel","By Applicant and Focus Area");
-        jsonObject.addProperty("FocusAreaRequired","No");
         pre.add(jsonObject);
         json.add("Announcement",pre);
         return json;
