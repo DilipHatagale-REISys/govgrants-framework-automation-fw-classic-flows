@@ -2944,3 +2944,143 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Submit to Grantor" in the page details
     And I softly see the following messages in the page details contains:
       | Budget Tab - Budgeted Amount must be greater than or equal to the Subaward Floor Amount. Adjust the Budgeted Amount in the Budget period section on the Budget tab. |
+
+  @227868 @227871 @VerifySPIUserresubmittheapplicationafternegotiation(FromFDM),checkwhentheBudgetedamountmustbeequaltotheAllocationAmount @sprint-13-US-224692 @komal @Allocation
+  Scenario Outline:  Verify SPI User  resubmit the application after negotiation (From FDM), check when the Budgeted amount must be equal to the Allocation Amount
+  |  Verify SPI User  resubmit the application after negotiation (From FDM), check when the Budgeted amount must be equal to the Allocation Amount |
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "<AllocationLevel>"
+    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
+    And I created approved FDM on application "<Announcement Name>"
+    Given I login to "As a Grantor" app as "PM" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "<Announcement Name>" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "ApplicationSectionsForRevision__c"
+    When  I enter "Negotiation_Edit_Budget" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
+    When I enter value "Automation Test" into field "fieldApplicantResponse__c"
+    When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 2000   | 100        | 100            | 100            |
+    And I wait for "5" seconds
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Budget Tab: The Budgeted Amount must be equal to the Allocation Amount. |
+
+    Examples:
+      | Announcement Name                                    | AllocationLevel            |
+      | {SavedValue:Automation Runtime Formula Announcement} | BY_APPLICANT               |
+      | {SavedValue:Automation Runtime Formula Announcement} | BY_APPLICANT_FOCUS_AREA_NO |
+
+  @227872 @VerifywhenSPIuserresubmittheapplicationafternegotiation(fromFDM)checkFocusarea'sbudgetedtotal,mustbeequaltoAllocationamountforthatfocusareainbudgetsummarysection @sprint-13-US-224692 @komal @Allocation
+  Scenario Outline: Verify when SPI user  resubmit the application after negotiation(from FDM) check Focus area's budgeted total, must be equal to Allocation amount for that focus area in budget summary section
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA-Automation EXE user"
+    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
+    And I created approved FDM on application "<Announcement Name>"
+    Given I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "<Announcement Name>" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "ApplicationSectionsForRevision__c"
+    When  I enter "Negotiation_Edit_Budget" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
+    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
+    When I enter value "Automation Test" into field "fieldApplicantResponse__c"
+    When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 2000   | 100        | 100            | 100            |
+    And I wait for "5" seconds
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Budget Tab- The Budgeted Amount is not matching the Allocation Amount for following Focus Areas {Automation Permanent Focus Area} |
+    Examples:
+      | Announcement Name                                    |
+      | {SavedValue:Automation Runtime Formula Announcement} |
+
+  @227874 @VerifywhenINDuserresubmittheapplicationafternegotiation(fromApplication)checkFocusarea'sbudgetedtotal,mustbeequaltoAllocationamountforthatfocusareainbudgetsummarysection&usershouldabletocreatethesubaward @sprint-13-US-224692 @komal @Allocation
+  Scenario Outline:  Verify when IND user  resubmit the application after negotiation(from Application) check Focus area's budgeted total, must be equal to Allocation amount for that focus area in budget summary section  & user should able to create the subaward
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA-Automation EXE user"
+    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation IND user"
+    And I created approved FDM on application "<Announcement Name>"
+    Given I login to "As a Grantor" app as "EXE" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "<Announcement Name>" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    When I save the field labeled "EGMS ID" as "EGMSID"
+    And I navigate to "Negotiations" sub tab
+    When I clear the value from field "ApplicationSectionsForRevision__c"
+    When  I enter "Negotiation_Edit_Budget" values from "Negotiations_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
+    When I re-login to "Grants Portal" app as "IND" user on "SUBPORTAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
+    When I enter value "Automation Test" into field "fieldApplicantResponse__c"
+    When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
+      | Construction  | 2000   | 100        | 100            | 100            |
+    And I wait for "5" seconds
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see the following messages in the page details contains:
+      | Budget Tab- The Budgeted Amount is not matching the Allocation Amount for following Focus Areas {Automation Permanent Focus Area} |
+    And I refresh the page
+    Given I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
+      | Category Name | Budget |
+      | Construction  | 1000   |
+    And I wait for "5" seconds
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Negotiation Submitted"
+    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:internalHomePendingTableId---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:internalHomePendingTableId---"
+    When I click on "Complete Negotiation" in the page details
+    And I navigate to "Negotiations" sub tab
+    Then I softly see field "Negotiation Request Status" as "Complete" in "Negotiation Request Details" pageblock
+    And I click on "Create Subaward" in the page details
+    Then I softly see status in Progress-bar is "Created" and is "Green"
+    Then I see the header is "Subaward" in the page details
+
+    Examples:
+      | Announcement Name                                    |
+      | {SavedValue:Automation Runtime Formula Announcement} |

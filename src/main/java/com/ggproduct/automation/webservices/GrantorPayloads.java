@@ -15,8 +15,16 @@ public class GrantorPayloads {
 
     public JsonObject applicationReview(String applicationName, String announcementName, String filter){
         JsonObject defaultJson = defaultPayloadApplicationReview(applicationName, announcementName);
-        filter = filter.toUpperCase();
 
+        String user = "";
+
+        if (filter.toLowerCase().contains("user")) {
+            user = filter.split("-")[1].split("user")[0].trim();
+            updateAppOwnerAndContact(defaultJson, user);
+            filter = filter.split("-")[0];
+        } else {
+            filter = filter.toUpperCase();
+        }
         switch (filter){
             case "APPLICATION":
                 break;
@@ -30,6 +38,21 @@ public class GrantorPayloads {
                 return defaultJson;
         }
         return defaultJson;
+    }
+
+
+    private void updateAppOwnerAndContact(JsonObject json, String user) {
+        JsonObject jsonObject = json.getAsJsonArray("Application").get(0).getAsJsonObject();
+        JsonArray aappOwner = new JsonArray();
+        jsonObject.addProperty("OwnerId", ProjectWebServices.getIdOf("User",user));
+        aappOwner.add(jsonObject);
+        json.add("Application",aappOwner);
+
+        JsonObject jsonObject1 = json.getAsJsonArray("KeyContact").get(0).getAsJsonObject();
+        JsonArray keyContact = new JsonArray();
+        jsonObject1.addProperty("Contact",ProjectWebServices.getIdOf("Contact",user)); // Automation SPI id
+        keyContact.add(jsonObject1);
+        json.add("KeyContact",keyContact);
     }
 
     public JsonObject defaultPayloadApplicationReview(String applicationName, String announcementName){
