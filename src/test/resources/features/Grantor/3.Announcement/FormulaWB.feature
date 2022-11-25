@@ -299,21 +299,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Remove" icon for "Automation Permanent Focus Area2" inside table with table id "---announcement:-:AnnouncementServiceArea1TableId---" without processing
     Then I see confirmation box with body "This Focus area will also get removed from the Applicants table, Are you sure you want to proceed?" is displayed
 
-  @204414 @ValidatewhenAnnouncementispublishedthenemailshouldgettriggered @sprint-11-US-201040 @TBEAfterEmailTemplateConfirmation @komal @Allocation
-  Scenario: Validate when Announcement is published then email should get triggered
-    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
-    #204414
-    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
-    Then I refresh the page
-    And I see the mail subject is as follows :
-      """
-#      TODO: Mail subject to be confirmed
-      """
-    Then I see the mail text is as follows :
-      """
-#      TODO: Mail body to be confirmed
-      """
-
   @219086 @ValidateAdminusershouldabletoseethetwocolumnsinpublishedstateforFormulaAnnouncementwhenAllocationisbyApplicants @sprint-8-US-208408 @vaibhav @Allocation
   Scenario: Validate Admin user should able to see the two columns in published state for Formula Announcement when Allocation is by Applicants.
     When I login to "As a Grantor" app as "ADMIN" user
@@ -4252,7 +4237,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
       """
 
   @229102 @VerifywhenAnnouncementispublishedbyuserthenemailshouldbetriggered(Forformulaannouncementswithallocation-level=ByApplicant&FocusArea=yes) @sprint-12-US-221459 @komal @Allocation
+  @204414 @ValidatewhenAnnouncementispublishedthenemailshouldgettriggered @sprint-11-US-201040 @TBEAfterEmailTemplateConfirmation @komal @Allocation
   Scenario: Verify when Announcement is published by  user then email should be triggered(For formula announcements with allocation-level = By Applicant & Focus Area=yes)
+  | Validate when Announcement is published then email should get triggered |
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     When I login to "As a Grantor" app as "PM" user
     When I navigate to "Announcements" tab
