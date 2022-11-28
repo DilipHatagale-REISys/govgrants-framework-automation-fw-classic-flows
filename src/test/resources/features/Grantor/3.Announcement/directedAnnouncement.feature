@@ -1,4 +1,4 @@
-@directedAnnouncements @grantor-regression @grantor-parallel-regression @announcement @regression @TBEAllocation
+@directedAnnouncements @grantor-regression @grantor-parallel-regression @announcement @regression
 Feature: Validate all scenarios in the directed Announcement tab
 
   Background: Create Announcement
@@ -127,8 +127,6 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly see field "Comments" as "Passed"
     Then I softly see field "Reviewed by" as "{SavedValue:FO Username}"
     When I click on submit review
-    Then I softly see the following messages in the page details :
-      | Review has been submitted successfully. |
     Then I softly see value "Submitted" for title "Status" inside table "---announcement:-:flexGridApproverRolesTableId---"
     When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
@@ -351,7 +349,7 @@ Feature: Validate all scenarios in the directed Announcement tab
     And I "Send to Owner" in the approval decision
     Then I softly see status in Progress-bar is "Created" and is "green"
     When I navigate to "History" sub tab
-    Then I softly see that "Announcement" is in "Created" status
+    Then I softly see that "Announcement" is in "Draft" status
     And I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel

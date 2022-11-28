@@ -8059,6 +8059,7 @@ Feature: Validate all scenarios in the Site Visit and Desk Review without backgr
     When I enter the following values into flex table with id "---sitevisits:-:reviewersFlexTableId---" by clicking "New" :
       | Reviewer Name            | Responsibility   | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Program Reviewer | Review Financial details | 10       | Yes                  |
+    And I navigate to "Responsibilities" sub tab
     And I click on "Send for Review" icon for "{SavedValue:EXE Username}" inside table
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal

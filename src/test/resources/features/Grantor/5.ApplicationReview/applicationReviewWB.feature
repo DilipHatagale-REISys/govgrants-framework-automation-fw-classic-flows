@@ -6843,7 +6843,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I check "{SavedValue:Automation Runtime Announcement Application Review}" boxes in flex table with id "---applicationReview:-:appTableId---"
     And I click on top right button "Promote to Next Step" in flex table with id "---applicationReview:-:appTableId---"
     Then I softly see the following messages in the page details contains:
-      | Selected application cannot be promotion |
+      | No selected applications are available for promotion. |
 
   @134195 @ValidateuserisnotabletorequestNegotiationagainapplicationfromthereviewstepwhereNegotiationisalreadyrequested @sprint-1 @vaibhav
   Scenario: user is not able to request Negotiation again on an application (from the review step) where Negotiation is already requested

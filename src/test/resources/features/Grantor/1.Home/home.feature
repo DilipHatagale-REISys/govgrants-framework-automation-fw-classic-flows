@@ -689,8 +689,8 @@ Feature: Validate all scenarios in the home tab
     When I click on "View" icon for "Test Automation Organization" inside flex table with id "---home:-:internalOrganizationId---" with wait for record
     And I navigate to "Related Log" sub tab
     Then I can see page block "Internal Programs"
-    Then I can see page block "Announcements"
-    Then I can see page block "Applications"
+    Then I can see page block "Active Announcements (Grantor) "
+    Then I can see page block "Active Applications "
     Then I can see page block "Active Grants"
     Examples:
       | User  |
