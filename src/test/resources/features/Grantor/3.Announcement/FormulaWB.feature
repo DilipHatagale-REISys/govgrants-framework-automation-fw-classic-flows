@@ -4227,7 +4227,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-  @TBE-blocker @227802 @227797 @VerifyEXEUserseethevalue"BudgetTab:FocusArea"replacedwith"BudgetTab:BudgetSummarybyFocusArea"intheApplicationsectionforNegotiation. @sprint-13-US-204132 @komal @Allocation @buglogged-277360
+  @mk @TBE-blocker @227802 @227797 @VerifyEXEUserseethevalue"BudgetTab:FocusArea"replacedwith"BudgetTab:BudgetSummarybyFocusArea"intheApplicationsectionforNegotiation. @sprint-13-US-204132 @komal @Allocation @buglogged-277360
   Scenario Outline: Verify EXE  User see the value "Budget Tab: Focus Area" replaced with "Budget Tab: Budget Summary by Focus Area" in the Application section for Negotiation.
   | Verify EXE user  should see  when negotiation is initiated during the Application review  it should be  mandatory for to select the "Budget: Budget Details " picklist value in Application Sections for Negotiation section when the budgeted Amount is not equal to the Allocation Amount |
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT-Automation EXE user"
@@ -4642,7 +4642,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Value                       | Field                 |
       | AuGr                        | GrantCode__c          |
       | Automation Test Description | fieldJustification__c |
-    And I click on "Save"
+    And I click on "Save" in the page details
     And I edit the following rows inline in flex table with id "flexGridFundingDecisionMemoApplications" by clicking "Edit" :
       | Application Title   | Recommend for Funding | Comments    |
       | <Announcement Name> | Yes                   | Recommended |
@@ -4657,7 +4657,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I "Approve" in the approval decision
     And I wait for "3" seconds
     Then I see status in Progress-bar is "Approved" and is "green"
-
     And I navigate to "Funding Decision Memo" sub tab
     And I click on "Create Subaward" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
     #227740
@@ -5004,7 +5003,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | SPI3 |
 
-
+#TODO: Below TCs are pending to execute due to bug-276940
   @TBE-AfterBugFix276940 @225141 @VerifyIfBudgetedamountmustbeequaltotheAllocationAmountWhen<IND>resubmittheapplicationafternegotiationthenitwillnotthrougherrormessage @sprint-11-US-204300 @komal @Allocation
   Scenario Outline: Verify If Budgeted amount must be equal to the Allocation Amount  When <IND> resubmit the application after negotiation then it will not through error message
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
@@ -5318,7 +5317,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | IND  |
 
-  @TBE-AfterBugFix276940 @226387 @Verifythat<IND>userwillabletochangethevalueinbudget:budgetdetailswhileresubmittingthenegotiationstograntorinSMEreviewwhenallocationamountinannouncementischangedischanged @sprint-11-US-204300 @komal @Allocation
+  @mk @TBE-AfterBugFix276940 @226387 @Verifythat<IND>userwillabletochangethevalueinbudget:budgetdetailswhileresubmittingthenegotiationstograntorinSMEreviewwhenallocationamountinannouncementischangedischanged @sprint-11-US-204300 @komal @Allocation
   Scenario Outline: Verify that <IND> user will able to change the value in budget:budget details while resubmitting the negotiations to grantor in SME review when allocation amount in announcement is changed is changed
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -5386,4 +5385,3 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Examples:
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | IND  |
-
