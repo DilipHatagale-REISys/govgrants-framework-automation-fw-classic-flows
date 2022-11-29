@@ -1,4 +1,4 @@
-@riskAssessment @awardLevelRiskAssessment @grantor-regression @grantor-parallel-regression @regression
+@riskAssessment @awardLevelRiskAssessment @grantor-regression @grantor-parallel-regression @regression @TBEAllocation
 Feature: Validate all scenarios in the Risk Assessment
 
   @58164 @58165 @58166 @75867 @65552 @creationOfRiskAssessmentddingApproversSubmitForApproval @deepika @smoke
@@ -5245,7 +5245,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on submit review
     And I logout
     And I checkout to yopmail with mailid "automationpo1@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "180" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """

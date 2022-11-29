@@ -388,9 +388,10 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I close modal by clicking the top right x button
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
-      | Setup Tab - SME Review - Fiscal Review: A score cannot be associated to a question in the Program Income section because it does not have a weight. |
-      | Setup Tab - SME Review - Fiscal Review: A score cannot be associated to a question in the Match section because it does not have a weight.          |
+      | Setup Tab - SME Review: The total Review Form weight must equal 100% for a weighted step. It is currently 60.00%.                                   |
       | Setup Tab - SME Review - Fiscal Review: A score cannot be associated to a question in the Budget section because it does not have a weight.         |
+      | Setup Tab - SME Review - Fiscal Review: A score cannot be associated to a question in the Match section because it does not have a weight.          |
+      | Setup Tab - SME Review - Fiscal Review: A score cannot be associated to a question in the Program Income section because it does not have a weight. |
       | Setup Tab - SME Review - Fiscal Review: A weighted form must contain weighted sections.                                                             |
     And I click on "Review Form" icon for "Fiscal Review" inside flex table with id "---announcement:-:AnnouncementReviewPanel---" without waiting for record
     And I edit the following rows inline in flex table with id "---announcement:-:reviewPanelTableId---" by clicking "Edit" :
@@ -402,6 +403,9 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see the following messages in the page details :
       | Saved Successfully! |
     And I close modal by clicking the top right x button
+    And I edit the following rows inline in flex table with id "---announcement:-:AnnouncementReviewPanel---" by clicking "Edit" :
+      | Form Name     | Form Weight (%) |
+      | Fiscal Review | 100             |
     And I click on top right button "Validate" in flex table with id "---announcement:-:AnnouncementReviewPanel---"
     Then I softly see the following messages in the page details :
       | There are no errors with the review step templates. |
@@ -1510,7 +1514,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     #194690
     And I click on top right button "Transfer Ownership" in flex table with id "---announcement:-:annAdminOwnerReplaceTableId---"
     Then I softly see the following messages in the page details contains:
-      | Please select atleast one record |
+      | You need to select at least one record |
     #194685
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:annAdminOwnerReplaceTableId---" panel
     When I check "{SavedValue:AnnEGMSID}" boxes in flex table with id "---announcement:-:annAdminOwnerReplaceTableId---"
@@ -4000,7 +4004,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name           | Announcement |
       | Automation EXE | Step 1       |
-    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
       | Name          | Announcement | Amendment Request | Post Award Reporting | Payment Request | Monitoring | Closeout |
       | Automation PM | Step 2       | Step 1            | Step 1               | Step 1          | Step 1     | Step 1   |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
@@ -4052,7 +4056,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly see value "{SavedValue:AnnEGMSID}" for title "EGMS ID" inside table "---announcement:-:pendingTaskTableId---"
     When I click on "Start" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
-    Then I softly see field "Status" as "Approved"
+    Then I softly see field "Status" as "Submitted for Approval"
 
   @224225 @ValidatePMuserontaskreassignmentpageexistingmessageshouldhaveappropriateinformationregardingQueueBasedTasks @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate PM user verify on task reassignment page existing message should have appropriate information regarding Queue Based Tasks
@@ -4199,7 +4203,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly do not see value "{SavedValue:AnnEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "50" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -4278,7 +4282,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:annAdminTargetOwnerReplaceTableId---" panel
     Then I see value "{SavedValue:AnnEGMSID}" for title "Announcement ID" inside table "---announcement:-:annAdminTargetOwnerReplaceTableId---"
     And I checkout to yopmail with mailid "govgrantsautomation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "50" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -4305,7 +4309,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
      #194721
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
-    And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -5139,7 +5142,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I perform quick search for "{SavedValue:AnnEGMSID3}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "{SavedValue:AnnEGMSID3}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "120" seconds
+    And I pause execution for "50" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -5173,7 +5176,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -5206,7 +5208,6 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
       """
     Given I am on "INTERNAL" portal
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -5309,7 +5310,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---program:-:grantorTaskReassignTableId---" panel
     Then I softly see value "{SavedValue:AnnEGMSID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     And I checkout to yopmail with mailid "pm.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "50" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -5422,7 +5423,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     And I click on submit review
     Then I softly see that "Submitted" has been added in flextable with Id "---announcement:-:reviewersTableId---"
     And I checkout to yopmail with mailid "exe1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "50" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -6700,7 +6701,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name          | Announcement |
       | Automation FO | Step 1       |
-    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
       | Name          | Announcement | Amendment Request | Payment Request |
       | Automation PM | Step 2       | Step 2            | Step 3          |
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
@@ -6765,7 +6766,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name           | Announcement | Amendment Request |
       | Automation PM1 | Step 2       | Step 1            |
-    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
       | Name          | Announcement |
       | Automation PM | Step 3       |
     And I click on "Edit" in the page details
@@ -6835,7 +6836,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name           | Announcement |
       | Automation EXE | Step 3       |
-    When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
+    And I edit the following rows inline in flex table with id "---announcement:-:approversTableId---" by clicking "Edit" :
       | Name          | Announcement |
       | Automation PM | Step 4       |
     And I click on "Edit" in the page details
@@ -6949,7 +6950,7 @@ Feature: Validate all common scenarios in the  Announcement tab (Announcement wi
     Then I softly do not see value "{SavedValue:AnnEGMSID5}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     And I logout
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
-    And I pause execution for "120" seconds
+    And I pause execution for "50" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """

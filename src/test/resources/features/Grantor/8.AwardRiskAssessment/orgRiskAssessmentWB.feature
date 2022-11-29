@@ -1,4 +1,4 @@
-@riskAssessment @orgAwardLevelRiskAssessmentWB @regression
+@riskAssessment @orgAwardLevelRiskAssessmentWB @regression @TBEAllocation
 Feature: Validate all scenarios when the Organizational Risk Assessment is in expired status
 
   @64384 @expiredOrgRiskassementValidation @smoke

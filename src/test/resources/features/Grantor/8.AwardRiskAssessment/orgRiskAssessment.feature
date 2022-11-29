@@ -1,4 +1,4 @@
-@riskAssessment @orgAwardLevelRiskAssessment @regression @TBEAllocation
+@riskAssessment @orgAwardLevelRiskAssessment @regression
 Feature: Validate all scenarios in the Organizational Risk Assessment
 
   Background: To create a Organizational Risk Assessment
@@ -409,7 +409,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Revise Risk Assessment" in "---orgRiskAssessment:-:pendingTaskTableId---" panel
     Then I softly see values "Automation Permanent Organization for Risk Assessment" and "Revise Risk Assessment" inside table
-    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
+    And I checkout to yopmail with mailid "automationspi1@yopmail.com"
     And I pause execution for "40" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
@@ -918,8 +918,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     And I enter value "Checked" into field "Signature__c"
     When I click on "Save and Continue" in the page details
     And I click on "Save" in the page details
-    Given I delete the record "{SavedValue:Automation Runtime Execution Award}" from the object "Award"
-    And I delete the record "{SavedValue:Automation Runtime Execution Award}" from the object "Grant"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -946,8 +944,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
       | Funding Account              | Encumbrance |
       | {SavedValue:fundingAccount1} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
-      | Construction    | 1000           | 100        | 100            |
+      | Budget Category | Award Amount | Cash Match | Non-Cash Match |
+      | Construction    | 1000         | 100        | 100            |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                  | Target |
@@ -1254,8 +1252,6 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
 
   @63233 @verifyRiskAssessmemtException @deepika @smoke
   Scenario Outline: Validate system generates generates an exception at award activation if Organizational Risk Assessment is Created and not Active
-    Given I delete the record "{SavedValue:Automation Runtime Execution Award}" from the object "Award"
-    And I delete the record "{SavedValue:Automation Runtime Execution Award}" from the object "Grant"
     When I click on "Start" icon for "Automation Permanent Organization for Risk Assessment" inside flex table with id "---orgRiskAssessment:-:pendingTaskTableId---" without waiting for record
     And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
     When I click on "Save and Continue" in the page details
@@ -1289,8 +1285,8 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
-      | Construction    | 1000           | 100        | 100            |
+      | Budget Category | Award Amount | Cash Match | Non-Cash Match |
+      | Construction    | 1000         | 100        | 100            |
     When I navigate to "Performance" sub tab
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
       | EGMS ID                  | Target |
@@ -1476,8 +1472,10 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Created" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
-    Then I softly see value " " for title "Effective Date" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
-    Then I softly see value " " for title "Expiration Date" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    When I save the value from row "1" for column name "Effective From" as "EffectiveDate" from flex table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    When I save the value from row "1" for column name "Effective Until" as "ExpirationDate" from flex table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I softly see value "{SavedValue:EffectiveDate}" for title "Effective From" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I softly see value "{SavedValue:ExpirationDate}" for title "Effective Until" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @63983 @acknowledgementOfRiskAssessment @deepika
   Scenario:  Validate that no records has been added to the Org Risk Assessment table when record is cancelled
@@ -1848,7 +1846,7 @@ Feature: Validate all scenarios in the Organizational Risk Assessment
     When I navigate to "Organization Profile" content inside "Organization" subheader on left panel
     And I navigate to "Risk Assessment" sub tab
     When I perform quick search for "Active" in "---orgRiskAssessment:-:orgRiskAssessmentTableId---" panel
-   Then I softly see value "Active" for title "Status" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
+    Then I softly see value "Active" for title "Status" inside table "---orgRiskAssessment:-:orgRiskAssessmentTableId---"
 
   @64612 @0rgRiskAssessmentIsnOtActiveIFQuestionsAreNotFilled @deepika
   Scenario: Validate the Risk Assessment should not become active and also cannot be in Created Staus when prompt user to doesn't fill in all the questions.

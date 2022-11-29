@@ -260,10 +260,11 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Financial Tab - Enter Subaward Ceiling amount before submitting this Announcement.                                    |
       | Financial Tab - Enter the Estimated Funding Amount.                                                                   |
       | Financial Tab - Enter at least one Budget Period.                                                                     |
-      | Overview Tab - The response deadline cannot be earlier than the question deadline.                                    |
-      | Overview Tab - Enter the Description.                                                                                 |
+      | Overview Tab - The question submission deadline must be before the Application due date.                              |
+      | Overview Tab - The answer submission deadline must be before the Application due date.                                |
       | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates. |
       | Responsibilities - At least one approver is required                                                                  |
+      | Overview Tab - Enter the Description.                                                                                 |
     And I click on "Edit" in the page details
     And I enter value "20" into field "fieldApplicationDueDate__c"
     And I enter value "15" into field "fieldQSubmissionDeadline__c"
@@ -288,9 +289,9 @@ Feature: Validate all scenarios in the Competitive Announcement tab
   To Verify that user can Edit business forms while creating Announcement
     When I navigate to "Announcements" tab
     And I click toggle button to select "Closed and Archived Announcements"
-    And I perform quick search for "Automation Competitive Past Announcement" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
+    And I perform quick search for "Closed" in "---announcement:-:ActiveFundingOpportunitiesAllTableId---" panel
     Then I softly see value "Closed" for title "Status" inside table "---announcement:-:ActiveFundingOpportunitiesAllTableId---"
-    When I click on "View" icon for "Automation Competitive Past Announcement" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
+    When I click on "View" icon for "Closed" inside flex table with id "---announcement:-:ActiveFundingOpportunitiesAllTableId---" without waiting for record
     Then I softly see status in Progress-bar is "Closed" and is "green"
     When I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -413,10 +414,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter advance filter values inside id "advfAnnouncementKeyOutcomes"
       | Title | Contains | Automation Permanent KPI |
     Then I softly see value "Automation Permanent KPI" for title "Title" inside table "---announcement:-:kpiflextableid---"
-    When I save the value from row "1" for column name "EGMS ID" as "KPI" from flex table "---announcement:-:kpiflextableid---"
-    Then I softly see value "{SavedValue:KPI}" for title "EGMS ID" inside table "---announcement:-:kpiflextableid---"
     And I refresh the page
-    When I click on "View" icon for "Automation Permanent KPI" inside flex table with id "---announcement:-:kpiflextableid---" without waiting for record
+    When I click on "View" icon for "Automation Permanent KPI" inside flex table with id "---announcement:-:kpiflextableid---"
     Then I see the header is "Key Performance Indicator" in the page details
     Then I see the sub-header is "Automation Permanent KPI" in the page details
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -559,10 +558,10 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on top right button "New" in flex table with id "---announcement:-:contactTableId---"
     And I generate the random EmailID and save as "uniqueEmailID1"
     And I enter values into fields
-      | Value                      | Field          |
-      | ab                         | fieldTitle     |
-      | SecondTest                 | fieldFirstName |
-      | SecondLast                 | fieldLastName  |
+      | Value                       | Field          |
+      | ab                          | fieldTitle     |
+      | SecondTest                  | fieldFirstName |
+      | SecondLast                  | fieldLastName  |
       | {SavedValue:uniqueEmailID1} | fieldEmail     |
     When I enter value "ab" into field "fieldTitle"
     When I enter value "SecondTest" into field "fieldFirstName"
@@ -573,6 +572,8 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter advance filter values inside id "advfAnnouncementContacts"
       | Title | Contains | ab |
     Then I softly see value "ab" for title "Title" inside table "---announcement:-:contactTableId---"
+    And I refresh the page
+    And I click on advance filter "#advfAnnouncementContacts" of table id "---announcement:-:contactTableId---"
     When I enter advance filter values inside id "advfAnnouncementContacts"
       | Title | Contains | who am i |
     Then I softly see "No Records Found" inside flex table with id "---announcement:-:contactTableId---"
@@ -600,13 +601,13 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I enter the following values into flex table with id "---announcement:-:approversTableId---" by clicking "New" :
       | Name                     | Announcement |
       | {SavedValue:FO Username} | Step 3       |
-    When I click on advance filter "#advfAnnouncementBudgetCategory" of table id "---announcement:-:approversTableId---"
-    When I enter advance filter values inside id "advfAnnouncementBudgetCategory"
-      | Responsibility | equals to | Program Approver |
-    Then I softly see value "Program Approver" for title "Responsibility" inside table "---announcement:-:approversTableId---"
     When I enter the following values into flex table with id "---announcement:-:ApproverRolesGrantorgridTableId---" by clicking "New" :
       | Name                     | Responsibility  | Description              | Due Date | Allow Record Editing |
       | {SavedValue:FO Username} | Fiscal Reviewer | Review Financial details | 10       | No                   |
+    When I click on advance filter "#advfGrantorAnnouncementReviewersTempGrantor" of table id "---announcement:-:ApproverRolesGrantorgridTableId---"
+    When I enter advance filter values inside id "advfGrantorAnnouncementReviewersTempGrantor"
+      | Responsibility | equals to | Fiscal Reviewer |
+    Then I softly see value "Fiscal Reviewer" for title "Responsibility" inside table "---announcement:-:ApproverRolesGrantorgridTableId---"
     And I click on "Send for Review" icon for "{SavedValue:FO Username}" inside table
     And I get the "EGMS ID"
     And I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -637,7 +638,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
     Then I softly see the following messages in the page details :
-      | Financial Tab - Correct Budget Periods Start Date and End Dates. Budget Periods should be continuous and together should form a Project Period. |
+      | Financial Tab - There should be no gap between the dates. Enter the correct Budget Periods Start Dates and End Dates |
     And I click on "Edit" in the page details
     When I navigate to "Financials" sub tab
     And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -1007,7 +1008,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Then I softly see value "Published" for title "New Value" inside table "History"
     Then I softly see value "Approved" for title "Old Value" inside table "History"
     And I click on "Unpublish" in the page details
-    Then I softly see status in Progress-bar is "Under Revision" and is "green"
+    Then I softly see field "Status" as "Under Revision"
     And I pause execution for "2" seconds
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     And I navigate to "Opportunities" tab
@@ -1070,7 +1071,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I click on "Remove" icon for "BP02" inside flex table with id "---announcement:-:budgetPeriodTableId---" without waiting for record
     And I click on top right button "Add Budget Period" in flex table with id "---announcement:-:budgetPeriodTableId---"
     And I refresh the page
-   And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
+    And I edit the following rows inline in flex table with id "---announcement:-:budgetPeriodTableId---" by clicking "Edit" :
       | Budget Period Name | Start Date |
       | BP02               | 250        |
     And I click on "Remove" icon for "BP02" inside flex table with id "---announcement:-:budgetPeriodTableId---" without waiting for record
@@ -1082,7 +1083,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     When I navigate to "History" sub tab
-    Then I softly see value "Submitted for Approval" for title "Status" inside table "History"
+    Then I softly see value "Submitted for Approval" for title "New Value" inside table "History"
     When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1096,7 +1097,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Disapprove" in the approval decision
     When I navigate to "History" sub tab
-    Then I softly see value "Rejected" for title "Status" inside table "History"
+    Then I softly see value "Rejected" for title "New Value" inside table "History"
     Then I softly see status in Progress-bar is "Rejected" and is "red"
     Examples:
       | Announcement Type |
@@ -1144,7 +1145,11 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | BP01               | 50         | 150      |
     And I click on "Save" in the page details
     And I click on "Submit For Approval" in the page details
-    And I pause execution for "4" seconds
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
+    When I click on "Start" icon for "Record Id" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
@@ -1153,11 +1158,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I navigate to "Completed Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "PhaseCompletedTasks" panel
     Then I softly see value "Record Id" for title "EGMS ID" inside table "PhaseCompletedTasks"
-    And I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    When I navigate to "Announcements" tab
-    And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---announcement:-:pendingTaskTableId---" panel
-    Then I softly do not see values "Record Id" and "{SavedValue:Automation Runtime Competitive Announcement}" inside table
+
     Examples:
       | Announcement Type |
       | Competitive       |
@@ -1213,7 +1214,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     And I pause execution for "3" seconds
     Then I softly see status in Progress-bar is "Created" and is "green"
     When I navigate to "History" sub tab
-    Then I softly see that "Announcement" is in "Created" status
+    Then I softly see that "Announcement" is in "Draft" status
     And I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
     When I navigate to "Announcements" tab
     And I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
