@@ -4227,7 +4227,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-  @mk @TBE-blocker @227802 @227797 @VerifyEXEUserseethevalue"BudgetTab:FocusArea"replacedwith"BudgetTab:BudgetSummarybyFocusArea"intheApplicationsectionforNegotiation. @sprint-13-US-204132 @komal @Allocation @buglogged-277360
+  @227802 @227797 @VerifyEXEUserseethevalue"BudgetTab:FocusArea"replacedwith"BudgetTab:BudgetSummarybyFocusArea"intheApplicationsectionforNegotiation. @sprint-13-US-204132 @komal @Allocation
   Scenario Outline: Verify EXE  User see the value "Budget Tab: Focus Area" replaced with "Budget Tab: Budget Summary by Focus Area" in the Application section for Negotiation.
   | Verify EXE user  should see  when negotiation is initiated during the Application review  it should be  mandatory for to select the "Budget: Budget Details " picklist value in Application Sections for Negotiation section when the budgeted Amount is not equal to the Allocation Amount |
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT-Automation EXE user"
@@ -4268,18 +4268,18 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     When I click on "Send to Subrecipient" in the page details
     And I softly see the following messages in the page details contains:
-      | Negotiations Tab: The Budgeted Amount must be equal to the Allocation Amount in the application. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field before sending the application back for revision. |
-    #227802- TBE after bug
+      | Negotiations Tab - The Budgeted Amount must be equal to the Allocation Amount in the application. So please select the "Budget: Budget Details" option in the "Application Sections for Negotiations" field before sending the application back for revision. |
+    #227802
     When I click on "Edit" in the page details
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
-    Then I see multipicklist field "fieldApplicationSectionsForRevision__c" contains value "Budget: Budget Summary by Focus Area" under list "Application Sections for Revision - Available"
+    Then I see multipicklist field "fieldApplicationSectionsForRevision__c" contains value "Budget Tab: Budget Summary by Focus Area" under list "Application Sections for Revision - Available"
     Then I do not see multipicklist field "fieldApplicationSectionsForRevision__c" contains value "Budget: Focus Area" under list "Application Sections for Revision - Available"
 
     Examples:
       | Announcement Name                                    |
       | {SavedValue:Automation Runtime Formula Announcement} |
 
-  @TBE-blocker @227809 @VerifyErrormessageisdisplayedtouserforformulaannouncement,inthenegotiationtab,when"BudgetTab:BudgetSummarybyFocusArea"isselectedandAllocationisbyapplicant @sprint-13-US-204132 @komal @Allocation @buglogged-277360
+  @227809 @VerifyErrormessageisdisplayedtouserforformulaannouncement,inthenegotiationtab,when"BudgetTab:BudgetSummarybyFocusArea"isselectedandAllocationisbyapplicant @sprint-13-US-204132 @komal @Allocation
   Scenario Outline: Verify Error message is displayed to user for formula announcement, in the negotiation tab, when "Budget Tab: Budget Summary by Focus Area" is selected and Allocation is by applicant
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -4297,6 +4297,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I enter value "Budget Tab: Budget Summary by Focus Area" into field "ApplicationSectionsForRevision__c"
     And I enter value "Negoatiation Initiated" into field "ExplanationOfRevisionsNeeded__c"
     When I click on "Save" in the page details
+    And I wait for "5" seconds
     When I click on "Send to Subrecipient" in the page details
     #227809
     And I softly see the following messages in the page details contains:
@@ -4488,7 +4489,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | EXE  |
 
-  @TBE @227740 @VerifyPOuserseethevalidationwhenthebudgetedamountnotequaltotheAllocationamount&UsertrytocreateawardfromFDMorfromtheApplication @sprint-13-US-204132 @komal @Allocation
+  @227740 @VerifyPOuserseethevalidationwhenthebudgetedamountnotequaltotheAllocationamount&UsertrytocreateawardfromFDMorfromtheApplication @sprint-13-US-204132 @komal @Allocation
   Scenario Outline: Verify PO user see the  validation when the budgeted amount not equal to  the Allocation amount & User try to create award from FDM or from the Application
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT-Automation PO user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -4666,7 +4667,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Examples:
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | PO   |
-#      | Automation Runtime Formula Announcement72661 | PO   |
 
   @225140 @226382 @VerifythatIfBudgetedamountnotequaltotheAllocationAmountWhen<SPI>resubmittheapplicationafternegotiationinprescreenreviewThenitshouldthrougherrormessage @sprint-11-US-204300 @komal @Allocation @buglogged-276940
   Scenario Outline: Verify that If Budgeted amount not equal to the Allocation Amount  When <SPI> resubmit the application after negotiation in pre screen review Then it should through error message
@@ -5317,7 +5317,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | IND  |
 
-  @mk @TBE-AfterBugFix276940 @226387 @Verifythat<IND>userwillabletochangethevalueinbudget:budgetdetailswhileresubmittingthenegotiationstograntorinSMEreviewwhenallocationamountinannouncementischangedischanged @sprint-11-US-204300 @komal @Allocation
+  @TBE-AfterBugFix276940 @226387 @Verifythat<IND>userwillabletochangethevalueinbudget:budgetdetailswhileresubmittingthenegotiationstograntorinSMEreviewwhenallocationamountinannouncementischangedischanged @sprint-11-US-204300 @komal @Allocation
   Scenario Outline: Verify that <IND> user will able to change the value in budget:budget details while resubmitting the negotiations to grantor in SME review when allocation amount in announcement is changed is changed
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
