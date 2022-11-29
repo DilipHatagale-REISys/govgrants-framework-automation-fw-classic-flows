@@ -85,7 +85,6 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
     And I click on "Save" in the page details
     When I click on "Back" in the page details
-    And I get the "EGMS ID"
     When I click on "Submit Application" in the page details
     Then I softly see the following messages in the page details contains:
       | Budget Tab: The Budgeted Amount must be equal to the Allocation Amount. |
