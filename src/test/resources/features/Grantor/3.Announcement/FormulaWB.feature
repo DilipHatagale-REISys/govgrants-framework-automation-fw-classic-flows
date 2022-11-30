@@ -5004,7 +5004,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:Automation Runtime Formula Announcement} | SPI3 |
 
 #TODO: Below TCs are pending to execute due to bug-276940
-  @TBE-AfterBugFix276940 @225141 @VerifyIfBudgetedamountmustbeequaltotheAllocationAmountWhen<IND>resubmittheapplicationafternegotiationthenitwillnotthrougherrormessage @sprint-11-US-204300 @komal @Allocation
+  @mk @TBE-AfterBugFix276940 @225141 @VerifyIfBudgetedamountmustbeequaltotheAllocationAmountWhen<IND>resubmittheapplicationafternegotiationthenitwillnotthrougherrormessage @sprint-11-US-204300 @komal @Allocation
   Scenario Outline: Verify If Budgeted amount must be equal to the Allocation Amount  When <IND> resubmit the application after negotiation then it will not through error message
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
