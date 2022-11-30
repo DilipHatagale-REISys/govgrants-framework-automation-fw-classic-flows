@@ -4668,7 +4668,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | PO   |
 
-  @225140 @226382 @VerifythatIfBudgetedamountnotequaltotheAllocationAmountWhen<SPI>resubmittheapplicationafternegotiationinprescreenreviewThenitshouldthrougherrormessage @sprint-11-US-204300 @komal @Allocation @buglogged-276940
+  @mk @225140 @226382 @VerifythatIfBudgetedamountnotequaltotheAllocationAmountWhen<SPI>resubmittheapplicationafternegotiationinprescreenreviewThenitshouldthrougherrormessage @sprint-11-US-204300 @komal @Allocation
   Scenario Outline: Verify that If Budgeted amount not equal to the Allocation Amount  When <SPI> resubmit the application after negotiation in pre screen review Then it should through error message
   | Verify that If Budgeted amount not equal to the Allocation Amount  When <SPI> resubmit the application after negotiation in pre screen review Then it should through error message |
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT"
@@ -4709,7 +4709,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
       | Construction  | 2000   | 100        | 100            | 100            |
-    And I wait for "5" seconds
+    And I refresh the page
     When I click on "Submit to Grantor" in the page details
     #225140 #226382-TBEAfterBug
     Then I softly see the following messages in the page details contains:
@@ -4717,7 +4717,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
 
     Examples:
       | Announcement Name                                    | User |
-      | {SavedValue:Automation Runtime Formula Announcement} | SPI3 |
+#      | {SavedValue:Automation Runtime Formula Announcement} | SPI3 |
       | {SavedValue:Automation Runtime Formula Announcement} | SPA  |
 
   @225143 @VerifythatIfFocusarea'sbudgetednotequaltoAllocationamountforthatfocusareainbudgetsummarysectionWhen<SPI>resubmittheapplicationafternegotiationcheckthenitshouldthroughErrormessage @sprint-11-US-204300 @komal @Allocation
@@ -5004,7 +5004,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | {SavedValue:Automation Runtime Formula Announcement} | SPI3 |
 
 #TODO: Below TCs are pending to execute due to bug-276940
-  @mk @TBE-AfterBugFix276940 @225141 @VerifyIfBudgetedamountmustbeequaltotheAllocationAmountWhen<IND>resubmittheapplicationafternegotiationthenitwillnotthrougherrormessage @sprint-11-US-204300 @komal @Allocation
+  @225141 @VerifyIfBudgetedamountmustbeequaltotheAllocationAmountWhen<IND>resubmittheapplicationafternegotiationthenitwillnotthrougherrormessage @sprint-11-US-204300 @komal @Allocation
   Scenario Outline: Verify If Budgeted amount must be equal to the Allocation Amount  When <IND> resubmit the application after negotiation then it will not through error message
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -5051,7 +5051,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | IND  |
 
-  @TBE-AfterBugFix276940 @226381 @VerifythatIfBudgetedamountnotequaltotheAllocationAmountWhen<IND>resubmittheapplicationafternegotiationinSMEreviewThenitshouldthrougherrormessage @sprint-11-US-204300 @komal @Allocation
+  @226381 @VerifythatIfBudgetedamountnotequaltotheAllocationAmountWhen<IND>resubmittheapplicationafternegotiationinSMEreviewThenitshouldthrougherrormessage @sprint-11-US-204300 @komal @Allocation
   Scenario Outline: Verify that If Budgeted amount not equal to the Allocation Amount  When <IND> resubmit the application after negotiation in SME review Then it should through error message
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -5108,7 +5108,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | IND  |
 
-  @TBE-AfterBugFix276940 @225418 @Verifythat<IND>userwillabletochangethevalueinbudget:budgetdetailswhileresubmittingthenegotiationstograntorinManagementReviewwhenallocationamountinannouncementischanged @sprint-11-US-204300 @komal @Allocation
+  @TBE @225418 @Verifythat<IND>userwillabletochangethevalueinbudget:budgetdetailswhileresubmittingthenegotiationstograntorinManagementReviewwhenallocationamountinannouncementischanged @sprint-11-US-204300 @komal @Allocation
   Scenario Outline: Verify that <IND> user will able to change the value in budget:budget details while resubmitting the negotiations to grantor in Management Review when allocation amount in announcement is changed
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -5233,9 +5233,9 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
     When I enter value "Automation Test" into field "fieldApplicantResponse__c"
     When I click on "Save" in the page details
-     #225418
+    #225418
     And I navigate to "Negotiations" sub tab
-    Then I softly see field "Application Sections for Negotiation" as "Overview: Project Information; Budget: Budget Details"
+    Then I softly see field "Application Sections for Negotiation" as "Budget: Budget Details Overview: Project Information"
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -5252,7 +5252,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | IND  |
 
-  @TBE-AfterBugFix276940 @225419 @Verifythat<IND>userwillabletochangethevalueinbudget:budgetdetailswhileresubmittingthenegotiationstograntorinprescreenreviewwhenallocationamountinannouncementischangedischanged @sprint-11-US-204300 @komal @Allocation
+  @TBE @225419 @Verifythat<IND>userwillabletochangethevalueinbudget:budgetdetailswhileresubmittingthenegotiationstograntorinprescreenreviewwhenallocationamountinannouncementischangedischanged @sprint-11-US-204300 @komal @Allocation
   Scenario Outline: Verify that <IND> user will able to change the value in budget:budget details while resubmitting the negotiations to grantor in pre screen review when allocation amount in announcement is changed is changed
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -5299,7 +5299,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     #225419
     And I navigate to "Negotiations" sub tab
-    Then I softly see field "Application Sections for Negotiation" as "Overview: Project Information; Budget: Budget Details"
+    Then I softly see field "Application Sections for Negotiation" as "Budget: Budget Details Overview: Project Information"
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -5317,7 +5317,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | IND  |
 
-  @TBE-AfterBugFix276940 @226387 @Verifythat<IND>userwillabletochangethevalueinbudget:budgetdetailswhileresubmittingthenegotiationstograntorinSMEreviewwhenallocationamountinannouncementischangedischanged @sprint-11-US-204300 @komal @Allocation
+  @TBE @226387 @Verifythat<IND>userwillabletochangethevalueinbudget:budgetdetailswhileresubmittingthenegotiationstograntorinSMEreviewwhenallocationamountinannouncementischangedischanged @sprint-11-US-204300 @komal @Allocation
   Scenario Outline: Verify that <IND> user will able to change the value in budget:budget details while resubmitting the negotiations to grantor in SME review when allocation amount in announcement is changed is changed
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -5368,7 +5368,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click on "Save" in the page details
     #226387
     And I navigate to "Negotiations" sub tab
-    Then I softly see field "Application Sections for Negotiation" as "Overview: Project Information; Budget: Budget Details"
+    Then I softly see field "Application Sections for Negotiation" as "Budget: Budget Details Overview: Project Information"
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
