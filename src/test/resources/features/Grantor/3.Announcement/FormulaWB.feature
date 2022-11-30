@@ -4729,6 +4729,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     When I click toggle button to select "Applications - All"
     And I perform quick search for "<Announcement Name>"
     When I click on "View" icon for "<Announcement Name>" inside table
+    And I save the field labeled "EGMS ID" as "AppEgmdId"
     And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
     When I click toggle button to select "Application Reviews - All"
     And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
@@ -5234,8 +5235,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
       | Announcement Name                                    | User |
       | {SavedValue:Automation Runtime Formula Announcement} | IND  |
 
-
-  @mkk @225418 @Verifythat<IND>userwillabletochangethevalueinbudget:budgetdetailswhileresubmittingthenegotiationstograntorinManagementReviewwhenallocationamountinannouncementischanged @sprint-11-US-204300 @komal @Allocation
+  @225418 @Verifythat<IND>userwillabletochangethevalueinbudget:budgetdetailswhileresubmittingthenegotiationstograntorinManagementReviewwhenallocationamountinannouncementischanged @sprint-11-US-204300 @komal @Allocation
   Scenario Outline: Verify that <IND> user will able to change the value in budget:budget details while resubmitting the negotiations to grantor in Management Review when allocation amount in announcement is changed
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
