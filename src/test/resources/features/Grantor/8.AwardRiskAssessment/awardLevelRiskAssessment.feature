@@ -1,4 +1,4 @@
-@riskAssessment @awardLevelRiskAssessment @grantor-regression @grantor-parallel-regression @regression @TBEAllocation
+@riskAssessment @awardLevelRiskAssessment @grantor-regression @grantor-parallel-regression @regression
 Feature: Validate all scenarios in the Risk Assessment
 
   @58164 @58165 @58166 @75867 @65552 @creationOfRiskAssessmentddingApproversSubmitForApproval @deepika @smoke
@@ -3041,7 +3041,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I perform quick search for "Record Id" in "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" panel
     And I click on "View" icon for "Record Id" inside flex table with id "---riskassessment:-:monitotingTableRiskAssessmentFlexTableId---" without waiting for record
     When I navigate to "Overview" sub tab
-    Then I see "Risk Level" image as "yellow.png"
+    Then I see "Risk Level" image as "b-ylw.png"
 
   @62093 @59255 @overallRiskFieldAvailabilityToSRProfileUserk @deepika
   Scenario:  Verify whether SPI profile User can view the section Overview for Overall Risk Calculation for a Sub Recipient Organization
@@ -4765,7 +4765,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
     Then I softly see row level action button "Remove record" inside "---subAwardStandAlone:-:riskAssessmentApproverTableId---" flex table
 
-  @143414 @VerifyUserCannotAddApproverAfterRiskAssessmentActive-RnRFunctnality @monu
+ @vai @143414 @VerifyUserCannotAddApproverAfterRiskAssessmentActive-RnRFunctnality @monu
   Scenario Outline: Verify when risk assessment is active then user cannot add approver
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab

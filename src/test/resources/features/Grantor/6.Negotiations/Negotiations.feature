@@ -1,4 +1,4 @@
-@negotiations @grantor-regression @grantor-parallel-regression @regression
+@negotiations @grantor-regression @grantor-parallel-regression @regression @TBEAllocation
 Feature: Validate all scenarios in Negotiations
 
   Background: To setup data
