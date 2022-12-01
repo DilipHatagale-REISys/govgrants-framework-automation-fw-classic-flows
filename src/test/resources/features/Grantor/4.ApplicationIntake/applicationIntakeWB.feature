@@ -40,6 +40,7 @@ Feature: Application Intake scenarios without background
     When I enter advance filter values inside id "advfqae"
       | EGMS ID | Contains | Aatam123 |
     Then I softly see "No records found" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
+    And I refresh the page
     And I click toggle button to select "Qualified Opportunities - Open"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationIntake:-:qualifiedTableId---" panel
     Then I softly see value "{SavedValue:Automation Runtime Announcement Application Review}" for title "Opportunity Name" inside table "---applicationIntake:-:qualifiedTableId---"
@@ -732,7 +733,7 @@ Feature: Application Intake scenarios without background
     When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
     And I click toggle button to select "Qualified Opportunities - All"
     And I perform quick search for "---AUTOEnvData:-:Automation_Formula_Closed_Announcement_By_Applicant---" in "---applicationIntake:-:qualifiedTableId---" panel
-    When I click on "View" icon for "---AUTOEnvData:-:Automation_Formula_Closed_Announcement_By_Applicant---" inside flex table with id "---qualifiedTableId:-:qualifiedTableId---" without waiting for record
+    When I click on "View" icon for "---AUTOEnvData:-:Automation_Formula_Closed_Announcement_By_Applicant---" inside flex table with id "---applicationIntake:-:qualifiedTableId---" without waiting for record
     And I save the field containing "Application Due Date" as "Date"
     Then I softly see field "Application Due Date" contains date less than todays date
     Then I softly cannot see top right button "Create Application" in page detail
@@ -1325,7 +1326,7 @@ Feature: Application Intake scenarios without background
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "AppEGMSID"
-    Then I see status in Progress-bar is "Created" and is "Green"
+    Then I softly see status in Progress-bar is "Created" and is "Green"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     And I click toggle button to select "All Announcements"

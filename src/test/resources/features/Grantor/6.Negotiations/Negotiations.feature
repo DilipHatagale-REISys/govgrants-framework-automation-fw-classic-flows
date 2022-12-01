@@ -289,7 +289,7 @@ Feature: Validate all scenarios in Negotiations
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: An Application Negotiation Request for Application {SavedValue:EGMSID} has been Reque
+      Sandbox: Notification: An Application Negotiation Request for Application {SavedValue:EGMSID} has been Requested
       """
     Given I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "dynamicUser" user

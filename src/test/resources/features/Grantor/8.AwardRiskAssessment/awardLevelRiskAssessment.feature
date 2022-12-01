@@ -4765,7 +4765,7 @@ Feature: Validate all scenarios in the Risk Assessment
     And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---"
     Then I softly see row level action button "Remove record" inside "---subAwardStandAlone:-:riskAssessmentApproverTableId---" flex table
 
- @vai @143414 @VerifyUserCannotAddApproverAfterRiskAssessmentActive-RnRFunctnality @monu
+  @143414 @VerifyUserCannotAddApproverAfterRiskAssessmentActive-RnRFunctnality @monu
   Scenario Outline: Verify when risk assessment is active then user cannot add approver
     Given I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
