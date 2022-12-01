@@ -1,4 +1,4 @@
-@paymentRequest @grantor-regression @grantor-parallel-regression @paymentRequest-check @regression
+@paymentRequest @grantor-regression @grantor-parallel-regression @paymentRequest-check @regression @TBEAllocation
 Feature: Validate all scenarios in Payment Request
 
   Background: Navigate to award
