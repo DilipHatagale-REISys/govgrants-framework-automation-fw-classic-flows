@@ -1362,7 +1362,6 @@ Feature: Validate all scenarios in the Application Review
       | Announcement Name                                               |
       | {SavedValue:Automation Runtime Announcement Application Review} |
 
-
   @79195 @ValidatingManagenmentReviewStepForm @meenakshi
   Scenario Outline: To verify user able to setup the Due Days for the review & set field "Required" :Checked in management review form in management review step in related log table in Application phase
     And I login to "As a Grantor" app as "dynamicUser" user
