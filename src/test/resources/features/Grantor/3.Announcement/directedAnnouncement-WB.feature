@@ -444,7 +444,7 @@ Feature: Validate all scenarios in the directed Announcement tab
 
   @TBE224179 @237897 @VerifyAdminuserisabletocreatesubawardfromFDMwhenenteredrecommendedbudgetisequaltoBudgetedAmountonFDMrecordwhichiscreatedfromDirectedannouncement @sprint-14-US-224179 @komal @Allocation
   Scenario Outline: Verify Admin user is able to create subaward from FDM when entered recommended budget is equal to Budgeted Amount on FDM record which is created from Directed announcement
-    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "NEGOTIATION_NO"
+    Given I published "Directed" type announcement having name "Automation Runtime Announcement" and properties "NEGOTIATION_NO-Automation ADMIN user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
@@ -763,13 +763,13 @@ Feature: Validate all scenarios in the directed Announcement tab
     Then I softly see status in Progress-bar is "Submitted for Approval" and is "Green"
 
     Examples:
-      | Announcement Name               | Filter         | User |
-      | Automation Runtime Announcement | NEGOTIATION_NO | EXE  |
-      | Automation Runtime Announcement | default        | PM   |
+      | Announcement Name               | Filter                             | User |
+      | Automation Runtime Announcement | NEGOTIATION_NO-Automation EXE user | EXE  |
+      | Automation Runtime Announcement | default                            | PM   |
 
   @TBE224179 @237868 @VerifyvalidationmessageisdisplayedtoPOuserwhenenteredrecommendedbudgetislessthantheBudgetedAmountonFDMrecordwhichiscreatedfromCompetitiveannouncement @sprint-14-US-224179 @komal @Allocation
   Scenario Outline: Verify validation message is displayed to PO user when entered recommended budget is less than the Budgeted Amount on FDM record which is created from Competitive announcement
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "NEGOTIATION_NO"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "NEGOTIATION_NO-Automation PO user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
     When I login to "As a Grantor" app as "<User>" user
     When I navigate to "Applications" tab
