@@ -316,6 +316,7 @@ Feature: Validate all scenarios in the Formula Announcement tab
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
+    And I save the field labeled "Announcement Name" as "Automation Runtime Formula Announcement"
     When I navigate to "Financials" sub tab
     And I click on top right button "Associate" in flex table with id "---announcement:-:fundingAccountsTableId---"
     When I click "Associate" after selection of "{SavedValue:fundingAccount}" in the table "---announcement:-:fundingAccTableId---"
@@ -377,29 +378,35 @@ Feature: Validate all scenarios in the Formula Announcement tab
      #204414
     And I click on "Publish" in the page details
     Then I softly see field "Status" as "Published"
-    And I checkout to yopmail with mailid "pm.automation@yopmail.com"
+    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Notification: Owner Reassignment Report
+      Sandbox: Notification: New Opportunity #{SavedValue:AnnEGMSID}hasbeen Published
       """
     Then I see the mail text is as follows :
       """
       Hello,
 
-     The record(s) below have been reassigned from [Automation PM] to [Automation PM1] successfully. Please find the details below:
+      This email is to notify you that Opportunity #{SavedValue:AnnEGMSID} has been published.
 
-      EGMS ID Assigned By Module Name
-      {SavedValue:SitevVisitId} Automation ADMIN Site Visit /Desk Review
+      Opportunity Details:
 
-      Because these records have been reassigned, the original reviewer may have only view access to the record.
+      Opportunity Title: {SavedValue:Automation Runtime Formula Announcement}
 
-      Log in to EGMS and click on EGMS IDs to access the assigned record.
+      Opportunity Type: Formula
 
-      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this record.
+      Focus Areas Allocation Amount
+      Automation Permanent Focus Area 1000
+
+      Log in to EGMS and click on click here to access the assigned record.
+
+
+      Please do not reply to this system-generated email. You may contact the GovGrants Support Team at govgrantssupport@reisystems.com if you have any questions or need assistance with this task.
 
       Thank you,
-      The EGMS Team
+
+      The EGMS Team.
       """
 
   @219086 @ValidateAdminusershouldabletoseethetwocolumnsinpublishedstateforFormulaAnnouncementwhenAllocationisbyApplicants @sprint-8-US-208408 @vaibhav @Allocation
