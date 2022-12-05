@@ -3409,7 +3409,7 @@ Feature: Payment Request scenarios without background
     When I perform quick search for "{SavedValue:PayreqId}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:PayreqId}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
- @vai @197395 @ValidatependingtaskshouldbegeneratedforEXEasnewownerad-hocreimbursementpaymentrequestownershiptaskreassigntootherEXE @sprint-4 @vaibhav @reassignment
+  @197395 @ValidatependingtaskshouldbegeneratedforEXEasnewownerad-hocreimbursementpaymentrequestownershiptaskreassigntootherEXE @sprint-4 @vaibhav @reassignment
   Scenario: Validate pending task should be generated for EXE as new owner if ad-hoc reimbursement payment request ownership task reassign to other EXE
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
@@ -3815,7 +3815,7 @@ Feature: Payment Request scenarios without background
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM" for title "Name" inside table "---subAwardStandAlone:-:subawardOwnerTableId---"
 
- @vai @197516 @ValidatesystemcreatenewpaymentrequestafterpreviousPRownershiptaskreassigntootheruserthennewPRinternalsideownershouldbeawardonly @sprint-4 @vaibhav @reassignment
+  @197516 @ValidatesystemcreatenewpaymentrequestafterpreviousPRownershiptaskreassigntootheruserthennewPRinternalsideownershouldbeawardonly @sprint-4 @vaibhav @reassignment
   Scenario: Validate system create new payment request after previous PR ownership task reassign to other user then new PR internal side owner should be award only
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO-Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
