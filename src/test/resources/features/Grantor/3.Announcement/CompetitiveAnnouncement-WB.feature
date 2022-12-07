@@ -738,7 +738,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | EXE   |
 
-  @227564 @CompAnn>>VerifyEXEusercaninlineedittheRecommendedBudgetfieldunderRecommendedApplicationsectionbeforeFDMapproval @@sprint-13-US-224612 @komal @Allocation
+  @227564 @CompAnn>>VerifyEXEusercaninlineedittheRecommendedBudgetfieldunderRecommendedApplicationsectionbeforeFDMapproval @sprint-13-US-224612 @komal @Allocation
   Scenario Outline: Comp Ann>>Verify EXE user can inline edit the Recommended Budget field under Recommended Application section before FDM approval
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "NEGOTIATION_NO-Automation EXE user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -897,7 +897,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | EXE  |
 
-  @234668 @CompAnn>>VerifyPOusershouldseevalidationonsendtos/rbuttonwhennegotiationisinitiatedduringFDMuserwhenuserselectonlybudgetsummarybyFocusAreasectionfornegotiationwhenbudgetedamountisnotequaltorecommendedamount @@sprint-13-US-224612 @komal @Allocation
+  @234668 @CompAnn>>VerifyPOusershouldseevalidationonsendtos/rbuttonwhennegotiationisinitiatedduringFDMuserwhenuserselectonlybudgetsummarybyFocusAreasectionfornegotiationwhenbudgetedamountisnotequaltorecommendedamount @sprint-13-US-224612 @komal @Allocation
   Scenario Outline: Comp Ann>>Verify PO user should not see validation on send to s/r button when negotiation is initiated during FDM user when user select only Budget tab: Budget details section for negotiation when recommended amount is equal to Budgeted amount
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-Automation PO user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -928,7 +928,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PO   |
 
-  @227723 @CompAnn>>VerifyAdminwhennegotiationisinitiatedduringFDMorfromapplayoutthenusershouldgetvalidationonUIonsendtosubrecipientbuttonwhenthebudgetedAmountisnotequaltotheRecommendedBudget @@sprint-13-US-224612 @komal @Allocation
+  @227723 @CompAnn>>VerifyAdminwhennegotiationisinitiatedduringFDMorfromapplayoutthenusershouldgetvalidationonUIonsendtosubrecipientbuttonwhenthebudgetedAmountisnotequaltotheRecommendedBudget @sprint-13-US-224612 @komal @Allocation
   Scenario Outline: Comp Ann>>Verify Admin when negotiation is initiated during FDM or from app layout then user should get validation on UI on send to subrecipient button when the budgeted Amount is not equal to the Recommended Budget
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-Automation ADMIN user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
@@ -1098,7 +1098,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | ADMIN   |
 
-  @234899 @CompAnn>>VerifyPOusershouldseevalidationonsendtos/rbuttonwhennegotiationisinitiatedSMEreviewstepwhenuserselectonlybudgetsummarybyFocusAreasectionfornegotiation @@sprint-13-US-224612 @komal @Allocation
+  @234899 @CompAnn>>VerifyPOusershouldseevalidationonsendtos/rbuttonwhennegotiationisinitiatedSMEreviewstepwhenuserselectonlybudgetsummarybyFocusAreasectionfornegotiation @sprint-13-US-224612 @komal @Allocation
   Scenario Outline: Comp Ann>>Verify PO user should see validation on send to s/r button when negotiation is initiated SME review step when user select only budget summary by Focus Area section for negotiation
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-Automation PO user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
