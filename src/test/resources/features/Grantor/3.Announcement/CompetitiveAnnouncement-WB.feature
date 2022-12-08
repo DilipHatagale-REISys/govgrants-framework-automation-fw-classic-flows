@@ -1511,5 +1511,3 @@ Feature: Validate all scenarios in the Competitive Announcement tab
     Examples:
       | Announcement Name                            | Application2                     | User |
       | {SavedValue:Automation Runtime Announcement} | Automation Runtime Application_2 | PO  |
-#      | Automation Runtime Announcement86898 | Automation Runtime Application_2 | PO  |
-

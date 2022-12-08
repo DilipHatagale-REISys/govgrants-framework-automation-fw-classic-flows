@@ -1613,8 +1613,6 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | EXE  |
 
-################################
-
   @234234 @234238 @234240 @DirectAnn>>VerifySPIusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiation(FromFDM),ifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
   Scenario Outline: Direct Ann>> Verify SPI user can see Error message on submit to grantor button when user resubmit the application after negotiation (From FDM), if check when the Budgeted amount must be equal to the  Recommended Amount
   | Direct Ann>> Verify SPI user can able to edit the Budget Summary by focus area section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)& submit application to s/r side |
