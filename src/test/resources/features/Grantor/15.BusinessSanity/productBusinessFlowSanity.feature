@@ -1762,7 +1762,7 @@ Feature: Validate sanity testing of Complete Business Flow
     Then I softly see field "Status" as "Paid"
 
   @72351 @scheduledReimbursementPaymentRequestHappyPath
-  Scenario: Validate the Scheduled Payment Request happy path and the status changes to 'Paid' and is green
+  Scenario Outline: Validate the Scheduled Payment Request happy path and the status changes to 'Paid' and is green
     And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     Given I delete the record "<Award Name>" from the object "Payment Request"
     When I create a post award record "PaymentRequest" for the Award "<Award Name>" having object api name as "PaymentRequest__c"
@@ -1869,7 +1869,7 @@ Feature: Validate sanity testing of Complete Business Flow
     Then I see value "Approved" for title "Status" against the value "{SavedValue:Record Id}" inside table "---progressReport:-:internalProgressReportFlexTableId---"
 
   @72353 @siteVisitAcceptAndClose
-  Scenario Outline: Validate once the Award level Site Visit is clicked on Accept and Close butted then sttaus changes to closed
+  Scenario: Validate once the Award level Site Visit is clicked on Accept and Close butted then sttaus changes to closed
     Given I activated standalone subaward "Automation Runtime Award Site Visit" with properties "default" of type "Competitive"
     Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
