@@ -1615,8 +1615,7 @@ Feature: Validate all scenarios in the directed Announcement tab
 
 ################################
 
-
-  @TBE @234234 @234238 @234240 @DirectAnn>>VerifySPIusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiation(FromFDM),ifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
+  @234234 @234238 @234240 @DirectAnn>>VerifySPIusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiation(FromFDM),ifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
   Scenario Outline: Direct Ann>> Verify SPI user can see Error message on submit to grantor button when user resubmit the application after negotiation (From FDM), if check when the Budgeted amount must be equal to the  Recommended Amount
   | Direct Ann>> Verify SPI user can able to edit the Budget Summary by focus area section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)& submit application to s/r side |
   | Direct Ann>> Verify SPI user can able to edit the Budget details section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)then mandatory to select Budget details from picklist for negotiation |
@@ -1800,9 +1799,9 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Budget Tab - The Budgeted Amount must be equal to the Recommended Amount. |
     #234238
     And I refresh the page
-    And I wait for "3" seconds
     When I navigate to "Budget" sub tab
-    Then I softly can see page block "Budget Summary by Focus Area"
+    And I wait for "3" seconds
+    Then I softly see "Budget Summary by Focus Area" page block displayed
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     #234240
     Given I expand nested table containing column value "BP01"
@@ -1817,7 +1816,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PM   |
 
-  @TBE @234235 @234239 @234237 @DirectAnn>>VerifyINDusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiation(FromFDM),ifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
+  @234235 @234239 @234237 @DirectAnn>>VerifyINDusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiation(FromFDM),ifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
   Scenario Outline: Direct Ann>> Verify IND user can see Error message on submit to grantor button when user resubmit the application after negotiation (From FDM), if check when the Budgeted amount must be equal to the Recommended Amount
   | Direct Ann>> Verify IND user can able to edit the Budget Summary by focus area section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)& submit application to s/r side |
   | Direct Ann>> Verify IND user can not see Error message on submit to grantor button when user resubmit the application after negotiation (From FDM), if  Budgeted amount is equal to the  Recommended Amount  |
@@ -2002,7 +2001,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     #234239
     And I refresh the page
     When I navigate to "Budget" sub tab
-    Then I softly can see page block "Budget Summary by Focus Area"
+    And I wait for "3" seconds
+    Then I softly see "Budget Summary by Focus Area" page block displayed
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     #234237
     Given I expand nested table containing column value "BP01"
@@ -2021,7 +2021,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PM  |
 
-  @TBE @234225 @234229 @234228 @CompAnn>>VerifySPIusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiation(FromFDM),ifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
+  @234225 @234229 @234228 @CompAnn>>VerifySPIusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiation(FromFDM),ifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
   Scenario Outline: Comp Ann>> Verify SPI user can see Error message on submit to grantor button when user resubmit the application after negotiation (From FDM), if check when the Budgeted amount must be equal to the  Recommended Amount
   | Direct Ann>> Verify SPI user can able to edit the Budget Summary by focus area section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)& submit application to s/r side |
   | Direct Ann>> Verify SPI user can able to edit the Budget details section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)then mandatory to select Budget details from picklist for negotiation |
@@ -2206,7 +2206,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     #234229
     And I refresh the page
     When I navigate to "Budget" sub tab
-    Then I softly can see page block "Budget Summary by Focus Area"
+    And I wait for "3" seconds
+    Then I softly see "Budget Summary by Focus Area" page block displayed
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     #234228
     Given I expand nested table containing column value "BP01"
@@ -2225,7 +2226,7 @@ Feature: Validate all scenarios in the directed Announcement tab
       | Announcement Name                            | User |
       | {SavedValue:Automation Runtime Announcement} | PM   |
 
-  @TBE @234227 @234231 @234233 @CompAnn>>VerifyINDusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiation(FromFDM),ifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
+  @234227 @234231 @234233 @CompAnn>>VerifyINDusercanseeErrormessageonsubmittograntorbuttonwhenuserresubmittheapplicationafternegotiation(FromFDM),ifcheckwhentheBudgetedamountmustbeequaltotheRecommendedAmount @sprint-13-US-224176 @komal @Allocation
   Scenario Outline: Comp Ann>> Verify IND user can see Error message on submit to grantor button when user resubmit the application after negotiation (From FDM), if check when the Budgeted amount must be equal to the Recommended Amount
   | Comp Ann>> Verify IND user can able to edit the Budget Summary by focus area section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)& submit application to s/r side |
   | Comp Ann>> Verify IND user can able to edit the Budget details section When the grantor select this Budget Tab: Budget Summary by Focus Area" in the picklist for negotiation (From FDM)then mandatory to select Budget details from picklist for negotiation |
@@ -2410,7 +2411,8 @@ Feature: Validate all scenarios in the directed Announcement tab
     #234231
     And I refresh the page
     When I navigate to "Budget" sub tab
-    Then I softly can see page block "Budget Summary by Focus Area"
+    And I wait for "3" seconds
+    Then I softly see "Budget Summary by Focus Area" page block displayed
     Then I softly can see top right button "Add Focus Area" in flex table with id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     #234233
     Given I expand nested table containing column value "BP01"
