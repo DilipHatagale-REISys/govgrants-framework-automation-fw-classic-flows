@@ -1018,8 +1018,8 @@ Feature: Validate all scenarios in the Application Review without background
     Then I see value "Completed" for title "Status" against the value "Conduct Pre-Screen Review Review for Application #{SavedValue:Record ID} Submitted by SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---applicationReview:-:completedTaskTableId---"
 
     Examples:
-      | Announcement Name                                               | Application Name                                                |
-      | {SavedValue:Automation Runtime Announcement Application Review} | {SavedValue:Automation Runtime Announcement Application Review} |
+      | Announcement Name                                            | Application Name                                             |
+      | {SavedValue:Automation Runtime Announcement for Application} | {SavedValue:Automation Runtime Announcement for Application} |
 
   @80519 @verifyStatusOfManagementReviewInCompletedTasks @monu
   Scenario Outline: validate status of Management Review is Completed inside completed tasks once review form is submitted for Management review with expected user
@@ -7078,7 +7078,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I save the field labeled "Due Date" as "DueDate"
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
     Then I softly see field "Application Sections for Negotiation" as "Overview: Project Information; Budget: Budget Details; Files: Forms"
-    Then I softly see field "Due Date" as "{Date:MM/dd/yyyy::d+43707}"
+    Then I softly see field "Due Date" as "{Date:MM/dd/yyyy::d+43707}" in "Negotiation Request Details" pageblock
 
   @134207 @ValidateapplicationrecordownercaneditsectionsandformswithintheapplicationwhentheapplicationisinnegotiationInitiatedstate @Sprint-1 @vaibhav
   Scenario: Validate application record owner can edit sections and forms within the application when the application is in negotiation Initiated state
@@ -7500,7 +7500,7 @@ Feature: Validate all scenarios in the Application Review without background
     And I click on "View" icon for "Program Application Form" inside flex table with id "---negotiation:-:negotiationFilesFormTableId---"
     Then I softly cannot see top right button "Edit" in page detail
     When I click on "Back" in the page details
-    And I click on "View" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:filesFormsTableId---"
+    And I click on "View" icon for "Standard Assurances Form" inside flex table with id "---negotiation:-:negotiationFilesFormTableId---"
     Then I softly cannot see top right button "Edit" in page detail
     #134406
     When I click on "Back" in the page details

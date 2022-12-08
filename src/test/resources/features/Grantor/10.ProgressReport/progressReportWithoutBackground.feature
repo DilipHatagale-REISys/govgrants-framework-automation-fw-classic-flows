@@ -1,7 +1,7 @@
 @grantor-regression @grantor-parallel-regression @progressReport @progressReportNB @regression
 Feature: Validate scenarios in Progress Report without background
 
- @vai @59832 @59571 @validateSRUserCannotEditPreviousDateField @mahadev @buglogged150448
+  @59832 @59571 @validateSRUserCannotEditPreviousDateField @mahadev @buglogged150448
   Scenario: Validate SR user is not able to edit the Previous Actual field on KPI table under Performance tab at Progress report
   Validate Supporting checklist Table is empty if Supporting document checklist data is not added at Grant at SR user end. | Validate SR user is not able to edit the Previous Actual field on KPI table under Performance tab at Progress report
     When I login to "As a Grantor" app as "PM" user
@@ -458,7 +458,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @65419 @checkSheduleCreatedAfternegotiationAccepted @jitendra @TBEAllocation
+  @65419 @checkSheduleCreatedAfternegotiationAccepted @jitendra
   Scenario Outline: Verify once batch is run and User edit the Frequency then the Schedule should be generated accordingly
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
@@ -487,7 +487,7 @@ Feature: Validate scenarios in Progress Report without background
       | Funding Account             | Encumbrance |
       | {SavedValue:fundingAccount} | 1000        |
     And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:subAwardBudgetTableId---" by clicking "Edit" :
-      | Budget Category | Awarded Budget | Cash Match | Non-Cash Match |
+      | Budget Category | Award Amount | Cash Match | Non-Cash Match |
       | Construction    | 1000           | 100        | 100            |
     And I click on "Send to Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
@@ -1173,7 +1173,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            |
       | {SavedValue:Automation Runtime Award} |
 
-  @59569 @validateSubmittedByFieldNotDisplayedOnPR @mahadev @TBEAllocation
+  @59569 @validateSubmittedByFieldNotDisplayedOnPR @mahadev
   Scenario Outline: Validate Submitted By field at Certification table is not present on Progress report at SR user end when the progress report status is Created
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I delete the record "<Award Name>" from the object "Progress Report"
@@ -1664,7 +1664,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            |
       | {SavedValue:Automation Runtime Award} |
 
-  @60193 @60195 @60194 @60192 @validatePendingTaskForProgramApproverWhenFinalPRIsPendingToBeApproved @mahadev @TBEAllocation
+  @60193 @60195 @60194 @60192 @validatePendingTaskForProgramApproverWhenFinalPRIsPendingToBeApproved @mahadev
   Scenario Outline: Validate System should generate pending task for Program approver for the next Progress report when Report marked Final is pending at his end
   Validate System should generate pending task for Fiscal approver for the next Progress report when Report marked Final is pending at his end | Validate System should generate pending task for Award Owner for the next Progress report when Report marked Final is pending at his end for Submitted for Approval
     Given I activated standalone subaward "Automation Runtime Award" with properties "NO_RISK_ASSESSMENT" of type "Competitive"
@@ -2980,7 +2980,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            | Error Message                                                                                                                                                                                                       |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} | Any approval decision on the Progress Report cannot be made at this time because a report marked as the Final Report has already been approved. Send Back to Owner will allow the owner to notify the Subrecipient. |
 
-  @62779 @PercentagePeriodAtPRAfterPaymentRequest @jitendra @TBEAllocation
+  @62779 @PercentagePeriodAtPRAfterPaymentRequest @jitendra
   Scenario Outline: Verify Submitted for approval report Percentage of Budget Remaining field remains the same on Progress report when the Payment request type is Reimbursement with Approved Status.
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -3338,7 +3338,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @63112 @validateReviewedPRStatusAfterCloseoutApprovalAtTermination @jitendra @TBEAllocation
+  @63112 @validateReviewedPRStatusAfterCloseoutApprovalAtTermination @jitendra
   Scenario Outline: Verify Progress report with Reviewed status changed to  Force Closed when closeout request is approved with type as Termination by award owner.
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -3456,7 +3456,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @63111 @validateSubmittedForGrantorPRStatusAfterCloseoutApprovalAtTermination @jitendra @TBEAllocation
+  @63111 @validateSubmittedForGrantorPRStatusAfterCloseoutApprovalAtTermination @jitendra
   Scenario Outline: Verify Progress report with Submitted to Grantor status changed to  Force Closed when closeout request is approved with type as Termination by award owner.
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -3624,7 +3624,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @63106  @validateReviewedPRStatusAfterCloseoutApproval @mahadev @TBEAllocation
+  @63106  @validateReviewedPRStatusAfterCloseoutApproval @mahadev
   Scenario Outline: Verify Progress report with Reviewed status changed to Force Closed when closeout request is approved with type as Early completion by award owner
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -3680,7 +3680,7 @@ Feature: Validate scenarios in Progress Report without background
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    When I click on "View" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     When I click on "Complete Review" in the page details
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -4323,7 +4323,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @63114  @validateApprovedPRStatusAfterTerminationCloseoutApproval  @mahadev @TBEAllocation
+  @63114  @validateApprovedPRStatusAfterTerminationCloseoutApproval  @mahadev
   Scenario Outline: Verify Progress report with Approved status did not changed when closeout request is approved with type as Termination by award owner at SR user end overview Management Tab on Grant
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -4430,7 +4430,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @63115  @validateApprovedPRStatusAfterEarlyCompletionCloseoutApproval  @mahadev @TBEAllocation
+  @63115  @validateApprovedPRStatusAfterEarlyCompletionCloseoutApproval  @mahadev
   Scenario Outline: Verify Progress report with Approved status did not changed when closeout request is approved with type as Early completion by award owner at Award owner end user end overview Performance Tab on Subaward
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -4539,7 +4539,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @63116  @validateProgressBarWithForceClosedStatus  @mahadev @TBEAllocation
+  @63116  @validateProgressBarWithForceClosedStatus  @mahadev
   Scenario Outline: Verify Progress bar is shown for the Progress report when Closeout request is approved at SR user end
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     And I am on "INTERNAL" portal
@@ -4606,7 +4606,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @63117  @validateFormsTableOnceCloseoutApproved  @mahadev @TBEAllocation
+  @63117  @validateFormsTableOnceCloseoutApproved  @mahadev
   Scenario Outline: Verify Progress report All Forms table under Forms and attachment should not be editable once closeout request is approved
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     And I am on "INTERNAL" portal
@@ -4675,7 +4675,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62765 @62777 @62774 @VerifyYTDExpendituresFieldAfterPRSubmittedForReview  @keerti @TBEAllocation
+  @62765 @62777 @62774 @VerifyYTDExpendituresFieldAfterPRSubmittedForReview  @keerti
   Scenario Outline: Verify Submitted for review report YTD Expenditures field remains the same on Progress report at Award Owner end when the Payment request type is Reimbursement with Approved Status.
   Verify Submitted to Grantor report YTD Expenditures field remains the same on Progress report at Award Owner end when the Payment request type is Reimbursement with Approved Status. | Verify YTD Expenditures field get updated on Progress report at SR user end when the Payment request type is Reimbursement with Approved Status.
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
@@ -4820,7 +4820,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62778 @VerifyRemainingBudgetFieldAfterPRSubmittedForReview  @jitendra @TBEAllocation
+  @62778 @VerifyRemainingBudgetFieldAfterPRSubmittedForReview  @jitendra
   Scenario Outline: Verify Reviewed report Remaining Budget field is getting updated on Progress report at Award Owner user end when the Payment request type is Reimbursement with Approved Status.
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -4953,7 +4953,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62780 @62767 @VerifyYTDExpendituresFieldAfterPRApproved @keerti @TBEAllocation
+  @62780 @62767 @VerifyYTDExpendituresFieldAfterPRApproved @keerti
   Scenario Outline: Verify Approved report YTD Expenditures field remains the same on Progress report at SR user end when the Payment request type is Reimbursement with Approved Status.
   Verify Remaining Budget field get updated on Progress report at SR user end when the Payment request type is Reimbursement with Approved Status.
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
@@ -5098,7 +5098,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62763 @validatePercentageOfBudgetFieldDecreased  @mahadev @TBEAllocation
+  @62763 @validatePercentageOfBudgetFieldDecreased  @mahadev
   Scenario Outline: Verify Percentage of Budget Remaining field get decrease on Progress report at SR user end when the Payment request type is Reimbursement with Approved Status
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -5292,7 +5292,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62769 @62772 @validatePercentageOfBudgetAndRemainingBudgetFieldSameAfterAdvPRApproved   @mahadev @TBEAllocation
+  @62769 @62772 @validatePercentageOfBudgetAndRemainingBudgetFieldSameAfterAdvPRApproved   @mahadev
   Scenario Outline: Verify (Percentage of Budget Remaining | Remaining Budget) field remains the same on Progress report at SR user end when the Payment request type is Advance with Approved Status
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -5366,7 +5366,7 @@ Feature: Validate scenarios in Progress Report without background
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62773 @62770 @62915 @validateAwardedBudgetFieldSameAfterAdvPRApproved  @mahadev @TBEAllocation
+  @62773 @62770 @62915 @validateAwardedBudgetFieldSameAfterAdvPRApproved  @mahadev
   Scenario Outline: Verify (Remaining Budget field |Awarded Budget field | YTD Expenditures) remains the same on Progress report at SR user end when the Payment request type is Advance with Approved Status
     Given I activated standalone subaward "Automation Runtime Award" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -5433,7 +5433,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "View" icon for "{SavedValue:Record Id}" inside flex table with id "---progressReport:-:recipientGrantProgressReportTableId---" without waiting for record
     When I navigate to "Performance" sub tab
     Then I softly see field "YTD Expenditures" as "$0.00"
-    Then I softly see field "Awarded Budget" as "$1,000.00"
+    Then I softly see field "Current Obligation" as "$1,000.00"
     Then I softly see field "Remaining Budget" as "$1,000.00"
     Examples:
       | Award Name                            | Grant Name                            |
@@ -5632,7 +5632,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "View" icon for "Record Id" inside flex table with id "---progressreport:-:recipientGrantProgressReportTableId---" without waiting for record
     Then I see field "Report Frequency" as "Monthly"
 
-  @138940 @VerifyErrorMessageWhileSkippingStepsAtProgressReportWithAwardOwner-RnRFuntionality @monu @TBEAllocation
+  @138940 @VerifyErrorMessageWhileSkippingStepsAtProgressReportWithAwardOwner-RnRFuntionality @monu
   Scenario Outline: Verify award owner is not able to skip approver step for progress report when submitting it for approval
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -5967,7 +5967,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID}" in "---paymentRequest:-:pendingTaskTableId---" panel
     Then I see value "{SavedValue:progID}" for title "EGMS ID" inside table "---paymentRequest:-:pendingTaskTableId---"
 
-  @197377 @197382 @Validateprogressreportiscreatedstate&userchangedOwnershiptonewownerofPRreport&afterPRissubmittograntorthenSendtoS/Risdisplaytonewowner @sprint-4 @vaibhav @reassignment @TBEAllocation
+  @197377 @197382 @Validateprogressreportiscreatedstate&userchangedOwnershiptonewownerofPRreport&afterPRissubmittograntorthenSendtoS/Risdisplaytonewowner @sprint-4 @vaibhav @reassignment
   Scenario: Validate progress report is created state & user changed Ownership to new owner of PR report & after PR is submit to grantor then Send to S/R is display to new owner
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation EXE user" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -8807,7 +8807,7 @@ Feature: Validate scenarios in Progress Report without background
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Step 1" for title "Progress Report" against the value "Automation EXE1" inside table "---progressReport:-:approversTableId---"
 
-  @197385 @ValidatestateissubmittedforreviewofPR&thenchangetheOwnershipofPRthencompletereviewbuttonisdisplaytonewowner @sprint-4-US-196758 @vaibhav @reassignment @TBEAllocation
+  @197385 @ValidatestateissubmittedforreviewofPR&thenchangetheOwnershipofPRthencompletereviewbuttonisdisplaytonewowner @sprint-4-US-196758 @vaibhav @reassignment
   Scenario: Validate state is submitted for review of PR & then change the Ownership of PR  then complete review button is display to new owner
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -8883,7 +8883,7 @@ Feature: Validate scenarios in Progress Report without background
     And I click on "View" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:internalProgressReportFlexTableId---" without waiting for record
     Then I softly can see top right button "Complete Review" in page detail
 
-  @197386 @ValidatereviewiscompletedofPR&userchangedtheownershipofPRthenbelowbuttonshoulddisplayonlynewowner @sprint-4-US-196758 @vaibhav @reassignment @TBEAllocation
+  @197386 @ValidatereviewiscompletedofPR&userchangedtheownershipofPRthenbelowbuttonshoulddisplayonlynewowner @sprint-4-US-196758 @vaibhav @reassignment
   Scenario: Validate review is completed of PR & user changed the ownership of PR then below button should display only new owner
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -9119,7 +9119,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see value "Step 1" for title "Progress Report" against the value "Automation PM1" inside table "---progressReport:-:approversTableId---"
     Then I softly see value "NA" for title "Progress Report" against the value "Automation PM" inside table "---progressReport:-:approversTableId---"
 
-  @229667 @ValidateprogressreportisApprovedstate&userchangedOwnershiptonewownerofPRreport @sprint-13-US-231194 @vaibhav @reassignment @TBEAllocation
+  @229667 @ValidateprogressreportisApprovedstate&userchangedOwnershiptonewownerofPRreport @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate progress report is Approved state & user changed Ownership to new owner of PR report
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -9281,7 +9281,7 @@ Feature: Validate scenarios in Progress Report without background
       The EGMS Team
       """
 
-  @229668 @Validateprogressreportissendtos/rstate&userchangedOwnershiptasktonewownerofPRreport @sprint-13-US-231194 @vaibhav @reassignment @TBEAllocation
+  @229668 @Validateprogressreportissendtos/rstate&userchangedOwnershiptasktonewownerofPRreport @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate progress report is send to s/r state & user changed Ownership task to new owner of PR report
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -9400,7 +9400,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID1}" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
     Then I softly do not see value "{SavedValue:progID1}" for title "EGMS ID" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
 
-  @229670 @Validateprogressreportisforcedstate&userchangedOwnershiptonewownerofPRreport @sprint-13-US-231194 @vaibhav @reassignment @TBEAllocation
+  @229670 @Validateprogressreportisforcedstate&userchangedOwnershiptonewownerofPRreport @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate progress report is forced state & user changed Ownership to new owner of PR report
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -9524,7 +9524,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see value "Automation PM1" for title "New Value" inside table "---progressreport:-:progressHistoryTableId---"
     Then I softly see value "Automation PM" for title "Old Value" inside table "---progressreport:-:progressHistoryTableId---"
     And I checkout to yopmail with mailid "pm1.automation@yopmail.com"
-    And I pause execution for "10" seconds
+    And I pause execution for "60" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -9549,7 +9549,7 @@ Feature: Validate scenarios in Progress Report without background
       The EGMS Team
       """
 
-  @234012 @ValidateProgReportReviewProgressReporttaskshouldbecloseafterclickonsubmitforapprovalbuttonbynewownerReassignedownerofprogressreport @sprint-13-US-231194 @vaibhav @reassignment @TBEAllocation
+  @234012 @ValidateProgReportReviewProgressReporttaskshouldbecloseafterclickonsubmitforapprovalbuttonbynewownerReassignedownerofprogressreport @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate Prog Report "Review Progress Report" task should be close after click on submit for approval button by new owner (Reassigned owner) of progress report
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -9630,7 +9630,7 @@ Feature: Validate scenarios in Progress Report without background
     And I perform quick search for "Record Id" in "---riskassessment:-:completedTaskTableId---" panel
     Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---riskassessment:-:completedTaskTableId---"
 
-  @205781 @ValidateProgressReportFOusershouldabletoreassigntheApprovertasktotheanotheruserforprogressreport @sprint-11-US-218319 @vaibhav @reassignment @TBEAllocation
+  @205781 @ValidateProgressReportFOusershouldabletoreassigntheApprovertasktotheanotheruserforprogressreport @sprint-11-US-218319 @vaibhav @reassignment
   Scenario: Validate Progress Report FO user should able to reassign the Approver  task to the another user for progress report
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -9910,7 +9910,7 @@ Feature: Validate scenarios in Progress Report without background
     And I "Approve" in the approval decision
     Then I softly see field "Status" as "Approved"
 
-  @202463 @ValidateProgReporttasktypeshouldberenamedforPMuserasReviewProgressReportafterprogressreportsubmittedtograntor @sprint-8-US-206259 @vaibhav @reassignment @TBEAllocation
+  @202463 @ValidateProgReporttasktypeshouldberenamedforPMuserasReviewProgressReportafterprogressreportsubmittedtograntor @sprint-8-US-206259 @vaibhav @reassignment
   Scenario: ValidateProg Report task type should be renamed for PM user as "Review Progress Report" after progress report submitted to grantor
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation EXE user" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -9955,7 +9955,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---program:-:grantorTaskReassignTableId---"
     Then I softly see value "Review Progress Report" for title "Task Type" inside table "---program:-:grantorTaskReassignTableId---"
 
-  @202464 @ValidateProgReporttasktypeshouldberenamedforEXEuserasReviewProgresReportafterprogressreportsubmittedtograntor @sprint-8-US-206259 @vaibhav @reassignment @TBEAllocation
+  @202464 @ValidateProgReporttasktypeshouldberenamedforEXEuserasReviewProgresReportafterprogressreportsubmittedtograntor @sprint-8-US-206259 @vaibhav @reassignment
   Scenario: Validate Prog Report task type should be renamed for EXE user as "Review Progress Report" after progress report submitted to grantor
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation EXE user" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -10038,7 +10038,7 @@ Feature: Validate scenarios in Progress Report without background
     Then I softly see value "{SavedValue:progID}" for title "EGMS ID" inside table "---riskassessment:-:completedTaskTableId---"
     Then I softly see value "Review Progress Report" for title "Task Type" inside table "---riskassessment:-:completedTaskTableId---"
 
-  @202475 @ValidateProgReporttasktypeshouldberenamedforEXErevieweruserasPeeReviewProgressReportafterprogressreportsubmittedforpeerreview @sprint-8-US-206259 @vaibhav @reassignment @TBEAllocation
+  @202475 @ValidateProgReporttasktypeshouldberenamedforEXErevieweruserasPeeReviewProgressReportafterprogressreportsubmittedforpeerreview @sprint-8-US-206259 @vaibhav @reassignment
   Scenario: Validate Prog Report_ Verify task type should be renamed for EXE reviewer user as "Peer Review Progress Report" after progress report submitted for peer review
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation EXE user" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -10124,7 +10124,7 @@ Feature: Validate scenarios in Progress Report without background
     When I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
     Then I softly see value "Peer Review Progress Report" for title "Task Type" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
 
-  @202477 @ValidateProgReporttasktypeshouldberenamedforAdminrevieweruserasPeerReviewProgressReportafterprogressreportsubmittedforpeerreview @sprint-8-US-206259 @vaibhav @reassignment @TBEAllocation
+  @202477 @ValidateProgReporttasktypeshouldberenamedforAdminrevieweruserasPeerReviewProgressReportafterprogressreportsubmittedforpeerreview @sprint-8-US-206259 @vaibhav @reassignment
   Scenario: Validate Prog Report task type should be renamed for Admin reviewer user as "Peer Review Progress Report" after progress report submitted for peer review
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation ADMIN user" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"
@@ -10162,17 +10162,26 @@ Feature: Validate scenarios in Progress Report without background
     When I click on "Start" icon for "{SavedValue:progID}" inside flex table with id "---progressReport:-:pendingTaskTableId---" without waiting for record
     And I navigate to "Responsibilities" sub tab
     And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name     | Responsibility   | Description                 | Due Date |
-      | Automation ADMIN1 | Program Reviewer | Automation Test Description | 7        |
+      | Reviewer Name | Responsibility  | Description                 | Due Date |
+      | Automation FO | Fiscal Reviewer | Automation Test Description | 7        |
+    And I enter the following values into flex table with id "---progressReport:-:peerReviewersTableId---" by clicking "New" :
+      | Reviewer Name | Responsibility   | Description                 | Due Date |
+      | Automation PM | Program Reviewer | Automation Test Description | 7        |
     And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---progressReport:-:peerReviewersTableId---" without waiting for record
+    And I click on "Send for Review" icon for "Program Reviewer" inside flex table with id "---progressReport:-:peerReviewersTableId---" without waiting for record
     Then I softly see value "Sent for Review" for title "Status" inside table "---progressReport:-:peerReviewersTableId---"
-    When I re-login to "As a Grantor" app as "ADMIN1" user on "INTERNAL" portal
+    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
+    And I navigate to "Monitoring" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    When I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
+    Then I softly see value "Peer Review Progress Report" for title "Task Type" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:progID}" in "---progressReport:-:pendingTaskTableId---" panel
     Then I softly see value "Peer Review Progress Report" for title "Task Type" inside table "---subAwardStandAlone:-:pendingTaskTableId---"
 
-  @206433 @ValidateProgReportReviewProgressReporttaskshouldbecloseafterclickonsubmitforapprovalbutton @sprint-8-US-206259 @vaibhav @reassignment @TBEAllocation
+  @206433 @ValidateProgReportReviewProgressReporttaskshouldbecloseafterclickonsubmitforapprovalbutton @sprint-8-US-206259 @vaibhav @reassignment
   Scenario: Validate Prog Report "Review Progress Report" task should be close after click on submit for approval button
     Given I activated standalone subaward "Automation Runtime Direct Award" with properties "Automation EXE user" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Direct Award}" from the object "Progress Report"

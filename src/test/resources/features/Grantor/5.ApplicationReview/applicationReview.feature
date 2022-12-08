@@ -3177,7 +3177,7 @@ Feature: Validate all scenarios in the Application Review
     And I click on "Save" in the page details
     #79672
     And I wait for "2" seconds
-    Then I softly see field "Comments" as "Automation test description"
+    Then I softly see field "Comments" as " "
     Then I softly see field "Recommendation" as "Recommended"
     Then I softly see field "Does the application meet the match requirement outlined in the funding opportunity?" as "Yes"
     Then I softly see field "Is the need for proposed budget item adequately supported?" as "Yes"

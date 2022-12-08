@@ -825,7 +825,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @61889 @validateSubmittedforReviewPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev @TBEAllocation
+  @61889 @validateSubmittedforReviewPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev
   Scenario Outline: Validate Progress reports with Submitted for Review Status is not displayed at Performance Tab Subaward Overview at Award Owner end when Award owner performed periodic renewal Amendment
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
@@ -1306,7 +1306,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @61890 @validateReviewedPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev @TBEAllocation
+  @61890 @validateReviewedPRAfterPeriodicAmendmentIsCarryForwardedAonAward @mahadev
   Scenario Outline: Validate Progress reports with Reviewed Status is not displayed at Performance Tab Subaward Overview at Award Owner end after periodic renewal Amendment
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
@@ -1362,7 +1362,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    When I click on "View" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     When I click on "Complete Review" in the page details
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -2188,7 +2188,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @61936 @validateSubmittedforReviewPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev @TBEAllocation
+  @61936 @validateSubmittedforReviewPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev
   Scenario Outline: Validate progress report with submitted for review status is carry forwarded at subportal on award after scope of work change amendment
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
@@ -2824,7 +2824,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62065 @validateSubmittedforReviewPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev @TBEAllocation
+  @62065 @validateSubmittedforReviewPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev
   Scenario Outline: Validate progress report with submitted for review status is carry forwarded at internal portal on award after scope of work change amendment
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
@@ -2926,7 +2926,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @62066 @validateReviewedPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev @TBEAllocation
+  @62066 @validateReviewedPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev
   Scenario Outline: Validate progress report with reviewed status is carry forwarded at internal portal on award after scope of work change amendment
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
@@ -2982,7 +2982,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    When I click on "View" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     When I click on "Complete Review" in the page details
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -5133,7 +5133,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @61937 @validateReviewedPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev @TBEAllocation
+  @61937 @validateReviewedPRAfterSWAmendmentIsCarryForwardedAonAward @mahadev
   Scenario Outline: Validate progress report with Reviewed status is carry forwarded at subportal on award after scope of work change amendment
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -6440,7 +6440,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
       | Award Name                            | Grant Name                            |
       | {SavedValue:Automation Runtime Award} | {SavedValue:Automation Runtime Award} |
 
-  @61446 @61440 @validateReviewedPRAfterBudgetPeriodChangeAmendmentIsCarryForwarded @mahadev @TBEAllocation
+  @61446 @61440 @validateReviewedPRAfterBudgetPeriodChangeAmendmentIsCarryForwarded @mahadev
   Scenario Outline: Validate Reviewed Progress reports is carried forward after BPC amendment
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     And I am on "SUBPORTAL" portal
@@ -6496,7 +6496,7 @@ Feature: Validate all scenarios in Progress Report with respect to Amendment Req
     And I navigate to "Monitoring" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
+    When I click on "View" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
     When I click on "Complete Review" in the page details
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
