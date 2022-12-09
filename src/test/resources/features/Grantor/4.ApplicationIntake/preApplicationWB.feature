@@ -1494,7 +1494,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
     When I click modal button "Save and Continue"
-   And I pause execution for "10" seconds
+    And I pause execution for "10" seconds
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     Given I click on "Edit" in the page details
@@ -4653,7 +4653,7 @@ Feature: Pre-Application scenarios without background
     Then I softly can see top right button "Extend Dates" in page detail
     Then I softly can see top right button "Unpublish" in page detail
 
- @vai @202457 @ValidatetasktypeshouldberenamedforEXErevieweruserasPeerReviewPre-Applicationafterpre-appsubmittedforpeerreview @sprint-12-US-226646 @vaibhav @reassignment @buglogged-245328
+  @202457 @ValidatetasktypeshouldberenamedforEXErevieweruserasPeerReviewPre-Applicationafterpre-appsubmittedforpeerreview @sprint-12-US-226646 @vaibhav @reassignment @buglogged-245328
   Scenario: Validate task type should be renamed for EXE reviewer user as "Peer Review Pre-Application" after pre-app submitted for peer review
     And I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
@@ -4667,12 +4667,10 @@ Feature: Pre-Application scenarios without background
     And I save the field labeled "EGMS ID" as "AnnEGMSID"
     And I click on "Create Pre-Application" in the page details
     When I click modal button "Save and Continue"
-    And I click on "Save" in the page details
-    And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "PreappEGMSID"
-    When I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
+    And I get the "EGMS ID"
     And I navigate to "Overview" sub tab
     And I edit the following rows inline in flex table with id "---preApplication:-:preAppContactTableId---" by clicking "Edit" :
       | Name                       | Project Role             | Is Key Contact |
