@@ -2275,10 +2275,10 @@ Feature: Application Intake scenarios without background
       """
 
 
-  @TBE @235107 @234957 @DirectedAnn_VerifyasSPIusercannotseeRecommendedbudgetfieldisvisibleunderbudgetsummarywhenAppstatusisCreated,SubmittoGrantor&ReviewinitiatedbeforeFDMstate @sprint-13-US-224176 @komal @Allocation
+  @235107 @234957 @DirectedAnn_VerifyasSPIusercannotseeRecommendedbudgetfieldisvisibleunderbudgetsummarywhenAppstatusisCreated,SubmittoGrantor&ReviewinitiatedbeforeFDMstate @sprint-13-US-224176 @komal @Allocation
   Scenario Outline: Directed Ann_ Verify as SPI user can not see Recommended budget field is visible under budget summary when App status is Created, Submit to Grantor & Review initiated before FDM state
+  | Competitive Ann_ Verify as SPI user can not see Recommended budget field is visible under budget summary when App status is Created, Submit to Grantor & Review initiated before FDM state |
     Given I published "<Announcement Type>" type announcement having name "Automation Runtime Announcement" and properties "default"
-      | Competitive Ann_ Verify as SPI user can not see Recommended budget field is visible under budget summary when App status is Created, Submit to Grantor & Review initiated before FDM state |
     And I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Opportunities" tab
@@ -2402,7 +2402,7 @@ Feature: Application Intake scenarios without background
     And I click toggle button to select "Applications - All"
     And I perform quick search for "{SavedValue:EGMSID}" in "---applicationIntake:-:recipientApplications---" panel
     When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---applicationIntake:-:recipientApplications---" without waiting for record
-    Then I softly see field "Status" as "Negotiation Initiated"
+    Then I softly see field "Status" as "Reviewed"
     When I navigate to "Budget" sub tab
     Then I softly see field "Recommended Budget" inside page block
 
@@ -2411,7 +2411,7 @@ Feature: Application Intake scenarios without background
       | {SavedValue:Automation Runtime Announcement} | Directed          |
       | {SavedValue:Automation Runtime Announcement} | Competitive       |
 
-  @TBE @219489 @219636 @DirectedAnn_VerifyasSPAuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarywhenAppstatusisnegotiationSenttoS\R @sprint-13-US-224176 @komal @Allocation
+  @219489 @219636 @DirectedAnn_VerifyasSPAuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarywhenAppstatusisnegotiationSenttoS\R @sprint-13-US-224176 @komal @Allocation
   Scenario Outline: Directed Ann_ Verify as SPA user I can see Recommended budget field is visible under budget summary when App status is negotiation Sent to S\R
     | Competitive Ann_ Verify as SPA user I can see Recommended budget field is visible under budget summary when App status is negotiation Sent to S\R |
     Given I published "<Announcement Name>" type announcement having name "Automation Runtime Announcement" and properties "default"
@@ -2473,7 +2473,6 @@ Feature: Application Intake scenarios without background
     Given I am on "SUBPORTAL" portal
     When I login as "IND" user
     And I navigate to "Applications" tab
-    When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "Applications - All"
     And I perform quick search for "{SavedValue:EGMSID}" in "---applicationIntake:-:recipientApplications---" panel
     When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---applicationIntake:-:recipientApplications---" without waiting for record
@@ -2487,7 +2486,7 @@ Feature: Application Intake scenarios without background
       | {SavedValue:Automation Runtime Announcement} | Directed          |
       | {SavedValue:Automation Runtime Announcement} | Competitive       |
 
-  @TBE @219507 @219641 @DirectedAnn_VerifyasINDuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarysummarywhenAppstatusisconverttoaward @sprint-13-US-224176 @komal @Allocation
+  @mk @TBE @219507 @219641 @DirectedAnn_VerifyasINDuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarysummarywhenAppstatusisconverttoaward @sprint-13-US-224176 @komal @Allocation
   Scenario Outline: Directed Ann_ Verify as IND user I can see Recommended budget field is visible under budget summary summary when App status is convert to award
     Given I published "<Announcement Type>" type announcement having name "Automation Runtime Announcement" and properties "default"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation SPA user"
@@ -2505,7 +2504,6 @@ Feature: Application Intake scenarios without background
     Given I am on "SUBPORTAL" portal
     When I login as "IND" user
     And I navigate to "Applications" tab
-    When I navigate to "Applications" content inside "Applications" subheader on left panel
     And I click toggle button to select "Applications - All"
     And I perform quick search for "<Announcement Name>" in "---applicationIntake:-:recipientApplications---" panel
     When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationIntake:-:recipientApplications---" without waiting for record
