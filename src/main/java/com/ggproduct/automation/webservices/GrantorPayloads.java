@@ -233,7 +233,7 @@ public class GrantorPayloads {
 
         JsonObject keyOutcome = new JsonObject();
         JsonArray keyOutcomeArray = new JsonArray();
-        keyOutcome.addProperty("MasterKPI", map.get("Automation Permanent KPI for Regression"));
+        keyOutcome.addProperty("MasterKPI", map.get("Automation Permanent KPI"));
         keyOutcome.addProperty("Target", "10");
         keyOutcomeArray.add(keyOutcome);
         parent.add("KeyOutcome", keyOutcomeArray);
