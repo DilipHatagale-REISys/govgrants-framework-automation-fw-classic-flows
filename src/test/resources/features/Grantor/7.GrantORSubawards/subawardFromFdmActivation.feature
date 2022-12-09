@@ -1,4 +1,4 @@
-@awardFromFDMWithAPI @grantor-regression @grantor-parallel-regression @grantAndAward @regression
+@awardFromFDMWithAPI @grantor-regression @grantor-parallel-regression @grantAndAward @regression @wip
 Feature: Validate all scenarios of Subaward From FDM and activating an Award using API
 
   Background: Activating Subaward from FDM using API
