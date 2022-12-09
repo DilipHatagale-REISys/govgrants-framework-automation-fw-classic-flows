@@ -2273,3 +2273,248 @@ Feature: Application Intake scenarios without background
       Thank you.
       The EGMS Team
       """
+
+
+  @TBE @235107 @234957 @DirectedAnn_VerifyasSPIusercannotseeRecommendedbudgetfieldisvisibleunderbudgetsummarywhenAppstatusisCreated,SubmittoGrantor&ReviewinitiatedbeforeFDMstate @sprint-13-US-224176 @komal @Allocation
+  Scenario Outline: Directed Ann_ Verify as SPI user can not see Recommended budget field is visible under budget summary when App status is Created, Submit to Grantor & Review initiated before FDM state
+    Given I published "<Announcement Type>" type announcement having name "Automation Runtime Announcement" and properties "default"
+      | Competitive Ann_ Verify as SPI user can not see Recommended budget field is visible under budget summary when App status is Created, Submit to Grantor & Review initiated before FDM state |
+    And I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
+    And I navigate to "Opportunities" tab
+    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:reviewsTableId---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:reviewsTableId---"
+    When I click on "Qualify" in the page details
+    When I click on "Create Application" in the page details
+    And I click modal button "Save and Continue"
+    Then I see the header is "Application" in the page details
+    When I navigate to "Budget" sub tab
+    #235107 #234957
+    Then I softly see field "Recommended Budget" inside page block
+    When I enter "Edition" values from "Application_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Budget" sub tab
+    When I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match |
+      | Construction  | 1000   | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I navigate to "Proposal" sub tab
+    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
+    And I navigate to "Files" sub tab
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I get the "EGMS ID"
+    When I click on "Submit Application" in the page details
+    Then I softly see field "Status" as "Submitted to Grantor"
+    When I navigate to "Budget" sub tab
+    #235107 #234957
+    Then I softly see field "Recommended Budget" inside page block
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    When I navigate to "Applications" tab
+    And I navigate to "Reviews" content inside "Application Reviews" subheader on left panel
+    When I click toggle button to select "Application Reviews - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationReview:-:announcementListTableId---" panel
+    When I click on "Initiate Review Process" icon for "<Announcement Name>" inside flex table with id "---applicationReview:-:announcementListTableId---" with wait for record
+    And I wait for "3" seconds
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI3" user
+    And I navigate to "Applications" tab
+    When I navigate to "Applications" content inside "Applications" subheader on left panel
+    When I navigate to "Applications" content inside "Applications" subheader on left panel
+    And I click toggle button to select "Applications - All"
+    And I perform quick search for "{SavedValue:EGMSID}" in "---applicationIntake:-:recipientApplications---" panel
+    When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---applicationIntake:-:recipientApplications---" without waiting for record
+    Then I softly see field "Status" as "Review Initiated"
+    When I navigate to "Budget" sub tab
+    #235107 #234957
+    Then I softly see field "Recommended Budget" inside page block
+    Examples:
+      | Announcement Name                            | Announcement Type |
+      | {SavedValue:Automation Runtime Announcement} | Directed          |
+      | {SavedValue:Automation Runtime Announcement} | Competitive       |
+
+  @TBE @219498 @219488 @219634 @219640 @DirectedAnn_VerifyasSPIuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarysectionwhenAppstatusisnegotiationcompleted @sprint-13-US-224176 @komal @Allocation
+  Scenario Outline: Directed Ann_ Verify as SPI user I can see Recommended budget field is visible under budget summary section when App status is negotiation completed
+  | Directed Ann_ Verify as SPI user I can see Recommended budget field is visible under budget summary when App status is negotiation initiated state |
+  | Competitive Ann_ Verify as SPI user I can see Recommended budget field is visible under budget summary when App status is negotiation initiated state|
+  | Competitive Ann_ Verify as SPI user I can see Recommended budget field is visible under budget summary section when App status is negotiation completed |
+    Given I published "<Announcement Type>" type announcement having name "Automation Runtime Announcement" and properties "default"
+    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
+    And I created approved FDM on application "<Announcement Name>"
+    And I login to "As a Grantor" app as "PM" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "<Announcement Name>" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I navigate to "Negotiations" sub tab
+    And I enter value "7" into field "fieldNegotiationDueDate__c"
+    And I enter value "Overview: Project Information" into field "ApplicationSectionsForRevision__c"
+    And I enter value "Negoatiation Initiated" into field "ExplanationOfRevisionsNeeded__c"
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI3" user
+    And I navigate to "Home" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:homePendingTasks---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:homePendingTasks---"
+    #219488 #219634
+    Then I softly see field "Status" as "Negotiation Initiated"
+    When I navigate to "Budget" sub tab
+    Then I softly see field "Recommended Budget" inside page block
+    #219498 #219640
+    And I navigate to "Negotiations" sub tab
+    And I enter values into fields
+      | Value                              | Field                |
+      | Automation Negotiation Iniatiation | ApplicantResponse__c |
+    When I click on "Save" in the page details
+    And I pause execution for "5" seconds
+    When I click on "Submit to Grantor" in the page details
+    Then I softly see field "Status" as "Negotiation Submitted"
+    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
+    And I navigate to "Applications" tab
+    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
+    And I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:phasePendingTasksTableId---" panel
+    And I click on "Start" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:phasePendingTasksTableId---"
+    When I click on "Complete Negotiation" in the page details
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPI3" user
+    And I navigate to "Applications" tab
+    When I navigate to "Applications" content inside "Applications" subheader on left panel
+    And I click toggle button to select "Applications - All"
+    And I perform quick search for "{SavedValue:EGMSID}" in "---applicationIntake:-:recipientApplications---" panel
+    When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---applicationIntake:-:recipientApplications---" without waiting for record
+    Then I softly see field "Status" as "Negotiation Initiated"
+    When I navigate to "Budget" sub tab
+    Then I softly see field "Recommended Budget" inside page block
+
+    Examples:
+      | Announcement Name                            | Announcement Type |
+      | {SavedValue:Automation Runtime Announcement} | Directed          |
+      | {SavedValue:Automation Runtime Announcement} | Competitive       |
+
+  @TBE @219489 @219636 @DirectedAnn_VerifyasSPAuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarywhenAppstatusisnegotiationSenttoS\R @sprint-13-US-224176 @komal @Allocation
+  Scenario Outline: Directed Ann_ Verify as SPA user I can see Recommended budget field is visible under budget summary when App status is negotiation Sent to S\R
+    | Competitive Ann_ Verify as SPA user I can see Recommended budget field is visible under budget summary when App status is negotiation Sent to S\R |
+    Given I published "<Announcement Name>" type announcement having name "Automation Runtime Announcement" and properties "default"
+    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation SPA user"
+    And I created approved FDM on application "<Announcement Name>"
+    And I login to "As a Grantor" app as "PM" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "<Announcement Name>" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I navigate to "Negotiations" sub tab
+    And I enter value "7" into field "fieldNegotiationDueDate__c"
+    And I enter value "Overview: Project Information" into field "ApplicationSectionsForRevision__c"
+    And I enter value "Negoatiation Initiated" into field "ExplanationOfRevisionsNeeded__c"
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    Given I am on "SUBPORTAL" portal
+    When I login as "SPA" user
+    And I navigate to "Applications" tab
+    When I navigate to "Applications" content inside "Applications" subheader on left panel
+    And I click toggle button to select "Applications - All"
+    And I perform quick search for "{SavedValue:EGMSID}" in "---applicationIntake:-:recipientApplications---" panel
+    When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---applicationIntake:-:recipientApplications---" without waiting for record
+    #219489 #219636
+    When I navigate to "Negotiations" sub tab
+    Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
+    When I navigate to "Budget" sub tab
+    Then I softly see field "Recommended Budget" inside page block
+
+    Examples:
+      | Announcement Name                            | Announcement Type |
+      | {SavedValue:Automation Runtime Announcement} | Directed          |
+      | {SavedValue:Automation Runtime Announcement} | Competitive       |
+
+  @TBE @219494 @219638 @DirectedAnn_VerifyasINDuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarysectionwhenAppstatusisnegotiationinitiated @sprint-13-US-224176 @komal @Allocation
+  Scenario Outline: Directed Ann_ Verify as IND user I can see Recommended budget field is visible under budget summary section when App status is negotiation initiated
+    Given I published "<Announcement Type>" type announcement having name "Automation Runtime Announcement" and properties "default"
+    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation SPA user"
+    And I created approved FDM on application "<Announcement Name>"
+    And I login to "As a Grantor" app as "PM" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "<Announcement Name>" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    When I click on "Initiate Negotiation" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---" without waiting for record
+    And I navigate to "Negotiations" sub tab
+    And I enter value "7" into field "fieldNegotiationDueDate__c"
+    And I enter value "Overview: Project Information" into field "ApplicationSectionsForRevision__c"
+    And I enter value "Negoatiation Initiated" into field "ExplanationOfRevisionsNeeded__c"
+    When I click on "Save" in the page details
+    When I click on "Send to Subrecipient" in the page details
+    Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    Given I am on "SUBPORTAL" portal
+    When I login as "IND" user
+    And I navigate to "Applications" tab
+    When I navigate to "Applications" content inside "Applications" subheader on left panel
+    And I click toggle button to select "Applications - All"
+    And I perform quick search for "{SavedValue:EGMSID}" in "---applicationIntake:-:recipientApplications---" panel
+    When I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---applicationIntake:-:recipientApplications---" without waiting for record
+    #219494 #219638
+    Then I softly see field "Status" as "Negotiation Initiated"
+    When I navigate to "Budget" sub tab
+    Then I softly see field "Recommended Budget" as "$1,000.00"
+
+    Examples:
+      | Announcement Name                            | Announcement Type |
+      | {SavedValue:Automation Runtime Announcement} | Directed          |
+      | {SavedValue:Automation Runtime Announcement} | Competitive       |
+
+  @TBE @219507 @219641 @DirectedAnn_VerifyasINDuserIcanseeRecommendedbudgetfieldisvisibleunderbudgetsummarysummarywhenAppstatusisconverttoaward @sprint-13-US-224176 @komal @Allocation
+  Scenario Outline: Directed Ann_ Verify as IND user I can see Recommended budget field is visible under budget summary summary when App status is convert to award
+    Given I published "<Announcement Type>" type announcement having name "Automation Runtime Announcement" and properties "default"
+    And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default-Automation SPA user"
+    And I created approved FDM on application "<Announcement Name>"
+    And I login to "As a Grantor" app as "PM" user
+    And I navigate to "Applications" tab
+    When I navigate to "Funding Decision Memos (FDM)" content inside "Application Reviews" subheader on left panel
+    And I click toggle button to select "Approved Funding Decision Memos (FDM)"
+    When I perform quick search for "<Announcement Name>" in "---subAwardFromFDM:-:fdmTableId---" panel
+    And I click on "View" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
+    And I click on "Create Subaward" icon for "<Announcement Name>" inside flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
+    And I pause execution for "7" seconds
+    Then I softly see that "Subaward" is in "Created" status
+    And I save the field labeled "EGMS ID" as "EGMSID"
+    Given I am on "SUBPORTAL" portal
+    When I login as "IND" user
+    And I navigate to "Applications" tab
+    When I navigate to "Applications" content inside "Applications" subheader on left panel
+    And I click toggle button to select "Applications - All"
+    And I perform quick search for "<Announcement Name>" in "---applicationIntake:-:recipientApplications---" panel
+    When I click on "View" icon for "<Announcement Name>" inside flex table with id "---applicationIntake:-:recipientApplications---" without waiting for record
+    #219507 #219641
+    Then I softly see field "Status" as "Converted to Award"
+    When I navigate to "Budget" sub tab
+    Then I softly see field "Recommended Budget" as "$1,000.00"
+
+    Examples:
+      | Announcement Name                            | Announcement Type |
+      | {SavedValue:Automation Runtime Announcement} | Directed          |
+      | {SavedValue:Automation Runtime Announcement} | Competitive       |

@@ -1343,7 +1343,7 @@ Feature: Validate all scenarios in the Competitive Announcement tab
       | Announcement Name                            | Application2                     | User |
       | {SavedValue:Automation Runtime Announcement} | Automation Runtime Application_2 | EXE  |
 
-  @mk @227577 @CompAnn>>VerifyPOusercanseethevalidationwhenthebudgetedAmountisnotequaltotheRecommendedBudgetwhenusertriedtoconverttoawardonFDMlayout @sprint-13-US-224612 @komal @Allocation
+  @227577 @CompAnn>>VerifyPOusercanseethevalidationwhenthebudgetedAmountisnotequaltotheRecommendedBudgetwhenusertriedtoconverttoawardonFDMlayout @sprint-13-US-224612 @komal @Allocation
   Scenario Outline:Comp Ann>>Verify PO user can see the validation when the budgeted Amount is not equal to the Recommended Budget when user tried to convert to award on FDM layout
     Given I published "Competitive" type announcement having name "Automation Runtime Announcement" and properties "default-Automation PO user"
     And I initiated an application review for application "<Announcement Name>" on announcement "<Announcement Name>" with properties "default"
