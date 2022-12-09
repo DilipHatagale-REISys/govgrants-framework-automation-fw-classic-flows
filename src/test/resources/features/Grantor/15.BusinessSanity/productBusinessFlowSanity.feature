@@ -118,7 +118,7 @@ Feature: Validate sanity testing of Complete Business Flow
     And I click on "Activate" in the page details
     Then I see status in Progress-bar is "Active" and is "Green"
 
-  @vai  @65077 @publishingCompetitiveAnnouncementCA
+  @65077 @publishingCompetitiveAnnouncementCA
   Scenario: Validate the activation of Competitive Announcement
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Announcements" tab
@@ -1590,7 +1590,7 @@ Feature: Validate sanity testing of Complete Business Flow
     Then I see status in Progress-bar is "Active" and is "Green"
 
   @72349 @adhocReimbursementHappyPath
-  Scenario Outline: Validate the Reimbursement Payment Request happy path and the status changes to 'Paid'
+  Scenario: Validate the Reimbursement Payment Request happy path and the status changes to 'Paid'
     Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Formula_By_Applicant"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI3" user

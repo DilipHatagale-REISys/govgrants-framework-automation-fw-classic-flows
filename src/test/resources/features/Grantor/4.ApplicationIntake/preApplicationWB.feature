@@ -3067,6 +3067,7 @@ Feature: Pre-Application scenarios without background
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
     When I click modal button "Save and Continue"
+    Then I see the header is "Pre Application" in the page details
     And I click on "Save" in the page details
     And I get the "EGMS ID"
     Given I click on "Edit" in the page details
@@ -4655,7 +4656,7 @@ Feature: Pre-Application scenarios without background
     Then I softly can see top right button "Extend Dates" in page detail
     Then I softly can see top right button "Unpublish" in page detail
 
-  @202457 @ValidatetasktypeshouldberenamedforEXErevieweruserasPeerReviewPre-Applicationafterpre-appsubmittedforpeerreview @sprint-12-US-226646 @vaibhav @reassignment @buglogged-245328
+ @vai @202457 @ValidatetasktypeshouldberenamedforEXErevieweruserasPeerReviewPre-Applicationafterpre-appsubmittedforpeerreview @sprint-12-US-226646 @vaibhav @reassignment @buglogged-245328
   Scenario: Validate task type should be renamed for EXE reviewer user as "Peer Review Pre-Application" after pre-app submitted for peer review
     And I published "Competitive" type announcement having name "Automation Runtime Announcement for Pre-App" and properties "PRE_APPLICATION_YES"
     When I am on "SUBPORTAL" portal
