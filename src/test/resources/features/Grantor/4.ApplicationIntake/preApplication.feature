@@ -1,4 +1,4 @@
-@preApplication @grantor-regression @grantor-parallel-regression @app @regression
+@preApplication @grantor-regression @grantor-parallel-regression @app @regression @TBEAllocation
 Feature: Validate all scenarios in the Pre-Application
 
   Background: Qualify Announcement and Create PreApplication
@@ -12,6 +12,7 @@ Feature: Validate all scenarios in the Pre-Application
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
     When I click modal button "Save and Continue"
+    And I wait for "1" seconds
     And I click on "Save" in the page details
     And I get the "EGMS ID"
 

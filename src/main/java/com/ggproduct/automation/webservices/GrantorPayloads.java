@@ -337,7 +337,7 @@ public class GrantorPayloads {
             case "PRE_APPLICATION_YES_AND_NO_MATCH":
                 json = updatePreApplicationAsYesForAnnouncement(json);
                 return updateMachRequiredToNoAnnouncement(json);
-            case "SUB_MATCH_YES_RISK_YES_EXPENSE_YES_ADVANCE_YES":
+            case "SUB_MATCH_YES_RISK_YES_EXPENSE_YES_ADVANCE_NO":
                 return subMatchYesRequiredMatch10RiskYesExpenseYesAdvacnceYesAnnouncement(json);
 
             default:
@@ -477,7 +477,7 @@ public class GrantorPayloads {
         jsonObject.addProperty("GranteeMatch", 10);
         jsonObject.addProperty("RiskAssessment_Required", "Yes");
         jsonObject.addProperty("AreExpensesBuildIUpLevel", "Yes");
-        jsonObject.addProperty("IsAdvancePermitted", "Yes");
+        jsonObject.addProperty("IsAdvancePermitted", "No");
         pre.add(jsonObject);
         json.add("Announcement", pre);
         return json;
