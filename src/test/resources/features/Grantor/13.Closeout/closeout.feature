@@ -1,8 +1,8 @@
-@closeout @grantor-regression @grantor-parallel-regression @regression
+@closeout @grantor-regression @grantor-parallel-regression @regression @TBEAllocation
 Feature: Validate all scenarios in Closeout
 
   Background: Navigate to award
-    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
