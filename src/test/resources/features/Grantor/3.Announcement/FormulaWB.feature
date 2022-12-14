@@ -668,11 +668,11 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly can see page block "Budget Summary"
     Then I see value "Automation Permanent Focus Area" for title "Focus Area" inside table "---applicationIntake:-:budgetSummaryTableId---"
 
-  @226893 @ValidateSPI/SPAUserforformulaannouncementinbudgetsummarysectionAllocationAmountfieldshouldbedisplaywithallocationlevel-ByApplicant @sprint-9-US-204998 @vaibhav @Allocation
-  Scenario: Validate SPI/SPA User for formula announcement in budget summary section Allocation Amount field should be display with allocation level-By Applicant
+  @226893 @219624 @ValidateSPI/SPAUserforformulaannouncementinbudgetsummarysectionAllocationAmountfieldshouldbedisplaywithallocationlevel-ByApplicant @sprint-9-US-204998 @vaibhav @Allocation
+  Scenario Outline: Validate SPI/SPA User for formula announcement in budget summary section Allocation Amount field should be display with allocation level-By Applicant
     Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT_FOCUS_AREA_NO"
     Given I am on "SUBPORTAL" portal
-    When I login as "SPI3" user
+    When I login as "<User>" user
     And I navigate to "Opportunities" tab
     When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
     And I perform quick search for "{SavedValue:Automation Runtime Formula Announcement}" in "---applicationReview:-:reviewsTableId---" panel
@@ -695,6 +695,11 @@ Feature: Validate all scenarios in the Formula Announcement tab
     Then I softly can see page block "Budget Summary"
     Then I see the following headers in table with id "---applicationIntake:-:formulaAllocatedAmountTableId---" :
       | Allocation Amount |
+
+    Examples:
+      | User |
+      | SPI3 |
+      | IND  |
 
   @197144 @196665 @225801 @226417 @226435 @VerifyAnnowner(PMuser)OnceS/Risassociated,theinvitedapplicant'ssectiontableshouldupdateandauto-populatealltheassociatedfocusareas(onlythosefocusareaswhicharealreadyassociatedwiththeannouncement) @sprint-11-US-201040 @komal @Allocation
   Scenario: Verify Ann owner(PM user)  Once S/R is associated, the invited applicant's section table should update and auto-populate all the associated focus areas (only those focus areas which are already associated with the announcement)
