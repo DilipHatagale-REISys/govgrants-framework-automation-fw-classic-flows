@@ -75,6 +75,7 @@ Feature: Validate all scenarios in Closeout
     And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
     When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
     And I click modal button "Save and Continue"
+    And I wait for "2" seconds
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "closeoutID"
@@ -95,9 +96,10 @@ Feature: Validate all scenarios in Closeout
     And I save the field labeled "EGMS ID" as "EGMSID"
     And I click on "Show line items" icon for "Construction" inside flex table with id "---paymentRequest:-:paymentRequestBudgetTableId---"
     When I enter the following values into flex table with id "---paymentRequest:-:paymentLineItemsTableId---" by clicking "New" :
-      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Advance Applied | Program Income Disbursed | Cash Match | Non-Cash Match |
-      | Extra Salary | The narrative | 500        | 1        | Feet        | 0                 | 0               | 0                        | 100        | 100            |
+      | Title        | Narrative     | Unit Price | Quantity | Measurement | Other Charges ($) | Program Income Disbursed | Cash Match | Non-Cash Match |
+      | Extra Salary | The narrative | 500        | 1        | Feet        | 0                 | 0                        | 100        | 100            |
     When I close "Add Line Items" modal by clicking the top right x button
+    And I wait for "3" seconds
     And I click on "Submit to Grantor" in the page details
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     When I navigate to "Monitoring" tab
@@ -308,7 +310,7 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Has the subrecipient provided supporting documentation for all reported match, including third party in-kind match?" as "Yes"
     Then I softly see field "Comments" as "Automation test description"
     Then I softly see field "Did the subrecipient fully expend program income earned during the award period prior to the closeout of the award?" as "Yes"
-    Then I softly see field "Has the subrecipient returned unexpended program income to the funding organiation, if required by program regulations?" as "Yes"
+    Then I softly see field "Has the subrecipient returned unexpended program income to the funding organization, if required by program regulations?" as "Yes"
     Then I softly see field "Comments" as "Automation test description"
     Then I softly see field "Has the subrecipient completed the scope of work as outlined in the subaward agreement?" as "Yes"
     Then I softly see field "Has the subrecipient met all deliverable requirements?" as "Yes"
@@ -484,8 +486,8 @@ Feature: Validate all scenarios in Closeout
       | Reviewer Name | Responsibility   | Description                 | Due Date |
       | Automation PM | Program Reviewer | Automation Test Description | 10       |
     When I navigate to "Files" sub tab
-   When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
-   Then I softly see "Upload Template" opens in overLay window
+    When I click on "Upload Template" icon for "Not Applicable" inside flex table with id "---closeout:-:closeoutSupportingDocumentChecklist---" without waiting for record
+    Then I softly see "Upload Template" opens in overLay window
     When I upload file "AttachmentTesting.pdf" into library
     And I click modal button "Save"
     Then I see the following messages in the page details contains:
@@ -1351,7 +1353,7 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Subawards" sub tab
     And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---subAwardStandAlone:-:GrantsSubAwardsTableId---"
     And I navigate to "Actuals" sub tab
-    And I save the field labeled "Advance Balance" as "AdvanceBalance"
+    And I save the field labeled "Balance" as "Balance"
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1364,7 +1366,7 @@ Feature: Validate all scenarios in Closeout
     And I enter "Edition" values from "Closeout_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
-    Then I softly see value "{SavedValue:AdvanceBalance}" for title "Advance Balance" inside table "---closeout:-:closeoutFundingAccountsTableId---"
+    Then I softly see value "{SavedValue:Balance}" for title "Balance" inside table "---closeout:-:closeoutFundingAccountsTableId---"
 
   @96485 @93576 @93582 @VerifyOverriddenPermissionWithSubRecipientUser  @monu
   Scenario: Validate sub recipient user is not allowed to override pending item

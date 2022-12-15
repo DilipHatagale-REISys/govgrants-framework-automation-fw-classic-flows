@@ -130,7 +130,7 @@ Feature: Validate all scenarios in Closeout
     And I get the "EGMS ID"
     #93795
     And I checkout to yopmail with mailid "exe.automation@yopmail.com"
-    And I pause execution for "5" seconds
+   And I pause execution for "10" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
@@ -153,6 +153,7 @@ Feature: Validate all scenarios in Closeout
     When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
       | Name                     | Closeout |
       | {SavedValue:FO Username} | Step 2   |
+    And I wait for "3" seconds
     Given I click on "Send To Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
     When I navigate to "Closeout" tab
@@ -192,12 +193,12 @@ Feature: Validate all scenarios in Closeout
     When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:ProjectPeriodCloseoutTableId---" panel
     When I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:ProjectPeriodCloseoutTableId---"
     And I navigate to "History" sub tab
-    Then I softly see value "Submission.pdf" for title "File Name" against the value "{SavedValue:EXE Username}" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "{SavedValue:EXE Username}" for title "Taken By" against the value "SentToSubrecipient.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "Acknowledge.pdf" for title "File Name" against the value "{SavedValue:SPI3 Username}" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "{SavedValue:SPI3 Username}" for title "Taken By" against the value "Acknowledge.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "Overriden.pdf" for title "File Name" against the value "{SavedValue:EXE Username}" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
-    Then I softly see value "{SavedValue:EXE Username}" for title "Taken By" against the value "Overriden.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
+    Then I softly see value "Submission.pdf" for title "File Name" against the value "{SavedValue:EXE Username}" inside table "---closeout:-:snapshotHistoryTableId---"
+    Then I softly see value "{SavedValue:EXE Username}" for title "Taken By" against the value "SentToSubrecipient.pdf" inside table "---closeout:-:snapshotHistoryTableId---"
+    Then I softly see value "Acknowledge.pdf" for title "File Name" against the value "{SavedValue:SPI3 Username}" inside table "---closeout:-:snapshotHistoryTableId---"
+    Then I softly see value "{SavedValue:SPI3 Username}" for title "Taken By" against the value "Acknowledge.pdf" inside table "---closeout:-:snapshotHistoryTableId---"
+    Then I softly see value "Overriden.pdf" for title "File Name" against the value "{SavedValue:EXE Username}" inside table "---closeout:-:snapshotHistoryTableId---"
+    Then I softly see value "{SavedValue:EXE Username}" for title "Taken By" against the value "Overriden.pdf" inside table "---closeout:-:snapshotHistoryTableId---"
   #  Then I softly see value "Submission.pdf" for title "File Name" against the value "Submission.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
   #  Then I softly see value "{SavedValue:PM Username}" for title "Taken By" against the value "Submission.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     And I click on hyperlink containing value "Overriden.pdf"
@@ -207,7 +208,6 @@ Feature: Validate all scenarios in Closeout
     And I navigate to "Closeout" tab
     When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
     When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
-    And I softly see value "Automation PM" for title "Assigned By" inside table "---closeout:-:pendingTaskTableId---"
     When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I "Approve" in the approval decision
     When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
@@ -468,9 +468,9 @@ Feature: Validate all scenarios in Closeout
     When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:pendingTaskTableId---" panel
     And I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I navigate to "Overview" sub tab
-    And I save the field labeled "Awarded Amount" as "AwardedAmount"
+    And I save the field labeled "Cumulative Obligation" as "AwardedAmount"
     And I save the field labeled "Balance" as "BalanceAmount"
-    Then I softly see field "Awarded Amount" as "{SavedValue:AwardedAmount}"
+    Then I softly see field "Cumulative Obligation" as "{SavedValue:AwardedAmount}"
     Then I softly see field "Balance" as "{SavedValue:BalanceAmount}"
     #93581
     When I click on "Edit" in the page details
@@ -652,7 +652,6 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Requests" sub tab
     #96202 #monu
     Then I softly see value "Created" for title "Status" inside table "---closeout:-:RequestTabCloseoutRequestTableId---"
-    Then I softly can see row level action button "Delete" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
     Then I softly can see row level action button "View" against "Created" in flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
     When I click on "View" icon for "Scheduled" inside flex table with id "---closeout:-:RequestTabCloseoutRequestTableId---"
     And I pause execution for "3" seconds
@@ -766,7 +765,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Start" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:pendingTaskTableId---"
     When I click on "Override" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - Provide Justification for overriding open items to closure and proceeding with the closeout. |
+      | Overview Tab - Provide Justification for overriding open items to closure and proceed with the closeout. |
 
   @96511 @validateVisibilityOfEditAndOverrideButtonWithNonAwardOwner @monu @buglogged141297
   Scenario: Verify non award owner cannot override or edit pending items of closeout request
@@ -1418,7 +1417,7 @@ Feature: Validate all scenarios in Closeout
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime Award for closeout}" from the object "Closeout"
     When I create a post award record "Closeout" for the Award "{SavedValue:Automation Runtime Award for closeout}" having object api name as "Closeout"
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Grants - Active"
@@ -1545,7 +1544,7 @@ Feature: Validate all scenarios in Closeout
     Then I can see top right button "New" in flex table with id "---closeout:-:closeoutPeerReviewTableId---"
     Then I can see top right button "New" in flex table with id "---closeout:-:closeoutApproverTableId---"
     And I navigate to "Files" sub tab
-    Then I can see top right button "Add Files" in flex table with id "---closeout:-:CloseoutDetailsTableId---"
+    Then I can see top right button "Add Files" in flex table with id "---closeout:-:closeoutFilesTableId---"
     Then I can see top right button "Add" in flex table with id "---closeout:-:closeoutNotesTableId---"
 
   @199844 @ValidatPMuserasAwardownershouldnotgetaffectedevenifownershiprelatedtaskofcloseoutisreassignfromonePOusertootherPOuser @sprint-12-US-226646 @vaibhav @reassignment
@@ -2704,7 +2703,7 @@ Feature: Validate all scenarios in Closeout
     When I navigate to "Responsibilities" sub tab
     Then I softly see value "Automation PM" for title "Name" inside table "---closeout:-:closeoutOwnerTableId---"
     And I navigate to "History" sub tab
-    Then I softly see value "Automation PM" for title "New Value" inside table "---closeout:-:closeoutHistoryTableId---"
+    Then I softly see that "Automation PM" has been added in flextable with Id "---closeout:-:closeoutHistoryTableId---"
     When I re-login to "As a Grantor" app as "PM1" user on "INTERNAL" portal
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -2788,7 +2787,7 @@ Feature: Validate all scenarios in Closeout
 
   @227801 @ValidatePMuserifownersomerecordsaresame&somearedifferentthanownerofcloseoutthenweshouldgetvalidationonoverriddenbuttonbutsomerecordsareforceclosedifownerofrecordsissameasownerofcloseoutafterownershiptransfer @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate PM user if owner of some records are same & some are different than owner of closeout then we should get validation on overridden button but some records are force closed if owner of records is same as owner of closeout after ownership transfer
-    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     # Desk Review
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -3893,7 +3892,7 @@ Feature: Validate all scenarios in Closeout
 
   @227789 @ValidatePMuserwhenrecordsunderopenitemsisonlyinsubmitforapprovalstate&ownerofthatrecordisdifferentfromcloseoutownerthenshouldgeterrormessageonoverriddenbuttonafterownershiptransfer @sprint-12-US-226976 @vaibhav @reassignment
   Scenario: Validate PM user when records under open items is only in submit for approval state & owner of that record is different from closeout owner then should get error message on overridden button after ownership transfer
-    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     # Desk Review
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4179,7 +4178,7 @@ Feature: Validate all scenarios in Closeout
   @227798 @ValidatePMuserwhenrecordsunderopenitemsisinanystateexceptsubmitforapprovalstatethenweshouldoverrideopenitems&forceclosethatopenitems&proceedfurtherevenafterownershiptransfer @sprint-12-US-226976 @vaibhav @reassignment
   Scenario: Validate PM user when records under open items is in any state except submit for approval state then we should override open items & force close that open items & proceed further even after ownership transfer
     Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
-    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award Record" with properties "default" of type "Competitive"
       # Desk Review
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4602,8 +4601,8 @@ Feature: Validate all scenarios in Closeout
     Then I softly see value "Created" for title "Status" against the value "{SavedValue:DeskReview}" inside table "---closeout:-:PendingSiteVisitDeskReviewTableId---"
     Then I softly see value "Created" for title "Status" against the value "{SavedValue:SitevVisitId}" inside table "---closeout:-:PendingSiteVisitDeskReviewTableId---"
     When I click on "Override" in the page details
-    Then I softly see the following messages in the page details :
-      | Open Items - Some records on the grant selected for closeout are Submitted for Approval, to proceed with the business process of Override you may have to either send the record to owner or approve/reject the record. {{SavedValue:progID}, {SavedValue:PayreqId}} |
+    Then I softly see the following messages in the page details contains:
+      | Open Items - Some records on the grant selected for closeout are Submitted for Approval, to proceed with the business process of Override you may have to either send the record to owner or approve/reject the record. |
     And I refresh the page
     When I navigate to "Open Items" sub tab
     Then I softly see value "Force Closed" for title "Status" against the value "{SavedValue:SOWAMENDMENTREQUEST}" inside table "---closeout:-:closeoutPendingAmendmentRequestsTableId---"
@@ -4614,7 +4613,7 @@ Feature: Validate all scenarios in Closeout
 
   @228156 @ValidatePMuserwecanoverridethependingitemswhenstateofrecordsareApprovedeventhoughownerofsomerecordsaredifferentthanownerofcloseoutincaseofownershiptransfer @sprint-12-US-226976 @vaibhav @reassignment
   Scenario: Valdate PM user we can override the pending items when state of records are Approved even though owner of some records are different than owner of closeout in case of ownership transfer
-    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     # Desk Review
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4922,7 +4921,7 @@ Feature: Validate all scenarios in Closeout
 
   @227791 @ValidatePMuserwhenrecordsunderopenitemsisinsubmitforapprovalstate&ownerofthatrecordissameascloseoutownerthenusershouldoverrideopenitems&forceclosethatopenitem&proceedfurtherevenafterownershiptransfer @sprint-12-US-226976 @vaibhav @reassignment
   Scenario: Validate PM user when records under open items is in submit for approval state & owner of that record is same as closeout owner then user should override open items & force close that open items & proceed further even after ownership transfer
-    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "default" of type "Competitive"
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
     # Desk Review
     When I login to "As a Grantor" app as "PM1" user
     And I navigate to "Grants" tab
@@ -5208,7 +5207,7 @@ Feature: Validate all scenarios in Closeout
     When I click on "Save" in the page details
     When I navigate to "Responsibilities" sub tab
     When I enter the following values into flex table with id "---closeout:-:closeoutApproverTableId---" by clicking "New" :
-      | Name                      | Closeout |
+      | Name                     | Closeout |
       | {SavedValue:FO Username} | Step 1   |
     And I click on "Send To Subrecipient" in the page details
     When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal

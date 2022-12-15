@@ -577,6 +577,12 @@ Feature: Validate sanity testing of Complete Business Flow
     When I perform quick search for "{SavedValue:AnnEGMSID}" in "---announcement:-:pendingTaskTableId---" panel
     When I click on "Start" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "---announcement:-:pendingTaskTableId---" without waiting for record
     And I "Approve" in the approval decision
+    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
+    And I navigate to "Announcements" tab
+    When I navigate to "Directed" content inside "Announcements" subheader on left panel
+    When I click toggle button to select "Draft Directed Announcements"
+    And I perform quick search for "{SavedValue:AnnEGMSID}" in "ActiveFundingOpportunities" panel
+    And I click on "View" icon for "{SavedValue:AnnEGMSID}" inside flex table with id "ActiveFundingOpportunities" without waiting for record
     And I click on "Publish" in the page details
     Then I softly see status in Progress-bar is "Published" and is "green"
 
