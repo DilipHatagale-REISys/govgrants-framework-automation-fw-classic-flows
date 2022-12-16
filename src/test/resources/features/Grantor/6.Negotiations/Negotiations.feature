@@ -134,7 +134,7 @@ Feature: Validate all scenarios in Negotiations
     And I click toggle button to select "Approved Funding Decision Memos (FDM)"
     When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
-    Then I can see row level action button "Create Subaward" against "{SavedValue:Automation Runtime FDM Announcement}" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
+    Then I cannot see row level action button "Create Subaward" against "{SavedValue:Automation Runtime FDM Announcement}" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
 
   @66450 @57214 @57039 @createAwardButtonAfterNegotiationComplete @deepika @smoke
   Scenario: Validate whether user will be able to view and select the Create Award button after the negotiation is completed
@@ -284,17 +284,13 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Save" in the page details
     When I click on "Submit to Grantor" in the page details
     And I logout
-    And I checkout to yopmail with mailid "automationspi3@yopmail.com"
+    And I checkout to yopmail with mailid "automationspi30@yopmail.com"
     And I pause execution for "60" seconds
     Then I refresh the page
     And I see the mail subject is as follows :
       """
-      Sandbox: Notification: An Application Negotiation Request for Application {SavedValue:EGMSID} has been Reque
+      Sandbox: Notification: An Application Negotiation Request for Application {SavedValue:EGMSID} has been Requested
       """
-    #bug
-#    And I pause execution for "120" seconds
-#    Then I softly can see mail notification for "EXTERNAL" user with following subject:
-#      | An Application Negotiation Request for Application {SavedValue:EGMSID} has been Requested |
     Given I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Applications" tab
@@ -999,7 +995,7 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
     #133251
-    Then I softly see field "Application Sections for Revision" as "Files: Forms"
+    Then I softly see field "Application Sections for Negotiation" as "Files: Forms"
     When I click on "Send to Subrecipient" in the page details
     Then I softly see the following messages in the page details contains:
       | Negotiations Tab - Select at least one form for negotiation, because Form section is added for negotiation. |
@@ -1803,7 +1799,7 @@ Feature: Validate all scenarios in Negotiations
     When I perform quick search for "{SavedValue:Automation Runtime FDM Announcement}" in "---subAwardFromFDM:-:fdmTableId---" panel
     And I click on "View" icon for "{SavedValue:Automation Runtime FDM Announcement}" inside flex table with id "---subAwardFromFDM:-:fdmTableId---"
     Then I see status in Progress-bar is "Approved" and is "Green"
-    Then  I can see top right button "Notify Applicants" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
+    Then  I can see top right button "Notify Selected Applicants" in flex table with id "---subAwardFromFDM:-:recommendedAppTableId---"
 
   @189488 @189498 @189504 @ValidateS/Rsideallowtheapplicationrecordownerwitheditaccesstoeditsectionsandformswithintheapplicationonlyforcreatedstatus @sprint-13 @vaibhav
   Scenario: Validate allow the application record owner with edit access to edit sections and forms within the application only for created status
@@ -1881,8 +1877,8 @@ Feature: Validate all scenarios in Negotiations
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
     And I pause execution for "5" seconds
     And I enter values into fields
-      | Value      | Field                 |
-      | 10/18/2142 | NegotiationDueDate__c |
+      | Value      | Field                      |
+      | 10/18/2142 | fieldNegotiationDueDate__c |
     When I click on "Save" in the page details
     And I pause execution for "5" seconds
     #189548
@@ -1906,9 +1902,9 @@ Feature: Validate all scenarios in Negotiations
       | Value                              | Field                |
       | Automation Negotiation Iniatiation | ApplicantResponse__c |
     When I click on "Save" in the page details
-    Then I softly see field "Application Sections for Revision" as "Files: Forms"
+    Then I softly see field "Application Sections for Negotiation" as "Files: Forms"
     Then I softly see field "Negotiation Request Status" as "Sent to Subrecipient" in "Negotiation Request Details" pageblock
-    Then I softly see field "Due Date" as "10/18/2142"
+   Then I softly see field "Due Date" as "10/18/2142" in "Negotiation Request Details" pageblock
 
   @189521 @Validatere-submittingtherevisedapplicationtheapplicationsectionsandformsshouldbelockedfortheS/Ruser @sprint-13 @vaibhav
   Scenario: Validate re-submitting the revised application, the application sections and forms should be locked  for the S/R user
@@ -2286,7 +2282,7 @@ Feature: Validate all scenarios in Negotiations
     When I click on "Request Negotiations" in the page details
     When I click on "Save" in the page details
     When I click on "Cancel Negotiation" in the page details
-    Then I softly see field "Negotiation Request Status" as "Canceled" in "Negotiation Request Details" pageblock
+    Then I softly see field "Negotiation Request Status" as "Cancelled" in "Negotiation Request Details" pageblock
     Then I softly can see top right button "Request Negotiation" in page detail
 
   @190679 @ValidateCompletenegotiationOrpendingnegotiationthewecanseenegotiationinitiatedrecordinApplicationNegotiationgridindecrementalorder @sprint-13 @vaibhav
