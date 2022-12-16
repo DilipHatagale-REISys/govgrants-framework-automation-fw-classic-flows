@@ -213,12 +213,12 @@ Feature: Validate all scenarios in Closeout
     When I perform quick search for "{SavedValue:closeoutID}" in "---closeout:-:ProjectPeriodCloseoutTableId---" panel
     When I click on "View" icon for "{SavedValue:closeoutID}" inside flex table with id "---closeout:-:ProjectPeriodCloseoutTableId---"
     And I navigate to "History" sub tab
-    Then I softly see value "Submission.pdf" for title "File Name" against the value "{SavedValue:EXE Username}" inside table "---closeout:-:snapshotHistoryTableId---"
-    Then I softly see value "{SavedValue:EXE Username}" for title "Taken By" against the value "SentToSubrecipient.pdf" inside table "---closeout:-:snapshotHistoryTableId---"
-    Then I softly see value "Acknowledge.pdf" for title "File Name" against the value "{SavedValue:SPI3 Username}" inside table "---closeout:-:snapshotHistoryTableId---"
-    Then I softly see value "{SavedValue:SPI3 Username}" for title "Taken By" against the value "Acknowledge.pdf" inside table "---closeout:-:snapshotHistoryTableId---"
-    Then I softly see value "Overriden.pdf" for title "File Name" against the value "{SavedValue:EXE Username}" inside table "---closeout:-:snapshotHistoryTableId---"
-    Then I softly see value "{SavedValue:EXE Username}" for title "Taken By" against the value "Overriden.pdf" inside table "---closeout:-:snapshotHistoryTableId---"
+    Then I softly see value "Submission.pdf" for title "File Name" inside table "---closeout:-:snapshotHistoryTableId---"
+    Then I softly see value "{SavedValue:EXE Username}" for title "Taken By" inside table "---closeout:-:snapshotHistoryTableId---"
+    Then I softly see value "Acknowledge.pdf" for title "File Name" inside table "---closeout:-:snapshotHistoryTableId---"
+    Then I softly see value "{SavedValue:SPI3 Username}" for title "Taken By" inside table "---closeout:-:snapshotHistoryTableId---"
+    Then I softly see value "Overriden.pdf" for title "File Name" inside table "---closeout:-:snapshotHistoryTableId---"
+    Then I softly see value "{SavedValue:EXE Username}" for title "Taken By" inside table "---closeout:-:snapshotHistoryTableId---"
   #  Then I softly see value "Submission.pdf" for title "File Name" against the value "Submission.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
   #  Then I softly see value "{SavedValue:PM Username}" for title "Taken By" against the value "Submission.pdf" inside table "---subAwardStandAlone:-:snapshotHistoryTableId---"
     And I click on hyperlink containing value "Overriden.pdf"
