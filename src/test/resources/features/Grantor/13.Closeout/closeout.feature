@@ -1,4 +1,4 @@
-@closeout @grantor-regression @grantor-parallel-regression @regression @TBEAllocation
+@closeout @grantor-regression @grantor-parallel-regression @regression
 Feature: Validate all scenarios in Closeout
 
   Background: Navigate to award
@@ -1334,19 +1334,6 @@ Feature: Validate all scenarios in Closeout
     Then I softly see field "Has the subrecipient met the match requirement?" as "Yes"
     Then I softly see field "Did the subrecipient fully expend program income earned during the award period prior to the closeout of the award?" as "Yes"
     Then I softly see field "Has the subrecipient completed the scope of work as outlined in the subaward agreement?" as "Yes"
-
-  @96615 @VerifyAdvanceValueAtCloseoutRequest @monu
-  Scenario: Verify user can see advance value at closeout request as same as on SubAward
-    And I navigate to "Actuals" sub tab
-    And I save the field labeled "Advance Available" as "AdvanceAmount"
-    When I navigate to "Requests" sub tab
-    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
-    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
-    And I click modal button "Save and Continue"
-    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Overview" sub tab
-    Then I softly see field "Advance Available" as "{SavedValue:AdvanceAmount}"
 
   @96612 @VerifyAdvanceBalanceOfFundingAccountAtcloseoutRequest @monu
   Scenario: Verify user can see advance balance of funding account at closeout request as same as on SubAward

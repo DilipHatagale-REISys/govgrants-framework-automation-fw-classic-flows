@@ -3,7 +3,7 @@ Feature: Amendment Request scenarios without background
 
   @54853 @ValidateRevisedBudgetAmountBalanceUpdatedOnAdvancePaymentRequest @mahadev @smoke
   Scenario Outline: Verify that as per 'Revised Award Budget', "Balance" amount is updated on advance payment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -99,7 +99,7 @@ Feature: Amendment Request scenarios without background
 
   @54862 @ValidateRevisedBudgetAmountBalanceUpdatedOnAwardOnActualsTabAtGrantorSide @mahadev
   Scenario Outline: Verify that as per 'Revised Award Budget', "Balance" amount is updated on Award at grantor side
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -187,7 +187,7 @@ Feature: Amendment Request scenarios without background
 
   @54864 @ValidateRevisedBudgetAmountBalanceUpdatedOnAwardBudgetTabAtGranteeSide @mahadev
   Scenario Outline: Verify that as per 'Revised Award Budget', "Balance" amount is updated on Award on budget tab at grantee side
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -276,7 +276,7 @@ Feature: Amendment Request scenarios without background
 
   @101763 @ValidateCreatePaymentRequestWithDecreasedAwardedBudget-FundingChangeAmendmentRequest @monu
   Scenario Outline: Verify that SPI user is able to create Payment Request with decreased value of Awarded budget
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -399,7 +399,7 @@ Feature: Amendment Request scenarios without background
 
   @101705 @96414 @validateCreationOfPaymentRequestWithIncreasedAwardedAmount-FundingChangeAmendmentRequest @monu
   Scenario Outline: Validate Internal user is able to reject Funding change Amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -524,7 +524,7 @@ Feature: Amendment Request scenarios without background
 
   @103172 @103179 @validateRemainingBalanceAfterApprovalOfPaymentRequest-FundingChangeAmendmentRequest @monu
   Scenario Outline: Verify Remaining balance on grant is displayed correctly after approval of payment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -659,7 +659,7 @@ Feature: Amendment Request scenarios without background
 
   @103476 @validateForwardAction-FundingChangeAmendmentRequest @monu
   Scenario Outline: Verify Internal user should be able to forward Amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -731,7 +731,7 @@ Feature: Amendment Request scenarios without background
 
   @100982 @RevisedEncumbranceMustMatchWithDecreasedFundsOFSubAward-FundingChangeAmendmentRequest @monu
   Scenario Outline: Verify Revised Encumbrance must match with sub award budget after decrease in funds
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -793,7 +793,7 @@ Feature: Amendment Request scenarios without background
 
   @57277 @verifyValidationErrorMessageIfRequestedBudgetFieldChangeEnteredLessThanRequestedAmount @mahadev @smoke
   Scenario Outline: Verify validation error message is shown if Requested Change in Budget field is given less than the requested amount at Sub-recipient
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -839,7 +839,7 @@ Feature: Amendment Request scenarios without background
 
   @54859 @ValidateRevisedBudgetAmountBalanceUpdatedOnAwardAtSubPortal @jitendra
   Scenario Outline: Verify that as per 'Revised Awarded Amount', "Balance" amount is updated on Grant (SPI)
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -928,7 +928,7 @@ Feature: Amendment Request scenarios without background
 
   @54858 @ValidateRevisedBudgetAmountBalanceUpdatedOnGrantAtSubPortal @jitendra
   Scenario Outline: Verify that as per 'Revised Awarded Amount', "Balance" amount is updated on Grant (SPI)
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1015,7 +1015,7 @@ Feature: Amendment Request scenarios without background
 
   @54861 @ValidateRevisedBudgetAmountBalanceUpdatedOnGrantAtSubPortal @jitendra
   Scenario Outline: Verify that as per 'Revised Awarded Amount', "Balance" amount is updated on Grant (SPI)
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1101,7 +1101,7 @@ Feature: Amendment Request scenarios without background
 
   @54867 @ValidateUpdationOfEncumbranceAmountAsPerRevisedAwardBudget @jitendra
   Scenario Outline: Verify that as per 'Revised Awarded Amount', "Encumbrance" amount is updated on Grant (SPI)
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1189,7 +1189,7 @@ Feature: Amendment Request scenarios without background
 
   @54868 @ValidateActualEncumbranceAmountAsPerRevisedAwardBudget @jitendra
   Scenario Outline: Verify that as per 'Revised Awarded Amount', Actual Encumbrance amount is updated on Grant
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1277,7 +1277,7 @@ Feature: Amendment Request scenarios without background
 
   @54854 @ValidateRevisedBudgetAmountBalanceUpdatedOnReimbursementPaymentRequest @mahadev @smoke
   Scenario Outline: Verify that as per 'Revised Award Budget', "Balance" amount is updated on Reimbursement payment request page
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1372,7 +1372,7 @@ Feature: Amendment Request scenarios without background
 
   @54865 @ValidateRevisedBudgetAmountBalanceUpdatedOnAwardBudgetTabAtGrantorSide @mahadev
   Scenario Outline: Verify that as per 'Revised Award Budget', "Balance" amount is updated on Award on budget tab at grantor side
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1453,7 +1453,7 @@ Feature: Amendment Request scenarios without background
 
   @61721 @SVCopiedToNewCreatedAwardForAmendmentTypBudgetPeriodChangeAmendment @keerti @smoke
   Scenario: Validate Site Visits is carry forwarded in created status to new created award when amendment type is Budget Period Change Amendment
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1541,7 +1541,7 @@ Feature: Amendment Request scenarios without background
 
   @61723 @68079 @SVcopiedToNewCreatedAwardForAmendmentTypeFundingChange @keerti @smoke
   Scenario:Validate Site Visits is copied to new created award when amendment type - Funding Change
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1636,7 +1636,7 @@ Feature: Amendment Request scenarios without background
 
   @97302 @ValidateTaskGeneratedToSubRecipient @monu
   Scenario: Verify task is getting generated for sub recipient for SOW amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -1673,7 +1673,7 @@ Feature: Amendment Request scenarios without background
 
   @97073 @97056 @96667 @ValidateUpdationOfKeyPersonalByPrimaryApplicant-PeriodicRenewal @monu
   Scenario: Verify subrecipient user is able to update Key personal information for periodic renewal amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -1729,7 +1729,7 @@ Feature: Amendment Request scenarios without background
 
   @97759 @100163 @ValidateAssociationOfKPIByInternalUser-PeriodicRenewal @monu
   Scenario Outline: Verify Internal user is able to associate KPI to periodic renewal Amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -1772,7 +1772,7 @@ Feature: Amendment Request scenarios without background
 
   @97443 @ValidateSubmissionOfAmendmentRequestToGrantorBySubrecipient-PeriodicRenewal @monu
   Scenario: Verify sub recipient user is able to submit the amendment request to grantor for periodic renewal amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -1838,7 +1838,7 @@ Feature: Amendment Request scenarios without background
 
   @97708 @ValidateSubrecipientAbleToEditBudgetChangeDetails-PeriodicRenewal @monu
   Scenario: Verify sub recipient user is able to edit budget change details at subportal
-    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -1899,7 +1899,7 @@ Feature: Amendment Request scenarios without background
 
   @97471 @ValidateRejectFunctionalityForAmenedmentWithInternalUser-PeriodicRenewal @monu
   Scenario: Verify internal user is able to reject periodic renewal amendment reques
-    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -1968,7 +1968,7 @@ Feature: Amendment Request scenarios without background
 
   @97466 @97446 @97765 @97761 @ValidateApproveFunctionalityForAmendmentWithInternalUser-PeriodicRenewal @monu
   Scenario: Verify internal user is able to approve periodic renewal amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -2062,7 +2062,7 @@ Feature: Amendment Request scenarios without background
 
   @101438 @ValidateTaskGeneratedBasedOnBPED-PeriodicRenewal @monu @buglogged151363
   Scenario: Verify Risk assesment effective date expiration date is same as updated budget period end date od Periodic renewal amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -2159,7 +2159,7 @@ Feature: Amendment Request scenarios without background
 
   @97764 @ValidateActivationOfAmendmentRequestWithInternalUser-PeriodicRenewal @monu
   Scenario: Verify internal user is able to activate periodic renewal amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST_RISK_ASSESMENT_NO"
+    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST_RISK_ASSESMENT_NO" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -2249,7 +2249,7 @@ Feature: Amendment Request scenarios without background
 
   @97457 @ValidateAddEditDeleteOfFundingAccount-PeriodicRenewal @monu
   Scenario: Verify internal user is able to Add edit delete funding account
-    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -2277,7 +2277,7 @@ Feature: Amendment Request scenarios without background
 
   @96668 @102294 @ValidateInternalUserIncreaseFundingAmount-PeriodicRenewal @monu @buglogged151465
   Scenario: Verify internal user is able to increase funding amount for periodic renewal amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES"
+    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -2375,7 +2375,7 @@ Feature: Amendment Request scenarios without background
 
   @97049 @97053 @ValidateAddEditDeleteOfFocusArea-PeriodicRenewal @monu
   Scenario Outline: Verify internal user is able to Add edit delete focus area
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -2428,7 +2428,7 @@ Feature: Amendment Request scenarios without background
 
   @97145 @97150 @ValidatePrimaryApplicantCanEditAward-SOW @monu
   Scenario: Verify primary applicant can edit award title and description for SOW amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -2462,7 +2462,7 @@ Feature: Amendment Request scenarios without background
 
   @97766 @ValidateCreationOfAmendMentRequestBySubRecipient-BudgetPeriodChange @monu
   Scenario: Verify sub recipient user is able to create Budget period change Amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -2484,7 +2484,7 @@ Feature: Amendment Request scenarios without background
 
   @97200 @ValidateAssociationOfKPIBySubrecipient-SOWAmendmentRequest @monu
   Scenario: Verify Subrecipient user is able to associate KPI on SOW amendment request created by internal user
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -2510,7 +2510,7 @@ Feature: Amendment Request scenarios without background
 
   @99213 @99239 @99224 @99235 @VerifySubRecipientAbleToCreateAmendmentRequest-BudgetRedirection @monu
   Scenario: Validate that subrecipient user able to create Budget Redirection Amendment
-    And I activated standalone subaward "Automation Runtime Direct Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Direct Award" with properties "default" of type "Competitive"
     And I am on "SUBPORTAL" portal
     And I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -2547,7 +2547,7 @@ Feature: Amendment Request scenarios without background
 
   @96613 @ValidateEditOfBudgetChangeBySubRecipient-FundingChange @smoke
   Scenario Outline: Verify that Sub recipient user is able to edit budget change of Funding change amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -2592,7 +2592,7 @@ Feature: Amendment Request scenarios without background
 
   @98486 @97986 @98488 @creationOfKeyPersonalChangeAmendmentRequest-KPCAmendmentRequest @monu
   Scenario: Creation of KPC Amendment Request
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -2626,7 +2626,7 @@ Feature: Amendment Request scenarios without background
 
   @97987 @98495 @ValidateAssociationOfKeyPersonalChange-KPCAmendmentRequest @monu
   Scenario: Verify sub recipient user is able to associate key personal change to Key Personal Change Amendment Request
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -2660,7 +2660,7 @@ Feature: Amendment Request scenarios without background
 
   @99264 @ValidatePBPEDIsGreaterThanPBPSD-PeriodicRenewal @monu
   Scenario: Verify Proposed budget period end date is grater than Proposed budget Period Start date at periodic renewal amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -2683,7 +2683,7 @@ Feature: Amendment Request scenarios without background
 
   @99269 @100037 @100459 @99261 @VerifyStatusInFieldHistoryTable-KPCAmendmentRequest @monu
   Scenario: Validate status of key personal change Amendment request in field history table after submit to grantor
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -2748,7 +2748,7 @@ Feature: Amendment Request scenarios without background
 
   @100428 @100433 @100454 @VerifyTaskCreationForExecutiveApprover-KPCAmendmentRequest @monu
   Scenario: Validate Approval task is creating created for Executive approver once fiscal approved the amendment request
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -2815,7 +2815,7 @@ Feature: Amendment Request scenarios without background
 
   @100458 @VerifyVisibilityOfAmendSubawardButton-KPCAmendmentRequest @monu
   Scenario: Validate Amend Subaward button is not visible to other than initial award owner for Key personal change amendment request
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -2878,7 +2878,7 @@ Feature: Amendment Request scenarios without background
 
   @100130 @100134 @VerifyHistoryOfAmendmentRequestAfterReject-KPCAmendmentRequest @monu
   Scenario: Validate Rejected status in Approval history once Internal user rejects the Amendment Request
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -2927,7 +2927,7 @@ Feature: Amendment Request scenarios without background
 
   @99268 @ValidateEditOfKPIAfterSubmittedToGrantor-KPCAmendmentRequest @monu
   Scenario: Validate internal user is not able to edit KPI of amendment request which is submitted to grantor having checked Is Key Contact
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -2961,7 +2961,7 @@ Feature: Amendment Request scenarios without background
 
   @102627 @ValidateUpdatedRoleAtProgressReport-KPCAmendmentRequest @monu
   Scenario: Verify Updated role of key personal change user of Amendment request at progress report
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -3036,7 +3036,7 @@ Feature: Amendment Request scenarios without background
 
   @102629 @ValidateUpdatedRoleAtPaymentRequest-KPCAmendmentRequest @monu
   Scenario: Verify Updated role of key personal change user of Amendment request at payment request
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -3111,7 +3111,7 @@ Feature: Amendment Request scenarios without background
 
   @98480 @validateRejectionOfAmendmentRequestByInternalUser-TCAmendmentRequest @monu
   Scenario: Validate Internal user is able to reject terms and conditions Amendment Request
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3159,7 +3159,7 @@ Feature: Amendment Request scenarios without background
 
   @99608 @99629 @verifyCreationOfAmendmentRequest-CFAmendmentRequest @monu @TaskCreated142379
   Scenario: Validate sub recipient user is able to create carry Forward Amendment Request
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3258,7 +3258,7 @@ Feature: Amendment Request scenarios without background
 
   @99609 @verifySubmissionOfAmendmentRequest-CFAmendmentRequest @monu @TaskCreated142379
   Scenario: Validate user is able to submit carry forward amendment request to grantor
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3362,7 +3362,7 @@ Feature: Amendment Request scenarios without background
 
   @100773 @validateRejectionOfAmendmentRequestByInternalUser-FundingChangeAmendmentRequest @monu
   Scenario Outline: Validate Internal user is able to reject Funding change Amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3430,7 +3430,7 @@ Feature: Amendment Request scenarios without background
 
   @100699 @validateAssociationAndRemovalOfFocusArea-FundingChangeAmendmentRequest @monu
   Scenario Outline: Validate Internal user is able to Associate and remove focus area from Funding change Amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3464,7 +3464,7 @@ Feature: Amendment Request scenarios without background
 
   @101121 @SVReviewEndDateModificationAsPerNewBPEndDate-BPCAmendmentRequest @monu @buglogged103988 @buglogged151361
   Scenario: Validate user is able to modify Site Visits review end date is same as Budget period end date
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3564,7 +3564,7 @@ Feature: Amendment Request scenarios without background
 
   @100784 @96203 @ValidateCreationOfSVWithExtendedBPDate-BudgetPeriodChange @monu @smoke
   Scenario:Validate Internal user is able to create Site Visits with extended budget period date
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3655,7 +3655,7 @@ Feature: Amendment Request scenarios without background
 
   @96219 @ValidateRejectFunctionalityForAmenedmentWithInternalUser-BudgetPeriodChange @monu @smoke
   Scenario:Verify that Internal User is able to reject Budget Period Change Amendment Request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3709,7 +3709,7 @@ Feature: Amendment Request scenarios without background
 
   @101612 @ValidateActualNegativeValueOfKPI-PeriodicRenewal @monu
   Scenario Outline: Verify Negative Actual Value of KPI At Periodic renewal Amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3850,7 +3850,7 @@ Feature: Amendment Request scenarios without background
 
   @101578 @ValidateDecreasedActualValueOfAmendmentRequestBySPIUser-PeriodicRenewal @monu
   Scenario Outline: Verify progress report should display when Spi user decreased Actual value
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     And I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -3990,7 +3990,7 @@ Feature: Amendment Request scenarios without background
 
   @102779 @ValidateUpdatedActualValue-PeriodicRenewal @monu
   Scenario Outline: Verify Actual value is getting updated while creating Periodic Renewal Amendment Request
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     When I am on "SUBPORTAL" portal
@@ -4068,7 +4068,7 @@ Feature: Amendment Request scenarios without background
 
   @101252 @ValidateIncreasedTargetValueOfAmendmentRequest-PeriodicRenewal @monu
   Scenario: Verify progress report should display with Updated increased target value
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4161,7 +4161,7 @@ Feature: Amendment Request scenarios without background
 
   @101515 @ValidateDecreasedTargetValueOfAmendmentRequest-PeriodicRenewal @monu
   Scenario: Verify progress report should display with Updated decreased target value
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4254,7 +4254,7 @@ Feature: Amendment Request scenarios without background
 
   @101638 @ValidateDecreasedNegativeTargetValueOfAmendmentRequest-PeriodicRenewal @monu
   Scenario: Verify progress report should display with Updated decreased(negative) target value
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4346,7 +4346,7 @@ Feature: Amendment Request scenarios without background
 
   @102780 @ValidatePreviousActualValueForAmendmentRequest-FundingChangeAmendmentRequest @monu
   Scenario Outline: Verify Previous Actual value is getting updated while creating funding change Amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I delete the record "{SavedValue:Automation Runtime award}" from the object "Progress Report"
     When I create a post award record "ProgressReport" for the Award "{SavedValue:Automation Runtime award}" having object api name as "ProgressReports__c"
     When I am on "SUBPORTAL" portal
@@ -4493,7 +4493,7 @@ Feature: Amendment Request scenarios without background
 
   @99501 @99588 @ValidateAmendOfAwardByInternalUser-BudgetRedirection @monu @smoke
   Scenario: Verify that Internal User is able to Amend Award of Approved Budget Redirection
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -4555,7 +4555,7 @@ Feature: Amendment Request scenarios without background
 
   @99504 @99251 @ValidateActivationOfAmendment-BudgetRedirection @monu @smoke
   Scenario: Verify that Internal User is able to Activate Amendment request of Budget Redirection
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -4618,183 +4618,9 @@ Feature: Amendment Request scenarios without background
 
   @99985 @99988 @99990 @ValidateEditionOfBudgetCategoryOfAmendmentRequest-BudgetRedirection @monu @smoke
   Scenario Outline: Verify that subrecipient User is able to edit budget category details of Budget Redirection Amendment request
-    When I login to "As a Grantor" app as "dynamicUser" user
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click on top right button "New" in flex table with id "---subAwardStandAlone:-:activeGrantsTableId---"
-    And I enter "Grant_Creation" values from "Award_Field_Values.xlsx"
-    And I click modal button "Continue"
-    And I enter "Grant_Edition2" values from "Award_Field_Values.xlsx"
-    When I enter value "Yes" into field "IsBuildUpFunctionality__c"
-    When I click modal button "Save and Continue"
-    And I navigate to "Subawards" sub tab
-    And I click on "View" icon for "Created" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    And I get the "EGMS ID"
-    And I click on "Edit" in the page details
-    When I enter "Edition_StandAlone" values from "Award_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    When I navigate to "Budget" sub tab
-    When I click on top right button "Associate" in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---"
-    And I perform quick search for "Automation Permanent Funding Account1" in "---subAwardStandAlone:-:awardFundingAccountsTableId---" panel
-    When I click "Associate" after selection of "Automation Permanent Funding Account1" in the table "---subAwardStandAlone:-:awardFundingAccountsTableId---"
-    When I close "Associate Funding Accounts" modal by clicking the top right x button
-    And I refresh the page
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:focusAreaTableId---" by clicking "Edit" :
-      | Title                           | Start Date | End Date |
-      | Automation Permanent Focus Area | 0          | 3650     |
-    When I edit the following rows inline in flex table with id "---subAwardStandAlone:-:fundingAccountsTableId---" by clicking "Edit" :
-      | Funding Account              | Encumbrance |
-      | {SavedValue:fundingAccount1} | 1000        |
-    When I click on "Add Line Items" icon for "Construction" inside flex table with id "---subAwardFromFDM:-:SubAwardBudgetTableId---" without waiting for record
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:budgetLineItems---" by clicking "New" :
-      | Title        | Narrative     | Award Budget | Cash Match | Non-Cash Match |
-      | Extra Salary | The narrative | 1000         | 100        | 100            |
-    When I close "Subaward Budget Category" modal by clicking the top right x button
-    When I navigate to "Performance" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                  | Target |
-      | Automation Permanent KPI | 10     |
-    And I navigate to "Terms" sub tab
-    And I click on "Edit" icon for "Payment Request" inside flex table with id "---subAwardStandAlone:-:paymentRequestSchedulesTableId---" without waiting for record
-    When I enter in modal "Payment Request Schedule" values from "Award_Field_Values.xlsx"
-    And I click modal button "Save"
-    #When I close "Edit Payment Request Schedule" modal by clicking the top right x button
-    And I click on "Edit" icon for "Progress Report" inside flex table with id "---subAwardStandAlone:-:progressReportScheduleTableId---" without waiting for record
-    And I switch to iframe with id "---progressreport:-:ProgressReportModalIframeId---"
-    When I enter in modal "Progress Report Schedule" values from "Award_Field_Values.xlsx"
-    And I click modal button "Save"
-    #When I close "Edit Progress Report Schedule" modal by clicking the top right x button
-    And I navigate to "Management" sub tab
-    When I click on top right button "New" in flex table with id "---subAwardStandAlone:-:riskAssessmentTableId---"
-    And I enter "Risk Assessment Creation" values from "Award_Field_Values.xlsx"
-    When I click on "Save and Continue" in the page details
-    And I enter "Risk Assessment" values from "Award_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    When I get the "EGMS ID"
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
-      | Name                     | Risk Assessment |
-      | {SavedValue:PM Username} | Step 1          |
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:riskAssessmentApproverTableId---" by clicking "New" :
-      | Name                     | Risk Assessment |
-      | {SavedValue:FO Username} | Step 2          |
-    And I click on "Submit for Approval" in the page details
-    When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Monitoring" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
-    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    When I navigate to "Overview" sub tab
-    And I edit the following rows inline in flex table with id "---subAwardStandAlone:-:associatedContactsTableId---" by clicking "Edit" :
-      | Name                       | Project Role             | Is Key Personnel |
-      | {SavedValue:SPI3 Username} | Project Director/Manager | Checked          |
-    When I navigate to "Responsibilities" sub tab
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
-      | Name                     | Award  |
-      | {SavedValue:PM Username} | Step 1 |
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
-      | Name                      | Award  |
-      | {SavedValue:EXE Username} | Step 2 |
-    When I enter the following values into flex table with id "---subAwardStandAlone:-:awardApproversTableId---" by clicking "New" :
-      | Name                     | Award  |
-      | {SavedValue:FO Username} | Step 3 |
-    When I get the "EGMS ID"
-    And I enter the following values into flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" by clicking "New" :
-      | Reviewer Name            | Role            | Description                 | Due Date | Allow Record Editing |
-      | {SavedValue:FO Username} | Fiscal Reviewer | Automation Test Description | 7        | No                   |
-    And I click on "Send for Review" icon for "Fiscal Reviewer" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" without waiting for record
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside table
-    When I navigate to "Responsibilities" sub tab
-    When I click on "Enter Review" icon for "{SavedValue:FO Username}" inside flex table with id "---subAwardStandAlone:-:peerReviewersTableId---" without waiting for record
-    And I enter a review as "Passed"
-    When I click modal button "Save"
-    And I pause execution for "5" seconds
-    And I click on submit review
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
-    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    And I click on "Complete Review" in the page details
-    And I click on "Send to Subrecipient" in the page details
-    And I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    When I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    When I click on "Accept" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
-    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    When I navigate to "Terms" sub tab
-    When I click on top right button "Associate Mandatory Terms and Conditions" in flex table with id "---subAwardStandAlone:-:termsndConditionsTableId---"
-    And I get the "EGMS ID"
-    And I click on "Submit for Approval" in the page details
-    And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "EXE" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "FO" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    When I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    And I click on "Start" icon for "Record Id" inside flex table with id "---subAwardStandAlone:-:pendingTaskTableId---" without waiting for record
-    And I "Approve" in the approval decision
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
-    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    And I click on "Send to Subrecipient" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Pending Tasks" content inside "My Tasks" subheader on left panel
-    And I perform quick search for "Record Id" in "---subAwardStandAlone:-:pendingTaskTableId---" panel
-    When I click on "Start" icon for "Record Id" inside table
-    And I click on "Accept after Approval" in the page details
-    When I re-login to "As a Grantor" app as "dynamicUser" user on "INTERNAL" portal
-    And I navigate to "Grants" tab
-    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
-    And I click toggle button to select "Grants - All"
-    When I perform quick search for "<Grant Name>" in "---subAwardStandAlone:-:activeGrantsTableId---" panel
-    And I click on "View" icon for "<Grant Name>" inside table
-    When I navigate to "Subawards" sub tab
-    And I click on "View" icon for "<Award Name>" inside flex table with id "---subAwardStandAlone:-:subawardsTableId---" without waiting for record
-    And I click on "Activate" in the page details
-    When I re-login to "Grants Portal" app as "SPI3" user on "SUBPORTAL" portal
+    And I activated standalone subaward "Automation Runtime Award" with properties "IS_BUILDUP_FUNCTIONALITY_YES" of type "Competitive"
+    Given I am on "SUBPORTAL" portal
+    When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
     And I click toggle button to select "Subawards  - Active"
@@ -4839,7 +4665,7 @@ Feature: Amendment Request scenarios without background
 
   @99499 @ValidateRejectFunctionalityForAmenedmentWithInternalUser-BudgetRedirection @monu @smoke
   Scenario: Verify that Internal User is able to reject Budget Redirection Amendment Request
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -4879,7 +4705,7 @@ Feature: Amendment Request scenarios without background
 
   @95720 @ValidateNewButtonAtAmendmentRequest @monu
   Scenario Outline: Verify Expected user is able to see New button at create Amendment Request
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "<User>" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -4898,7 +4724,7 @@ Feature: Amendment Request scenarios without background
 
   @138338 @VerifyAddApproverAt_KPC_AmendmentRequest-RnRFunctionality @monu
   Scenario: Verify that user is able to add approver on approvers section for new created amendment type Key Personnel change
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -4933,7 +4759,7 @@ Feature: Amendment Request scenarios without background
 
   @150163 @verify1StepApprovalFor-PeriodicRenewal-RnRFunctionality @monu
   Scenario: Verify user can add one step approver for Periodic Renewal amendment and approve it
-    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -4990,7 +4816,7 @@ Feature: Amendment Request scenarios without background
 
   @150165 @verifyUserNotAbleToSkipApprover-PeriodicRenewal-RnRFunctionality @monu
   Scenario: Validate message ,when user skips an approval step on Periodic Renewal amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -5047,7 +4873,7 @@ Feature: Amendment Request scenarios without background
 
   @150167 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUser-PeriodicRenewal-RnRFunctionality @monu
   Scenario: Verify user cannot add same step for different approver on Periodic Renewal amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -5082,7 +4908,7 @@ Feature: Amendment Request scenarios without background
 
   @150172 @Verify2StepApprovalFor-PeriodicRenewal-RnRFuntionality @monu
   Scenario: Verify the user is able to add two step approver on  Periodic Renewal amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -5344,7 +5170,7 @@ Feature: Amendment Request scenarios without background
 
   @150164 @Verify4StepApprovalProcess-PeriodicRenewalAmendmentRequest-RnRFunctionality @monu
   Scenario: Verify user can add four step approver for Periodic Renewal amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -5385,7 +5211,7 @@ Feature: Amendment Request scenarios without background
 
   @154983 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUser-KPCAmendmentRequest-RnRFunctionality @monu
   Scenario: Verify user cannot add same step for different approver for amendment key personnel change
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -5423,7 +5249,7 @@ Feature: Amendment Request scenarios without background
 
   @151641 @Verify4StepApprovalAt-BudgetRedirection-RnRFunctionality @monu
   Scenario: Verify user can add four step approver for Budget Redirection amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -5464,7 +5290,7 @@ Feature: Amendment Request scenarios without background
   @151638 @151635 @Verify3StepApprovalFor-BudgetRedirection-RnRFunctionality @monu
   Scenario: Verify user is able to add three step approver for Budget Redirection and forward it on step three
   |Verify the user is able to add two step approver on  Budget Redirection amendment|
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -5522,7 +5348,7 @@ Feature: Amendment Request scenarios without background
 
   @151633 @Verify1StepAddApproverAt-BudgetRedirection-RnRFunctionality @monu
   Scenario: Verify user can add one step approver for Budget Redirection amendment and approve it
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -5555,7 +5381,7 @@ Feature: Amendment Request scenarios without background
 
   @151129 @Verify3StepApprovalFor-PeriodicRenewal-RnRFunctionality @monu
   Scenario: Verify user is able to add three step approver for Periodic Renewal and forward it on step three
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -5633,7 +5459,7 @@ Feature: Amendment Request scenarios without background
 
   @151893 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStep-BudgetRedirection-RnRFunctionality @monu
   Scenario: Verify validation displayed when same approver is added on different  step for Budget Redirection amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -5667,7 +5493,7 @@ Feature: Amendment Request scenarios without background
 
   @151896 @verifyRemovalOfAddedApprover-BudgetRedirection-RnRFunctionality @monu
   Scenario: To verify user can  remove the added approver on Budget Redirection amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -5699,7 +5525,7 @@ Feature: Amendment Request scenarios without background
 
   @151664 @VerifyErrorMessageAtApproverSectionWhileSkippingAt-BudgetRedirection-RnRFunctionality @monu
   Scenario: To validate message ,when user give NA  on approval step on Budget Redirection amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -5732,7 +5558,7 @@ Feature: Amendment Request scenarios without background
 
   @138356 @VerifyIsnotallowingusertosubmitAmendmentrequestkeypersonnelchangeforapprovalwithoutaddingapprovers
   Scenario: Verify Is not allowing user to submit Amendment request key personnel change for approval without adding approvers
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -5765,7 +5591,7 @@ Feature: Amendment Request scenarios without background
 
   @151125 @ValidateApproversAreGettingInheritedFromAwardRecordToFundingChangeAmendment @vaibhav
   Scenario Outline: Validate Approvers Are Getting Inherited From Award Record To Funding Change Amendment
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST_BUILDUP_MATCH_YES" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -5803,7 +5629,7 @@ Feature: Amendment Request scenarios without background
 
   @102285 @VerifyBudgetPeriodEndDateisupdatedonBudgetPeriodDetailsonGrant-BudgetPeriodChange
   Scenario:Verify Budget Period End Date is updated on Budget Period Details on Grant-Budget Period Change
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -5871,7 +5697,7 @@ Feature: Amendment Request scenarios without background
 
   @150170 @VerifyUserShouldNotBeAbleToAddSameUserForMultipleStep-PeriodicRenewal-RnRFunctionality @monu
   Scenario: Verify validation displayed when same approver is added on different  step for Periodic Renewal amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    And I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -5906,7 +5732,7 @@ Feature: Amendment Request scenarios without background
 
   @154982 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUser-KPCAmendmentRequest-RnRFunctionality @monu
   Scenario: Verify validation displayed when same approver is added on different  step for amendment key personnel change
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -5944,7 +5770,7 @@ Feature: Amendment Request scenarios without background
 
   @154980 @Verify2StepApprovalFor-KPCAmendmentRequest-RnRFunctionality @monu
   Scenario: Verify that user is able to add two step approver for amendment key personnel change
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -5982,7 +5808,7 @@ Feature: Amendment Request scenarios without background
 
   @151666 @VerifyUserShouldNotBeAbleToAddSameStepForMultipleUser-BudgetRedirection-RnRFunctionality @monu
   Scenario: Verify user cannot add same step for different approver on Budget Redirection amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -6016,7 +5842,7 @@ Feature: Amendment Request scenarios without background
 
   @154978 @Verify3StepApprovalFor-KPCAmendmentRequest-RnRFuntionality @monu
   Scenario: Verify user can add three step approver and forward it on  amendment  request  Key Personnel change
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -6309,7 +6135,7 @@ Feature: Amendment Request scenarios without background
 
   @200481 @ValidateFundingchangeVerifyPMusercanreassignownershiptootheruserincreatedstateofFCamendment @sprint-5-US-196841 @vaibhav @reassignment @ownvai
   Scenario: Validate Funding change Verify PM user can reassign ownership to other user in created state of FC amendment
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -6364,7 +6190,7 @@ Feature: Amendment Request scenarios without background
 
   @200483 @ValidateFundingchangeVerifyEXEusercanreassignownershiptootheruserincreatedstateofFCamendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Funding change Verify EXE user can reassign ownership to other user in created state of FC amendment
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "CREATE_AWARD_EXE"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -6419,7 +6245,7 @@ Feature: Amendment Request scenarios without background
 
   @200503 @ValidatePMusercanreassignownershiptootheruserinsubmittograntorstateofFCamendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate PM user can reassign ownership to other user in submit to grantor state of FC amendment
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -6496,7 +6322,7 @@ Feature: Amendment Request scenarios without background
 
   @200504 @ValidateFOusercanreassignownershiptootheruserinsubmittoapprovalstateofFCamendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate FO user can reassign ownership to other user in submit to approval state of FC amendment
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "FO" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -6578,7 +6404,7 @@ Feature: Amendment Request scenarios without background
 
   @200514 @Validateapprovedtaskshouldbegeneratedfornewownerifuserchangeownerwhilesubmitforapprovalstate @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate approved task should be generated for new owner if user change owner while submit for approval state
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -6662,7 +6488,7 @@ Feature: Amendment Request scenarios without background
 
   @200520 @ValidateEXEusercanreassignownershiptootheruserinRejectedstateofFCamendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate EXE user can reassign ownership to other user in Rejected state of FC amendment
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -6746,7 +6572,7 @@ Feature: Amendment Request scenarios without background
 
   @200524 @Validatefieldhistoryshouldbeupdatedfornewownerofamendmentrequest @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate field history should be updated for new owner of amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -6819,7 +6645,7 @@ Feature: Amendment Request scenarios without background
 
   @200533 @ValidateAmendmentRequestSubmittedGrantorNotifyemailshouldbegenerateforPMnewownerofamendmentrequest @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Amendment Request Submitted Grantor Notify' email should be generate for PM new owner of amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -6891,7 +6717,7 @@ Feature: Amendment Request scenarios without background
 
   @200540 @ValidateAmendmentRequestSentBackemailshouldbegenerateforPMnewownerofamendmentrequest @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Amendment Request Sent Back' email should be generate for PM new owner of amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -6993,7 +6819,7 @@ Feature: Amendment Request scenarios without background
 
   @200543 @Validateamendmentrequestownershouldnotchangeevenifitsrelatedawardownershipchangetootherowner @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate amendment request owner should not change even if it's related award ownership change to other owner
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -7044,7 +6870,7 @@ Feature: Amendment Request scenarios without background
 
   @200559 @ValidatePMusercanreassignownershiptootheruserincreatedstateofPRamendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate PM user can reassign ownership to other user in created state of PR amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -7103,7 +6929,7 @@ Feature: Amendment Request scenarios without background
 
   @200641 @ValidatePOusercanreassignownershiptootheruserincreatedstateofperiodicrenewalamendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate PO user can reassign ownership to other user in created state of periodic renewal amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "CREATE_AWARD_PO"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -7171,7 +6997,7 @@ Feature: Amendment Request scenarios without background
 
   @200644 @200656 @ValidatePMusercanreassignownershiptootheruserinsubmittograntorstateofperiodicrenewalamendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate PM user can reassign ownership to other user in submit to grantor state of periodic renewal amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -7254,7 +7080,7 @@ Feature: Amendment Request scenarios without background
 
   @200645 @ValidateEXEusercanreassignownershiptootheruserinsubmittoapprovalstateofPeriodicrenewalamendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate EXE user can reassign ownership to other user in submit to approval state of Periodic renewal amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -7340,7 +7166,7 @@ Feature: Amendment Request scenarios without background
 
   @200652 @ValidatePOusercanreassignownershiptootheruserinapprovedstateofPeriodicrenewalamendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate PO user can reassign ownership to other user in approved state of Periodic renewal amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -7432,7 +7258,7 @@ Feature: Amendment Request scenarios without background
 
   @200655 @ValidatePMusercanreassignownershiptootheruserinRejectedstateofPeriodicrenewalamendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate PM user can reassign ownership to other user in Rejected  state of Periodic renewal amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM1" user
     And I navigate to "Grants" tab
@@ -7526,7 +7352,7 @@ Feature: Amendment Request scenarios without background
 
   @200657 @Validatefieldhistoryshouldbeupdatedfornewownerofamendmentrequest @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate field history should be updated for new owner of amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -7580,7 +7406,7 @@ Feature: Amendment Request scenarios without background
 
   @200658 @ValidateAmendmentRequestSubmittedGrantorNotifyemailshouldbegenerateforPMnewownerofamendmentrequest @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Amendment Request Submitted Grantor Notify' email should be generate for PM new owner of amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -7656,7 +7482,7 @@ Feature: Amendment Request scenarios without background
 
   @200662 @ValidateAmendmentRequestSentBackemailshouldbegenerateforPMnewownerofamendmentrequest @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Amendment Request Sent Back' email should be generate for PM new owner of amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -7768,7 +7594,7 @@ Feature: Amendment Request scenarios without background
 
   @200720 @Validateallsectionlevelandpagelevelbuttonwillbevisibletoamendmentownerandawardowner @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate all section level and page level button will be visible to amendment owner and award owner
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -7840,7 +7666,7 @@ Feature: Amendment Request scenarios without background
 
   @200771 @200790 @ValidatePMusercanreassignownershiptootheruserincreatedstateofT&Camendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate PM user can reassign ownership to other user in created state of T & C amendment
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -7896,7 +7722,7 @@ Feature: Amendment Request scenarios without background
 
   @200772 @ValidateFOusercanreassignownershiptootheruserincreatedstateofT&Camendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate FO user can reassign ownership to other user in created state of T & C amendment
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation FO user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation FO user" of type "Competitive"
     When I login to "As a Grantor" app as "FO" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -7951,7 +7777,7 @@ Feature: Amendment Request scenarios without background
 
   @200786 @ValidateFOusercanreassignownershiptootheruserinsubmittoapprovalstateofT&Camendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate FO user can reassign ownership to other user in submit to approval state of T & C amendment
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "FO" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -8026,7 +7852,7 @@ Feature: Amendment Request scenarios without background
 
   @200787 @ValidatePOusercanreassignownershiptootheruserinapprovedstateofT&Camendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate PO user can reassign ownership to other user in approved state of T & C amendment
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -8106,7 +7932,7 @@ Feature: Amendment Request scenarios without background
 
   @200789 @ValidatefollowingbuttonsshouldbedisplayfornewPMownerincreatedstateofT&C @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate following buttons should be display for new PM owner in created state of T & C
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -8166,7 +7992,7 @@ Feature: Amendment Request scenarios without background
 
   @200791 @ValidateAmendmentRequestSubmittedGrantorNotifyemailshouldbegenerateforPMnewownerofamendmentrequest @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Amendment Request Submitted Grantor Notify email should be generate for PM new owner of amendment request
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -8231,7 +8057,7 @@ Feature: Amendment Request scenarios without background
 
   @200804 @ValidateonlyawardownercanseeactivatebuttonandactivatenewawardevenifARownerinitiateamendsubaward @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate only award owner can see activate button and activate new award even if AR owner initiate amend sub award
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -8327,7 +8153,7 @@ Feature: Amendment Request scenarios without background
 
   @200809 @ValidateoldARoldownershouldnothaveanybuttonaccessafterownershipreassigntonewowner @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate old AR old owner should not have any button access  after ownership reassign to new owner
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -8397,7 +8223,7 @@ Feature: Amendment Request scenarios without background
 
   @200829 @ValidateawardhistorytableshouldbeupdateT&CARownershipreassigntonewowner @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: ValidateawardhistorytableshouldbeupdateT&CARownershipreassigntonewowner
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -8455,7 +8281,7 @@ Feature: Amendment Request scenarios without background
 
   @200812 @ValidatePMusercanreassignownerofcombinationoffundingchangeandT&CARtootherownerincreatedstateofAR @sprint-5-US-196841 @vaibhav @reassignment @buglogged-226730
   Scenario: Validate PM user can reassign owner of combination of funding change and T & C AR to other owner in created state of AR
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -8561,7 +8387,7 @@ Feature: Amendment Request scenarios without background
 
   @200288 @200296 @200295 @200298 @Validateusercanabletoseeownershiphyperlinkinhomemoduleleftnavigationpanel @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate user can able to see ownership hyperlink in home module, left navigation panel
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -8599,7 +8425,7 @@ Feature: Amendment Request scenarios without background
 
   @200299 @200300 @ValidateBudgetredirectionWhentheuserclickontransferbuttonhewillgetwarningwindow @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Budget redirection When the user click on transfer button he will get warning window
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -8640,7 +8466,7 @@ Feature: Amendment Request scenarios without background
 
   @200307 @200308 @200309 @ValidateBudgetredirectionthatthatwhentherecordistransferreditshouldgetreflectedinthetargetuserstableafterrefreshingthepage @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Budget redirection that when the record is transferred it should get reflected in the target user's table after refreshing the page
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -8693,7 +8519,7 @@ Feature: Amendment Request scenarios without background
 
   @200310 @200311 @ValidateBudgetredirectionthat2nduserwillseesamepagelayoutbuttonandsectionlevelbuttonas1stuserhadinthatspecificstateofrecord @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Budget redirection that 2nd user will see same page layout button and section level button as 1st user had in that specific state of record
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -8779,7 +8605,7 @@ Feature: Amendment Request scenarios without background
 
   @200306 @ValidateBudgetredirectionthatfouserisnotabletocreateammendmentrequestonawardcreatedbyexeuser @sprint-5-US-198235 @vaibhav
   Scenario: Validate Budget redirection that fo user is not able to create ammendment request on award created by exe user
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "FO" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -8797,7 +8623,7 @@ Feature: Amendment Request scenarios without background
 
   @200312 @ValidateBudgetredirectionthatFieldhistoryunderthehistorytabwillgetupdated @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Budget redirection that Field history under the history tab will get updated
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -8851,7 +8677,7 @@ Feature: Amendment Request scenarios without background
 
   @200313 @ValidateBudgetredirectionthatchangeinawardownershouldnotaffectamendmentrequestowner @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Budget redirection that change in award owner should not affect amendment request owner
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -8905,7 +8731,7 @@ Feature: Amendment Request scenarios without background
 
   @200490 @ValidateKeypersonalchangeWhentheuserclickontransferbuttonhewillgetwarningwindow @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Keypersonal change When the user click on transfer button he will get warning window
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -8949,7 +8775,7 @@ Feature: Amendment Request scenarios without background
 
   @200491 @ValidateKeypersonalchangethewarningmessageafterclickingtransferowenership @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Key personal change the warning message after clicking transfer owenership
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -8991,7 +8817,7 @@ Feature: Amendment Request scenarios without background
 
   @200496 @200498 @200499 @200500 @Validatekeypersonalchangethatwhentherecordistransferreditshouldgetreflectedinthetargetuserstableafterrefreshingthepage @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate key personal change that when the record is transferred it should get reflected in the target user's table after refreshing the page
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -9083,7 +8909,7 @@ Feature: Amendment Request scenarios without background
 
   @200497 @ValidateKeyPersonalchangethatoncerecordistransferredtotargetuseritshouldnotbevisibleinsourceuserARlist @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Key Personal change that once record is transferred to target user it should not be visible in source user AR list
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -9129,7 +8955,7 @@ Feature: Amendment Request scenarios without background
 
   @200501 @ValidateKeyPersonalChangethatFieldhistoryunderthehistorytabwillgetupdated @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Key Personal Change that Field history under the history tab will get updated
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -9186,7 +9012,7 @@ Feature: Amendment Request scenarios without background
 
   @200502 @ValidateKeyPersonalChangethatchangeinawardownershouldnotaffectamendmentrequestowner @sprint-5-US-198235 @vaibhav @reassignment @ownvai
   Scenario: Validate Key Personal Change that change in award owner should not affect amendment request owner
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -9243,7 +9069,7 @@ Feature: Amendment Request scenarios without background
 
   @200517 @ValidateBudgetRedirectionReviewAmendmentRequestpendingtaskshouldgenerateforPouserinpendingtasksection @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Budget Redirection Review Amendment Request pending task should generate for Po user in pending task section
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -9269,7 +9095,7 @@ Feature: Amendment Request scenarios without background
 
   @200519 @ValidateBudgetredirectionthatReviewAmendmentRequestpendingtaskshouldgenerateforEXEuserinmytaskandinpendingtasksection @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Budget redirection that Review Amendment Request pending task should generate for EXE user in my task and in pending task section
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -9295,7 +9121,7 @@ Feature: Amendment Request scenarios without background
 
   @200521 @ValidateKeyPersonalChangeReviewAmendmentRequestpendingtaskshouldgenerateforPOuserinpendingtasksection @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Key Personal Change Review Amendment Request pending task should generate for PO user in pending task section
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login as "SPI3" user
     And I navigate to "Home" tab
@@ -9326,7 +9152,7 @@ Feature: Amendment Request scenarios without background
 
   @200522 @ValidateKeyPersonalChangeReviewAmendmentRequestpendingtaskshouldgenerateforEXEuserinmytaskandinpendingtasksection @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Key Personal Change Review Amendment Request pending task should generate for EXE user in my task  and in pending task section
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login as "SPI3" user
     And I navigate to "Home" tab
@@ -9357,7 +9183,7 @@ Feature: Amendment Request scenarios without background
 
   @201064 @201067 @ValidateCarryforwardPMusercanreassignownershiptootheruserinSenttoS/rstateofcarryforwardamendment @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry forward PM user can reassign ownership to other user in Sent to S/r state of carry forward amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -9477,7 +9303,7 @@ Feature: Amendment Request scenarios without background
 
   @201079 @ValidateCarryforwardPMusercanreassignownershiptootheruserinsubmitforapprovalstateofcarryforwardamendment @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry forward PM user can reassign ownership to other user in submit for approval state of carry forward amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     When I login to "As a Grantor" app as "PM1" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -9601,7 +9427,7 @@ Feature: Amendment Request scenarios without background
 
   @201081 @ValidateCarryforwardPOusercanreassignownershiptootheruserinapprovedstateofcarryforwardamendment @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry forward PO user can reassign ownership to other user in approved state of carry forward amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -9732,7 +9558,7 @@ Feature: Amendment Request scenarios without background
 
   @201084 @ValidateCarryforwardPOusercanreassignownershiptootheruserinapprovedstateofcarryforwardamendment @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry forward PO user can reassign ownership to other user in approved state of carry forward amendment
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -9863,7 +9689,7 @@ Feature: Amendment Request scenarios without background
 
   @201086 @ValidateCarryforwardonlyawardownercanseeactivatebuttonandactivatenewawardevenifARownerinitiateamendsubaward @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry forward only award owner can see activate button and activate new award even if AR owner initiate amend sub award
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -10006,7 +9832,7 @@ Feature: Amendment Request scenarios without background
 
   @201089 @ValidateCarryForwardfiledhistoryshouldbeupdatedfornewownerofAR @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry Forward filed history should be updated for new owner of AR
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -10115,7 +9941,7 @@ Feature: Amendment Request scenarios without background
 
   @199845 @ValidatePMusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatcreatedstateforBudgetPeriodChangeARtype @sprint-5-US-198419  @vaibhav @reassignment
   Scenario: Validate PM user should able to see the AR is updated after change the ownership by Grantor Side at created state for Budget Period Change AR type
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -10188,7 +10014,7 @@ Feature: Amendment Request scenarios without background
 
   @199849 @ValidateEXEusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatSubmittedtoGrantorstateforBudgetPeriodChangeARtype @sprint-5-US-198419  @vaibhav @reassignment
   Scenario: Validate EXE user should able to see the AR is updated after change the ownership by Grantor Side at Submitted to Grantor state for Budget Period Change AR type
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -10281,7 +10107,7 @@ Feature: Amendment Request scenarios without background
 
   @199851 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatSubmittedforapprovalstateforCombinationOfBPC&SOWARtype @sprint-5-US-198419  @vaibhav @reassignment
   Scenario: Validate user should able to see the AR is updated after change the ownership by Grantor Side at Submitted for approval state for Combination Of BPC & SOW AR type
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -10390,7 +10216,7 @@ Feature: Amendment Request scenarios without background
 
   @199867 @ValidatePMusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatrejectedstateforbudgetperiodchange @sprint-5-US-198419  @vaibhav @reassignment
   Scenario: Validate PM user should able to see the AR is updated after change the ownership by Grantor Side at rejected state for budget period change
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -10486,7 +10312,7 @@ Feature: Amendment Request scenarios without background
 
   @199868 @ValidatePOusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatapprovedstateforbudgetperiodchange @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate PO user should able to see the AR is updated after change the ownership by Grantor Side at approved state for budget period change
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -10596,7 +10422,7 @@ Feature: Amendment Request scenarios without background
 
   @200052 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RSideatSubmittedtoGrantorStateforBudgetPeriodChangeARtype @sprint-5-US-198419  @vaibhav @reassignment
   Scenario: Validate user should able to see the AR is updated after change the ownership by S/R Side at Submitted to Grantor State for Budget Period Change AR type
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -10678,7 +10504,7 @@ Feature: Amendment Request scenarios without background
 
   @200053 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RSideatcreatedstateforBudgetPeriodChangeARtype @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate user should able to see the AR is updated after change the ownership by S/R  Side at created state for Budget Period Change AR type
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -10748,7 +10574,7 @@ Feature: Amendment Request scenarios without background
 
   @200054 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RSideatrejectedstateforbudgetperiodchange @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate user should able to see the AR is updated after change the ownership by S/R Side at rejected state for budget period change
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -10838,7 +10664,7 @@ Feature: Amendment Request scenarios without background
 
   @200057 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RatSubmittedforapprovalstateforBudgetPeriodChangeARtype @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate user should able to see the AR is updated after change the ownership by S/R at Submitted for approval state for Budget Period Change AR type
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -10924,7 +10750,7 @@ Feature: Amendment Request scenarios without background
 
   @200058 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RSideatapprovedstateforbudgetperiodchange @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate user should able to see the AR is updated after change the ownership by S/R Side at approved state for budget period change
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -11015,7 +10841,7 @@ Feature: Amendment Request scenarios without background
 
   @200059 @ValidatePMusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatcreatedstateforScopeofWorkChangeARtype @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate PM user should able to see the AR is updated after change the ownership by Grantor Side at created state for Scope of Work Change AR type
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -11079,7 +10905,7 @@ Feature: Amendment Request scenarios without background
 
   @200067 @ValidateEXEusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatSubmittedtoGrantorstateforcombinationofSOW/BPCARtype @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate EXE user should able to see the AR is updated after change the ownership by Grantor Side at Submitted to Grantor state for combination of SOW/BPC AR type
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -11173,7 +10999,7 @@ Feature: Amendment Request scenarios without background
 
   @200068 @ValidateFOusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatSubmittedforapprovalstateforSOWARtype @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate FO user should able to see the AR is updated after change the ownership by Grantor Side at Submitted for  approval state for SOW AR type
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "FO" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -11276,7 +11102,7 @@ Feature: Amendment Request scenarios without background
 
   @200069 @ValidatePMusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatrejectedstateforSOWAR @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate PM user should able to see the AR is updated after change the ownership by Grantor Side at rejected state for SOW AR
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -11366,7 +11192,7 @@ Feature: Amendment Request scenarios without background
 
   @200486 @ValidatePMusershouldabletoseealleditaccesspage&sectionleveltonewowneraftertaskreassignmentforcombinationofBPC&SOWARbygrantorsideattachment @sprint-5-US-198153 @vaibhav @reassignment @taskreassign
   Scenario: Validate PM user should able to see all edit access(page & section level) to new owner after task reassignment for combination of BPC & SOW AR by grantor side attachment
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -11422,7 +11248,7 @@ Feature: Amendment Request scenarios without background
 
   @200070 @ValidatePOusershouldabletoseetheARisupdatedafterchangetheownershipbyGrantorSideatapprovedstateforSOWAR @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate PO user should able to see the AR is updated after change the ownership by Grantor Side at approved state for SOW AR
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -11504,7 +11330,7 @@ Feature: Amendment Request scenarios without background
 
   @200071 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RSideatcreatedstateforcombinationofBPC&SOWARtype @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate user should able to see the AR is updated after change the ownership by S/R Side at created state for combination of BPC&SOW AR type
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -11581,7 +11407,7 @@ Feature: Amendment Request scenarios without background
 
   @200072 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RSideatSubmittedtoGrantorstateforSOWARtype@sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate user should able to see the AR is updated after change the ownership by S/R Side at Submitted to Grantor state for SOW AR type
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -11652,7 +11478,7 @@ Feature: Amendment Request scenarios without background
 
   @200073 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RSideatrejectedstateforSOWAR @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate user should able to see the AR is updated after change the ownership by S/R Side at rejected state for SOW AR
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -11734,7 +11560,7 @@ Feature: Amendment Request scenarios without background
 
   @200074 @ValidateusershouldabletoseetheARisupdatedafterchangetheownershipbyS/RatSubmittedforapprovalstateforSOWARtype @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate user should able to see the AR is updated after change the ownership by S/R at Submitted for approval state for SOW AR type
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -11813,7 +11639,7 @@ Feature: Amendment Request scenarios without background
 
   @200079 @ValidateusershouldabletoseetheaccesstonewownerafterchangingtheownershipBudgetperiodchangefromgrantorside @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate user should able to see the access to new owner after changing the ownership Budget period change from grantor side
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -11886,7 +11712,7 @@ Feature: Amendment Request scenarios without background
 
   @200080 @ValidateusershouldabletoseetheaccesstonewownerafterchangingtheownershipSOWfromgrantorside @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate user should able to see the access to new owner after changing the ownership SOW from grantor side
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -11967,7 +11793,7 @@ Feature: Amendment Request scenarios without background
 
   @200081 @ValidateusershouldabletoseetheaccesstonewownerafterchangingtheownershipBudgetperiodchangefromS/Rside @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate user should able to see the access to new owner after changing the ownership Budget period change from S/R side
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -12048,7 +11874,7 @@ Feature: Amendment Request scenarios without background
 
   @200082 @ValidateusershouldabletoseetheaccesstonewownerafterchangingtheownershipscopeofworkchangefromS/Rside @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate user should able to see the access to new owner after changing the ownership scope of work change from S/R side
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -12134,7 +11960,7 @@ Feature: Amendment Request scenarios without background
 
   @200090 @ValidateHistoryshouldbeupdatedafterchangingtheownershipofAmendment @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate History should be updated after changing the ownership of Amendment
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -12189,7 +12015,7 @@ Feature: Amendment Request scenarios without background
 
   @200488 @ValidatePMusershouldabletoseealleditaccesspage&sectionleveltonewowneraftertaskreassignmentforcombinationofBPC&SOWARbygrantorsideattachment @sprint-5-US-201628 @vaibhav @reassignment @ownvai
   Scenario: Validate PM user should able to see all edit access page & section level to new owner after task reassignment for combination of BPC & SOW AR by grantor side attachment
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -12250,7 +12076,7 @@ Feature: Amendment Request scenarios without background
 
   @200831 @200841 @ValidateFundingchangependingtaskshouldbegeneratedfornewPMownerinmytaskandinpendingtask @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Funding change pending task should be generated for new PM owner in my task and in pending task
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -12317,7 +12143,7 @@ Feature: Amendment Request scenarios without background
 
   @200845 @ValidateFundingchangeasEXEuseIcanreassignReviewAmendmentRequestownershiptasktootherEXEuser @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Funding change as EXE user I can reassign 'Review Amendment Request' ownership task to other EXE user
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -12382,7 +12208,7 @@ Feature: Amendment Request scenarios without background
 
   @200847 @ValidateFundingchangeasFOuserIcanreassignReviewAmendmentRequestownershiptasktootherFOuser @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Funding change as FO user I can reassign 'Review Amendment Request' ownership task to other FO user
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "FO" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -12447,7 +12273,7 @@ Feature: Amendment Request scenarios without background
 
   @200853 @ValidateFundingchangefollowingbuttonsshouldbedisplayfornewPOowner @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Funding change following buttons should be display for new PO owner
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -12521,7 +12347,7 @@ Feature: Amendment Request scenarios without background
 
   @200854 @ValidateFundingchangefieldhistoryshouldbeupdatedfornewownerofamendmentrequest @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Funding change field history should be updated for new owner of amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM1" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -12590,7 +12416,7 @@ Feature: Amendment Request scenarios without background
 
   @200870 @ValidateFundingchangeasFDuseIcanreassignReviewAmendmentRequestownershiptasktootherFDuser @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Funding change as FD user I can reassign Review Amendment Request ownership task to other FD user
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "FD" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -12655,7 +12481,7 @@ Feature: Amendment Request scenarios without background
 
   @200873 @ValidateFundingchangePMusercanreassignownershiptaskofcombinationoffundingchangeandT&CARtootherownerincreatedstateofAR @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Funding change PM user can reassign ownership task of combination of funding change and T & C AR to other owner in created state of AR
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -12757,7 +12583,7 @@ Feature: Amendment Request scenarios without background
 
   @200874 @ValidatePeriodicrenewalPMusercanreassignownershiptasktootheruser @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Periodic renewal PM user can reassign ownership task to other user
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -12835,7 +12661,7 @@ Feature: Amendment Request scenarios without background
 
   @200857 @ValidateFundingVerifyAmendmentRequestRejectedemailshouldbegenerateforEXEnewownerofamendmentrequest @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Funding change Amendment Request Rejected email should be generate for EXE new owner of amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -12929,7 +12755,7 @@ Feature: Amendment Request scenarios without background
 
   @200860 @200867 @ValidateFundingchangeallsectionlevelandpagelevelbuttonwillbevisibletoamendmentowneronlyandnotawardowner @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Funding change all section level and page level button will be visible to amendment owner only and not award owner
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -13029,7 +12855,7 @@ Feature: Amendment Request scenarios without background
 
   @200879 @ValidatePeriodicrenewalSenttoS/rpendingtaskshouldgeneratedforPMuserinmytask @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Periodic renewal Sent to S/r pending task should generated for PM user in my task
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -13092,7 +12918,7 @@ Feature: Amendment Request scenarios without background
 
   @200643 @ValidateuserchangetheawardowneraftercreatingARthenallaccessgotothenewownerforAR @sprint-5-US-201628 @vaibhav @reassignment @taskreassign
   Scenario: Validate user change the award owner after creating AR then all access go to the new owner for AR
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -13215,7 +13041,7 @@ Feature: Amendment Request scenarios without background
 
   @200882 @ValidatePeriodicrenewalasPOuserIcanreassignReviewAmendmentRequestownershiptasktootherPOuser @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Periodic renewal as PO user I can reassign 'Review Amendment Request' ownership task to other PO user
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
@@ -13279,7 +13105,7 @@ Feature: Amendment Request scenarios without background
 
   @200883 @ValidatePeriodicrenewalasPMnewownerofARIhavefollowingbuttonaccess @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Periodic renewal as PM new owner of AR I have following button access
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM1" user
     And I navigate to "Grants" tab
@@ -13351,7 +13177,7 @@ Feature: Amendment Request scenarios without background
 
   @200889 @ValidatePeriodicrenewalFDasawardownerIcanseefollowingbuttonsafterReviewAmendmentRequesttaskownershipreassigntonewowner @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Periodic renewal FD as award owner I can see following buttons after 'Review Amendment Request' task ownership reassign to new owner
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "FD" user
     And I navigate to "Grants" tab
@@ -13426,7 +13252,7 @@ Feature: Amendment Request scenarios without background
 
   @200891 @validatePeriodicrenewalifawardandamendmentownerissametheawardownerscanabletoseeallbuttonsaccessofAR @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Periodic renewal if award and amendment owner is same the award owners can able to see all buttons access of AR
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -13488,7 +13314,7 @@ Feature: Amendment Request scenarios without background
 
   @200892 @ValidatePeriodicrenewalfiledhistoryshouldbeupdatedfornewownerofAR @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Periodic renewal filed history should be updated for new owner of AR
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -13554,7 +13380,7 @@ Feature: Amendment Request scenarios without background
 
   @200893 @ValidatePeriodicrenewalAmendmentRequestRejectedemailshouldbegenerateforPMnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Periodic renewal 'Amendment Request Rejected' email should be generate for PM new owner of amendment request after the Review Amendment Request ownership task reassign to him
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -13653,7 +13479,7 @@ Feature: Amendment Request scenarios without background
 
   @200898 @ValidatePeriodicrenewalonlyamendmentownershouldseefollowingbuttonsaccess @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Periodic renewal only amendment owner should see following buttons access
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -13748,7 +13574,7 @@ Feature: Amendment Request scenarios without background
 
   @200899 @ValidatePeriodicrenewalawardhistorytableshouldbeupdateperiodicrenewalARownershipreassigntonewowner @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Periodic renewal award history table should be update periodic renewal  AR ownership reassign to new owner
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM1" user
     And I navigate to "Grants" tab
@@ -13814,7 +13640,7 @@ Feature: Amendment Request scenarios without background
 
   @200900 @ValidatePeriodicrenewaloldARoldownershouldnothaveanybuttonaccessafterownershipreassigntonewowner @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Periodic renewal old AR old owner should not have any button access  after ownership reassign to new owner
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -13909,7 +13735,7 @@ Feature: Amendment Request scenarios without background
 
   @200961 @ValidatePeriodicrenewalronlyawardownercanseeactivatebuttonandactivatenewawardevenifARownerinitiateamendsubaward @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Periodic renewal only award owner can see activate button and activate new award even if AR owner initiate amend sub award
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -14003,7 +13829,7 @@ Feature: Amendment Request scenarios without background
 
   @200963 @ValidateT&CPMusercanreassignAcknowledgementAmendmentRequestownershiptasktootheruser @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate T & C PM user can reassign 'Acknowledgement Amendment Request' ownership task to other user
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -14055,7 +13881,7 @@ Feature: Amendment Request scenarios without background
 
   @200965 @ValidateT&CEXEusercanreassignAcknowledgementAmendmentRequestownershiptasktootheruser @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate T & C EXE user can reassign 'Acknowledgement Amendment Request' ownership task to other user
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -14107,7 +13933,7 @@ Feature: Amendment Request scenarios without background
 
   @200967 @ValidateT&CAcknowledgementAmendmentRequestpendingtaskshouldbegenerateforFOinmytask @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate T & C 'Acknowledgement Amendment Request' pending task should be generate for FO in my task
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "FO" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -14164,7 +13990,7 @@ Feature: Amendment Request scenarios without background
 
   @200968 @200972 @ValidateT&CAcknowledgementAmendmentRequestpendingtaskshouldbegenerateforPOinmytask @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate T & C 'Acknowledgement Amendment Request' pending task should be generate for PO in my task
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -14226,7 +14052,7 @@ Feature: Amendment Request scenarios without background
 
   @201021 @ValidateT&Callsectionlevelandpagelevelbuttonwillbevisibletoamendmentowner @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate T & C all section level and page level button will be visible to amendment owner and  award owner
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -14295,7 +14121,7 @@ Feature: Amendment Request scenarios without background
 
   @201036 @ValidateT&Casawardownerheshouldnotabletoseeanybuttonsaccessonamendmentrecord @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate T & C as award owner he should not able to see any buttons access on amendment record
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -14420,7 +14246,7 @@ Feature: Amendment Request scenarios without background
 
   @200887 @ValidatePeriodicrenewalasEXEnewownerofARIhavefollowingbuttonaccess @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Periodic renewal as EXE new owner of AR I have following button access
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -14498,7 +14324,7 @@ Feature: Amendment Request scenarios without background
 
   @200895 @ValidatePeriodicrenewalAmendmentRequestSentBackemailshouldbegenerateforEXEnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Periodic renewal 'Amendment Request Sent Back' email should be generate for EXE new owner of amendment request after the 'Review Amendment Request' ownership task reassign to him
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -14602,7 +14428,7 @@ Feature: Amendment Request scenarios without background
 
   @200971 @ValidateT&CfollowingbuttonsshouldbedisplayfornewPMowner @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate T & C following buttons should be display for new PM owner
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -14669,7 +14495,7 @@ Feature: Amendment Request scenarios without background
 
   @201022 @ValidateT&ColdARoldownershouldnothaveanybuttonaccessafterownershiptaskreassigntonewowner @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate T & C old AR old owner should not have any button access  after ownership task reassign to new owner
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -14748,7 +14574,7 @@ Feature: Amendment Request scenarios without background
 
   @200134 @200151 @ValidateCarryForwardReviewAmendmentRequestpendingtaskshouldgenerateforPMuserinmytaskandinpendingtasksection @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward 'Review Amendment Request' pending task should generate for PM user in my task and in pending task section
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -14849,7 +14675,7 @@ Feature: Amendment Request scenarios without background
 
   @201025 @ValidateT&CPMusercanreassignownerofcombinationoffundingchangeandT&CARtootherownerincreatedstateofAR @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate T & C PM user can reassign owner of combination of funding change and T & C AR to other owner in created state of AR
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -14957,7 +14783,7 @@ Feature: Amendment Request scenarios without background
 
   @200976 @ValidateT&CAmendmentRequestRejectemailshouldbegenerateforPOnewownerofamendmentrequest @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate T & C 'Amendment Request Reject' email should be generate for PO new owner of amendment request
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -15039,7 +14865,7 @@ Feature: Amendment Request scenarios without background
 
   @200978 @ValidateT&CAmendmentRequestsentbackemailshouldbegenerateforEXEnewownerofamendmentrequest @sprint-5-US-194231 @vaibhav @reassignment @ownvai
   Scenario: Validate T & C 'Amendment Request sent back' email should be generate for EXE new owner of amendment request
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -15124,7 +14950,7 @@ Feature: Amendment Request scenarios without background
 
   @200136 @200158 @ValidateCarryForwardReviewAmendmentRequestpendingtaskshouldgenerateforEXEuserinmytaskandinpendingtasksection @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward 'Review Amendment Request' pending task should generate for EXE user in my task  and in pending task section
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -15225,7 +15051,7 @@ Feature: Amendment Request scenarios without background
 
   @200137 @200160 @ValidateCarryForwardReviewAmendmentRequestpendingtaskshouldgenerateforPOuserinmytaskandinpendingtasksection @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward 'Review Amendment Request' pending task should generate for PO user in my task  and in pending task section
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -15326,7 +15152,7 @@ Feature: Amendment Request scenarios without background
 
   @200163 @ValidateCarryForwardasAdminusercanreassignReviewAmendmentRequestownershiptaskfromsourcePMusertotargetPMuser @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward as Admin user can reassign 'Review Amendment Request' ownership task from source PM user to target PM user
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -15423,7 +15249,7 @@ Feature: Amendment Request scenarios without background
 
   @200207 @ValidateCarryForwardasPMnewownerofARIhavefollowingbuttonaccess @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward as PM new owner of AR I have following button access
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     When I login to "As a Grantor" app as "PM1" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -15534,7 +15360,7 @@ Feature: Amendment Request scenarios without background
 
   @200212 @ValidateCarryForwardasEXEnewownerofARIhavefollowingbuttonaccess @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward as EXE new owner of AR I have following button access
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -15645,7 +15471,7 @@ Feature: Amendment Request scenarios without background
 
   @200219 @ValidateCarryForwardPOasawardownercannotseeanybuttonsafterReviewAmendmentRequesttaskownershipreassigntonewownerifamendmentcreatedbyEXEuser @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward PO as award owner can not see any buttons after 'Review Amendment Request' task ownership reassign to new owner if amendment created by EXE user
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -15772,7 +15598,7 @@ Feature: Amendment Request scenarios without background
 
   @200230 @ValidateCarryforwardPMasoldownerofARdoesnothaveanybuttonaccessifownershiptaskreassigntonewowner @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry forward PM as old owner of AR does not have any button access if ownership task reassign to new owner
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -15883,7 +15709,7 @@ Feature: Amendment Request scenarios without background
 
   @200256 @ValidateCarryForwardawardownercanseeamendmentlevelbuttonsaccessifamendmentcreatedonawardowneroramendmentowner&awardownerissame @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward award owner can see amendment level buttons access if amendment created on award owner or (amendment owner & award owner is same)
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     When I login to "As a Grantor" app as "PM1" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -15976,7 +15802,7 @@ Feature: Amendment Request scenarios without background
 
   @200261 @ValidateCarryForwardfiledhistoryshouldbeupdatedfornewownerofAR @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward filed history should be updated for new owner of AR
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -16080,7 +15906,7 @@ Feature: Amendment Request scenarios without background
 
   @200277 @ValidateCarryForwardeAmendmentRequestSentBackemailshouldbegenerateforEXEnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward 'Amendment Request Sent Back' email should be generate for EXE new owner of amendment request after the 'Review Amendment Request' ownership task reassign to him
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -16223,7 +16049,7 @@ Feature: Amendment Request scenarios without background
 
   @200314 @ValidateBudgetRedirectionReviewAmendmentRequestpendingtaskshouldgenerateforPMuserinmytaskandinpendingtasksection @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Budget Redirection 'Review Amendment Request' pending task should generate for PM user in my task  and in pending task section
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -16256,7 +16082,7 @@ Feature: Amendment Request scenarios without background
 
   @200315 @ValidateBudgetRedirectionReviewAmendmentRequestpendingtaskshouldgenerateforEXEuserinmytaskandinpendingtasksection @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Budget Redirection Review Amendment Request pending task should generate for EXE user in my task and in pending task section
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -16289,7 +16115,7 @@ Feature: Amendment Request scenarios without background
 
   @200316 @ValidateBudgetRedirectionasPMuserIcanreassignReviewAmendmentRequestownershiptasktootherPMuser @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Budget Redirection as PM user I can reassign 'Review Amendment Request' ownership task to other PM user
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -16333,7 +16159,7 @@ Feature: Amendment Request scenarios without background
 
   @200317 @ValidateBudgetRedirectionasPOuserIcanreassignReviewAmendmentRequestownershiptasktootherPOuser @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Budget Redirection as PO user I can reassign 'Review Amendment Request' ownership task to other PO user
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -16377,7 +16203,7 @@ Feature: Amendment Request scenarios without background
 
   @200321 @ValidateBudgetRedirectionasPMnewownerofARIhavefollowingbuttonaccess @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Budget Redirection as PM new owner of AR I have following button access
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -16431,7 +16257,7 @@ Feature: Amendment Request scenarios without background
 
   @200339 @ValidateBudgetRedirectionasPOnewownerofARIhavefollowingbuttonaccess @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Budget Redirection as PO new owner of AR I have following button access
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -16485,7 +16311,7 @@ Feature: Amendment Request scenarios without background
 
   @200413 @ValidateBudgetRedirectionifS\RusercreateamendmentandsubmittograntorthenARinternalownershouldbeawardownerevenifpreviousamendmentownershiptaskreassigntootheruserotheruser @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Budget Redirection if S\R user create amendment and submit to grantor then AR internal owner should be award owner even if previous amendment ownership task reassign to other user other user
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -16604,7 +16430,7 @@ Feature: Amendment Request scenarios without background
 
   @200414 @ValidateBudgetRedirectionfiledhistoryshouldbeupdatedfornewownerofAR @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Budget Redirection filed history should be updated for new owner of AR
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -16652,7 +16478,7 @@ Feature: Amendment Request scenarios without background
 
   @200415 @ValidateBudgetRedirectionAmendmentRequestRejectedemailshouldbegenerateforPMnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Budget Redirection 'Amendment Request Rejected' email should be generate for PM new owner of amendment request after the 'Review Amendment Request' ownership task reassign to him
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -16731,7 +16557,7 @@ Feature: Amendment Request scenarios without background
 
   @200416 @ValidateBudgetRedirectionAmendmentRequestSentBackemailshouldbegenerateforEXEnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Budget Redirection 'Amendment Request Sent Back' email should be generate for EXE new owner of amendment request after the 'Review Amendment Request' ownership task reassign to him'
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -16815,7 +16641,7 @@ Feature: Amendment Request scenarios without background
 
   @200418 @ValidateBudgetRedirectionawardownershouldnotchangeifitsrelatedamendmentownershiptaskreassigntootheruser @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Budget Redirection award owner should not change if it's related amendment ownership task reassign to other user
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -16863,7 +16689,7 @@ Feature: Amendment Request scenarios without background
 
   @200426 @200436 @200450 @ValidateKeypersonachangeReviewAmendmentRequestpendingtaskshouldgenerateforPMuserinmytaskandinpendingtasksection @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Key personal change 'Review Amendment Request' pending task should generate for PM user in my task  and in pending task section
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -16923,7 +16749,7 @@ Feature: Amendment Request scenarios without background
 
   @200432 @200438 @ValidateKeypersonalchangeReviewAmendmentRequestpendingtaskshouldgenerateforEXEuserinmytaskandinpendingtasksection @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Key personal change 'Review Amendment Request' pending task should generate for EXE user in my task  and in pending task section
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -16972,7 +16798,7 @@ Feature: Amendment Request scenarios without background
 
   @200453 @ValidateKeypersonalchangeasPOnewownerofARIhavefollowingbuttonaccess @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Key personal change as PO new owner of AR I have following button access
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -17030,7 +16856,7 @@ Feature: Amendment Request scenarios without background
 
   @200454 @ValidateKeypersonalchangeEXEasawardownerIcanseefollowingbuttonsafterReviewAmendmentRequesttaskownershipreassigntonewowner @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Key personal change EXE as award owner I can see following buttons after 'Review Amendment Request' task ownership reassign to new owner
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -17088,7 +16914,7 @@ Feature: Amendment Request scenarios without background
 
   @200455 @ValidateKeypersonalchangefiledhistoryshouldbeupdatedfornewownerofAR @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Key personal change filed history should be updated for new owner of AR
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -17140,7 +16966,7 @@ Feature: Amendment Request scenarios without background
 
   @200456 @ValidateKeypersonalchangeAmendmentRequestRejectedemailshouldbegenerateforPMnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Key personal change Amendment Request Rejected email should be generate for PM new owner of amendment request after the 'Review Amendment Request ownership task reassign to him
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -17223,7 +17049,7 @@ Feature: Amendment Request scenarios without background
 
   @200457 @ValidateKeypersonalchangeAmendmentRequestSentBackemailshouldbegenerateforEXEnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Key personal change 'Amendment Request Sent Back' email should be generate for EXE new owner of amendment request after the 'Review Amendment Request' ownership task reassign to him
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -17311,7 +17137,7 @@ Feature: Amendment Request scenarios without background
 
   @200458 @ValidateKeypersonalchangeAmendmentRequestApprovedemailshouldbegenerateforPMnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Key personal change 'Amendment Request Approved' email should be generate for PM new owner of amendment request after the 'Review Amendment Request' ownership task reassign to him
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -17399,7 +17225,7 @@ Feature: Amendment Request scenarios without background
 
   @200461 @ValidateKeypersonalchangeawardownershouldnotseeamendmentlevelbuttonsaccessafterownershipreassigntonewowner @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Key personal change award owner should not see amendment level buttons access  after ownership reassign to new owner
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -17456,7 +17282,7 @@ Feature: Amendment Request scenarios without background
 
   @200276 @ValidateCarryForwardAmendmentRequestRejectedemailshouldbegenerateforPMnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward 'Amendment Request Rejected' email should be generate for PM new owner of amendment request after the 'Review Amendment Request' ownership task reassign to him
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     When I login to "As a Grantor" app as "PM1" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -17597,7 +17423,7 @@ Feature: Amendment Request scenarios without background
 
   @200280 @ValidateCarryForwardAmendmentReqestApprovedemailshouldbegenerateforPMnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry Forward 'Amendment Request Approved' email should be generate for PM new owner of amendment request after the 'Review Amendment Request' ownership task reassign to him
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -17740,7 +17566,7 @@ Feature: Amendment Request scenarios without background
 
   @200421 @ValidatePMusershouldabletoseethetasksrelatedtoBPCAmendmentRequestintheReassigntabonlyforthesourceuserwhichisselectedinthelookupfield @sprint-7-US-198153 @vaibhav @reassignment
   Scenario: Validate PM user should able to see the tasks related to BPC Amendment Request in the Reassign tab only for the source user which is selected in the lookup field
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -17806,7 +17632,7 @@ Feature: Amendment Request scenarios without background
 
   @200469 @ValidateExeusershouldabletoreassignthetasktheCombinationofBPC/SOWamendmentrequestbygrantorsidewithsameprofile&organization @sprint-7-US-198153 @vaibhav @reassignment
   Scenario: Validate  Exe  user should able to reassign the task the Combination of BPC/SOW amendment request by grantor side with same profile & organization
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -17871,7 +17697,7 @@ Feature: Amendment Request scenarios without background
 
   @200471 @ValidatePOusershouldabletoseethetasksrelatedtoSOWAmendmentRequestintheReassigntabonlyforthesourceuserwhichisselectedinthelookupfield @sprint-7-US-198153 @vaibhav @reassignment
   Scenario: Validate PO user should able to see the tasks related to SOW Amendment Request in the Reassign tab only for the source user which is selected in the lookup field
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -17927,7 +17753,7 @@ Feature: Amendment Request scenarios without background
 
   @200472 @ValidatePMusershouldabletoseethetasksrelatedtoBPCAmendmentRequestintheReassigntabonlyforthesourceuserwhichisselectedinthelookupfieldinS/Rside @sprint-7-US-198153 @vaibhav @reassignment
   Scenario: Validate PM user should able to see the tasks related to BPC Amendment Request in the Reassign tab only for the source user which is selected in the lookup field in S/R side
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -18016,7 +17842,7 @@ Feature: Amendment Request scenarios without background
 
   @200474 @ValidatePMusershouldabltoseethetasksrelatedtoSOWAmendmentRequestintheReassigntabonlyforthesourceuserwhichisselectedinthelookupfieldforSOWchangeARfromS/Rside @sprint-7-US-198153 @vaibhav @reassignment
   Scenario: Validate PM user should able to see the tasks related to SOW Amendment Request in the Reassign tab only for the source user which is selected in the lookup field for SOW change AR from S/R side
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -18096,7 +17922,7 @@ Feature: Amendment Request scenarios without background
 
   @200478 @Validates/rsendsanamendmentrequesttotheamendmentinternalownerthenpendingtaskShouldcreateforcombinationofBPC/SOWamendmentinternalowner @sprint-7-US-198153 @vaibhav @reassignment
   Scenario: Validate s/r sends an amendment request to the amendment internal owner then pending task Should create for combination of BPC/SOW amendment internal owner
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -18159,7 +17985,7 @@ Feature: Amendment Request scenarios without background
 
   @200479 @Validates/rsendsanamendmentrequesttotheamendmentinternalownerthenpendingtaskShouldcreateforSOWamendmenttointernalowner @sprint-7-US-198153 @vaibhav @reassignment
   Scenario: Validate  s/r sends an amendment request to the amendment internal owner then pending task Should create for SOW amendment to internal owner
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -18220,7 +18046,7 @@ Feature: Amendment Request scenarios without background
 
   @200485 @ValidateFOusershouldabletoseealleditaccesspage&sectionleveltonewowneraftertaskreassignmentforBPCARbygrantorsideattachment @sprint-7-US-198153 @vaibhav @reassignment
   Scenario: Validate FO user should able to see all edit access(page & section level) to new owner after task reassignment for BPC AR by grantor side attachment
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "FO" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -18323,7 +18149,7 @@ Feature: Amendment Request scenarios without background
 
   @200487 @ValidatePOusershouldabletoseealleditaccesspag&sectionleveltonewowneraftertaskreassignmentforBPCARbyGrantorallattachment @sprint-7-US-198153 @vaibhav @reassignment
   Scenario: Validate PO user should able to see all edit access(page & section level) to new owner after task reassignment for BPC AR by Grantor Side side attachment
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -18412,7 +18238,7 @@ Feature: Amendment Request scenarios without background
 
   @200510 @ValidateusershouldabletoseethefieldhistoryisupdatedafterchangingthetaskownershipfromgrantorsideofBPC/SOWAR @sprint-7-US-198153 @vaibhav @reassignment @ownvai
   Scenario: Validate user should able to see the field history is updated after changing the task ownership from grantor side of BPC/SOW AR
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -18490,7 +18316,7 @@ Feature: Amendment Request scenarios without background
 
   @200511 @ValidateusershouldabletoseethefieldhistoryisupdatedafterchangingthetaskownershipfromS/RsideofBPC/SOWAR @sprint-7-US-198153 @vaibhav @reassignment
   Scenario: Validate user should able to see the field history is updated after changing the task ownership from S/R side of BPC/SOW AR
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -18561,7 +18387,7 @@ Feature: Amendment Request scenarios without background
 
   @200417 @ValidateBudgetRedirectionAmendmentRequestApprovedemailshouldbegenerateforPMnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Budget Redirection_ Verify 'Amendment Request Approved' email should be generate for PM new owner of amendment request after the 'Review Amendment Request' ownership task reassign to him
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -18645,7 +18471,7 @@ Feature: Amendment Request scenarios without background
 
   @200255 @ValidateCarryforwardifS\RusercreateamendmentandsubmittograntorthenARinternalownershouldbeawardownerevenifpreviousamendmentownershiptaskreassigntootheruserotheruser @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry forward if S\R user create amendment and submit to grantor then AR internal owner should be award owner even if previous amendment ownership task reassign to other user other user
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -18844,7 +18670,7 @@ Feature: Amendment Request scenarios without background
 
   @200856 @ValidateFundingchangeAmendmentRequestSubmittedGrantorNotifyemailshouldbegenerateforPMnewownerofamendmentrequest @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Funding change Amendment Request Submitted Grantor Notify email should be generate for PM new owner of amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PM1 user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PM1 user" of type "Competitive"
     When I login to "As a Grantor" app as "PM1" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -18940,7 +18766,7 @@ Feature: Amendment Request scenarios without background
 
   @200858 @ValidateFundingchangeAmendmentRequestSentBackemailshouldbegenerateforPMnewownerofamendmentrequest @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Funding change 'Amendment Request Sent Back' email should be generate for PM new owner of amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -19037,7 +18863,7 @@ Feature: Amendment Request scenarios without background
 
   @200872 @ValidateFundingchangeAmendmentRequestApprovedemailshouldbegenerateforEXEnewownerofamendmentrequest @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Funding change 'Amendment Request Approved' email should be generate for EXE new owner of amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -19135,7 +18961,7 @@ Feature: Amendment Request scenarios without background
 
   @200897 @ValidatePeriodicRenewalyAmendmentRequestApprovedemailshouldbegenerateforPMnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate Periodic Renewal 'Amendment Request Approved' email should be generate for PM new owner of amendment request after the 'Review Amendment Request' ownership task reassign to him
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -19236,7 +19062,7 @@ Feature: Amendment Request scenarios without background
 
   @200975 @ValidateT&CAmendmentRequestApprovedemailshouldbegenerateforEXEnewownerofamendmentrequest @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate T & C 'Amendment Request Approved' email should be generate for EXE new owner of amendment request
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -19321,7 +19147,7 @@ Feature: Amendment Request scenarios without background
 
   @200980 @ValidateT&Callsectionlevelandpagelevelbuttonwillbevisibletoamendmentowneronlynotawardowner @sprint-5-US-194231 @vaibhav @reassignment
   Scenario: Validate T & C all section level and page level button will be visible to amendment owner only not award owner
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -19430,7 +19256,7 @@ Feature: Amendment Request scenarios without background
 
   @200083 @ValidateWhenuserchangetheownershipofgrantthennoanyaffecttocombinationofBPC/SOWARfromgrantorside @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate When user change the ownership of grant  then no any affect to combination of BPC/SOW  AR from grantor side
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -19510,7 +19336,7 @@ Feature: Amendment Request scenarios without background
 
   @200084 @ValidateWhenuserchangetheownershipofgrantthennoanyaffecttoSOWARfromgrantorside @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate When user change the ownership of grant  then no any affect to SOW AR from grantor side
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -19571,7 +19397,7 @@ Feature: Amendment Request scenarios without background
 
   @200087 @ValidateWhenuserchangetheownershipofgrantthennoanyaffecttocombinationofBPC&SOWARfromS/Rside @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate When user change the ownership of grant then no any affect to combination of BPC & SOW AR from S/R side
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -19639,7 +19465,7 @@ Feature: Amendment Request scenarios without background
 
   @200088 @ValidateWhenuserchangetheownershipofgrantthennoanyaffecttoBPCARfromS/Rside @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate When user change the ownership of grant then no any affect to BPC AR from S/R side
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -19726,7 +19552,7 @@ Feature: Amendment Request scenarios without background
 
   @201088 @ValidateCarryforwardemailshouldbegeneratedfornewownerafterAmendmentRequestSubmittedGrantorNotifyownershipreassigntonewowner @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry forward email should be generated for new owner after 'Amendment Request Submitted Grantor Notify' ownership reassign to new owner
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -19881,7 +19707,7 @@ Feature: Amendment Request scenarios without background
 
   @201098 @ValidateCarryForwardawardownerandARownerhasallbuttonaccessofcarryforwardAR @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry Forward award owner and AR owner has all button access of carry forward AR
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -20001,7 +19827,7 @@ Feature: Amendment Request scenarios without background
 
   @201615 @ValidateCarryForwardEXEusercanreassignownershiptonewownerinsubmittograntorstateofcarryforwardAR @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry Forward EXE user can reassign ownership to new owner  in submit to grantor state of carry forward AR
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -20110,7 +19936,7 @@ Feature: Amendment Request scenarios without background
 
   @201755 @ValidateCarryForwardAmendmentRequestRejectedemailshouldbegenerateforPMnewownerofamendmentrequestaftertheReviewAmendmentRequestownershiptaskreassigntohim @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Carry Forward 'Amendment Request Rejected' email should be generate for PM new owner of amendment request after the 'Review Amendment Request' ownership task reassign to him
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -20258,7 +20084,7 @@ Feature: Amendment Request scenarios without background
 
   @200541 @ValidateFundingchangeAmendmentRequestApprovedemailshouldbegenerateforEXEnewownerofamendmentrequest @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Funding change Amendment Request Approved email should be generate for EXE new owner of amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -20362,7 +20188,7 @@ Feature: Amendment Request scenarios without background
 
   @200489 @ValidateFundingchangePOusercanreassignownershiptootheruserinSenttoS/rstateofFCamendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Funding change PO user can reassign ownership to other user in Sent to S/r state of FC amendment
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -20429,7 +20255,7 @@ Feature: Amendment Request scenarios without background
 
   @200518 @ValidateFundingchangePOusercanreassignownershiptootheruserinapprovedstateofFCamendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Funding change PO user can reassign ownership to other user in approved state of FC amendment
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -20515,7 +20341,7 @@ Feature: Amendment Request scenarios without background
 
   @200523 @ValidateFundingchangefollowingbuttonsshouldbedisplayfornewPMowner @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Funding change following buttons should be display for new PM owner
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -20594,7 +20420,7 @@ Feature: Amendment Request scenarios without background
 
   @200535 @ValidateFundingchangeAmendmentRequestRejectedemailshouldbegenerateforEXEnewownerofamendmentrequest @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Funding change 'Amendment Request Rejected' email should be generate for EXE new owner of amendment request
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -20697,7 +20523,7 @@ Feature: Amendment Request scenarios without background
 
   @200547 @ValidateFundingchangeyallsectionlevelandpagelevelbuttonwillbevisibletoamendmentownerbutnotvisibletoawardowner @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Funding change all section level and page level button will be visible to amendment owner but not visible to award owner
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -20830,7 +20656,7 @@ Feature: Amendment Request scenarios without background
 
   @200556 @ValidateFundingchangeamendmentownercannotseeActivatebuttonbutawardownercanseeactivatebuttonandonlyawardownercanactivatenewaward @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Funding change amendment owner can not see Activate button but award owner can see activate button and only award owner can activate new award
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -20932,7 +20758,7 @@ Feature: Amendment Request scenarios without background
 
   @200661 @ValidatePeriodicrenewalAmendmentRequestRejectedemailshouldbegenerateforPMnewownerofamendmentrequest @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Periodic renewal 'Amendment Request Rejected' email should be generate for PM new owner of amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -21038,7 +20864,7 @@ Feature: Amendment Request scenarios without background
 
   @200684 @ValidatePeriodicrenewalAmendmentRequestApprovedemailshouldbegenerateforEXEnewownerofamendmentrequest @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Periodic renewal 'Amendment Request Approved' email should be generate for EXE new owner of amendment request
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -21150,7 +20976,7 @@ Feature: Amendment Request scenarios without background
 
   @200725 @ValidatePeriodicrenewalonlyawardownercanseeactivatebuttonandactivatenewawardevenifamendmentownerinitiateamendaward @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Periodic renewal only award owner can see activate button and activate new award even if amendment owner initiate amend award
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
@@ -21260,7 +21086,7 @@ Feature: Amendment Request scenarios without background
 
   @200768 @ValidatePeriodicrenewaloldARoldownershouldnothaveanybuttonaccessafterownershipreassigntonewowner @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate Periodic renewal old AR old owner should not have any button access after ownership reassign to new owner
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I am on "INTERNAL" portal
     And I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
@@ -21351,7 +21177,7 @@ Feature: Amendment Request scenarios without background
 
   @200785 @ValidateT&CPMusercanreassignownershiptootheruserinsubmittoacknowledgeofT&Camendment @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate T & C PM user can reassign ownership to other user in submit to acknowledge  of T & C amendment
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -21424,7 +21250,7 @@ Feature: Amendment Request scenarios without background
 
   @200795 @ValidateT&CAmendmentRequestApprovedemailshouldbegenerateforEXEnewownerofamendmentrequest @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate T & C 'Amendment Request Approved' email should be generate for EXE new owner of amendment request
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -21520,7 +21346,7 @@ Feature: Amendment Request scenarios without background
 
   @200802 @ValidateT&Callsectionlevelandpagelevelbuttonwillbevisibletoamendmentownerbutnotvisibletoawardownerisincreatedstate @sprint-5-US-196841 @vaibhav @reassignment
   Scenario: Validate T & C all section level and page level button will be visible to amendment owner but not visible to award owner is in created state
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -21597,7 +21423,7 @@ Feature: Amendment Request scenarios without background
 
   @196615 @Validateusershouldnotabletoreassignownershiptothenewuserforamendedaward @sprint-12-US-226646 @vaibhav @reassignment @buglogged-240523
   Scenario: Validate user should not able to reassign ownership to the new user for amended award
-    Given I activated standalone subaward "Automation Runtime Award" with properties "default"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -21684,7 +21510,7 @@ Feature: Amendment Request scenarios without background
 
   @200102 @ValidateafterchangingtheownershipofARthenallsectio&pagelevelbuttonvisibletoamendmentnewowner&awardownerforBPCchangeatS/Rside @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate after changing the ownership of AR then all section & page level button visible to amendment new owner & award owner for BPC change at S/R side
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -21749,7 +21575,7 @@ Feature: Amendment Request scenarios without background
 
   @229051 @ValidatePMusershouldabletoseealleditaccesspage&sectionleveltonewowneraftertaskreassignmentforcombinationofSOW&BPCARbys/rsideattachment @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate PM user should able to see all edit access(page & section level) to new owner after task reassignment for combination of  SOW & BPC AR by s/r side attachment
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -21830,7 +21656,7 @@ Feature: Amendment Request scenarios without background
 
   @229664 @ValidateCarryForwardPMusercanreassignownershiptonewownerinsubmittograntorstateofcarryforwardAR @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate Carry Forward PM user can reassign ownership to new owner  in submit to grantor state of carry forward AR
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -22367,7 +22193,7 @@ Feature: Amendment Request scenarios without background
 
   @200106 @ValidateEmailshouldbetriggeredwhenownershipischangeofBPCARatS/Rside @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate Email should be triggered when ownership is change of BPC  AR  at S/R side
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -22491,7 +22317,7 @@ Feature: Amendment Request scenarios without background
 
   @200515 @ValidateafterchangingthetaskownershipofcombinationSOW/BPCchangebyS/Rsidethenemailshouldtriggeredto&newOwner @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate after changing the task ownership of combination SOW/BPC  change by S/R side then email should triggered to old & new Owner
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -22577,7 +22403,7 @@ Feature: Amendment Request scenarios without background
 
   @200318 @ValidateBudgetRedirectionemailshouldbegeneratedfornewownerafterReviewamendmentrequesttaskownershipreassigntonewowner @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate Budget Redirection email should be generated for new owner after 'Review amendment request' task ownership reassign to new owner
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -22645,7 +22471,7 @@ Feature: Amendment Request scenarios without background
 
   @200104 @ValidateEmailshouldbetriggeredwhenownershipischangeofBPCARatgrantorside @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate Email should be triggered when ownership is change of BPC AR at grantor side
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -22763,7 +22589,7 @@ Feature: Amendment Request scenarios without background
 
   @200302 @ValidateBudgetredirectionthatWhentheownershipofrecordischangedanemailisgeneratedtotheAdminuser @sprint-12-US-226646 @vaibhav @reassignment
   Scenario: Validate Budget redirection that When the ownership of a record is changed, an email is generated to the Admin user
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -22836,7 +22662,7 @@ Feature: Amendment Request scenarios without background
 
   @202311 @ValidateBudgeRedirectionawardownershouldnotseeamendmentlevelbuttonsaccessafterownershipreassigntonewowner
   Scenario: Validate Budget Redirection_ Verify award owner should not see amendment level buttons access  after ownership reassign to new owner
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PM1 user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -22896,7 +22722,7 @@ Feature: Amendment Request scenarios without background
 
   @200304 @200305 @ValidateBudgetredirectionthatWhenownershipofrecordischangedemailisgeneratedtothepreviousowner @sprint-5-US-198235 @vaibhav @reassignment @Buglogged-258400
   Scenario: Validate Budget redirection that When the ownership of a record is changed, an email is generated to the previous owner
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     Given I am on "SUBPORTAL" portal
     When I login to "Grants Portal" app as "SPI3" user
     And I navigate to "Grants" tab
@@ -22995,7 +22821,7 @@ Feature: Amendment Request scenarios without background
 
   @200493 @200494 @ValidateKeyPersonalchangethatWhentheownershipofrecordischangedemailisgeneratedtothepreviousowner @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Key Personal change that When the ownership of a record is changed an email is generated to the previous owner
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -23099,7 +22925,7 @@ Feature: Amendment Request scenarios without background
 
   @200492 @ValidateKeypersoanlchangethatWhentheownershipofrecordischangedanemailisgeneratedtotheAdminuser @sprint-5-US-198235 @vaibhav @reassignment
   Scenario: Validate Key personal change that When the ownership of a record is changed, an email is generated to the Admin user
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -23177,7 +23003,7 @@ Feature: Amendment Request scenarios without background
 
   @200181 @ValidateCarryforwardemailshouldbegeneratednewownerafterReviewamendmentrequesttaskownershipreassigntonewowner @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Carry forward email should be generated for new owner after 'Review amendment request' task ownership reassign to new owner
-    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user"
+    And I activated standalone subaward "Automation Runtime Award" with properties "Automation PO user" of type "Competitive"
     When I login to "As a Grantor" app as "PO" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -23300,7 +23126,7 @@ Feature: Amendment Request scenarios without background
 
   @200443 @ValidateKeypersonalchangeemailshouldbegeneratedfornewownerafterReviewamendmentrequesttaskownershipreassigntonewowner @sprint-5-US-197424 @vaibhav @reassignment
   Scenario: Validate Key personal change email should be generated for new owner after 'Review amendment request' task ownership reassign to new owner
-    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "Automation EXE user" of type "Competitive"
     When I login to "As a Grantor" app as "EXE" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -23373,7 +23199,7 @@ Feature: Amendment Request scenarios without background
 
   @200516 @ValidateafterchangingthetaskownershipofSOW/BPCchangebygrantorsidethenemailshouldtriggeredtoold&newOwner @sprint-5-US-198153 @vaibhav @reassignment
   Scenario: Validate after changing the task ownership of SOW/BPC change by grantor side then email should triggered to old & new Owner
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -23467,7 +23293,7 @@ Feature: Amendment Request scenarios without background
 
   @200103 @ValidateEmailshouldbetriggeredwhenownershipischangofSOWARatgrantorside @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate Email should be triggered when ownership is change of SOW AR  at grantor side
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -23588,7 +23414,7 @@ Feature: Amendment Request scenarios without background
 
   @200105 @ValidateEmailshouldbetriggeredwhenownershipischangeofSOWARatS/Rside @sprint-5-US-198419 @vaibhav @reassignment
   Scenario: Validate Email should be triggered when ownership is change of SOW AR at S/R side
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -23707,7 +23533,7 @@ Feature: Amendment Request scenarios without background
 
   @229672 @ValidateemailshouldbetriggeredofAmendmentRequestRejected&forTaskreassignmenttonewuser @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate email should be triggered of Amendment Request Rejected & for Task reassignment to new user
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -23796,7 +23622,7 @@ Feature: Amendment Request scenarios without background
 
   @229674 @ValidateemailshouldbetriggeredofAmendmentRequestsendback&forTaskreassignmenttonewuser @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate email should be triggered of Amendment Request send back & for Task reassignment to new user
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -23886,7 +23712,7 @@ Feature: Amendment Request scenarios without background
 
   @229677 @ValidateemailshouldbetriggeredofAmendmentRequestApproved&forTaskreassignmenttonewuser @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate email should be triggered of Amendment Request Approved & for Task reassignment to new user
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -23978,7 +23804,7 @@ Feature: Amendment Request scenarios without background
 
   @232515 @ValidateemailshouldbetriggeredofAmendmentRequestRejected&forChangeownershiptonewusergrantorSide @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate email should be triggered of Amendment Request Rejected & for Change ownership to new user
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -24105,7 +23931,7 @@ Feature: Amendment Request scenarios without background
 
   @232517 @ValidateemailshouldbetriggeredofAmendmentRequestsendback&forchangeownershiptonewuserFromgrantorside @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate email should be triggered of Amendment Request send back & for change ownership to new user From grantor side
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -24234,7 +24060,7 @@ Feature: Amendment Request scenarios without background
 
   @232519 @ValidateemailshouldbetriggeredofAmendmentRequestApproved&forchangeownershiptonewuserfromgrantorside @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate email should be triggered of Amendment Request Approved & for change ownership to new user from grantor side
-    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Amendment Award" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     And I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
@@ -24363,7 +24189,7 @@ Feature: Amendment Request scenarios without background
 
   @232520 @ValidateemailshouldbetriggeredofAmendmentRequestRejected&forChangeownershiptonewusers/rSide @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate email should be triggered of Amendment Request Rejected & for Change ownership to new user s/r Side
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -24486,7 +24312,7 @@ Feature: Amendment Request scenarios without background
 
   @232521 @ValidateemailshouldbetriggeredofAmendmentRequestsendback&forChangeownershiptonewusers/rSide @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate email should be triggered of Amendment Request send back & for Change ownership to new user s/r Side
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -24610,7 +24436,7 @@ Feature: Amendment Request scenarios without background
 
   @232374 @ValidateemailshouldbetriggeredofAmendmentRequestsendback&forTaskreassignmenttonewuserFromS/rSide @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate email should be triggered of Amendment Request send back & for Task reassignment to new user From S/r Side
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -24729,7 +24555,7 @@ Feature: Amendment Request scenarios without background
 
   @232389 @ValidateemailshouldbetriggeredofAmendmentRequestApproved&forTaskreassignmenttonewuserfroms/rside @sprint-13-US-231194 @vaibhav @reassignment
   Scenario: Validate email should be triggered of Amendment Request Approved & for Task reassignment to new user(from s/r side)
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -24817,7 +24643,7 @@ Feature: Amendment Request scenarios without background
 
   @232522 @ValidateemailshouldbetriggeredofAmendmentRequestapproved&forChangeownershiptonewusers/rSide @sprint-13-US-231194 @vaibhav @reassignment @buglogged-265020
   Scenario: Validate email should be triggered of Amendment Request approved & for Change ownership to new user(s/r Side)
-    And I activated standalone subaward "Automation Runtime Award" with properties "default"
+    And I activated standalone subaward "Automation Runtime Award" with properties "default" of type "Competitive"
     When I am on "SUBPORTAL" portal
     And I login as "SPI3" user
     And I navigate to "Grants" tab
@@ -24943,7 +24769,7 @@ Feature: Amendment Request scenarios without background
 
   @223385 @ValidateAmendmentRequestModuleusershouldabletoreassignthetasktonewuserofmorethan10records&1emailshouldbetriggeredforallrecords @sprint-11-US-217998 @vaibhav @reassignment
   Scenario: Validate Amendment Request Module user should able to reassign the task to new user of more than 10 records & 1 email should be triggered for all records
-    And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default"
+    And I activated standalone subaward "Automation Runtime Bulk Award for Amendment" with properties "default" of type "Competitive"
     When I login to "As a Grantor" app as "PM" user
     And I navigate to "Grants" tab
     When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel

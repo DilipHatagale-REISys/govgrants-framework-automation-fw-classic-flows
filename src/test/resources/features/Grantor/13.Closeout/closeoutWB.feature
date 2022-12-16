@@ -1,5 +1,25 @@
-@closeout @grantor-regression @grantor-parallel-regression @regression @TBEAllocation
+@closeout @grantor-regression @grantor-parallel-regression @regression
 Feature: Validate all scenarios in Closeout
+
+  @96615 @VerifyAdvanceValueAtCloseoutRequest @monu
+  Scenario: Verify user can see advance value at closeout request as same as on SubAward
+    Given I activated standalone subaward "Automation Runtime Award for closeout" with properties "ADVANCE_PERMISSIBLE_YES_FOCUS_AREA_NO" of type "Competitive"
+    When I login to "As a Grantor" app as "dynamicUser" user
+    And I navigate to "Grants" tab
+    When I navigate to "Grants" content inside "Grants, Subawards & Amendments" subheader on left panel
+    And I click toggle button to select "Grants - Active"
+    When I perform quick search for "{SavedValue:Automation Runtime Award for closeout}" in "---closeout:-:grantsTableId---" panel
+    And I click on "View" icon for "{SavedValue:Automation Runtime Award for closeout}" inside flex table with id "---closeout:-:grantsTableId---"
+    And I navigate to "Actuals" sub tab
+    Then I softly see field "Advance Available" as "$0"
+    When I navigate to "Requests" sub tab
+    And I click on top right button "New" in flex table with id "---closeout:-:closeoutTableId---"
+    When I enter in modal "Creation" values from "Closeout_Field_Values.xlsx"
+    And I click modal button "Save and Continue"
+    And I enter "Edition" values from "Closeout_Field_Values.xlsx"
+    When I click on "Save" in the page details
+    And I navigate to "Overview" sub tab
+    Then I softly see field "Advance Available" as "$0.00"
 
   @87347 @87354 @ValidatingCloseoutRequestForEXEUser @meenakshi
   Scenario: To verify the PM user should be able to create the  Closeout Request

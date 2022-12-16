@@ -2,7 +2,7 @@
 Feature: Validate all scenarios in the Amendment Request
 
   Background: Setup data
-    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST"
+    Given I activated standalone subaward "Automation Runtime Award" with properties "AMENDMENT_REQUEST" of type "Competitive"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Grants" tab
     And I navigate to "Subawards" content inside "Grants, Subawards & Amendments" subheader on left panel
