@@ -23,6 +23,7 @@ public class UsersAndURL implements UsersController {
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPI Username", "Automation SPI");
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPI3 Username", "Automation SPI3");
         I.amPerforming().propertiesFileOperationsTo().saveValue("SPA Username", "Automation SPA");
+        I.amPerforming().propertiesFileOperationsTo().saveValue("SPI4 Username", "Automation SPI4");
         I.amPerforming().propertiesFileOperationsTo().saveValue("IND Username", "Automation IND");
         I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE ADMIN Username", "Grantee ADMIN");
         I.amPerforming().propertiesFileOperationsTo().saveValue("GRANTEE PO Username", "Grantee PO");
@@ -99,6 +100,9 @@ public class UsersAndURL implements UsersController {
     private String getAUTOEnvironmentPassword(String userLevel) {
         String password;
         switch (userLevel.toUpperCase()) {
+            case "SME":
+                password = "Salesforce2026";
+                break;
             default:
                 password = "Salesforce2025";
         }
@@ -149,9 +153,10 @@ public class UsersAndURL implements UsersController {
         username.put("PO1", "automationpo1@yopmail.com");
         username.put("FO1", "fo1.automation@yopmail.com");
         username.put("FD1", "automationfd1@yopmail.com");
-        username.put("SME", "product.ucs.sme1@yopmail.com.automation");
-
+        username.put("SME", "sme1@yopmail.com");
+        username.put("SPI4", "aspi4@grants.gov");
         username.put("SARAH PM", "sarah.pm@ggp.test9.automation");
+
         username.put("SIMON PM", "simon@ggp.test8.automation");
         username.put("ALEX FO", "alex_fo@ggp.test7.automation");
         username.put("CATHY PM", "cathy_pm@ggp.test7.automation");

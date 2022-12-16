@@ -34,6 +34,7 @@ public class GenericSteps {
     @Description("API call used to create a post award records i.e. Payment Request, Progress Report and Closout and will fetch the record ID for that record. These step we can only use after Award Activation")
     @When("^I create a post award record \"([^\"]*)\" for the Award \"([^\"]*)\" having object api name as \"([^\"]*)\"$")
     public void iCreateAPostAwardRecordForTheAwardHavingObjectApiNameAs(String objectType, String recordName, String objectApiName) {
+        I.amPerforming().waitFor().makeThreadSleep(20000);
         grantorWebServices.getRecordIdFromResponse(objectType, recordName, objectApiName);
     }
 
@@ -487,7 +488,7 @@ public class GenericSteps {
         I.amPerforming().propertiesFileOperationsTo().saveValue(annName, newAnnName);
         annName = newAnnName;
         grantorWebServices.publishAnnouncment(annType, annName, filter);
-   }
+    }
 
     @And("I activated standalone subaward {string} with properties {string}")
     public void iActivatedStandaloneSubawardWithProperties(String grantName, String filter) {
@@ -495,6 +496,14 @@ public class GenericSteps {
         I.amPerforming().propertiesFileOperationsTo().saveValue(grantName, newGrantName);
         grantName = newGrantName;
         grantorWebServices.activateSubaward(grantName, filter);
+    }
+
+    @And("I activated standalone subaward {string} with properties {string} of type {string}")
+    public void iActivatedStandaloneSubawardWithPropertiesAndType(String grantName, String filter, String Type) {
+        String newGrantName = grantName + I.amPerforming().addOnsTo().getRandomNumber();
+        I.amPerforming().propertiesFileOperationsTo().saveValue(grantName, newGrantName);
+        grantName = newGrantName;
+        grantorWebServices.activateSubaward(grantName, filter, Type);
     }
 
     @And("I click on submit review")

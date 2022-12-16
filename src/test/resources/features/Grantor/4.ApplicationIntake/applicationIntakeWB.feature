@@ -40,6 +40,7 @@ Feature: Application Intake scenarios without background
     When I enter advance filter values inside id "advfqae"
       | EGMS ID | Contains | Aatam123 |
     Then I softly see "No records found" inside flex table with id "---applicationIntake:-:qualifiedTableId---"
+    And I refresh the page
     And I click toggle button to select "Qualified Opportunities - Open"
     And I perform quick search for "{SavedValue:Automation Runtime Announcement Application Review}" in "---applicationIntake:-:qualifiedTableId---" panel
     Then I softly see value "{SavedValue:Automation Runtime Announcement Application Review}" for title "Opportunity Name" inside table "---applicationIntake:-:qualifiedTableId---"
@@ -352,7 +353,7 @@ Feature: Application Intake scenarios without background
 
   @71112 @71113 @appDueDateValidation @deepika
   Scenario: Validate the Application Submission before the due date | Validate whether the application due date on Announcement is reflecting same while creating an application
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for App Intake and PreApp" and properties "default"
+    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for App Intake and PreApp" and properties "TODAY_APP_DUE_DATE"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Competitive" content inside "Announcements" subheader on left panel
@@ -429,7 +430,7 @@ Feature: Application Intake scenarios without background
     And I navigate to "Overview" sub tab
     Then I softly see field "Match Required?" as "Yes"
     And I navigate to "Budget" sub tab
-    Then I softly can see page block "Focus Area"
+    Then I softly can see page block "Budget Summary by Focus Area"
     When I expand nested table containing column value "BP01"
     Then I softly see all values "$0.00" under column "Total Match" inside flextable with id "---applicationIntake:-:budgetPeriodTableId---"
     And I softly see all values "$0.00" under column "Other Leverage" inside flextable with id "---applicationIntake:-:budgetPeriodTableId---"
@@ -564,7 +565,7 @@ Feature: Application Intake scenarios without background
     When I click on "Back" in the page details
     When I click on "Submit Application" in the page details
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - Requested Amount should be greater than or equal to Subaward Floor Amount. Adjust the requested budget in Budget period section on Budget tab. |
+      | Budget Tab - Budgeted Amount should be greater than or equal to the Subaward Floor Amount. Adjust the Budgeted Amount in the Budget period section. |
     And I navigate to "Budget" sub tab
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
@@ -590,6 +591,7 @@ Feature: Application Intake scenarios without background
     When I click on "Qualify" in the page details
     When I click on "Create Application" in the page details
     And I click modal button "Save and Continue"
+    And I pause execution for "3" seconds
     When I click on "Save" in the page details
     When I click on "Edit" in the page details
     And I enter "Edition" values from "Application_Field_Values.xlsx"
@@ -724,53 +726,17 @@ Feature: Application Intake scenarios without background
 
   @34315 @appDueDatepassed @deepika @needStaticRecordsForThis
   Scenario Outline: Validate SPI & SPA user is not able to Create an Application if Application Due Date is passed
-    Given I published "Competitive" type announcement having name "Automation Runtime Announcement for DueDateValidation" and properties "default"
     When I am on "SUBPORTAL" portal
     And I login as "<User>" user
     When I navigate to "Opportunities" tab
-    When I navigate to "Not Yet Qualified" content inside "Opportunities" subheader on left panel
-    When I click toggle button to select "Not Yet Qualified Opportunities - All"
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement for DueDateValidation}" in "---announcement:-:NotYetQualifiedTableId---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for DueDateValidation}" inside flex table with id "---announcement:-:NotYetQualifiedTableId---" without waiting for record
-    When I click on "Qualify" in the page details
-    When I click on "Create Application" in the page details
-    And I click modal button "Save and Continue"
-    When I click on "Save" in the page details
-    When I click on "Edit" in the page details
-    And I enter "Edition" values from "Application_Field_Values.xlsx"
-    When I click on "Save" in the page details
-    And I navigate to "Proposal" sub tab
-    Then I softly cannot see page block "Work Plan"
-    And I navigate to "Budget" sub tab
-    Given I expand nested table containing column value "BP01"
-    And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
-      | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
-      | Construction  | 1000   | 100        | 100            | 100            |
-    When I navigate to "Overview" sub tab
-    When I click on "Edit" icon for "<Key User>" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    And I enter value "Checked" into field "IsKeyContact__c"
-    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
-    When I navigate to "Proposal" sub tab
-    When I edit the following rows inline in flex table with id "---applicationIntake:-:kpiTableId---" by clicking "Edit" :
-      | EGMS ID                  | Target |
-      | Automation Permanent KPI | 10     |
-    And I navigate to "Files" sub tab
-    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
-    Given I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    Given I click on "Back" in the page details
-    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationIntake:-:allFormsTableId---"
-    Given I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
-    And I click on "Save" in the page details
-    Given I click on "Back" in the page details
-    When I click on "Submit Application" in the page details
     When I navigate to "Opportunities" tab
-    And I navigate to "Converted to Application" content inside "Opportunities" subheader on left panel
-    And I perform quick search for "{SavedValue:Automation Runtime Announcement for DueDateValidation}" in "---applicationIntake:-:convertedToApplicationTableID---" panel
-    When I click on "View" icon for "{SavedValue:Automation Runtime Announcement for DueDateValidation}" inside flex table with id "---applicationIntake:-:convertedToApplicationTableID---" without waiting for record
+    When I navigate to "Qualified" content inside "Opportunities" subheader on left panel
+    And I click toggle button to select "Qualified Opportunities - All"
+    And I perform quick search for "---AUTOEnvData:-:Automation_Formula_Closed_Announcement_By_Applicant---" in "---applicationIntake:-:qualifiedTableId---" panel
+    When I click on "View" icon for "---AUTOEnvData:-:Automation_Formula_Closed_Announcement_By_Applicant---" inside flex table with id "---applicationIntake:-:qualifiedTableId---" without waiting for record
     And I save the field containing "Application Due Date" as "Date"
     Then I softly see field "Application Due Date" contains date less than todays date
-    And I softly cannot see top right button "Create Application" in page detail
+    Then I softly cannot see top right button "Create Application" in page detail
     Examples:
       | User | Key User        |
       | SPI3 | Automation SPI3 |
@@ -778,7 +744,7 @@ Feature: Application Intake scenarios without background
 
   @73367 @spiUserCanViewAllocatedAmountOnceSubmittedToGrantor @deepika @buglogged129432
   Scenario Outline: Validate whether SPI & SPA user were able to view the allocated amount once the Oppurtunity is Converted to Application when Announcement is of type - Formula
-    Given I published "Formula" type announcement having name "Automation Runtime Announcement Application Review" and properties "default"
+    Given I published "Formula" type announcement having name "Automation Runtime Announcement Application Review" and properties "BY_APPLICANT"
     When I am on "SUBPORTAL" portal
     And I login as "<User>" user
     When I navigate to "Opportunities" tab
@@ -825,12 +791,11 @@ Feature: Application Intake scenarios without background
     When I click on "View" icon for "{SavedValue:Automation Runtime Announcement Application Review}" inside table without waiting for record
     And I navigate to "Overview" sub tab
     And I save the field containing "Type" as "Formula"
-    Then I see value "$2,000" for title "Allocated Amount" against the value "SAN DIEGO ELECTRICAL TRAINING TRUST" inside table "---applicationIntake:-:formulaAllocatedAmountTableId---"
+    And I navigate to "Financials" sub tab
+    Then I see value "$1000" for title "Allocation Amount" inside table "---applicationIntake:-:formulaAllocatedAmountTableId---"
     Examples:
       | User | userType        |
       | SPI3 | Automation SPI3 |
-      #As per comment on bug 129432 discarding this test case for SPA user
-      #| SPA  | Automation SPA  |
 
   @73516 @73517 @supportingDocValidationOnApplication @deepika @needSupportingDocuSupportInAPI
   Scenario: Validate whether User will be able to attach any document if the supporting document details mentioned in the Announcement
@@ -852,8 +817,8 @@ Feature: Application Intake scenarios without background
     And I enter "Edition" values from "Application_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Budget" sub tab
-    When I perform quick search for "Automation Permanent Focus Area" in "---applicationIntake:-:focusAreaTableId---" panel
-    Then I softly see that "Automation Permanent Focus Area" has been added in flextable with Id "---applicationIntake:-:focusAreaTableId---"
+    When I perform quick search for "Automation Permanent Focus Area" in "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---" panel
+    Then I softly see that "Automation Permanent Focus Area" has been added in flextable with Id "---applicationIntake:-:budgetSumamaryByFocusAreaTableId---"
     Given I expand nested table containing column value "BP01"
     And I edit the following rows inline in flex table with id "---applicationIntake:-:budgetPeriodTableId---" by clicking "Edit" :
       | Category Name | Budget | Cash Match | Non-Cash Match | Other Leverage |
@@ -1030,7 +995,7 @@ Feature: Application Intake scenarios without background
   @73822 @73823 @75503 @75504 @formulaPublishedAnnouncementUnderOppurtunitiesTab @deepika
   Scenario: Validate whether SPI user is able to view the Formula Announcement under Oppurtunities Tab once it is published |Validate whether the SPI user can qualify and create the Application from published Formula Announcement
   Validate all the invited applicants can view the published announcement under Oppurtunities when selected announcement of type Formula| Validate other than invited applications, other users cannot view the Published announcement under oppurtunities when selected announcement of type Formula
-    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "default"
+    Given I published "Formula" type announcement having name "Automation Runtime Formula Announcement" and properties "BY_APPLICANT"
     When I login to "As a Grantor" app as "dynamicUser" user
     And I navigate to "Announcements" tab
     When I navigate to "Formula" content inside "Announcements" subheader on left panel
@@ -1175,9 +1140,8 @@ Feature: Application Intake scenarios without background
       | Name                       | Project Role             | Is Key Contact |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
-    And I wait for "1" seconds
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - Requested Amount should be greater than or equal to Subaward Floor Amount. Adjust the requested budget in Budget period section on Budget tab. |
+      | Budget Tab - Budgeted Amount should be greater than or equal to the Subaward Floor Amount. Adjust the Budgeted Amount in the Budget period section. |
       | Budget Tab - Provide the match (Cash Match/Non-Cash Match) details to submit this application.                                                                |
       | Budget Tab - The Subrecipient Match should not be less than the given value.                                                                                  |
       | Budget Tab - Enter budget details before submitting an Application to the Grantor.                                                                            |
@@ -1259,9 +1223,8 @@ Feature: Application Intake scenarios without background
       | Name                       | Project Role             | Is Key Contact |
       | {SavedValue:SPI3 Username} | Project Director/Manager | Checked        |
     When I click on "Submit Application" in the page details
-    And I pause execution for "5" seconds
     Then I softly see the following messages in the page details contains:
-      | Overview Tab - Requested Amount should be greater than or equal to Subaward Floor Amount. Adjust the requested budget in Budget period section on Budget tab. |
+      | Budget Tab - Budgeted Amount should be greater than or equal to the Subaward Floor Amount. Adjust the Budgeted Amount in the Budget period section. |
 
   @77046 @77045 @77047 @77048 @budgetGridColumnValidation @deepika
   Scenario: Validate the SPI cannot view the Goals and Objectives page block when it is set as No while Announcement creation| Validate the SPI cannot view the Work Plan required page block when it is set as No while Announcement creation
@@ -1363,7 +1326,7 @@ Feature: Application Intake scenarios without background
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "AppEGMSID"
-    Then I see status in Progress-bar is "Created" and is "Green"
+    Then I softly see status in Progress-bar is "Created" and is "Green"
     When I re-login to "As a Grantor" app as "PM" user on "INTERNAL" portal
     And I navigate to "Announcements" tab
     And I click toggle button to select "All Announcements"
@@ -1542,10 +1505,8 @@ Feature: Application Intake scenarios without background
     When I click on "Qualify" in the page details
     And I click on "Create Pre-Application" in the page details
     When I click modal button "Save and Continue"
-    And I click on "Save" in the page details
     And I get the "EGMS ID"
     And I save the field labeled "EGMS ID" as "PreappEGMSID"
-    Given I click on "Edit" in the page details
     And I enter "Edition" values from "PreApplication_Field_Values.xlsx"
     When I click on "Save" in the page details
     And I navigate to "Overview" sub tab
@@ -1584,6 +1545,30 @@ Feature: Application Intake scenarios without background
     When I click on "Save" in the page details
     When I save the field labeled "EGMS ID" as "AppEGMSID"
     Then I softly see status in Progress-bar is "Created" and is "Green"
+    And I navigate to "Budget" sub tab
+    When I expand nested table containing column value "BP01"
+    And I edit the following rows inline in flex table with id "---applicationReview:-:budgetTableId---" by clicking "Edit" :
+      | Category Name | Budget | Cash Match | Non-Cash Match |
+      | Construction  | 1000   | 100        | 100            |
+    When I navigate to "Overview" sub tab
+    When I click on "Edit" icon for "{SavedValue:SPI3 Username}" inside flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    And I enter value "Checked" into field "IsKeyContact__c"
+    And I click on top right button "Save" in flex table with id "---applicationReview:-:flexGridAppContactTableId---"
+    When I navigate to "Proposal" sub tab
+    When I edit the following rows inline in flex table with id "---applicationReview:-:kpiTableId---" by clicking "Edit" :
+      | EGMS ID                  | Target |
+      | Automation Permanent KPI | 10     |
+    And I navigate to "Files" sub tab
+    And I click on "Edit" icon for "Standard Assurances Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+    When I enter "Form Fields 1" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I click on "Edit" icon for "Program Application Form" inside flex table with id "---applicationReview:-:allFormsTableId---"
+    When I enter "Form Fields 2" values from "Application_Field_Values.xlsx"
+    And I click on "Save" in the page details
+    When I click on "Back" in the page details
+    And I get the "EGMS ID"
+    When I click on "Submit Application" in the page details
     When I re-login to "As a Grantor" app as "EXE1" user on "INTERNAL" portal
     And I navigate to "Applications" tab
     When I navigate to "Applications" content inside "Applications" subheader on left panel

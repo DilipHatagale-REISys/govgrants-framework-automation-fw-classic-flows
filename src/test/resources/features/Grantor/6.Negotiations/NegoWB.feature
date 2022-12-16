@@ -388,7 +388,7 @@ Feature: Validate all scenarios in Negotiations
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I softly see field "Application Sections for Revision" as "Files: Forms"
+    Then I softly see field "Application Sections for Negotiation" as "Files: Forms"
 
   @164568  @ValidatePOUserAbleToSelectFileAndFormsForRevisionPicklistWhenApplicationInreviewedState @sprint-3 @vaibhv
   Scenario: Validate PO User Able To Select File And Forms For Revision Picklist When Application In reviewed State
@@ -476,7 +476,7 @@ Feature: Validate all scenarios in Negotiations
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I softly see field "Application Sections for Revision" as "Files: Forms"
+    Then I softly see field "Application Sections for Negotiation" as "Files: Forms"
 
   @164573 @ValidatePOUserselecttheAlloweditforatleastoneformintheavailableformsforRevisionstable
   Scenario: Validate PO User select the Allow edit for atleast one form in the available forms for Revisions table
@@ -991,7 +991,7 @@ Feature: Validate all scenarios in Negotiations
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I softly see field "Application Sections for Revision" as "Files: Forms"
+    Then I softly see field "Application Sections for Negotiation" as "Files: Forms"
 
   @165830 @ValidatePOUserAbleToSelectFileFormsApplicationInSubmittedToGrantorStatus @sprint-3 @vaibhav
   Scenario: Validate PO User Able To Select File Forms Application In Submitted To Grantor Status
@@ -1086,11 +1086,11 @@ Feature: Validate all scenarios in Negotiations
     When I navigate to "Negotiations" content inside "Application Reviews" subheader on left panel
     When I perform quick search for "{SavedValue:EGMSID}" in "---negotiation:-:negotiationPendingTaskTableId---" panel
     And I click on "View" icon for "{SavedValue:EGMSID}" inside flex table with id "---negotiation:-:negotiationPendingTaskTableId---"
-    Then I softly can see top right button "Edit" in page detail
-    When I click on "Edit" in the page details
+    Then I softly can see top right button "Request Negotiations" in page detail
+    When I click on "Request Negotiations" in the page details
     And I navigate to "Negotiations" sub tab
     When I clear the value from field "fieldApplicationSectionsForRevision__c"
     When  I enter "Edition_Forms" values from "Negotiations_Field_Values.xlsx"
     When I click on "Save" in the page details
-    Then I softly see field "Application Sections for Revision" as "Files: Forms"
+    Then I softly see field "Application Sections for Negotiation" as "Files: Forms"
 

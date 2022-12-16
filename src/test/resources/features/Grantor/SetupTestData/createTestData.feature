@@ -404,7 +404,7 @@ Feature: Validate creation of data in new Org
     And I click on top right button "New" in flex table with id "---announcement:-:competitiveAnnouncementTableId---"
     And I enter "CompetitiveAnnouncement3" values from "PermanentRecordSetup_Field_Values.xlsx"
     And I click modal button "Continue"
-    When I enter "Creation Second Modal3" values from "PermanentRecordSetup_Field_Values.xlsx"
+    When I enter "Creation Second Modal" values from "PermanentRecordSetup_Field_Values.xlsx"
     And I click modal button "Save and Continue"
     When I click on "Save" in the page details
     And I get the "EGMS ID"
